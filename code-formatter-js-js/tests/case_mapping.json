@@ -1,0 +1,1941 @@
+{
+  "case_001": {
+    "source": "js/array-spread/multiple.js",
+    "language": "js",
+    "category": "array-spread",
+    "filename": "multiple.js",
+    "extension": "js"
+  },
+  "case_002": {
+    "source": "js/arrays/issue-10159.js",
+    "language": "js",
+    "category": "arrays",
+    "filename": "issue-10159.js",
+    "extension": "js"
+  },
+  "case_003": {
+    "source": "js/arrays/numbers-negative-comment-after-minus.js",
+    "language": "js",
+    "category": "arrays",
+    "filename": "numbers-negative-comment-after-minus.js",
+    "extension": "js"
+  },
+  "case_004": {
+    "source": "js/arrow-call/arrow_call.js",
+    "language": "js",
+    "category": "arrow-call",
+    "filename": "arrow_call.js",
+    "extension": "js"
+  },
+  "case_005": {
+    "source": "js/arrows/arrow_function_expression.js",
+    "language": "js",
+    "category": "arrows",
+    "filename": "arrow_function_expression.js",
+    "extension": "js"
+  },
+  "case_006": {
+    "source": "js/arrows/comment.js",
+    "language": "js",
+    "category": "arrows",
+    "filename": "comment.js",
+    "extension": "js"
+  },
+  "case_007": {
+    "source": "js/assignment/discussion-15196.js",
+    "language": "js",
+    "category": "assignment",
+    "filename": "discussion-15196.js",
+    "extension": "js"
+  },
+  "case_008": {
+    "source": "js/assignment/issue-6922.js",
+    "language": "js",
+    "category": "assignment",
+    "filename": "issue-6922.js",
+    "extension": "js"
+  },
+  "case_009": {
+    "source": "js/assignment-comments/function.js",
+    "language": "js",
+    "category": "assignment-comments",
+    "filename": "function.js",
+    "extension": "js"
+  },
+  "case_010": {
+    "source": "js/assignment-expression/property-value.js",
+    "language": "js",
+    "category": "assignment-expression",
+    "filename": "property-value.js",
+    "extension": "js"
+  },
+  "case_011": {
+    "source": "js/async/nested2.js",
+    "language": "js",
+    "category": "async",
+    "filename": "nested2.js",
+    "extension": "js"
+  },
+  "case_012": {
+    "source": "js/between-head-and-body/between-head-and-body.js",
+    "language": "js",
+    "category": "between-head-and-body",
+    "filename": "between-head-and-body.js",
+    "extension": "js"
+  },
+  "case_013": {
+    "source": "js/big-int/literal.js",
+    "language": "js",
+    "category": "big-int",
+    "filename": "literal.js",
+    "extension": "js"
+  },
+  "case_014": {
+    "source": "js/binary-expressions/comment.js",
+    "language": "js",
+    "category": "binary-expressions",
+    "filename": "comment.js",
+    "extension": "js"
+  },
+  "case_015": {
+    "source": "js/boolean/boolean.js",
+    "language": "js",
+    "category": "boolean",
+    "filename": "boolean.js",
+    "extension": "js"
+  },
+  "case_016": {
+    "source": "js/break-calls/break.js",
+    "language": "js",
+    "category": "break-calls",
+    "filename": "break.js",
+    "extension": "js"
+  },
+  "case_017": {
+    "source": "js/break-calls/parent.js",
+    "language": "js",
+    "category": "break-calls",
+    "filename": "parent.js",
+    "extension": "js"
+  },
+  "case_018": {
+    "source": "js/chain-expression/test-4.js",
+    "language": "js",
+    "category": "chain-expression",
+    "filename": "test-4.js",
+    "extension": "js"
+  },
+  "case_019": {
+    "source": "js/class-comment/class-property.js",
+    "language": "js",
+    "category": "class-comment",
+    "filename": "class-property.js",
+    "extension": "js"
+  },
+  "case_020": {
+    "source": "js/class-expression/arguments.js format[acorn] 1",
+    "language": "js",
+    "category": "class-expression",
+    "filename": "arguments.js format[acorn] 1",
+    "extension": "js"
+  },
+  "case_021": {
+    "source": "js/class-extends/extends.js",
+    "language": "js",
+    "category": "class-extends",
+    "filename": "extends.js",
+    "extension": "js"
+  },
+  "case_022": {
+    "source": "js/class-static-block/class-static-block.js",
+    "language": "js",
+    "category": "class-static-block",
+    "filename": "class-static-block.js",
+    "extension": "js"
+  },
+  "case_023": {
+    "source": "js/classes/asi.js",
+    "language": "js",
+    "category": "classes",
+    "filename": "asi.js",
+    "extension": "js"
+  },
+  "case_024": {
+    "source": "js/classes/assignment.js",
+    "language": "js",
+    "category": "classes",
+    "filename": "assignment.js",
+    "extension": "js"
+  },
+  "case_025": {
+    "source": "js/classes-private-fields/optional-chaining.js format[espree] 1",
+    "language": "js",
+    "category": "classes-private-fields",
+    "filename": "optional-chaining.js format[espree] 1",
+    "extension": "js"
+  },
+  "case_026": {
+    "source": "js/computed-props/classes.js",
+    "language": "js",
+    "category": "computed-props",
+    "filename": "classes.js",
+    "extension": "js"
+  },
+  "case_027": {
+    "source": "js/condition-break/boolean-expression.js",
+    "language": "js",
+    "category": "condition-break",
+    "filename": "boolean-expression.js",
+    "extension": "js"
+  },
+  "case_028": {
+    "source": "js/conditional/postfix-ternary-regressions.js",
+    "language": "js",
+    "category": "conditional",
+    "filename": "postfix-ternary-regressions.js",
+    "extension": "js"
+  },
+  "case_029": {
+    "source": "js/decorators/classes.js format[acorn] 1",
+    "language": "js",
+    "category": "decorators",
+    "filename": "classes.js format[acorn] 1",
+    "extension": "js"
+  },
+  "case_030": {
+    "source": "js/destructuring/destructuring.js",
+    "language": "js",
+    "category": "destructuring",
+    "filename": "destructuring.js",
+    "extension": "js"
+  },
+  "case_031": {
+    "source": "js/directives/escaped.js",
+    "language": "js",
+    "category": "directives",
+    "filename": "escaped.js",
+    "extension": "js"
+  },
+  "case_032": {
+    "source": "js/dynamic-import/import-phase.js format[acorn] 1",
+    "language": "js",
+    "category": "dynamic-import",
+    "filename": "import-phase.js format[acorn] 1",
+    "extension": "js"
+  },
+  "case_033": {
+    "source": "js/empty-import/empty-import-2.js",
+    "language": "js",
+    "category": "empty-import",
+    "filename": "empty-import-2.js",
+    "extension": "js"
+  },
+  "case_034": {
+    "source": "js/empty-paren-comment/empty_paren_comment.js",
+    "language": "js",
+    "category": "empty-paren-comment",
+    "filename": "empty_paren_comment.js",
+    "extension": "js"
+  },
+  "case_035": {
+    "source": "js/empty-statement/body.js",
+    "language": "js",
+    "category": "empty-statement",
+    "filename": "body.js",
+    "extension": "js"
+  },
+  "case_036": {
+    "source": "js/es6modules/export_default_class_expression.js",
+    "language": "js",
+    "category": "es6modules",
+    "filename": "export_default_class_expression.js",
+    "extension": "js"
+  },
+  "case_037": {
+    "source": "js/escaped/default-escaped.js",
+    "language": "js",
+    "category": "escaped",
+    "filename": "default-escaped.js",
+    "extension": "js"
+  },
+  "case_038": {
+    "source": "js/explicit-resource-management/using-declarations.js format[flow] 1",
+    "language": "js",
+    "category": "explicit-resource-management",
+    "filename": "using-declarations.js format[flow] 1",
+    "extension": "js"
+  },
+  "case_039": {
+    "source": "js/export/bracket.js",
+    "language": "js",
+    "category": "export",
+    "filename": "bracket.js",
+    "extension": "js"
+  },
+  "case_040": {
+    "source": "js/export/test.js",
+    "language": "js",
+    "category": "export",
+    "filename": "test.js",
+    "extension": "js"
+  },
+  "case_041": {
+    "source": "js/export-default/binary_and_template.js",
+    "language": "js",
+    "category": "export-default",
+    "filename": "binary_and_template.js",
+    "extension": "js"
+  },
+  "case_042": {
+    "source": "js/export-default-from/export.js",
+    "language": "js",
+    "category": "export-default-from",
+    "filename": "export.js",
+    "extension": "js"
+  },
+  "case_043": {
+    "source": "js/export-star/export-star-as-reserved-word.js",
+    "language": "js",
+    "category": "export-star",
+    "filename": "export-star-as-reserved-word.js",
+    "extension": "js"
+  },
+  "case_044": {
+    "source": "js/first-argument/first-argument.js",
+    "language": "js",
+    "category": "first-argument",
+    "filename": "first-argument.js",
+    "extension": "js"
+  },
+  "case_045": {
+    "source": "js/first-argument-expansion/test.js",
+    "language": "js",
+    "category": "first-argument-expansion",
+    "filename": "test.js",
+    "extension": "js"
+  },
+  "case_046": {
+    "source": "js/flow-types/inline.js",
+    "language": "js",
+    "category": "flow-types",
+    "filename": "inline.js",
+    "extension": "js"
+  },
+  "case_047": {
+    "source": "js/for/for-in-with-initializer.js",
+    "language": "js",
+    "category": "for",
+    "filename": "for-in-with-initializer.js",
+    "extension": "js"
+  },
+  "case_048": {
+    "source": "js/for-await/for-await.js",
+    "language": "js",
+    "category": "for-await",
+    "filename": "for-await.js",
+    "extension": "js"
+  },
+  "case_049": {
+    "source": "js/for-of/async-identifier.js",
+    "language": "js",
+    "category": "for-of",
+    "filename": "async-identifier.js",
+    "extension": "js"
+  },
+  "case_050": {
+    "source": "js/function/dangling-comments.js",
+    "language": "js",
+    "category": "function",
+    "filename": "dangling-comments.js",
+    "extension": "js"
+  },
+  "case_051": {
+    "source": "js/function/iife.js",
+    "language": "js",
+    "category": "function",
+    "filename": "iife.js",
+    "extension": "js"
+  },
+  "case_052": {
+    "source": "js/function-comments/params-trail-comments.js",
+    "language": "js",
+    "category": "function-comments",
+    "filename": "params-trail-comments.js",
+    "extension": "js"
+  },
+  "case_053": {
+    "source": "js/function-first-param/function_expression.js",
+    "language": "js",
+    "category": "function-first-param",
+    "filename": "function_expression.js",
+    "extension": "js"
+  },
+  "case_054": {
+    "source": "js/function-single-destructuring/array.js",
+    "language": "js",
+    "category": "function-single-destructuring",
+    "filename": "array.js",
+    "extension": "js"
+  },
+  "case_055": {
+    "source": "js/functional-composition/functional_compose.js",
+    "language": "js",
+    "category": "functional-composition",
+    "filename": "functional_compose.js",
+    "extension": "js"
+  },
+  "case_056": {
+    "source": "js/generator/async.js",
+    "language": "js",
+    "category": "generator",
+    "filename": "async.js",
+    "extension": "js"
+  },
+  "case_057": {
+    "source": "js/if/if_comments.js",
+    "language": "js",
+    "category": "if",
+    "filename": "if_comments.js",
+    "extension": "js"
+  },
+  "case_058": {
+    "source": "js/import/brackets.js",
+    "language": "js",
+    "category": "import",
+    "filename": "brackets.js",
+    "extension": "js"
+  },
+  "case_059": {
+    "source": "js/import/comments.js",
+    "language": "js",
+    "category": "import",
+    "filename": "comments.js",
+    "extension": "js"
+  },
+  "case_060": {
+    "source": "js/import-attributes/empty.js",
+    "language": "js",
+    "category": "import-attributes",
+    "filename": "empty.js",
+    "extension": "js"
+  },
+  "case_061": {
+    "source": "js/in-list/dangling-comment-in-list.js",
+    "language": "js",
+    "category": "in-list",
+    "filename": "dangling-comment-in-list.js",
+    "extension": "js"
+  },
+  "case_062": {
+    "source": "js/inside-call/18171.js",
+    "language": "js",
+    "category": "inside-call",
+    "filename": "18171.js",
+    "extension": "js"
+  },
+  "case_063": {
+    "source": "js/keyword-property/async.js",
+    "language": "js",
+    "category": "keyword-property",
+    "filename": "async.js",
+    "extension": "js"
+  },
+  "case_064": {
+    "source": "js/language-comment/not-language-comment.js",
+    "language": "js",
+    "category": "language-comment",
+    "filename": "not-language-comment.js",
+    "extension": "js"
+  },
+  "case_065": {
+    "source": "js/last-argument-expansion/embed.js",
+    "language": "js",
+    "category": "last-argument-expansion",
+    "filename": "embed.js",
+    "extension": "js"
+  },
+  "case_066": {
+    "source": "js/literal/number.js",
+    "language": "js",
+    "category": "literal",
+    "filename": "number.js",
+    "extension": "js"
+  },
+  "case_067": {
+    "source": "js/logical-assignment/logical-assignment.js",
+    "language": "js",
+    "category": "logical-assignment",
+    "filename": "logical-assignment.js",
+    "extension": "js"
+  },
+  "case_068": {
+    "source": "js/logical-expressions/in-unary-expression.js",
+    "language": "js",
+    "category": "logical-expressions",
+    "filename": "in-unary-expression.js",
+    "extension": "js"
+  },
+  "case_069": {
+    "source": "js/long-module-name/import-defer.js",
+    "language": "js",
+    "category": "long-module-name",
+    "filename": "import-defer.js",
+    "extension": "js"
+  },
+  "case_070": {
+    "source": "js/member/expand.js",
+    "language": "js",
+    "category": "member",
+    "filename": "expand.js",
+    "extension": "js"
+  },
+  "case_071": {
+    "source": "js/method-chain/comment.js",
+    "language": "js",
+    "category": "method-chain",
+    "filename": "comment.js",
+    "extension": "js"
+  },
+  "case_072": {
+    "source": "js/method-chain/first_long.js",
+    "language": "js",
+    "category": "method-chain",
+    "filename": "first_long.js",
+    "extension": "js"
+  },
+  "case_073": {
+    "source": "js/multiple-comments/17192.js",
+    "language": "js",
+    "category": "multiple-comments",
+    "filename": "17192.js",
+    "extension": "js"
+  },
+  "case_074": {
+    "source": "js/mutiple-comments/17192.js",
+    "language": "js",
+    "category": "mutiple-comments",
+    "filename": "17192.js",
+    "extension": "js"
+  },
+  "case_075": {
+    "source": "js/new-expression/with-member-expression.js",
+    "language": "js",
+    "category": "new-expression",
+    "filename": "with-member-expression.js",
+    "extension": "js"
+  },
+  "case_076": {
+    "source": "js/newline/backslash_2028.js",
+    "language": "js",
+    "category": "newline",
+    "filename": "backslash_2028.js",
+    "extension": "js"
+  },
+  "case_077": {
+    "source": "js/no-argument/no-arguments.js",
+    "language": "js",
+    "category": "no-argument",
+    "filename": "no-arguments.js",
+    "extension": "js"
+  },
+  "case_078": {
+    "source": "js/nullish-coalescing/nullish_coalesing_operator.js",
+    "language": "js",
+    "category": "nullish-coalescing",
+    "filename": "nullish_coalesing_operator.js",
+    "extension": "js"
+  },
+  "case_079": {
+    "source": "js/object-multiline/multiline.js",
+    "language": "js",
+    "category": "object-multiline",
+    "filename": "multiline.js",
+    "extension": "js"
+  },
+  "case_080": {
+    "source": "js/object-property-comment/after-key.js",
+    "language": "js",
+    "category": "object-property-comment",
+    "filename": "after-key.js",
+    "extension": "js"
+  },
+  "case_081": {
+    "source": "js/objects/expand.js",
+    "language": "js",
+    "category": "objects",
+    "filename": "expand.js",
+    "extension": "js"
+  },
+  "case_082": {
+    "source": "js/objects/expression.js",
+    "language": "js",
+    "category": "objects",
+    "filename": "expression.js",
+    "extension": "js"
+  },
+  "case_083": {
+    "source": "js/optional-catch-binding/optional_catch_binding.js",
+    "language": "js",
+    "category": "optional-catch-binding",
+    "filename": "optional_catch_binding.js",
+    "extension": "js"
+  },
+  "case_084": {
+    "source": "js/optional-chaining/chaining.js",
+    "language": "js",
+    "category": "optional-chaining",
+    "filename": "chaining.js",
+    "extension": "js"
+  },
+  "case_085": {
+    "source": "js/parentheses/let.js",
+    "language": "js",
+    "category": "parentheses",
+    "filename": "let.js",
+    "extension": "js"
+  },
+  "case_086": {
+    "source": "js/parenthesis/await-expression.js",
+    "language": "js",
+    "category": "parenthesis",
+    "filename": "await-expression.js",
+    "extension": "js"
+  },
+  "case_087": {
+    "source": "js/preserve-line/parameter-list.js",
+    "language": "js",
+    "category": "preserve-line",
+    "filename": "parameter-list.js",
+    "extension": "js"
+  },
+  "case_088": {
+    "source": "js/private-in/private-in.js",
+    "language": "js",
+    "category": "private-in",
+    "filename": "private-in.js",
+    "extension": "js"
+  },
+  "case_089": {
+    "source": "js/quote-props/worker.js",
+    "language": "js",
+    "category": "quote-props",
+    "filename": "worker.js",
+    "extension": "js"
+  },
+  "case_090": {
+    "source": "js/quotes/strings.js",
+    "language": "js",
+    "category": "quotes",
+    "filename": "strings.js",
+    "extension": "js"
+  },
+  "case_091": {
+    "source": "js/regex/regexp-modifiers.js",
+    "language": "js",
+    "category": "regex",
+    "filename": "regexp-modifiers.js",
+    "extension": "js"
+  },
+  "case_092": {
+    "source": "js/rest/trailing-commas.js",
+    "language": "js",
+    "category": "rest",
+    "filename": "trailing-commas.js",
+    "extension": "js"
+  },
+  "case_093": {
+    "source": "js/return/comment.js",
+    "language": "js",
+    "category": "return",
+    "filename": "comment.js",
+    "extension": "js"
+  },
+  "case_094": {
+    "source": "js/spread/spread.js",
+    "language": "js",
+    "category": "spread",
+    "filename": "spread.js",
+    "extension": "js"
+  },
+  "case_095": {
+    "source": "js/strings/escaped.js",
+    "language": "js",
+    "category": "strings",
+    "filename": "escaped.js",
+    "extension": "js"
+  },
+  "case_096": {
+    "source": "js/switch/comments.js",
+    "language": "js",
+    "category": "switch",
+    "filename": "comments.js",
+    "extension": "js"
+  },
+  "case_097": {
+    "source": "js/switch-quote/switch-quote.js",
+    "language": "js",
+    "category": "switch-quote",
+    "filename": "switch-quote.js",
+    "extension": "js"
+  },
+  "case_098": {
+    "source": "js/tagged-template-literal/11662.js",
+    "language": "js",
+    "category": "tagged-template-literal",
+    "filename": "11662.js",
+    "extension": "js"
+  },
+  "case_099": {
+    "source": "js/template/parenthesis.js",
+    "language": "js",
+    "category": "template",
+    "filename": "parenthesis.js",
+    "extension": "js"
+  },
+  "case_100": {
+    "source": "js/template-literals/css-prop.js",
+    "language": "js",
+    "category": "template-literals",
+    "filename": "css-prop.js",
+    "extension": "js"
+  },
+  "case_101": {
+    "source": "js/template-literals/expression-break.js",
+    "language": "js",
+    "category": "template-literals",
+    "filename": "expression-break.js",
+    "extension": "js"
+  },
+  "case_102": {
+    "source": "js/ternaries/binary.js",
+    "language": "js",
+    "category": "ternaries",
+    "filename": "binary.js",
+    "extension": "js"
+  },
+  "case_103": {
+    "source": "js/ternaries/nested.js",
+    "language": "js",
+    "category": "ternaries",
+    "filename": "nested.js",
+    "extension": "js"
+  },
+  "case_104": {
+    "source": "js/test-declarations/angular_async.js",
+    "language": "js",
+    "category": "test-declarations",
+    "filename": "angular_async.js",
+    "extension": "js"
+  },
+  "case_105": {
+    "source": "js/throw_statement/binaryish.js",
+    "language": "js",
+    "category": "throw_statement",
+    "filename": "binaryish.js",
+    "extension": "js"
+  },
+  "case_106": {
+    "source": "js/trailing-comma/function-calls.js",
+    "language": "js",
+    "category": "trailing-comma",
+    "filename": "function-calls.js",
+    "extension": "js"
+  },
+  "case_107": {
+    "source": "js/trailing-comma/trailing_whitespace.js",
+    "language": "js",
+    "category": "trailing-comma",
+    "filename": "trailing_whitespace.js",
+    "extension": "js"
+  },
+  "case_108": {
+    "source": "js/trailing-whitespace/snippet: #0",
+    "language": "js",
+    "category": "trailing-whitespace",
+    "filename": "snippet: #0",
+    "extension": "js"
+  },
+  "case_109": {
+    "source": "js/try/catch.js",
+    "language": "js",
+    "category": "try",
+    "filename": "catch.js",
+    "extension": "js"
+  },
+  "case_110": {
+    "source": "js/unary/series.js",
+    "language": "js",
+    "category": "unary",
+    "filename": "series.js",
+    "extension": "js"
+  },
+  "case_111": {
+    "source": "js/unary-expression/comments.js",
+    "language": "js",
+    "category": "unary-expression",
+    "filename": "comments.js",
+    "extension": "js"
+  },
+  "case_112": {
+    "source": "js/unicode/nbsp-jsx.js",
+    "language": "js",
+    "category": "unicode",
+    "filename": "nbsp-jsx.js",
+    "extension": "js"
+  },
+  "case_113": {
+    "source": "js/update-expression/update_expression.js",
+    "language": "js",
+    "category": "update-expression",
+    "filename": "update_expression.js",
+    "extension": "js"
+  },
+  "case_114": {
+    "source": "js/variable_declarator/multiple.js",
+    "language": "js",
+    "category": "variable_declarator",
+    "filename": "multiple.js",
+    "extension": "js"
+  },
+  "case_115": {
+    "source": "js/while/indent.js",
+    "language": "js",
+    "category": "while",
+    "filename": "indent.js",
+    "extension": "js"
+  },
+  "case_116": {
+    "source": "js/while-like/with.js",
+    "language": "js",
+    "category": "while-like",
+    "filename": "with.js",
+    "extension": "js"
+  },
+  "case_117": {
+    "source": "js/with/indent.js",
+    "language": "js",
+    "category": "with",
+    "filename": "indent.js",
+    "extension": "js"
+  },
+  "case_118": {
+    "source": "js/yield/conditional.js",
+    "language": "js",
+    "category": "yield",
+    "filename": "conditional.js",
+    "extension": "js"
+  },
+  "case_119": {
+    "source": "jsx/attr-element/attr-element.js",
+    "language": "jsx",
+    "category": "attr-element",
+    "filename": "attr-element.js",
+    "extension": "js"
+  },
+  "case_120": {
+    "source": "jsx/binary-expressions/relational-operators.js",
+    "language": "jsx",
+    "category": "binary-expressions",
+    "filename": "relational-operators.js",
+    "extension": "js"
+  },
+  "case_121": {
+    "source": "jsx/escape/nbsp.js",
+    "language": "jsx",
+    "category": "escape",
+    "filename": "nbsp.js",
+    "extension": "js"
+  },
+  "case_122": {
+    "source": "jsx/fragment/fragment.js",
+    "language": "jsx",
+    "category": "fragment",
+    "filename": "fragment.js",
+    "extension": "js"
+  },
+  "case_123": {
+    "source": "jsx/jsx/await.js",
+    "language": "jsx",
+    "category": "jsx",
+    "filename": "await.js",
+    "extension": "js"
+  },
+  "case_124": {
+    "source": "jsx/jsx/return-statement.js",
+    "language": "jsx",
+    "category": "jsx",
+    "filename": "return-statement.js",
+    "extension": "js"
+  },
+  "case_125": {
+    "source": "jsx/last-line/last_line.js",
+    "language": "jsx",
+    "category": "last-line",
+    "filename": "last_line.js",
+    "extension": "js"
+  },
+  "case_126": {
+    "source": "jsx/multiline-assign/test.js",
+    "language": "jsx",
+    "category": "multiline-assign",
+    "filename": "test.js",
+    "extension": "js"
+  },
+  "case_127": {
+    "source": "jsx/namespace/jsx_namespaced_name.js",
+    "language": "jsx",
+    "category": "namespace",
+    "filename": "jsx_namespaced_name.js",
+    "extension": "js"
+  },
+  "case_128": {
+    "source": "jsx/newlines/test.js",
+    "language": "jsx",
+    "category": "newlines",
+    "filename": "test.js",
+    "extension": "js"
+  },
+  "case_129": {
+    "source": "jsx/optional-chaining/optional-chaining.jsx",
+    "language": "jsx",
+    "category": "optional-chaining",
+    "filename": "optional-chaining.jsx",
+    "extension": "jsx"
+  },
+  "case_130": {
+    "source": "jsx/parentheses/argument.js",
+    "language": "jsx",
+    "category": "parentheses",
+    "filename": "argument.js",
+    "extension": "js"
+  },
+  "case_131": {
+    "source": "jsx/significant-space/comments.js",
+    "language": "jsx",
+    "category": "significant-space",
+    "filename": "comments.js",
+    "extension": "js"
+  },
+  "case_132": {
+    "source": "jsx/split-attrs/test.js",
+    "language": "jsx",
+    "category": "split-attrs",
+    "filename": "test.js",
+    "extension": "js"
+  },
+  "case_133": {
+    "source": "jsx/spread/attribute.js",
+    "language": "jsx",
+    "category": "spread",
+    "filename": "attribute.js",
+    "extension": "js"
+  },
+  "case_134": {
+    "source": "jsx/stateless-arrow-fn/test.js",
+    "language": "jsx",
+    "category": "stateless-arrow-fn",
+    "filename": "test.js",
+    "extension": "js"
+  },
+  "case_135": {
+    "source": "jsx/template/styled-components.js",
+    "language": "jsx",
+    "category": "template",
+    "filename": "styled-components.js",
+    "extension": "js"
+  },
+  "case_136": {
+    "source": "jsx/text-wrap/issue-16897.js",
+    "language": "jsx",
+    "category": "text-wrap",
+    "filename": "issue-16897.js",
+    "extension": "js"
+  },
+  "case_137": {
+    "source": "typescript/18136-typescript/18136.ts",
+    "language": "typescript",
+    "category": "18136-typescript",
+    "filename": "18136.ts",
+    "extension": "ts"
+  },
+  "case_138": {
+    "source": "typescript/Symbols/symbolProperty15.ts",
+    "language": "typescript",
+    "category": "Symbols",
+    "filename": "symbolProperty15.ts",
+    "extension": "ts"
+  },
+  "case_139": {
+    "source": "typescript/abstract/abstractNewlineHandling.ts",
+    "language": "typescript",
+    "category": "abstract",
+    "filename": "abstractNewlineHandling.ts",
+    "extension": "ts"
+  },
+  "case_140": {
+    "source": "typescript/abstract-class/export-default.ts",
+    "language": "typescript",
+    "category": "abstract-class",
+    "filename": "export-default.ts",
+    "extension": "ts"
+  },
+  "case_141": {
+    "source": "typescript/ambient/ambient.ts",
+    "language": "typescript",
+    "category": "ambient",
+    "filename": "ambient.ts",
+    "extension": "ts"
+  },
+  "case_142": {
+    "source": "typescript/any/anyAsConstructor.ts",
+    "language": "typescript",
+    "category": "any",
+    "filename": "anyAsConstructor.ts",
+    "extension": "ts"
+  },
+  "case_143": {
+    "source": "typescript/argument-expansion/argument_expansion.ts",
+    "language": "typescript",
+    "category": "argument-expansion",
+    "filename": "argument_expansion.ts",
+    "extension": "ts"
+  },
+  "case_144": {
+    "source": "typescript/array/key.ts",
+    "language": "typescript",
+    "category": "array",
+    "filename": "key.ts",
+    "extension": "ts"
+  },
+  "case_145": {
+    "source": "typescript/arrow/16067.ts",
+    "language": "typescript",
+    "category": "arrow",
+    "filename": "16067.ts",
+    "extension": "ts"
+  },
+  "case_146": {
+    "source": "typescript/arrows/short_body.ts",
+    "language": "typescript",
+    "category": "arrows",
+    "filename": "short_body.ts",
+    "extension": "ts"
+  },
+  "case_147": {
+    "source": "typescript/as/as.ts",
+    "language": "typescript",
+    "category": "as",
+    "filename": "as.ts",
+    "extension": "ts"
+  },
+  "case_148": {
+    "source": "typescript/as-const/as-const.ts",
+    "language": "typescript",
+    "category": "as-const",
+    "filename": "as-const.ts",
+    "extension": "ts"
+  },
+  "case_149": {
+    "source": "typescript/asOperator/asOperatorContextualType.ts",
+    "language": "typescript",
+    "category": "asOperator",
+    "filename": "asOperatorContextualType.ts",
+    "extension": "ts"
+  },
+  "case_150": {
+    "source": "typescript/assert/index.ts",
+    "language": "typescript",
+    "category": "assert",
+    "filename": "index.ts",
+    "extension": "ts"
+  },
+  "case_151": {
+    "source": "typescript/assignment/issue-10848.tsx",
+    "language": "typescript",
+    "category": "assignment",
+    "filename": "issue-10848.tsx",
+    "extension": "tsx"
+  },
+  "case_152": {
+    "source": "typescript/assignment/issue-3122.ts",
+    "language": "typescript",
+    "category": "assignment",
+    "filename": "issue-3122.ts",
+    "extension": "ts"
+  },
+  "case_153": {
+    "source": "typescript/attributes/import-type-attributes.ts",
+    "language": "typescript",
+    "category": "attributes",
+    "filename": "import-type-attributes.ts",
+    "extension": "ts"
+  },
+  "case_154": {
+    "source": "typescript/bigint/bigint.ts",
+    "language": "typescript",
+    "category": "bigint",
+    "filename": "bigint.ts",
+    "extension": "ts"
+  },
+  "case_155": {
+    "source": "typescript/binary-expressions/chain-expression.ts",
+    "language": "typescript",
+    "category": "binary-expressions",
+    "filename": "chain-expression.ts",
+    "extension": "ts"
+  },
+  "case_156": {
+    "source": "typescript/break/break.ts",
+    "language": "typescript",
+    "category": "break",
+    "filename": "break.ts",
+    "extension": "ts"
+  },
+  "case_157": {
+    "source": "typescript/break-after-keyword/18148.ts",
+    "language": "typescript",
+    "category": "break-after-keyword",
+    "filename": "18148.ts",
+    "extension": "ts"
+  },
+  "case_158": {
+    "source": "typescript/break-calls/type_args.ts",
+    "language": "typescript",
+    "category": "break-calls",
+    "filename": "type_args.ts",
+    "extension": "ts"
+  },
+  "case_159": {
+    "source": "typescript/break-mode/break-mode.ts",
+    "language": "typescript",
+    "category": "break-mode",
+    "filename": "break-mode.ts",
+    "extension": "ts"
+  },
+  "case_160": {
+    "source": "typescript/call/callee-comments.ts",
+    "language": "typescript",
+    "category": "call",
+    "filename": "callee-comments.ts",
+    "extension": "ts"
+  },
+  "case_161": {
+    "source": "typescript/call-signature/call-signature.ts",
+    "language": "typescript",
+    "category": "call-signature",
+    "filename": "call-signature.ts",
+    "extension": "ts"
+  },
+  "case_162": {
+    "source": "typescript/cast/as-const.ts",
+    "language": "typescript",
+    "category": "cast",
+    "filename": "as-const.ts",
+    "extension": "ts"
+  },
+  "case_163": {
+    "source": "typescript/catch-clause/type-annotation.ts",
+    "language": "typescript",
+    "category": "catch-clause",
+    "filename": "type-annotation.ts",
+    "extension": "ts"
+  },
+  "case_164": {
+    "source": "typescript/chain-expression/call-expression.ts",
+    "language": "typescript",
+    "category": "chain-expression",
+    "filename": "call-expression.ts",
+    "extension": "ts"
+  },
+  "case_165": {
+    "source": "typescript/class/extends_implements.ts",
+    "language": "typescript",
+    "category": "class",
+    "filename": "extends_implements.ts",
+    "extension": "ts"
+  },
+  "case_166": {
+    "source": "typescript/class-comment/declare.ts",
+    "language": "typescript",
+    "category": "class-comment",
+    "filename": "declare.ts",
+    "extension": "ts"
+  },
+  "case_167": {
+    "source": "typescript/classAbstractKeyword/classAbstractInstantiations2.ts",
+    "language": "typescript",
+    "category": "classAbstractKeyword",
+    "filename": "classAbstractInstantiations2.ts",
+    "extension": "ts"
+  },
+  "case_168": {
+    "source": "typescript/classDeclarations/classInsideBlock.ts",
+    "language": "typescript",
+    "category": "classDeclarations",
+    "filename": "classInsideBlock.ts",
+    "extension": "ts"
+  },
+  "case_169": {
+    "source": "typescript/classHeritageSpecification/classExtendingClass.ts",
+    "language": "typescript",
+    "category": "classHeritageSpecification",
+    "filename": "classExtendingClass.ts",
+    "extension": "ts"
+  },
+  "case_170": {
+    "source": "typescript/classes/mixinClassesAnnotated.ts",
+    "language": "typescript",
+    "category": "classes",
+    "filename": "mixinClassesAnnotated.ts",
+    "extension": "ts"
+  },
+  "case_171": {
+    "source": "typescript/classes/mixinClassesAnonymous.ts",
+    "language": "typescript",
+    "category": "classes",
+    "filename": "mixinClassesAnonymous.ts",
+    "extension": "ts"
+  },
+  "case_172": {
+    "source": "typescript/comma/comma.ts",
+    "language": "typescript",
+    "category": "comma",
+    "filename": "comma.ts",
+    "extension": "ts"
+  },
+  "case_173": {
+    "source": "typescript/comments-2/last-arg.ts",
+    "language": "typescript",
+    "category": "comments-2",
+    "filename": "last-arg.ts",
+    "extension": "ts"
+  },
+  "case_174": {
+    "source": "typescript/comments-ts-and-flow/18216-type-parameters-mutiple-clauses.ts",
+    "language": "typescript",
+    "category": "comments-ts-and-flow",
+    "filename": "18216-type-parameters-mutiple-clauses.ts",
+    "extension": "ts"
+  },
+  "case_175": {
+    "source": "typescript/comments-ts-only/18278.ts",
+    "language": "typescript",
+    "category": "comments-ts-only",
+    "filename": "18278.ts",
+    "extension": "ts"
+  },
+  "case_176": {
+    "source": "typescript/computedProperties/string.ts",
+    "language": "typescript",
+    "category": "computedProperties",
+    "filename": "string.ts",
+    "extension": "ts"
+  },
+  "case_177": {
+    "source": "typescript/conditional-types/conditional-types.ts",
+    "language": "typescript",
+    "category": "conditional-types",
+    "filename": "conditional-types.ts",
+    "extension": "ts"
+  },
+  "case_178": {
+    "source": "typescript/conditional-types/new-ternary-spec.ts",
+    "language": "typescript",
+    "category": "conditional-types",
+    "filename": "new-ternary-spec.ts",
+    "extension": "ts"
+  },
+  "case_179": {
+    "source": "typescript/consistent/template-literal-types.ts",
+    "language": "typescript",
+    "category": "consistent",
+    "filename": "template-literal-types.ts",
+    "extension": "ts"
+  },
+  "case_180": {
+    "source": "typescript/consistent-with-flow/intersection.ts",
+    "language": "typescript",
+    "category": "consistent-with-flow",
+    "filename": "intersection.ts",
+    "extension": "ts"
+  },
+  "case_181": {
+    "source": "typescript/const/initializer-ambient-context.ts",
+    "language": "typescript",
+    "category": "const",
+    "filename": "initializer-ambient-context.ts",
+    "extension": "ts"
+  },
+  "case_182": {
+    "source": "typescript/constKeyword/constKeyword.ts",
+    "language": "typescript",
+    "category": "constKeyword",
+    "filename": "constKeyword.ts",
+    "extension": "ts"
+  },
+  "case_183": {
+    "source": "typescript/constructorParameters/constructorImplementationWithDefaultValues.ts",
+    "language": "typescript",
+    "category": "constructorParameters",
+    "filename": "constructorImplementationWithDefaultValues.ts",
+    "extension": "ts"
+  },
+  "case_184": {
+    "source": "typescript/constructorType/cunstructorType.ts",
+    "language": "typescript",
+    "category": "constructorType",
+    "filename": "cunstructorType.ts",
+    "extension": "ts"
+  },
+  "case_185": {
+    "source": "typescript/declare/object-type-in-declare-function.ts",
+    "language": "typescript",
+    "category": "declare",
+    "filename": "object-type-in-declare-function.ts",
+    "extension": "ts"
+  },
+  "case_186": {
+    "source": "typescript/decorators/decorators-comments.ts",
+    "language": "typescript",
+    "category": "decorators",
+    "filename": "decorators-comments.ts",
+    "extension": "ts"
+  },
+  "case_187": {
+    "source": "typescript/destructuring/destructuring.ts",
+    "language": "typescript",
+    "category": "destructuring",
+    "filename": "destructuring.ts",
+    "extension": "ts"
+  },
+  "case_188": {
+    "source": "typescript/emptyTuples/emptyTuplesTypeAssertion02.ts",
+    "language": "typescript",
+    "category": "emptyTuples",
+    "filename": "emptyTuplesTypeAssertion02.ts",
+    "extension": "ts"
+  },
+  "case_189": {
+    "source": "typescript/enum/enum.ts",
+    "language": "typescript",
+    "category": "enum",
+    "filename": "enum.ts",
+    "extension": "ts"
+  },
+  "case_190": {
+    "source": "typescript/enumDeclaration/enumDeclaration.ts",
+    "language": "typescript",
+    "category": "enumDeclaration",
+    "filename": "enumDeclaration.ts",
+    "extension": "ts"
+  },
+  "case_191": {
+    "source": "typescript/explicit-resource-management/await-using-with-type-declaration.ts",
+    "language": "typescript",
+    "category": "explicit-resource-management",
+    "filename": "await-using-with-type-declaration.ts",
+    "extension": "ts"
+  },
+  "case_192": {
+    "source": "typescript/export/export-type-star-from-2.ts",
+    "language": "typescript",
+    "category": "export",
+    "filename": "export-type-star-from-2.ts",
+    "extension": "ts"
+  },
+  "case_193": {
+    "source": "typescript/export-default/function_as.ts",
+    "language": "typescript",
+    "category": "export-default",
+    "filename": "function_as.ts",
+    "extension": "ts"
+  },
+  "case_194": {
+    "source": "typescript/first-argument/first-argument.ts",
+    "language": "typescript",
+    "category": "first-argument",
+    "filename": "first-argument.ts",
+    "extension": "ts"
+  },
+  "case_195": {
+    "source": "typescript/firstTypeNode/firstTypeNode.ts",
+    "language": "typescript",
+    "category": "firstTypeNode",
+    "filename": "firstTypeNode.ts",
+    "extension": "ts"
+  },
+  "case_196": {
+    "source": "typescript/function/single_expand.ts",
+    "language": "typescript",
+    "category": "function",
+    "filename": "single_expand.ts",
+    "extension": "ts"
+  },
+  "case_197": {
+    "source": "typescript/function-type/single-parameter.ts",
+    "language": "typescript",
+    "category": "function-type",
+    "filename": "single-parameter.ts",
+    "extension": "ts"
+  },
+  "case_198": {
+    "source": "typescript/functionCalls/callWithSpreadES6.ts",
+    "language": "typescript",
+    "category": "functionCalls",
+    "filename": "callWithSpreadES6.ts",
+    "extension": "ts"
+  },
+  "case_199": {
+    "source": "typescript/functional-composition/pipe-function-calls-with-comments.ts",
+    "language": "typescript",
+    "category": "functional-composition",
+    "filename": "pipe-function-calls-with-comments.ts",
+    "extension": "ts"
+  },
+  "case_200": {
+    "source": "typescript/functions/functionImplementationErrors.ts",
+    "language": "typescript",
+    "category": "functions",
+    "filename": "functionImplementationErrors.ts",
+    "extension": "ts"
+  },
+  "case_201": {
+    "source": "typescript/generic/arrow-return-type.ts",
+    "language": "typescript",
+    "category": "generic",
+    "filename": "arrow-return-type.ts",
+    "extension": "ts"
+  },
+  "case_202": {
+    "source": "typescript/generic/ungrouped-parameters.ts",
+    "language": "typescript",
+    "category": "generic",
+    "filename": "ungrouped-parameters.ts",
+    "extension": "ts"
+  },
+  "case_203": {
+    "source": "typescript/heritage-break/member-expression-like.ts",
+    "language": "typescript",
+    "category": "heritage-break",
+    "filename": "member-expression-like.ts",
+    "extension": "ts"
+  },
+  "case_204": {
+    "source": "typescript/import-export/empty-import.ts",
+    "language": "typescript",
+    "category": "import-export",
+    "filename": "empty-import.ts",
+    "extension": "ts"
+  },
+  "case_205": {
+    "source": "typescript/importDeclarations/exportImportAlias.ts",
+    "language": "typescript",
+    "category": "importDeclarations",
+    "filename": "exportImportAlias.ts",
+    "extension": "ts"
+  },
+  "case_206": {
+    "source": "typescript/importEqualsDeclaration/importEqualsDeclaration.ts",
+    "language": "typescript",
+    "category": "importEqualsDeclaration",
+    "filename": "importEqualsDeclaration.ts",
+    "extension": "ts"
+  },
+  "case_207": {
+    "source": "typescript/index-signature/index-signature.ts",
+    "language": "typescript",
+    "category": "index-signature",
+    "filename": "index-signature.ts",
+    "extension": "ts"
+  },
+  "case_208": {
+    "source": "typescript/indexedAccesType/indexedAccesType.ts",
+    "language": "typescript",
+    "category": "indexedAccesType",
+    "filename": "indexedAccesType.ts",
+    "extension": "ts"
+  },
+  "case_209": {
+    "source": "typescript/interface/comments-generic.ts",
+    "language": "typescript",
+    "category": "interface",
+    "filename": "comments-generic.ts",
+    "extension": "ts"
+  },
+  "case_210": {
+    "source": "typescript/interface/generic.ts",
+    "language": "typescript",
+    "category": "interface",
+    "filename": "generic.ts",
+    "extension": "ts"
+  },
+  "case_211": {
+    "source": "typescript/interfaceDeclaration/interfaceDeclaration.ts",
+    "language": "typescript",
+    "category": "interfaceDeclaration",
+    "filename": "interfaceDeclaration.ts",
+    "extension": "ts"
+  },
+  "case_212": {
+    "source": "typescript/interfaceDeclarations/interfaceWithMultipleBaseTypes2.ts",
+    "language": "typescript",
+    "category": "interfaceDeclarations",
+    "filename": "interfaceWithMultipleBaseTypes2.ts",
+    "extension": "ts"
+  },
+  "case_213": {
+    "source": "typescript/intersection/intersection-parens.ts",
+    "language": "typescript",
+    "category": "intersection",
+    "filename": "intersection-parens.ts",
+    "extension": "ts"
+  },
+  "case_214": {
+    "source": "typescript/intersectionType/intersectionType.ts",
+    "language": "typescript",
+    "category": "intersectionType",
+    "filename": "intersectionType.ts",
+    "extension": "ts"
+  },
+  "case_215": {
+    "source": "typescript/keyof/keyof.ts",
+    "language": "typescript",
+    "category": "keyof",
+    "filename": "keyof.ts",
+    "extension": "ts"
+  },
+  "case_216": {
+    "source": "typescript/keyword-types/conditional-types.ts",
+    "language": "typescript",
+    "category": "keyword-types",
+    "filename": "conditional-types.ts",
+    "extension": "ts"
+  },
+  "case_217": {
+    "source": "typescript/keywords/module.ts",
+    "language": "typescript",
+    "category": "keywords",
+    "filename": "module.ts",
+    "extension": "ts"
+  },
+  "case_218": {
+    "source": "typescript/last-argument-expansion/forward-ref.tsx",
+    "language": "typescript",
+    "category": "last-argument-expansion",
+    "filename": "forward-ref.tsx",
+    "extension": "tsx"
+  },
+  "case_219": {
+    "source": "typescript/lastTypeNode/lastTypeNode.ts",
+    "language": "typescript",
+    "category": "lastTypeNode",
+    "filename": "lastTypeNode.ts",
+    "extension": "ts"
+  },
+  "case_220": {
+    "source": "typescript/literal/multiline.ts",
+    "language": "typescript",
+    "category": "literal",
+    "filename": "multiline.ts",
+    "extension": "ts"
+  },
+  "case_221": {
+    "source": "typescript/long-module-name/long-module-name2.ts",
+    "language": "typescript",
+    "category": "long-module-name",
+    "filename": "long-module-name2.ts",
+    "extension": "ts"
+  },
+  "case_222": {
+    "source": "typescript/mapped-type/issue-11098.ts",
+    "language": "typescript",
+    "category": "mapped-type",
+    "filename": "issue-11098.ts",
+    "extension": "ts"
+  },
+  "case_223": {
+    "source": "typescript/mappedType/mappedType.ts",
+    "language": "typescript",
+    "category": "mappedType",
+    "filename": "mappedType.ts",
+    "extension": "ts"
+  },
+  "case_224": {
+    "source": "typescript/method/issue-10352-consistency.ts",
+    "language": "typescript",
+    "category": "method",
+    "filename": "issue-10352-consistency.ts",
+    "extension": "ts"
+  },
+  "case_225": {
+    "source": "typescript/method-chain/comment.ts",
+    "language": "typescript",
+    "category": "method-chain",
+    "filename": "comment.ts",
+    "extension": "ts"
+  },
+  "case_226": {
+    "source": "typescript/method-chain/issue-17236.ts",
+    "language": "typescript",
+    "category": "method-chain",
+    "filename": "issue-17236.ts",
+    "extension": "ts"
+  },
+  "case_227": {
+    "source": "typescript/methodSignature/methodSignature.ts",
+    "language": "typescript",
+    "category": "methodSignature",
+    "filename": "methodSignature.ts",
+    "extension": "ts"
+  },
+  "case_228": {
+    "source": "typescript/modifiers/minustoken.ts",
+    "language": "typescript",
+    "category": "modifiers",
+    "filename": "minustoken.ts",
+    "extension": "ts"
+  },
+  "case_229": {
+    "source": "typescript/module/global.ts",
+    "language": "typescript",
+    "category": "module",
+    "filename": "global.ts",
+    "extension": "ts"
+  },
+  "case_230": {
+    "source": "typescript/moduleDeclaration/moduleDeclaration.ts",
+    "language": "typescript",
+    "category": "moduleDeclaration",
+    "filename": "moduleDeclaration.ts",
+    "extension": "ts"
+  },
+  "case_231": {
+    "source": "typescript/mutiple-comments/17192.ts",
+    "language": "typescript",
+    "category": "mutiple-comments",
+    "filename": "17192.ts",
+    "extension": "ts"
+  },
+  "case_232": {
+    "source": "typescript/namespace/invalid-await.ts",
+    "language": "typescript",
+    "category": "namespace",
+    "filename": "invalid-await.ts",
+    "extension": "ts"
+  },
+  "case_233": {
+    "source": "typescript/namespaceExportDeclaration/exportAsNamespace.d.ts",
+    "language": "typescript",
+    "category": "namespaceExportDeclaration",
+    "filename": "exportAsNamespace.d.ts",
+    "extension": "ts"
+  },
+  "case_234": {
+    "source": "typescript/new/new-signature.ts",
+    "language": "typescript",
+    "category": "new",
+    "filename": "new-signature.ts",
+    "extension": "ts"
+  },
+  "case_235": {
+    "source": "typescript/nonNullExpression/nonNullExpression.ts",
+    "language": "typescript",
+    "category": "nonNullExpression",
+    "filename": "nonNullExpression.ts",
+    "extension": "ts"
+  },
+  "case_236": {
+    "source": "typescript/object/issue-17239.ts",
+    "language": "typescript",
+    "category": "object",
+    "filename": "issue-17239.ts",
+    "extension": "ts"
+  },
+  "case_237": {
+    "source": "typescript/object-multiline/multiline.ts",
+    "language": "typescript",
+    "category": "object-multiline",
+    "filename": "multiline.ts",
+    "extension": "ts"
+  },
+  "case_238": {
+    "source": "typescript/optional-call/type-parameters.ts",
+    "language": "typescript",
+    "category": "optional-call",
+    "filename": "type-parameters.ts",
+    "extension": "ts"
+  },
+  "case_239": {
+    "source": "typescript/optional-chaining/as-key.ts",
+    "language": "typescript",
+    "category": "optional-chaining",
+    "filename": "as-key.ts",
+    "extension": "ts"
+  },
+  "case_240": {
+    "source": "typescript/optional-method/optional-method.ts",
+    "language": "typescript",
+    "category": "optional-method",
+    "filename": "optional-method.ts",
+    "extension": "ts"
+  },
+  "case_241": {
+    "source": "typescript/optional-type/complex.ts",
+    "language": "typescript",
+    "category": "optional-type",
+    "filename": "complex.ts",
+    "extension": "ts"
+  },
+  "case_242": {
+    "source": "typescript/parameterProperty/parameterProperty.ts",
+    "language": "typescript",
+    "category": "parameterProperty",
+    "filename": "parameterProperty.ts",
+    "extension": "ts"
+  },
+  "case_243": {
+    "source": "typescript/predicate-types/predicate-types.ts",
+    "language": "typescript",
+    "category": "predicate-types",
+    "filename": "predicate-types.ts",
+    "extension": "ts"
+  },
+  "case_244": {
+    "source": "typescript/quote-props/enums.ts",
+    "language": "typescript",
+    "category": "quote-props",
+    "filename": "enums.ts",
+    "extension": "ts"
+  },
+  "case_245": {
+    "source": "typescript/readonly/readonly.ts",
+    "language": "typescript",
+    "category": "readonly",
+    "filename": "readonly.ts",
+    "extension": "ts"
+  },
+  "case_246": {
+    "source": "typescript/rest/rest.ts",
+    "language": "typescript",
+    "category": "rest",
+    "filename": "rest.ts",
+    "extension": "ts"
+  },
+  "case_247": {
+    "source": "typescript/rest-type/infer-type.ts",
+    "language": "typescript",
+    "category": "rest-type",
+    "filename": "infer-type.ts",
+    "extension": "ts"
+  },
+  "case_248": {
+    "source": "typescript/return-type/18588.ts",
+    "language": "typescript",
+    "category": "return-type",
+    "filename": "18588.ts",
+    "extension": "ts"
+  },
+  "case_249": {
+    "source": "typescript/satisfies-operators/expression-statement.ts",
+    "language": "typescript",
+    "category": "satisfies-operators",
+    "filename": "expression-statement.ts",
+    "extension": "ts"
+  },
+  "case_250": {
+    "source": "typescript/single-type/single-type.ts",
+    "language": "typescript",
+    "category": "single-type",
+    "filename": "single-type.ts",
+    "extension": "ts"
+  },
+  "case_251": {
+    "source": "typescript/stability/moduleBlock.ts",
+    "language": "typescript",
+    "category": "stability",
+    "filename": "moduleBlock.ts",
+    "extension": "ts"
+  },
+  "case_252": {
+    "source": "typescript/static-blocks/nested.ts",
+    "language": "typescript",
+    "category": "static-blocks",
+    "filename": "nested.ts",
+    "extension": "ts"
+  },
+  "case_253": {
+    "source": "typescript/template-literal-types/template-literal-types.ts",
+    "language": "typescript",
+    "category": "template-literal-types",
+    "filename": "template-literal-types.ts",
+    "extension": "ts"
+  },
+  "case_254": {
+    "source": "typescript/template-literals/member-expression.ts",
+    "language": "typescript",
+    "category": "template-literals",
+    "filename": "member-expression.ts",
+    "extension": "ts"
+  },
+  "case_255": {
+    "source": "typescript/templates/templateStringWithEmbeddedTypeAssertionOnAdditionES6.ts",
+    "language": "typescript",
+    "category": "templates",
+    "filename": "templateStringWithEmbeddedTypeAssertionOnAdditionES6.ts",
+    "extension": "ts"
+  },
+  "case_256": {
+    "source": "typescript/ternaries/indent.ts",
+    "language": "typescript",
+    "category": "ternaries",
+    "filename": "indent.ts",
+    "extension": "ts"
+  },
+  "case_257": {
+    "source": "typescript/test-declarations/test_declarations.ts",
+    "language": "typescript",
+    "category": "test-declarations",
+    "filename": "test_declarations.ts",
+    "extension": "ts"
+  },
+  "case_258": {
+    "source": "typescript/thisType/thisType.ts",
+    "language": "typescript",
+    "category": "thisType",
+    "filename": "thisType.ts",
+    "extension": "ts"
+  },
+  "case_259": {
+    "source": "typescript/trailing-comma/trailing.ts",
+    "language": "typescript",
+    "category": "trailing-comma",
+    "filename": "trailing.ts",
+    "extension": "ts"
+  },
+  "case_260": {
+    "source": "typescript/trailing-comma/type-parameters-vs-arguments.ts",
+    "language": "typescript",
+    "category": "trailing-comma",
+    "filename": "type-parameters-vs-arguments.ts",
+    "extension": "ts"
+  },
+  "case_261": {
+    "source": "typescript/tsx/not-react.ts",
+    "language": "typescript",
+    "category": "tsx",
+    "filename": "not-react.ts",
+    "extension": "ts"
+  },
+  "case_262": {
+    "source": "typescript/tuple/typeInferenceWithTupleType.ts",
+    "language": "typescript",
+    "category": "tuple",
+    "filename": "typeInferenceWithTupleType.ts",
+    "extension": "ts"
+  },
+  "case_263": {
+    "source": "typescript/tuple/wideningTuples2.ts",
+    "language": "typescript",
+    "category": "tuple",
+    "filename": "wideningTuples2.ts",
+    "extension": "ts"
+  },
+  "case_264": {
+    "source": "typescript/type-alias/conditional.ts",
+    "language": "typescript",
+    "category": "type-alias",
+    "filename": "conditional.ts",
+    "extension": "ts"
+  },
+  "case_265": {
+    "source": "typescript/type-alias/issue-100857.ts",
+    "language": "typescript",
+    "category": "type-alias",
+    "filename": "issue-100857.ts",
+    "extension": "ts"
+  },
+  "case_266": {
+    "source": "typescript/typeOperator/typeOperator.ts",
+    "language": "typescript",
+    "category": "typeOperator",
+    "filename": "typeOperator.ts",
+    "extension": "ts"
+  },
+  "case_267": {
+    "source": "typescript/typeParameter/typeParameter.ts",
+    "language": "typescript",
+    "category": "typeParameter",
+    "filename": "typeParameter.ts",
+    "extension": "ts"
+  },
+  "case_268": {
+    "source": "typescript/typeParameterLists/innerTypeParameterShadowingOuterOne.ts",
+    "language": "typescript",
+    "category": "typeParameterLists",
+    "filename": "innerTypeParameterShadowingOuterOne.ts",
+    "extension": "ts"
+  },
+  "case_269": {
+    "source": "typescript/typeParameters/variables.ts",
+    "language": "typescript",
+    "category": "typeParameters",
+    "filename": "variables.ts",
+    "extension": "ts"
+  },
+  "case_270": {
+    "source": "typescript/typePredicates/declarationEmitThisPredicatesWithPrivateName01.ts",
+    "language": "typescript",
+    "category": "typePredicates",
+    "filename": "declarationEmitThisPredicatesWithPrivateName01.ts",
+    "extension": "ts"
+  },
+  "case_271": {
+    "source": "typescript/typeReference/typeReference.ts",
+    "language": "typescript",
+    "category": "typeReference",
+    "filename": "typeReference.ts",
+    "extension": "ts"
+  },
+  "case_272": {
+    "source": "typescript/typeof/typeof.ts",
+    "language": "typescript",
+    "category": "typeof",
+    "filename": "typeof.ts",
+    "extension": "ts"
+  },
+  "case_273": {
+    "source": "typescript/undefined/undefined.ts",
+    "language": "typescript",
+    "category": "undefined",
+    "filename": "undefined.ts",
+    "extension": "ts"
+  },
+  "case_274": {
+    "source": "typescript/union/union-parens.ts",
+    "language": "typescript",
+    "category": "union",
+    "filename": "union-parens.ts",
+    "extension": "ts"
+  },
+  "case_275": {
+    "source": "typescript/union/unionTypeEquivalence.ts",
+    "language": "typescript",
+    "category": "union",
+    "filename": "unionTypeEquivalence.ts",
+    "extension": "ts"
+  },
+  "case_276": {
+    "source": "typescript/update-expression/update-expressions.ts",
+    "language": "typescript",
+    "category": "update-expression",
+    "filename": "update-expressions.ts",
+    "extension": "ts"
+  },
+  "case_277": {
+    "source": "typescript/variableDeclarator/variableDeclarator.ts",
+    "language": "typescript",
+    "category": "variableDeclarator",
+    "filename": "variableDeclarator.ts",
+    "extension": "ts"
+  }
+}

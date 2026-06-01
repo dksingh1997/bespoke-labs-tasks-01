@@ -1,0 +1,27 @@
+noImplicitAnyParametersInInterface.ts(6,5): error TS7020: Call signature, which lacks return-type annotation, implicitly has an 'any' return type.
+noImplicitAnyParametersInInterface.ts(7,5): error TS7020: Call signature, which lacks return-type annotation, implicitly has an 'any' return type.
+noImplicitAnyParametersInInterface.ts(7,6): error TS7006: Parameter 'x1' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(8,6): error TS7006: Parameter 'x2' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(8,22): error TS7006: Parameter 'z2' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(14,8): error TS7006: Parameter 'x' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(20,8): error TS7006: Parameter 'x' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(20,11): error TS7006: Parameter 'y' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(20,14): error TS7006: Parameter 'z' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(23,8): error TS7006: Parameter 'x' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(23,19): error TS7006: Parameter 'z' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(26,8): error TS7019: Rest parameter 'r' implicitly has an 'any[]' type.
+noImplicitAnyParametersInInterface.ts(29,8): error TS7006: Parameter 'x' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(29,11): error TS7019: Rest parameter 'r' implicitly has an 'any[]' type.
+noImplicitAnyParametersInInterface.ts(32,8): error TS7006: Parameter 'x1' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(33,20): error TS7006: Parameter 'y2' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(34,8): error TS7006: Parameter 'x3' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(34,12): error TS7006: Parameter 'y3' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(40,11): error TS7006: Parameter 'x' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(43,11): error TS7006: Parameter 'x' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(43,14): error TS7006: Parameter 'y' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(43,17): error TS7006: Parameter 'z' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(46,11): error TS7006: Parameter 'x' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(46,22): error TS7006: Parameter 'z' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(49,11): error TS7019: Rest parameter 'r' implicitly has an 'any[]' type.
+noImplicitAnyParametersInInterface.ts(52,11): error TS7006: Parameter 'x' implicitly has an 'any' type.
+noImplicitAnyParametersInInterface.ts(52,14): error TS7019: Rest parameter 'r' implicitly has an 'any[]' type.

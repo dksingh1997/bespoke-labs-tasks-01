@@ -1,0 +1,13 @@
+castingTuple.ts(4,24): error TS7008: Member 'c' implicitly has an 'any' type.
+castingTuple.ts(5,24): error TS7008: Member 'd' implicitly has an 'any' type.
+castingTuple.ts(6,21): error TS7008: Member 'e' implicitly has an 'any' type.
+castingTuple.ts(7,21): error TS7008: Member 'f' implicitly has an 'any' type.
+castingTuple.ts(14,23): error TS2352: Conversion of type '[number, string]' to type '[number, string, boolean]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+castingTuple.ts(15,15): error TS2352: Conversion of type '[number, string, boolean]' to type '[number, string]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+castingTuple.ts(16,14): error TS2352: Conversion of type '[number, string]' to type '[number, string, boolean]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+castingTuple.ts(19,21): error TS2352: Conversion of type '[C, D]' to type '[C, D, A]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+castingTuple.ts(21,33): error TS2493: Tuple type '[C, D, A]' of length '3' has no element at index '5'.
+castingTuple.ts(31,10): error TS2352: Conversion of type '[number, string]' to type '[number, number]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+castingTuple.ts(32,10): error TS2352: Conversion of type '[C, D]' to type '[A, I]' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+castingTuple.ts(33,5): error TS2403: Subsequent variable declarations must have the same type.  Variable 'array1' must be of type '{}[]', but here has type 'number[]'.
+castingTuple.ts(34,1): error TS2304: Cannot find name 't4'.

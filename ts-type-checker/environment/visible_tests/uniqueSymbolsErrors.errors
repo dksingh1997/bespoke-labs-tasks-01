@@ -1,0 +1,61 @@
+uniqueSymbolsErrors.ts(6,41): error TS1005: 'symbol' expected.
+uniqueSymbolsErrors.ts(7,19): error TS1333: 'unique symbol' types may not be used on a variable declaration with a binding name.
+uniqueSymbolsErrors.ts(8,13): error TS1332: A variable whose type is a 'unique symbol' type must be 'const'.
+uniqueSymbolsErrors.ts(9,13): error TS1332: A variable whose type is a 'unique symbol' type must be 'const'.
+uniqueSymbolsErrors.ts(12,38): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(13,46): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(14,39): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(15,40): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(16,53): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(17,59): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(18,50): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(22,44): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(24,14): error TS1331: A property of a class whose type is a 'unique symbol' type must be both 'static' and 'readonly'.
+uniqueSymbolsErrors.ts(25,5): error TS1331: A property of a class whose type is a 'unique symbol' type must be both 'static' and 'readonly'.
+uniqueSymbolsErrors.ts(26,25): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(27,34): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(28,26): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(29,27): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(30,40): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(31,46): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(32,37): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(33,26): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(34,28): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(36,12): error TS1331: A property of a class whose type is a 'unique symbol' type must be both 'static' and 'readonly'.
+uniqueSymbolsErrors.ts(37,38): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(38,47): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(39,39): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(40,40): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(41,53): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(42,59): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(43,50): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(44,39): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(45,41): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(50,5): error TS1330: A property of an interface or type literal whose type is a 'unique symbol' type must be 'readonly'.
+uniqueSymbolsErrors.ts(51,25): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(52,34): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(53,26): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(54,27): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(55,40): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(56,46): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(57,37): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(62,5): error TS1330: A property of an interface or type literal whose type is a 'unique symbol' type must be 'readonly'.
+uniqueSymbolsErrors.ts(63,25): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(64,34): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(65,26): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(66,27): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(67,40): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(68,46): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(69,37): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(73,21): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(74,52): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(75,49): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(78,44): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(79,34): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(80,34): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(83,51): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(86,29): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(86,45): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(87,36): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(87,52): error TS1335: 'unique symbol' types are not allowed here.
+uniqueSymbolsErrors.ts(91,7): error TS2322: Type 'typeof shouldNotBeAssignable' is not assignable to type 'string'.

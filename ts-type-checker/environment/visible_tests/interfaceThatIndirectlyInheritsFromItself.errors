@@ -1,0 +1,6 @@
+interfaceThatIndirectlyInheritsFromItself.ts(2,11): error TS2310: Type 'Base' recursively references itself as a base type.
+interfaceThatIndirectlyInheritsFromItself.ts(6,11): error TS2310: Type 'Derived' recursively references itself as a base type.
+interfaceThatIndirectlyInheritsFromItself.ts(10,11): error TS2310: Type 'Derived2' recursively references itself as a base type.
+interfaceThatIndirectlyInheritsFromItself.ts(15,15): error TS2310: Type 'Base<T>' recursively references itself as a base type.
+interfaceThatIndirectlyInheritsFromItself.ts(19,15): error TS2310: Type 'Derived<T>' recursively references itself as a base type.
+interfaceThatIndirectlyInheritsFromItself.ts(23,15): error TS2310: Type 'Derived2<T>' recursively references itself as a base type.

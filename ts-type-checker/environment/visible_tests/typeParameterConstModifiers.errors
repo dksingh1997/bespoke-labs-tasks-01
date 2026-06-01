@@ -1,0 +1,2 @@
+typeParameterConstModifiers.ts(52,14): error TS1277: 'const' modifier can only appear on a type parameter of a function, method or class
+typeParameterConstModifiers.ts(58,9): error TS1277: 'const' modifier can only appear on a type parameter of a function, method or class

@@ -1,0 +1,20 @@
+jobs_dir: ./jobs
+n_attempts: 2
+
+orchestrator:
+  n_concurrent_trials: 12
+
+environment:
+  type: modal
+  kwargs:
+    sandbox_timeout_secs: 9000
+
+agents:
+  - name: terminus-2
+    model_name: anthropic/claude-opus-4-6
+
+tasks:
+  - path: .
+
+artifacts:
+  - /app/myld.c

@@ -1,0 +1,39 @@
+# vector
+statement ok
+create table t (a vector(3) not null);
+
+statement ok
+select * from t;
+
+statement ok
+insert into t values ('[-1, -2.0, -3]'), ('[1, 2.0, 3]');
+
+query RRR
+select a <-> '[0, 0, 0]'::VECTOR(3), a <=> '[1, 1, 1]'::VECTOR(3), a <#> '[1, 1, 1]'::VECTOR(3) from t;
+----
+3.7416573867739413 1.9258200997725514 6
+3.7416573867739413 0.07417990022744858 -6
+
+query RRR
+select * from t order by a <-> '[0, 0, 1]'::VECTOR(3);
+----
+[1,2,3]
+[-1,-2,-3]
+
+statement ok
+drop table t
+
+statement ok
+create table t (id int primary key, a vector(3) not null);
+
+statement ok
+insert into t values (2, '[-1, -2.0, -3]'), (1, '[1, 2.0, 3]');
+
+query IR
+select * from t order by id;
+----
+1 [1,2,3]
+2 [-1,-2,-3]
+
+statement ok
+drop table t

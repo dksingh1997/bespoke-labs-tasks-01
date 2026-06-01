@@ -1,0 +1,12 @@
+jobs_dir: ./jobs
+
+environment:
+  type: modal
+  kwargs:
+    sandbox_timeout_secs: 5400
+
+tasks:
+  - path: .
+
+artifacts:
+  - /app/workspace

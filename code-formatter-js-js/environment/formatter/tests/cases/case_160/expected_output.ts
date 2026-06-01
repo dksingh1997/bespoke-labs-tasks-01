@@ -1,0 +1,36 @@
+foo<string>(
+  // 11
+  1,
+);
+foo// 12
+<string>(1);
+foo<string>(1); // 13
+foo<string>(
+  // 14
+  1,
+);
+
+foo<string>(); // 21
+foo// 22
+<string>();
+foo<string>(); // 23
+foo<string>();
+// 24
+
+foo<string>(/* 31 */ 1);
+foo/* 32 */
+<string>(1);
+foo/* 33 */ <string>(1);
+foo<string>(/* 34 */ 1);
+foo<string>(
+  /* 35 */
+  1,
+);
+
+foo /* 41 */<string>();
+foo/* 42 */
+<string>();
+foo/* 43 */ <string>();
+foo<string> /* 44 */();
+foo<string>();
+/* 45 */

@@ -1,0 +1,4 @@
+intersectionWithIndexSignatures.ts(20,1): error TS2322: Type '{ x: A; } & { y: B; }' is not assignable to type '{ [key: string]: A; }'.
+intersectionWithIndexSignatures.ts(30,10): error TS2339: Property 'b' does not exist on type '{ a: string; }'.
+intersectionWithIndexSignatures.ts(32,7): error TS2322: Type 's' is not assignable to type '{ [key: string]: { a: string; b: string; }; }'.
+intersectionWithIndexSignatures.ts(38,1): error TS2322: Type '{ a: string; } & { b: number; }' is not assignable to type '{ [key: string]: string; }'.

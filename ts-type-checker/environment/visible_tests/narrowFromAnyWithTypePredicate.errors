@@ -1,0 +1,4 @@
+narrowFromAnyWithTypePredicate.ts(24,7): error TS2339: Property 'method' does not exist on type '{}'.
+narrowFromAnyWithTypePredicate.ts(25,5): error TS2349: This expression is not callable.
+narrowFromAnyWithTypePredicate.ts(30,7): error TS2551: Property 'mesage' does not exist on type 'Error'. Did you mean 'message'?
+narrowFromAnyWithTypePredicate.ts(35,7): error TS2551: Property 'getHuors' does not exist on type 'Date'. Did you mean 'getHours'?

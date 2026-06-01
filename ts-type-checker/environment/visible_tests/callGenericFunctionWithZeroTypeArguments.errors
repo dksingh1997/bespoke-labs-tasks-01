@@ -1,0 +1,7 @@
+callGenericFunctionWithZeroTypeArguments.ts(4,26): error TS2322: Type 'null' is not assignable to type 'T'.
+callGenericFunctionWithZeroTypeArguments.ts(7,28): error TS2322: Type 'null' is not assignable to type 'T'.
+callGenericFunctionWithZeroTypeArguments.ts(11,10): error TS2454: Variable 'f3' is used before being assigned.
+callGenericFunctionWithZeroTypeArguments.ts(15,9): error TS2322: Type 'null' is not assignable to type 'T'.
+callGenericFunctionWithZeroTypeArguments.ts(24,10): error TS2454: Variable 'i' is used before being assigned.
+callGenericFunctionWithZeroTypeArguments.ts(28,9): error TS2322: Type 'null' is not assignable to type 'T'.
+callGenericFunctionWithZeroTypeArguments.ts(37,10): error TS2454: Variable 'i2' is used before being assigned.

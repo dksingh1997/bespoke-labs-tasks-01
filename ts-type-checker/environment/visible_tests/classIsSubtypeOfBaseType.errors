@@ -1,0 +1,4 @@
+classIsSubtypeOfBaseType.ts(3,5): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.
+classIsSubtypeOfBaseType.ts(7,5): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.
+classIsSubtypeOfBaseType.ts(13,5): error TS2416: Property 'foo' in type 'Derived2' is not assignable to the same property in base type 'Base<{ bar: string; }>'.
+classIsSubtypeOfBaseType.ts(13,5): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.

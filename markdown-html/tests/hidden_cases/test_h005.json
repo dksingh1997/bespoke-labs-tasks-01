@@ -1,0 +1,6 @@
+{
+  "example": 20,
+  "section": "Backslash escapes",
+  "markdown": "<https://example.com?find=\\*>\n",
+  "html": "<p><a href=\"https://example.com?find=%5C*\">https://example.com?find=\\*</a></p>\n"
+}

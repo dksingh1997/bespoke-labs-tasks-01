@@ -1,0 +1,15 @@
+memberFunctionsWithPublicPrivateOverloads.ts(5,12): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(9,12): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(14,19): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(17,15): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(18,15): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(22,19): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(27,19): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(34,12): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(38,12): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(43,15): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(47,19): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(51,19): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(55,19): error TS2385: Overload signatures must all be public, private or protected.
+memberFunctionsWithPublicPrivateOverloads.ts(61,11): error TS2341: Property 'foo' is private and only accessible within class 'C'.
+memberFunctionsWithPublicPrivateOverloads.ts(64,12): error TS2341: Property 'foo' is private and only accessible within class 'D<T>'.

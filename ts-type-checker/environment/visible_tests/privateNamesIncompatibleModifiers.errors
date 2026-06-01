@@ -1,0 +1,23 @@
+privateNamesIncompatibleModifiers.ts(5,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(6,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(7,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(9,5): error TS18019: 'declare' modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(11,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(12,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(13,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(14,5): error TS1024: 'readonly' modifier can only appear on a property declaration or index signature.
+privateNamesIncompatibleModifiers.ts(15,5): error TS1031: 'declare' modifier cannot appear on class elements of this kind.
+privateNamesIncompatibleModifiers.ts(20,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(21,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(22,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(23,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(24,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(25,5): error TS18010: An accessibility modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(26,5): error TS1024: 'readonly' modifier can only appear on a property declaration or index signature.
+privateNamesIncompatibleModifiers.ts(27,5): error TS1024: 'readonly' modifier can only appear on a property declaration or index signature.
+privateNamesIncompatibleModifiers.ts(28,5): error TS1031: 'declare' modifier cannot appear on class elements of this kind.
+privateNamesIncompatibleModifiers.ts(29,5): error TS1031: 'declare' modifier cannot appear on class elements of this kind.
+privateNamesIncompatibleModifiers.ts(30,5): error TS1042: 'async' modifier cannot be used here.
+privateNamesIncompatibleModifiers.ts(31,5): error TS1042: 'async' modifier cannot be used here.
+privateNamesIncompatibleModifiers.ts(35,5): error TS18019: 'abstract' modifier cannot be used with a private identifier.
+privateNamesIncompatibleModifiers.ts(35,14): error TS1267: Property '#quux' cannot have an initializer because it is marked abstract.

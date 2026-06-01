@@ -1,0 +1,6 @@
+{
+  "example": 164,
+  "section": "HTML blocks",
+  "markdown": "<Warning>\n*bar*\n</Warning>\n",
+  "html": "<Warning>\n*bar*\n</Warning>\n"
+}

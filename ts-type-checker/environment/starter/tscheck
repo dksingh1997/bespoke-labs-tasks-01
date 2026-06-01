@@ -1,0 +1,213 @@
+#!/usr/bin/env node
+"use strict";
+
+const fs = require("fs");
+const path = require("path");
+const parser = require("@babel/parser");
+const traverse = require("@babel/traverse").default;
+
+// ---------------------------------------------------------------------------
+// Globals — identifiers that exist at runtime or as built-in types.
+// Extend this set as needed.
+// ---------------------------------------------------------------------------
+const GLOBALS = new Set([
+  "undefined", "NaN", "Infinity", "globalThis", "arguments",
+  "console", "Math", "JSON", "Date", "RegExp", "Error",
+  "TypeError", "RangeError", "SyntaxError", "ReferenceError", "URIError", "EvalError",
+  "parseInt", "parseFloat", "isNaN", "isFinite", "eval",
+  "encodeURI", "decodeURI", "encodeURIComponent", "decodeURIComponent",
+  "setTimeout", "setInterval", "clearTimeout", "clearInterval",
+  "Promise", "Symbol", "Proxy", "Reflect",
+  "Map", "Set", "WeakMap", "WeakSet", "WeakRef", "FinalizationRegistry",
+  "Array", "Object", "String", "Number", "Boolean", "Function", "BigInt",
+  "Int8Array", "Uint8Array", "Uint8ClampedArray", "Int16Array", "Uint16Array",
+  "Int32Array", "Uint32Array", "Float32Array", "Float64Array", "BigInt64Array", "BigUint64Array",
+  "ArrayBuffer", "SharedArrayBuffer", "DataView", "Atomics",
+  "Intl", "WebAssembly",
+  "require", "module", "exports", "__dirname", "__filename",
+  "process", "Buffer", "global",
+  "alert", "fetch", "Request", "Response", "Headers", "URL", "URLSearchParams",
+  "TextEncoder", "TextDecoder",
+  "queueMicrotask", "structuredClone", "atob", "btoa",
+  "Partial", "Required", "Readonly", "Record", "Pick", "Omit",
+  "Exclude", "Extract", "NonNullable", "ReturnType", "Parameters",
+  "InstanceType", "ConstructorParameters", "ThisParameterType", "OmitThisParameter",
+  "ThisType", "Awaited", "NoInfer",
+  "ReadonlyArray", "ReadonlyMap", "ReadonlySet",
+  "PromiseLike", "ArrayLike",
+  "Iterable", "Iterator", "IterableIterator",
+  "AsyncIterable", "AsyncIterator", "AsyncIterableIterator",
+  "Generator", "AsyncGenerator", "GeneratorFunction", "AsyncGeneratorFunction",
+  "PropertyKey", "TemplateStringsArray",
+  "MethodDecorator", "ClassDecorator", "ParameterDecorator", "PropertyDecorator",
+  "TypedPropertyDescriptor", "PropertyDescriptor", "PropertyDescriptorMap",
+  "IArguments", "NodeJS",
+]);
+
+// ---------------------------------------------------------------------------
+// Directive parsing — extracts "// @key: value" from the top of the file
+// ---------------------------------------------------------------------------
+function parseDirectives(source) {
+  const directives = {};
+  for (const line of source.split("\n")) {
+    const trimmed = line.trim();
+    if (trimmed === "" || trimmed.startsWith("//")) {
+      const m = trimmed.match(/^\/\/\s*@(\w+):\s*(.+)/);
+      if (m) directives[m[1].toLowerCase()] = m[2].trim();
+    } else {
+      break;
+    }
+  }
+  return directives;
+}
+
+// ---------------------------------------------------------------------------
+// Babel parser configuration
+// ---------------------------------------------------------------------------
+function parseSource(source) {
+  return parser.parse(source, {
+    sourceType: "module",
+    plugins: [
+      "typescript",
+      "decorators-legacy",
+      "classProperties",
+      "classPrivateProperties",
+      "classPrivateMethods",
+      "optionalChaining",
+      "nullishCoalescingOperator",
+      "dynamicImport",
+      "bigInt",
+      "topLevelAwait",
+      "importAssertions",
+      "classStaticBlock",
+    ],
+    ranges: true,
+    errorRecovery: true,
+  });
+}
+
+// ---------------------------------------------------------------------------
+// TS2304: Cannot find name 'X'
+//
+// Walks the AST looking for referenced identifiers that have no binding in
+// any enclosing scope and are not known globals. Uses Babel's built-in
+// scope analysis plus a manual pre-pass for TypeScript declarations
+// (interfaces, type aliases, enums) which Babel's scope doesn't track.
+// ---------------------------------------------------------------------------
+function checkUndefinedNames(ast, errors, fileName) {
+  // Babel's scope tracker doesn't include TypeScript-only declarations
+  // (interfaces, type aliases, enums, namespaces). Collect them manually.
+  const tsDeclarations = new Set();
+  traverse(ast, {
+    TSInterfaceDeclaration(p) { tsDeclarations.add(p.node.id.name); },
+    TSTypeAliasDeclaration(p) { tsDeclarations.add(p.node.id.name); },
+    TSEnumDeclaration(p) { tsDeclarations.add(p.node.id.name); },
+    TSModuleDeclaration(p) {
+      if (p.node.id.type === "Identifier") tsDeclarations.add(p.node.id.name);
+    },
+  });
+
+  const seen = new Set();
+
+  traverse(ast, {
+    ReferencedIdentifier(nodePath) {
+      const { name } = nodePath.node;
+      const { line, column } = nodePath.node.loc.start;
+      const key = `${line}:${column}:${name}`;
+
+      if (seen.has(key)) return;
+      seen.add(key);
+
+      if (GLOBALS.has(name)) return;
+      if (tsDeclarations.has(name)) return;
+      if (nodePath.scope.hasBinding(name)) return;
+
+      errors.push({
+        line,
+        col: column + 1,
+        code: "TS2304",
+        message: `Cannot find name '${name}'.`,
+      });
+    },
+  });
+}
+
+// ---------------------------------------------------------------------------
+// YOU MUST ADD MORE CHECKS to pass the canary gate. The starter only handles
+// TS2304. The canary tests also require these (implement them in this order):
+//
+//   1. TS2322: Type assignability — when a value of type X is assigned to a
+//      variable/return of type Y and X is not assignable to Y. Check variable
+//      initializers (let x: number = "hello") and return statements.
+//
+//   2. TS2339: Property access — when accessing a property that doesn't exist
+//      on a type (e.g., point.z where Point only has x and y). Traverse
+//      MemberExpression nodes, resolve the object's type, check if the
+//      property exists on that type.
+//
+//   3. TS2554: Wrong argument count — when a function is called with too few
+//      or too many arguments. Traverse CallExpression nodes, resolve the
+//      callee to its declaration, compare argument count vs parameter count.
+//
+// Each check function should take (ast, errors, fileName, directives, source)
+// and push { line, col, code, message } objects to the errors array.
+//
+// Additional checks for higher scores on hidden tests:
+//   - TS2345: Argument type mismatch in function calls
+//   - TS2454: Variable used before being assigned
+//   - TS7006: Parameter implicitly has 'any' type (when noImplicitAny)
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Main: process a single file and return sorted errors
+// ---------------------------------------------------------------------------
+function checkFile(filePath, fileName) {
+  const source = fs.readFileSync(filePath, "utf-8");
+  const directives = parseDirectives(source);
+  const errors = [];
+
+  let ast;
+  try {
+    ast = parseSource(source);
+  } catch (_) {
+    return [];
+  }
+
+  checkUndefinedNames(ast, errors, fileName);
+
+  errors.sort((a, b) => a.line - b.line || a.col - b.col);
+  return errors;
+}
+
+// ---------------------------------------------------------------------------
+// Entry point: read all .ts files from the given directory, check each one,
+// and print diagnostics to stdout.
+// ---------------------------------------------------------------------------
+function main() {
+  const dir = process.argv[2];
+  if (!dir) process.exit(0);
+
+  const files = fs.readdirSync(dir)
+    .filter(f => f.endsWith(".ts") && !f.endsWith(".d.ts"))
+    .sort();
+
+  const output = [];
+
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    try {
+      const errors = checkFile(filePath, file);
+      for (const err of errors) {
+        output.push(`${file}(${err.line},${err.col}): error ${err.code}: ${err.message}`);
+      }
+    } catch (_) {
+      // Skip files that cause unexpected errors
+    }
+  }
+
+  if (output.length > 0) {
+    process.stdout.write(output.join("\n") + "\n");
+  }
+}
+
+main();

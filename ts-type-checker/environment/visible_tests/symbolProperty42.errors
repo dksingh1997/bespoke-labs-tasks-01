@@ -1,0 +1,2 @@
+symbolProperty42.ts(5,12): error TS2388: Function overload must not be static.
+symbolProperty42.ts(6,5): error TS2387: Function overload must be static.

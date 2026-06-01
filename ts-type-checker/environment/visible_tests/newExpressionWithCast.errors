@@ -1,0 +1,4 @@
+newExpressionWithCast.ts(6,12): error TS7009: 'new' expression, whose target lacks a construct signature, implicitly has an 'any' type.
+newExpressionWithCast.ts(10,13): error TS2365: Operator '>' cannot be applied to types 'boolean' and 'void'.
+newExpressionWithCast.ts(10,17): error TS1109: Expression expected.
+newExpressionWithCast.ts(10,18): error TS2693: 'any' only refers to a type, but is being used as a value here.

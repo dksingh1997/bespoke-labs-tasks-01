@@ -1,0 +1,100 @@
+{"client_id": "sensor-node-01", "type": "HELLO", "version": 1}
+{"client_id": "edge-device-07", "type": "HELLO", "version": 3}
+{"client_id": "gateway-alpha", "type": "HELLO", "version": 2}
+{"flags": 0, "timestamp": 1700000049540, "type": "HEARTBEAT"}
+{"channel": 864, "data": "0f2f6f770d65", "seq_num": 1, "type": "DATA"}
+{"channel": 859, "data": "e58e0351d8ae8e4f6eac342fc231b7b08716", "seq_num": 2, "type": "DATA"}
+{"channel": 940, "data": "3fc12896b96223177494287733c28ee8ba53bdb56b8824577d53ecc28a70a61c7510a1cd8921", "seq_num": 3, "type": "DATA"}
+{"channel": 644, "data": "ffcaea4987477e86dbccb97046fc2e1838", "seq_num": 4, "type": "DATA"}
+{"channel": 327, "data": "d820c5c3ef80053a88ae3996de50e801865b3698654ebf5200a5fa0939b99d7a1d7b282bf8234041f35487d86c669f", "seq_num": 5, "type": "DATA"}
+{"flags": 2, "timestamp": 1700000094559, "type": "HEARTBEAT"}
+{"payload": "e73d7e7320ad0a75", "ping_id": 1881625506, "type": "PING"}
+{"payload": "e73d7e7320ad0a75", "ping_id": 1881625506, "type": "PONG"}
+{"hmac": "377f6261e547d85d8eec7f26e2321907", "method": 3, "token": "03241e752210a924798ef86d43f27cf2d0613031dcb5d8d2ef1b321fcead", "type": "AUTH"}
+{"flags": 1, "timestamp": 1700000101671, "type": "HEARTBEAT"}
+{"channel": 340, "data": "f8f66dcd1e54c201c787e892d8f94f61976f1d1fa01d19f4501d295f2322", "seq_num": 6, "session_id": 3794934023, "type": "DATA"}
+{"channel": 481, "data": "3d7e1429d6a18568a07a87ca4399eaa12504ea33256d8743b2237dbd91", "seq_num": 7, "session_id": 3794934023, "type": "DATA"}
+{"channel": 897, "data": "9a04993544873b364f8b906baf6887fa801a2fd88d1601aa428652e2da0439264c12bd4bdc41", "seq_num": 8, "session_id": 3794934023, "type": "DATA"}
+{"channel": 631, "data": "14b76b7f34b5d04f79535ad30c5baad27f885137c313f07166ebb3", "seq_num": 9, "session_id": 3794934023, "type": "DATA"}
+{"channel": 466, "data": "0c62cca88e238eb3cca90e3b855b871337de", "seq_num": 10, "session_id": 3794934023, "type": "DATA"}
+{"channel": 642, "data": "3bc5618216df0064badc23a9a03f999ed1a7ce974162d7c2599acf009b926b", "seq_num": 11, "session_id": 3794934023, "type": "DATA"}
+{"channel": 659, "data": "e2e26df2562b91ab2f789e73654b0c177df325e9d463c4fdcc7c4b0236d9705aed", "seq_num": 12, "session_id": 3794934023, "type": "DATA"}
+{"flags": 1, "timestamp": 1700000139201, "type": "HEARTBEAT"}
+{"decrypted_payload": "f3e6847e8df87a8ce12792788baba329464d", "iv": "3ee944eda2e2dae4", "key_id": 1, "type": "ENCRYPTED"}
+{"decrypted_payload": "1f69d7c70ac2f403b498c7d670f9708bdff80ec7accf54ef410dc90d2adb45ec5d19", "iv": "c44e6d20d4d0a9ee", "key_id": 1, "type": "ENCRYPTED"}
+{"decrypted_payload": "d78129f0091ab37223140f7e660a4e7a40f23a6fee83bc553a539f370d9fc0cb65267c349a3d15b1dbbd23ae06d7fa36ddb9eb4ede5a8af7", "iv": "c2a76ce8a7acc28e", "key_id": 1, "type": "ENCRYPTED"}
+{"decrypted_payload": "edc2ac0efda65df96cb584ae8f8d05612b7bd0fa7bf3fbe5082f9671cf7c9cbcf2b0d9a9b4e88a9c80763d62a13d5e626ef78d9033639774", "iv": "df89a57d2c8ee67c", "key_id": 1, "type": "ENCRYPTED"}
+{"flags": 2, "timestamp": 1700000151960, "type": "HEARTBEAT"}
+{"encrypted_key_data": "07408c171b9540fb340691f0f5e1ae5e1a81f43a21cdfb251b4d4c9b2b7f3cd5", "new_key_id": 2, "type": "KEY_EXCHANGE"}
+{"decrypted_payload": "326a6c8729507a58265001d1e6f09510769390e824778765d93a734c8848241e549d93e03fef9bce8bfce02914dda5", "iv": "73c2e6e298db9c1e", "key_id": 2, "type": "ENCRYPTED"}
+{"decrypted_payload": "e28e5cdffb2ef0b2d1aaa43552a8d2fd93cd12e82da181a53bce00ecd31b60b9ffe21a68884393e0f8", "iv": "0d2e750a891459f0", "key_id": 2, "type": "ENCRYPTED"}
+{"decrypted_payload": "3aec3c4eff958bd4f7f17ce94ac46145238dd4ae88019098fa4ce4f7b0aac1e9a4607ac477d216a2f2c3c54dfd1240a933e133e90749d14f26f087adcb", "iv": "0e7a519f07d02f73", "key_id": 2, "type": "ENCRYPTED"}
+{"flags": 2, "timestamp": 1700000208781, "type": "HEARTBEAT"}
+{"data": "4d6573684c696e6b2070726f746f636f6c2074657374207061796c6f6164206e756d626572206f6e65", "original_len": 41, "type": "COMPRESSED"}
+{"data": "7a7a7a7a7a207979797979207878787878207777777777207676767676", "original_len": 29, "type": "COMPRESSED"}
+{"data": "54686520717569636b2062726f776e20666f78206a756d7073206f76657220746865206c617a7920646f67", "original_len": 43, "type": "COMPRESSED"}
+{"data": "7265706561746564207265706561746564207265706561746564206461746120646174612064617461", "original_len": 41, "type": "COMPRESSED"}
+{"flags": 0, "timestamp": 1700000266953, "type": "HEARTBEAT"}
+{"decrypted_payload": "e355990e17a61c96b7bfdc4a7dd25c575928c37bfe4976ec82eb8204ee935025e2b099d980e99a65c4f73679c3b797970bca8c0419fe9275b47061804631149ee111ba432e97a7d4596643bb8b5483f6", "iv": "237893742ede3233", "key_id": 1, "type": "ENCRYPTED"}
+{"data": "4141414141414141414141414141414141414141424242424242424242424242424242424242424243434343434343434343434343434343434343432074657374206461746120726570656174732068657265", "original_len": 83, "type": "COMPRESSED"}
+{"channel": 604, "data": "ad3aef264873cbbb2eca07873fe8bc86c3be3777f10ca77120ed9ad13b4717139bfc3b317845c6e8bdd64fd432fad08f10bd6fe3e378b932bcb71fcb8d613ee82e6c0a19aa7c", "seq_num": 13, "session_id": 3794934023, "type": "DATA"}
+{"flags": 1, "timestamp": 1700000276205, "type": "HEARTBEAT"}
+{"count": 2, "messages": [{"payload": "6e77a84b018d4a42", "ping_id": 889734129, "type": "PING"}, {"payload": "380d4307b7", "ping_id": 1076551581, "type": "PING"}], "type": "BATCH"}
+{"count": 4, "messages": [{"flags": 1, "timestamp": 1700000364762, "type": "HEARTBEAT"}, {"flags": 1, "timestamp": 1700000979109, "type": "HEARTBEAT"}, {"code": 100, "message": "Connection refused", "type": "ERROR"}, {"code": 500, "message": "Channel not found", "type": "ERROR"}], "type": "BATCH"}
+{"count": 3, "messages": [{"payload": "169aea0f1ff5cdda", "ping_id": 951548936, "type": "PING"}, {"client_id": "monitor-03", "type": "HELLO", "version": 4}, {"client_id": "sensor-node-02", "type": "HELLO", "version": 1}], "type": "BATCH"}
+{"flags": 1, "timestamp": 1700000281509, "type": "HEARTBEAT"}
+{"code": 401, "message": "Resource unavailable", "type": "ERROR"}
+{"code": 503, "message": "Permission denied", "type": "ERROR"}
+{"code": 403, "message": "Unsupported protocol version", "type": "ERROR"}
+{"flags": 2, "timestamp": 1700000321659, "type": "HEARTBEAT"}
+{"fields": [{"field_id": 39, "field_type": 3, "value": "active"}, {"field_id": 45, "field_type": 0, "value": 110}, {"field_id": 28, "field_type": 3, "value": "idle"}, {"field_id": 27, "field_type": 2, "value": 3553738511}, {"field_id": 26, "field_type": 3, "value": "offline"}], "state_id": 59470, "type": "STATE_UPDATE"}
+{"fields": [{"field_id": 28, "field_type": 2, "value": 2856616537}, {"field_id": 24, "field_type": 1, "value": 62163}, {"field_id": 5, "field_type": 0, "value": 43}], "state_id": 12464, "type": "STATE_UPDATE"}
+{"fields": [{"field_id": 7, "field_type": 2, "value": 3486522557}, {"field_id": 36, "field_type": 0, "value": 168}, {"field_id": 43, "field_type": 0, "value": 210}, {"field_id": 23, "field_type": 3, "value": "standby"}], "state_id": 12220, "type": "STATE_UPDATE"}
+{"fields": [{"field_id": 19, "field_type": 2, "value": 1510308881}], "state_id": 94511, "type": "STATE_UPDATE"}
+{"fields": [{"field_id": 14, "field_type": 1, "value": 63201}, {"field_id": 15, "field_type": 0, "value": 179}, {"field_id": 36, "field_type": 2, "value": 2391179068}, {"field_id": 39, "field_type": 2, "value": 124352982}, {"field_id": 18, "field_type": 2, "value": 3957973511}], "state_id": 75749, "type": "STATE_UPDATE"}
+{"flags": 0, "timestamp": 1700000345663, "type": "HEARTBEAT"}
+{"payload": "49cd23480f2e6ec0d6e8ae50", "ping_id": 779130937, "type": "PING"}
+{"decrypted_payload": "298be2d9f8e2d48b6e3ab0dc3891f99d1770ca1c03689a6c468294a73d03fedc5942c275b524cb15df09eb27a0dbcfd5943acf0aa657ebb92ddf367cdfcd28ca9ead71aa56273a63b2b34b78344a8365584e265afcede5a5a14de122f0e29b8c", "iv": "bd9fa62b1a4f5019", "key_id": 2, "type": "ENCRYPTED"}
+{"payload": "49cd23480f2e6ec0d6e8ae50", "ping_id": 779130937, "type": "PONG"}
+{"encrypted_key_data": "1cb4259eece7131dbc92272ec4ec15e660a4f34d1fe634af2b58147ee0e051ba", "new_key_id": 3, "type": "KEY_EXCHANGE"}
+{"decrypted_payload": "30c591814caa2948b39ec8422b9ec0a8412fd8b909b99e5c6daef86273", "iv": "be90c6d1ad1aab21", "key_id": 3, "type": "ENCRYPTED"}
+{"channel": 605, "data": "13ac43c04e535c54e016", "seq_num": 14, "session_id": 3794934023, "type": "DATA"}
+{"decrypted_payload": "63bce1ec90c3d6526646801af6be343f912a528be64bdf2e71e6b20dd41bcabf78c529bf720ea332ab4a461392f147f0e5022809836e4cd83893799a3e", "iv": "79e391e5777a9ef0", "key_id": 1, "type": "ENCRYPTED"}
+{"flags": 3, "timestamp": 1700000388537, "type": "HEARTBEAT"}
+{"channel": 1023, "data": "087b4995db00b47bd55f2bb8220ac7f016c6bf8108b622b07b35aa4416b4ad59edf55d4520ea12966716", "seq_num": 15, "session_id": 3794934023, "type": "DATA"}
+{"payload": "cbf281126192b618", "ping_id": 1355473710, "type": "PING"}
+{"payload": "cbf281126192b618", "ping_id": 1355473710, "type": "PONG"}
+{"payload": "3fbcdfcce1c5ad5f", "ping_id": 1425605674, "type": "PING"}
+{"payload": "3fbcdfcce1c5ad5f", "ping_id": 1425605674, "type": "PONG"}
+{"decrypted_payload": "96a43428a7979ce4da55e3b3e415b4de8c1d26cfba510f49e011402278bbb9c4104ee6bdbee32746bbcb", "iv": "febc882ad928dc5c", "key_id": 3, "type": "ENCRYPTED"}
+{"count": 2, "messages": [{"client_id": "controller-main", "type": "HELLO", "version": 1}, {"code": 500, "message": "Timeout waiting for response", "type": "ERROR"}], "type": "BATCH"}
+{"flags": 3, "timestamp": 1700000406595, "type": "HEARTBEAT"}
+{"flags": 2, "timestamp": 1700000447694, "type": "HEARTBEAT"}
+{"code": 500, "message": "Rate limit exceeded", "type": "ERROR"}
+{"channel": 151, "data": "58e32ca3b12194995059b9723e664779fc0db8bcef422c219ecbf5d2d12540a2", "seq_num": 16, "session_id": 3794934023, "type": "DATA"}
+{"channel": 954, "data": "b0415d42dd1c3f4e9b5452a573b1912880648c409b2f564e57ac150e2917876bd50ffe949af77dcf98e8251e50e1d4", "seq_num": 17, "session_id": 3794934023, "type": "DATA"}
+{"decrypted_payload": "36a37bee3e88e67e48311994c4d67f51a7a06151ffefff9dfe0b2ec9ea7b6eb4181990fdf0920437", "iv": "ae49a0a3b0cc42bd", "key_id": 3, "type": "ENCRYPTED"}
+{"channel": 541, "data": "cebb17cd1a63b99325c5e68f3c4131c9bfadbb4965cd14171346aa", "seq_num": 18, "session_id": 3794934023, "type": "DATA"}
+{"data": "5858585858585858585858585858585858585858207465737420646174612077697468207265706561747320595959595959", "original_len": 50, "type": "COMPRESSED"}
+{"count": 4, "messages": [{"channel": 671, "data": "a353c999acfa99f308bca938d59d0df287741af557c24b", "seq_num": 19, "session_id": 3794934023, "type": "DATA"}, {"channel": 64, "data": "386109e1a0d64dd368d2f11f466aa6f4c0a058ebafb5", "seq_num": 20, "session_id": 3794934023, "type": "DATA"}, {"flags": 1, "timestamp": 1700008223194, "type": "HEARTBEAT"}, {"channel": 571, "data": "987398936afaa2f5b28c933ec2cab04a94159328b1", "seq_num": 21, "session_id": 3794934023, "type": "DATA"}], "type": "BATCH"}
+{"count": 4, "messages": [{"code": 400, "message": "Authentication failed", "type": "ERROR"}, {"payload": "8b46377a7c197377", "ping_id": 1164506151, "type": "PING"}, {"client_id": "relay-beta", "type": "HELLO", "version": 1}, {"flags": 0, "timestamp": 1700008025622, "type": "HEARTBEAT"}], "type": "BATCH"}
+{"client_id": "controller-main", "type": "HELLO", "version": 5}
+{"count": 3, "messages": [{"code": 400, "message": "Channel not found", "type": "ERROR"}, {"flags": 0, "timestamp": 1700004888474, "type": "HEARTBEAT"}, {"client_id": "edge-device-07", "type": "HELLO", "version": 5}], "type": "BATCH"}
+{"decrypted_payload": "049836ab91e8fc44ef8b6239a953ea835f07ac976259cfdaa72ccd305e47f4a57f0385c478e488a89a0585b8781f3cee9d51cf9f3c97bc717044f44ee8bf", "iv": "59d55a12cbfd5f94", "key_id": 2, "type": "ENCRYPTED"}
+{"fields": [{"field_id": 49, "field_type": 1, "value": 10730}, {"field_id": 34, "field_type": 3, "value": "ready"}], "state_id": 87045, "type": "STATE_UPDATE"}
+{"code": 200, "message": "Resource unavailable", "type": "ERROR"}
+{"channel": 414, "data": "4c54a7e23b69fa2ee41ce843d4e91dec9d0bca82016f2517d8b0201e23f11092d15c45d7bfc3e5c1", "seq_num": 22, "session_id": 3794934023, "type": "DATA"}
+{"channel": 272, "data": "b23c5bc94172010b98edd9c2757eebb14f8d603910d6087b69223311e4187d16cde0776f1c479477a3a4799a49", "seq_num": 23, "session_id": 3794934023, "type": "DATA"}
+{"data": "7a7a7a7a7a207979797979207878787878207777777777207676767676", "original_len": 29, "type": "COMPRESSED"}
+{"flags": 1, "timestamp": 1700000452688, "type": "HEARTBEAT"}
+{"count": 3, "messages": [{"payload": "b0c3a3d5", "ping_id": 2128675099, "type": "PING"}, {"code": 400, "message": "Channel not found", "type": "ERROR"}, {"code": 400, "message": "Timeout waiting for response", "type": "ERROR"}], "type": "BATCH"}
+{"flags": 2, "timestamp": 1700000468456, "type": "HEARTBEAT"}
+{"payload": "ed1dd3d544c67c8268a928e6bd2f611a", "ping_id": 619986019, "type": "PING"}
+{"payload": "ed1dd3d544c67c8268a928e6bd2f611a", "ping_id": 619986019, "type": "PONG"}
+{"flags": 0, "timestamp": 1700000513605, "type": "HEARTBEAT"}
+{"payload": "6ff56aaa9b076c613cf57c68cb7aa490", "ping_id": 808155186, "type": "PING"}
+{"payload": "6ff56aaa9b076c613cf57c68cb7aa490", "ping_id": 808155186, "type": "PONG"}
+{"decrypted_payload": "a368bda0d317714a0885d5974e64a875c27dffac83fafbeb56b45647fa5e1e11261803d34676224d046fe9bf1ef7f90803d206088c9208dc", "iv": "b79d85b8feee32f0", "key_id": 1, "type": "ENCRYPTED"}
+{"channel": 197, "data": "4c7b6281b588cb28bfcfeb7c739929102fcfc2c1f31c04572affdea93015756cf38a17268f", "seq_num": 24, "session_id": 3794934023, "type": "DATA"}
+{"data": "4141414242424343434444444545454646464747474848484949494a4a4a4b4b4b", "original_len": 33, "type": "COMPRESSED"}
+{"channel": 644, "data": "6a49cb2799", "seq_num": 25, "session_id": 3794934023, "type": "DATA"}

@@ -1,0 +1,6 @@
+{
+  "example": 72,
+  "section": "ATX headings",
+  "markdown": "# foo ##################################\n##### foo ##\n",
+  "html": "<h1>foo</h1>\n<h5>foo</h5>\n"
+}

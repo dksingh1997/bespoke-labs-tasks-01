@@ -1,0 +1,6 @@
+restParametersOfNonArrayTypes2.ts(11,11): error TS1014: A rest parameter must be last in a parameter list.
+restParametersOfNonArrayTypes2.ts(19,9): error TS1014: A rest parameter must be last in a parameter list.
+restParametersOfNonArrayTypes2.ts(29,21): error TS1014: A rest parameter must be last in a parameter list.
+restParametersOfNonArrayTypes2.ts(38,11): error TS1014: A rest parameter must be last in a parameter list.
+restParametersOfNonArrayTypes2.ts(46,9): error TS1014: A rest parameter must be last in a parameter list.
+restParametersOfNonArrayTypes2.ts(56,21): error TS1014: A rest parameter must be last in a parameter list.

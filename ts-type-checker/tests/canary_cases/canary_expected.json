@@ -1,0 +1,24 @@
+{
+  "canary_type_mismatch": [
+    {"line": 1, "col": 5, "code": "TS2322"},
+    {"line": 2, "col": 5, "code": "TS2322"},
+    {"line": 3, "col": 5, "code": "TS2322"}
+  ],
+  "canary_undefined_variable": [
+    {"line": 2, "col": 21, "code": "TS2304"},
+    {"line": 3, "col": 17, "code": "TS2304"}
+  ],
+  "canary_wrong_arg_count": [
+    {"line": 5, "col": 18, "code": "TS2554"},
+    {"line": 6, "col": 35, "code": "TS2554"}
+  ],
+  "canary_property_missing": [
+    {"line": 7, "col": 21, "code": "TS2339"}
+  ],
+  "canary_return_type": [
+    {"line": 2, "col": 5, "code": "TS2322"},
+    {"line": 6, "col": 5, "code": "TS2322"}
+  ],
+  "canary_clean_vars": [],
+  "canary_valid_function": []
+}

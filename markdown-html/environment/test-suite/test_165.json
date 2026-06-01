@@ -1,0 +1,6 @@
+{
+  "example": 237,
+  "section": "Block quotes",
+  "markdown": "> - foo\n- bar\n",
+  "html": "<blockquote>\n<ul>\n<li>foo</li>\n</ul>\n</blockquote>\n<ul>\n<li>bar</li>\n</ul>\n"
+}

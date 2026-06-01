@@ -1,0 +1,7 @@
+arrayLiteralWithMultipleBestCommonTypes.ts(8,11): error TS2454: Variable 'a' is used before being assigned.
+arrayLiteralWithMultipleBestCommonTypes.ts(8,14): error TS2454: Variable 'b' is used before being assigned.
+arrayLiteralWithMultipleBestCommonTypes.ts(9,11): error TS2454: Variable 'b' is used before being assigned.
+arrayLiteralWithMultipleBestCommonTypes.ts(9,14): error TS2454: Variable 'a' is used before being assigned.
+arrayLiteralWithMultipleBestCommonTypes.ts(10,11): error TS2454: Variable 'a' is used before being assigned.
+arrayLiteralWithMultipleBestCommonTypes.ts(10,14): error TS2454: Variable 'b' is used before being assigned.
+arrayLiteralWithMultipleBestCommonTypes.ts(10,17): error TS2454: Variable 'c' is used before being assigned.

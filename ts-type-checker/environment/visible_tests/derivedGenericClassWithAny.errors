@@ -1,0 +1,7 @@
+derivedGenericClassWithAny.ts(3,5): error TS2564: Property 'x' has no initializer and is not definitely assigned in the constructor.
+derivedGenericClassWithAny.ts(4,18): error TS2322: Type 'null' is not assignable to type 'T'.
+derivedGenericClassWithAny.ts(6,9): error TS2322: Type 'null' is not assignable to type 'T'.
+derivedGenericClassWithAny.ts(30,5): error TS2564: Property 'x' has no initializer and is not definitely assigned in the constructor.
+derivedGenericClassWithAny.ts(31,18): error TS2322: Type 'string' is not assignable to type 'T'.
+derivedGenericClassWithAny.ts(33,9): error TS2322: Type 'string' is not assignable to type 'T'.
+derivedGenericClassWithAny.ts(42,1): error TS2322: Type 'E<string>' is not assignable to type 'C<number>'.

@@ -1,0 +1,39 @@
+compoundExponentiationAssignmentLHSIsValue.ts(10,9): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(13,9): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(16,9): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(21,5): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+compoundExponentiationAssignmentLHSIsValue.ts(24,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(28,1): error TS2631: Cannot assign to 'M' because it is a namespace.
+compoundExponentiationAssignmentLHSIsValue.ts(30,1): error TS2629: Cannot assign to 'C' because it is a class.
+compoundExponentiationAssignmentLHSIsValue.ts(33,1): error TS2628: Cannot assign to 'E' because it is an enum.
+compoundExponentiationAssignmentLHSIsValue.ts(35,1): error TS2630: Cannot assign to 'foo' because it is a function.
+compoundExponentiationAssignmentLHSIsValue.ts(38,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+compoundExponentiationAssignmentLHSIsValue.ts(38,1): error TS18050: The value 'null' cannot be used here.
+compoundExponentiationAssignmentLHSIsValue.ts(39,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(40,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(41,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+compoundExponentiationAssignmentLHSIsValue.ts(42,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(43,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(46,10): error TS1128: Declaration or statement expected.
+compoundExponentiationAssignmentLHSIsValue.ts(49,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(55,15): error TS1034: 'super' must be followed by an argument list or member access.
+compoundExponentiationAssignmentLHSIsValue.ts(59,15): error TS1034: 'super' must be followed by an argument list or member access.
+compoundExponentiationAssignmentLHSIsValue.ts(63,15): error TS1034: 'super' must be followed by an argument list or member access.
+compoundExponentiationAssignmentLHSIsValue.ts(68,21): error TS1128: Declaration or statement expected.
+compoundExponentiationAssignmentLHSIsValue.ts(69,11): error TS1005: ';' expected.
+compoundExponentiationAssignmentLHSIsValue.ts(72,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(75,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(76,2): error TS2631: Cannot assign to 'M' because it is a namespace.
+compoundExponentiationAssignmentLHSIsValue.ts(77,2): error TS2629: Cannot assign to 'C' because it is a class.
+compoundExponentiationAssignmentLHSIsValue.ts(78,2): error TS2628: Cannot assign to 'E' because it is an enum.
+compoundExponentiationAssignmentLHSIsValue.ts(79,2): error TS2630: Cannot assign to 'foo' because it is a function.
+compoundExponentiationAssignmentLHSIsValue.ts(80,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+compoundExponentiationAssignmentLHSIsValue.ts(80,1): error TS2531: Object is possibly 'null'.
+compoundExponentiationAssignmentLHSIsValue.ts(81,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(82,1): error TS2364: The left-hand side of an assignment expression must be a variable or a property access.
+compoundExponentiationAssignmentLHSIsValue.ts(83,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(84,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(85,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(86,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(87,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+compoundExponentiationAssignmentLHSIsValue.ts(88,1): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.

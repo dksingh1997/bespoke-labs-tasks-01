@@ -1,0 +1,13 @@
+{
+  "verdict": "FAIR",
+  "confidence": 0.95,
+  "reward": 0.0,
+  "strategy": "Incremental extension of starter checker: added TS2322/TS2339/TS2345/TS2554/TS2454 checks via appending and patching, but failed to properly register function parameters in scope, causing fatal false positives on canary tests",
+  "flags": [
+    {
+      "name": "scoring_granularity",
+      "severity": "LOW",
+      "category": "VERIFIER_QUALITY"
+    }
+  ]
+}

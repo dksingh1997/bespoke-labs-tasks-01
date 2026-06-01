@@ -1,0 +1,11 @@
+generatorAssignability.ts(14,5): error TS2764: Cannot iterate value because the 'next' method of its iterator expects type 'string', but array spread will always send 'undefined'.
+generatorAssignability.ts(18,5): error TS2765: Cannot iterate value because the 'next' method of its iterator expects type 'string', but array destructuring will always send 'undefined'.
+generatorAssignability.ts(22,5): error TS2765: Cannot iterate value because the 'next' method of its iterator expects type 'string', but array destructuring will always send 'undefined'.
+generatorAssignability.ts(26,1): error TS2765: Cannot iterate value because the 'next' method of its iterator expects type 'string', but array destructuring will always send 'undefined'.
+generatorAssignability.ts(30,1): error TS2765: Cannot iterate value because the 'next' method of its iterator expects type 'string', but array destructuring will always send 'undefined'.
+generatorAssignability.ts(34,11): error TS2763: Cannot iterate value because the 'next' method of its iterator expects type 'string', but for-of will always send 'undefined'.
+generatorAssignability.ts(39,21): error TS2763: Cannot iterate value because the 'next' method of its iterator expects type 'string', but for-of will always send 'undefined'.
+generatorAssignability.ts(43,21): error TS2763: Cannot iterate value because the 'next' method of its iterator expects type 'string', but for-of will always send 'undefined'.
+generatorAssignability.ts(49,12): error TS2766: Cannot delegate iteration to value because the 'next' method of its iterator expects type 'string', but the containing generator will always send 'boolean'.
+generatorAssignability.ts(55,12): error TS2766: Cannot delegate iteration to value because the 'next' method of its iterator expects type 'string', but the containing generator will always send 'boolean'.
+generatorAssignability.ts(59,12): error TS2766: Cannot delegate iteration to value because the 'next' method of its iterator expects type 'string', but the containing generator will always send 'boolean'.

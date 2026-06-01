@@ -1,0 +1,6 @@
+{
+  "example": 479,
+  "section": "Emphasis and strong emphasis",
+  "markdown": "__<a href=\"__\">\n",
+  "html": "<p>__<a href=\"__\"></p>\n"
+}

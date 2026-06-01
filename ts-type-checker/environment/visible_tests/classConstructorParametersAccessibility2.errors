@@ -1,0 +1,2 @@
+classConstructorParametersAccessibility2.ts(13,4): error TS2341: Property 'p' is private and only accessible within class 'C2'.
+classConstructorParametersAccessibility2.ts(20,4): error TS2445: Property 'p' is protected and only accessible within class 'C3' and its subclasses.

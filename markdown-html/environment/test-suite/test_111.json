@@ -1,0 +1,6 @@
+{
+  "example": 159,
+  "section": "HTML blocks",
+  "markdown": "<div><a href=\"bar\">*foo*</a></div>\n",
+  "html": "<div><a href=\"bar\">*foo*</a></div>\n"
+}

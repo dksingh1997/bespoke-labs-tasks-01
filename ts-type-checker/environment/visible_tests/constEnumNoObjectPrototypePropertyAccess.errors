@@ -1,0 +1,7 @@
+constEnumNoObjectPrototypePropertyAccess.ts(9,19): error TS2339: Property 'constructor' does not exist on type 'typeof Bebra'.
+constEnumNoObjectPrototypePropertyAccess.ts(10,19): error TS2339: Property 'hasOwnProperty' does not exist on type 'typeof Bebra'.
+constEnumNoObjectPrototypePropertyAccess.ts(11,19): error TS2339: Property 'isPrototypeOf' does not exist on type 'typeof Bebra'.
+constEnumNoObjectPrototypePropertyAccess.ts(12,19): error TS2339: Property 'propertyIsEnumerable' does not exist on type 'typeof Bebra'.
+constEnumNoObjectPrototypePropertyAccess.ts(13,19): error TS2339: Property 'toLocaleString' does not exist on type 'typeof Bebra'.
+constEnumNoObjectPrototypePropertyAccess.ts(14,19): error TS2339: Property 'toString' does not exist on type 'typeof Bebra'.
+constEnumNoObjectPrototypePropertyAccess.ts(15,19): error TS2339: Property 'valueOf' does not exist on type 'typeof Bebra'.

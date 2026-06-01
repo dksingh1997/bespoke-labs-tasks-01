@@ -1,0 +1,11 @@
+functionOverloadErrors.ts(4,14): error TS2371: A parameter initializer is only allowed in a function or constructor implementation.
+functionOverloadErrors.ts(67,13): error TS2385: Overload signatures must all be public, private or protected.
+functionOverloadErrors.ts(70,13): error TS2385: Overload signatures must all be public, private or protected.
+functionOverloadErrors.ts(77,21): error TS2383: Overload signatures must all be exported or non-exported.
+functionOverloadErrors.ts(81,14): error TS2383: Overload signatures must all be exported or non-exported.
+functionOverloadErrors.ts(87,18): error TS2384: Overload signatures must all be ambient or non-ambient.
+functionOverloadErrors.ts(92,18): error TS2384: Overload signatures must all be ambient or non-ambient.
+functionOverloadErrors.ts(96,10): error TS2394: This overload signature is not compatible with its implementation signature.
+functionOverloadErrors.ts(101,10): error TS2394: This overload signature is not compatible with its implementation signature.
+functionOverloadErrors.ts(105,10): error TS2394: This overload signature is not compatible with its implementation signature.
+functionOverloadErrors.ts(118,19): error TS2371: A parameter initializer is only allowed in a function or constructor implementation.

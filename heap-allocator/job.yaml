@@ -1,0 +1,24 @@
+jobs_dir: ./jobs
+n_attempts: 3
+
+orchestrator:
+  n_concurrent_trials: 12
+
+environment:
+  type: modal
+  sandbox_timeout_secs: 7200
+
+agents:
+  - name: terminus-2
+    model_name: anthropic/claude-opus-4-6
+    kwargs:
+      proactive_summarization_threshold: 50000
+      model_info:
+        max_input_tokens: 200000
+        max_output_tokens: 128000
+
+tasks:
+  - path: .
+
+artifacts:
+  - /app/workspace

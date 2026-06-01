@@ -1,0 +1,2 @@
+enumMergingErrors.ts(27,22): error TS2432: In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element.
+enumMergingErrors.ts(39,22): error TS2432: In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element.

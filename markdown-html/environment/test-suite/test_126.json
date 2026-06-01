@@ -1,0 +1,6 @@
+{
+  "example": 181,
+  "section": "HTML blocks",
+  "markdown": "<!-- Foo\n\nbar\n   baz -->\nokay\n",
+  "html": "<!-- Foo\n\nbar\n   baz -->\n<p>okay</p>\n"
+}

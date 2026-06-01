@@ -1,0 +1,6 @@
+{
+  "example": 13,
+  "section": "Backslash escapes",
+  "markdown": "\\\t\\A\\a\\ \\3\\φ\\«\n",
+  "html": "<p>\\\t\\A\\a\\ \\3\\φ\\«</p>\n"
+}

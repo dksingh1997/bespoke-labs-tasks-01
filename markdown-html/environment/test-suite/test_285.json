@@ -1,0 +1,6 @@
+{
+  "example": 403,
+  "section": "Emphasis and strong emphasis",
+  "markdown": "__пристаням__стремятся\n",
+  "html": "<p>__пристаням__стремятся</p>\n"
+}

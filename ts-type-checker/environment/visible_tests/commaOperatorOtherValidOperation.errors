@@ -1,0 +1,4 @@
+commaOperatorOtherValidOperation.ts(21,5): error TS2454: Variable 'x' is used before being assigned.
+commaOperatorOtherValidOperation.ts(21,8): error TS2454: Variable 'y' is used before being assigned.
+commaOperatorOtherValidOperation.ts(22,23): error TS2454: Variable 'y' is used before being assigned.
+commaOperatorOtherValidOperation.ts(22,26): error TS2454: Variable 'x' is used before being assigned.

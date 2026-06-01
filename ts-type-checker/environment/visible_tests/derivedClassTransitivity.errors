@@ -1,0 +1,1 @@
+derivedClassTransitivity.ts(19,1): error TS2322: Type 'E' is not assignable to type 'C'.

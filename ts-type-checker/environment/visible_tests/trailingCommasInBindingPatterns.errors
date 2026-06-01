@@ -1,0 +1,4 @@
+trailingCommasInBindingPatterns.ts(3,12): error TS1013: A rest parameter or binding pattern may not have a trailing comma.
+trailingCommasInBindingPatterns.ts(4,12): error TS1013: A rest parameter or binding pattern may not have a trailing comma.
+trailingCommasInBindingPatterns.ts(6,7): error TS1013: A rest parameter or binding pattern may not have a trailing comma.
+trailingCommasInBindingPatterns.ts(7,7): error TS1013: A rest parameter or binding pattern may not have a trailing comma.
