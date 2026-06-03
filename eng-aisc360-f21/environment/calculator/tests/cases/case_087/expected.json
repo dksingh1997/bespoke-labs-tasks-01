@@ -1,0 +1,10 @@
+{
+  "Mn": 1225.0,
+  "Mp": 1225.0,
+  "phi": 0.9,
+  "phi_Mn": 1102.5,
+  "failure_mode": "yielding",
+  "limit_state": "F2.1",
+  "Lp": 85.6206,
+  "Lr": 268.7881
+}

@@ -1,0 +1,10 @@
+{
+  "Mn": 159.8113,
+  "Mp": 197.0833,
+  "phi": 0.9,
+  "phi_Mn": 143.8302,
+  "failure_mode": "inelastic_ltb",
+  "limit_state": "F2.2a",
+  "Lp": 63.1558,
+  "Lr": 204.7189
+}

@@ -1,0 +1,870 @@
+{
+  "case_001": {
+    "section": "W14x22",
+    "Fy": 50.0,
+    "Lb": 13.2,
+    "Cb": 1.0,
+    "description": "W14x22 yielding (Lb=13.2 < Lp=44.1)"
+  },
+  "case_002": {
+    "section": "W14x22",
+    "Fy": 50.0,
+    "Lb": 41.9,
+    "Cb": 1.0,
+    "description": "W14x22 at Lp boundary (Lb=41.9 \u2248 Lp=44.1)"
+  },
+  "case_003": {
+    "section": "W14x22",
+    "Fy": 50.0,
+    "Lb": 92.9,
+    "Cb": 1.0,
+    "description": "W14x22 inelastic LTB (Lb=92.9)"
+  },
+  "case_004": {
+    "section": "W14x22",
+    "Fy": 50.0,
+    "Lb": 134.5,
+    "Cb": 1.0,
+    "description": "W14x22 near Lr (Lb=134.5 \u2248 Lr=141.6)"
+  },
+  "case_005": {
+    "section": "W14x22",
+    "Fy": 50.0,
+    "Lb": 283.2,
+    "Cb": 1.0,
+    "description": "W14x22 elastic LTB (Lb=283.2 > Lr=141.6)"
+  },
+  "case_006": {
+    "section": "W14x30",
+    "Fy": 50.0,
+    "Lb": 18.9,
+    "Cb": 1.0,
+    "description": "W14x30 yielding (Lb=18.9 < Lp=63.2)"
+  },
+  "case_007": {
+    "section": "W14x30",
+    "Fy": 50.0,
+    "Lb": 60.0,
+    "Cb": 1.0,
+    "description": "W14x30 at Lp boundary (Lb=60.0 \u2248 Lp=63.2)"
+  },
+  "case_008": {
+    "section": "W14x30",
+    "Fy": 50.0,
+    "Lb": 133.9,
+    "Cb": 1.0,
+    "description": "W14x30 inelastic LTB (Lb=133.9)"
+  },
+  "case_009": {
+    "section": "W14x30",
+    "Fy": 50.0,
+    "Lb": 194.5,
+    "Cb": 1.0,
+    "description": "W14x30 near Lr (Lb=194.5 \u2248 Lr=204.7)"
+  },
+  "case_010": {
+    "section": "W14x30",
+    "Fy": 50.0,
+    "Lb": 409.4,
+    "Cb": 1.0,
+    "description": "W14x30 elastic LTB (Lb=409.4 > Lr=204.7)"
+  },
+  "case_011": {
+    "section": "W14x43",
+    "Fy": 50.0,
+    "Lb": 24.0,
+    "Cb": 1.0,
+    "description": "W14x43 yielding (Lb=24.0 < Lp=80.1)"
+  },
+  "case_012": {
+    "section": "W14x43",
+    "Fy": 50.0,
+    "Lb": 76.1,
+    "Cb": 1.0,
+    "description": "W14x43 at Lp boundary (Lb=76.1 \u2248 Lp=80.1)"
+  },
+  "case_013": {
+    "section": "W14x43",
+    "Fy": 50.0,
+    "Lb": 182.2,
+    "Cb": 1.0,
+    "description": "W14x43 inelastic LTB (Lb=182.2)"
+  },
+  "case_014": {
+    "section": "W14x43",
+    "Fy": 50.0,
+    "Lb": 270.0,
+    "Cb": 1.0,
+    "description": "W14x43 near Lr (Lb=270.0 \u2248 Lr=284.3)"
+  },
+  "case_015": {
+    "section": "W14x43",
+    "Fy": 50.0,
+    "Lb": 568.5,
+    "Cb": 1.0,
+    "description": "W14x43 elastic LTB (Lb=568.5 > Lr=284.3)"
+  },
+  "case_016": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 31.3,
+    "Cb": 1.0,
+    "description": "W14x68 yielding (Lb=31.3 < Lp=104.3)"
+  },
+  "case_017": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 99.1,
+    "Cb": 1.0,
+    "description": "W14x68 at Lp boundary (Lb=99.1 \u2248 Lp=104.3)"
+  },
+  "case_018": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 271.9,
+    "Cb": 1.0,
+    "description": "W14x68 inelastic LTB (Lb=271.9)"
+  },
+  "case_019": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 417.5,
+    "Cb": 1.0,
+    "description": "W14x68 near Lr (Lb=417.5 \u2248 Lr=439.5)"
+  },
+  "case_020": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 879.0,
+    "Cb": 1.0,
+    "description": "W14x68 elastic LTB (Lb=879.0 > Lr=439.5)"
+  },
+  "case_021": {
+    "section": "W14x90",
+    "Fy": 50.0,
+    "Lb": 47.0,
+    "Cb": 1.0,
+    "description": "W14x90 yielding (Lb=47.0 < Lp=156.8)"
+  },
+  "case_022": {
+    "section": "W14x90",
+    "Fy": 50.0,
+    "Lb": 149.0,
+    "Cb": 1.0,
+    "description": "W14x90 at Lp boundary (Lb=149.0 \u2248 Lp=156.8)"
+  },
+  "case_023": {
+    "section": "W14x90",
+    "Fy": 50.0,
+    "Lb": 437.6,
+    "Cb": 1.0,
+    "description": "W14x90 inelastic LTB (Lb=437.6)"
+  },
+  "case_024": {
+    "section": "W14x90",
+    "Fy": 50.0,
+    "Lb": 682.5,
+    "Cb": 1.0,
+    "description": "W14x90 near Lr (Lb=682.5 \u2248 Lr=718.4)"
+  },
+  "case_025": {
+    "section": "W14x90",
+    "Fy": 50.0,
+    "Lb": 1436.7,
+    "Cb": 1.0,
+    "description": "W14x90 elastic LTB (Lb=1436.7 > Lr=718.4)"
+  },
+  "case_026": {
+    "section": "W16x26",
+    "Fy": 50.0,
+    "Lb": 14.2,
+    "Cb": 1.0,
+    "description": "W16x26 yielding (Lb=14.2 < Lp=47.5)"
+  },
+  "case_027": {
+    "section": "W16x26",
+    "Fy": 50.0,
+    "Lb": 45.1,
+    "Cb": 1.0,
+    "description": "W16x26 at Lp boundary (Lb=45.1 \u2248 Lp=47.5)"
+  },
+  "case_028": {
+    "section": "W16x26",
+    "Fy": 50.0,
+    "Lb": 96.4,
+    "Cb": 1.0,
+    "description": "W16x26 inelastic LTB (Lb=96.4)"
+  },
+  "case_029": {
+    "section": "W16x26",
+    "Fy": 50.0,
+    "Lb": 138.1,
+    "Cb": 1.0,
+    "description": "W16x26 near Lr (Lb=138.1 \u2248 Lr=145.4)"
+  },
+  "case_030": {
+    "section": "W16x26",
+    "Fy": 50.0,
+    "Lb": 290.8,
+    "Cb": 1.0,
+    "description": "W16x26 elastic LTB (Lb=290.8 > Lr=145.4)"
+  },
+  "case_031": {
+    "section": "W16x36",
+    "Fy": 50.0,
+    "Lb": 19.3,
+    "Cb": 1.0,
+    "description": "W16x36 yielding (Lb=19.3 < Lp=64.4)"
+  },
+  "case_032": {
+    "section": "W16x36",
+    "Fy": 50.0,
+    "Lb": 61.2,
+    "Cb": 1.0,
+    "description": "W16x36 at Lp boundary (Lb=61.2 \u2248 Lp=64.4)"
+  },
+  "case_033": {
+    "section": "W16x36",
+    "Fy": 50.0,
+    "Lb": 131.0,
+    "Cb": 1.0,
+    "description": "W16x36 inelastic LTB (Lb=131.0)"
+  },
+  "case_034": {
+    "section": "W16x36",
+    "Fy": 50.0,
+    "Lb": 187.7,
+    "Cb": 1.0,
+    "description": "W16x36 near Lr (Lb=187.7 \u2248 Lr=197.5)"
+  },
+  "case_035": {
+    "section": "W16x36",
+    "Fy": 50.0,
+    "Lb": 395.1,
+    "Cb": 1.0,
+    "description": "W16x36 elastic LTB (Lb=395.1 > Lr=197.5)"
+  },
+  "case_036": {
+    "section": "W18x35",
+    "Fy": 50.0,
+    "Lb": 15.5,
+    "Cb": 1.0,
+    "description": "W18x35 yielding (Lb=15.5 < Lp=51.7)"
+  },
+  "case_037": {
+    "section": "W18x35",
+    "Fy": 50.0,
+    "Lb": 49.1,
+    "Cb": 1.0,
+    "description": "W18x35 at Lp boundary (Lb=49.1 \u2248 Lp=51.7)"
+  },
+  "case_038": {
+    "section": "W18x35",
+    "Fy": 50.0,
+    "Lb": 107.6,
+    "Cb": 1.0,
+    "description": "W18x35 inelastic LTB (Lb=107.6)"
+  },
+  "case_039": {
+    "section": "W18x35",
+    "Fy": 50.0,
+    "Lb": 155.3,
+    "Cb": 1.0,
+    "description": "W18x35 near Lr (Lb=155.3 \u2248 Lr=163.4)"
+  },
+  "case_040": {
+    "section": "W18x35",
+    "Fy": 50.0,
+    "Lb": 326.9,
+    "Cb": 1.0,
+    "description": "W18x35 elastic LTB (Lb=326.9 > Lr=163.4)"
+  },
+  "case_041": {
+    "section": "W18x50",
+    "Fy": 50.0,
+    "Lb": 21.0,
+    "Cb": 1.0,
+    "description": "W18x50 yielding (Lb=21.0 < Lp=69.9)"
+  },
+  "case_042": {
+    "section": "W18x50",
+    "Fy": 50.0,
+    "Lb": 66.4,
+    "Cb": 1.0,
+    "description": "W18x50 at Lp boundary (Lb=66.4 \u2248 Lp=69.9)"
+  },
+  "case_043": {
+    "section": "W18x50",
+    "Fy": 50.0,
+    "Lb": 147.1,
+    "Cb": 1.0,
+    "description": "W18x50 inelastic LTB (Lb=147.1)"
+  },
+  "case_044": {
+    "section": "W18x50",
+    "Fy": 50.0,
+    "Lb": 213.1,
+    "Cb": 1.0,
+    "description": "W18x50 near Lr (Lb=213.1 \u2248 Lr=224.3)"
+  },
+  "case_045": {
+    "section": "W18x50",
+    "Fy": 50.0,
+    "Lb": 448.7,
+    "Cb": 1.0,
+    "description": "W18x50 elastic LTB (Lb=448.7 > Lr=224.3)"
+  },
+  "case_046": {
+    "section": "W18x76",
+    "Fy": 50.0,
+    "Lb": 33.2,
+    "Cb": 1.0,
+    "description": "W18x76 yielding (Lb=33.2 < Lp=110.6)"
+  },
+  "case_047": {
+    "section": "W18x76",
+    "Fy": 50.0,
+    "Lb": 105.1,
+    "Cb": 1.0,
+    "description": "W18x76 at Lp boundary (Lb=105.1 \u2248 Lp=110.6)"
+  },
+  "case_048": {
+    "section": "W18x76",
+    "Fy": 50.0,
+    "Lb": 231.7,
+    "Cb": 1.0,
+    "description": "W18x76 inelastic LTB (Lb=231.7)"
+  },
+  "case_049": {
+    "section": "W18x76",
+    "Fy": 50.0,
+    "Lb": 335.2,
+    "Cb": 1.0,
+    "description": "W18x76 near Lr (Lb=335.2 \u2248 Lr=352.9)"
+  },
+  "case_050": {
+    "section": "W18x76",
+    "Fy": 50.0,
+    "Lb": 705.7,
+    "Cb": 1.0,
+    "description": "W18x76 elastic LTB (Lb=705.7 > Lr=352.9)"
+  },
+  "case_051": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 16.5,
+    "Cb": 1.0,
+    "description": "W21x50 yielding (Lb=16.5 < Lp=55.1)"
+  },
+  "case_052": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 52.3,
+    "Cb": 1.0,
+    "description": "W21x50 at Lp boundary (Lb=52.3 \u2248 Lp=55.1)"
+  },
+  "case_053": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 114.6,
+    "Cb": 1.0,
+    "description": "W21x50 inelastic LTB (Lb=114.6)"
+  },
+  "case_054": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 165.4,
+    "Cb": 1.0,
+    "description": "W21x50 near Lr (Lb=165.4 \u2248 Lr=174.1)"
+  },
+  "case_055": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 348.2,
+    "Cb": 1.0,
+    "description": "W21x50 elastic LTB (Lb=348.2 > Lr=174.1)"
+  },
+  "case_056": {
+    "section": "W21x62",
+    "Fy": 50.0,
+    "Lb": 16.4,
+    "Cb": 1.0,
+    "description": "W21x62 yielding (Lb=16.4 < Lp=54.7)"
+  },
+  "case_057": {
+    "section": "W21x62",
+    "Fy": 50.0,
+    "Lb": 51.9,
+    "Cb": 1.0,
+    "description": "W21x62 at Lp boundary (Lb=51.9 \u2248 Lp=54.7)"
+  },
+  "case_058": {
+    "section": "W21x62",
+    "Fy": 50.0,
+    "Lb": 119.5,
+    "Cb": 1.0,
+    "description": "W21x62 inelastic LTB (Lb=119.5)"
+  },
+  "case_059": {
+    "section": "W21x62",
+    "Fy": 50.0,
+    "Lb": 175.2,
+    "Cb": 1.0,
+    "description": "W21x62 near Lr (Lb=175.2 \u2248 Lr=184.4)"
+  },
+  "case_060": {
+    "section": "W21x62",
+    "Fy": 50.0,
+    "Lb": 368.8,
+    "Cb": 1.0,
+    "description": "W21x62 elastic LTB (Lb=368.8 > Lr=184.4)"
+  },
+  "case_061": {
+    "section": "W21x83",
+    "Fy": 50.0,
+    "Lb": 16.5,
+    "Cb": 1.0,
+    "description": "W21x83 yielding (Lb=16.5 < Lp=55.1)"
+  },
+  "case_062": {
+    "section": "W21x83",
+    "Fy": 50.0,
+    "Lb": 52.3,
+    "Cb": 1.0,
+    "description": "W21x83 at Lp boundary (Lb=52.3 \u2248 Lp=55.1)"
+  },
+  "case_063": {
+    "section": "W21x83",
+    "Fy": 50.0,
+    "Lb": 127.5,
+    "Cb": 1.0,
+    "description": "W21x83 inelastic LTB (Lb=127.5)"
+  },
+  "case_064": {
+    "section": "W21x83",
+    "Fy": 50.0,
+    "Lb": 189.9,
+    "Cb": 1.0,
+    "description": "W21x83 near Lr (Lb=189.9 \u2248 Lr=199.9)"
+  },
+  "case_065": {
+    "section": "W21x83",
+    "Fy": 50.0,
+    "Lb": 399.8,
+    "Cb": 1.0,
+    "description": "W21x83 elastic LTB (Lb=399.8 > Lr=199.9)"
+  },
+  "case_066": {
+    "section": "W24x55",
+    "Fy": 50.0,
+    "Lb": 15.0,
+    "Cb": 1.0,
+    "description": "W24x55 yielding (Lb=15.0 < Lp=50.0)"
+  },
+  "case_067": {
+    "section": "W24x55",
+    "Fy": 50.0,
+    "Lb": 47.5,
+    "Cb": 1.0,
+    "description": "W24x55 at Lp boundary (Lb=47.5 \u2248 Lp=50.0)"
+  },
+  "case_068": {
+    "section": "W24x55",
+    "Fy": 50.0,
+    "Lb": 104.5,
+    "Cb": 1.0,
+    "description": "W24x55 inelastic LTB (Lb=104.5)"
+  },
+  "case_069": {
+    "section": "W24x55",
+    "Fy": 50.0,
+    "Lb": 151.1,
+    "Cb": 1.0,
+    "description": "W24x55 near Lr (Lb=151.1 \u2248 Lr=159.1)"
+  },
+  "case_070": {
+    "section": "W24x55",
+    "Fy": 50.0,
+    "Lb": 318.2,
+    "Cb": 1.0,
+    "description": "W24x55 elastic LTB (Lb=318.2 > Lr=159.1)"
+  },
+  "case_071": {
+    "section": "W24x84",
+    "Fy": 50.0,
+    "Lb": 23.3,
+    "Cb": 1.0,
+    "description": "W24x84 yielding (Lb=23.3 < Lp=77.6)"
+  },
+  "case_072": {
+    "section": "W24x84",
+    "Fy": 50.0,
+    "Lb": 73.7,
+    "Cb": 1.0,
+    "description": "W24x84 at Lp boundary (Lb=73.7 \u2248 Lp=77.6)"
+  },
+  "case_073": {
+    "section": "W24x84",
+    "Fy": 50.0,
+    "Lb": 172.9,
+    "Cb": 1.0,
+    "description": "W24x84 inelastic LTB (Lb=172.9)"
+  },
+  "case_074": {
+    "section": "W24x84",
+    "Fy": 50.0,
+    "Lb": 254.7,
+    "Cb": 1.0,
+    "description": "W24x84 near Lr (Lb=254.7 \u2248 Lr=268.2)"
+  },
+  "case_075": {
+    "section": "W24x84",
+    "Fy": 50.0,
+    "Lb": 536.3,
+    "Cb": 1.0,
+    "description": "W24x84 elastic LTB (Lb=536.3 > Lr=268.2)"
+  },
+  "case_076": {
+    "section": "W27x84",
+    "Fy": 50.0,
+    "Lb": 21.5,
+    "Cb": 1.0,
+    "description": "W27x84 yielding (Lb=21.5 < Lp=71.6)"
+  },
+  "case_077": {
+    "section": "W27x84",
+    "Fy": 50.0,
+    "Lb": 68.1,
+    "Cb": 1.0,
+    "description": "W27x84 at Lp boundary (Lb=68.1 \u2248 Lp=71.6)"
+  },
+  "case_078": {
+    "section": "W27x84",
+    "Fy": 50.0,
+    "Lb": 149.1,
+    "Cb": 1.0,
+    "description": "W27x84 inelastic LTB (Lb=149.1)"
+  },
+  "case_079": {
+    "section": "W27x84",
+    "Fy": 50.0,
+    "Lb": 215.3,
+    "Cb": 1.0,
+    "description": "W27x84 near Lr (Lb=215.3 \u2248 Lr=226.6)"
+  },
+  "case_080": {
+    "section": "W27x84",
+    "Fy": 50.0,
+    "Lb": 453.2,
+    "Cb": 1.0,
+    "description": "W27x84 elastic LTB (Lb=453.2 > Lr=226.6)"
+  },
+  "case_081": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 22.8,
+    "Cb": 1.0,
+    "description": "W30x99 yielding (Lb=22.8 < Lp=75.9)"
+  },
+  "case_082": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 72.1,
+    "Cb": 1.0,
+    "description": "W30x99 at Lp boundary (Lb=72.1 \u2248 Lp=75.9)"
+  },
+  "case_083": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 158.7,
+    "Cb": 1.0,
+    "description": "W30x99 inelastic LTB (Lb=158.7)"
+  },
+  "case_084": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 229.4,
+    "Cb": 1.0,
+    "description": "W30x99 near Lr (Lb=229.4 \u2248 Lr=241.5)"
+  },
+  "case_085": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 483.0,
+    "Cb": 1.0,
+    "description": "W30x99 elastic LTB (Lb=483.0 > Lr=241.5)"
+  },
+  "case_086": {
+    "section": "W33x118",
+    "Fy": 50.0,
+    "Lb": 25.7,
+    "Cb": 1.0,
+    "description": "W33x118 yielding (Lb=25.7 < Lp=85.6)"
+  },
+  "case_087": {
+    "section": "W33x118",
+    "Fy": 50.0,
+    "Lb": 81.3,
+    "Cb": 1.0,
+    "description": "W33x118 at Lp boundary (Lb=81.3 \u2248 Lp=85.6)"
+  },
+  "case_088": {
+    "section": "W33x118",
+    "Fy": 50.0,
+    "Lb": 177.2,
+    "Cb": 1.0,
+    "description": "W33x118 inelastic LTB (Lb=177.2)"
+  },
+  "case_089": {
+    "section": "W33x118",
+    "Fy": 50.0,
+    "Lb": 255.3,
+    "Cb": 1.0,
+    "description": "W33x118 near Lr (Lb=255.3 \u2248 Lr=268.8)"
+  },
+  "case_090": {
+    "section": "W33x118",
+    "Fy": 50.0,
+    "Lb": 537.6,
+    "Cb": 1.0,
+    "description": "W33x118 elastic LTB (Lb=537.6 > Lr=268.8)"
+  },
+  "case_091": {
+    "section": "W36x150",
+    "Fy": 50.0,
+    "Lb": 25.8,
+    "Cb": 1.0,
+    "description": "W36x150 yielding (Lb=25.8 < Lp=86.0)"
+  },
+  "case_092": {
+    "section": "W36x150",
+    "Fy": 50.0,
+    "Lb": 81.7,
+    "Cb": 1.0,
+    "description": "W36x150 at Lp boundary (Lb=81.7 \u2248 Lp=86.0)"
+  },
+  "case_093": {
+    "section": "W36x150",
+    "Fy": 50.0,
+    "Lb": 178.7,
+    "Cb": 1.0,
+    "description": "W36x150 inelastic LTB (Lb=178.7)"
+  },
+  "case_094": {
+    "section": "W36x150",
+    "Fy": 50.0,
+    "Lb": 257.9,
+    "Cb": 1.0,
+    "description": "W36x150 near Lr (Lb=257.9 \u2248 Lr=271.4)"
+  },
+  "case_095": {
+    "section": "W36x150",
+    "Fy": 50.0,
+    "Lb": 542.9,
+    "Cb": 1.0,
+    "description": "W36x150 elastic LTB (Lb=542.9 > Lr=271.4)"
+  },
+  "case_096": {
+    "section": "W36x230",
+    "Fy": 50.0,
+    "Lb": 25.3,
+    "Cb": 1.0,
+    "description": "W36x230 yielding (Lb=25.3 < Lp=84.3)"
+  },
+  "case_097": {
+    "section": "W36x230",
+    "Fy": 50.0,
+    "Lb": 80.1,
+    "Cb": 1.0,
+    "description": "W36x230 at Lp boundary (Lb=80.1 \u2248 Lp=84.3)"
+  },
+  "case_098": {
+    "section": "W36x230",
+    "Fy": 50.0,
+    "Lb": 194.3,
+    "Cb": 1.0,
+    "description": "W36x230 inelastic LTB (Lb=194.3)"
+  },
+  "case_099": {
+    "section": "W36x230",
+    "Fy": 50.0,
+    "Lb": 289.0,
+    "Cb": 1.0,
+    "description": "W36x230 near Lr (Lb=289.0 \u2248 Lr=304.2)"
+  },
+  "case_100": {
+    "section": "W36x230",
+    "Fy": 50.0,
+    "Lb": 608.3,
+    "Cb": 1.0,
+    "description": "W36x230 elastic LTB (Lb=608.3 > Lr=304.2)"
+  },
+  "case_101": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 305.4,
+    "Cb": 1.0,
+    "description": "W14x68 Cb=1.0 (Lb=305.4)"
+  },
+  "case_102": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 305.4,
+    "Cb": 1.14,
+    "description": "W14x68 Cb=1.14 (Lb=305.4)"
+  },
+  "case_103": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 305.4,
+    "Cb": 1.32,
+    "description": "W14x68 Cb=1.32 (Lb=305.4)"
+  },
+  "case_104": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 305.4,
+    "Cb": 1.67,
+    "description": "W14x68 Cb=1.67 (Lb=305.4)"
+  },
+  "case_105": {
+    "section": "W14x68",
+    "Fy": 50.0,
+    "Lb": 305.4,
+    "Cb": 2.27,
+    "description": "W14x68 Cb=2.27 (Lb=305.4)"
+  },
+  "case_106": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 126.5,
+    "Cb": 1.0,
+    "description": "W21x50 Cb=1.0 (Lb=126.5)"
+  },
+  "case_107": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 126.5,
+    "Cb": 1.14,
+    "description": "W21x50 Cb=1.14 (Lb=126.5)"
+  },
+  "case_108": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 126.5,
+    "Cb": 1.32,
+    "description": "W21x50 Cb=1.32 (Lb=126.5)"
+  },
+  "case_109": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 126.5,
+    "Cb": 1.67,
+    "description": "W21x50 Cb=1.67 (Lb=126.5)"
+  },
+  "case_110": {
+    "section": "W21x50",
+    "Fy": 50.0,
+    "Lb": 126.5,
+    "Cb": 2.27,
+    "description": "W21x50 Cb=2.27 (Lb=126.5)"
+  },
+  "case_111": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 175.2,
+    "Cb": 1.0,
+    "description": "W30x99 Cb=1.0 (Lb=175.2)"
+  },
+  "case_112": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 175.2,
+    "Cb": 1.14,
+    "description": "W30x99 Cb=1.14 (Lb=175.2)"
+  },
+  "case_113": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 175.2,
+    "Cb": 1.32,
+    "description": "W30x99 Cb=1.32 (Lb=175.2)"
+  },
+  "case_114": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 175.2,
+    "Cb": 1.67,
+    "description": "W30x99 Cb=1.67 (Lb=175.2)"
+  },
+  "case_115": {
+    "section": "W30x99",
+    "Fy": 50.0,
+    "Lb": 175.2,
+    "Cb": 2.27,
+    "description": "W30x99 Cb=2.27 (Lb=175.2)"
+  },
+  "case_116": {
+    "section": "W14x43",
+    "Fy": 36.0,
+    "Lb": 201.1,
+    "Cb": 1.0,
+    "description": "W14x43 Fy=36.0 (Lb=201.1)"
+  },
+  "case_117": {
+    "section": "W14x43",
+    "Fy": 50.0,
+    "Lb": 161.8,
+    "Cb": 1.0,
+    "description": "W14x43 Fy=50.0 (Lb=161.8)"
+  },
+  "case_118": {
+    "section": "W14x43",
+    "Fy": 65.0,
+    "Lb": 137.3,
+    "Cb": 1.0,
+    "description": "W14x43 Fy=65.0 (Lb=137.3)"
+  },
+  "case_119": {
+    "section": "W21x62",
+    "Fy": 36.0,
+    "Lb": 129.5,
+    "Cb": 1.0,
+    "description": "W21x62 Fy=36.0 (Lb=129.5)"
+  },
+  "case_120": {
+    "section": "W21x62",
+    "Fy": 50.0,
+    "Lb": 106.6,
+    "Cb": 1.0,
+    "description": "W21x62 Fy=50.0 (Lb=106.6)"
+  },
+  "case_121": {
+    "section": "W21x62",
+    "Fy": 65.0,
+    "Lb": 91.8,
+    "Cb": 1.0,
+    "description": "W21x62 Fy=65.0 (Lb=91.8)"
+  },
+  "case_122": {
+    "section": "W36x150",
+    "Fy": 36.0,
+    "Lb": 194.7,
+    "Cb": 1.0,
+    "description": "W36x150 Fy=36.0 (Lb=194.7)"
+  },
+  "case_123": {
+    "section": "W36x150",
+    "Fy": 50.0,
+    "Lb": 160.2,
+    "Cb": 1.0,
+    "description": "W36x150 Fy=50.0 (Lb=160.2)"
+  },
+  "case_124": {
+    "section": "W36x150",
+    "Fy": 65.0,
+    "Lb": 137.9,
+    "Cb": 1.0,
+    "description": "W36x150 Fy=65.0 (Lb=137.9)"
+  }
+}
