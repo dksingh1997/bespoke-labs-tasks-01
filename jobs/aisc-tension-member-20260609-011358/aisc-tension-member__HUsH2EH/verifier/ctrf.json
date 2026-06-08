@@ -1,0 +1,137 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.2.2"
+        },
+        "summary": {
+            "tests": 13,
+            "passed": 13,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1780947903.660693,
+            "stop": 1780947903.766696
+        },
+        "tests": [
+            {
+                "name": "test_outputs.py::test_static_scan_for_forbidden_imports",
+                "status": "passed",
+                "duration": 0.002972775953821838,
+                "start": 1780947903.699201,
+                "stop": 1780947903.7028065,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_public_api_returns_required_keys",
+                "status": "passed",
+                "duration": 0.00301269389456138,
+                "start": 1780947903.703158,
+                "stop": 1780947903.7069347,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_worked_example_w10x33_lrfd",
+                "status": "passed",
+                "duration": 0.0022971269791014493,
+                "start": 1780947903.7072988,
+                "stop": 1780947903.7100344,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_worked_example_asd",
+                "status": "passed",
+                "duration": 0.002321822044905275,
+                "start": 1780947903.7102673,
+                "stop": 1780947903.713065,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_yielding_controls_when_ae_equals_ag",
+                "status": "passed",
+                "duration": 0.0021064499742351472,
+                "start": 1780947903.7134194,
+                "stop": 1780947903.7159455,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_method_case_insensitive",
+                "status": "passed",
+                "duration": 0.0029057260253466666,
+                "start": 1780947903.716282,
+                "stop": 1780947903.7198339,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_invalid_method_raises",
+                "status": "passed",
+                "duration": 0.0031078789616003633,
+                "start": 1780947903.7202454,
+                "stop": 1780947903.7239664,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_pn_is_minimum_of_nominal_values",
+                "status": "passed",
+                "duration": 0.0033104809699580073,
+                "start": 1780947903.7243063,
+                "stop": 1780947903.7281997,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_structured_inputs_match_oracle",
+                "status": "passed",
+                "duration": 0.0032013130257837474,
+                "start": 1780947903.7287636,
+                "stop": 1780947903.7325342,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_metamorphic_area_scaling",
+                "status": "passed",
+                "duration": 0.002841644047293812,
+                "start": 1780947903.73283,
+                "stop": 1780947903.7362373,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_fuzz_against_oracle",
+                "status": "passed",
+                "duration": 0.0031612449674867094,
+                "start": 1780947903.7364762,
+                "stop": 1780947903.7401452,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_runtime_file_access_blocked",
+                "status": "passed",
+                "duration": 0.002203582029324025,
+                "start": 1780947903.740341,
+                "stop": 1780947903.7428746,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            },
+            {
+                "name": "test_outputs.py::test_performance_budget",
+                "status": "passed",
+                "duration": 0.022222709958441556,
+                "start": 1780947903.7430506,
+                "stop": 1780947903.765782,
+                "retries": 0,
+                "file_path": "test_outputs.py"
+            }
+        ]
+    }
+}

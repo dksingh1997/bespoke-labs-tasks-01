@@ -1,0 +1,2 @@
+Skipping image OS validation for python:3.11-slim-bookworm: docker inspect returned 1
+Trial aisc-tension-member__oiQev3K failed: Failed to start tmux session. Error: None

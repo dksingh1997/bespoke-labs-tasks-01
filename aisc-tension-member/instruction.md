@@ -1,0 +1,113 @@
+# AISC 360-22 §D2 — Tensile Strength of Steel Members
+
+Implement the design tensile strength of a steel member, accounting for both the **tensile yielding** limit state on the gross section and the **tensile rupture** limit state on the effective net section, per AISC 360-22 Specification, Section D2.
+
+Edit `/app/src/aisc_d2/tension.py` so that this import works:
+
+```python
+from aisc_d2 import tensile_strength
+```
+
+The function signature is:
+
+```python
+tensile_strength(Ag: float, Ae: float, Fy: float, Fu: float, method: str = "LRFD") -> dict
+```
+
+## Inputs
+
+| Symbol | Description | Units |
+|---|---|---|
+| `Ag` | Gross area of the cross section | in² |
+| `Ae` | Effective net area | in² |
+| `Fy` | Specified minimum yield stress | ksi |
+| `Fu` | Specified minimum tensile strength | ksi |
+| `method` | `"LRFD"` (Load and Resistance Factor Design) or `"ASD"` (Allowable Strength Design) | string |
+
+## Output
+
+Return a dictionary with these keys:
+
+```python
+{
+    "Pn_yield":   <nominal yielding strength, kips>,
+    "Pn_rupture": <nominal rupture strength, kips>,
+    "Pn":         <controlling nominal strength = min(Pn_yield, Pn_rupture), kips>,
+    "Pa":         <available (design) tensile strength, kips>,
+    "controls":   <"yielding" or "rupture">,
+}
+```
+
+## Formula (AISC 360-22 §D2)
+
+### Step 1 — Nominal Strengths
+
+```
+Pn_yield   = Fy · Ag      (Eq. D2-1)   — yielding on gross section
+Pn_rupture = Fu · Ae      (Eq. D2-2)   — rupture on net section
+```
+
+### Step 2 — Available Strength
+
+For each limit state, apply the appropriate resistance factor (LRFD) or safety factor (ASD):
+
+| Limit state | LRFD φ | ASD Ω |
+|---|---|---|
+| Yielding on gross section | φ = 0.90 | Ω = 1.67 |
+| Rupture on net section    | φ = 0.75 | Ω = 2.00 |
+
+```
+LRFD:  Pa_yield   = 0.90 · Pn_yield
+       Pa_rupture = 0.75 · Pn_rupture
+ASD:   Pa_yield   = Pn_yield   / 1.67
+       Pa_rupture = Pn_rupture / 2.00
+```
+
+### Step 3 — Controlling Limit State
+
+```
+Pa = min(Pa_yield, Pa_rupture)
+controls = "yielding"  if Pa_yield <= Pa_rupture else "rupture"
+```
+
+Also report the **nominal** controlling strength:
+
+```
+Pn = min(Pn_yield, Pn_rupture)
+```
+
+Note: the limit state that controls `Pa` (after applying φ or Ω) may differ from the one that would control `Pn`. The reported `controls` field must reflect which **available** strength is smaller.
+
+**Tie-break rule**: If `Pa_yield == Pa_rupture` exactly, report `controls = "yielding"` (i.e., use the comparison `Pa_yield <= Pa_rupture` → `"yielding"`).
+
+## Notes
+
+- All inputs are strictly positive.
+- `Ae ≤ Ag` is the physical constraint (effective net area cannot exceed gross area). The function must accept any positive `Ae` but a future caller should respect this.
+- `method` is case-insensitive (`"lrfd"`, `"LRFD"`, `"Lrfd"` all valid).
+- An invalid `method` (anything other than LRFD/ASD, case-insensitive) must raise `ValueError`.
+
+## Requirements
+
+- Implement only the formulas from AISC 360-22 §D2.
+- Do not import structural engineering libraries (`anastruct`, `opensees`, `sap2000`, `staad`, `etabs`, `engicalc`, `handcalcs`, `forallpeople`, `pycba`, `pynite`).
+- Do not read `/tests`, `.git`, or environment variables.
+
+## Worked Example
+
+A W10×33 with two bolt holes per flange:
+- `Ag = 9.71 in²`
+- `Ae = 8.20 in²` (after deducting bolt holes and applying shear lag factor)
+- `Fy = 50 ksi`
+- `Fu = 65 ksi`
+- `method = "LRFD"`
+
+Then:
+- `Pn_yield   = 50 · 9.71 = 485.5 kips`
+- `Pn_rupture = 65 · 8.20 = 533.0 kips`
+- `Pa_yield   = 0.90 · 485.5 = 436.95 kips`
+- `Pa_rupture = 0.75 · 533.0 = 399.75 kips`
+- `Pa = min(436.95, 399.75) = 399.75 kips`
+- `controls = "rupture"`
+
+Note that even though `Pn_yield < Pn_rupture`, the lower φ for rupture makes **rupture** control the design strength.

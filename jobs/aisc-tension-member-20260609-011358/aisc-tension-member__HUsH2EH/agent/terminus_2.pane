@@ -1,0 +1,65 @@
+[?2004hroot@199c3d4c588a:/app# asciinema rec --stdin /logs/agent/recording.cast
+[?2004l[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
+[?2004hroot@199c3d4c588a:/app# clear
+[?2004l[H[J[3J[?2004hroot@199c3d4c588a:/app# ls /app/src/aisc_d2/
+[?2004l__init__.py  tension.py
+[?2004hroot@199c3d4c588a:/app# cat /app/src/aisc_d2/__init__.py
+[?2004lfrom .tension import tensile_strength
+
+__all__ = ["tensile_strength"]
+[?2004hroot@199c3d4c588a:/app# cat > /app/src/aisc_d2/tension.py << 'EOF'
+[?2004l[?2004h> def tensile_strength(Ag: float, Ae: float, Fy: float, Fu: float, method: str = "LRFD") -> dict:
+[?2004l[?2004h>     if not isinstance(method, str):
+[?2004l[?2004h>         raise ValueError("method must be 'LRFD' or 'ASD'")
+[?2004l[?2004h>     m = method.strip().upper()
+[?2004l[?2004h>     if m not in ("LRFD", "ASD"):
+[?2004l[?2004h>         raise ValueError("method must be 'LRFD' or 'ASD'")
+[?2004l[?2004h> 
+[?2004l[?2004h>     Pn_yield = Fy * Ag
+[?2004l[?2004h>     Pn_rupture = Fu * Ae
+[?2004l[?2004h> 
+[?2004l[?2004h>     if m == "LRFD":
+[?2004l[?2004h>         Pa_yield = 0.90 * Pn_yield
+[?2004l[?2004h>         Pa_rupture = 0.75 * Pn_rupture
+[?2004l[?2004h>     else:
+[?2004l[?2004h>         Pa_yield = Pn_yield / 1.67
+[?2004l[?2004h>         Pa_rupture = Pn_rupture / 2.00
+[?2004l[?2004h> 
+[?2004l[?2004h>     Pn = min(Pn_yield, Pn_rupture)
+[?2004l[?2004h>     Pa = min(Pa_yield, Pa_rupture)
+[?2004l[?2004h>     controls = "yielding" if Pa_yield <= Pa_rupture else "rupture"
+[?2004l[?2004h> 
+[?2004l[?2004h>     return {
+[?2004l[?2004h>         "Pn_yield": Pn_yield,
+[?2004l[?2004h>         "Pn_rupture": Pn_rupture,
+[?2004l[?2004h>         "Pn": Pn,
+[?2004l[?2004h>         "Pa": Pa,
+[?2004l[?2004h>         "controls": controls,
+[?2004l[?2004h>     }
+[?2004l[?2004h> EOF
+[?2004l[?2004hroot@199c3d4c588a:/app# cd /app && python -c "from aisc_d2 import tensile_strength; print(tensile_strength(9.71, 8.20, 50, 65, 'LRFD'))"
+[?2004lTraceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'aisc_d2'
+[?2004hroot@199c3d4c588a:/app# ls /app && cat /app/pyproject.toml 2>/dev/null || cat /app/setup.py 2>/dev/null
+[?2004lREADME.md  pyproject.toml  src
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aisc-d2-task"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
+[?2004hroot@199c3d4c588a:/app# PYTHONPATH=/app/src python -c "from aisc_d2 import tensile_strength; print(tensile_strength(9.71, 8.20, 50, 65, 'LRFD'))"
+[?2004l{'Pn_yield': 485.50000000000006, 'Pn_rupture': 533.0, 'Pn': 485.50000000000006, 'Pa': 399.75, 'controls': 'rupture'}
+[?2004hroot@199c3d4c588a:/app# 

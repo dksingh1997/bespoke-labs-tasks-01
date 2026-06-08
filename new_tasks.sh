@@ -3,3 +3,5 @@ code-formatter-rust-rs
 code-formatter-py-py
 code-formatter-c-c
 code-formatter-java-java
+heap-allocator
+regex-engine

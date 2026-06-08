@@ -1,0 +1,37 @@
+{
+    "id": "202e0a72-97da-431e-b94b-31dd5801518d",
+    "started_at": "2026-06-09T01:09:26.333769",
+    "updated_at": "2026-06-09T01:10:35.604461",
+    "finished_at": "2026-06-09T01:10:35.604461",
+    "n_total_trials": 1,
+    "stats": {
+        "n_completed_trials": 1,
+        "n_errored_trials": 1,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
+        "n_cancelled_trials": 0,
+        "n_retries": 0,
+        "evals": {
+            "terminus-2__claude-opus-4-7__adhoc": {
+                "n_trials": 0,
+                "n_errors": 1,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {},
+                "reward_stats": {},
+                "exception_stats": {
+                    "RuntimeError": [
+                        "aisc-tension-member__oiQev3K"
+                    ]
+                }
+            }
+        },
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null
+    }
+}

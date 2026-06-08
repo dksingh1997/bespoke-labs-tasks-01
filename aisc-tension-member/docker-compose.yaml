@@ -1,0 +1,15 @@
+services:
+  client:
+    image: ${T_BENCH_TASK_DOCKER_IMAGE_NAME}
+    container_name: ${T_BENCH_TASK_DOCKER_CLIENT_CONTAINER_NAME}
+    build:
+      context: ./environment
+      dockerfile: Dockerfile
+    working_dir: /app
+    command: ["sleep", "infinity"]
+    cpus: 2
+    mem_limit: 2g
+    pids_limit: 2048
+    volumes:
+      - ${T_BENCH_TASK_LOGS_PATH}:/logs
+      - ${T_BENCH_TASK_AGENT_LOGS_PATH}:/agent-logs

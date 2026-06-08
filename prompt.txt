@@ -1,0 +1,154 @@
+You are designing Harbor evaluation tasks that will challenge frontier models like Claude Opus 4.7. These models are extremely strong at coding tasks — they implement correct solutions from scratch, handle edge cases, and pass adversarial test suites. Your job is to create tasks where they WILL FAIL.
+
+## Core Principle: Clear Spec, Hard Implementation
+
+The spec must be COMPLETELY CLEAR and UNAMBIGUOUS. A human reading the spec should know exactly what to implement. The difficulty comes from the implementation being genuinely hard — not from trick questions, ambiguity, or hidden requirements. If the spec says "do X," the agent must do X. There are no gotchas.
+
+## Why Strong Models Fail (Even With Clear Specs)
+
+Frontier models fail when:
+1. Correct behavior requires tracking complex state across many steps (errors compound)
+2. The task requires exact numerical/bit-level precision (off-by-one is fatal)
+3. Spatial reasoning is required (models are bad at 2D/3D layouts)
+4. Concurrent/interleaved operations must be tracked (race conditions, ordering)
+5. Multiple features interact in ways that produce surprising edge cases
+6. The implementation requires careful backtracking with state restoration
+7. The output format is extremely strict (one wrong field = 0 score)
+8. The algorithm has exponential branching that must be explored correctly
+
+## Task Design Principles
+
+### 1. Stateful Multi-Step Protocols
+Design protocols where each step changes the state for future steps. A mistake in step 3 corrupts steps 4-100. Models get the first 10 right and then diverge.
+
+Key technique: Make the state transitions non-obvious. Instead of "increment counter," use "XOR counter with previous value modulo prime." The spec clearly defines each transition — but implementing all of them correctly is hard.
+
+### 2. Bit-Level Precision Tasks
+Tasks where the answer is a binary/hex string and every bit must be correct. Models get 95% of the bits right and fail on the last 5%.
+
+Key technique: Use custom encoding schemes with non-standard bit packing (e.g., big-endian fields within little-endian frames, or fields that cross byte boundaries). The spec defines the exact bit layout — there's no ambiguity, just complexity.
+
+### 3. Adversarial Test Case Design
+Design test cases that specifically exploit model tendencies:
+- Models prefer greedy matching → add tests where non-greedy is correct
+- Models handle common cases first → add edge cases that break common implementations
+- Models pattern-match from training data → add patterns where the "standard" approach is wrong
+- Models handle simple examples correctly → add examples where simplicity is deceptive
+
+The spec clearly defines the expected behavior for all these cases. The model just fails to implement it correctly.
+
+### 4. Compound Feature Interactions
+When a task has features A, B, C, the hard part isn't A, B, or C in isolation — it's A+B+C together. Design tests that exercise feature combinations:
+- Feature A works alone ✓
+- Feature B works alone ✓
+- Feature C works alone ✓
+- A+B works ✓
+- A+C works ✓
+- B+C works ✓
+- A+B+C FAILS ← this is what you want
+
+Each feature is clearly specified. The interaction is where models break down.
+
+### 5. Deep Backtracking with State
+Tasks that require exploring multiple solution paths while maintaining state. The model must backtrack and restore state correctly. Common failure: model explores path A, modifies state, backtracks, but doesn't fully restore state before exploring path B.
+
+Key technique: Design problems where the state is large (many variables) and backtracking requires restoring ALL of it. Models often miss one variable.
+
+### 6. Precise Algorithmic Specifications
+Define an algorithm with specific tie-breaking rules, ordering requirements, or edge case handling. The spec says exactly what to do in every case. Models implement the general algorithm but miss the specific tie-breaking rules.
+
+Example: "When two items have equal priority, process the one that arrived first. When both arrived at the same time, process the one with the lower ID." Models get the priority sort right but miss the secondary sort.
+
+## Task Template
+
+Each task must follow this Harbor structure:
+
+```
+task-name/
+├── task.toml          # Metadata, difficulty, timeouts
+├── instruction.md     # Clear, precise description of what to implement
+├── environment/
+│   ├── Dockerfile     # Container setup
+│   └── workspace/     # Files the agent sees (specs, input data, stubs)
+├── tests/
+│   ├── test.sh        # Harbor verifier (runs agent's solution, compares output)
+│   └── expected_output.jsonl  # Ground truth (generated deterministically)
+└── solution/
+    ├── solution.*     # Reference implementation that passes all tests
+    └── solve.sh       # Copies solution into workspace
+```
+
+## instruction.md Requirements
+
+The instruction.md must:
+- Clearly state what to implement
+- Point to the spec file for detailed behavior
+- Show example input/output (at least 2-3 examples)
+- Specify the exact output format
+- State the scoring criteria
+
+The instruction.md must NOT:
+- Contain hidden requirements
+- Be ambiguous about expected behavior
+- Require assumptions about edge cases not covered in the spec
+
+## spec.md Requirements
+
+The spec file must:
+- Define every feature completely
+- Specify behavior for all edge cases
+- Include examples for each feature
+- Define the exact data format (bit layouts, field sizes, byte order)
+- Specify ordering, tie-breaking, and priority rules
+
+The spec must be complete enough that a human could implement the solution without any additional information.
+
+## Scoring Rules
+
+- Score = correct / total (0.0 to 1.0)
+- Each test case is either correct or wrong (no partial credit)
+- Comparison must be exact (field values, ordering, types)
+- Use deterministic test generation (fixed seed, no randomness)
+- Include 100-200 test cases spanning easy → adversarial
+
+## What NOT To Do
+
+- Don't make tasks that require external knowledge (APIs, specific libraries)
+- Don't make tasks that require internet access
+- Don't make tasks where the reference solution is wrong
+- Don't make tasks that are trivially solvable by running an existing tool
+- Don't make tasks that require GPU or heavy compute
+- Don't make specs that are ambiguous or incomplete
+- Don't make tasks where the "trick" is reading the spec carefully — the difficulty must be in the implementation
+
+## The Goal
+
+Create tasks where:
+- A human expert would score 90-100% (the spec is clear, implementation is just hard)
+- Claude Opus 4.7 scores 40-70% (gets the basics right, fails on complex interactions)
+- Claude Sonnet 4 scores 10-40% (fails earlier in the complexity chain)
+- GPT-4o scores 20-50% (different failure modes than Claude)
+
+The gap between human and model performance is the signal. Tasks where models score 100% are not useful — we need tasks that expose model weaknesses.
+
+## Specific Task Ideas That Work
+
+1. **Custom hash function with collision chains** — implement a hash table with open addressing, specific probe sequences, and deletion via tombstones. The spec is clear about the probe sequence (linear, quadratic, or double hashing) and tombstone handling. Models get basic insert/lookup right but fail on deletion + re-insertion edge cases.
+
+2. **Concurrent queue with priority and FIFO** — implement a queue where items have priority levels, and within the same priority, FIFO order is maintained. The spec clearly defines enqueue, dequeue, and peek behavior. Models implement priority OR FIFO correctly, not both.
+
+3. **Binary protocol with stateful encryption** — decode messages where the encryption key changes based on previous messages. The spec defines the key derivation function, frame format, and all message types. Models get the first 10 messages right then diverge when the key changes.
+
+4. **Memory allocator with specific coalescing rules** — implement malloc/free where free blocks must be coalesced with adjacent free blocks in a specific order (left-to-right, then right-to-left). The spec clearly defines the coalescing policy. Models implement basic allocation but get coalescing wrong.
+
+5. **Regex engine with backreferences** — implement regex matching where backreferences interact with quantifiers. The spec defines all features (literals, groups, quantifiers, backreferences, non-greedy). Models handle basic regex but fail on backreference edge cases.
+
+6. **Custom floating-point format** — implement add/multiply/divide in a non-standard float format (e.g., 5-bit exponent, 11-bit mantissa, biased exponent). The spec defines the exact bit layout and rounding rules. Models get the exponent/mantissa handling wrong.
+
+7. **State machine compiler** — compile a state machine description into a specific output format (transition table, minimized DFA, or bytecode). The spec defines the input format, minimization algorithm, and output format. Models get the states right but miss transitions.
+
+8. **Graph algorithm with custom ordering** — implement Dijkstra's with a specific tie-breaking rule (lower node ID first). The spec clearly defines the ordering. Models implement the algorithm but get the ordering wrong.
+
+9. **B+ tree with specific split/merge rules** — implement insert/delete with a specific split strategy (always split right, redistribute before merge). The spec defines the exact split/merge behavior. Models get basic insert right but fail on delete + rebalance.
+
+10. **Custom CPU emulator** — implement an emulator for a fictional ISA with specific flag behavior (carry, zero, overflow, sign). The spec defines each instruction's effect on flags. Models get the basic instructions right but miss flag edge cases.

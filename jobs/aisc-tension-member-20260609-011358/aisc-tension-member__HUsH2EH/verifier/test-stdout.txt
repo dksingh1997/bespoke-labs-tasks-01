@@ -1,0 +1,24 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.2.2, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 13 items
+
+../tests/test_outputs.py .............                                   [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_static_scan_for_forbidden_imports
+PASSED ../tests/test_outputs.py::test_public_api_returns_required_keys
+PASSED ../tests/test_outputs.py::test_worked_example_w10x33_lrfd
+PASSED ../tests/test_outputs.py::test_worked_example_asd
+PASSED ../tests/test_outputs.py::test_yielding_controls_when_ae_equals_ag
+PASSED ../tests/test_outputs.py::test_method_case_insensitive
+PASSED ../tests/test_outputs.py::test_invalid_method_raises
+PASSED ../tests/test_outputs.py::test_pn_is_minimum_of_nominal_values
+PASSED ../tests/test_outputs.py::test_structured_inputs_match_oracle
+PASSED ../tests/test_outputs.py::test_metamorphic_area_scaling
+PASSED ../tests/test_outputs.py::test_fuzz_against_oracle
+PASSED ../tests/test_outputs.py::test_runtime_file_access_blocked
+PASSED ../tests/test_outputs.py::test_performance_budget
+============================== 13 passed in 0.10s ==============================
