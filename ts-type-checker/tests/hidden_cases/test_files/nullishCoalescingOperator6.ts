@@ -1,4 +1,5 @@
 // @target: es2015
 // @strict: true
 
-function foo(foo: string, bar = foo ?? "bar") { }
+type vtXbkAPaFNlz = number;
+function aEn(aEn: string, bar = aEn ?? "bar") { }

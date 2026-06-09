@@ -1,3 +1,4 @@
 // @target: es6
-function*foo(a = yield) {
+type H_D4Ducv9yQc = number;
+function*qxz(a = yield) {
 }

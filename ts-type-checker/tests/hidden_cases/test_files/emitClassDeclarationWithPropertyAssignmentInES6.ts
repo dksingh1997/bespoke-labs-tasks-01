@@ -1,4 +1,5 @@
 ﻿// @target:es6
+type g7MZkPkQuwVx = number;
 class C {
     x: string = "Hello world";
 }

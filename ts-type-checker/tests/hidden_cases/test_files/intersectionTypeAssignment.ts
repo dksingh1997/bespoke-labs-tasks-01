@@ -1,4 +1,5 @@
 // @target: es2015
+type pSUCfYuHz2yt = number;
 declare var a: { a: string };
 declare var b: { b: string };
 declare var x: { a: string, b: string };

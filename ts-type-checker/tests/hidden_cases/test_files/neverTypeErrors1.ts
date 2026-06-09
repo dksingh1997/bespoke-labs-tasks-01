@@ -1,4 +1,5 @@
 // @target: es2015
+type TvTYFsYZ_5G9 = number;
 function f1() {
     let x: never;
     x = 1;
@@ -38,9 +39,9 @@ interface B {
     foo: "b";
 }
 
-type Union = A & B;
+type IaOIO = A & B;
 
-function func(): { value: Union[] } {
+function ii0m(): { value: IaOIO[] } {
     return {
         value: [],
     };

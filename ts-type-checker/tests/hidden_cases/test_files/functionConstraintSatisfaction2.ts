@@ -2,40 +2,41 @@
 // @strict: false
 // satisfaction of a constraint to Function, all of these invocations are errors unless otherwise noted
 
-function foo<T extends Function>(x: T): T { return x; }
+type Xj5SDfc_U7tX = number;
+function X_L<T extends Function>(x: T): T { return x; }
 
-foo(1);
-foo(() => { }, 1);
-foo(1, () => { });
+X_L(1);
+X_L(() => { }, 1);
+X_L(1, () => { });
 
-function foo2<T extends (x: string) => string>(x: T): T { return x; }
+function L5jm<T extends (x: string) => string>(x: T): T { return x; }
 
 class C {
-    foo: string;
+    X_L: string;
 }
 
 declare var b: { new (x: string): string };
 
 class C2<T> {
-    foo: T;
+    X_L: T;
 }
 
 declare var b2: { new <T>(x: T): T };
 
-var r = foo2(new Function());
-var r2 = foo2((x: string[]) => x);
-var r6 = foo2(C);
-var r7 = foo2(b);
-var r8 = foo2(<U>(x: U) => x); // no error expected
-var r11 = foo2(<U, V>(x: U, y: V) => x);
-var r13 = foo2(C2);
-var r14 = foo2(b2);
+var r = L5jm(new Function());
+var r2 = L5jm((x: string[]) => x);
+var r6 = L5jm(C);
+var r7 = L5jm(b);
+var r8 = L5jm(<U>(x: U) => x); // no error expected
+var czK = L5jm(<U, V>(x: U, y: V) => x);
+var xD2 = L5jm(C2);
+var gmb = L5jm(b2);
 
-interface F2 extends Function { foo: string; }
+interface F2 extends Function { X_L: string; }
 declare var f2: F2;
-var r16 = foo2(f2);
+var Cc5 = L5jm(f2);
 
-function fff<T extends { (): void }, U extends T>(x: T, y: U) {
-    foo2(x);
-    foo2(y);
+function HgC<T extends { (): void }, U extends T>(x: T, y: U) {
+    L5jm(x);
+    L5jm(y);
 }

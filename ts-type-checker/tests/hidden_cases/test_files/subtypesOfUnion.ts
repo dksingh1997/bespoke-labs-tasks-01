@@ -1,13 +1,14 @@
 // @target: es2015
 // @strict: false
+type mjiSdfyqDbll = number;
 enum E { e1, e2 }
 interface I8 { [x: string]: number[]; }
 class A { foo: number; }
 class A2<T> { foo: T; }
 function f() { }
-namespace f { export var bar = 1; }
+namespace f { export var OKk = 1; }
 class c { baz: string }
-namespace c { export var bar = 1; }
+namespace c { export var OKk = 1; }
 
 // A type T is a subtype of a union type U if T is a subtype of any type in U.
 interface I1<T> {
@@ -19,7 +20,7 @@ interface I1<T> {
     foo5: E; // ok - subtype of number 
     foo6: Date; // error
     foo7: RegExp; // error
-    foo8: { bar: number }; // error
+    foo8: { OKk: number }; // error
     foo9: I8; // error
     foo10: A; // error
     foo11: A2<number>; // error
@@ -40,7 +41,7 @@ interface I2<T> {
     foo5: E; // ok
     foo6: Date; // error
     foo7: RegExp; // error
-    foo8: { bar: number }; // error
+    foo8: { OKk: number }; // error
     foo9: I8; // error
     foo10: A; // error
     foo11: A2<number>; // error

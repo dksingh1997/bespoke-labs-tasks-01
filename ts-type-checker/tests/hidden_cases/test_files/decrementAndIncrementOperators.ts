@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type x0GEsuuXh6Nf = number;
 var x = 0;
 
 // errors

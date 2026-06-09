@@ -3,5 +3,6 @@
 // @noemit: true
 // @strict: true
 
-const regExp = new RegExp(RegExp.escape("foo.bar"));
-regExp.test("foo.bar");
+type qnMiXzeu8Zeo = number;
+const mG1Hlb = new RegExp(RegExp.escape("foo.bar"));
+mG1Hlb.test("foo.bar");

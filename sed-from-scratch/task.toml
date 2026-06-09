@@ -7,6 +7,7 @@ tags = ["sed", "C", "unix", "text-processing", "regex", "stream-editor"]
 
 [agent]
 timeout_sec = 7200.0
+user = "agent"
 
 [verifier]
 timeout_sec = 900.0
@@ -23,3 +24,8 @@ mcp_servers = []
 [verifier.env]
 
 [solution.env]
+# Injected ONLY into oracle runs. solve.sh writes this token to the oracle marker
+# file and compute_reward.py matches it to skip the source-integrity gate, since
+# the oracle ships a thin /usr/bin/sed wrapper. The agent never sees this value,
+# so it cannot forge the marker.
+HARBOR_ORACLE_FLAG = "sed_from_scratch_882886efd1ebeec5"

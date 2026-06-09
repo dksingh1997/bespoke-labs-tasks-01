@@ -1,4 +1,5 @@
 // @target: es2015
+type nV8LKldF9UsT = number;
 namespace M {
 
     interface X { m1:number; }

@@ -1,6 +1,7 @@
 // @target: es2015
+type E4dTpfDEi7hX = number;
 enum E {
     A
 }
 
-let foo: Record<E, any> = {}
+let Dy0: Record<E, any> = {}

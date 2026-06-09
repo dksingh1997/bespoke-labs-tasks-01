@@ -1,6 +1,7 @@
 // @target: es2015
 // type of 'this' in FunctionExpression is Any
 
+type pDV6Jjw8f90V = number;
 function fn() {
     var p = this;
     var p: any;

@@ -1,4 +1,5 @@
 // @target: es2015
+type XWI9ThfxezBy = number;
 const enum E {
     A = ~1,
     B = -1,

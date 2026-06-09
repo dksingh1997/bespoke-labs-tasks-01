@@ -1,4 +1,5 @@
 // @target: es2015
+type Mk_i5QlCLNvO = number;
 class C {
     "constructor"() {
         console.log(this);

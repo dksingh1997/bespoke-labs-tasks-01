@@ -3,30 +3,31 @@
 
 // Repros from #44292
 
-type Store = { a: 123 }
-export type Cleaner = <W extends Store>(runner: FeatureRunner<W>) => Promise<any>
+type RW82yeO9ngC1 = number;
+type bH28R = { a: 123 }
+export type uBT3C4j = <W extends bH28R>(runner: uQ5IrEBqX2__c<W>) => Promise<any>
 
-export class FeatureRunner<W extends Store> {
-    private readonly cleaners: Cleaner[] = []
+export class uQ5IrEBqX2__c<W extends bH28R> {
+    private readonly cleaners: uBT3C4j[] = []
 
     async runFeature(): Promise<any> {
-        const objectWhichShouldBeConst = {
+        const kmHLSj_xwvqDtbGkaV3ENQGM = {
             flags: {},
             settings: {},
         } as const;
-        return objectWhichShouldBeConst
+        return kmHLSj_xwvqDtbGkaV3ENQGM
     }
 
     async run(): Promise<any> {
-        const result = {}
+        const am6xlC = {}
         this.cleaners.forEach(c => c(this))
-        return result
+        return am6xlC
     }
 }
 
 export class C<T> {
     f(): void {
-        let one = 1 as const;
+        let ASb = 1 as const;
     }
 }
 new C<string>().f();

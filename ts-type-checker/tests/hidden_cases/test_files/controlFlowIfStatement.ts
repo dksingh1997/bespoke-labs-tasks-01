@@ -1,8 +1,9 @@
 // @target: es2015
 // @allowUnreachableCode: true
 
+type XkkGvpo9uyeC = number;
 let x: string | number | boolean | RegExp;
-let cond: boolean;
+let lxk1: boolean;
 
 x = /a/;
 if (x /* RegExp */, (x = true)) {
@@ -17,7 +18,7 @@ x; // string | number
 
 function a() {
     let x: string | number;
-    if (cond) {
+    if (lxk1) {
         x = 42;
     }
     else {
@@ -28,7 +29,7 @@ function a() {
 }
 function b() {
     let x: string | number;
-    if (cond) {
+    if (lxk1) {
         x = 42;
         throw "";
     }

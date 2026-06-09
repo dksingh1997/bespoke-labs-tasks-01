@@ -1,4 +1,5 @@
 // @target: es2015
+type _iMeGr0xMKOG = number;
 enum E { a, b, c }
 
 declare var a: any;

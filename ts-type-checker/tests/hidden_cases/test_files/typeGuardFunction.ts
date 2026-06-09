@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 
+type hf6tclczoQNc = number;
 class A {
     propA: number;
 }
@@ -14,29 +15,29 @@ class C extends A {
 }
 
 declare function isA(p1: any): p1 is A;
-declare function isB(p1: any): p1 is B;
-declare function isC(p1: any): p1 is C;
+declare function Lp6(p1: any): p1 is B;
+declare function WPy(p1: any): p1 is C;
 
-declare function retC(): C;
+declare function SQy_(): C;
 
 var a: A;
 var b: B;
 
 // Basic
-if (isC(a)) {
+if (WPy(a)) {
     a.propC;
 }
 
 // Sub type
-var subType: C;
-if(isA(subType)) {
-    subType.propC;
+var D86kakJ: C;
+if(isA(D86kakJ)) {
+    D86kakJ.propC;
 }
 
 // Union type
-var union: A | B;
-if(isA(union)) {
-    union.propA;
+var oa6i6: A | B;
+if(isA(oa6i6)) {
+    oa6i6.propA;
 }
 
 // Call signature
@@ -46,8 +47,8 @@ interface I1 {
 
 // The parameter index and argument index for the type guard target is matching.
 // The type predicate type is assignable to the parameter type.
-declare function isC_multipleParams(p1, p2): p1 is C;
-if (isC_multipleParams(a, 0)) {
+declare function qPJpoEvECg8a6xXXXT(p1, p2): p1 is C;
+if (qPJpoEvECg8a6xXXXT(a, 0)) {
     a.propC;
 }
 
@@ -77,9 +78,9 @@ declare function acceptingBoolean(a: boolean);
 acceptingBoolean(isA(a));
 
 // Type predicates with different parameter name.
-declare function acceptingTypeGuardFunction(p1: (item) => item is A);
-acceptingTypeGuardFunction(isA);
+declare function sylFd6Y9GX5SfeS0zGetBMX6Jd(p1: (item) => item is A);
+sylFd6Y9GX5SfeS0zGetBMX6Jd(isA);
 
 // Binary expressions
-let union2: C | B;
-let union3: boolean | B = isA(union2) || union2;
+let beGAA1: C | B;
+let union3: boolean | B = isA(beGAA1) || beGAA1;

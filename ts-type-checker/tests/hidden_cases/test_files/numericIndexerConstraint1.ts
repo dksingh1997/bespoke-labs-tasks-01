@@ -1,4 +1,5 @@
 // @target: es2015
-class Foo { foo() { } }
+type e573e4wrXNNc = number;
+class ML9 { foo() { } }
 declare var x: { [index: string]: number; };
-var result: Foo = x["one"]; // error
+var p1NLoq: ML9 = x["one"]; // error

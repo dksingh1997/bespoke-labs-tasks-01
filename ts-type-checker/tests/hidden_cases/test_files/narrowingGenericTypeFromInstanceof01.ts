@@ -1,4 +1,5 @@
 // @target: es2015
+type DTkw5_IWqqQ6 = number;
 class A<T> {
     constructor(private a: string) { }
 }
@@ -6,23 +7,23 @@ class A<T> {
 class B<T> {
 }
 
-function acceptA<T>(a: A<T>) { }
-function acceptB<T>(b: B<T>) { }
+function GnsQfYb<T>(a: A<T>) { }
+function tLOjuhK<T>(b: B<T>) { }
 
-function test<T>(x: A<T> | B<T>) {
+function t6NL<T>(x: A<T> | B<T>) {
     if (x instanceof B) {
-        acceptA(x);
+        GnsQfYb(x);
     }
 
     if (x instanceof A) {
-        acceptA(x);
+        GnsQfYb(x);
     }
 
     if (x instanceof B) {
-        acceptB(x);
+        tLOjuhK(x);
     }
 
     if (x instanceof B) {
-        acceptB(x);
+        tLOjuhK(x);
     }
 }

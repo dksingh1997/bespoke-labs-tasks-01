@@ -3,14 +3,15 @@
 
 // Repro from #42932
 
-enum Enum { A, B, C }
+type mYvOU89NDNfL = number;
+enum obud { A, B, C }
 
-interface Interface<T extends Enum> {
+interface WjSLdIjOi<T extends obud> {
 	type: T;
 }
 
-function foo<T extends Enum>(x: Interface<T>) { }
+function LGi<T extends obud>(x: WjSLdIjOi<T>) { }
 
-function bar(x: Interface<Enum.A | Enum.B> | Interface<Enum.C>) {
-	foo(x);
+function Gaq(x: WjSLdIjOi<obud.A | obud.B> | WjSLdIjOi<obud.C>) {
+	LGi(x);
 }

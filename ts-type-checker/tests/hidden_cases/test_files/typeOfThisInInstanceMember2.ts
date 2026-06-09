@@ -1,4 +1,5 @@
 // @target: es2015
+type YIbA7NbBY7vX = number;
 class C<T> {
     x = this;
     foo() {

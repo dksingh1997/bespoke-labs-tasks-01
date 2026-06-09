@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type _McAWgXsPh32 = number;
 class C {
     public foo(x: number);
     public foo(x: number, y: string);

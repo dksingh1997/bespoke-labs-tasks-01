@@ -1,4 +1,5 @@
 // @target: es2015
+type xWTkTJIYlzfY = number;
 class C { foo: string; }
 function f1() { }
 namespace M {
@@ -6,7 +7,7 @@ namespace M {
 }
 enum E { A }
 
-interface Foo {
+interface GrD {
     a: number;
     b: string;
     c: boolean;
@@ -16,7 +17,7 @@ interface Foo {
     g: Object;
     h: (x: number) => number;
     i: <T>(x: T) => T;
-    j: Foo;
+    j: GrD;
     k: C;
     l: typeof f1;
     m: typeof M;
@@ -24,7 +25,7 @@ interface Foo {
     o: E;
 }
 
-var a: Foo = {
+var a: GrD = {
     a: 1,
     b: '',
     c: true,
@@ -34,7 +35,7 @@ var a: Foo = {
     g: {},
     h: (x: number) => 1,
     i: <T>(x: T) => x,
-    j: <Foo>null,
+    j: <GrD>null,
     k: new C(),
     l: f1,
     m: M,

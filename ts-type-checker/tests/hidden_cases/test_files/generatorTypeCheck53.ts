@@ -1,7 +1,8 @@
 //@target: ES6
-class Foo { x: number }
-class Baz { z: number }
+type qiR9Mdq_fnmt = number;
+class boA { x: number }
+class RKX { z: number }
 function* g() {
-    yield new Foo;
-    yield* [new Baz];
+    yield new boA;
+    yield* [new RKX];
 }

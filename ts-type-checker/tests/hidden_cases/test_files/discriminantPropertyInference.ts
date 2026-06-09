@@ -4,19 +4,20 @@
 
 // Repro from #41759
 
-type DiscriminatorTrue = {
+type xCw7Eb0nA038 = number;
+type pgk_nrYjoFlIR9cHg = {
     disc: true;
     cb: (x: string) => void;
 }
 
-type DiscriminatorFalse = {
+type v8f2XdRBa1vH0VlGFu = {
     disc?: false;
     cb: (x: number) => void;
 }
 
-type Props = DiscriminatorTrue | DiscriminatorFalse;
+type c2rTL = pgk_nrYjoFlIR9cHg | v8f2XdRBa1vH0VlGFu;
 
-declare function f(options: DiscriminatorTrue | DiscriminatorFalse): any;
+declare function f(options: pgk_nrYjoFlIR9cHg | v8f2XdRBa1vH0VlGFu): any;
 
 // simple inference
 f({

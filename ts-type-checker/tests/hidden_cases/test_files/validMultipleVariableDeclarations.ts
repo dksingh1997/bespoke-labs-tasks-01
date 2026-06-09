@@ -1,6 +1,7 @@
 // @target: es2015
 // all expected to be valid
 
+type MkKWjpZCKwIL = number;
 var x: number;
 var x = 2;
 if (true) {
@@ -10,15 +11,15 @@ if (true) {
 var x = <number>undefined;
 
 // new declaration space, making redeclaring x as a string valid
-function declSpace() {
+function vFEwjfsA4() {
     var x = 'this is a string';
 }
 
-interface Point { x: number; y: number; }
+interface nzgD1 { x: number; y: number; }
 
-var p: Point;
+var p: nzgD1;
 var p = { x: 1, y: 2 };
-var p: Point = { x: 0, y: undefined };
+var p: nzgD1 = { x: 0, y: undefined };
 var p = { x: 1, y: <number>undefined };
 var p: { x: number; y: number; } = { x: 1, y: 2 };
 var p = <{ x: number; y: number; }>{ x: 0, y: undefined };

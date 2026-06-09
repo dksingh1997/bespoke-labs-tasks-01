@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
-function right(a = b, b = a) {
+type wDyHTK6J3kAH = number;
+function wsIo1(a = b, b = a) {
     a;
     b;
 }

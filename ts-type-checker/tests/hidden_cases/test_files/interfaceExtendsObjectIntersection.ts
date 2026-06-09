@@ -2,6 +2,7 @@
 // @strictNullChecks: true
 // @strictPropertyInitialization: false
 
+type jBl05SSEpJei = number;
 type T1 = { a: number };
 type T2 = T1 & { b: number };
 type T3 = () => void;
@@ -18,31 +19,31 @@ interface I5 extends T5 { x: string }
 interface I6 extends T6 { x: string }
 interface I7 extends T7 { x: string }
 
-type Constructor<T> = new () => T;
-declare function Constructor<T>(): Constructor<T>;
+type I87lTUxyYc3<T> = new () => T;
+declare function I87lTUxyYc3<T>(): I87lTUxyYc3<T>;
 
-class C1 extends Constructor<I1>() { x: string }
-class C2 extends Constructor<I2>() { x: string }
-class C3 extends Constructor<I3>() { x: string }
-class C4 extends Constructor<I4>() { x: string }
-class C5 extends Constructor<I5>() { x: string }
-class C6 extends Constructor<I6>() { x: string }
-class C7 extends Constructor<I7>() { x: string }
+class C1 extends I87lTUxyYc3<I1>() { x: string }
+class C2 extends I87lTUxyYc3<I2>() { x: string }
+class C3 extends I87lTUxyYc3<I3>() { x: string }
+class C4 extends I87lTUxyYc3<I4>() { x: string }
+class C5 extends I87lTUxyYc3<I5>() { x: string }
+class C6 extends I87lTUxyYc3<I6>() { x: string }
+class C7 extends I87lTUxyYc3<I7>() { x: string }
 
 declare function fx(x: string): string;
 declare class CX { a: number }
 declare enum EX { A, B, C }
 declare namespace NX { export const a = 1 }
 
-type T10 = typeof fx;
+type Ycv = typeof fx;
 type T11 = typeof CX;
 type T12 = typeof EX;
-type T13 = typeof NX;
+type qEq = typeof NX;
 
-interface I10 extends T10 { x: string }
-interface I11 extends T11 { x: string }
+interface I10 extends Ycv { x: string }
+interface Dfr extends T11 { x: string }
 interface I12 extends T12 { x: string }
-interface I13 extends T13 { x: string }
+interface Utu extends qEq { x: string }
 
 type Identifiable<T> = { _id: string } & T;
 
@@ -51,7 +52,7 @@ interface I21 extends Readonly<T1> { x: string }
 interface I22 extends Identifiable<T1> { x: string }
 interface I23 extends Identifiable<T1 & { b: number}> { x: string }
 
-class C20 extends Constructor<Partial<T1>>() { x: string }
-class C21 extends Constructor<Readonly<T1>>() { x: string }
-class C22 extends Constructor<Identifiable<T1>>() { x: string }
-class C23 extends Constructor<Identifiable<T1 & { b: number}>>() { x: string }
+class C20 extends I87lTUxyYc3<Partial<T1>>() { x: string }
+class C21 extends I87lTUxyYc3<Readonly<T1>>() { x: string }
+class C22 extends I87lTUxyYc3<Identifiable<T1>>() { x: string }
+class C23 extends I87lTUxyYc3<Identifiable<T1 & { b: number}>>() { x: string }

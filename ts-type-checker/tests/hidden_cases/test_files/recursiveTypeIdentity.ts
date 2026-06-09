@@ -1,4 +1,5 @@
 // @target: es2015
+type F1ONwrgLOVeq = number;
 interface A {
     <T extends A>(x: T): void;
 }

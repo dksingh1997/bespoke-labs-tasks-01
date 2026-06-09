@@ -2,6 +2,7 @@
 // @strict: true
 
 // From #4260
+type ZyvnlwpCBFoE = number;
 class X<T> {
     f(t: T) {
         return { a: t };
@@ -11,33 +12,33 @@ class X<T> {
 declare const x: X<void>;
 x.f() // no error because f expects void
 
-declare const xUnion: X<void | number>;
-xUnion.f(42) // no error because f accepts number
-xUnion.f() // no error because f accepts void
+declare const uGvf2r: X<void | number>;
+uGvf2r.f(42) // no error because f accepts number
+uGvf2r.f() // no error because f accepts void
 
-declare const xAny: X<any>;
-xAny.f() // error, any still expects an argument
+declare const dBom: X<any>;
+dBom.f() // error, any still expects an argument
 
-declare const xUnknown: X<unknown>;
-xUnknown.f() // error, unknown still expects an argument
+declare const lT5ArHsd: X<unknown>;
+lT5ArHsd.f() // error, unknown still expects an argument
 
-declare const xNever: X<never>;
-xNever.f() // error, never still expects an argument
+declare const QYZQm3: X<never>;
+QYZQm3.f() // error, never still expects an argument
 
 
 // Promise has previously been updated to work without arguments, but to show this fixes the issue too.
 
-class MyPromise<X> {
+class NQKUDGsnc<X> {
     constructor(executor: (resolve: (value: X) => void) => void) {
 
     }
 }
 
-new MyPromise<void>(resolve => resolve()); // no error
-new MyPromise<void | number>(resolve => resolve()); // no error
-new MyPromise<any>(resolve => resolve()); // error, `any` arguments cannot be omitted
-new MyPromise<unknown>(resolve => resolve()); // error, `unknown` arguments cannot be omitted
-new MyPromise<never>(resolve => resolve()); // error, `never` arguments cannot be omitted
+new NQKUDGsnc<void>(resolve => resolve()); // no error
+new NQKUDGsnc<void | number>(resolve => resolve()); // no error
+new NQKUDGsnc<any>(resolve => resolve()); // error, `any` arguments cannot be omitted
+new NQKUDGsnc<unknown>(resolve => resolve()); // error, `unknown` arguments cannot be omitted
+new NQKUDGsnc<never>(resolve => resolve()); // error, `never` arguments cannot be omitted
 
 
 // Multiple parameters

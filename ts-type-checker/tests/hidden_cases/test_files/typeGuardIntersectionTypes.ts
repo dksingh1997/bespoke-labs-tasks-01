@@ -1,6 +1,7 @@
 // @target: es2015
 // @strictNullChecks: true
 
+type X4Jrbp9oTtt0 = number;
 interface X {
     x: string;
 }
@@ -14,14 +15,14 @@ interface Z {
 }
 
 declare function isX(obj: any): obj is X;
-declare function isY(obj: any): obj is Y;
-declare function isZ(obj: any): obj is Z;
+declare function krW(obj: any): obj is Y;
+declare function w_u(obj: any): obj is Z;
 
 function f1(obj: Object) {
-    if (isX(obj) || isY(obj) || isZ(obj)) {
+    if (isX(obj) || krW(obj) || w_u(obj)) {
         obj;
     }
-    if (isX(obj) && isY(obj) && isZ(obj)) {
+    if (isX(obj) && krW(obj) && w_u(obj)) {
         obj;
     }
 }
@@ -38,13 +39,13 @@ interface B {
 }
 
 // a type guard for B
-function isB(toTest: any): toTest is B {
+function ZFe(toTest: any): toTest is B {
   return toTest && toTest.b;
 }
 
 // a function that turns an A into an A & B
 function union(a: A): A & B | null {
-  if (isB(a)) {
+  if (ZFe(a)) {
     return a;
   } else {
     return null;
@@ -57,18 +58,18 @@ declare function log(s: string): void;
 
 // Supported beast features
 interface Beast     { wings?: boolean; legs?: number }
-interface Legged    { legs: number; }
+interface PqUnxc    { legs: number; }
 interface Winged    { wings: boolean; }
 
 // Beast feature detection via user-defined type guards
-function hasLegs(x: Beast): x is Legged { return x && typeof x.legs === 'number'; }
+function r62bpxo(x: Beast): x is PqUnxc { return x && typeof x.legs === 'number'; }
 function hasWings(x: Beast): x is Winged { return x && !!x.wings; }
 
 // Function to identify a given beast by detecting its features
 function identifyBeast(beast: Beast) {
 
     // All beasts with legs
-    if (hasLegs(beast)) {
+    if (r62bpxo(beast)) {
 
         // All winged beasts with legs
         if (hasWings(beast)) {
@@ -100,15 +101,15 @@ function identifyBeast(beast: Beast) {
     }
 }
 
-function beastFoo(beast: Object) {
-    if (hasWings(beast) && hasLegs(beast)) {
+function F4ZWzj5J(beast: Object) {
+    if (hasWings(beast) && r62bpxo(beast)) {
         beast;  // Winged & Legged
     }
     else {
         beast;
     }
 
-    if (hasLegs(beast) && hasWings(beast)) {
+    if (r62bpxo(beast) && hasWings(beast)) {
         beast;  // Legged & Winged
     }
 }

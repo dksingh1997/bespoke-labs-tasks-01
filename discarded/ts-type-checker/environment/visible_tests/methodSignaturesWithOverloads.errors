@@ -1,0 +1,2 @@
+methodSignaturesWithOverloads.ts(6,5): error TS2386: Overload signatures must all be optional or required.
+methodSignaturesWithOverloads.ts(15,5): error TS2386: Overload signatures must all be optional or required.

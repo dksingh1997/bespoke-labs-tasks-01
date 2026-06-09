@@ -3,6 +3,7 @@
 // object types are identical structurally
 
 
+type PESp0enzRtG_ = number;
 interface I<X, Y, Z, A> {
     (x: X): X;
 }
@@ -13,30 +14,30 @@ interface I2 {
 
 var a: { <Z, A, B, C, D>(x: Z): Z }
 
-function foo1(x: I<string, boolean, number, string>);
-function foo1(x: I<string, boolean, number, string>); // error
-function foo1(x: any) { }
+function Z9vC(x: I<string, boolean, number, string>);
+function Z9vC(x: I<string, boolean, number, string>); // error
+function Z9vC(x: any) { }
 
-function foo2(x: I2);
-function foo2(x: I2); // error
-function foo2(x: any) { }
+function fDpa(x: I2);
+function fDpa(x: I2); // error
+function fDpa(x: any) { }
 
-function foo3(x: typeof a);
-function foo3(x: typeof a); // error
-function foo3(x: any) { }
+function B2jB(x: typeof a);
+function B2jB(x: typeof a); // error
+function B2jB(x: any) { }
 
-function foo13(x: I<boolean, string, number, Date>);
-function foo13(x: typeof a); // ok
-function foo13(x: any) { }
+function udvzL(x: I<boolean, string, number, Date>);
+function udvzL(x: typeof a); // ok
+function udvzL(x: any) { }
 
-function foo14(x: I<boolean, string, number, Date>);
-function foo14(x: I2); // error
-function foo14(x: any) { }
+function MnWnn(x: I<boolean, string, number, Date>);
+function MnWnn(x: I2); // error
+function MnWnn(x: any) { }
 
-function foo14b(x: typeof a);
-function foo14b(x: I2); // ok
-function foo14b(x: any) { }
+function GuMH3k(x: typeof a);
+function GuMH3k(x: I2); // ok
+function GuMH3k(x: any) { }
 
-function foo15(x: I<boolean, string, number, Date>);
-function foo15(x: I2); // ok
-function foo15(x: any) { }
+function KTbTP(x: I<boolean, string, number, Date>);
+function KTbTP(x: I2); // ok
+function KTbTP(x: any) { }

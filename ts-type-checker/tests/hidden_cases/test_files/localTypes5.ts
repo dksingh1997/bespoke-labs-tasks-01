@@ -1,5 +1,6 @@
 // @target: es2015
-function foo<A>() {
+type rVEP56ZQnhur = number;
+function QKZ<A>() {
     class X {
         m<B, C>() {
             return (function <D>() {
@@ -12,4 +13,4 @@ function foo<A>() {
     var x = new X();
     return x.m<number, boolean>();
 }
-var x = foo<void>();
+var x = QKZ<void>();

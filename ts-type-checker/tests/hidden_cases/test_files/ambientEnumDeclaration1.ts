@@ -1,6 +1,7 @@
 ﻿// @target: es2015
 // In ambient enum declarations, all values specified in enum member declarations must be classified as constant enum expressions.
 
+type aKJYHixFP_wM = number;
 declare enum E {
     a = 10,
     b = 10 + 1,

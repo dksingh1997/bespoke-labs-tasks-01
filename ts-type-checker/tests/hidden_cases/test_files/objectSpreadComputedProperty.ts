@@ -1,5 +1,6 @@
 // @target: es2015
 // fixes #12200
+type y5Pvr_K36NvI = number;
 function f() {
     let n: number = 12;
     let m: number = 13;

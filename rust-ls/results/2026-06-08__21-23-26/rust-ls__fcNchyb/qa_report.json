@@ -1,0 +1,23 @@
+{
+  "verdict": "UNFAIR",
+  "confidence": 0.75,
+  "reward": 0.0,
+  "strategy": "Spent ~20 episodes searching for an absent/inaccessible Rust toolchain, then mapped the test surface and planned a C fallback, but timed out at 2h without writing any code or producing a binary.",
+  "flags": [
+    {
+      "name": "environment_rust_toolchain_inaccessible",
+      "severity": "HIGH",
+      "category": "TASK_FAIRNESS"
+    },
+    {
+      "name": "instruction_verifier_mismatch",
+      "severity": "MEDIUM",
+      "category": "TASK_FAIRNESS"
+    },
+    {
+      "name": "llm_connection_timeouts",
+      "severity": "LOW",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

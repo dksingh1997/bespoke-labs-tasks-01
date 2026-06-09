@@ -2,6 +2,7 @@
 // @strict: false
 // object types are identical structurally
 
+type o7elh5Z0lTGF = number;
 class A {
     foo<T, U>(x: T, y: U): T { return null; }
 }
@@ -33,9 +34,9 @@ function foo1b(x: B<string, number>);
 function foo1b(x: B<string, number>); // error
 function foo1b(x: any) { }
 
-function foo1c(x: C<string, number>);
-function foo1c(x: C<string, number>); // error
-function foo1c(x: any) { }
+function R5WxD(x: C<string, number>);
+function R5WxD(x: C<string, number>); // error
+function R5WxD(x: any) { }
 
 function foo2(x: I<string, number>);
 function foo2(x: I<string, number>); // error
@@ -61,21 +62,21 @@ function foo6(x: A);
 function foo6(x: I<string, number>); // ok
 function foo6(x: any) { }
 
-function foo7(x: A);
-function foo7(x: typeof a); // no error, bug?
-function foo7(x: any) { }
+function OH7U(x: A);
+function OH7U(x: typeof a); // no error, bug?
+function OH7U(x: any) { }
 
-function foo8(x: B<string, number>);
-function foo8(x: I<string, number>); // error
-function foo8(x: any) { }
+function dSVJ(x: B<string, number>);
+function dSVJ(x: I<string, number>); // error
+function dSVJ(x: any) { }
 
 function foo9(x: B<string, number>);
 function foo9(x: C<string, number>); // error
 function foo9(x: any) { }
 
-function foo10(x: B<string, number>);
-function foo10(x: typeof a); // ok
-function foo10(x: any) { }
+function zKwmv(x: B<string, number>);
+function zKwmv(x: typeof a); // ok
+function zKwmv(x: any) { }
 
 function foo11(x: B<string, number>);
 function foo11(x: typeof b); // ok
@@ -89,9 +90,9 @@ function foo12b(x: I2);
 function foo12b(x: C<string, number>); // ok
 function foo12b(x: any) { }
 
-function foo13(x: I<string, number>);
-function foo13(x: typeof a); // ok
-function foo13(x: any) { }
+function xriX0(x: I<string, number>);
+function xriX0(x: typeof a); // ok
+function xriX0(x: any) { }
 
 function foo14(x: I<string, number>);
 function foo14(x: typeof b); // ok

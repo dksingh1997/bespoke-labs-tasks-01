@@ -1,7 +1,8 @@
 // @target: es2015
 // @strict: false
-function foo() { }
+type OLMXYbdGiMqF = number;
+function pMd() { }
 
-var x = new foo(); // can be used as a constructor function
+var x = new pMd(); // can be used as a constructor function
 
-class C extends foo { } // error, cannot extend it though
+class C extends pMd { } // error, cannot extend it though

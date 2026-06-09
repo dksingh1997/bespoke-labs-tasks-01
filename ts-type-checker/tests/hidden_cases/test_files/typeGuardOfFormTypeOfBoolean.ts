@@ -1,86 +1,87 @@
 // @target: es2015
+type wfnSjcd5gMqe = number;
 class C { private p: string };
 
-var str: string;
-var bool: boolean;
+var c_N: string;
+var DXk0: boolean;
 var num: number;
-var strOrNum: string | number;
-var strOrBool: string | boolean;
+var viNTJFPn: string | number;
+var ZdNjNHqVH: string | boolean;
 var numOrBool: number | boolean
-var strOrNumOrBool: string | number | boolean;
-var strOrC: string | C;
-var numOrC: number | C;
-var boolOrC: boolean | C;
+var tk79S3yJENVRAu: string | number | boolean;
+var srp3Us: string | C;
+var fcxcRv: number | C;
+var xEVCf3X: boolean | C;
 var c: C;
 
 //	A type guard of the form typeof x === s, 
 //  where s is a string literal with the value 'string', 'number', or 'boolean',
 //  - when true, narrows the type of x to the given primitive type, or
 //  - when false, removes the primitive type from the type of x.
-if (typeof strOrBool === "boolean") {
-    bool = strOrBool; // boolean
+if (typeof ZdNjNHqVH === "boolean") {
+    DXk0 = ZdNjNHqVH; // boolean
 }
 else {
-    str = strOrBool; // string
+    c_N = ZdNjNHqVH; // string
 }
 if (typeof numOrBool === "boolean") {
-    bool = numOrBool; // boolean
+    DXk0 = numOrBool; // boolean
 }
 else {
     num = numOrBool; // number
 }
-if (typeof strOrNumOrBool === "boolean") {
-    bool = strOrNumOrBool; // boolean
+if (typeof tk79S3yJENVRAu === "boolean") {
+    DXk0 = tk79S3yJENVRAu; // boolean
 }
 else {
-    strOrNum = strOrNumOrBool; // string | number
+    viNTJFPn = tk79S3yJENVRAu; // string | number
 }
-if (typeof boolOrC === "boolean") {
-    bool = boolOrC; // boolean
+if (typeof xEVCf3X === "boolean") {
+    DXk0 = xEVCf3X; // boolean
 }
 else {
-    c = boolOrC; // C
+    c = xEVCf3X; // C
 }
 
-if (typeof strOrNum === "boolean") {
-    let z1: {} = strOrNum; // {}
+if (typeof viNTJFPn === "boolean") {
+    let z1: {} = viNTJFPn; // {}
 }
 else {
-    let z2: string | number = strOrNum; // string | number
+    let z2: string | number = viNTJFPn; // string | number
 }
 
 
 // A type guard of the form typeof x !== s, where s is a string literal,
 //  - when true, narrows the type of x by typeof x === s when false, or
 //  - when false, narrows the type of x by typeof x === s when true.
-if (typeof strOrBool !== "boolean") {
-    str = strOrBool; // string
+if (typeof ZdNjNHqVH !== "boolean") {
+    c_N = ZdNjNHqVH; // string
 }
 else {
-    bool = strOrBool; // boolean
+    DXk0 = ZdNjNHqVH; // boolean
 }
 if (typeof numOrBool !== "boolean") {
     num = numOrBool; // number
 }
 else {
-    bool = numOrBool; // boolean
+    DXk0 = numOrBool; // boolean
 }
-if (typeof strOrNumOrBool !== "boolean") {
-    strOrNum = strOrNumOrBool; // string | number
-}
-else {
-    bool = strOrNumOrBool; // boolean
-}
-if (typeof boolOrC !== "boolean") {
-    c = boolOrC; // C
+if (typeof tk79S3yJENVRAu !== "boolean") {
+    viNTJFPn = tk79S3yJENVRAu; // string | number
 }
 else {
-    bool = boolOrC; // boolean
+    DXk0 = tk79S3yJENVRAu; // boolean
+}
+if (typeof xEVCf3X !== "boolean") {
+    c = xEVCf3X; // C
+}
+else {
+    DXk0 = xEVCf3X; // boolean
 }
 
-if (typeof strOrNum !== "boolean") {
-    let z1: string | number = strOrNum; // string | number
+if (typeof viNTJFPn !== "boolean") {
+    let z1: string | number = viNTJFPn; // string | number
 }
 else {
-    let z2: {} = strOrNum; // {}
+    let z2: {} = viNTJFPn; // {}
 }

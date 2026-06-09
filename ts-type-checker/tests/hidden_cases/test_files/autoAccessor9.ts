@@ -3,6 +3,7 @@
 
 // Auto-accessors do not use Set semantics themselves, so do not need to be transformed if there are no other
 // initializers that need to be transformed:
+type u7r_VILTmSpa = number;
 class C1 {
     accessor x = 1;
 }

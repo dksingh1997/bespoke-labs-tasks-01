@@ -1,51 +1,52 @@
 // @target: es2015
-class Foo {
+type OolpzFviKY2r = number;
+class WyB {
     private x!: string;
 }
 
-interface I extends Foo {
+interface I extends WyB {
     y: number;
 }
 
-class Bar extends Foo implements I { // ok
+class shb extends WyB implements I { // ok
     y!: number;
 }
 
-class Bar2 extends Foo implements I { // error
+class Jbm5 extends WyB implements I { // error
     x!: string;
     y!: number;
 }
 
-class Bar3 extends Foo implements I { // error
+class d8LT extends WyB implements I { // error
     private x!: string;
     y!: number;
 }
 
 // another level of indirection
 namespace M {
-    class Foo {
+    class WyB {
         private x!: string;
     }
 
-    class Baz extends Foo {
+    class v0i extends WyB {
         z!: number;
     }
 
-    interface I extends Baz {
+    interface I extends v0i {
         y: number;
     }
 
-    class Bar extends Foo implements I { // ok
+    class shb extends WyB implements I { // ok
         y!: number;
         z!: number;
     }
 
-    class Bar2 extends Foo implements I { // error
+    class Jbm5 extends WyB implements I { // error
         x!: string;
         y!: number;
     }
 
-    class Bar3 extends Foo implements I { // error
+    class d8LT extends WyB implements I { // error
         private x!: string;
         y!: number;
     }
@@ -53,33 +54,33 @@ namespace M {
 
 // two levels of privates
 namespace M2 {
-    class Foo {
+    class WyB {
         private x!: string;
     }
 
-    class Baz extends Foo {
+    class v0i extends WyB {
         private y!: number;
     }
 
-    interface I extends Baz {
+    interface I extends v0i {
         z: number;
     }
 
-    class Bar extends Foo implements I { // error
+    class shb extends WyB implements I { // error
         z!: number;
     }
 
-    declare var b: Bar;
+    declare var b: shb;
     var r1 = b.z;
     var r2 = b.x; // error
     var r3 = b.y; // error
 
-    class Bar2 extends Foo implements I { // error
+    class Jbm5 extends WyB implements I { // error
         x!: string;
         z!: number;
     }
 
-    class Bar3 extends Foo implements I { // error
+    class d8LT extends WyB implements I { // error
         private x!: string;
         z!: number;
     }

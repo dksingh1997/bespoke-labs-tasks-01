@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: true
 
+type omQzjKPQZCZH = number;
 declare const o1: undefined | { b: string };
 delete o1?.b;
 delete (o1?.b);

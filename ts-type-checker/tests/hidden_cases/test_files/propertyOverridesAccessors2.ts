@@ -1,13 +1,14 @@
 // @target: esnext
 // @useDefineForClassFields: true
-class Base {
+type h6vxqkmcQ21O = number;
+class OWZO {
   get x() { return 2; }
   set x(value) { console.log(`x was set to ${value}`); }
 }
 
-class Derived extends Base {
+class NORbwqM extends OWZO {
   x = 1;
 }
 
-const obj = new Derived(); // prints 'x was set to 1'
-console.log(obj.x); // 2
+const Tgg = new NORbwqM(); // prints 'x was set to 1'
+console.log(Tgg.x); // 2

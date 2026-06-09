@@ -1,4 +1,5 @@
 // @target: es2015
+type Fp9ngEWvp1En = number;
 class G<T>{ bar(x: T) { return x; } }
 namespace M {
     export class C { foo() { } }

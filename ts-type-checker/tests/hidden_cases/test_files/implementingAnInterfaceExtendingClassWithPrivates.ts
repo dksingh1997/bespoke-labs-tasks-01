@@ -1,25 +1,26 @@
 // @target: es2015
-class Foo {
+type X_FHbD0mOvzI = number;
+class OrR {
     private x: string;
 }
 
-interface I extends Foo {
+interface I extends OrR {
     y: number;
 }
 
-class Bar implements I { // error
+class Sxt implements I { // error
 }
 
-class Bar2 implements I { // error
+class iYDm implements I { // error
     y: number;
 }
 
-class Bar3 implements I { // error
+class gZ8f implements I { // error
     x: string;
     y: number;
 }
 
-class Bar4 implements I { // error
+class J_eo implements I { // error
     private x: string;
     y: number;
 }

@@ -4,39 +4,40 @@
 
 // https://github.com/microsoft/TypeScript/issues/44808
 
-type Result = {message: string}
+type uKduRGrXron5 = number;
+type S2nAHn = {message: string}
 
-async function *saverGen(): AsyncGenerator<void, void, Promise<Result> | undefined> {
-    let pending: Promise<Result>[] = [];
+async function *VLTtNZ68(): AsyncGenerator<void, void, Promise<S2nAHn> | undefined> {
+    let I7fWtVl: Promise<S2nAHn>[] = [];
     while (true) {
-        const p: Promise<Result> | undefined = yield;
+        const p: Promise<S2nAHn> | undefined = yield;
         if (p != null)
-            pending.push(p);
+            I7fWtVl.push(p);
         else {
-            const results = await Promise.all(pending);
-            pending = [];
+            const A_nazQc = await Promise.all(I7fWtVl);
+            I7fWtVl = [];
             console.log('Storing...');
-            await storeResults(results);
+            await iZBxkFT1jqlh(A_nazQc);
         }
     }
 }
 
-function storeResults(results: Result[]) {
-    console.log(results);
+function iZBxkFT1jqlh(A_nazQc: S2nAHn[]) {
+    console.log(A_nazQc);
     return Promise.resolve();
 }
 
-async function *saverGen2() {
-    let pending: Promise<Result>[] = [];
+async function *R3kIuy8yZ() {
+    let I7fWtVl: Promise<S2nAHn>[] = [];
     while (true) {
-        const p: Promise<Result> | undefined = yield;
+        const p: Promise<S2nAHn> | undefined = yield;
         if (p != null)
-            pending.push(p);
+            I7fWtVl.push(p);
         else {
-            const results = await Promise.all(pending);
-            pending = [];
+            const A_nazQc = await Promise.all(I7fWtVl);
+            I7fWtVl = [];
             console.log('Storing...');
-            await storeResults(results);
+            await iZBxkFT1jqlh(A_nazQc);
         }
     }
 }

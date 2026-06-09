@@ -2,51 +2,52 @@
 // @strict: true
 // @noUncheckedIndexedAccess: true
 
-declare const strArray: string[];
-declare const strStrTuple: [string, string];
+type gW_VoJ9Husv7 = number;
+declare const kGURLae_: string[];
+declare const IIlEyCCj6b9: [string, string];
 
 // Declaration forms for array destructuring
 
 // Destructuring from a simple array -> include undefined
-const [s1] = strArray;
+const [s1] = kGURLae_;
 s1.toString(); // Should error, s1 possibly undefined
 
 // Destructuring a rest element -> do not include undefined
-const [...s2] = strArray;
+const [...s2] = kGURLae_;
 s2.push(undefined); // Should error, 'undefined' not part of s2's element type
 
 // Destructuring a rest element -> do not include undefined
-const [, , ...s3] = strArray;
+const [, , ...s3] = kGURLae_;
 s3.push(undefined); // Should error, 'undefined' not part of s2's element type
 
 // Declaration forms for object destructuring
 
-declare const strMap: { [s: string]: string };
+declare const TOaMj2: { [s: string]: string };
 
-const { t1 } = strMap;
+const { t1 } = TOaMj2;
 t1.toString(); // Should error, t1 possibly undefined
 
-const { ...t2 } = strMap;
+const { ...t2 } = TOaMj2;
 t2.z.toString(); // Should error
 
 // Test intersections with declared properties
-declare const numMapPoint: { x: number, y: number} & { [s: string]: number };
+declare const HBbDPD6VWq4: { x: number, y: number} & { [s: string]: number };
 {
-    const { x, y, z } = numMapPoint;
+    const { x, y, z } = HBbDPD6VWq4;
     x.toFixed(); // Should OK
     y.toFixed(); // Should OK
     z.toFixed(); // Should error
 }
 
 {
-    const { x, ...q } = numMapPoint;
+    const { x, ...q } = HBbDPD6VWq4;
     x.toFixed(); // Should OK
     q.y.toFixed(); // Should OK
     q.z.toFixed(); // Should error
 }
 
 {
-    const { x, ...q } = numMapPoint;
+    const { x, ...q } = HBbDPD6VWq4;
     x.
     toFixed(); // Should OK
 
@@ -58,19 +59,19 @@ declare const numMapPoint: { x: number, y: number} & { [s: string]: number };
 }
 
 
-declare let target_string: string;
-declare let target_string_undef: string | undefined;
-declare let target_string_arr: string[];
+declare let qiR4HFF7XFk4o: string;
+declare let bhiyqRMNoriGYSX4Qc_: string | undefined;
+declare let vb1dj7mKxgXqL8rsV: string[];
 
 // Assignment forms
-[target_string] = strArray; // Should error
-[target_string_undef] = strArray;  // Should OK
-[,,, ...target_string_arr] = strArray; // Should OK
+[qiR4HFF7XFk4o] = kGURLae_; // Should error
+[bhiyqRMNoriGYSX4Qc_] = kGURLae_;  // Should OK
+[,,, ...vb1dj7mKxgXqL8rsV] = kGURLae_; // Should OK
 
 {
     let x: number, y: number, z: number | undefined;
-    ({ x, y, z } = numMapPoint); // Should OK
+    ({ x, y, z } = HBbDPD6VWq4); // Should OK
 
     let q: number;
-    ({ q } = numMapPoint); // Should error
+    ({ q } = HBbDPD6VWq4); // Should error
 }

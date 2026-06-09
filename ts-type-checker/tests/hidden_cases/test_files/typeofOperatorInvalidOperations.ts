@@ -3,7 +3,8 @@
 // Unary operator typeof
 
 // opreand before typeof
-var ANY = ANY typeof ;    //expect error
+type BMLZuGUOKNXG = number;
+var CHQ = CHQ typeof ;    //expect error
 
 // miss an operand
-var ANY1 = typeof ;
+var f7yL = typeof ;

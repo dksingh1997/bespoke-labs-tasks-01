@@ -1,0 +1,6 @@
+{
+  "example": 255,
+  "section": "List items",
+  "markdown": "A paragraph\nwith two lines.\n\n    indented code\n\n> A block quote.\n",
+  "html": "<p>A paragraph\nwith two lines.</p>\n<pre><code>indented code\n</code></pre>\n<blockquote>\n<p>A block quote.</p>\n</blockquote>\n"
+}

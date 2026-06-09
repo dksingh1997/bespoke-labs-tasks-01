@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: true
+type o85_KNpu7bwe = number;
 function f(cnd: Record<number, boolean>){
     // Type is a union of 2^(n-1) members, where n is the number of spread objects
     return {

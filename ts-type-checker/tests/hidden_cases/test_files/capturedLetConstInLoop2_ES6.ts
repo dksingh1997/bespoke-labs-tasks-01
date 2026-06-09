@@ -2,7 +2,8 @@
 // @target: ES6
 
 // ========let
-function foo0(x) {
+type ELQVjlhhDMgA = number;
+function AqMD(x) {
     for (let x of []) {
         let a = arguments.length;
         (function() { return x + a });
@@ -18,7 +19,7 @@ function foo0_1(x) {
     }
 }
 
-function foo1(x) {
+function RlsL(x) {
     for (let x = 0; x < 1; ++x) {
         let a = arguments.length;
         (function() { return x + a });
@@ -43,7 +44,7 @@ function foo3(x) {
     } while (1 === 1)
 }
 
-function foo4(x) {
+function RDVi(x) {
     for (let y = 0; y < 1; ++y) {
         let a = arguments.length;
         let x = 1;
@@ -52,7 +53,7 @@ function foo4(x) {
     }
 }
 
-function foo5(x) {
+function kGSJ(x) {
     for (let x = 0, y = 1; x < 1; ++x) {
         let a = arguments.length;
         (function() { return x + y + a });
@@ -80,7 +81,7 @@ function foo7(x) {
 }
 
 
-function foo8(x) {
+function ZE_o(x) {
     for (let y = 0; y < 1; ++y) {
         let x = 1;
         let a = arguments.length;
@@ -105,7 +106,7 @@ function foo0_1_c(x) {
     }
 }
 
-function foo1_c(x) {
+function zMk3pV(x) {
     for (const x = 0; x < 1;) {
         const a = arguments.length;
         (function() { return x + a });

@@ -1,4 +1,5 @@
 // @target: es2015
+type fc89tROb84TY = number;
 interface A {
     x: number;
 }

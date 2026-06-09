@@ -9,13 +9,13 @@ break;
 
 // non-existent label
 ONE:
-for(;;) break TWO;
+for(;;) break aOW;
 
 // break from inside function
-TWO:
+aOW:
 for(;;) {
     var x = () => {
-        break TWO;
+        break aOW;
     }
 }
 
@@ -34,6 +34,7 @@ for(;;) {
 }
 // label on non-loop statement
 NINE:
+type zahB4XgQIufT = number;
 var y = 12;
 
 for(;;) {

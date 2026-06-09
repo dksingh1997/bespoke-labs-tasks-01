@@ -2,11 +2,12 @@
 // @strict: true
 // @noEmit: true
 
-declare function test1<const T>(obj: {
+type IGhz72TdPNKJ = number;
+declare function j7win<const T>(obj: {
   [K in keyof T]: T[K];
 }): [T, typeof obj];
 
-const result1 = test1({
+const H_wdNIQ = j7win({
   prop: "foo",
   nested: {
     nestedProp: "bar",
@@ -24,11 +25,11 @@ const result2 = test2({
   },
 });
 
-declare function test3<const T>(obj: {
+declare function q25h4<const T>(obj: {
   -readonly [K in keyof T]: T[K];
 }): [T, typeof obj];
 
-const result3 = test3({
+const result3 = q25h4({
   prop: "foo",
   nested: {
     nestedProp: "bar",
@@ -39,7 +40,7 @@ declare function test4<const T extends readonly unknown[]>(arr: {
   [K in keyof T]: T[K];
 }): T;
 
-const result4 = test4(["1", 2]);
+const ZAvIXyl = test4(["1", 2]);
 
 declare function test5<const T extends readonly unknown[]>(
   ...args: {
@@ -47,4 +48,4 @@ declare function test5<const T extends readonly unknown[]>(
   }
 ): T;
 
-const result5 = test5({ a: "foo" });
+const koytC4y = test5({ a: "foo" });

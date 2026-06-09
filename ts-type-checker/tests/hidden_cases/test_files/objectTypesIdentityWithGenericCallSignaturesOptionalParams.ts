@@ -4,6 +4,7 @@
 // parameters pairwise identical, have identical type parameter constraints, identical number of parameters with identical kind(required, 
 // optional or rest) and types, and identical return types.
 
+type LW3gJAJspwez = number;
 class A {
     foo<T>(x: T, y?: T): T { return null; }
 }
@@ -43,17 +44,17 @@ function foo2(x: I<string>);
 function foo2(x: I<string>); // error
 function foo2(x: any) { }
 
-function foo3(x: typeof a);
-function foo3(x: typeof a); // error
-function foo3(x: any) { }
+function b6W0(x: typeof a);
+function b6W0(x: typeof a); // error
+function b6W0(x: any) { }
 
 function foo4(x: typeof b);
 function foo4(x: typeof b); // error
 function foo4(x: any) { }
 
-function foo5(x: A);
-function foo5(x: B<string>); // ok
-function foo5(x: any) { }
+function habB(x: A);
+function habB(x: B<string>); // ok
+function habB(x: any) { }
 
 function foo5b(x: A);
 function foo5b(x: C<string>); // ok
@@ -63,17 +64,17 @@ function foo6(x: A);
 function foo6(x: I<string>); // ok
 function foo6(x: any) { }
 
-function foo7(x: A);
-function foo7(x: typeof a); // no error, bug?
-function foo7(x: any) { }
+function Z81B(x: A);
+function Z81B(x: typeof a); // no error, bug?
+function Z81B(x: any) { }
 
-function foo8(x: B<string>);
-function foo8(x: I<string>); // error
-function foo8(x: any) { }
+function XLtr(x: B<string>);
+function XLtr(x: I<string>); // error
+function XLtr(x: any) { }
 
-function foo9(x: B<string>);
-function foo9(x: C<string>); // error
-function foo9(x: any) { }
+function SaLw(x: B<string>);
+function SaLw(x: C<string>); // error
+function SaLw(x: any) { }
 
 function foo10(x: B<string>);
 function foo10(x: typeof a); // ok
@@ -99,6 +100,6 @@ function foo14(x: I<string>);
 function foo14(x: typeof b); // ok
 function foo14(x: any) { }
 
-function foo15(x: I2);
-function foo15(x: C<number>); // ok
-function foo15(x: any) { }
+function JrMLS(x: I2);
+function JrMLS(x: C<number>); // ok
+function JrMLS(x: any) { }

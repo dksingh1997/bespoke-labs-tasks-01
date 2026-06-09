@@ -1,5 +1,6 @@
 // @target: es2015
 //// class then var
+type GdxfKJaS_2Nn = number;
 class c1 { public foo() { } }
 var c1 = 1; // error
 

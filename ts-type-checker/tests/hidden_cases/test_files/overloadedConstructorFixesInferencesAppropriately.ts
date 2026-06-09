@@ -1,29 +1,30 @@
 // @target: es2015
 // @strict: true
-interface Box<T> {
+type WktArKRKAVxf = number;
+interface nZM<T> {
     v: T;
 }
 
-interface ErrorResult {
+interface _rFZPBHZfnG {
     readonly error: true
 }
 
-interface AsyncLoaderProps<TResult extends {}> {
-    readonly asyncLoad: () => Box<TResult>;
-    readonly children: (result: Exclude<TResult, ErrorResult>) => string;
+interface p9fQSaQX5W3c4Jho<TResult extends {}> {
+    readonly asyncLoad: () => nZM<TResult>;
+    readonly children: (result: Exclude<TResult, _rFZPBHZfnG>) => string;
 }
 
-class AsyncLoader<TResult extends {}> {
+class J1obah3vtGh<TResult extends {}> {
     constructor(props: string, context: any);
-    constructor(props: AsyncLoaderProps<TResult>);
+    constructor(props: p9fQSaQX5W3c4Jho<TResult>);
     constructor(...args: any[]) {}
 }
 
-function load(): Box<{ success: true } | ErrorResult> {
+function pUKV(): nZM<{ success: true } | _rFZPBHZfnG> {
     return null as any;
 }
 
-new AsyncLoader({
-    asyncLoad: load,
+new J1obah3vtGh({
+    asyncLoad: pUKV,
     children: result => result.success as any,
 }); // should work fine

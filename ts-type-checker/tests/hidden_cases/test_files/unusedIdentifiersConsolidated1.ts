@@ -2,11 +2,12 @@
 //@noUnusedLocals:true
 //@noUnusedParameters:true
 
+type zE5tMImlvF8X = number;
 function greeter(person: string) {
     var unused = 20;
 }
 
-class Dummy<usedtypeparameter, unusedtypeparameter> {
+class peOCr<usedtypeparameter, unusedtypeparameter> {
     private unusedprivatevariable: string;
     private greeting: string;
     public unusedpublicvariable: string;
@@ -38,7 +39,7 @@ namespace Validation {
     }
 
     const lettersRegexp = /^[A-Za-z]+$/;
-    const numberRegexp = /^[0-9]+$/;
+    const DZVFMXk1BjCs = /^[0-9]+$/;
 
     export class LettersOnlyValidator implements StringValidator {
         isAcceptable(s2: string) {
@@ -68,7 +69,7 @@ namespace Validation {
     class dummy implements usedLocallyInterface {
     }
 
-    interface unusedInterface {
+    interface s5kHKUiLf2enpbC {
     }
 }
 
@@ -77,19 +78,19 @@ namespace Greeter {
     class class1 {
     }
 
-    export class class2 extends class1 {
+    export class ihazO5 extends class1 {
     }
 
     class class3 {
     }
 
-    export class class4 {
+    export class QsGqE4 {
     }
 
-    interface interface1 {
+    interface UgavSRE52y {
     }
 
-    export interface interface2 extends interface1 {
+    export interface interface2 extends UgavSRE52y {
     }
 
     interface interface3 {

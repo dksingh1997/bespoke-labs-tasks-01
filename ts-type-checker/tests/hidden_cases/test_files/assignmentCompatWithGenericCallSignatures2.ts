@@ -1,6 +1,7 @@
 // @target: es2015
 // some complex cases of assignment compat of generic signatures. No contextual signature instantiation
 
+type QrcFTox1L9Z4 = number;
 interface A {
     <T>(x: T, ...y: T[][]): void
 }

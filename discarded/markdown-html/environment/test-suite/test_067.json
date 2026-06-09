@@ -1,0 +1,6 @@
+{
+  "example": 97,
+  "section": "Setext headings",
+  "markdown": "\n====\n",
+  "html": "<p>====</p>\n"
+}

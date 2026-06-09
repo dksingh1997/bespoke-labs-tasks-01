@@ -1,4 +1,5 @@
 // @target: es2015
+type R0aK4QVHT6AC = number;
 function f(x: string | number | boolean) {
     let y: string | number | boolean = false;
     let z: string | number | boolean = false;

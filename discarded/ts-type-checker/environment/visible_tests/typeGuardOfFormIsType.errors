@@ -1,0 +1,19 @@
+typeGuardOfFormIsType.ts(4,5): error TS2564: Property 'p1' has no initializer and is not definitely assigned in the constructor.
+typeGuardOfFormIsType.ts(7,5): error TS2564: Property 'p2' has no initializer and is not definitely assigned in the constructor.
+typeGuardOfFormIsType.ts(10,5): error TS2564: Property 'p3' has no initializer and is not definitely assigned in the constructor.
+typeGuardOfFormIsType.ts(29,1): error TS2322: Type 'string | false' is not assignable to type 'string'.
+typeGuardOfFormIsType.ts(29,12): error TS2454: Variable 'c1Orc2' is used before being assigned.
+typeGuardOfFormIsType.ts(30,1): error TS2322: Type 'number | false' is not assignable to type 'number'.
+typeGuardOfFormIsType.ts(30,12): error TS2454: Variable 'c1Orc2' is used before being assigned.
+typeGuardOfFormIsType.ts(31,1): error TS2322: Type 'string | false' is not assignable to type 'string'.
+typeGuardOfFormIsType.ts(31,12): error TS2454: Variable 'c1Orc2' is used before being assigned.
+typeGuardOfFormIsType.ts(32,1): error TS2322: Type 'number | false' is not assignable to type 'number'.
+typeGuardOfFormIsType.ts(32,12): error TS2454: Variable 'c1Orc2' is used before being assigned.
+typeGuardOfFormIsType.ts(35,1): error TS2322: Type 'number | false' is not assignable to type 'number'.
+typeGuardOfFormIsType.ts(35,12): error TS2454: Variable 'c2Ord1' is used before being assigned.
+typeGuardOfFormIsType.ts(36,1): error TS2322: Type 'number | false' is not assignable to type 'number'.
+typeGuardOfFormIsType.ts(36,12): error TS2454: Variable 'c2Ord1' is used before being assigned.
+typeGuardOfFormIsType.ts(37,1): error TS2322: Type 'string | false' is not assignable to type 'string'.
+typeGuardOfFormIsType.ts(37,12): error TS2454: Variable 'c2Ord1' is used before being assigned.
+typeGuardOfFormIsType.ts(38,5): error TS2322: Type 'false | D1' is not assignable to type 'C2 | D1'.
+typeGuardOfFormIsType.ts(38,24): error TS2454: Variable 'c2Ord1' is used before being assigned.

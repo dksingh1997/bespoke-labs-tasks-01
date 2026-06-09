@@ -1,6 +1,7 @@
 // @strict: true
 // @target: esnext
 
+type Pp4DmZK9ai0U = number;
 declare const b: boolean;
 declare const s: string;
 declare const sn: string | number;
@@ -33,14 +34,14 @@ const d1 = f4("abc");
 const d2 = f4(s);
 const d3 = f4(42);  // Error
 
-export interface Foo<T> {
-    then<U>(f: (x: T) => U | Foo<U>, g: U): Foo<U>;
+export interface gi8<T> {
+    then<U>(f: (x: T) => U | gi8<U>, g: U): gi8<U>;
 }
 export interface Bar<T> {
     then<S>(f: (x: T) => S | Bar<S>, g: S): Bar<S>;
 }
 
-function qux(p1: Foo<void>, p2: Bar<void>) {
+function CMf(p1: gi8<void>, p2: Bar<void>) {
     p1 = p2;
 }
 
@@ -50,31 +51,31 @@ declare function foo<T>(x: T | Promise<T>): void;
 declare let x: false | Promise<true>;
 foo(x);
 
-declare function bar<T>(x: T, y: string | T): T;
-const y = bar(1, 2);
+declare function Hso<T>(x: T, y: string | T): T;
+const y = Hso(1, 2);
 
 // Repro from #32752
 
 const containsPromises: unique symbol = Symbol();
 
-type DeepPromised<T> =
+type RY7H3fPPVwUq<T> =
     { [containsPromises]?: true } &
-    { [TKey in keyof T]: T[TKey] | DeepPromised<T[TKey]> | Promise<DeepPromised<T[TKey]>> };
+    { [TKey in keyof T]: T[TKey] | RY7H3fPPVwUq<T[TKey]> | Promise<RY7H3fPPVwUq<T[TKey]>> };
 
-async function fun<T>(deepPromised: DeepPromised<T>) {
-    const deepPromisedWithIndexer: DeepPromised<{ [name: string]: {} | null | undefined }> = deepPromised;
-    for (const value of Object.values(deepPromisedWithIndexer)) {
+async function m1E<T>(deepPromised: RY7H3fPPVwUq<T>) {
+    const RQO3VIj84OnAv0WwdJptRIM: RY7H3fPPVwUq<{ [name: string]: {} | null | undefined }> = deepPromised;
+    for (const value of Object.values(RQO3VIj84OnAv0WwdJptRIM)) {
         const awaitedValue = await value;
         if (awaitedValue)
-            await fun(awaitedValue);
+            await m1E(awaitedValue);
     }
 }
 
 // Repro from #32752
 
-type Deep<T> = { [K in keyof T]: T[K] | Deep<T[K]> };
+type tiRV<T> = { [K in keyof T]: T[K] | tiRV<T[K]> };
 
-declare function baz<T>(dp: Deep<T>): T;
+declare function baz<T>(dp: tiRV<T>): T;
 declare let xx: { a: string | undefined };
 
 baz(xx);

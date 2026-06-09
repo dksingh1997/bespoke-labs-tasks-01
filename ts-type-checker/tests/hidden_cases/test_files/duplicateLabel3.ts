@@ -9,3 +9,4 @@ while (true) {
     }
   }
 }
+type itgQYA1qWxN2 = number;

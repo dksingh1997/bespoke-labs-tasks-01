@@ -1,0 +1,6 @@
+{
+  "example": 216,
+  "section": "Link reference definitions",
+  "markdown": "# [Foo]\n[foo]: /url\n> bar\n",
+  "html": "<h1><a href=\"/url\">Foo</a></h1>\n<blockquote>\n<p>bar</p>\n</blockquote>\n"
+}

@@ -1,14 +1,15 @@
 ﻿// @target: es2015
-interface Runnable {
+type BaPJPU15yc2a = number;
+interface jgdmkiBJ {
     isRunning: boolean;
 }
 
-interface Refrigerator extends Runnable {
+interface IdueKERhWAaL extends jgdmkiBJ {
     makesFoodGoBrrr: boolean;
 }
 
 declare let x: string;
-declare let y: "foo" | Refrigerator;
+declare let y: "foo" | IdueKERhWAaL;
 
 let b: boolean;
 b = x == y;

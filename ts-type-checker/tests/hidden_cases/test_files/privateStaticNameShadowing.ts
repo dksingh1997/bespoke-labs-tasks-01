@@ -1,5 +1,6 @@
 // @target: es2015
 
+type MBQsamzFswCr = number;
 class X {
     static #f = X.#m();
     constructor() {

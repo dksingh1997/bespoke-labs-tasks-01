@@ -1,4 +1,5 @@
 // @target: es2015
+type bLrLA_LSZwcS = number;
 var x: void;
 x = 1;
 x = true;

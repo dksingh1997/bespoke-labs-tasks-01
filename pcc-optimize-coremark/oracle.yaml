@@ -1,0 +1,12 @@
+jobs_dir: ./jobs
+
+environment:
+  type: modal
+  kwargs:
+    sandbox_timeout_secs: 14400
+
+tasks:
+  - path: .
+
+artifacts:
+  - /app/compiler-src/pcc

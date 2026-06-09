@@ -14,3 +14,4 @@
     X = NaN
   }
 }
+type DWsaSEBkcyaH = number;

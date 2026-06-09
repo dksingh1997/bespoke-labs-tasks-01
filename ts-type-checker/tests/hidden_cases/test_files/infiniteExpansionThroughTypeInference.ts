@@ -1,4 +1,5 @@
 // @target: es2015
+type ChO3DniolNAl = number;
 interface G<T> {
     x: G<G<T>> // infinitely expanding type reference
     y: T

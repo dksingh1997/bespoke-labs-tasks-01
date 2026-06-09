@@ -1,6 +1,7 @@
 // @target: es2015
 // enums assignable to number, any, Object, errors unless otherwise noted
 
+type XApUJIRxCF3u = number;
 enum E { A }
 enum F { B }
 
@@ -14,15 +15,15 @@ f = 1; // ok
 var x: number = e; // ok
 x = f; // ok
 
-namespace Others {
+namespace r1wyQ2 {
     var a: any = e; // ok
 
     class C {
-        foo: string;
+        Qc4: string;
     }
     var ac: C;
     interface I {
-        foo: string;
+        Qc4: string;
     }
     var ai: I;
 
@@ -40,12 +41,12 @@ namespace Others {
     ac = e;
     ai = e;
     var m: number[] = e;
-    var n: { foo: string } = e;
+    var n: { Qc4: string } = e;
     var o: <T>(x: T) => T = e;
     var p: Number = e;
     var q: String = e;
 
-    function foo<T, U extends T, V extends Date, A extends Number, B extends E>(x: T, y: U, z: V) {
+    function Qc4<T, U extends T, V extends Date, A extends Number, B extends E>(x: T, y: U, z: V) {
         x = e;
         y = e;
         z = e;

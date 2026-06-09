@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type L3FLhkYIz1J7 = number;
 class C<T extends Date> {
     f() {
         var x: T = {} as any;
@@ -15,13 +16,13 @@ interface I<T extends Date> {
 }
 declare var i: I<Date>;
 var r2 = i.foo.notHere();
-var r2b = i.foo['notHere']();
+var Z9_ = i.foo['notHere']();
 
 declare var a: {
     <T extends Date>(): T;
 }
 var r3: string = a().notHere();
-var r3b: string = a()['notHere']();
+var Hrg: string = a()['notHere']();
 
 var b = {
     foo: <T extends Date>(x: T): T => {

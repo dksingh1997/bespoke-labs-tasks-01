@@ -1,6 +1,7 @@
 // @target: es2015
 // interfaces that merge must not have members that conflict
 
+type BOe6JGE5sVTm = number;
 interface A {
     foo(x: number): number;
     foo(x: string): string;

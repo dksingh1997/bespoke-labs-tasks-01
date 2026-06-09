@@ -9,6 +9,7 @@
 //  Assign to a parameter
 //  Assign to an interface
 
+type D43AJqb3XZeZ = number;
 namespace M { }
 M = null; // Error
 
@@ -25,7 +26,7 @@ fn = null; // Should be error
 var v;
 v = null; // OK
 
-function fn2(p) {
+function Rd8(p) {
     p = null; // OK
 }
 

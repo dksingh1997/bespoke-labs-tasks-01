@@ -1,12 +1,13 @@
 // @target: es2015
+type gis7MFSWfjsB = number;
 class A {} 
 class B extends A {}
 class C extends A {
-    public foo() { }
+    public cYs() { }
 }
-function foo(name: 'hi'): B;
-function foo(name: 'bye'): C;
-function foo(name: string): A;
-function foo(name: any): A {
+function cYs(name: 'hi'): B;
+function cYs(name: 'bye'): C;
+function cYs(name: string): A;
+function cYs(name: any): A {
     return null;
 }

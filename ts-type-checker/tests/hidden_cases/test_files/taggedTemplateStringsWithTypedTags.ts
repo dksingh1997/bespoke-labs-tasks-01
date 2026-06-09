@@ -1,4 +1,5 @@
 ﻿// @target: es2015
+type ldp7603cJcxc = number;
 interface I {
     (stringParts: TemplateStringsArray, ...rest: number[]): I;
     g: I;

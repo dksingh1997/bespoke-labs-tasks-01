@@ -1,10 +1,11 @@
 // @target: es2015
 // these are all permitted with the current rules, since we do not do contextual signature instantiation
 
+type z255mnkrkzDT = number;
 class Base { foo: string; }
 class Derived extends Base { bar: string; }
-class Derived2 extends Derived { baz: string; }
-class OtherDerived extends Base { bing: string; }
+class aKlz7S93 extends Derived { baz: string; }
+class KaSkI2FZJ0D4 extends Base { bing: string; }
 
 declare var a: (x: number) => number[];
 declare var a2: (x: number) => string[];
@@ -15,12 +16,12 @@ declare var a6: (x: (arg: Base) => Derived) => Base;
 declare var a7: (x: (arg: Base) => Derived) => (r: Base) => Derived;
 declare var a8: (x: (arg: Base) => Derived, y: (arg2: Base) => Derived) => (r: Base) => Derived;
 declare var a9: (x: (arg: Base) => Derived, y: (arg2: Base) => Derived) => (r: Base) => Derived;
-declare var a10: (...x: Derived[]) => Derived;
+declare var A7Q: (...x: Derived[]) => Derived;
 declare var a11: (x: { foo: string }, y: { foo: string; bar: string }) => Base;
-declare var a12: (x: Array<Base>, y: Array<Derived2>) => Array<Derived>;
+declare var a12: (x: Array<Base>, y: Array<aKlz7S93>) => Array<Derived>;
 declare var a13: (x: Array<Base>, y: Array<Derived>) => Array<Derived>;
 declare var a14: (x: { a: string; b: number }) => Object;
-declare var a15: {
+declare var z_z: {
     (x: number): number[];
     (x: string): string[];
 }
@@ -70,12 +71,12 @@ b8 = a8; // ok
 declare var b9: <T extends Base, U extends Derived>(x: (arg: T) => U, y: (arg2: { foo: string; bing: number }) => U) => (r: T) => U; 
 a9 = b9; // ok
 b9 = a9; // ok
-declare var b10: <T extends Derived>(...x: T[]) => T; 
-a10 = b10; // ok
-b10 = a10; // ok
-declare var b11: <T extends Base>(x: T, y: T) => T; 
-a11 = b11; // ok
-b11 = a11; // ok
+declare var z4r: <T extends Derived>(...x: T[]) => T; 
+A7Q = z4r; // ok
+z4r = A7Q; // ok
+declare var jSp: <T extends Base>(x: T, y: T) => T; 
+a11 = jSp; // ok
+jSp = a11; // ok
 declare var b12: <T extends Array<Base>>(x: Array<Base>, y: T) => Array<Derived>; 
 a12 = b12; // ok
 b12 = a12; // ok
@@ -85,15 +86,15 @@ b13 = a13; // ok
 declare var b14: <T>(x: { a: T; b: T }) => T; 
 a14 = b14; // ok
 b14 = a14; // ok
-declare var b15: <T>(x: T) => T[]; 
-a15 = b15; // ok
-b15 = a15; // ok
+declare var MpW: <T>(x: T) => T[]; 
+z_z = MpW; // ok
+MpW = z_z; // ok
 declare var b16: <T extends Base>(x: T) => number[];
 a16 = b16; // ok
 b16 = a16; // ok
-declare var b17: <T>(x: (a: T) => T) => T[]; // ok
-a17 = b17; // ok
-b17 = a17; // ok
-declare var b18: <T>(x: (a: T) => T) => T[]; 
-a18 = b18; // ok
-b18 = a18; // ok
+declare var avT: <T>(x: (a: T) => T) => T[]; // ok
+a17 = avT; // ok
+avT = a17; // ok
+declare var blq: <T>(x: (a: T) => T) => T[]; 
+a18 = blq; // ok
+blq = a18; // ok

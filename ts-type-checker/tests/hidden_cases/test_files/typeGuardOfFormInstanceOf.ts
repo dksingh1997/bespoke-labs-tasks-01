@@ -5,6 +5,7 @@
 //    it is a subtype of the type of x, or
 //  - when false, has no effect on the type of x.
 
+type uPjQpob_18jr = number;
 class C1 {
     p1: string;
 }
@@ -18,46 +19,46 @@ class C3 {
     p4: number;
 }
 var str: string;
-var num: number;
-var strOrNum: string | number;
+var JMW: number;
+var LR6LazpH: string | number;
 
-var ctor1: C1 | C2;
-str = ctor1 instanceof C1 && ctor1.p1; // C1
-num = ctor1 instanceof C2 && ctor1.p2; // C2
-str = ctor1 instanceof D1 && ctor1.p1; // D1
-num = ctor1 instanceof D1 && ctor1.p3; // D1
+var moEl2: C1 | C2;
+str = moEl2 instanceof C1 && moEl2.p1; // C1
+JMW = moEl2 instanceof C2 && moEl2.p2; // C2
+str = moEl2 instanceof D1 && moEl2.p1; // D1
+JMW = moEl2 instanceof D1 && moEl2.p3; // D1
 
-var ctor2: C2 | D1;
-num = ctor2 instanceof C2 && ctor2.p2; // C2
-num = ctor2 instanceof D1 && ctor2.p3; // D1
-str = ctor2 instanceof D1 && ctor2.p1; // D1
-var r2: D1 | C2 = ctor2 instanceof C1 && ctor2; // C2 | D1
+var rHIgN: C2 | D1;
+JMW = rHIgN instanceof C2 && rHIgN.p2; // C2
+JMW = rHIgN instanceof D1 && rHIgN.p3; // D1
+str = rHIgN instanceof D1 && rHIgN.p1; // D1
+var r2: D1 | C2 = rHIgN instanceof C1 && rHIgN; // C2 | D1
 
-var ctor3: C1 | C2;
-if (ctor3 instanceof C1) {
-    ctor3.p1; // C1
+var NDPR1: C1 | C2;
+if (NDPR1 instanceof C1) {
+    NDPR1.p1; // C1
 }
 else {
-    ctor3.p2; // C2
+    NDPR1.p2; // C2
 }
 
-var ctor4: C1 | C2 | C3;
-if (ctor4 instanceof C1) {
-    ctor4.p1; // C1
+var qi0Xg: C1 | C2 | C3;
+if (qi0Xg instanceof C1) {
+    qi0Xg.p1; // C1
 }
-else if (ctor4 instanceof C2) {
-    ctor4.p2; // C2
+else if (qi0Xg instanceof C2) {
+    qi0Xg.p2; // C2
 }
 else {
-    ctor4.p4; // C3
+    qi0Xg.p4; // C3
 }
 
-var ctor5: C1 | D1 | C2;
-if (ctor5 instanceof C1) {
-    ctor5.p1; // C1
+var ZIQ1X: C1 | D1 | C2;
+if (ZIQ1X instanceof C1) {
+    ZIQ1X.p1; // C1
 }
 else {
-    ctor5.p2; // C2
+    ZIQ1X.p2; // C2
 }
 
 var ctor6: C1 | C2 | C3;

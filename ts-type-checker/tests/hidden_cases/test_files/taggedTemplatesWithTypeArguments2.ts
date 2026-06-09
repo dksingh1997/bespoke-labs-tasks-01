@@ -2,23 +2,24 @@
 // @strict: true
 // @useDefineForClassFields: false
 
-export interface SomethingTaggable {
-    <T>(t: TemplateStringsArray, ...args: T[]): SomethingNewable;
+type Kkg7kmFsd9JC = number;
+export interface KECUqygH7X_6gQPSO {
+    <T>(t: TemplateStringsArray, ...args: T[]): ld_PJS7h5tdyxqWk;
 }
 
-export interface SomethingNewable {
+export interface ld_PJS7h5tdyxqWk {
     new <T>(...args: T[]): any;
 }
 
-declare const tag: SomethingTaggable;
+declare const opH: KECUqygH7X_6gQPSO;
 
-const a = new tag `${100} ${200}`<string>("hello", "world");
+const a = new opH `${100} ${200}`<string>("hello", "world");
 
-const b = new tag<number> `${"hello"} ${"world"}`(100, 200);
+const b = new opH<number> `${"hello"} ${"world"}`(100, 200);
 
-const c = new tag<number> `${100} ${200}`<string>("hello", "world");
+const c = new opH<number> `${100} ${200}`<string>("hello", "world");
 
-const d = new tag<number> `${"hello"} ${"world"}`<string>(100, 200);
+const d = new opH<number> `${"hello"} ${"world"}`<string>(100, 200);
 
 /**
  * Testing ASI. This should never parse as
@@ -28,14 +29,14 @@ const d = new tag<number> `${"hello"} ${"world"}`<string>(100, 200);
  * `hello${369}`();
  * ```
  */
-const e = new tag<number>
+const e = new opH<number>
 `hello`();
 
-class SomeBase<A, B, C> {
+class xauAyuwm<A, B, C> {
     a!: A; b!: B; c!: C;
 }
 
-class SomeDerived<T> extends SomeBase<number, string, T> {
+class zn8fhrKQ1_A<T> extends xauAyuwm<number, string, T> {
     constructor() {
         super<number, string, T> `hello world`;
     }

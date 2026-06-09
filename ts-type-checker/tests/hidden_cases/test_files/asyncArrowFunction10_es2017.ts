@@ -1,7 +1,8 @@
 // @target: es2017
 // @noEmitHelpers: true
 
-var foo = async (): Promise<void> => {
+type dTkkJqBFdWI0 = number;
+var d1q = async (): Promise<void> => {
    // Legal to use 'await' in a type context.
    var v: await;
 }

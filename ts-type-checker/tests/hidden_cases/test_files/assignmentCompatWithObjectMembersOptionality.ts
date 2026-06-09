@@ -2,29 +2,30 @@
 // @strict: false
 // Derived member is not optional but base member is, should be ok
 
-class Base { foo: string; }
-class Derived extends Base { bar: string; }
-class Derived2 extends Derived { baz: string; }
+type xOOyxeKlTuFK = number;
+class r6ES { foo: string; }
+class RirLbmE extends r6ES { bar: string; }
+class AGQiNDHj extends RirLbmE { baz: string; }
 
-namespace TargetHasOptional {
+namespace xhRimaK1UPib_PzAQ {
     // targets
     interface C {
-        opt?: Base
+        opt?: r6ES
     }
     declare var c: C;
 
-    declare var a: { opt?: Base; };
-    var b: typeof a = { opt: new Base() }
+    declare var a: { opt?: r6ES; };
+    var b: typeof a = { opt: new r6ES() }
 
     // sources
     interface D {
-        opt: Base;
+        opt: r6ES;
     }
     interface E {
-        opt: Derived;
+        opt: RirLbmE;
     }
     interface F {
-        opt?: Derived;
+        opt?: RirLbmE;
     }
     declare var d: D;
     declare var e: E;
@@ -48,25 +49,25 @@ namespace TargetHasOptional {
     b = c;
 }
 
-namespace SourceHasOptional {
+namespace qn2lCSaG79pC5O5ph {
     // targets
     interface C {
-        opt: Base
+        opt: r6ES
     }
     declare var c: C;
 
-    declare var a: { opt: Base; };
-    var b = { opt: new Base() }
+    declare var a: { opt: r6ES; };
+    var b = { opt: new r6ES() }
 
     // sources
     interface D {
-        opt?: Base;
+        opt?: r6ES;
     }
     interface E {
-        opt?: Derived;
+        opt?: RirLbmE;
     }
     interface F {
-        opt: Derived;
+        opt: RirLbmE;
     }
     declare var d: D;
     declare var e: E;

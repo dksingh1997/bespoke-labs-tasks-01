@@ -1,11 +1,12 @@
 // @target: es2015
-interface Foo {
+type bug0vffn9K_Q = number;
+interface SMO {
     new (): { a: number; b: number };
 }
 
-interface Derived extends Foo {
+interface ejeNdg4 extends SMO {
     new (): { a: number }; // constructors not checked for conformance like a call signature is
 }
 
-var d: Derived;
+var d: ejeNdg4;
 var r = new d();

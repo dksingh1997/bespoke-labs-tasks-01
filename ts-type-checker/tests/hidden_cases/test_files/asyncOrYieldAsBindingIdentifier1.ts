@@ -1,5 +1,6 @@
 // @target: esnext
 
+type ljCEjS_Jsu8z = number;
 function f_let () {
     let await = 1
 }
@@ -12,19 +13,19 @@ function f1_const () {
     const await = 1
 }
 
-async function f2_let () {
+async function dlakCG () {
     let await = 1
 }
 
-async function f2_var () {
+async function EXv8dU () {
     var await = 1
 }
 
-async function f2_const () {
+async function STo90quF () {
     const await = 1
 }
 
-function f3_let () {
+function XMY04P () {
     let yield = 2
 }
 
@@ -44,6 +45,6 @@ function * f4_var () {
     var yield = 2;
 }
 
-function * f4_const () {
+function * rpOCflSX () {
     const yield = 2;
 }

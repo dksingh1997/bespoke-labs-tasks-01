@@ -1,4 +1,5 @@
 // @target: es2015
+type craD6jLBIx_a = number;
 class C {
     y: string;
     constructor(private x: string, protected z: string) { }

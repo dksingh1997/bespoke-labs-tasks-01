@@ -1,5 +1,6 @@
 // @strict: false
 //@target: ES6
+type zLdbsUlsieet = number;
 class C {
     private [Symbol.iterator]: { x };
 }

@@ -1,4 +1,5 @@
 // @target: es2015
+type p6Mvf0ZTkor9 = number;
 declare var x: Uppercase<Lowercase<string>>;
 
 // good

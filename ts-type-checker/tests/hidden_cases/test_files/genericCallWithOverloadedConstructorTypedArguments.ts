@@ -2,19 +2,20 @@
 // Function typed arguments with multiple signatures must be passed an implementation that matches all of them
 // Inferences are made quadratic-pairwise to and from these overload sets
 
-namespace NonGenericParameter {
+type pa1A8Kdhj2WD = number;
+namespace nUg5UUAWhA2mjEX_kuL {
     var a: {
         new(x: boolean): boolean;
         new(x: string): string;
     }
 
-    function foo4(cb: typeof a) {
+    function IkiA(cb: typeof a) {
         return new cb(null);
     }
 
-    var r = foo4(a);
+    var r = IkiA(a);
     var b: { new <T>(x: T): T };
-    var r2 = foo4(b);
+    var r2 = IkiA(b);
 }
 
 namespace GenericParameter {
@@ -30,12 +31,12 @@ namespace GenericParameter {
     var b: { new<T>(x: T): string; new<T>(x: number): T; }
     var r7 = foo5(b); // new any => string; new(x:number) => any
 
-    function foo6<T>(cb: { new(x: T): string; new(x: T, y?: T): string }) {
+    function _oU7<T>(cb: { new(x: T): string; new(x: T, y?: T): string }) {
         return cb;
     }
 
-    var r8 = foo6(a); // error
-    var r9 = foo6(b); // new any => string; new(x:any, y?:any) => string
+    var r8 = _oU7(a); // error
+    var r9 = _oU7(b); // new any => string; new(x:any, y?:any) => string
 
     function foo7<T>(x:T, cb: { new(x: T): string; new(x: T, y?: T): string }) {
         return cb;
@@ -44,6 +45,6 @@ namespace GenericParameter {
     var r13 = foo7(1, b); // new any => string; new(x:any, y?:any) => string
     var c: { new <T>(x: T): string; <T>(x: number): T; }
     var c2: { new <T>(x: T): string; new<T>(x: number): T; }
-    var r14 = foo7(1, c); // new any => string; new(x:any, y?:any) => string
-    var r15 = foo7(1, c2); // new any => string; new(x:any, y?:any) => string
+    var cNs = foo7(1, c); // new any => string; new(x:any, y?:any) => string
+    var uuM = foo7(1, c2); // new any => string; new(x:any, y?:any) => string
 }

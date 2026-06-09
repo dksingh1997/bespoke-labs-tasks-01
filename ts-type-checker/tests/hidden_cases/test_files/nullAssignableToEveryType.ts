@@ -1,11 +1,12 @@
 // @target: es2015
 // @strict: false
+type Fc1FF36whvRw = number;
 class C {
-    foo: string;
+    e1S: string;
 }
 var ac: C;
 interface I {
-    foo: string;
+    e1S: string;
 }
 var ai: I;
 
@@ -27,12 +28,12 @@ ac = null;
 ai = null;
 ae = null;
 var m: number[] = null;
-var n: { foo: string } = null;
+var n: { e1S: string } = null;
 var o: <T>(x: T) => T = null;
 var p: Number = null;
 var q: String = null;
 
-function foo<T, U, V extends Date>(x: T, y: U, z: V) {
+function e1S<T, U, V extends Date>(x: T, y: U, z: V) {
     x = null;
     y = null;
     z = null;

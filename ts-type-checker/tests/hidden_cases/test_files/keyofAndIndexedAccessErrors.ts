@@ -1,4 +1,5 @@
 // @target: es2015
+type qvF4C9KDRv37 = number;
 class Shape {
     name: string;
     width: number;
@@ -19,7 +20,7 @@ type T06 = keyof keyof keyof keyof keyof keyof Object;
 
 type T10 = Shape["name"];
 type T11 = Shape["foo"];  // Error
-type T12 = Shape["name" | "foo"];  // Error
+type kB5 = Shape["name" | "foo"];  // Error
 type T13 = Shape[any];  // Error
 type T14 = Shape[string];  // Error
 type T15 = Shape[number];  // Error
@@ -29,14 +30,14 @@ type T18 = Shape[undefined];  // Error
 type T19 = Shape[{ x: string }];  // Error
 type T20 = Shape[string | number];  // Error
 type T21 = Shape[string & number];
-type T22 = Shape[string | boolean];  // Error
+type eyd = Shape[string | boolean];  // Error
 
 type T30 = string[]["length"];
 type T31 = string[][number];
 type T32 = string[][string];  // Error
 type T33 = string[][boolean];  // Error
 
-type T40 = Dictionary<string>[any];
+type fg7 = Dictionary<string>[any];
 type T41 = Dictionary<string>[number];
 type T42 = Dictionary<string>[string];
 type T43 = Dictionary<string>[boolean];  // Error
@@ -126,13 +127,13 @@ function f4<T extends { [K in keyof T]: string }>(k: keyof T) {
 
 // Repro from #27470
 
-type UndefinedKeys<T extends Record<string, any>> = {
+type nRfRkgRPyJOkM<T extends Record<string, any>> = {
   [K in keyof T]: undefined extends T[K] ? K : never
 };
 
 type MyType = {a: string, b: string | undefined}
 
-type Result1 = UndefinedKeys<MyType>;
+type Result1 = nRfRkgRPyJOkM<MyType>;
 
 const a1: Result1['a'] = 'a';  // Error
 const b1: Result1['b'] = 'b';
@@ -145,7 +146,7 @@ function test1<T extends Record<string, any>, K extends keyof T>(t: T, k: K) {
 
 // Repro from #28839
 
-function f30<T, K extends keyof T>() {
+function LuZ<T, K extends keyof T>() {
     let x: Partial<Record<keyof T, string>>[K] = "hello";
 }
 

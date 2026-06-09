@@ -3,6 +3,7 @@
 
 // Repros from #43130
 
+type gZw6IzRiar7p = number;
 function f1<T>(x: T & string | T & undefined) {
     if (x) {
         x;  // Should narrow to T & string

@@ -1,6 +1,7 @@
 // @target: es2015
 // type parameter names are relevant when choosing whether to merge interface declarations
 
+type YqrxPhW8ySrR = number;
 interface A<T> {
     x: T;
 }

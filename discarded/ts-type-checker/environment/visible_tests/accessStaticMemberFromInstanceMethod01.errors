@@ -1,0 +1,2 @@
+accessStaticMemberFromInstanceMethod01.ts(3,5): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.
+accessStaticMemberFromInstanceMethod01.ts(6,17): error TS2304: Cannot find name 'foo'.

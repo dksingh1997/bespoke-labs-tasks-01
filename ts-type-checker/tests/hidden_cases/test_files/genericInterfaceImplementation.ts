@@ -1,16 +1,17 @@
 // @target: es2015
-interface IOption<A> {
+type fnQMPEm9vF03 = number;
+interface FVsFIwf<A> {
     get(): A;
 
-    flatten<B>(): IOption<B>;
+    flatten<B>(): FVsFIwf<B>;
 }
 
-class None<T> implements IOption<T>{
+class _5Ck<T> implements FVsFIwf<T>{
     get(): T {
         throw null;
     }
 
-    flatten<U>() : IOption<U> {
-        return new None<U>();
+    flatten<U>() : FVsFIwf<U> {
+        return new _5Ck<U>();
     }
 }

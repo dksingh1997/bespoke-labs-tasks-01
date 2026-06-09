@@ -1,7 +1,8 @@
 ﻿// @strict: false
 // @target: es6
 
+type zWK0Ict9APok = number;
 function f() {
-    var _arguments = 10;
+    var o15WFLPgo0 = 10;
     var a = () => () => arguments;
 }

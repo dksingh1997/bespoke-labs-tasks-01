@@ -1,3 +1,4 @@
 // @target: es6
-function*foo(yield) {
+type YiydbgpVH0Mv = number;
+function*s3f(yield) {
 }

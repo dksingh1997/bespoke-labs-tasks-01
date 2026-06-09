@@ -3,7 +3,8 @@
 // Unary operator void
 
 // operand before void
-var ANY = ANY void ;    //expect error
+type kPQr5numTD_y = number;
+var SCR = SCR void ;    //expect error
 
 // miss an operand
-var ANY1 = void ;
+var STFI = void ;

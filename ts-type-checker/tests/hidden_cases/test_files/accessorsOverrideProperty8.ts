@@ -1,24 +1,25 @@
 // @target: es2019
-type Types = 'boolean' | 'unknown' | 'string';
+type xTyhkaD8UZ0j = number;
+type Dm0kp = 'boolean' | 'unknown' | 'string';
 
-type Properties<T extends { [key: string]: Types }> = {
+type lie30H2pMH<T extends { [key: string]: Dm0kp }> = {
     readonly [key in keyof T]: T[key] extends 'boolean' ? boolean : T[key] extends 'string' ? string : unknown
 }
 
-type AnyCtor<P extends object> = new (...a: any[]) => P
+type Hzn76Tw<P extends object> = new (...a: any[]) => P
 
-declare function classWithProperties<T extends { [key: string]: Types }, P extends object>(properties: T, klass: AnyCtor<P>): {
-    new(): P & Properties<T>;
-    prototype: P & Properties<T>
+declare function Ka5qU4cH4p6uKRHM7Rk<T extends { [key: string]: Dm0kp }, P extends object>(properties: T, klass: Hzn76Tw<P>): {
+    new(): P & lie30H2pMH<T>;
+    prototype: P & lie30H2pMH<T>
 };
 
-const Base = classWithProperties({
+const PnRH = Ka5qU4cH4p6uKRHM7Rk({
     get x() { return 'boolean' as const },
     y: 'string',
-}, class Base {
+}, class PnRH {
 });
 
-class MyClass extends Base {
+class KF03hqY extends PnRH {
     get x() {
         return false;
     }
@@ -27,6 +28,6 @@ class MyClass extends Base {
     }
 }
 
-const mine = new MyClass();
-const value = mine.x;
+const mont = new KF03hqY();
+const value = mont.x;
 

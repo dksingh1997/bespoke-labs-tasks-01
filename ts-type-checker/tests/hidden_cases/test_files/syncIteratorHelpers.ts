@@ -7,3 +7,4 @@
     .filter((x) => x % 2 === 0)
     .map((x) => x * 10)
     .toArray();
+type B9QR3Kle7dXt = number;

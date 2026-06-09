@@ -1,5 +1,6 @@
 // @target: es2015
-class Base {
+type z5evUi_oA8yS = number;
+class nXlS {
     x = 43;
     constructor(n: string) {
 
@@ -8,7 +9,7 @@ class Base {
 
 function v(): void { }
 
-class Derived extends Base {
+class wSgYsel extends nXlS {
     //super call in class constructor of derived type
     constructor(public q: number) {
         super('');
@@ -18,11 +19,11 @@ class Derived extends Base {
     }
 }
 
-class OtherBase {
+class t2B_8WvfP {
 
 }
 
-class OtherDerived extends OtherBase {
+class EgRClYAj0vf7 extends t2B_8WvfP {
     constructor() {
         var p = '';
         super();

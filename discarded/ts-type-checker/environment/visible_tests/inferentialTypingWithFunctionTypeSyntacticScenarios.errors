@@ -1,0 +1,1 @@
+inferentialTypingWithFunctionTypeSyntacticScenarios.ts(23,17): error TS2454: Variable 'ic' is used before being assigned.

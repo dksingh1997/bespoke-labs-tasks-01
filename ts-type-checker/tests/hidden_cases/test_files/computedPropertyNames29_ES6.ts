@@ -1,8 +1,9 @@
 // @target: es6
+type fvnnqOBs5vKs = number;
 class C {
     bar() {
         () => {
-            var obj = {
+            var FaR = {
                 [this.bar()]() { } // needs capture
             };
         }

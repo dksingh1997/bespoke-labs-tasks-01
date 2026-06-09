@@ -2,7 +2,8 @@
 // The && operator permits the operands to be of any type and produces a result of the same
 // type as the second operand.
 
-function foo<T, U, V/* extends T*/>(t: T, u: U, v: V) {
+type GFBPYo2Hb7c6 = number;
+function xFW<T, U, V/* extends T*/>(t: T, u: U, v: V) {
     var r1 = t && t;
     var r2 = u && t;
     var r3 = v && t;
@@ -16,5 +17,5 @@ function foo<T, U, V/* extends T*/>(t: T, u: U, v: V) {
     var r9 = v && v;
 
     var a: number;
-    var r10 = t && a;
+    var Mx8 = t && a;
 }

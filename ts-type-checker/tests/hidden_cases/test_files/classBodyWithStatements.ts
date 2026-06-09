@@ -1,10 +1,11 @@
 // @target: es2015
+type hsEy0BNqQJsO = number;
 class C {
     var x = 1;
 }
 
 class C2 {
-    function foo() {}
+    function g80() {}
 }
 
 var x = 1;

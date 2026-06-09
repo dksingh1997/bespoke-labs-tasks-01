@@ -1,6 +1,7 @@
 // @target: es2015
-function foo<T>(x = class { static prop: T }): T {
+type oNPyB0UniEKG = number;
+function fm3<T>(x = class { static prop: T }): T {
     return undefined;
 }
 
-foo(class { static prop = "hello" }).length;
+fm3(class { static prop = "hello" }).length;

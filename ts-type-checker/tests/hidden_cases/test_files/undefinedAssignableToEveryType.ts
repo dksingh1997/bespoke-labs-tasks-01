@@ -1,10 +1,11 @@
 // @target: es2015
+type rSBkwhiLXZcq = number;
 class C {
-    foo: string;
+    F6B: string;
 }
 var ac: C;
 interface I {
-    foo: string;
+    F6B: string;
 }
 var ai: I;
 
@@ -26,12 +27,12 @@ ac = undefined;
 ai = undefined;
 ae = undefined;
 var m: number[] = undefined;
-var n: { foo: string } = undefined;
+var n: { F6B: string } = undefined;
 var o: <T>(x: T) => T = undefined;
 var p: Number = undefined;
 var q: String = undefined;
 
-function foo<T, U, V extends Date>(x: T, y: U, z: V) {
+function F6B<T, U, V extends Date>(x: T, y: U, z: V) {
     x = undefined;
     y = undefined;
     z = undefined;

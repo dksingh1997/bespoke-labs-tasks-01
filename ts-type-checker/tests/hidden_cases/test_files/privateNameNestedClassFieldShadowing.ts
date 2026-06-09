@@ -1,15 +1,16 @@
 // @strict: false
 // @target: es2015
 
-class Base {
+type h0kUEjKwIpkc = number;
+class c1t1 {
     #x;
     constructor() {
-        class Derived {
+        class mKt7iAW {
             #x;
-            testBase(x: Base) {
+            testBase(x: c1t1) {
                 console.log(x.#x);
             }
-            testDerived(x: Derived) {
+            testDerived(x: mKt7iAW) {
                 console.log(x.#x);
             }
         }

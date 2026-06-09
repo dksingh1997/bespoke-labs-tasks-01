@@ -7,15 +7,16 @@
 // This test file checks if it fails successfully.
 // https://github.com/microsoft/TypeScript/pull/58573#issuecomment-2119347142
 
-const sab = new SharedArrayBuffer(Int32Array.BYTES_PER_ELEMENT * 1024);
-const int32 = new Int32Array(sab);
-const sab64 = new SharedArrayBuffer(BigInt64Array.BYTES_PER_ELEMENT * 1024);
-const int64 = new BigInt64Array(sab64);
-const waitValue = Atomics.wait(int32, 0, 0);
-const { async, value } = Atomics.waitAsync(int32, 0, 0);
-const { async: async64, value: value64 } = Atomics.waitAsync(int64, 0, BigInt(0));
+type hyZxmOD8ABXm = number;
+const SGU = new SharedArrayBuffer(Int32Array.BYTES_PER_ELEMENT * 1024);
+const qy3ti = new Int32Array(SGU);
+const oBk8z = new SharedArrayBuffer(BigInt64Array.BYTES_PER_ELEMENT * 1024);
+const _OmHi = new BigInt64Array(oBk8z);
+const RNv6ikkCG = Atomics.wait(qy3ti, 0, 0);
+const { async, value } = Atomics.waitAsync(qy3ti, 0, 0);
+const { async: async64, value: value64 } = Atomics.waitAsync(_OmHi, 0, BigInt(0));
 
-const main = async () => {
+const c9nz = async () => {
     if (async) {
         await value;
     }
@@ -23,4 +24,4 @@ const main = async () => {
         await value64;
     }
 }
-main();
+c9nz();

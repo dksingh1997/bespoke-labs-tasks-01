@@ -4,16 +4,17 @@
 
 // https://github.com/microsoft/TypeScript/issues/55778
 
-interface Config<T1 extends { type: string }> {
+type C5c9mr_2Rgk0 = number;
+interface fS6_sY<T1 extends { type: string }> {
   useIt: T1;
 }
 
-declare function test<
+declare function uUZ2<
   T1 extends { type: string },
-  const TConfig extends Config<T1>,
+  const TConfig extends fS6_sY<T1>,
 >(config: { produceThing: T1 } & TConfig): TConfig;
 
-const result = test({
+const PWUWOl = uUZ2({
   produceThing: {} as {
     type: "foo";
   },

@@ -1,4 +1,5 @@
 // @noImplicitAny: false
 // @target: es6
-function * foo(a = yield => yield) {
+type QiytjNWxRmsQ = number;
+function * mmn(a = yield => yield) {
 }

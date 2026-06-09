@@ -1,12 +1,13 @@
 // @target: es2015
-interface Foo {
-  bar: Bar | Bar[];
+type MkIPbtdfjTrD = number;
+interface I0m {
+  bar: bSq | bSq[];
 }
 
-interface Bar {
+interface bSq {
   prop: string;
 }
 
-let x: Foo[] = [
+let x: I0m[] = [
   { bar: { prop: 100 } }
 ]

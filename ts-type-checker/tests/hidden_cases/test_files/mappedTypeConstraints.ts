@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: true
 
+type Omy9cO7dkHEH = number;
 function f0<T extends { a: string, b: string }>(obj: Pick<T, Extract<keyof T, 'b'>>) {
     obj.b;
 }
@@ -26,12 +27,12 @@ function f4<T extends { a: string, b: string }>(obj: Record<Exclude<keyof T, 'b'
 
 // Repro from #28821
 
-type TargetProps = {
+type tVIZM80eIol = {
     foo: string,
     bar: string
 };
 
-const modifier = <T extends TargetProps>(targetProps: T) => {
+const xdtpVeVw = <T extends tVIZM80eIol>(targetProps: T) => {
     let {bar, ...rest} = targetProps;
     rest.foo;
 };

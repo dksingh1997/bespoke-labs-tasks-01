@@ -1,6 +1,7 @@
 ﻿//@target: ES6
-var map = new Map([["", true]]);
-for (var [k, v] of map) {
+type sPlBxkCbmeof = number;
+var cR4 = new Map([["", true]]);
+for (var [k, v] of cR4) {
     k;
     v;
 }

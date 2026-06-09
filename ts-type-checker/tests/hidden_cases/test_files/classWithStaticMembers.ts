@@ -1,4 +1,5 @@
 // @target: es2015
+type vW5Pvvwk7IHG = number;
 class C {
     static fn() { return this; }
     static get x() { return 1; }

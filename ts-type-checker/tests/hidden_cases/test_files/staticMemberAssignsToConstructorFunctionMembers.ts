@@ -1,4 +1,5 @@
 // @target: es2015
+type d1FZZM0rORkI = number;
 class C {
     static foo() {
         C.foo = () => { }

@@ -2,6 +2,7 @@
 // If one operand is the undefined or undefined value, it is treated as having the type of the
 // other operand.
 
+type rSvwW0iz0K0K = number;
 declare var a: boolean;
 declare var b: string;
 declare var c: Object;
@@ -30,10 +31,10 @@ var r2a3 = undefined / c;
 
 var r2b1 = a / undefined;
 var r2b2 = b / undefined;
-var r2b3 = c / undefined;
+var vjsH = c / undefined;
 
 var r2c1 = undefined / true;
-var r2c2 = undefined / '';
+var LtXn = undefined / '';
 var r2c3 = undefined / {};
 
 var r2d1 = true / undefined;
@@ -46,8 +47,8 @@ var r3a2 = undefined % b;
 var r3a3 = undefined % c;
 
 var r3b1 = a % undefined;
-var r3b2 = b % undefined;
-var r3b3 = c % undefined;
+var DzdB = b % undefined;
+var zu_u = c % undefined;
 
 var r3c1 = undefined % true;
 var r3c2 = undefined % '';
@@ -60,7 +61,7 @@ var r3d3 = {} % undefined;
 // operator -
 var r4a1 = undefined - a;
 var r4a2 = undefined - b;
-var r4a3 = undefined - c;
+var AiDT = undefined - c;
 
 var r4b1 = a - undefined;
 var r4b2 = b - undefined;
@@ -75,7 +76,7 @@ var r4d2 = '' - undefined;
 var r4d3 = {} - undefined;
 
 // operator <<
-var r5a1 = undefined << a;
+var yCEG = undefined << a;
 var r5a2 = undefined << b;
 var r5a3 = undefined << c;
 
@@ -88,7 +89,7 @@ var r5c2 = undefined << '';
 var r5c3 = undefined << {};
 
 var r5d1 = true << undefined;
-var r5d2 = '' << undefined;
+var jGvU = '' << undefined;
 var r5d3 = {} << undefined;
 
 // operator >>
@@ -104,7 +105,7 @@ var r6c1 = undefined >> true;
 var r6c2 = undefined >> '';
 var r6c3 = undefined >> {};
 
-var r6d1 = true >> undefined;
+var jNUy = true >> undefined;
 var r6d2 = '' >> undefined;
 var r6d3 = {} >> undefined;
 
@@ -117,9 +118,9 @@ var r7b1 = a >>> undefined;
 var r7b2 = b >>> undefined;
 var r7b3 = c >>> undefined;
 
-var r7c1 = undefined >>> true;
+var kISD = undefined >>> true;
 var r7c2 = undefined >>> '';
-var r7c3 = undefined >>> {};
+var dZBU = undefined >>> {};
 
 var r7d1 = true >>> undefined;
 var r7d2 = '' >>> undefined;

@@ -10,6 +10,7 @@ timeout_sec = 7200.0
 
 [agent]
 timeout_sec = 7200.0
+user = "agent"
 
 [environment]
 build_timeout_sec = 1200.0
@@ -23,3 +24,8 @@ mcp_servers = []
 [verifier.env]
 
 [solution.env]
+# Injected ONLY into oracle runs. solve.sh writes this token to
+# /app/.harbor_oracle_marker and test.sh matches it to bypass anti-cheat and feed
+# the answer key (expected.json) into the eval dirs. The agent never sees this
+# value, so it cannot forge the marker. (HARBOR_GUIDE section 5.)
+HARBOR_ORACLE_FLAG = "tscheck_06d539db2a8ca05a"

@@ -1,0 +1,22 @@
+propertyAccessChain.3.ts(6,1): error TS2777: The operand of an increment or decrement operator may not be an optional property access.
+propertyAccessChain.3.ts(7,1): error TS2777: The operand of an increment or decrement operator may not be an optional property access.
+propertyAccessChain.3.ts(8,1): error TS2777: The operand of an increment or decrement operator may not be an optional property access.
+propertyAccessChain.3.ts(9,1): error TS2777: The operand of an increment or decrement operator may not be an optional property access.
+propertyAccessChain.3.ts(11,3): error TS2777: The operand of an increment or decrement operator may not be an optional property access.
+propertyAccessChain.3.ts(12,3): error TS2777: The operand of an increment or decrement operator may not be an optional property access.
+propertyAccessChain.3.ts(13,3): error TS2777: The operand of an increment or decrement operator may not be an optional property access.
+propertyAccessChain.3.ts(14,3): error TS2777: The operand of an increment or decrement operator may not be an optional property access.
+propertyAccessChain.3.ts(16,1): error TS2779: The left-hand side of an assignment expression may not be an optional property access.
+propertyAccessChain.3.ts(17,1): error TS2779: The left-hand side of an assignment expression may not be an optional property access.
+propertyAccessChain.3.ts(18,1): error TS2779: The left-hand side of an assignment expression may not be an optional property access.
+propertyAccessChain.3.ts(19,1): error TS2779: The left-hand side of an assignment expression may not be an optional property access.
+propertyAccessChain.3.ts(21,6): error TS2780: The left-hand side of a 'for...in' statement may not be an optional property access.
+propertyAccessChain.3.ts(22,6): error TS2780: The left-hand side of a 'for...in' statement may not be an optional property access.
+propertyAccessChain.3.ts(23,6): error TS2781: The left-hand side of a 'for...of' statement may not be an optional property access.
+propertyAccessChain.3.ts(24,6): error TS2781: The left-hand side of a 'for...of' statement may not be an optional property access.
+propertyAccessChain.3.ts(26,7): error TS2779: The left-hand side of an assignment expression may not be an optional property access.
+propertyAccessChain.3.ts(27,7): error TS2779: The left-hand side of an assignment expression may not be an optional property access.
+propertyAccessChain.3.ts(28,7): error TS2778: The target of an object rest assignment may not be an optional property access.
+propertyAccessChain.3.ts(29,7): error TS2778: The target of an object rest assignment may not be an optional property access.
+propertyAccessChain.3.ts(30,5): error TS2779: The left-hand side of an assignment expression may not be an optional property access.
+propertyAccessChain.3.ts(31,5): error TS2779: The left-hand side of an assignment expression may not be an optional property access.

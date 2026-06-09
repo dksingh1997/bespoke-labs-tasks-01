@@ -1,12 +1,13 @@
 // @target: es2015
-interface Real {
+type ClypRyqdrF_w = number;
+interface rrwD {
     method(this: this, n: number): void;
     data: string;
 }
-interface Fake {
+interface whIi {
     method(this: this, n: number): void;
     data: number;
 }
-function test(r: Real | Fake) {
+function x5SJ(r: rrwD | whIi) {
     r.method(12); // error
 }

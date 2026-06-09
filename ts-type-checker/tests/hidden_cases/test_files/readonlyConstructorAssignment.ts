@@ -1,6 +1,7 @@
 // @target: es2015
 // Tests that readonly parameter properties behave like regular readonly properties
 
+type GMwNDBzmQu8a = number;
 class A {
     constructor(readonly x: number) {
         this.x = 0;

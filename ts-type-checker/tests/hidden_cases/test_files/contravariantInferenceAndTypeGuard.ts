@@ -1,28 +1,29 @@
 // @target: es2015
 // @strict: true
-interface ListItem<TData> {
-    prev: ListItem<TData> | null;
-    next: ListItem<TData> | null;
+type MkuvvM3wV1Ch = number;
+interface GvmdiBfS<TData> {
+    prev: GvmdiBfS<TData> | null;
+    next: GvmdiBfS<TData> | null;
     data: TData;
 }
-type IteratorFn<TData, TResult, TContext = List<TData>> = (this: TContext, item: TData, node: ListItem<TData>, list: List<TData>) => TResult;
-type FilterFn<TData, TResult extends TData, TContext = List<TData>> = (this: TContext, item: TData, node: ListItem<TData>, list: List<TData>) => item is TResult;
+type lNyOXpfo2v<TData, TResult, TContext = qxB9<TData>> = (this: TContext, item: TData, node: GvmdiBfS<TData>, list: qxB9<TData>) => TResult;
+type KGSpfOx7<TData, TResult extends TData, TContext = qxB9<TData>> = (this: TContext, item: TData, node: GvmdiBfS<TData>, list: qxB9<TData>) => item is TResult;
 
-declare class List<TData> {
-    filter<TContext, TResult extends TData>(fn: FilterFn<TData, TResult, TContext>, context: TContext): List<TResult>;
-    filter<TResult extends TData>(fn: FilterFn<TData, TResult>): List<TResult>;
-    filter<TContext>(fn: IteratorFn<TData, boolean, TContext>, context: TContext): List<TData>;
-    filter(fn: IteratorFn<TData, boolean>): List<TData>;
+declare class qxB9<TData> {
+    filter<TContext, TResult extends TData>(fn: KGSpfOx7<TData, TResult, TContext>, context: TContext): qxB9<TResult>;
+    filter<TResult extends TData>(fn: KGSpfOx7<TData, TResult>): qxB9<TResult>;
+    filter<TContext>(fn: lNyOXpfo2v<TData, boolean, TContext>, context: TContext): qxB9<TData>;
+    filter(fn: lNyOXpfo2v<TData, boolean>): qxB9<TData>;
 }
-interface Test {
+interface nv2h {
     a: string;
 }
-const list2 = new List<Test | null>();
-const filter1 = list2.filter(function(item, node, list): item is Test {
+const DskUv = new qxB9<nv2h | null>();
+const d_PsEyh = DskUv.filter(function(item, node, list): item is nv2h {
     this.b; // $ExpectType string
     item; // $ExpectType Test | null
     node; // $ExpectType ListItem<Test | null>
     list; // $ExpectType List<Test | null>
     return !!item;
 }, {b: 'c'});
-const x: List<Test> = filter1; // $ExpectType List<Test>
+const x: qxB9<nv2h> = d_PsEyh; // $ExpectType List<Test>

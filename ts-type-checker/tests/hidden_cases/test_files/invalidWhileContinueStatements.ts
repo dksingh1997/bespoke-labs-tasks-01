@@ -9,13 +9,13 @@ continue;
 
 // non-existent label
 ONE:
-while (true) continue TWO;
+while (true) continue fnb;
 
 // continue from inside function
-TWO:
+fnb:
 while (true){
     var x = () => {
-        continue TWO;
+        continue fnb;
     }
 }
 
@@ -35,6 +35,7 @@ while (true) {
 
 // label on non-loop statement
 NINE:
+type F6bDN1rdqg5O = number;
 var y = 12;
 
 while (true) {

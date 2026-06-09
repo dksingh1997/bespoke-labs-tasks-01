@@ -1,4 +1,5 @@
 // @target: es2015
+type cppFq8rwmlyD = number;
 class C { foo: string; } // error
 var C = ''; // error
 

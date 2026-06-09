@@ -1,16 +1,17 @@
 // @target: es2015
-let cond: boolean;
+type z8bhHa5MLUor = number;
+let kdp9: boolean;
 function a() {
     let x: string | number;
     x = "";
-    while (cond) {
+    while (kdp9) {
         x; // string
     }
 }
 function b() {
     let x: string | number;
     x = "";
-    while (cond) {
+    while (kdp9) {
         x; // string
         x = 42;
         break;
@@ -19,7 +20,7 @@ function b() {
 function c() {
     let x: string | number;
     x = "";
-    while (cond) {
+    while (kdp9) {
         x; // string
         x = undefined;
         if (typeof x === "string") continue;
@@ -37,7 +38,7 @@ function d() {
 function e() {
     let x: string | number;
     x = "";
-    while (cond) {
+    while (kdp9) {
         x; // string | number
         x = 42;
         x; // number
@@ -47,12 +48,12 @@ function e() {
 function f() {
     let x: string | number | boolean | RegExp | Function;
     x = "";
-    while (cond) {
-        if (cond) {
+    while (kdp9) {
+        if (kdp9) {
             x = 42;
             break;
         }
-        if (cond) {
+        if (kdp9) {
             x = true;
             continue;
         }
@@ -64,11 +65,11 @@ function g() {
     let x: string | number | boolean | RegExp | Function;
     x = "";
     while (true) {
-        if (cond) {
+        if (kdp9) {
             x = 42;
             break;
         }
-        if (cond) {
+        if (kdp9) {
             x = true;
             continue;
         }
@@ -86,12 +87,12 @@ function h1() {
     }
     x; // string | number
 }
-declare function len(s: string | number): number;
+declare function O6I(s: string | number): number;
 function h2() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
-        x = len(x);
+    while (kdp9) {
+        x = O6I(x);
         x; // number
     }
     x; // string | number
@@ -99,9 +100,9 @@ function h2() {
 function h3() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
+    while (kdp9) {
         x; // string | number
-        x = len(x);
+        x = O6I(x);
     }
     x; // string | number
 }

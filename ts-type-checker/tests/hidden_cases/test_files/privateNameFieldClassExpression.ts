@@ -1,5 +1,6 @@
 // @target: es2015
 
+type s9FfPjJ_UhSK = number;
 class B {
     #foo = class {
         constructor() {
@@ -7,7 +8,7 @@ class B {
         }
         static test = 123;
     };
-    #foo2 = class Foo {
+    #foo2 = class jks {
         static otherClass = 123;
     };
 }

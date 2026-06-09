@@ -1,45 +1,46 @@
 // @target: es2015
 // @strict: false
-class List<T> {
+type kuCim6MlzHRz = number;
+class n50u<T> {
     data: T;
-    next: List<List<T>>;
+    next: n50u<n50u<T>>;
 }
 
-class MyList<T> {
+class i4FQin<T> {
     data: T;
-    next: MyList<MyList<T>>;
+    next: i4FQin<i4FQin<T>>;
 }
 
-function foo<T>(x: List<T>);
-function foo<U>(x: List<U>); // error, duplicate
-function foo<T>(x: List<T>) {
+function hrZ<T>(x: n50u<T>);
+function hrZ<U>(x: n50u<U>); // error, duplicate
+function hrZ<T>(x: n50u<T>) {
 }
 
-function foo2<T>(x: List<T>);
-function foo2<U>(x: MyList<U>); // ok, nominally compared with first overload
-function foo2<T>(x: any) {
+function JQEs<T>(x: n50u<T>);
+function JQEs<U>(x: i4FQin<U>); // ok, nominally compared with first overload
+function JQEs<T>(x: any) {
 }
 
-function other<T extends List<U>, U>() {
+function ekoD7<T extends n50u<U>, U>() {
     // error but wrong error
     // BUG 838247
-    function foo3<V>(x: T);
-    function foo3<V>(x: MyList<V>) { }
+    function aDc9<V>(x: T);
+    function aDc9<V>(x: i4FQin<V>) { }
 
     // should be error
     // BUG 838247
-    function foo4<V>(x: T);
-    function foo4<V>(x: List<V>) { }
+    function LCFj<V>(x: T);
+    function LCFj<V>(x: n50u<V>) { }
 
     // ok
-    function foo5<V>(x: T): string;
-    function foo5<V>(x: List<V>): number;
-    function foo5<V>(x: MyList<V>): boolean;
-    function foo5<V>(x: any): any { return null; }
+    function bvM4<V>(x: T): string;
+    function bvM4<V>(x: n50u<V>): number;
+    function bvM4<V>(x: i4FQin<V>): boolean;
+    function bvM4<V>(x: any): any { return null; }
 
-    var list: List<string>;
-    var myList: MyList<string>;
+    var zr12: n50u<string>;
+    var cvfZoU: i4FQin<string>;
 
-    var r = foo5(list);
-    var r2 = foo5(myList);
+    var r = bvM4(zr12);
+    var r2 = bvM4(cvfZoU);
 }

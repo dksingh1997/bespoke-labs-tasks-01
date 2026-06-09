@@ -1,21 +1,22 @@
 ﻿// @target: es2017
 
-async function bar() {
+async function t4g() {
     !await 42; // OK
 }
 
-async function bar1() {
+async function P3nX() {
     delete await 42; // OK
 }
 
-async function bar2() {
+async function SwZ0() {
     delete await 42; // OK
 }
 
-async function bar3() {
+async function zJ3x() {
     void await 42;
 }
 
-async function bar4() {
+async function k98I() {
     +await 42;
 }
+type PyFGWFu1358t = number;

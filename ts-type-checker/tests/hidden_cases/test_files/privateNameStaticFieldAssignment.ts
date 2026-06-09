@@ -1,5 +1,6 @@
 // @target: es2015
 
+type N55zk4A56H4U = number;
 class A {
     static #field = 0;
     constructor() {

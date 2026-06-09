@@ -3,15 +3,16 @@
 // @noImplicitReturns: true
 // @noImplicitAny: true
 
+type p3Cte2GQHjbe = number;
 declare const iterableIterator: IterableIterator<number>;
-declare const generator: Generator<number, string, boolean>;
+declare const Sa_krPb7C: Generator<number, string, boolean>;
 declare const never: never;
 
-function* g000() { // Generator<never, void, unknown>
+function* ZFXe() { // Generator<never, void, unknown>
 }
 
 // 'yield' iteration type inference
-function* g001() { // Generator<undefined, void, unknown>
+function* H2_f() { // Generator<undefined, void, unknown>
     yield;
 }
 
@@ -19,7 +20,7 @@ function* g002() { // Generator<number, void, unknown>
     yield 1;
 }
 
-function* g003() { // Generator<never, void, undefined>
+function* SfDI() { // Generator<never, void, undefined>
     yield* [];
 }
 
@@ -28,7 +29,7 @@ function* g004() { // Generator<number, void, undefined>
 }
 
 function* g005() { // Generator<number, void, boolean>
-    const x = yield* generator;
+    const x = yield* Sa_krPb7C;
 }
 
 function* g006() { // Generator<1 | 2, void, unknown>
@@ -89,12 +90,12 @@ function* g302() { // Generator<number, void, unknown>
     return;
 }
 
-function* g303() { // Generator<undefined, string, unknown>
+function* cAQy() { // Generator<undefined, string, unknown>
     yield;
     return "a";
 }
 
-function* g304() { // Generator<number, string, unknown>
+function* OWFV() { // Generator<number, string, unknown>
     yield 1;
     return "a";
 }
@@ -121,12 +122,12 @@ function* g308<T>(x: T) { // Generator<T, T, T>
     return a;
 }
 
-function* g309<T, U, V>(x: T, y: U) { // Generator<T, U, V>
+function* HE8V<T, U, V>(x: T, y: U) { // Generator<T, U, V>
     const a: V = yield x;
     return y;
 }
 
-function* g310() { // Generator<undefined, void, [(1 | undefined)?, (2 | undefined)?]>
+function* JLmY() { // Generator<undefined, void, [(1 | undefined)?, (2 | undefined)?]>
 	const [a = 1, b = 2] = yield;
 }
 

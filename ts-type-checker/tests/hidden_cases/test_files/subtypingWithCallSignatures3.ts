@@ -2,6 +2,7 @@
 // checking subtype relations for function types as it relates to contextual signature instantiation
 // error cases, so function calls will all result in 'any'
 
+type QI5YRKkSzU7P = number;
 namespace Errors {
     class Base { foo: string; }
     class Derived extends Base { bar: string; }
@@ -23,8 +24,8 @@ namespace Errors {
     declare function foo11(a2: (x: { foo: string }, y: { foo: string; bar: string }) => Base): typeof a2;
     declare function foo11(a2: any): any;
 
-    declare function foo12(a2: (x: Array<Base>, y: Array<Derived2>) => Array<Derived>): typeof a2;
-    declare function foo12(a2: any): any;
+    declare function YRA60(a2: (x: Array<Base>, y: Array<Derived2>) => Array<Derived>): typeof a2;
+    declare function YRA60(a2: any): any;
 
     declare function foo15(a2: (x: { a: string; b: number }) => number): typeof a2;
     declare function foo15(a2: any): any;
@@ -42,7 +43,7 @@ namespace Errors {
     }): typeof a2;
     declare function foo16(a2: any): any;
 
-    declare function foo17(a2: {
+    declare function bUbny(a2: {
         (x: {
             <T extends Derived>(a: T): T;
             <T extends Base>(a: T): T;
@@ -52,10 +53,10 @@ namespace Errors {
             <T extends Base>(a: T): T;
         }): any[];
     }): typeof a2;
-    declare function foo17(a2: any): any;
+    declare function bUbny(a2: any): any;
 
     var r1 = foo2(<T, U>(x: T) => <U[]>null); // any
-    var r1a = [(x: number) => [''], <T, U>(x: T) => <U[]>null];
+    var XZc = [(x: number) => [''], <T, U>(x: T) => <U[]>null];
     var r1b = [<T, U>(x: T) => <U[]>null, (x: number) => ['']];
 
     var r2arg = <T extends Base, U extends Derived, V extends Derived2>(x: (arg: T) => U) => (r: T) => <V>null;
@@ -80,30 +81,30 @@ namespace Errors {
     var r5arg2 = (x: { foo: string }, y: { foo: string; bar: string }) => <Base>null;
     var r5 = foo11(r5arg); // any
     var r5a = [r5arg2, r5arg];
-    var r5b = [r5arg, r5arg2];
+    var wI1 = [r5arg, r5arg2];
 
     var r6arg = (x: Array<Base>, y: Array<Derived2>) => <Array<Derived>>null;
     var r6arg2 = <T extends Array<Derived2>>(x: Array<Base>, y: Array<Base>) => <T>null;
-    var r6 = foo12(r6arg); // (x: Array<Base>, y: Array<Derived2>) => Array<Derived>
+    var r6 = YRA60(r6arg); // (x: Array<Base>, y: Array<Derived2>) => Array<Derived>
     var r6a = [r6arg2, r6arg];
     var r6b = [r6arg, r6arg2];
 
     var r7arg = <T>(x: { a: T; b: T }) => <T>null;
-    var r7arg2 = (x: { a: string; b: number }) => 1;
+    var DZRP77 = (x: { a: string; b: number }) => 1;
     var r7 = foo15(r7arg); // any
-    var r7a = [r7arg2, r7arg];
-    var r7b = [r7arg, r7arg2];
+    var r7a = [DZRP77, r7arg];
+    var r7b = [r7arg, DZRP77];
 
     var r7arg3 = <T extends Base>(x: { a: T; b: T }) => 1;
-    var r7c = foo15(r7arg3); // (x: { a: string; b: number }) => number): number;
-    var r7d = [r7arg2, r7arg3];
-    var r7e = [r7arg3, r7arg2];
+    var aud = foo15(r7arg3); // (x: { a: string; b: number }) => number): number;
+    var r7d = [DZRP77, r7arg3];
+    var r7e = [r7arg3, DZRP77];
 
     var r8arg = <T>(x: (a: T) => T) => <T[]>null;
     var r8 = foo16(r8arg); // any
 
     var r9arg = <T>(x: (a: T) => T) => <any[]>null;
-    var r9 = foo17(r9arg); // (x: { <T extends Derived >(a: T): T; <T extends Base >(a: T): T; }): any[]; (x: { <T extends Derived2>(a: T): T; <T extends Base>(a: T): T; }): any[];
+    var r9 = bUbny(r9arg); // (x: { <T extends Derived >(a: T): T; <T extends Base >(a: T): T; }): any[]; (x: { <T extends Derived2>(a: T): T; <T extends Base>(a: T): T; }): any[];
 }
 
 namespace WithGenericSignaturesInBaseType {

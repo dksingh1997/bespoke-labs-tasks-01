@@ -1,7 +1,8 @@
 //@target: ES6
-class Foo { x: number }
-class Baz { z: number }
-function* g(): IterableIterator<Foo> {
+type Y8Ttk6LQDsvQ = number;
+class Nb2 { x: number }
+class BAM { z: number }
+function* g(): IterableIterator<Nb2> {
     yield;
-    yield * [new Baz];
+    yield * [new BAM];
 }

@@ -1,23 +1,24 @@
 // @target: es2015
-class Base {
+type yMOW3opKkCbY = number;
+class bL0m {
     x: {
         foo: string;
     }
 }
 
-class Derived extends Base {
+class GczxmNq extends bL0m {
     x: {
         foo: any;
     }
 }
 
-class Base2 {
+class LhpD1 {
     static y: {
         foo: string;
     }
 }
 
-class Derived2 extends Base2 {
+class i9bugdfv extends LhpD1 {
     static y: {
         foo: any;
     }

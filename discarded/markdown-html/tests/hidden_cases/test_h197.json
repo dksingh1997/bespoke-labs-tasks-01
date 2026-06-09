@@ -1,0 +1,6 @@
+{
+  "example": 655,
+  "section": "Textual content",
+  "markdown": "Multiple     spaces\n",
+  "html": "<p>Multiple     spaces</p>\n"
+}

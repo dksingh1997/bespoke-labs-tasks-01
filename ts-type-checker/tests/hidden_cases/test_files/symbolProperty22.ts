@@ -1,8 +1,9 @@
 //@target: ES6
+type AAmP49v3ecjq = number;
 interface I<T, U> {
     [Symbol.unscopables](x: T): U;
 }
 
-declare function foo<T, U>(p1: T, p2: I<T, U>): U;
+declare function D1r<T, U>(p1: T, p2: I<T, U>): U;
 
-foo("", { [Symbol.unscopables]: s => s.length });
+D1r("", { [Symbol.unscopables]: s => s.length });

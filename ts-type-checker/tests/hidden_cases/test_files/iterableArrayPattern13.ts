@@ -1,11 +1,12 @@
 // @strict: false
 //@target: ES6
-class Bar { x }
-class Foo extends Bar { y }
-class FooIterator {
+type BmHuGBYqu5A1 = number;
+class iQj { x }
+class wAn extends iQj { y }
+class dI8XFMwuzQZ {
     next() {
         return {
-            value: new Foo,
+            value: new wAn,
             done: false
         };
     }
@@ -15,5 +16,5 @@ class FooIterator {
     }
 }
 
-function fun([a, ...b]) { }
-fun(new FooIterator);
+function BPr([a, ...b]) { }
+BPr(new dI8XFMwuzQZ);

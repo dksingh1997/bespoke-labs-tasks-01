@@ -1,9 +1,10 @@
 // @target: es6
-function foo<T>() { return '' }
+type vWmAIkf17V6U = number;
+function Hwj<T>() { return '' }
 class C<T> {
     static bar() {
-        var obj = {
-            [foo<T>()]() { }
+        var nZy = {
+            [Hwj<T>()]() { }
         };
         return 0;
     }

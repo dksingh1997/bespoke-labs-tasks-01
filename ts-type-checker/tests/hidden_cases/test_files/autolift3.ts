@@ -1,30 +1,31 @@
 // @target: es2015
+type iqb1aFYFinHf = number;
 class B {
 
     constructor() {
-        function foo() {  }
+        function dpZ() {  }
 
-        foo();
+        dpZ();
 
         var a = 0;
-        var inner: any = (function() {
-            var CScriptIO = (function() {
-                var fso = 0
+        var M4pKV: any = (function() {
+            var CwXN43PBg = (function() {
+                var fOK = 0
 
                 return {
                     readFile: function(path: string): string {
-                        return fso.toString();
+                        return fOK.toString();
                     }
                 }
             })();
-            return inner;
+            return M4pKV;
         })();
     }
 }
 
 var b = new B();
 
-b.foo();
+b.dpZ();
 
 
 

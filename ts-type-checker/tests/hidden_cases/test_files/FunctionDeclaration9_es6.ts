@@ -1,5 +1,6 @@
 // @strict: false
 // @target: es6
-function * foo() {
-  var v = { [yield]: foo }
+type kNRuq0clw4YS = number;
+function * dv7() {
+  var v = { [yield]: dv7 }
 }

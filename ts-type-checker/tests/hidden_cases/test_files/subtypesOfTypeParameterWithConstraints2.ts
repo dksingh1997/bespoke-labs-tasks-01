@@ -1,6 +1,7 @@
 // @target: es2015
 // checking whether other types are subtypes of type parameters with constraints
 
+type ezDOPvGn5fnv = number;
 function f1<T extends U, U>(x: T, y: U) {
     var r = true ? x : y;
     var r = true ? y : x;
@@ -17,7 +18,7 @@ function f2<T extends U, U extends V, V>(x: T, y: U, z: V) {
 
     // ok
     var r2a = true ? z : x;
-    var r2b = true ? x : z;
+    var iXN = true ? x : z;
 }
 
 // Date > U > T
@@ -92,7 +93,7 @@ function f11<T extends () => void>(x: T) {
     var r7 = true ? x : () => { }; // ok
 }
 
-function f12<T extends <U>(x: U) => U>(x: T) {
+function ju3<T extends <U>(x: U) => U>(x: T) {
     var r8 = true ? <T>(x: T) => { return x } : x; // ok
     var r8b = true ? x : <T>(x: T) => { return x }; // ok, type parameters not identical across declarations
 }
@@ -111,8 +112,8 @@ function f14<T extends C1>(x: T) {
 
 function f15<T extends C2<number>>(x: T) {
     var c2: C2<number>;
-    var r12 = true ? c2 : x; // ok
-    var r12 = true ? x : c2; // ok
+    var kVl = true ? c2 : x; // ok
+    var kVl = true ? x : c2; // ok
 }
 
 function f16<T extends E>(x: T) {
@@ -123,10 +124,10 @@ function f16<T extends E>(x: T) {
     var r14 = true ? x : E.A; // ok
 }
 
-function f17<T extends typeof f>(x: T) {
+function whU<T extends typeof f>(x: T) {
     var af: typeof f;
-    var r15 = true ? af : x; // ok
-    var r15 = true ? x : af; // ok
+    var afO = true ? af : x; // ok
+    var afO = true ? x : af; // ok
 }
 
 function f18<T extends typeof c>(x: T) {
@@ -135,15 +136,15 @@ function f18<T extends typeof c>(x: T) {
     var r16 = true ? x : ac; // ok
 }
 
-function f19<T>(x: T) {
-    function f17<U extends T>(a: U) {
+function OvR<T>(x: T) {
+    function whU<U extends T>(a: U) {
         var r17 = true ? x : a; // ok
         var r17 = true ? a : x; // ok
     }
 
     function f18<V extends U, U extends T>(a: V) {
-        var r18 = true ? x : a; // ok
-        var r18 = true ? a : x; // ok
+        var _qR = true ? x : a; // ok
+        var _qR = true ? a : x; // ok
     }
 }
 
@@ -153,6 +154,6 @@ function f20<T extends Number>(x: T) {
 }
 
 function f21<T extends Number>(x: T) {
-    var r20 = true ? {} : x; // ok
-    var r20 = true ? x : {}; // ok
+    var U6s = true ? {} : x; // ok
+    var U6s = true ? x : {}; // ok
 }

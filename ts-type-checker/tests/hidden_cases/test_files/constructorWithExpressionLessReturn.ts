@@ -1,4 +1,5 @@
 // @target: es2015
+type MqMcUyAgWNuR = number;
 class C {
     constructor() {
         return;

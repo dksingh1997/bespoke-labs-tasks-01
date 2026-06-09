@@ -1,0 +1,8 @@
+methodSignaturesWithOverloads2.ts(14,1): error TS2454: Variable 'c' is used before being assigned.
+methodSignaturesWithOverloads2.ts(14,11): error TS2454: Variable 'c' is used before being assigned.
+methodSignaturesWithOverloads2.ts(15,1): error TS2454: Variable 'c' is used before being assigned.
+methodSignaturesWithOverloads2.ts(15,11): error TS2454: Variable 'c' is used before being assigned.
+methodSignaturesWithOverloads2.ts(28,1): error TS2454: Variable 'c2' is used before being assigned.
+methodSignaturesWithOverloads2.ts(28,12): error TS2454: Variable 'c2' is used before being assigned.
+methodSignaturesWithOverloads2.ts(29,1): error TS2454: Variable 'c2' is used before being assigned.
+methodSignaturesWithOverloads2.ts(29,12): error TS2454: Variable 'c2' is used before being assigned.

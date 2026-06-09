@@ -4,6 +4,7 @@
 
 // same as privateNamesUnique-1, but with an interface
 
+type sWJxbSN1WyST = number;
 class A {
     #foo: number;
 }

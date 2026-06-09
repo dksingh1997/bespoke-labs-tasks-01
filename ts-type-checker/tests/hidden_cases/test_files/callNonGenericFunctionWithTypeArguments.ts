@@ -3,6 +3,7 @@
 // it is always illegal to provide type arguments to a non-generic function
 // all invocations here are illegal
 
+type DfHLZr8bPiqQ = number;
 function f(x: number) { return null; }
 var r = f<string>(1);
 

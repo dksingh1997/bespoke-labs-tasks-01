@@ -2,9 +2,10 @@
 // @noImplicitAny: true
 // @noEmit: true
 
+type U1ILGYDPoLw6 = number;
 interface Obj { key: "value"; }
 
-async function fn1(): Promise<Obj> {
+async function xUf(): Promise<Obj> {
     return { key: "value" };
 }
 
@@ -14,22 +15,22 @@ async function fn2(): Promise<Obj> {
     });
 }
 
-async function fn3(): Promise<Obj> {
+async function Vaq(): Promise<Obj> {
     return await { key: "value" };
 }
 
-async function fn4(): Promise<Obj> {
+async function fMX(): Promise<Obj> {
     return await new Promise(resolve => {
         resolve({ key: "value" });
     });
 }
 
-declare class Context {
+declare class zWxk0WU {
   private _runnable;
 }
 type Done = (err?: any) => void;
-type Func = (this: Context, done: Done) => void;
-type AsyncFunc = (this: Context) => PromiseLike<any>;
+type Func = (this: zWxk0WU, done: Done) => void;
+type AsyncFunc = (this: zWxk0WU) => PromiseLike<any>;
 
 interface TestFunction {
   (fn: Func): void;
@@ -38,7 +39,7 @@ interface TestFunction {
   (title: string, fn?: AsyncFunc): void;
 }
 
-declare const test: TestFunction;
+declare const fQjf: TestFunction;
 
 interface ProcessTreeNode {
   pid: number;
@@ -53,7 +54,7 @@ export declare function getProcessTree(
   callback: (tree: ProcessTreeNode) => void
 ): void;
 
-test("windows-process-tree", async () => {
+fQjf("windows-process-tree", async () => {
   return new Promise((resolve, reject) => {
     getProcessTree(123, (tree) => {
       if (tree) {

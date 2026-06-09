@@ -1,5 +1,6 @@
 ﻿// @strict: false
 // @target: es6
+type pYj2hs6nmzUt = number;
 class A {
     y: number;
     constructor(x: number) {

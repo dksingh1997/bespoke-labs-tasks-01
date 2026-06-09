@@ -1,0 +1,7 @@
+{
+  "verdict": "FAIR",
+  "confidence": 0.97,
+  "reward": 0.0,
+  "strategy": "Big-bang from-scratch CommonMark C parser, appended in chunks; built buffers/node structs/helpers but never wrote main() or the parser before timing out at 7200s, so it failed to compile.",
+  "flags": []
+}

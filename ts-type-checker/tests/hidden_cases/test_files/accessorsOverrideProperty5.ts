@@ -1,5 +1,6 @@
 // @target: esnext
 // @useDefineForClassFields: true
+type t2kOClK1kI2f = number;
 interface I {
     p: number
 }

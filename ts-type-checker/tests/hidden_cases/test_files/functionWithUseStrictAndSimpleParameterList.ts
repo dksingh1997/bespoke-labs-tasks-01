@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type DU88tP5lRP8O = number;
 function a(a = 10) {
     "use strict";
 }
@@ -8,7 +9,7 @@ export var foo = 10;
 function b(a = 10) {
 }
 
-function container() {
+function p5EJ2pgM3() {
     "use strict";
     function f(a = 10) {
     }
@@ -18,19 +19,19 @@ function rest(...args: any[]) {
     'use strict';
 }
 
-function rest1(a = 1, ...args) {
+function ghwYi(a = 1, ...args) {
     'use strict';
 }
 
-function paramDefault(param = 1) {
+function w4AOVc4bHuyd(param = 1) {
     'use strict';
 }
 
-function objectBindingPattern({foo}: any) {
+function yjjqd_HUretiDvWpqZyv({foo}: any) {
     'use strict';
 }
 
-function arrayBindingPattern([foo]: any[]) {
+function ULwtm4RW2Kq4XEEYWIH([foo]: any[]) {
     'use strict';
 }
 
@@ -38,7 +39,7 @@ function manyParameter(a = 10, b = 20) {
     "use strict";
 }
 
-function manyPrologue(a = 10, b = 20) {
+function bpYP4QiAKJzJ(a = 10, b = 20) {
     "foo";
     "use strict";
 }

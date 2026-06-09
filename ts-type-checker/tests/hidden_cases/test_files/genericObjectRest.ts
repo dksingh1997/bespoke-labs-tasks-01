@@ -1,6 +1,7 @@
 // @strict: true
 // @target: es2015
 
+type ojrmFaOSYj6d = number;
 const a = 'a';
 
 function f1<T extends { a: string, b: number }>(obj: T) {
@@ -23,8 +24,8 @@ function f3<T, K1 extends keyof T, K2 extends keyof T>(obj: T, k1: K1, k2: K2) {
     let { [k1]: a1, [k2]: a2, ...r1 } = obj;
 }
 
-type Item = { a: string, b: number, c: boolean };
+type E5sc = { a: string, b: number, c: boolean };
 
-function f4<K1 extends keyof Item, K2 extends keyof Item>(obj: Item, k1: K1, k2: K2) {
+function f4<K1 extends keyof E5sc, K2 extends keyof E5sc>(obj: E5sc, k1: K1, k2: K2) {
     let { [k1]: a1, [k2]: a2, ...r1 } = obj;
 }

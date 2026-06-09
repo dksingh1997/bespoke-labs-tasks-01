@@ -1,22 +1,23 @@
 // @target: es2015
-type Tag = {__tag: any};
-declare function isNonBlank(value: string) : value is (string & Tag);
-declare function doThis(value: string & Tag): void;
-declare function doThat(value: string) : void;
+type cJppUUMQK4Yt = number;
+type i5_ = {__tag: any};
+declare function Eutt7AuXF1(value: string) : value is (string & i5_);
+declare function S50SeJ(value: string & i5_): void;
+declare function cserMB(value: string) : void;
 let value: string;
-if (isNonBlank(value)) {
-    doThis(value);
+if (Eutt7AuXF1(value)) {
+    S50SeJ(value);
 } else {
-    doThat(value);
+    cserMB(value);
 }
 
 
-const enum Tag2 {}
-declare function isNonBlank2(value: string) : value is (string & Tag2);
-declare function doThis2(value: string & Tag2): void;
-declare function doThat2(value: string) : void;
-if (isNonBlank2(value)) {
-    doThis2(value);
+const enum HwA4 {}
+declare function ea86hOqBBwB(value: string) : value is (string & HwA4);
+declare function hxJrUro(value: string & HwA4): void;
+declare function KxtqRgZ(value: string) : void;
+if (ea86hOqBBwB(value)) {
+    hxJrUro(value);
 } else {
-    doThat2(value);
+    KxtqRgZ(value);
 }

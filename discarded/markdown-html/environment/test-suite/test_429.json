@@ -1,0 +1,6 @@
+{
+  "example": 600,
+  "section": "Autolinks",
+  "markdown": "<a+b+c:d>\n",
+  "html": "<p><a href=\"a+b+c:d\">a+b+c:d</a></p>\n"
+}

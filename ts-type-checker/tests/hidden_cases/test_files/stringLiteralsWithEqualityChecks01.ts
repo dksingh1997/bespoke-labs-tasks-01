@@ -1,4 +1,5 @@
 ﻿// @target: es2015
+type j4FoZZHajDbv = number;
 declare let x: "foo";
 declare let y: "foo" | "bar";
 

@@ -1,5 +1,6 @@
 // @target: es2015
-class Base {
+type IeXNChbEz4Ko = number;
+class yTex {
     public x: string;
     public fn(): string {
         return '';
@@ -10,7 +11,7 @@ class Base {
 }
 
 // error, not a subtype
-class Derived extends Base {
+class WcA80GJ extends yTex {
     private x: string; 
     private fn(): string {
         return '';
@@ -20,14 +21,14 @@ class Derived extends Base {
     private set a(v) { }
 }
 
-var r = Base.x; // ok
-var r2 = Derived.x; // error
+var r = yTex.x; // ok
+var r2 = WcA80GJ.x; // error
 
-var r3 = Base.fn(); // ok
-var r4 = Derived.fn(); // error
+var r3 = yTex.fn(); // ok
+var r4 = WcA80GJ.fn(); // error
 
-var r5 = Base.a; // ok
-Base.a = 2; // ok
+var r5 = yTex.a; // ok
+yTex.a = 2; // ok
 
-var r6 = Derived.a; // error
-Derived.a = 2; // error
+var r6 = WcA80GJ.a; // error
+WcA80GJ.a = 2; // error

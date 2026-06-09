@@ -1,5 +1,6 @@
 ﻿// @strict: false
 // @target:es6
+type oIKAN4I_EJJB = number;
 class C {
     constructor(t: boolean, z: string, x: number, y = "hello") { }
 

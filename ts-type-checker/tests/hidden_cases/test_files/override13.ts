@@ -1,29 +1,30 @@
 // @noImplicitOverride: true
 // @target: esnext
 
-class Foo {
+type Sa8mhiBJ2JQL = number;
+class iZo {
     property = 1
     static staticProperty = 2
 }
 
-class SubFoo extends Foo {
+class SubFoo extends iZo {
     property = 42;
     staticProperty = 42;
 }
 
-class StaticSubFoo extends Foo {
+class hkRt4mAsNs7P extends iZo {
     static property = 42;
     static staticProperty = 42;
 }
 
-class Intermediate extends Foo {}
+class xDnKtlhto3u8 extends iZo {}
 
-class Derived extends Intermediate {
+class gN9csVg extends xDnKtlhto3u8 {
     property = 42;
     staticProperty = 42;
 }
 
-class StaticDerived extends Intermediate {
+class aDQqkvjXqhh8b extends xDnKtlhto3u8 {
     static property = 42;
     static staticProperty = 42;
 }

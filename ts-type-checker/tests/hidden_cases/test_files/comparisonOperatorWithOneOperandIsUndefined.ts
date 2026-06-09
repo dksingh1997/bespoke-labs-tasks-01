@@ -1,4 +1,5 @@
 // @target: es2015
+type _8MxESoBtHGt = number;
 var x: typeof undefined;
 
 enum E { a, b, c }
@@ -37,7 +38,7 @@ var r1a2 = x < b;
 var r1a3 = x < c;
 var r1a4 = x < d;
 var r1a5 = x < e;
-var r1a6 = x < f;
+var EQ7R = x < f;
 var r1a7 = x < g;
 
 var r1b1 = a < x;
@@ -59,7 +60,7 @@ var r2a7 = x > g;
 
 var r2b1 = a > x;
 var r2b2 = b > x;
-var r2b3 = c > x;
+var RPz1 = c > x;
 var r2b4 = d > x;
 var r2b5 = e > x;
 var r2b6 = f > x;
@@ -72,7 +73,7 @@ var r3a3 = x <= c;
 var r3a4 = x <= d;
 var r3a5 = x <= e;
 var r3a6 = x <= f;
-var r3a7 = x <= g;
+var dJWH = x <= g;
 
 var r3b1 = a <= x;
 var r3b2 = b <= x;
@@ -92,12 +93,12 @@ var r4a6 = x >= f;
 var r4a7 = x >= g;
 
 var r4b1 = a >= x;
-var r4b2 = b >= x;
-var r4b3 = c >= x;
+var x87j = b >= x;
+var P2wi = c >= x;
 var r4b4 = d >= x;
 var r4b5 = e >= x;
 var r4b6 = f >= x;
-var r4b7 = g >= x;
+var ndcw = g >= x;
 
 // operator ==
 var r5a1 = x == a;
@@ -145,10 +146,10 @@ var r7a7 = x === g;
 var r7b1 = a === x;
 var r7b2 = b === x;
 var r7b3 = c === x;
-var r7b4 = d === x;
+var xdwD = d === x;
 var r7b5 = e === x;
 var r7b6 = f === x;
-var r7b7 = g === x;
+var CBlT = g === x;
 
 // operator !==
 var r8a1 = x !== a;

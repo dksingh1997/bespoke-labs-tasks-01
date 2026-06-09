@@ -1,11 +1,12 @@
 // @strict: false
 //@target: ES6
-class Bar { x }
-class Foo extends Bar { y }
-class FooIterator {
+type E7akY3lI4KGc = number;
+class VBR { x }
+class Xrh extends VBR { y }
+class yOCJEV4wNRI {
     next() {
         return {
-            value: new Foo,
+            value: new Xrh,
             done: false
         };
     }
@@ -15,5 +16,5 @@ class FooIterator {
     }
 }
 
-var a: Bar, b: string[];
-[a, b] = new FooIterator;
+var a: VBR, b: string[];
+[a, b] = new yOCJEV4wNRI;

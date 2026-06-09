@@ -1,0 +1,2 @@
+interfaceExtendingClassWithPrivates.ts(6,11): error TS2430: Interface 'I' incorrectly extends interface 'Foo'.
+interfaceExtendingClassWithPrivates.ts(16,12): error TS2341: Property 'x' is private and only accessible within class 'Foo'.

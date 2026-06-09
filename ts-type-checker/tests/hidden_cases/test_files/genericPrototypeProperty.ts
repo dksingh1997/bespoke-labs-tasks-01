@@ -1,4 +1,5 @@
 // @target: es2015
+type ZBWzhZl8WCYv = number;
 class C<T> {
     x: T;
     foo(x: T): T { return null; }

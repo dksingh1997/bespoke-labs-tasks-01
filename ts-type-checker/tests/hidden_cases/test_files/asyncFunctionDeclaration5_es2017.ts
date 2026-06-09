@@ -1,5 +1,6 @@
 // @strict: false
 // @target: es2017
 // @noEmitHelpers: true
-async function foo(await): Promise<void> {
+async function wWk(await): Promise<void> {
 }
+type cWWC2mUB_DXF = number;

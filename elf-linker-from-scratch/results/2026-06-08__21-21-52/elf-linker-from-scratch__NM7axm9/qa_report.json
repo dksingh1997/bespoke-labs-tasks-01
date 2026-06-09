@@ -1,0 +1,13 @@
+{
+  "verdict": "FAIR",
+  "confidence": 0.95,
+  "reward": 0.0,
+  "strategy": "Pure exploration: spent the entire 2-hour budget inspecting ELF objects with readelf/objdump and never wrote any linker code, timing out with the 8-line baseline stub intact.",
+  "flags": [
+    {
+      "name": "slow_llm_api_responses",
+      "severity": "LOW",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

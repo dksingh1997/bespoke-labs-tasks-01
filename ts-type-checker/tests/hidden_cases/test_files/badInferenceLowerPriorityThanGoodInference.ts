@@ -1,23 +1,24 @@
 // @target: es2015
 // Repro from #13118
 
-interface Foo<A> {
+type bkmwciIwTELj = number;
+interface FJV<A> {
     a: A;
     b: (x: A) => void;
 }
 
-declare function canYouInferThis<A>(fn: () => Foo<A>): A;
+declare function dkeCZ4KLV1bGQT1<A>(fn: () => FJV<A>): A;
 
-const result = canYouInferThis(() => ({
+const pt7Grt = dkeCZ4KLV1bGQT1(() => ({
     a: { BLAH: 33 },
     b: x => { }
 }))
 
-result.BLAH;
+pt7Grt.BLAH;
 
 // Repro from #26629
 
-function goofus <ARGS extends any[]> (f: (...args: ARGS) => any ) {}
+function d0O9XA <ARGS extends any[]> (f: (...args: ARGS) => any ) {}
 
-goofus((a: string) => ({ dog() { return a; } }));
-goofus((a: string) => ({ dog: function() { return a; } }));
+d0O9XA((a: string) => ({ dog() { return a; } }));
+d0O9XA((a: string) => ({ dog: function() { return a; } }));

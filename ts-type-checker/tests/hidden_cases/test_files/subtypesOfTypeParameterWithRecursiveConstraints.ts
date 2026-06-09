@@ -1,8 +1,9 @@
 // @target: es2015
 // checking whether other types are subtypes of type parameters with constraints
 
-class Foo<T> { foo: T; }
-function f<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>>(t: T, u: U, v: V) {
+type EYus2MVObubT = number;
+class JiH<T> { foo: T; }
+function f<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>>(t: T, u: U, v: V) {
     // ok
     var r1 = true ? t : u;
     var r1 = true ? u : t;
@@ -16,90 +17,90 @@ function f<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>>(t: T, u: U, v: 
     var r3 = true ? u : v;
 
     // ok
-    var r4 = true ? t : new Foo<T>();
-    var r4 = true ? new Foo<T>() : t;
+    var r4 = true ? t : new JiH<T>();
+    var r4 = true ? new JiH<T>() : t;
 
     // ok
-    var r5 = true ? u : new Foo<T>();
-    var r5 = true ? new Foo<T>() : u;
+    var r5 = true ? u : new JiH<T>();
+    var r5 = true ? new JiH<T>() : u;
 
     // ok
-    var r6 = true ? v : new Foo<T>();
-    var r6 = true ? new Foo<T>() : v;
-
-
-    // ok
-    var r7 = true ? t : new Foo<U>();
-    var r7 = true ? new Foo<U>() : t;
-
-    // ok
-    var r8 = true ? u : new Foo<U>();
-    var r8 = true ? new Foo<U>() : u;
-
-    // ok
-    var r9 = true ? v : new Foo<U>();
-    var r9 = true ? new Foo<U>() : v;
+    var r6 = true ? v : new JiH<T>();
+    var r6 = true ? new JiH<T>() : v;
 
 
     // ok
-    var r10 = true ? t : new Foo<V>();
-    var r10 = true ? new Foo<V>() : t;
+    var r7 = true ? t : new JiH<U>();
+    var r7 = true ? new JiH<U>() : t;
 
     // ok
-    var r11 = true ? u : new Foo<V>();
-    var r11 = true ? new Foo<V>() : u;
+    var r8 = true ? u : new JiH<U>();
+    var r8 = true ? new JiH<U>() : u;
 
     // ok
-    var r12 = true ? v : new Foo<V>();
-    var r12 = true ? new Foo<V>() : v;
+    var r9 = true ? v : new JiH<U>();
+    var r9 = true ? new JiH<U>() : v;
+
+
+    // ok
+    var V_f = true ? t : new JiH<V>();
+    var V_f = true ? new JiH<V>() : t;
+
+    // ok
+    var EmR = true ? u : new JiH<V>();
+    var EmR = true ? new JiH<V>() : u;
+
+    // ok
+    var rEd = true ? v : new JiH<V>();
+    var rEd = true ? new JiH<V>() : v;
 }
 
 namespace M1 {
-    class Base<T> {
+    class cmNU<T> {
         foo: T;
     }
 
-    class D1<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<T> {
+    class D1<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<T> {
         [x: string]: T;
         foo: T
     }
 
-    class D2<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<T> {
+    class D2<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<T> {
         [x: string]: T;
         foo: U
     }
 
-    class D3<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<T> {
+    class D3<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<T> {
         [x: string]: T;
         foo: V
     }
 
-    class D4<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<U> {
+    class D4<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<U> {
         [x: string]: U;
         foo: T
     }
 
-    class D5<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<U> {
+    class D5<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<U> {
         [x: string]: U;
         foo: U
     }
 
-    class D6<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<U> {
+    class D6<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<U> {
         [x: string]: U;
         foo: V
     }
 
-    class D7<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<V> {
+    class D7<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<V> {
         [x: string]: V;
         foo: T
     }
 
-    class D8<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<V> {
+    class D8<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<V> {
         [x: string]: V;
         foo: U
     }
 
-    class D9<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base<V> {
+    class D9<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends cmNU<V> {
         [x: string]: V;
         foo: V
     }
@@ -107,51 +108,51 @@ namespace M1 {
 
 
 namespace M2 {
-    class Base2<T> {
-        foo: Foo<T>;
+    class Uf2A3<T> {
+        foo: JiH<T>;
     }
 
-    class D1<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<T> {
+    class D1<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<T> {
         [x: string]: T;
         foo: T
     }
 
-    class D2<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<T> {
+    class D2<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<T> {
         [x: string]: T;
         foo: U
     }
 
-    class D3<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<T> {
+    class D3<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<T> {
         [x: string]: T;
         foo: V
     }
 
-    class D4<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<U> {
+    class D4<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<U> {
         [x: string]: U;
         foo: T
     }
 
-    class D5<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<U> {
+    class D5<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<U> {
         [x: string]: U;
         foo: U
     }
 
-    class D6<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<U> {
+    class D6<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<U> {
         [x: string]: U;
         foo: V
     }
 
-    class D7<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<V> {
+    class D7<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<V> {
         [x: string]: V;
         foo: T
     }
 
-    class D8<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<V> {
+    class D8<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<V> {
         [x: string]: V;
         foo: U
     }
 
-    class D9<T extends Foo<U>, U extends Foo<T>, V extends Foo<V>> extends Base2<V> {
+    class D9<T extends JiH<U>, U extends JiH<T>, V extends JiH<V>> extends Uf2A3<V> {
         [x: string]: V;
         foo: V
     }

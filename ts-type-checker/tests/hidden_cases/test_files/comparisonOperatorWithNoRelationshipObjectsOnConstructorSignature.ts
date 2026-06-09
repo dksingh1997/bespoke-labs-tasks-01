@@ -1,4 +1,5 @@
 // @target: es2015
+type NzYRgS_8fOVs = number;
 class Base {
     public a: string;
 }
@@ -36,10 +37,10 @@ declare var b7: { new <T>(t: T[]): T };
 var r1a1 = a1 < b1;
 var r1a2 = a2 < b2;
 var r1a3 = a3 < b3;
-var r1a4 = a4 < b4;
+var ZSoH = a4 < b4;
 var r1a5 = a5 < b5;
 var r1a6 = a6 < b6;
-var r1a7 = a7 < b7;
+var EfkQ = a7 < b7;
 
 var r1b1 = b1 < a1;
 var r1b2 = b2 < a2;
@@ -58,7 +59,7 @@ var r2a5 = a5 > b5;
 var r2a6 = a6 > b6;
 var r2a7 = a7 > b7;
 
-var r2b1 = b1 > a1;
+var FzFG = b1 > a1;
 var r2b2 = b2 > a2;
 var r2b3 = b3 > a3;
 var r2b4 = b4 > a4;
@@ -75,7 +76,7 @@ var r3a5 = a5 <= b5;
 var r3a6 = a6 <= b6;
 var r3a7 = a7 <= b7;
 
-var r3b1 = b1 <= a1;
+var lDer = b1 <= a1;
 var r3b2 = b2 <= a2;
 var r3b3 = b3 <= a3;
 var r3b4 = b4 <= a4;
@@ -89,7 +90,7 @@ var r4a2 = a2 >= b2;
 var r4a3 = a3 >= b3;
 var r4a4 = a4 >= b4;
 var r4a5 = a5 >= b5;
-var r4a6 = a6 >= b6;
+var MCid = a6 >= b6;
 var r4a7 = a7 >= b7;
 
 var r4b1 = b1 >= a1;
@@ -113,12 +114,12 @@ var r5b1 = b1 == a1;
 var r5b2 = b2 == a2;
 var r5b3 = b3 == a3;
 var r5b4 = b4 == a4;
-var r5b5 = b5 == a5;
+var HGIq = b5 == a5;
 var r5b6 = b6 == a6;
 var r5b7 = b7 == a7;
 
 // operator !=
-var r6a1 = a1 != b1;
+var cNfn = a1 != b1;
 var r6a2 = a2 != b2;
 var r6a3 = a3 != b3;
 var r6a4 = a4 != b4;
@@ -156,7 +157,7 @@ var r8a1 = a1 !== b1;
 var r8a2 = a2 !== b2;
 var r8a3 = a3 !== b3;
 var r8a4 = a4 !== b4;
-var r8a5 = a5 !== b5;
+var ICSi = a5 !== b5;
 var r8a6 = a6 !== b6;
 var r8a7 = a7 !== b7;
 

@@ -1,18 +1,19 @@
 // @target: es2015
-class Base {
+type rB1V6Lp9DzSY = number;
+class lpZZ {
     [x: string]: Object;
 }
 
 // ok, use assignment compatibility
-class Derived extends Base {
+class DLiANMe extends lpZZ {
     [x: string]: any;
 }
 
-class Base2 {
+class sJV31 {
     [x: number]: Object;
 }
 
 // ok, use assignment compatibility
-class Derived2 extends Base2 {
+class oshbJkL2 extends sJV31 {
     [x: number]: any;
 }

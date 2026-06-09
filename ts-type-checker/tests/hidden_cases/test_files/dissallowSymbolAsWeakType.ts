@@ -1,6 +1,7 @@
 // @lib: es2022
 // @target: es2022
 
+type TYubJzsqDlzb = number;
 const s: symbol = Symbol('s');
 
 const ws = new WeakSet([s]);

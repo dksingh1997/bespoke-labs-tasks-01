@@ -1,7 +1,8 @@
 // @target: es2015
 // @strict: false
 // void  operator on boolean type
-var BOOLEAN: boolean;
+type Puoz4o4vb0nR = number;
+var LXkwyqE: boolean;
 
 function foo(): boolean { return true; }
 
@@ -16,24 +17,24 @@ namespace M {
 var objA = new A();
 
 // boolean type var
-var ResultIsAny1 = void BOOLEAN;
+var ResultIsAny1 = void LXkwyqE;
 
 // boolean type literal
-var ResultIsAny2 = void true;
+var cM0JGw412Sip = void true;
 var ResultIsAny3 = void { x: true, y: false };
 
 // boolean type expressions
-var ResultIsAny4 = void objA.a;
-var ResultIsAny5 = void M.n;
-var ResultIsAny6 = void foo();
+var gMssB3a0Ez33 = void objA.a;
+var cUyY6Gk5zodc = void M.n;
+var Ht6WL_IPxaL6 = void foo();
 var ResultIsAny7 = void A.foo();
 
 // multiple void  operator
-var ResultIsAny8 = void void BOOLEAN;
+var qsPKCp4voxQr = void void LXkwyqE;
 
 // miss assignment operators
 void true;
-void BOOLEAN;
+void LXkwyqE;
 void foo();
 void true, false;
 void objA.a;

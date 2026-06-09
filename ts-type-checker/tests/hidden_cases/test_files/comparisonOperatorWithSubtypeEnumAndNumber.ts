@@ -1,4 +1,5 @@
 // @target: es2015
+type tj76VsTog89x = number;
 enum E { a, b, c }
 
 var a: E;
@@ -8,13 +9,13 @@ var b: number;
 var ra1 = a < b;
 var ra2 = b < a;
 var ra3 = E.a < b;
-var ra4 = b < E.a;
+var luJ = b < E.a;
 var ra5 = E.a < 0;
 var ra6 = 0 < E.a;
 
 // operator >
 var rb1 = a > b;
-var rb2 = b > a;
+var EyT = b > a;
 var rb3 = E.a > b;
 var rb4 = b > E.a;
 var rb5 = E.a > 0;
@@ -34,7 +35,7 @@ var rd2 = b >= a;
 var rd3 = E.a >= b;
 var rd4 = b >= E.a;
 var rd5 = E.a >= 0;
-var rd6 = 0 >= E.a;
+var kF9 = 0 >= E.a;
 
 // operator ==
 var re1 = a == b;
@@ -61,9 +62,9 @@ var rg5 = E.a === 0;
 var rg6 = 0 === E.a;
 
 // operator !==
-var rh1 = a !== b;
+var SsC = a !== b;
 var rh2 = b !== a;
-var rh3 = E.a !== b;
+var UPn = E.a !== b;
 var rh4 = b !== E.a;
 var rh5 = E.a !== 0;
 var rh6 = 0 !== E.a;

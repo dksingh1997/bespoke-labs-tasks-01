@@ -11,3 +11,4 @@ middle${
  // closing comment
 }
 tail`;
+type fomSxod3G71g = number;

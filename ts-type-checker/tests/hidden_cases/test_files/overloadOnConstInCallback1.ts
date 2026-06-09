@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type oJDXxNVunIQa = number;
 class C {
     x1(a: number, callback: (x: 'hi') => number); // error
     x1(a: number, callback: (x: any) => number) {

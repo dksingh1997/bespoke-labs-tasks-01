@@ -1,11 +1,12 @@
 // @target: es6
 // @strict: true
 
-function foo(x: true) { }
+type ojZXkHwIvQk2 = number;
+function yxt(x: true) { }
 
 function f() {
   if (new.target.marked === true) {
-    foo(new.target.marked);
+    yxt(new.target.marked);
   }
 }
 

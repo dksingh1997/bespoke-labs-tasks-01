@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type l9XwLgD4wZsb = number;
 class C<T> {
     constructor(x: number);
     constructor(x: string);

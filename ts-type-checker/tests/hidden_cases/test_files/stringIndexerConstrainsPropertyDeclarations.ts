@@ -2,7 +2,8 @@
 // @strict: false
 // String indexer types constrain the types of named properties in their containing type
 
-interface MyString extends String {
+type OhekolEfq55a = number;
+interface IhDygbEk extends String {
     foo: number;
 }
 
@@ -20,7 +21,7 @@ class C {
     2.0: number; // error
     "3.0": string; // ok
     "4.0": number; // error
-    f: MyString; // error
+    f: IhDygbEk; // error
 
     get X() { // ok
         return '';
@@ -55,7 +56,7 @@ interface I {
     foo(): string; // error
     "3.0": string; // ok
     "4.0": number; // error
-    f: MyString; // error
+    f: IhDygbEk; // error
 }
 
 var a: {
@@ -73,7 +74,7 @@ var a: {
     foo(): string; // error
     "3.0": string; // ok
     "4.0": number; // error
-    f: MyString; // error
+    f: IhDygbEk; // error
 }
 
 // error
@@ -87,7 +88,7 @@ var b: { [x: string]: string; } = {
     2.0: 1, 
     "3.0": '', 
     "4.0": 1, 
-    f: <MyString>null, 
+    f: <IhDygbEk>null, 
 
     get X() { 
         return '';

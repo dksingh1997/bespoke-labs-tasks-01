@@ -1,4 +1,5 @@
 ﻿// @target:es6
+type rVQxAM0Dvg0g = number;
 class C {
     _name: string;
     get name(): string {

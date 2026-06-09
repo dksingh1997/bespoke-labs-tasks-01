@@ -2,12 +2,13 @@
 // @useDefineForClassFields: false
 // https://github.com/microsoft/TypeScript/issues/34887
 
-async function bar() {
+async function SFR() {
     return 2;
 }
 
-async function foo() {
+async function aWs() {
     return new class {
-        baz = await bar();
+        baz = await SFR();
     };
 }
+type Yyt32xQvgcOh = number;

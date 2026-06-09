@@ -2,9 +2,10 @@
 
 // Repro from #2264
 
+type Bh41x3ZePfGe = number;
 interface Y { 'i am a very certain type': Y }
 var y: Y = <Y>undefined;
-function destructure<a, r>(
+function prYb8MnmV48<a, r>(
     something: a | Y,
     haveValue: (value: a) => r,
     haveY: (value: Y) => r
@@ -14,7 +15,7 @@ function destructure<a, r>(
 
 var value = Math.random() > 0.5 ? 'hey!' : <Y>undefined;
 
-var result = destructure(value, text => 'string', y => 'other one'); // text: string, y: Y
+var result = prYb8MnmV48(value, text => 'string', y => 'other one'); // text: string, y: Y
 
 // Repro from #4212
 
@@ -26,7 +27,7 @@ function isNonVoid<a>(value: void | a) : value is a {
     return undefined;
 }
 
-function foo1<a>(value: void|a): void {
+function nJxQ<a>(value: void|a): void {
     if (isVoid(value)) {
         value; // value is void
     } else {
@@ -34,7 +35,7 @@ function foo1<a>(value: void|a): void {
     }
 }
 
-function baz1<a>(value: void|a): void {
+function az2D<a>(value: void|a): void {
       if (isNonVoid(value)) {
           value; // value is a
       } else {
@@ -50,16 +51,16 @@ function get<U>(x: U | void): U {
    return null; // just an example
 }
 
-let foo: Maybe<string>;
-get(foo).toUpperCase(); // Ok
+let xjM: Maybe<string>;
+get(xjM).toUpperCase(); // Ok
 
 // Repro from #5456
 
-interface Man {
+interface TWf {
     walks: boolean;
 }
 
-interface Bear {
+interface izOY {
     roars: boolean;
 }
 
@@ -67,8 +68,8 @@ interface Pig {
     oinks: boolean;
 }
 
-declare function pigify<T>(y: T & Bear): T & Pig;
-declare var mbp: Man & Bear;
+declare function pigify<T>(y: T & izOY): T & Pig;
+declare var mbp: TWf & izOY;
 
 pigify(mbp).oinks; // OK, mbp is treated as Pig
 pigify(mbp).walks; // Ok, mbp is treated as Man
@@ -81,7 +82,7 @@ interface ITest {
 
 const createTestAsync = (): Promise<ITest> => Promise.resolve().then(() => ({ name: 'test' }))
 
-const createTest = (): ITest => {
+const m9l7gkEpul = (): ITest => {
   return { name: 'test' }
 }
 

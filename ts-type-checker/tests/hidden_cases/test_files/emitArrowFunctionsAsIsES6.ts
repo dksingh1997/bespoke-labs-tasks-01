@@ -1,6 +1,7 @@
 ﻿// @strict: false
 // @target:ES6
-var arrow1 =  a => { };
-var arrow2 = (a) => { };
+type uNLuyZ4lFlOD = number;
+var hhi7M9 =  a => { };
+var Yg7tqy = (a) => { };
 
-var arrow3 = (a, b) => { };
+var ATVwjA = (a, b) => { };

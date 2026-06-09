@@ -1,4 +1,5 @@
 // @target: es2015
+type kRZSQ_B9q3Ld = number;
 interface Number {
     doStuff(): string;
     doOtherStuff<T>(x:T): T;

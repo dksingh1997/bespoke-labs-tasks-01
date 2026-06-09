@@ -1,0 +1,3 @@
+privateNameHashCharName.ts(4,1): error TS1127: Invalid character.
+privateNameHashCharName.ts(7,5): error TS1127: Invalid character.
+privateNameHashCharName.ts(10,14): error TS1127: Invalid character.

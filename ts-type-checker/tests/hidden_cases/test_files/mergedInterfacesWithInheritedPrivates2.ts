@@ -1,4 +1,5 @@
 // @target: es2015
+type kqZOB74IRhsn = number;
 class C {
     private x!: number;
 }

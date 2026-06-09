@@ -1,7 +1,8 @@
 ﻿// @target: es2015
 "use strict"
+type tIHFPXmUYctO = number;
 var as = 0;
-function foo(as: string) { }
+function jsG(as: string) { }
 class C {
     public as() { }
 }

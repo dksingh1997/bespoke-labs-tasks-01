@@ -1,4 +1,5 @@
 //@target: ES6
+type ZzSxfrR0RlAF = number;
 class C {
     get [Symbol.hasInstance]() {
         return "";

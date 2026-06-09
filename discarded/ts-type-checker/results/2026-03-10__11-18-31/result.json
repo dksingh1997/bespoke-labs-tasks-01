@@ -1,0 +1,103 @@
+{
+    "id": "005a64b6-ef6e-4a84-b5a9-5d6746635564",
+    "started_at": "2026-03-10T11:18:31.900945",
+    "finished_at": "2026-03-10T13:26:43.844833",
+    "n_total_trials": 12,
+    "stats": {
+        "n_trials": 12,
+        "n_errors": 5,
+        "evals": {
+            "terminus-2__claude-opus-4-6__adhoc": {
+                "n_trials": 3,
+                "n_errors": 3,
+                "metrics": [
+                    {
+                        "mean": 0.16426866666666667
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "ts-type-checker__sjRrZGQ",
+                            "ts-type-checker__2NEpR7W"
+                        ],
+                        "0.492806": [
+                            "ts-type-checker__qDvqxSk"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "ts-type-checker__sjRrZGQ",
+                        "ts-type-checker__2NEpR7W",
+                        "ts-type-checker__qDvqxSk"
+                    ]
+                }
+            },
+            "terminus-2__gpt-5.2-codex__adhoc": {
+                "n_trials": 3,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.091127
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "ts-type-checker__bn8bkaJ",
+                            "ts-type-checker__Cmn8La7"
+                        ],
+                        "0.273381": [
+                            "ts-type-checker__iNryamZ"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            },
+            "terminus-2__qwen-qwen3-coder-next__adhoc": {
+                "n_trials": 3,
+                "n_errors": 2,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "ts-type-checker__pK6N4VY",
+                            "ts-type-checker__Gjn2L2N",
+                            "ts-type-checker__CPU8t8E"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "ts-type-checker__Gjn2L2N",
+                        "ts-type-checker__CPU8t8E"
+                    ]
+                }
+            },
+            "terminus-2__z-ai-glm-5__adhoc": {
+                "n_trials": 3,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "ts-type-checker__YyLE7LD",
+                            "ts-type-checker__fU6MHcU",
+                            "ts-type-checker__VCxx5Zw"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

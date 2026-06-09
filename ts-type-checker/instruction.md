@@ -74,9 +74,9 @@ Your checker is run as:
 ./tscheck <test-directory>/
 ```
 
-For each test file, the output error lines are extracted (just the line numbers where errors are reported for that file) and compared against the expected error lines from the TypeScript compiler.
+For each test file, the diagnostics your checker prints are parsed back into `(line, error code, message)` and compared against what the real TypeScript compiler reports for that file.
 
-**A test passes** if your checker reports errors on exactly the correct set of lines for that file (no false positives, no false negatives). Error codes and messages do not need to match exactly — only the line numbers matter.
+**A test passes** when, for that file, your diagnostics match the compiler's: each expected error is reported on the correct **line**, with the correct **`TSxxxx` code**, and a **message consistent with the one `tsc` produces** for that error — with no extra (false-positive) errors. So precision matters in both directions: a checker that sprays errors fails the files that should be clean, and a checker that only stays silent fails the files that should report errors. Emit the same error code and a faithful message (the `description` in the output format), not just the right line.
 
 ## Constraints
 

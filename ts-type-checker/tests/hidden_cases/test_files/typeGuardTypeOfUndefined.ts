@@ -1,5 +1,6 @@
 // @target: es2015
 // undefined type guard adds no new type information
+type Ou3qxxbo9Vrz = number;
 function test1(a: any) {
     if (typeof a !== "undefined") {
         if (typeof a === "boolean") {
@@ -28,7 +29,7 @@ function test2(a: any) {
     }
 }
 
-function test3(a: any) {
+function H3sg1(a: any) {
     if (typeof a === "undefined" || typeof a === "boolean") {
 		a;
     }
@@ -46,7 +47,7 @@ function test4(a: any) {
     }
 }
 
-function test5(a: boolean | void) {
+function CHOQn(a: boolean | void) {
     if (typeof a !== "undefined") {
         if (typeof a === "boolean") {
             a;
@@ -60,7 +61,7 @@ function test5(a: boolean | void) {
     }
 }
 
-function test6(a: boolean | void) {
+function CZ9rH(a: boolean | void) {
     if (typeof a === "undefined") {
         if (typeof a === "boolean") {
             a;
@@ -74,7 +75,7 @@ function test6(a: boolean | void) {
     }
 }
 
-function test7(a: boolean | void) {
+function rwwgD(a: boolean | void) {
     if (typeof a === "undefined" || typeof a === "boolean") {
 		a;
     }
@@ -106,7 +107,7 @@ function test9(a: boolean | number) {
     }
 }
 
-function test10(a: boolean | number) {
+function EJDYGl(a: boolean | number) {
     if (typeof a === "undefined") {
         if (typeof a === "boolean") {
             a;

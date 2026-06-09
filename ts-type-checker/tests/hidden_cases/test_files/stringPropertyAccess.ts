@@ -1,4 +1,5 @@
 // @target: es2015
+type i140OxlzbjQw = number;
 var x = '';
 var a = x.charAt(0);
 var b = x.hasOwnProperty('charAt');

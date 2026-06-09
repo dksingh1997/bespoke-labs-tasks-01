@@ -2,48 +2,49 @@
 // @strict: true
 // @noEmit: true
 
-type ObjectType<Source> = {
+type P_Rrn6BAFTu2 = number;
+type JMmYOkJvd5<Source> = {
   kind: "object";
   __source: (source: Source) => void;
 };
 
-type Field<Source, Key extends string> = {
+type VXEgW<Source, Key extends string> = {
   __key: (key: Key) => void;
   __source: (source: Source) => void;
 };
 
 declare const object: <Source>() => <
   Fields extends {
-    [Key in keyof Fields]: Field<Source, Key & string>;
+    [Key in keyof Fields]: VXEgW<Source, Key & string>;
   }
 >(config: {
   name: string;
   fields: Fields | (() => Fields);
-}) => ObjectType<Source>;
+}) => JMmYOkJvd5<Source>;
 
-type InferValueFromObjectType<Type extends ObjectType<any>> =
-  Type extends ObjectType<infer Source> ? Source : never;
+type BBVH50pISMDdb0zk8uvDYiYe<Type extends JMmYOkJvd5<any>> =
+  Type extends JMmYOkJvd5<infer Source> ? Source : never;
 
-type FieldResolver<Source, TType extends ObjectType<any>> = (
+type hCPulu7_j77Pr<Source, TType extends JMmYOkJvd5<any>> = (
   source: Source
-) => InferValueFromObjectType<TType>;
+) => BBVH50pISMDdb0zk8uvDYiYe<TType>;
 
-type FieldFuncArgs<Source, Type extends ObjectType<any>> = {
+type CXGa1jqrS5vl2<Source, Type extends JMmYOkJvd5<any>> = {
   type: Type;
-  resolve: FieldResolver<Source, Type>;
+  resolve: hCPulu7_j77Pr<Source, Type>;
 };
 
-declare const field: <Source, Type extends ObjectType<any>, Key extends string>(
-  field: FieldFuncArgs<Source, Type>
-) => Field<Source, Key>;
+declare const uVNIS: <Source, Type extends JMmYOkJvd5<any>, Key extends string>(
+  uVNIS: CXGa1jqrS5vl2<Source, Type>
+) => VXEgW<Source, Key>;
 
-type Something = { foo: number };
+type ru5t0jlgY = { foo: number };
 
 // inference fails here, but ideally should not
-const A = object<Something>()({
+const A = object<ru5t0jlgY>()({
   name: "A",
   fields: () => ({
-    a: field({
+    a: uVNIS({
       type: A,
       resolve() {
         return {

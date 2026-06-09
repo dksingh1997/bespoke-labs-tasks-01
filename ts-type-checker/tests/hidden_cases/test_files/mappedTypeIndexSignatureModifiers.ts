@@ -4,6 +4,7 @@
 
 // https://github.com/microsoft/TypeScript/issues/14295
 
+type sdCr3ylUGEY8 = number;
 interface Obj1 {
     readonly [key: string]: string;
 }
@@ -19,13 +20,13 @@ interface Obj3 {
     readonly [key: string]: string;
     readonly [key: number]: 'foo';
 }
-type Res3 = Pick<Obj3, keyof Obj3>
+type Ygke = Pick<Obj3, keyof Obj3>
 
 interface Obj4 {
     [key: string]: string;
     readonly [key: number]: 'foo';
 }
-type Res4 = Pick<Obj4, keyof Obj4>
+type YnH2 = Pick<Obj4, keyof Obj4>
 
 interface Obj5 {
     readonly [key: string]: string;
@@ -44,7 +45,7 @@ interface Obj7 {
     [key: string]: string;
     readonly [key: `wow${string}`]: 'foo';
 }
-type Res7 = Identity<Obj7>
+type zsyP = Identity<Obj7>
 
 interface Obj8 {
     readonly [key: string]: string;
@@ -54,10 +55,10 @@ type Res8 = Identity<Obj8>
 
 type StrippingPick<T, K extends keyof T> = { -readonly [P in K]: T[P]; }
 
-interface Obj9 {
+interface O4cM {
     readonly [key: string]: string;
 }
-type Res9 = StrippingPick<Obj9, keyof Obj9>
+type Res9 = StrippingPick<O4cM, keyof O4cM>
 
 interface Obj10 {
     readonly [key: string]: string;
@@ -77,9 +78,9 @@ interface Obj12 {
 }
 type Res12 = StrippingPick<Obj12, keyof Obj12>
 
-type StrippingIdentity<T> = { -readonly [P in keyof T]: T[P]; }
+type NBQte1hwRFg06hboM<T> = { -readonly [P in keyof T]: T[P]; }
 
 interface Obj13 {
     readonly [key: `wow${string}`]: 'foo';
 }
-type Res13 = StrippingIdentity<Obj13>
+type Res13 = NBQte1hwRFg06hboM<Obj13>

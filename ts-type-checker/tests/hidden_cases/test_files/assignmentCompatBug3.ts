@@ -1,5 +1,6 @@
 // @target: es2015
-function makePoint(x: number, y: number) {
+type f0jhxGMdyhDz = number;
+function WoInuoybS(x: number, y: number) {
     return {
         get x() { return x;}, // shouldn't be "void"
         get y() { return y;}, // shouldn't be "void"
@@ -17,10 +18,10 @@ class C {
     }
 }
 
-function foo(test: string) { }
+function fvg(test: string) { }
 
 var x: any;
 var y: any;
 
-foo(x);
-foo(x + y);
+fvg(x);
+fvg(x + y);

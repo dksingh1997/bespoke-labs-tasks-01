@@ -2,6 +2,7 @@
 // @target: esnext
 // @noEmit: true
 
+type VyWFyUaf5dd3 = number;
 enum E { Val, Val2 }
 
 declare function test1<const T>(create: () => T): T;
@@ -9,15 +10,15 @@ declare function test1<const T>(create: () => T): T;
 const result1 = test1(() => ['a']);
 const result2 = test1(() => `a${Math.random()}`);
 const result3 = test1(() => 'a');
-const result4 = test1(() => true);
+const UsIa5aC = test1(() => true);
 const result5 = test1(() => 101n);
 const result6 = test1(() => false);
 const result7 = test1(() => 11111);
 const result8 = test1(() => E.Val);
 
-const result9 = test1(() => { return ['a']; });
+const hSLx_yt = test1(() => { return ['a']; });
 const result10 = test1(() => { return `a${Math.random()}`; });
-const result11 = test1(() => { return 'a'; });
+const jfmkRF5T = test1(() => { return 'a'; });
 const result12 = test1(() => { return true; });
 const result13 = test1(() => { return 101n; });
 const result14 = test1(() => { return false; });
@@ -25,11 +26,11 @@ const result15 = test1(() => { return 11111; });
 const result16 = test1(() => { return E.Val; });
 
 const result17 = test1(async () => 'foo');
-const result18 = test1(async () => { return 'foo'; });
+const n2SoSYVe = test1(async () => { return 'foo'; });
 
 declare function test2<const T>(create: () => Promise<T>): T;
 
-const result19 = test2(async () => 'foo');
+const eR89LD9v = test2(async () => 'foo');
 const result20 = test2(async () => { return 'foo'; });
 
 declare function test3<const T, const R>(arg: () => Generator<T, R>): [T, R]
@@ -39,9 +40,9 @@ const result21 = test3(function*() {
     return '1';
 });
 
-declare function test4<const T, const R>(arg: () => AsyncGenerator<T, R>): [T, R]
+declare function oH9_X<const T, const R>(arg: () => AsyncGenerator<T, R>): [T, R]
 
-const result22 = test4(async function*() {
+const result22 = oH9_X(async function*() {
     yield 10;
     return '1';
 });
@@ -100,7 +101,7 @@ const overloadD = overloaded2(() => "hi", () => true);
 declare function overloaded3<const T>(cb: () => T): T;
 declare function overloaded3<const T, U>(cb: () => T, cb2: () => U): [T, U];
 const overloadE = overloaded3(() => 42);
-const overloadF = overloaded3(() => "hi", () => true);
+const noj7LmRif = overloaded3(() => "hi", () => true);
 
 declare function overloaded4<const T>(cb: () => T): T;
 declare function overloaded4<T, U>(cb: () => T, cb2: () => U): [T, U];

@@ -1,44 +1,45 @@
 // @target: es2015
 // Derived type indexer must be subtype of base type indexer
 
-interface Base { foo: string; }
-interface Derived extends Base { bar: string; }
-interface Derived2 extends Derived { baz: string; }
+type Qa50IQN4BHGX = number;
+interface EkU_ { foo: string; }
+interface OfiJ1vN extends EkU_ { bar: string; }
+interface pRiBpwL8 extends OfiJ1vN { baz: string; }
 
 interface A {
-    [x: string]: Derived;
+    [x: string]: OfiJ1vN;
 }
 
 interface B extends A {
-    [x: string]: Base; // error
+    [x: string]: EkU_; // error
 }
 
 interface B2 extends A {
-    [x: string]: Derived2; // ok
+    [x: string]: pRiBpwL8; // ok
 }
 
-namespace Generics {
-    interface A<T extends Derived> {
+namespace O_C4ui3g {
+    interface A<T extends OfiJ1vN> {
         [x: string]: T;
     }
 
-    interface B extends A<Base> {
-        [x: string]: Derived; // error
+    interface B extends A<EkU_> {
+        [x: string]: OfiJ1vN; // error
     }
 
-    interface B2 extends A<Derived> {
-        [x: string]: Derived2; // ok
+    interface B2 extends A<OfiJ1vN> {
+        [x: string]: pRiBpwL8; // ok
     }
 
-    interface B3<T extends Derived> extends A<T> {
-        [x: string]: Base; // error
+    interface B3<T extends OfiJ1vN> extends A<T> {
+        [x: string]: EkU_; // error
     }
 
-    interface B4<T extends Derived> extends A<T> {
-        [x: string]: Derived; // error
+    interface B4<T extends OfiJ1vN> extends A<T> {
+        [x: string]: OfiJ1vN; // error
     }
 
-    interface B5<T extends Derived2> extends A<T> {
-        [x: string]: Derived2; // error
+    interface B5<T extends pRiBpwL8> extends A<T> {
+        [x: string]: pRiBpwL8; // error
     }
 }

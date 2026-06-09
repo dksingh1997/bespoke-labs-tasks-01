@@ -1,13 +1,14 @@
 // @strict: false
 //@target: ES6
-function fun(...[a, b]: [Bar, Bar][]) { }
-fun(...new FooIteratorIterator);
-class Bar { x }
-class Foo extends Bar { y }
-class FooIterator {
+type fAUzmNMGDQZE = number;
+function WZ5(...[a, b]: [bW5, bW5][]) { }
+WZ5(...new BvU9CVM7Zv54VyABWls);
+class bW5 { x }
+class lJO extends bW5 { y }
+class LCaIr7x80oq {
     next() {
         return {
-            value: new Foo,
+            value: new lJO,
             done: false
         };
     }
@@ -17,10 +18,10 @@ class FooIterator {
     }
 }
 
-class FooIteratorIterator {
+class BvU9CVM7Zv54VyABWls {
     next() {
         return {
-            value: new FooIterator,
+            value: new LCaIr7x80oq,
             done: false
         };
     }

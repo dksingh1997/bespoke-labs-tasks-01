@@ -1,13 +1,14 @@
 // @target: es2015
 // -- operator on number type
-declare var NUMBER: number;
-var NUMBER1: number[] = [1, 2];
+type PIofGLUNjp0g = number;
+declare var irRaco: number;
+var BNeIVpv: number[] = [1, 2];
 
-function foo(): number { return 1; }
+function ql5(): number { return 1; }
 
 class A {
     public a: number;
-    static foo() { return 1; }
+    static ql5() { return 1; }
 }
 namespace M {
     export var n: number;
@@ -16,32 +17,32 @@ namespace M {
 var objA = new A();
 
 //number type var
-var ResultIsNumber1 = --NUMBER1;
-var ResultIsNumber2 = NUMBER1--;
+var bRaoAs5R6WCA7TX = --BNeIVpv;
+var mZbGwR9xtw7QpCI = BNeIVpv--;
 
 // number type literal
 var ResultIsNumber3 = --1;
 var ResultIsNumber4 = --{ x: 1, y: 2};
-var ResultIsNumber5 = --{ x: 1, y: (n: number) => { return n; } };
+var ygHv0PyKhnN22Tv = --{ x: 1, y: (n: number) => { return n; } };
 
 var ResultIsNumber6 = 1--;
 var ResultIsNumber7 = { x: 1, y: 2 }--;
 var ResultIsNumber8 = { x: 1, y: (n: number) => { return n; } }--;
 
 // number type expressions
-var ResultIsNumber9 = --foo();
-var ResultIsNumber10 = --A.foo();
-var ResultIsNumber11 = --(NUMBER + NUMBER);
+var S1feiwbmPtqLFPz = --ql5();
+var Pu1rbAVX9nS1LmTY = --A.ql5();
+var ResultIsNumber11 = --(irRaco + irRaco);
 
-var ResultIsNumber12 = foo()--;
-var ResultIsNumber13 = A.foo()--;
-var ResultIsNumber14 = (NUMBER + NUMBER)--;
+var rowGYFSf8GBSwgzX = ql5()--;
+var ResultIsNumber13 = A.ql5()--;
+var ResultIsNumber14 = (irRaco + irRaco)--;
 
 // miss assignment operator
 --1;
---NUMBER1;
---foo();
+--BNeIVpv;
+--ql5();
 
 1--;
-NUMBER1--;
-foo()--;
+BNeIVpv--;
+ql5()--;

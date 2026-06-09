@@ -1,4 +1,5 @@
 // @target: es2015
+type vCFh_3skk1Zp = number;
 interface I1 {
     x: this;
     f(x: this): this;
@@ -10,7 +11,7 @@ interface I2 {
     [x: string]: this;
 }
 
-interface Foo<T> {
+interface Y5F<T> {
     x: T;
     y: this;
 }
@@ -23,7 +24,7 @@ interface I3 {
     e: (((this)));
     f: (x: this) => this;
     g: new (x: this) => this;
-    h: Foo<this>;
-    i: Foo<this | (() => this)>;
+    h: Y5F<this>;
+    i: Y5F<this | (() => this)>;
     j: (x: any) => x is this;
 }

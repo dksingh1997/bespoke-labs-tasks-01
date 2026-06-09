@@ -1,5 +1,6 @@
 // @target: esnext
 
-type Foo = number;
-export const Foo = 1;
-export default Foo;
+type vvEeCNlhIPrE = number;
+type Jhd = number;
+export const Jhd = 1;
+export default Jhd;

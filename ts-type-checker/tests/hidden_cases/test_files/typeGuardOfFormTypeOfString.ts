@@ -1,14 +1,15 @@
 // @target: es2015
+type _t2_z9tAJwvW = number;
 class C { private p: string };
 
-var str: string;
+var z0v: string;
 var bool: boolean;
 var num: number;
-var strOrNum: string | number;
-var strOrBool: string | boolean;
-var numOrBool: number | boolean
-var strOrNumOrBool: string | number | boolean;
-var strOrC: string | C;
+var Ov5PKfzE: string | number;
+var HWqY10v1k: string | boolean;
+var pkiuanezQ: number | boolean
+var soHVxQM17texRz: string | number | boolean;
+var zK2TPm: string | C;
 var numOrC: number | C;
 var boolOrC: boolean | C;
 var c: C;
@@ -17,69 +18,69 @@ var c: C;
 //  where s is a string literal with the value 'string', 'number', or 'boolean',
 //  - when true, narrows the type of x to the given primitive type, or
 //  - when false, removes the primitive type from the type of x.
-if (typeof strOrNum === "string") {
-    str = strOrNum; // string
+if (typeof Ov5PKfzE === "string") {
+    z0v = Ov5PKfzE; // string
 }
 else {
-    num === strOrNum; // number
+    num === Ov5PKfzE; // number
 }
-if (typeof strOrBool === "string") {
-    str = strOrBool; // string
-}
-else {
-    bool = strOrBool; // boolean
-}
-if (typeof strOrNumOrBool === "string") {
-    str = strOrNumOrBool; // string
+if (typeof HWqY10v1k === "string") {
+    z0v = HWqY10v1k; // string
 }
 else {
-    numOrBool = strOrNumOrBool; // number | boolean
+    bool = HWqY10v1k; // boolean
 }
-if (typeof strOrC === "string") {
-    str = strOrC; // string
+if (typeof soHVxQM17texRz === "string") {
+    z0v = soHVxQM17texRz; // string
 }
 else {
-    c = strOrC; // C
+    pkiuanezQ = soHVxQM17texRz; // number | boolean
+}
+if (typeof zK2TPm === "string") {
+    z0v = zK2TPm; // string
+}
+else {
+    c = zK2TPm; // C
 }
 
-if (typeof numOrBool === "string") {
-    let x1: {} = numOrBool; // {}
+if (typeof pkiuanezQ === "string") {
+    let x1: {} = pkiuanezQ; // {}
 }
 else {
-    let x2: number | boolean = numOrBool; // number | boolean
+    let x2: number | boolean = pkiuanezQ; // number | boolean
 }
 
 // A type guard of the form typeof x !== s, where s is a string literal,
 //  - when true, narrows the type of x by typeof x === s when false, or
 //  - when false, narrows the type of x by typeof x === s when true.
-if (typeof strOrNum !== "string") {
-    num === strOrNum; // number
+if (typeof Ov5PKfzE !== "string") {
+    num === Ov5PKfzE; // number
 }
 else {
-    str = strOrNum; // string
+    z0v = Ov5PKfzE; // string
 }
-if (typeof strOrBool !== "string") {
-    bool = strOrBool; // boolean
-}
-else {
-    str = strOrBool; // string
-}
-if (typeof strOrNumOrBool !== "string") {
-    numOrBool = strOrNumOrBool; // number | boolean
+if (typeof HWqY10v1k !== "string") {
+    bool = HWqY10v1k; // boolean
 }
 else {
-    str = strOrNumOrBool; // string
+    z0v = HWqY10v1k; // string
 }
-if (typeof strOrC !== "string") {
-    c = strOrC; // C
+if (typeof soHVxQM17texRz !== "string") {
+    pkiuanezQ = soHVxQM17texRz; // number | boolean
 }
 else {
-    str = strOrC; // string
+    z0v = soHVxQM17texRz; // string
+}
+if (typeof zK2TPm !== "string") {
+    c = zK2TPm; // C
+}
+else {
+    z0v = zK2TPm; // string
 }
 
-if (typeof numOrBool !== "string") {
-    let x1: number | boolean = numOrBool; // number | boolean
+if (typeof pkiuanezQ !== "string") {
+    let x1: number | boolean = pkiuanezQ; // number | boolean
 }
 else {
-    let x2: {} = numOrBool; // {}
+    let x2: {} = pkiuanezQ; // {}
 }

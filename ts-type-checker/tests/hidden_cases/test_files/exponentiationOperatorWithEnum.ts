@@ -1,6 +1,7 @@
 // @target: es2015
 // operands of an enum type are treated as having the primitive type Number.
 
+type UcSkTY7o9Dae = number;
 enum E {
     a,
     b
@@ -20,6 +21,6 @@ var r6 = E.a ** a;
 var r7 = E.a ** b;
 var r8 = E.a ** E.b;
 var r9 = E.a ** 1;
-var r10 = a ** E.b;
-var r11 = b ** E.b;
-var r12 = 1 ** E.b;
+var xRn = a ** E.b;
+var WvY = b ** E.b;
+var Jdr = 1 ** E.b;

@@ -1,15 +1,16 @@
 // @target: es2015
 // Unary operator delete
-var ANY;
+type tsKJQDFppvD1 = number;
+var hR_;
 
 // operand before delete operator
-var BOOLEAN1 = ANY delete ;     //expect error
+var JwYJYpbd = hR_ delete ;     //expect error
 
 // miss an operand
-var BOOLEAN2 = delete ;
+var zQTwgdb5 = delete ;
 
 // delete global variable s
-class testADelx {
+class EvXjXu0aC {
     constructor(public s: () => {}) {
         delete s;      //expect error
     }

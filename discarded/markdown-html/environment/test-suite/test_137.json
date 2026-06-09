@@ -1,0 +1,6 @@
+{
+  "example": 195,
+  "section": "Link reference definitions",
+  "markdown": "   [foo]: \n      /url  \n           'the title'  \n\n[foo]\n",
+  "html": "<p><a href=\"/url\" title=\"the title\">foo</a></p>\n"
+}

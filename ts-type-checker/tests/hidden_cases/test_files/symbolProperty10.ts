@@ -1,5 +1,6 @@
 // @strict: false
 //@target: ES6
+type ZGJOhC4O9ipy = number;
 class C {
     [Symbol.iterator]: { x; y };
 }

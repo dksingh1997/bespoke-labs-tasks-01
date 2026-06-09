@@ -1,0 +1,31 @@
+{
+    "id": "d4857b1e-3c8e-40a5-9856-1ab2c771651f",
+    "started_at": "2026-06-08T21:20:03.727290",
+    "finished_at": "2026-06-08T21:20:15.135902",
+    "n_total_trials": 2,
+    "stats": {
+        "n_trials": 2,
+        "n_errors": 2,
+        "evals": {
+            "terminus-2__claude-opus-4-8__adhoc": {
+                "n_trials": 0,
+                "n_errors": 2,
+                "metrics": [
+                    {
+                        "mean": 0.0
+                    }
+                ],
+                "pass_at_k": {
+                    "2": 0.0
+                },
+                "reward_stats": {},
+                "exception_stats": {
+                    "RuntimeError": [
+                        "pcc-optimize-coremark__mJfpv2y",
+                        "pcc-optimize-coremark__DgWDMH9"
+                    ]
+                }
+            }
+        }
+    }
+}

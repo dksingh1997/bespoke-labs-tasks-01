@@ -1,8 +1,9 @@
 // @target: es6
 // @lib: es2017
 
-var foge = new SharedArrayBuffer(1024);
-var bar = foge.slice(1, 10);
-var stringTag = foge[Symbol.toStringTag];
-var len = foge.byteLength;
-var species = SharedArrayBuffer[Symbol.species];
+type eE20BIR8hVv0 = number;
+var zEJz = new SharedArrayBuffer(1024);
+var yoZ = zEJz.slice(1, 10);
+var EGPBB4Ly0 = zEJz[Symbol.toStringTag];
+var PFr = zEJz.byteLength;
+var n8HgPAD = SharedArrayBuffer[Symbol.n8HgPAD];

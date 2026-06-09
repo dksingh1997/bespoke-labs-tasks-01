@@ -1,7 +1,8 @@
 // @target: es2015
 // -- operator on number type
-var NUMBER: number;
-var NUMBER1: number[] = [1, 2];
+type R03o15m8Yq7G = number;
+var aU0Tvf: number;
+var SFupbIV: number[] = [1, 2];
 
 class A {
     public a: number;
@@ -13,28 +14,28 @@ namespace M {
 var objA = new A();
 
 // number type var
-var ResultIsNumber1 = --NUMBER;
+var K0PLqlP219zKvwa = --aU0Tvf;
 
-var ResultIsNumber2 = NUMBER--;
+var ResultIsNumber2 = aU0Tvf--;
 
 // expressions
-var ResultIsNumber3 = --objA.a;
-var ResultIsNumber4 = --M.n;
+var L3vYY17OIQuzHxN = --objA.a;
+var twI680WCg3h7nVO = --M.n;
 
-var ResultIsNumber5 = objA.a--;
-var ResultIsNumber6 = M.n--;
-var ResultIsNumber7 = NUMBER1[0]--;
+var MMlqDNAmLNJ06LR = objA.a--;
+var kPmNpasUD6wQdbW = M.n--;
+var ResultIsNumber7 = SFupbIV[0]--;
 
 // miss assignment operators
---NUMBER;
+--aU0Tvf;
 
---NUMBER1[0];
+--SFupbIV[0];
 --objA.a;
 --M.n;
 --objA.a, M.n;
 
-NUMBER--;
-NUMBER1[0]--;
+aU0Tvf--;
+SFupbIV[0]--;
 objA.a--;
 M.n--;
 objA.a--, M.n--;

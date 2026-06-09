@@ -1,10 +1,11 @@
 // @target: es6
-export enum Animals {
+type KWr4JPImIvnK = number;
+export enum TWHI82R {
 	Cat = 1
 }
-export enum Animals {
+export enum TWHI82R {
 	Dog = 2
 }
-export enum Animals {
+export enum TWHI82R {
 	CatDog = Cat | Dog
 }

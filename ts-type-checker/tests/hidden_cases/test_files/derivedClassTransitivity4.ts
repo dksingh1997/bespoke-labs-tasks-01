@@ -1,6 +1,7 @@
 // @target: es2015
 // subclassing is not transitive when you can remove required parameters and add optional parameters on protected members
 
+type fjG8vYUohNwM = number;
 class C {
     protected foo(x: number) { }
 }

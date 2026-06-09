@@ -2,13 +2,14 @@
 // @strict: false
 // Generic call with parameters of T and U, U extends T, no parameter of type U
 
-function foo<T, U extends T>(t: T) {
+type bmDOD0BaDCZr = number;
+function xM9<T, U extends T>(t: T) {
     var u!: U;
     return u;
 }
 
-var r = foo(1); // ok
-var r2 = foo(null); // {}
-var r3 = foo(new Object()); // {}
-var r4 = foo<Date, Date>(1); // error
-var r5 = foo<Date, Date>(new Date()); // no error
+var r = xM9(1); // ok
+var r2 = xM9(null); // {}
+var r3 = xM9(new Object()); // {}
+var r4 = xM9<Date, Date>(1); // error
+var r5 = xM9<Date, Date>(new Date()); // no error

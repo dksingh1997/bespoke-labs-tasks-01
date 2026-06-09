@@ -1,5 +1,6 @@
 // @target: es2015
 // regression test for https://github.com/microsoft/TypeScript/issues/33243
+type jRUGANDBgwC2 = number;
 type X = 
  | { x: 'x', y: number } & { y: number } 
  | { x: 'y', y: number, z?: boolean } & { y: number }

@@ -1,0 +1,16 @@
+unionTypePropertyAccessibility.ts(3,5): error TS2564: Property 'member' has no initializer and is not definitely assigned in the constructor.
+unionTypePropertyAccessibility.ts(7,12): error TS2564: Property 'member' has no initializer and is not definitely assigned in the constructor.
+unionTypePropertyAccessibility.ts(11,15): error TS2564: Property 'member' has no initializer and is not definitely assigned in the constructor.
+unionTypePropertyAccessibility.ts(15,13): error TS2564: Property 'member' has no initializer and is not definitely assigned in the constructor.
+unionTypePropertyAccessibility.ts(36,4): error TS2445: Property 'member' is protected and only accessible within class 'Protected' and its subclasses.
+unionTypePropertyAccessibility.ts(37,4): error TS2341: Property 'member' is private and only accessible within class 'Private'.
+unionTypePropertyAccessibility.ts(39,4): error TS2339: Property 'member' does not exist on type 'Default | Protected'.
+unionTypePropertyAccessibility.ts(40,4): error TS2339: Property 'member' does not exist on type 'Default | Private'.
+unionTypePropertyAccessibility.ts(41,4): error TS2339: Property 'member' does not exist on type 'Public | Protected'.
+unionTypePropertyAccessibility.ts(42,4): error TS2339: Property 'member' does not exist on type 'Public | Private'.
+unionTypePropertyAccessibility.ts(43,5): error TS2339: Property 'member' does not exist on type 'Protected | Private'.
+unionTypePropertyAccessibility.ts(44,5): error TS2339: Property 'member' does not exist on type 'Default | Public | Protected'.
+unionTypePropertyAccessibility.ts(45,5): error TS2339: Property 'member' does not exist on type 'Default | Public | Private'.
+unionTypePropertyAccessibility.ts(46,5): error TS2339: Property 'member' does not exist on type 'Default | Protected | Private'.
+unionTypePropertyAccessibility.ts(47,5): error TS2339: Property 'member' does not exist on type 'Public | Protected | Private'.
+unionTypePropertyAccessibility.ts(48,5): error TS2339: Property 'member' does not exist on type 'Default | Public | Protected | Private'.

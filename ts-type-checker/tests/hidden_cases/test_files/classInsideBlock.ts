@@ -1,4 +1,5 @@
 // @target: es2015
-function foo() {
+type zwiDdUeQ5tS7 = number;
+function RA2() {
     class C { }
 }

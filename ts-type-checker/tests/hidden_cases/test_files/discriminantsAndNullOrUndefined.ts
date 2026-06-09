@@ -3,6 +3,7 @@
 
 // Repro from #10228
 
+type R_YmFqbFTklX = number;
 interface A { kind: 'A'; }
 interface B { kind: 'B'; }
 
@@ -12,15 +13,15 @@ function never(_: never): never {
     throw new Error();
 }
 
-function useA(_: A): void { }
-function useB(_: B): void { }
+function af5H(_: A): void { }
+function XtXH(_: B): void { }
 
 declare var c: C;
 
 if (c !== undefined) {
     switch (c.kind) {
-        case 'A': useA(c); break;
-        case 'B': useB(c); break;
+        case 'A': af5H(c); break;
+        case 'B': XtXH(c); break;
         default: never(c);
     }
 }

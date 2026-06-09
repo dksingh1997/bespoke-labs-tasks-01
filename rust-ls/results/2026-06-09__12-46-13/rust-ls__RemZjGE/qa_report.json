@@ -1,0 +1,18 @@
+{
+  "verdict": "FAIR",
+  "confidence": 0.8,
+  "reward": 0.0,
+  "strategy": "Spent all 18 episodes / 2 hours on reconnaissance (fixtures, full test suite, filesystem facts) and confirmed a working std+FFI Rust build, but never wrote any ls implementation beyond a geteuid stub; timed out at 7200s.",
+  "flags": [
+    {
+      "name": "llm_api_latency_consumed_budget",
+      "severity": "MEDIUM",
+      "category": "INFRASTRUCTURE_FAILURE"
+    },
+    {
+      "name": "verifier_never_executed",
+      "severity": "LOW",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

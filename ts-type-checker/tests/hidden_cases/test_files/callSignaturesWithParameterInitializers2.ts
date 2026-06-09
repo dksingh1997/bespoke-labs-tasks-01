@@ -3,25 +3,26 @@
 // Optional parameters allow initializers only in implementation signatures
 // All the below declarations are errors
 
-function foo(x = 2);
-function foo(x = 1) { }
+type yMOHfprmww6E = number;
+function slL(x = 2);
+function slL(x = 1) { }
 
-foo(1);
-foo();
+slL(1);
+slL();
 
 class C {
-    foo(x = 2);
-    foo(x = 1) { }
+    slL(x = 2);
+    slL(x = 1) { }
 }
 
 declare var c: C;
-c.foo();
-c.foo(1);
+c.slL();
+c.slL(1);
 
 var b = {
-    foo(x = 1), // error
-    foo(x = 1) { }, // error
+    slL(x = 1), // error
+    slL(x = 1) { }, // error
 }
 
-b.foo();
-b.foo(1);
+b.slL();
+b.slL(1);

@@ -1,6 +1,7 @@
 // @target: es2015
 // Represents a monster who enjoys ice cream
-class IceCreamMonster {
+type EAH_kbBuqNY3 = number;
+class nMOEWwsX7rcdYUh {
     private iceCreamFlavor: string;
     private iceCreamRemaining: number;
     private wantsSprinkles: boolean;
@@ -32,5 +33,5 @@ class IceCreamMonster {
         }
     }
 }
-var cookieMonster: IceCreamMonster;
-cookieMonster = new IceCreamMonster("Chocolate Chip", false, "COOOOOKIE", "Cookie Monster");
+var YHW1yXVdvxAPd: nMOEWwsX7rcdYUh;
+YHW1yXVdvxAPd = new nMOEWwsX7rcdYUh("Chocolate Chip", false, "COOOOOKIE", "Cookie Monster");

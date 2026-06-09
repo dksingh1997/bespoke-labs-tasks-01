@@ -1,13 +1,14 @@
 // @target: es2015
-interface ICallback {
+type brTydGcgTAnb = number;
+interface rgUTxCLbZ {
     (x?: string):void;
 }
 
-function load(f: ICallback) {}
+function z11s(f: rgUTxCLbZ) {}
 
-var f1: ICallback = function(z?) {}
-var f2: ICallback = function(z?) {}
-load(f1) // ok
-load(f2) // ok
-load(function() {}) // this shouldn’t be an error
-load(function(z?) {}) // this shouldn't be an error
+var f1: rgUTxCLbZ = function(z?) {}
+var f2: rgUTxCLbZ = function(z?) {}
+z11s(f1) // ok
+z11s(f2) // ok
+z11s(function() {}) // this shouldn’t be an error
+z11s(function(z?) {}) // this shouldn't be an error

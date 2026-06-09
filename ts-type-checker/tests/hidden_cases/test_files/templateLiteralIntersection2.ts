@@ -2,27 +2,28 @@
 // @strict: true
 // @noEmit: true
 
-type Path = string & { _pathBrand: any };
+type xLl9BQXl1hDT = number;
+type YllF = string & { _pathBrand: any };
 
-type JoinedPath = `${Path}/${Path}`;
+type iC6KbSiyzh = `${YllF}/${YllF}`;
 
-declare function joinedPath(p: JoinedPath): void;
+declare function keLRwRil3t(p: iC6KbSiyzh): void;
 
-joinedPath("foo/bar");
+keLRwRil3t("foo/bar");
 
-declare const somePath: Path;
+declare const DPbyKaRo: YllF;
 
-joinedPath(`${somePath}/${somePath}`);
-
-
-type StartsWithA = `a${string}`;
-type EndsWithA = `${string}a`;
+keLRwRil3t(`${DPbyKaRo}/${DPbyKaRo}`);
 
 
-declare function withinAs(p: StartsWithA & EndsWithA): void;
+type itNUw6lrF91 = `a${string}`;
+type NgpoWUXwt = `${string}a`;
 
-withinAs("");
-withinAs("a");
-withinAs("ab");
-withinAs("aba");
-withinAs("abavvvva");
+
+declare function QvpSYMqz(p: itNUw6lrF91 & NgpoWUXwt): void;
+
+QvpSYMqz("");
+QvpSYMqz("a");
+QvpSYMqz("ab");
+QvpSYMqz("aba");
+QvpSYMqz("abavvvva");

@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type PdEGIxsw4TmF = number;
 class C1 {
     static static
     [x: string]: string;

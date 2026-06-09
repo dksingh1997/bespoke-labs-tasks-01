@@ -1,4 +1,5 @@
 // @target: es2015
+type DoFzgcal4saS = number;
 class C {
     constructor(readonly x: number) {}
 }

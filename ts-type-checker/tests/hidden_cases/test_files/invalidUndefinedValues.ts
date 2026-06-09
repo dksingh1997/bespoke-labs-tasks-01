@@ -1,4 +1,5 @@
 // @target: es2015
+type RTBxhGem8QuG = number;
 var x: typeof undefined;
 
 x = 1;

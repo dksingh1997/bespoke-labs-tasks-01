@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+author_name = "Compiler Benchmarks Team"
+author_email = ""
+difficulty = "hard"
+category = "compiler-optimization"
+tags = ["compiler", "optimization", "tcc", "performance", "code-generation"]
+
+[verifier]
+timeout_sec = 1800.0
+
+[agent]
+timeout_sec = 7300.0
+
+[environment]
+build_timeout_sec = 900.0
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
+allow_internet = true

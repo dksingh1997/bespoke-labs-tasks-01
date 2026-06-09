@@ -17,6 +17,7 @@ import csv
 import json
 import math
 import os
+import tempfile
 from collections import defaultdict
 
 def load_benchmark_csv(path):
@@ -166,25 +167,96 @@ def compute_performance_score(baseline_results, modified_results):
 
     return geomean, len(ratios), details
 
+def write_atomic(path, payload):
+    """Write `payload` to `path` atomically (tempfile + os.replace).
+
+    A torn/partial reward file (e.g. on crash) would otherwise be read by
+    Harbor as a malformed reward. os.replace() is atomic on POSIX, so the
+    reader sees either the old file or the complete new one — never a mix.
+    """
+    d = os.path.dirname(path) or "."
+    fd, tmp = tempfile.mkstemp(dir=d, prefix=".reward.", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w") as f:
+            f.write(payload)
+        os.replace(tmp, path)
+    except Exception:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
+
+
+def write_reward(output_dir, reward, subscores, additional_data):
+    """Write reward.json (canonical schema) and reward.txt (single float).
+
+    Schema: top-level score/reward/subscores; every task-specific metric lives
+    under additional_data (no splatted keys). Both files are written atomically.
+    """
+    os.makedirs(output_dir, exist_ok=True)
+    reward = round(max(0.0, min(1.0, float(reward))), 6)
+    reward_data = {
+        "score": reward,
+        "reward": reward,
+        "subscores": subscores,
+        "additional_data": additional_data,
+    }
+    write_atomic(os.path.join(output_dir, 'reward.json'),
+                 json.dumps(reward_data, indent=2) + "\n")
+    write_atomic(os.path.join(output_dir, 'reward.txt'), str(reward))
+    return reward_data
+
+
 def main():
     import argparse
 
     parser = argparse.ArgumentParser(
         description='Compute PCC optimization reward (baseline vs modified)')
-    parser.add_argument('--baseline-csv', required=True,
+    parser.add_argument('--fail',
+                        help='Hard failure reason (writes score=0 and returns)')
+    parser.add_argument('--baseline-csv',
                         help='Baseline PCC benchmark results CSV')
-    parser.add_argument('--modified-csv', required=True,
+    parser.add_argument('--modified-csv',
                         help='Modified PCC benchmark results CSV')
-    parser.add_argument('--baseline-correctness-csv', required=True,
+    parser.add_argument('--baseline-correctness-csv',
                         help='Baseline correctness test results CSV')
-    parser.add_argument('--modified-correctness-csv', required=True,
+    parser.add_argument('--modified-correctness-csv',
                         help='Modified correctness test results CSV')
     parser.add_argument('--output-dir', required=True,
                         help='Directory to write reward.json')
-                        help='Total wall-clock time in milliseconds')
+    parser.add_argument('--noise-floor', type=float, default=1.05,
+                        help='Speedup at/below which the gain is treated as '
+                             'measurement noise (reward 0). Derived from '
+                             'baseline timing variance by test.sh.')
+    parser.add_argument('--coremark-validated', type=int, default=1,
+                        help='1 if the modified CoreMark printed a valid '
+                             'self-CRC ("Correct operation validated"); 0 if '
+                             'not. 0 forces reward 0 (output-validation gate).')
+    parser.add_argument('--crc-match', type=int, default=1,
+                        help='1 if the modified CoreMark CRCs byte-match the '
+                             'baseline (golden) CRCs; 0 forces reward 0.')
+    parser.add_argument('--oracle', action='store_true',
+                        help='Mark this as an oracle run (recorded in '
+                             'additional_data; does not change scoring).')
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
+
+    # Hard-failure short-circuit: write a zeroed reward (reason in additional_data)
+    # and return. Used by test.sh for anti-cheat hits and build/test failures.
+    if args.fail:
+        write_reward(
+            args.output_dir, 0.0,
+            subscores=[
+                {"subtask": "speedup", "score": 0.0, "stdout": "", "stderr": ""},
+                {"subtask": "correctness", "score": 0.0, "stdout": "", "stderr": ""},
+            ],
+            additional_data={"status": "failed", "reason": args.fail,
+                             "is_oracle": bool(args.oracle)},
+        )
+        print(f"FAIL: {args.fail} -> reward 0.0")
+        return 0
 
     # Load results
     baseline_benchmarks = load_benchmark_csv(args.baseline_csv)
@@ -201,8 +273,24 @@ def main():
     speedup_ratio, num_benchmarks, perf_details = \
         compute_performance_score(baseline_benchmarks, modified_benchmarks)
 
+    # OUTPUT-VALIDATION GATE (Phase 2): a fast-but-miscompiled CoreMark must
+    # not score. The modified CoreMark self-validates via CRC ("Correct
+    # operation validated") and its CRCs must byte-match the baseline (golden).
+    # test.sh hard-gates this too; this is the defense-in-depth Python copy.
+    validation_failed = (args.coremark_validated != 1) or (args.crc_match != 1)
+
+    # Noise floor: any "speedup" at or below this is measurement noise. The
+    # floor is the larger of the calibrated 1.05 step and the variance-derived
+    # floor passed by test.sh (baseline stdev/median).
+    noise_floor = max(1.05, float(args.noise_floor))
+
     # Compute reward with discrete steps (measurement noise protection)
-    if correctness_gated:
+    if validation_failed:
+        reward = 0.0
+        print("OUTPUT-VALIDATION GATE FAILED: modified CoreMark did not "
+              f"self-validate (validated={args.coremark_validated}, "
+              f"crc_match={args.crc_match}) -> reward 0.0")
+    elif correctness_gated:
         reward = 0.0
         print(f"CORRECTNESS GATE FAILED: {len(regressions)} regression(s)")
         for t in regressions:
@@ -215,9 +303,9 @@ def main():
         # - Finer granularity in the achievable 1.0x-2.0x range
         # - Reward 1.0 at ~GCC parity (~2.59x)
 
-        if speedup_ratio < 1.05:
+        if speedup_ratio <= noise_floor:
             reward = 0.0
-            threshold = "< 1.05x (< 5%)"
+            threshold = f"<= {noise_floor:.3f}x (noise floor)"
         elif speedup_ratio < 1.10:
             reward = 0.1
             threshold = "1.05x - 1.10x (5-10%)"
@@ -254,25 +342,24 @@ def main():
         else:
             print(f"IMPROVEMENT DETECTED: speedup={speedup_ratio:.4f}x {threshold} → reward={reward:.1f}")
 
-    # Build reward JSON
+    # Build reward JSON (all task-specific metrics nested in additional_data).
     num_regressions = len(regressions)
-    reward_data = {
-        "score": round(reward, 6),
-        "reward": round(reward, 6),
-        "subscores": [
-            {
-                "subtask": "speedup",
-                "score": round(speedup_ratio, 4),
-                "stdout": f"speedup={speedup_ratio:.2f}x",
-                "stderr": "",
-            },
-            {
-                "subtask": "correctness",
-                "score": 1.0 if not correctness_gated else 0.0,
-                "stdout": f"regressions={num_regressions}",
-                "stderr": "",
-            },
-        ],
+    subscores = [
+        {
+            "subtask": "speedup",
+            "score": round(speedup_ratio, 4),
+            "stdout": f"speedup={speedup_ratio:.2f}x",
+            "stderr": "",
+        },
+        {
+            "subtask": "correctness",
+            "score": 1.0 if (not correctness_gated and not validation_failed) else 0.0,
+            "stdout": f"regressions={num_regressions}",
+            "stderr": "validation_gate_failed" if validation_failed else "",
+        },
+    ]
+    additional_data = {
+        "status": "ok",
         "speedup_ratio": round(speedup_ratio, 6),
         "baseline_pass": baseline_pass,
         "baseline_fail": baseline_fail,
@@ -282,17 +369,15 @@ def main():
         "num_fixes": len(fixes),
         "num_benchmarks": num_benchmarks,
         "correctness_gated": correctness_gated,
+        "coremark_validated": bool(args.coremark_validated),
+        "crc_match": bool(args.crc_match),
+        "validation_gate_failed": validation_failed,
+        "noise_floor": round(noise_floor, 6),
+        "is_oracle": bool(args.oracle),
     }
 
-    # Write reward.json
+    write_reward(args.output_dir, reward, subscores, additional_data)
     reward_path = os.path.join(args.output_dir, 'reward.json')
-    with open(reward_path, 'w') as f:
-        json.dump(reward_data, f, indent=2)
-
-    # Write reward.txt
-    reward_txt_path = os.path.join(args.output_dir, 'reward.txt')
-    with open(reward_txt_path, 'w') as f:
-        f.write(str(round(reward, 6)))
 
     # Write detailed results
     details_data = {
@@ -332,7 +417,10 @@ def main():
         if len(fixes) > 5:
             print(f"    ... and {len(fixes)-5} more")
     print(f"  Speedup:     {speedup_ratio:.4f}x (modified vs baseline)")
+    print(f"  Noise floor: {noise_floor:.4f}x")
     print(f"  Benchmarks:  {num_benchmarks}")
+    print(f"  Validation:  {'PASSED' if not validation_failed else 'FAILED'} "
+          f"(validated={bool(args.coremark_validated)}, crc_match={bool(args.crc_match)})")
     print(f"  Gate:        {'PASSED' if not correctness_gated else 'FAILED'}")
     print(f"  Reward:      {reward:.6f}")
     if reward > 0:
@@ -354,7 +442,10 @@ def main():
         if len(perf_details) > 15:
             print(f"  ... and {len(perf_details) - 15} more")
 
-    return 0 if not correctness_gated else 1
+    # Always exit 0 on a successful scoring pass — a gated run (reward 0.0) is a
+    # normal, fully-computed outcome, not a verifier crash. test.sh treats a
+    # non-zero exit as compute_reward_crashed, so reserve it for real failures.
+    return 0
 
 if __name__ == '__main__':
     sys.exit(main())

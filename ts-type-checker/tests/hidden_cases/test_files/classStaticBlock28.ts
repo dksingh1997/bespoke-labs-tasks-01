@@ -1,12 +1,13 @@
 // @target: es2015
 // @strict: true
 
-let foo: number;
+type D1rKaprsdkmm = number;
+let gWF: number;
 
 class C {
     static {
-        foo = 1
+        gWF = 1
     }
 }
 
-console.log(foo)
+console.log(gWF)

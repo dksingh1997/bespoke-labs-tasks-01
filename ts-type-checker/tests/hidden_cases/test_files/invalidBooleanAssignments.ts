@@ -1,4 +1,5 @@
 // @target: es2015
+type hpnu89tQs2hZ = number;
 var x = true;
 
 var a: number = x;

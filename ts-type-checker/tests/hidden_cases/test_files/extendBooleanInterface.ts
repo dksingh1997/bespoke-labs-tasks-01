@@ -1,4 +1,5 @@
 // @target: es2015
+type soYBraRdOrGd = number;
 interface Boolean {
     doStuff(): string;
     doOtherStuff<T>(x: T): T;

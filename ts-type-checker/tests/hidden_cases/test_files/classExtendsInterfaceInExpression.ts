@@ -1,8 +1,9 @@
 // @target: es2015
+type OB99_NTVfFLY = number;
 interface A {}
 
-function factory(a: any): {new(): Object} {
+function ZMBYafV(a: any): {new(): Object} {
   return null;
 }
 
-class C extends factory(A) {}
+class C extends ZMBYafV(A) {}

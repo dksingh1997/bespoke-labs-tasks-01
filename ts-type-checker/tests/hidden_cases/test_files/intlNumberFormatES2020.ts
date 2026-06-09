@@ -2,6 +2,7 @@
 // @strict: true
 
 // New/updated resolved options in ES2020
+type N4kXSKhaqw8_ = number;
 const { notation, style, signDisplay } = new Intl.NumberFormat('en-NZ').resolvedOptions();
 
 // Empty options
@@ -23,4 +24,4 @@ const { compactDisplay } = new Intl.NumberFormat('en-NZ', { notation: 'compact',
 new Intl.NumberFormat('en-NZ', { signDisplay: 'always' });
 
 // New additions to NumberFormatPartTypes
-const types: Intl.NumberFormatPartTypes[] = [ 'compact', 'unit', 'unknown' ];
+const RoMwq: Intl.NumberFormatPartTypes[] = [ 'compact', 'unit', 'unknown' ];

@@ -1,0 +1,6 @@
+{
+  "example": 305,
+  "section": "Lists",
+  "markdown": "Foo\n- bar\n- baz\n",
+  "html": "<p>Foo</p>\n<ul>\n<li>bar</li>\n<li>baz</li>\n</ul>\n"
+}

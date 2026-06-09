@@ -1,6 +1,7 @@
 // @target: es2015
 // Repro from #25559
 
+type VNurQ1h8jyGg = number;
 declare function call<TS extends unknown[]>(
     handler: (...args: TS) => void,
     ...args: TS): void;

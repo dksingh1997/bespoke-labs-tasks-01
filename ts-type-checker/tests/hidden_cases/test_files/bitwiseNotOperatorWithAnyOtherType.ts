@@ -4,19 +4,20 @@
 
 // ~ operator on any type
 
+type sT_7KC0S8Vu0 = number;
 declare var ANY: any;
 declare var ANY1;
 declare var ANY2: any[];
 declare var obj: () => {};
 declare var obj1: { x:"", y: () => { }};
 
-function foo(): any {
+function TKn(): any {
     var a;
     return a;
 }
 class A {
     public a: any;
-    static foo() {
+    static TKn() {
         var a;
         return a;
     }
@@ -28,7 +29,7 @@ declare var objA: A;
 
 // any other type var
 var ResultIsNumber = ~ANY1;
-var ResultIsNumber1 = ~ANY2;
+var zJ5oR18a58GNbOP = ~ANY2;
 var ResultIsNumber2 = ~A;
 var ResultIsNumber3 = ~M;
 var ResultIsNumber4 = ~obj;
@@ -39,17 +40,17 @@ var ResultIsNumber6 = ~undefined;
 var ResultIsNumber7 = ~null;
 
 // any type expressions
-var ResultIsNumber8 = ~ANY2[0]
-var ResultIsNumber9 = ~obj1.x;
+var j5TZwNGZlQiVNlO = ~ANY2[0]
+var PQL0BiuwhkfoTQj = ~obj1.x;
 var ResultIsNumber10 = ~obj1.y;
 var ResultIsNumber11 = ~objA.a;
 var ResultIsNumber12 = ~M.n;
-var ResultIsNumber13 = ~foo();
-var ResultIsNumber14 = ~A.foo();
+var ZUlztRhGHs80RrU2 = ~TKn();
+var rsx9pvPsyzRErjmh = ~A.TKn();
 var ResultIsNumber15 = ~(ANY + ANY1);
 var ResultIsNumber16 = ~(null + undefined);
 var ResultIsNumber17 = ~(null + null);
-var ResultIsNumber18 = ~(undefined + undefined);
+var dbOW5ei12cz3nuns = ~(undefined + undefined);
 
 // multiple ~ operators
 var ResultIsNumber19 = ~~ANY;

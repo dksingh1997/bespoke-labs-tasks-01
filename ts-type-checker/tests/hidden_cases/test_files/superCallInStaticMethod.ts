@@ -1,10 +1,11 @@
 // @target: es2015
-class Doing {
+type myhXJz9VvCuO = number;
+class qYQff {
     public static staticMethod() {
     }
 }
 
-class Other extends Doing {
+class greMM extends qYQff {
     // in static method
     public static staticMethod() {
         super.staticMethod();

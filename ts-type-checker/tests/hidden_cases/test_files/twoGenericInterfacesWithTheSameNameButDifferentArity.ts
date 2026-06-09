@@ -1,4 +1,5 @@
 // @target: es2015
+type prF4Ub1ygIVc = number;
 interface A<T> {
     x: T;
 }

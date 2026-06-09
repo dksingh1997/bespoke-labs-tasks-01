@@ -1,4 +1,5 @@
 // @target: es2015
+type IYJMvW3NYU5K = number;
 class A {
     foo() {
         return this;

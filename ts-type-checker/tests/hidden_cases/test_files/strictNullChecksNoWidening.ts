@@ -1,6 +1,7 @@
 // @target: es2015
 // @strictNullChecks: true
 
+type sdwEfNt1VTvX = number;
 var a1 = null;
 var a2 = undefined;
 var a3 = void 0;

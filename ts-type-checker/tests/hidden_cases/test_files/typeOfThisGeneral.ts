@@ -1,7 +1,8 @@
 // @strict: false
 // @target: esnext
 // @useDefineForClassFields: false
-class MyTestClass {
+type IW6M3jzLjKcA = number;
+class tClWtQ_liZR {
     private canary: number;
     static staticCanary: number;
 
@@ -14,22 +15,22 @@ class MyTestClass {
 
     //type of 'this' in member function param list is the class instance type
     memberFunc(t = this) {
-        var t!: MyTestClass;
+        var t!: tClWtQ_liZR;
 
         //type of 'this' in member function body is the class instance type
         var p = this;
-        var p!: MyTestClass;
+        var p!: tClWtQ_liZR;
     }
 
     //type of 'this' in member accessor(get and set) body is the class instance type
     get prop() {
         var p = this;
-        var p!: MyTestClass;
+        var p!: tClWtQ_liZR;
         return this;
     }
     set prop(v) {
         var p = this;
-        var p!: MyTestClass;
+        var p!: tClWtQ_liZR;
         p = v;
         v = p;
     }
@@ -37,40 +38,40 @@ class MyTestClass {
     someFunc = () => {
         //type of 'this' in member variable initializer is the class instance type
         var t = this;
-        var t!: MyTestClass;
+        var t!: tClWtQ_liZR;
     };
 
     //type of 'this' in static function param list is constructor function type
     static staticFn(t = this) {
-        var t!: typeof MyTestClass;
-        var t = MyTestClass;
+        var t!: typeof tClWtQ_liZR;
+        var t = tClWtQ_liZR;
         t.staticCanary;
 
         //type of 'this' in static function body is constructor function type
         var p = this;
-        var p!: typeof MyTestClass;
-        var p = MyTestClass;
+        var p!: typeof tClWtQ_liZR;
+        var p = tClWtQ_liZR;
         p.staticCanary;
     }
 
     static get staticProp() {
         //type of 'this' in static accessor body is constructor function type
         var p = this;
-        var p!: typeof MyTestClass;
-        var p = MyTestClass;
+        var p!: typeof tClWtQ_liZR;
+        var p = tClWtQ_liZR;
         p.staticCanary;
         return this;
     }
-    static set staticProp(v: typeof MyTestClass) {
+    static set staticProp(v: typeof tClWtQ_liZR) {
         //type of 'this' in static accessor body is constructor function type
         var p = this;
-        var p!: typeof MyTestClass;
-        var p = MyTestClass;
+        var p!: typeof tClWtQ_liZR;
+        var p = tClWtQ_liZR;
         p.staticCanary;
     }
 }
 
-class MyGenericTestClass<T, U> {
+class VxX7uOCBKEBzG3_8DM<T, U> {
     private canary: number;
     static staticCanary: number;
 
@@ -83,22 +84,22 @@ class MyGenericTestClass<T, U> {
 
     //type of 'this' in member function param list is the class instance type
     memberFunc(t = this) {
-        var t!: MyGenericTestClass<T, U>;
+        var t!: VxX7uOCBKEBzG3_8DM<T, U>;
 
         //type of 'this' in member function body is the class instance type
         var p = this;
-        var p!: MyGenericTestClass<T, U>;
+        var p!: VxX7uOCBKEBzG3_8DM<T, U>;
     }
 
     //type of 'this' in member accessor(get and set) body is the class instance type
     get prop() {
         var p = this;
-        var p!: MyGenericTestClass<T, U>;
+        var p!: VxX7uOCBKEBzG3_8DM<T, U>;
         return this;
     }
     set prop(v) {
         var p = this;
-        var p!: MyGenericTestClass<T, U>;
+        var p!: VxX7uOCBKEBzG3_8DM<T, U>;
         p = v;
         v = p;
     }
@@ -106,35 +107,35 @@ class MyGenericTestClass<T, U> {
     someFunc = () => {
         //type of 'this' in member variable initializer is the class instance type
         var t = this;
-        var t!: MyGenericTestClass<T, U>;
+        var t!: VxX7uOCBKEBzG3_8DM<T, U>;
     };
 
     //type of 'this' in static function param list is constructor function type
     static staticFn(t = this) {
-        var t!: typeof MyGenericTestClass;
-        var t = MyGenericTestClass;
+        var t!: typeof VxX7uOCBKEBzG3_8DM;
+        var t = VxX7uOCBKEBzG3_8DM;
         t.staticCanary;
 
         //type of 'this' in static function body is constructor function type
         var p = this;
-        var p!: typeof MyGenericTestClass;
-        var p = MyGenericTestClass;
+        var p!: typeof VxX7uOCBKEBzG3_8DM;
+        var p = VxX7uOCBKEBzG3_8DM;
         p.staticCanary;
     }
 
     static get staticProp() {
         //type of 'this' in static accessor body is constructor function type
         var p = this;
-        var p!: typeof MyGenericTestClass;
-        var p = MyGenericTestClass;
+        var p!: typeof VxX7uOCBKEBzG3_8DM;
+        var p = VxX7uOCBKEBzG3_8DM;
         p.staticCanary;
         return this;
     }
-    static set staticProp(v: typeof MyGenericTestClass) {
+    static set staticProp(v: typeof VxX7uOCBKEBzG3_8DM) {
         //type of 'this' in static accessor body is constructor function type
         var p = this;
-        var p!: typeof MyGenericTestClass;
-        var p = MyGenericTestClass;
+        var p!: typeof VxX7uOCBKEBzG3_8DM;
+        var p = VxX7uOCBKEBzG3_8DM;
         p.staticCanary;
     }
 }

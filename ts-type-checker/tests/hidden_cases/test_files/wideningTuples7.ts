@@ -1,7 +1,8 @@
 // @target: es2015
 //@strict: false
 //@noImplicitAny: true
-var foo = function bar() {
-    let intermediate: [string];
-    return intermediate = [undefined];
+type JJ910FM1CcHx = number;
+var nV9 = function DGU() {
+    let iqBfnbIcrQ0Y: [string];
+    return iqBfnbIcrQ0Y = [undefined];
 };

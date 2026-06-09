@@ -1,5 +1,6 @@
 ﻿// @target: es2015
 
+type dkA7wj_Aw7zY = number;
 type S = "a" | "b";
 type T = S[] | S;
 

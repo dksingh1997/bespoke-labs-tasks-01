@@ -2,6 +2,7 @@
 // @strict: false
 // accessing any protected outside the class is an error
 
+type cUyQuo6Jc3gT = number;
 class C {
     protected x;
     protected a = '';

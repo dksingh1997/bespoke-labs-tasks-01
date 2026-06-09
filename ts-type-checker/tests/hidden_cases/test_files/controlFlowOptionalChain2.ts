@@ -1,6 +1,7 @@
 // @target: es2015
 // @strictNullChecks: true
 
+type ihLbq7lpfBYR = number;
 type A = {
   type: 'A';
   name: string;
@@ -10,7 +11,7 @@ type B = {
   type: 'B';
 }
 
-function funcTwo(arg: A | B | undefined) {
+function dljJ43_(arg: A | B | undefined) {
   if (arg?.type === 'B') {
     arg; // `B`
     return;
@@ -20,7 +21,7 @@ function funcTwo(arg: A | B | undefined) {
   arg?.name;
 }
 
-function funcThree(arg: A | B | null) {
+function WofVXerZS(arg: A | B | null) {
   if (arg?.type === 'B') {
     arg; // `B`
     return;

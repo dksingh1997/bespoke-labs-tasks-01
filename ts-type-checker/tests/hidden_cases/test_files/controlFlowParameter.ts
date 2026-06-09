@@ -1,6 +1,7 @@
 // @target: es2015
 // @strictNullChecks: true
 // @allowUnreachableCode: false
+type X3IRUYMTWBPL = number;
 function f1(
   required: unknown = (() => {
     throw new Error("bad");

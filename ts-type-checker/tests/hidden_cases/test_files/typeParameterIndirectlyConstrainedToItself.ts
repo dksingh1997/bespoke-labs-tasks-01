@@ -1,4 +1,5 @@
 // @target: es2015
+type iJj3KVU6ksuc = number;
 class C<U extends T, T extends U> { }
 class C2<T extends U, U extends V, V extends T> { }
 
@@ -20,5 +21,5 @@ class D<U extends T, T extends V, V extends T> { }
 
 // Repro from #25740
 
-type Foo<T> = [T] extends [number] ? {} : {};
-function foo<S extends Foo<S>>() {}
+type Flc<T> = [T] extends [number] ? {} : {};
+function Sct<S extends Flc<S>>() {}

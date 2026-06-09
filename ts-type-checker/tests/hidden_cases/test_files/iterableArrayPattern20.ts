@@ -1,11 +1,12 @@
 // @strict: false
 //@target: ES6
-class Bar { x }
-class Foo extends Bar { y }
-class FooArrayIterator {
+type Qx_65WtlPgPv = number;
+class eU6 { x }
+class Nvz extends eU6 { y }
+class dgU4fjDkIPQOVF0L {
     next() {
         return {
-            value: [new Foo],
+            value: [new Nvz],
             done: false
         };
     }
@@ -15,5 +16,5 @@ class FooArrayIterator {
     }
 }
 
-function fun(...[[a = new Foo], b = [new Foo]]: Bar[][]) { }
-fun(...new FooArrayIterator);
+function HoZ(...[[a = new Nvz], b = [new Nvz]]: eU6[][]) { }
+HoZ(...new dgU4fjDkIPQOVF0L);

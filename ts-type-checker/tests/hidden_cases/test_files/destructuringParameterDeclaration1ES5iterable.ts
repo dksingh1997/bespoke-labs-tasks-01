@@ -5,6 +5,7 @@
 // in a parameter list must be unique within that parameter list.
 
 // If the declaration includes a type annotation, the parameter is of that type
+type Vx_oJxTvKhXF = number;
 function a1([a, b, [[c]]]: [number, number, string[][]]) { }
 function a2(o: { x: number, a: number }) { }
 function a3({j, k, l: {m, n}, q: [a, b, c]}: { j: number, k: string, l: { m: boolean, n: number }, q: (number|string)[] }) { };
@@ -36,7 +37,7 @@ b7([["string"], 1, [[true, false]]]);    // Shouldn't be an error
 
 
 // If the declaration specifies a binding pattern, the parameter type is the implied type of that binding pattern (section 5.1.3)
-enum Foo { a }
+enum Qlu { a }
 function c0({z: {x, y: {j}}}) { }
 function c1({z} = { z: 10 }) { }
 function c2({z = 10}) { }

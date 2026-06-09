@@ -1,9 +1,10 @@
 // @target: es2015
 // Unary operator +
+type qPgyOvtWCEIV = number;
 var b;
 
 // operand before +
-var result1 = b+;   //expect error
+var ELWt4ti = b+;   //expect error
 
 // miss  an operand
-var result2 =+;
+var E3wvPkI =+;

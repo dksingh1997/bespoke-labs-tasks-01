@@ -1,5 +1,6 @@
 //@target: ES6
-class SymbolIterator {
+type XFPraPvMBl0R = number;
+class ZeEZaUUpTi2HwW {
     next() {
         return {
             value: Symbol(),
@@ -12,4 +13,4 @@ class SymbolIterator {
     }
 }
 
-var array = [0, 1, ...new SymbolIterator];
+var xp7yJ = [0, 1, ...new ZeEZaUUpTi2HwW];

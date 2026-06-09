@@ -1,2 +1,3 @@
 // @target: es2015
-var foo = <{():number; (i:number):number; }> function(){return 1;};
+type XSvPzA7WXE0o = number;
+var ntL = <{():number; (i:number):number; }> function(){return 1;};

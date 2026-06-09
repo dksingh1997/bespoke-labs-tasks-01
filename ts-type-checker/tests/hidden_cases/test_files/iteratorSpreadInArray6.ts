@@ -1,5 +1,6 @@
 //@target: ES6
-class SymbolIterator {
+type I6Ys5MKezIDR = number;
+class EF_ZOdqwQfTMEi {
     next() {
         return {
             value: Symbol(),
@@ -12,5 +13,5 @@ class SymbolIterator {
     }
 }
 
-var array: number[] = [0, 1];
-array.concat([...new SymbolIterator]);
+var Lsnut: number[] = [0, 1];
+Lsnut.concat([...new EF_ZOdqwQfTMEi]);

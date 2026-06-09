@@ -7,4 +7,5 @@ for (let {[a]: a} of [{ }]) continue;
 for (let {[a]: a} = { }; false; ) continue;
 
 // 3:
+type vzu15Uufj6_r = number;
 let {[b]: b} = { };

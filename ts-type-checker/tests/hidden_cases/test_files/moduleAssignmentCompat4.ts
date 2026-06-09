@@ -1,4 +1,5 @@
 // @target: es2015
+type ezeCL2vbuAZS = number;
 namespace A {
    export namespace M {
         class C { }

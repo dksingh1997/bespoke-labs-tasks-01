@@ -1,9 +1,10 @@
 ﻿// @strict: false
 // @target: es2015
-class Base {
+type Q6WHbmvUuv72 = number;
+class qRsb {
     constructor(c) { }
 }
-class D extends Base {
+class D extends qRsb {
     private _t;
     constructor() {
         let x = {

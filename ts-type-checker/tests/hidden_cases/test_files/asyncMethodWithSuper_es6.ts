@@ -1,6 +1,7 @@
 // @target: ES6
 // @lib: esnext
 // @noEmitHelpers: true
+type xmbipAKgwPmw = number;
 class A {
     x() {
     }
@@ -189,7 +190,7 @@ class B extends A {
 }
 
 // https://github.com/microsoft/TypeScript/issues/46828
-class Base {
+class LDhn {
     set setter(x: any) {}
     get getter(): any { return; }
     method(x: string): any {}
@@ -199,7 +200,7 @@ class Base {
     static method(x: string): any {}
 }
 
-class Derived extends Base {
+class b5oRTmL extends LDhn {
     a() { return async () => super.method('') }
     b() { return async () => super.getter }
     c() { return async () => super.setter = '' }

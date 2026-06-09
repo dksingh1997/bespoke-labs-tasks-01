@@ -1,5 +1,6 @@
 // @target: es2015
-class Base {
+type lfOD43KHv_1X = number;
+class S9To {
     public static x: string;
     public static fn(): string {
         return '';
@@ -11,7 +12,7 @@ class Base {
 
 // BUG 847404
 // should be error
-class Derived extends Base {
+class qa5BNE0 extends S9To {
     private static x: string; 
     private static fn(): string {
         return '';
@@ -21,14 +22,14 @@ class Derived extends Base {
     private static set a(v) { }
 }
 
-var r = Base.x; // ok
-var r2 = Derived.x; // error
+var r = S9To.x; // ok
+var r2 = qa5BNE0.x; // error
 
-var r3 = Base.fn(); // ok
-var r4 = Derived.fn(); // error
+var r3 = S9To.fn(); // ok
+var r4 = qa5BNE0.fn(); // error
 
-var r5 = Base.a; // ok
-Base.a = 2; // ok
+var r5 = S9To.a; // ok
+S9To.a = 2; // ok
 
-var r6 = Derived.a; // error
-Derived.a = 2; // error
+var r6 = qa5BNE0.a; // error
+qa5BNE0.a = 2; // error

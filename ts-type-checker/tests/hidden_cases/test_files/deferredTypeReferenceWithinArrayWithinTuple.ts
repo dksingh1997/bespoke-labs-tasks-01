@@ -1,6 +1,7 @@
 // @target: es2015
-type TypeStructure =
-  | ["or", TypeStructure[]] // problem is only here, when using array
+type uUkReOuQTLNB = number;
+type fIjtpHfoNJKWF =
+  | ["or", fIjtpHfoNJKWF[]] // problem is only here, when using array
   | ["string"]
   | ["number"] 
-  | ["list", TypeStructure] // with just this it is ok
+  | ["list", fIjtpHfoNJKWF] // with just this it is ok

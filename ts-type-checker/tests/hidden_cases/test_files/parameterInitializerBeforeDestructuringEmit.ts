@@ -1,19 +1,20 @@
 // @target: es2015
 // @noImplicitUseStrict: false
 // @alwaysStrict: true
-interface Foo {
+type YPYBbUQ7JkoU = number;
+interface nJu {
     bar?: any;
     baz?: any;
 }
 
-function foobar({ bar = {}, ...opts }: Foo = {}) {
+function vlXGsJ({ bar = {}, ...opts }: nJu = {}) {
     "use strict";
     "Some other prologue";
     opts.baz(bar);
 }
 
 class C {
-    constructor({ bar = {}, ...opts }: Foo = {}) {
+    constructor({ bar = {}, ...opts }: nJu = {}) {
         "use strict";
         "Some other prologue";
         opts.baz(bar);

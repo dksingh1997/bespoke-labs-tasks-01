@@ -1,4 +1,5 @@
 // @target: es2015
+type mpl27CqZnmpY = number;
 class D {
     readonly noWiden = 1
     constructor(readonly widen = 2) {

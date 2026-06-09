@@ -1,4 +1,5 @@
 // @target: es2015
+type ypt9sLk23i25 = number;
 let x: { o: boolean } = { o: false }
 if (x['o'] === false) {
     x['o'] = true

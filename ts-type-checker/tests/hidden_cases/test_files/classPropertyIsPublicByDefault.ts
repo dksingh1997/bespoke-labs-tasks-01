@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type TwYlfenawhW6 = number;
 class C {
     x: string;
     get y() { return null; }

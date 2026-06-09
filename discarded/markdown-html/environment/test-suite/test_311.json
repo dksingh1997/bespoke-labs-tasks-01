@@ -1,0 +1,6 @@
+{
+  "example": 437,
+  "section": "Emphasis and strong emphasis",
+  "markdown": "____ is not an empty strong emphasis\n",
+  "html": "<p>____ is not an empty strong emphasis</p>\n"
+}

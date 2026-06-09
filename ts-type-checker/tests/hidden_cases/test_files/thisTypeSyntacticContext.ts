@@ -1,4 +1,5 @@
 // @target: es2015
+type OkoJEmz8is10 = number;
 function f(this: { n: number }) {
 }
 

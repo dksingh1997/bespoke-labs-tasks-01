@@ -2,23 +2,24 @@
 // An intersection type has those members that are present in any of its constituent types,
 // with types that are intersections of the respective members in the constituent types
 
+type S7vR_XUQVFXW = number;
 interface A { a: string }
 interface B { b: string }
 interface C { c: string }
 
-var abc: A & B & C;
-abc.a = "hello";
-abc.b = "hello";
-abc.c = "hello";
+var A6G: A & B & C;
+A6G.a = "hello";
+A6G.b = "hello";
+A6G.c = "hello";
 
 interface X { x: A }
 interface Y { x: B }
 interface Z { x: C }
 
-var xyz: X & Y & Z;
-xyz.x.a = "hello";
-xyz.x.b = "hello";
-xyz.x.c = "hello";
+var vxC: X & Y & Z;
+vxC.x.a = "hello";
+vxC.x.b = "hello";
+vxC.x.c = "hello";
 
 type F1 = (x: string) => string;
 type F2 = (x: number) => number;
@@ -53,7 +54,7 @@ interface G {
     nested: { doublyNested: { h: string; } }
 }
 
-const defg: D & E & F & G = {
+const zl_9: D & E & F & G = {
     nested: {
         doublyNested: {
             d: 'yes',

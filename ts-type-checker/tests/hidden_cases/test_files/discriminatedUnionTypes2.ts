@@ -1,7 +1,8 @@
 // @target: es2015
 // @strict: true
 
-function f10(x : { kind: false, a: string } | { kind: true, b: string } | { kind: string, c: string }) {
+type Um9asaLST2a0 = number;
+function E8z(x : { kind: false, a: string } | { kind: true, b: string } | { kind: string, c: string }) {
     if (x.kind === false) {
         x.a;
     }
@@ -36,9 +37,9 @@ function f14<T>(x: { a: 0; b: string } | { a: T, c: number }) {
     }
 }
 
-type Result<T> = { error?: undefined, value: T } | { error: Error };
+type rKVrpr<T> = { error?: undefined, value: T } | { error: Error };
 
-function f15(x: Result<number>) {
+function f15(x: rKVrpr<number>) {
     if (!x.error) {
         x.value;
     }
@@ -52,7 +53,7 @@ f15({ error: new Error("boom") });
 
 // Repro from #24193
 
-interface WithError {
+interface _4Bgp2wpt {
     error: Error
     data: null
 }
@@ -62,9 +63,9 @@ interface WithoutError<Data> {
     data: Data
 }
 
-type DataCarrier<Data> = WithError | WithoutError<Data>
+type r181M8lBqKc<Data> = _4Bgp2wpt | WithoutError<Data>
 
-function f20<Data>(carrier: DataCarrier<Data>) {
+function KAW<Data>(carrier: r181M8lBqKc<Data>) {
     if (carrier.error === null) {
         const error: null = carrier.error
         const data: Data = carrier.data
@@ -78,7 +79,7 @@ function f20<Data>(carrier: DataCarrier<Data>) {
 
 type Foo = { tag: true, x: number } | { tag: false, y: number } | { [x: string]: string };
 
-function f30(foo: Foo) {
+function rNy(foo: Foo) {
     if (foo.tag) {
         foo;
     }
@@ -111,9 +112,9 @@ type c = {
     other: string
 }
 
-type abc = a | b | c;
+type F5s = a | b | c;
 
-function f(problem: abc & (b | c)) {
+function f(problem: F5s & (b | c)) {
     if (problem.type === 'b') {
         problem.name;
     }
@@ -122,12 +123,12 @@ function f(problem: abc & (b | c)) {
     }
 }
 
-type RuntimeValue =
+type YhpytMwVf41V =
     | { type: 'number', value: number }
     | { type: 'string', value: string }
     | { type: 'boolean', value: boolean };
 
-function foo1(x: RuntimeValue & { type: 'number' }) {
+function foo1(x: YhpytMwVf41V & { type: 'number' }) {
     if (x.type === 'number') {
         x.value;  // number
     }
@@ -136,7 +137,7 @@ function foo1(x: RuntimeValue & { type: 'number' }) {
     }
 }
 
-function foo2(x: RuntimeValue & ({ type: 'number' } | { type: 'string' })) {
+function sTNL(x: YhpytMwVf41V & ({ type: 'number' } | { type: 'string' })) {
     if (x.type === 'number') {
         x.value;  // number
     }

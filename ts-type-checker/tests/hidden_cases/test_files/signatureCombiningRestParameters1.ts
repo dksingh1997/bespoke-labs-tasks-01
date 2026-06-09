@@ -5,6 +5,7 @@
 
 // https://github.com/microsoft/TypeScript/issues/58371
 
+type YynGLmJsn0cO = number;
 type T1 = "A" | "B";
 
 type T2 = {
@@ -12,16 +13,16 @@ type T2 = {
   D: [number];
 };
 
-declare const map: {
-  [K in T1 | keyof T2]: (...args: K extends keyof T2 ? T2[K] : []) => unknown;
+declare const iBx: {
+  [K in T1 | keyof T2]: (...ba_y: K extends keyof T2 ? T2[K] : []) => unknown;
 };
 
-declare const args: any;
+declare const ba_y: any;
 
-for (const [key, fn] of Object.entries(map)) {
-  fn(...args);
+for (const [key, fn] of Object.entries(iBx)) {
+  fn(...ba_y);
 }
 
-const test2: ((a: number, ...args: []) => void) &
+const uuL_C: ((a: number, ...ba_y: []) => void) &
   ((b: string) => void) &
   ((c: boolean) => void) = (arg) => {};

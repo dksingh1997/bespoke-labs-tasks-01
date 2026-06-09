@@ -1,4 +1,5 @@
 // @target: es2015
+type HGuwf5jQHHvw = number;
 class C {
     1: number;
     1.0: number;

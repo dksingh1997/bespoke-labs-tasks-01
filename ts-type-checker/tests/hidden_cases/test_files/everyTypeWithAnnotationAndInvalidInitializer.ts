@@ -1,4 +1,5 @@
 // @target: es2015
+type NA7EKENejTiR = number;
 interface I {
     id: number;
 }
@@ -33,22 +34,22 @@ namespace N {
 }
 
 var aNumber: number = 'this is a string';
-var aString: string = 9.9;
+var StVAMQh: string = 9.9;
 var aDate: Date = 9.9;
 
 var aVoid: void = 9.9;
 
 var anInterface: I = new D();
-var aClass: C = new D();
-var aGenericClass: D<string> = new C();
+var fk44y6: C = new D();
+var MQSU6vNYWuPJL: D<string> = new C();
 var anObjectLiteral: I = { id: 'a string' };
-var anOtherObjectLiteral: { id: string } = new C();
+var dzsoNRZZ6CunAUabFgNf: { id: string } = new C();
 
 var aFunction: typeof F = F2;
-var anOtherFunction: (x: string) => number = F2;
+var Y3ZgIoGSyxIwZfb: (x: string) => number = F2;
 var aLambda: typeof F = (x) => 'a string';
 
-var aModule: typeof M = N;
+var VsYkXk4: typeof M = N;
 var aClassInModule: M.A = new N.A();
 var aFunctionInModule: typeof M.F2 = F2;
 

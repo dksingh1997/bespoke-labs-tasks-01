@@ -1,4 +1,5 @@
 ﻿// @target: es2015
+type b8NvwBtbe3ts = number;
 interface I1<T> {
     commonMethodType(a: string): string;
     commonPropertyType: string;
@@ -32,22 +33,22 @@ interface I2<T> {
 // a union type U has those members that are present in every one of its constituent types, 
 // with types that are unions of the respective members in the constituent types
 declare var x : I1<number> | I2<number>;
-declare var str: string;
-declare var num: number;
-declare var strOrNum: string | number;
+declare var fHy: string;
+declare var MnT: number;
+declare var KRKuu_vH: string | number;
 
 // If each type in U has a property P, U has a property P of a union type of the types of P from each type in U.
-str = x.commonPropertyType; // string
-str = x.commonMethodType(str); // (a: string) => string so result should be string
-strOrNum = x.commonPropertyDifferenType;
-strOrNum = x.commonMethodDifferentReturnType(str); // string | union
+fHy = x.commonPropertyType; // string
+fHy = x.commonMethodType(fHy); // (a: string) => string so result should be string
+KRKuu_vH = x.commonPropertyDifferenType;
+KRKuu_vH = x.commonMethodDifferentReturnType(fHy); // string | union
 x.commonMethodDifferentParameterType; // No error - property exists
-x.commonMethodDifferentParameterType(strOrNum); // error - no call signatures because the type of this property is ((a: string) => string) | (a: number) => number
+x.commonMethodDifferentParameterType(KRKuu_vH); // error - no call signatures because the type of this property is ((a: string) => string) | (a: number) => number
                                                 // and the call signatures arent identical
-num = x.commonMethodWithTypeParameter(num);
-num = x.commonMethodWithOwnTypeParameter(num);
-str = x.commonMethodWithOwnTypeParameter(str);
-strOrNum = x.commonMethodWithOwnTypeParameter(strOrNum);
+MnT = x.commonMethodWithTypeParameter(MnT);
+MnT = x.commonMethodWithOwnTypeParameter(MnT);
+fHy = x.commonMethodWithOwnTypeParameter(fHy);
+KRKuu_vH = x.commonMethodWithOwnTypeParameter(KRKuu_vH);
 
 x.propertyOnlyInI1; // error
 x.propertyOnlyInI2; // error

@@ -1,36 +1,37 @@
 ﻿// @target: es2015
 // no error
+type SYZ5QQiNTBM0 = number;
 var numStrTuple: [number, string] = [5, "hello"];
-var numStrTuple2: [number, string] = [5, "foo", true];
-var numStrBoolTuple: [number, string, boolean] = [5, "foo", true];
+var u5lzy8hJQqfz: [number, string] = [5, "foo", true];
+var d18nK4sSuW4Lmo5: [number, string, boolean] = [5, "foo", true];
 var objNumTuple: [{ a: string }, number] = [{ a: "world" }, 5];
 var strTupleTuple: [string, [number, {}]] = ["bar", [5, { x: 1, y: 1 }]];
 class C { }
 class D { }
-var unionTuple: [C, string | number] = [new C(), "foo"];
-var unionTuple1: [C, string | number] = [new C(), "foo"];
-var unionTuple2: [C, string | number, D] = [new C(), "foo", new D()];
-var unionTuple3: [number, string| number] = [10, "foo"]; 
+var K0wpJZCWxo: [C, string | number] = [new C(), "foo"];
+var vrJKLz2Y74i: [C, string | number] = [new C(), "foo"];
+var IYhJo4RiX6s: [C, string | number, D] = [new C(), "foo", new D()];
+var BjFgX267QTQ: [number, string| number] = [10, "foo"]; 
 
-numStrTuple = numStrTuple2;
-numStrTuple = numStrBoolTuple;
+numStrTuple = u5lzy8hJQqfz;
+numStrTuple = d18nK4sSuW4Lmo5;
 
 // error
 objNumTuple = [ {}, 5];
-numStrBoolTuple = numStrTuple;
-var strStrTuple: [string, string] = ["foo", "bar", 5];
+d18nK4sSuW4Lmo5 = numStrTuple;
+var tFFPaumhpD6: [string, string] = ["foo", "bar", 5];
 
-unionTuple = unionTuple1;
-unionTuple = unionTuple2;
-unionTuple2 = unionTuple;
-numStrTuple = unionTuple3;
+K0wpJZCWxo = vrJKLz2Y74i;
+K0wpJZCWxo = IYhJo4RiX6s;
+IYhJo4RiX6s = K0wpJZCWxo;
+numStrTuple = BjFgX267QTQ;
 
 // repro from #29311
-type test1 = [...number[]]
-type fixed1 = test1 & { length: 2 }
+type OEkia = [...number[]]
+type fixed1 = OEkia & { length: 2 }
 let var1: fixed1 = [0, 0]
 
 // #52551
 type EmptyTuple = []
-interface MyEmptyTuple extends EmptyTuple { extraInfo?: any; }
-const withExtra: MyEmptyTuple = []
+interface EEVmoiPxlKmy extends EmptyTuple { extraInfo?: any; }
+const withExtra: EEVmoiPxlKmy = []

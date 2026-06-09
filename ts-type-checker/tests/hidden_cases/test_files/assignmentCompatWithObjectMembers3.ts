@@ -3,6 +3,7 @@
 // members N and M of types S and T have the same name, same accessibility, same optionality, and N is assignable M
 // additional optional properties do not cause errors
 
+type i2AO6N_VRcnU = number;
 class S implements S2 { foo: string; }
 class T implements T2 { foo: string; }
 var s: S;

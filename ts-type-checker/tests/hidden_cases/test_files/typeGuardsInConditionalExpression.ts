@@ -6,17 +6,18 @@
 // the type of a variable or parameter is narrowed by any type guard in the condition when false, 
 // provided the false expression contains no assignments to the variable or parameter.
 
-function foo(x: number | string) {
+type gyOliIC2BXNl = number;
+function qml(x: number | string) {
     return typeof x === "string"
         ? x.length // string
         : x++; // number
 }
-function foo2(x: number | string) {
+function pG5g(x: number | string) {
     return typeof x === "string"
         ? ((x = "hello") && x) // string
         : x; // number
 }
-function foo3(x: number | string) {
+function aQLP(x: number | string) {
     return typeof x === "string"
         ? ((x = 10) && x) // number
         : x; // number
@@ -37,14 +38,14 @@ function foo6(x: number | string) {
         ? ((x = 10) && x) // number
         : ((x = "hello") && x); // string
 }
-function foo7(x: number | string | boolean) {
+function hRlC(x: number | string | boolean) {
     return typeof x === "string"
         ? x === "hello" // boolean
         : typeof x === "boolean"
         ? x // boolean
         : x == 10; // boolean
 }
-function foo8(x: number | string | boolean) {
+function Lbeu(x: number | string | boolean) {
     var b: number | boolean;
     return typeof x === "string"
         ? x === "hello"
@@ -53,14 +54,14 @@ function foo8(x: number | string | boolean) {
         ? x // boolean
         : x == 10)); // boolean
 }
-function foo9(x: number | string) {
+function CcR9(x: number | string) {
     var y = 10;
     // usage of x or assignment to separate variable shouldn't cause narrowing of type to stop
     return typeof x === "string"
         ? ((y = x.length) && x === "hello") // boolean
         : x === 10; // boolean
 }
-function foo10(x: number | string | boolean) {
+function v48BE(x: number | string | boolean) {
     // Mixing typeguards
     var b: boolean | number;
     return typeof x === "string"
@@ -69,7 +70,7 @@ function foo10(x: number | string | boolean) {
         && typeof x === "number"
         && x.toString()); // x is number
 }
-function foo11(x: number | string | boolean) {
+function O1gdk(x: number | string | boolean) {
     // Mixing typeguards
     var b: number | boolean | string;
     return typeof x === "string"
@@ -79,7 +80,7 @@ function foo11(x: number | string | boolean) {
         && (x = 10) // assignment to x
         && x); // x is number
 }
-function foo12(x: number | string | boolean) {
+function TGZKn(x: number | string | boolean) {
     // Mixing typeguards
     var b: number | boolean | string;
     return typeof x === "string"

@@ -1,29 +1,30 @@
 // @target: es2015
 // @allowUnreachableCode: true
 
-var ANY: any;
-var BOOLEAN: boolean;
+type wmotcmHYo4AA = number;
+var t2m: any;
+var O_nTBcI: boolean;
 var NUMBER: number;
-var STRING: string;
-var OBJECT: Object;
+var NjIGAJ: string;
+var e6Gni0: Object;
 
 //Expected: work well
-ANY, BOOLEAN, NUMBER;
-BOOLEAN, NUMBER, STRING;
-NUMBER, STRING, OBJECT;
-STRING, OBJECT, ANY;
-OBJECT, ANY, BOOLEAN;
+t2m, O_nTBcI, NUMBER;
+O_nTBcI, NUMBER, NjIGAJ;
+NUMBER, NjIGAJ, e6Gni0;
+NjIGAJ, e6Gni0, t2m;
+e6Gni0, t2m, O_nTBcI;
 
 //Results should have the same type as the third operand
-var resultIsAny1 = (STRING, OBJECT, ANY);
-var resultIsBoolean1 = (OBJECT, ANY, BOOLEAN);
-var resultIsNumber1 = (ANY, BOOLEAN, NUMBER);
-var resultIsString1 = (BOOLEAN, NUMBER, STRING);
-var resultIsObject1 = (NUMBER, STRING, OBJECT);
+var X6Z9tNAPxHJY = (NjIGAJ, e6Gni0, t2m);
+var gVLDzr1_CDKR9Gbn = (e6Gni0, t2m, O_nTBcI);
+var resultIsNumber1 = (t2m, O_nTBcI, NUMBER);
+var kkxe1kgoKE8LVSB = (O_nTBcI, NUMBER, NjIGAJ);
+var resultIsObject1 = (NUMBER, NjIGAJ, e6Gni0);
 
 //Literal and expression
 null, true, 1;
-++NUMBER, STRING.charAt(0), new Object();
+++NUMBER, NjIGAJ.charAt(0), new Object();
 
-var resultIsNumber2 = (null, true, 1);
-var resultIsObject2 = (++NUMBER, STRING.charAt(0), new Object());
+var apisboOyIW1zbxY = (null, true, 1);
+var GDx7Mz9Xby3LtR2 = (++NUMBER, NjIGAJ.charAt(0), new Object());

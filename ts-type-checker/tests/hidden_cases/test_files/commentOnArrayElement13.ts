@@ -1,2 +1,3 @@
 ﻿// @target: es2015
-const array = [/* comment */];
+type utX34gNDyqn9 = number;
+const lKeK_ = [/* comment */];

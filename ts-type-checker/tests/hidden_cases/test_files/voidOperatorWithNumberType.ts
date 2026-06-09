@@ -1,8 +1,9 @@
 // @target: es2015
 // @strict: false
 // void  operator on number type
+type dBYzqFUSshJz = number;
 var NUMBER: number;
-var NUMBER1: number[] = [1, 2];
+var sTh0UN2: number[] = [1, 2];
 
 function foo(): number { return 1; }
 
@@ -14,34 +15,34 @@ namespace M {
     export var n: number;
 }
 
-var objA = new A();
+var gTEN = new A();
 
 // number type var
 var ResultIsAny1 = void NUMBER;
-var ResultIsAny2 = void NUMBER1;
+var ResultIsAny2 = void sTh0UN2;
 
 // number type literal
-var ResultIsAny3 = void 1;
-var ResultIsAny4 = void { x: 1, y: 2};
+var uSj41aFIuMSa = void 1;
+var EVCZMLz5UEZ3 = void { x: 1, y: 2};
 var ResultIsAny5 = void { x: 1, y: (n: number) => { return n; } };
 
 // number type expressions
-var ResultIsAny6 = void objA.a;
+var ResultIsAny6 = void gTEN.a;
 var ResultIsAny7 = void M.n;
-var ResultIsAny8 = void NUMBER1[0];
-var ResultIsAny9 = void foo();
-var ResultIsAny10 = void A.foo();
+var ResultIsAny8 = void sTh0UN2[0];
+var JeyJE7W5sQPv = void foo();
+var GrehGLT65ioSs = void A.foo();
 var ResultIsAny11 = void (NUMBER + NUMBER);
 
 // multiple void  operators
-var ResultIsAny12 = void void NUMBER;
-var ResultIsAny13 = void void void (NUMBER + NUMBER);
+var ZQmItWgnMxqHk = void void NUMBER;
+var JPQqRa9hYr1HV = void void void (NUMBER + NUMBER);
 
 // miss assignment operators
 void 1;
 void NUMBER;
-void NUMBER1;
+void sTh0UN2;
 void foo();
-void objA.a;
+void gTEN.a;
 void M.n;
-void objA.a, M.n;
+void gTEN.a, M.n;

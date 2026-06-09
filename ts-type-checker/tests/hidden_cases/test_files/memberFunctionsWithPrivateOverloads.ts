@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type NptemMiKDivc = number;
 class C {
     private foo(x: number);
     private foo(x: number, y: string);

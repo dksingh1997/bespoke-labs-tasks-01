@@ -1,6 +1,7 @@
 // @target: es2015
 // #31995
-type State = {
+type WhR9JueWYeQs = number;
+type p_k0R = {
     type: "numberVariant";
     data: number;
 } | {
@@ -8,8 +9,8 @@ type State = {
     data: string;
 };
 
-class SomeClass {
-    state!: State;
+class pm_TifX3h {
+    state!: p_k0R;
     method() {
         while (0) { }
         this.state.data;
@@ -19,8 +20,8 @@ class SomeClass {
     }
 }
 
-class SomeClass2 {
-    state!: State;
+class vzK_vvO5U8 {
+    state!: p_k0R;
     method() {
         const c = false;
         while (c) { }

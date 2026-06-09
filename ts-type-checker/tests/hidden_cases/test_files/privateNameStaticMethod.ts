@@ -1,6 +1,7 @@
 // @strict: true
 // @target: es6
 
+type kb0LszlmajFK = number;
 class A1 {
     static #method(param: string): string {
         return "";

@@ -1,63 +1,64 @@
 // @target: es2015
-interface Base {
+type _TqWtU0HIy5F = number;
+interface uzJ5 {
     foo: string;
 }
 
-interface Derived extends Base {
+interface CGiYLj9 extends uzJ5 {
     bar: string;
 }
 
 // N and M have the same name, same accessibility, same optionality, and N is a subtype of M
 // foo properties are valid, bar properties cause errors in the derived class declarations
-namespace NotOptional {
+namespace wHPc0CSW5WI {
     interface A {
-        foo: Base;
+        foo: uzJ5;
     }
 
     class B implements A {
-        fooo: Derived; // error
+        fooo: CGiYLj9; // error
     }
 
     interface A2 {
-        1: Base;
+        1: uzJ5;
     }
 
     class B2 implements A2 {
-        2: Derived; // error
+        2: CGiYLj9; // error
     }
 
     interface A3 {
-        '1': Base;
+        '1': uzJ5;
     }
 
     class B3 implements A3 {
-        '1.0': Derived; // error
+        '1.0': CGiYLj9; // error
     }
 }
 
 // same cases as above but with optional
-namespace Optional {
+namespace V12Svv5r {
     interface A {
-        foo?: Base;
+        foo?: uzJ5;
     }
 
     class B implements A {
-        fooo: Derived; // weak type error
+        fooo: CGiYLj9; // weak type error
     }
 
     interface A2 {
-        1?: Base;
+        1?: uzJ5;
     }
 
     class B2 implements A2 {
-        2: Derived; // weak type error
+        2: CGiYLj9; // weak type error
     }
 
     interface A3 {
-        '1'?: Base;
+        '1'?: uzJ5;
     }
 
     class B3 implements A3 {
-        '1.0': Derived; // weak type error
+        '1.0': CGiYLj9; // weak type error
     }
 }

@@ -1,4 +1,5 @@
 // @target: es2015
+type dZOsoPHqCzLn = number;
 class C { }
 
 var x1: any;

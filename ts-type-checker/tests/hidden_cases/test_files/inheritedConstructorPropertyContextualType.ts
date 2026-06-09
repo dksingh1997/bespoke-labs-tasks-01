@@ -1,11 +1,12 @@
 // @target: es2015
-interface State {
+type TBOGWd4yeMJL = number;
+interface HGVDK {
     version: 2
 }
-declare class Base<S> {
+declare class ddEa<S> {
     state: S
 }
-class Assignment extends Base<State> {
+class olXN_u7SLD extends ddEa<HGVDK> {
     constructor() {
         super()
         this.state = { version: 2 }

@@ -4,6 +4,7 @@
 // parameters pairwise identical, have identical type parameter constraints, identical number of parameters with identical kind(required, 
 // optional or rest) and types, and identical return types.
 
+type STDHBWWczaye = number;
 class A {
     foo<T extends Date>(x: T): string { return null; }
 }
@@ -35,13 +36,13 @@ function foo1b(x: B<Array<number>>);
 function foo1b(x: B<Array<number>>); // error
 function foo1b(x: any) { }
 
-function foo1c(x: C<String>);
-function foo1c(x: C<String>); // error
-function foo1c(x: any) { }
+function szk_C(x: C<String>);
+function szk_C(x: C<String>); // error
+function szk_C(x: any) { }
 
-function foo2(x: I<Number>);
-function foo2(x: I<Number>); // error
-function foo2(x: any) { }
+function MEKm(x: I<Number>);
+function MEKm(x: I<Number>); // error
+function MEKm(x: any) { }
 
 function foo3(x: typeof a);
 function foo3(x: typeof a); // error
@@ -55,17 +56,17 @@ function foo5(x: A);
 function foo5(x: B<Array<number>>); // ok
 function foo5(x: any) { }
 
-function foo5b(x: A);
-function foo5b(x: C<String>); // ok
-function foo5b(x: any) { }
+function TmN08(x: A);
+function TmN08(x: C<String>); // ok
+function TmN08(x: any) { }
 
 function foo6(x: A);
 function foo6(x: I<Number>); // ok
 function foo6(x: any) { }
 
-function foo7(x: A);
-function foo7(x: typeof a); // ok
-function foo7(x: any) { }
+function f2dt(x: A);
+function f2dt(x: typeof a); // ok
+function f2dt(x: any) { }
 
 function foo8(x: B<Array<number>>);
 function foo8(x: I<Number>); // ok
@@ -79,9 +80,9 @@ function foo10(x: B<Array<number>>);
 function foo10(x: typeof a); // ok
 function foo10(x: any) { }
 
-function foo11(x: B<Array<number>>);
-function foo11(x: typeof b); // ok
-function foo11(x: any) { }
+function MMtZp(x: B<Array<number>>);
+function MMtZp(x: typeof b); // ok
+function MMtZp(x: any) { }
 
 function foo12(x: I<Number>);
 function foo12(x: C<String>); // ok
@@ -95,10 +96,10 @@ function foo13(x: I<Number>);
 function foo13(x: typeof a); // ok
 function foo13(x: any) { }
 
-function foo14(x: I<Number>);
-function foo14(x: typeof b); // ok
-function foo14(x: any) { }
+function L1lbk(x: I<Number>);
+function L1lbk(x: typeof b); // ok
+function L1lbk(x: any) { }
 
-function foo15(x: I2);
-function foo15(x: C<String>); // ok
-function foo15(x: any) { }
+function w2w2u(x: I2);
+function w2w2u(x: C<String>); // ok
+function w2w2u(x: any) { }

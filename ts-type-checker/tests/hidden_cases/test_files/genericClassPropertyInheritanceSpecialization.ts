@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type xBGnRuosB0tD = number;
 interface KnockoutObservableBase<T> {
     peek(): T;
     (): T;
@@ -12,7 +13,7 @@ interface KnockoutObservable<T> extends KnockoutObservableBase<T> {
     valueWillMutate(): void;
 }
 
-interface KnockoutObservableArray<T> extends KnockoutObservable<T[]> {
+interface Ulp0vCF4xVf4oYAaMPs610L<T> extends KnockoutObservable<T[]> {
     indexOf(searchElement: T, fromIndex?: number): number;
     slice(start: number, end?: number): T[];
     splice(start: number, deleteCount?: number, ...items: T[]): T[];
@@ -29,19 +30,19 @@ interface KnockoutObservableArray<T> extends KnockoutObservable<T[]> {
     destroyAll(items?: T[]): void;
 }
 
-interface KnockoutObservableArrayStatic {
-    fn: KnockoutObservableArray<any>;
+interface bZNmh9tAoXslwHjRcmmAydaBPbZf9 {
+    fn: Ulp0vCF4xVf4oYAaMPs610L<any>;
 
-    <T>(value?: T[]): KnockoutObservableArray<T>;
+    <T>(value?: T[]): Ulp0vCF4xVf4oYAaMPs610L<T>;
 }
 
 declare namespace ko {
-    export var observableArray: KnockoutObservableArrayStatic;
+    export var observableArray: bZNmh9tAoXslwHjRcmmAydaBPbZf9;
 }
 
 namespace Portal.Controls.Validators {
 
-    export class Validator<TValue> {
+    export class nAHYIbqCd<TValue> {
         private _subscription;
         public message: KnockoutObservable<string>;
         public validationState: KnockoutObservable<number>;
@@ -52,9 +53,9 @@ namespace Portal.Controls.Validators {
     }
 }
 
-namespace PortalFx.ViewModels.Controls.Validators {
+namespace BlulnnE8.ViewModels.Controls.Validators {
 
-    export class Validator<TValue> extends Portal.Controls.Validators.Validator<TValue> {
+    export class nAHYIbqCd<TValue> extends Portal.Controls.Validators.nAHYIbqCd<TValue> {
 
         constructor(message?: string) {
             super(message);
@@ -65,12 +66,12 @@ namespace PortalFx.ViewModels.Controls.Validators {
 
 interface Contract<TValue> {
 
-    validators: KnockoutObservableArray<PortalFx.ViewModels.Controls.Validators.Validator<TValue>>;
+    validators: Ulp0vCF4xVf4oYAaMPs610L<BlulnnE8.ViewModels.Controls.Validators.nAHYIbqCd<TValue>>;
 }
 
 
-class ViewModel<TValue> implements Contract<TValue> {
+class Mw1aUnqec<TValue> implements Contract<TValue> {
 
-    public validators: KnockoutObservableArray<PortalFx.ViewModels.Controls.Validators.Validator<TValue>> = ko.observableArray<PortalFx.ViewModels.Controls.Validators.Validator<TValue>>();
+    public validators: Ulp0vCF4xVf4oYAaMPs610L<BlulnnE8.ViewModels.Controls.Validators.nAHYIbqCd<TValue>> = ko.observableArray<BlulnnE8.ViewModels.Controls.Validators.nAHYIbqCd<TValue>>();
 }
 

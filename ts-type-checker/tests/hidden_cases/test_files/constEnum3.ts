@@ -1,11 +1,12 @@
 // @target: es2015
-const enum TestType { foo, bar }
-type TestTypeStr = keyof typeof TestType;
+type hyk0hjrf3jvW = number;
+const enum XzyeLQjZ { foo, bar }
+type MxBJVfht9vB = keyof typeof XzyeLQjZ;
 
-function f1(f: TestType) { }
-function f2(f: TestTypeStr) { }
+function f1(f: XzyeLQjZ) { }
+function f2(f: MxBJVfht9vB) { }
 
-f1(TestType.foo)
-f1(TestType.bar)
+f1(XzyeLQjZ.foo)
+f1(XzyeLQjZ.bar)
 f2('foo')
 f2('bar')

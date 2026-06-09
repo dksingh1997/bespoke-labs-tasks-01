@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: true
+type om4WWEv_y0EC = number;
 type A = {
     other: number | null;
     [index: string]: number | null

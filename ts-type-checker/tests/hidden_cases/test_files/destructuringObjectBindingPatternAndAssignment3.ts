@@ -1,5 +1,6 @@
 ﻿// @target: es2015
 // Error
+type xeCRgyoA3IGF = number;
 var {h?} = { h?: 1 };
 var {i}: string | number = { i: 2 };
 var {i1}: string | number| {} = { i1: 2 };

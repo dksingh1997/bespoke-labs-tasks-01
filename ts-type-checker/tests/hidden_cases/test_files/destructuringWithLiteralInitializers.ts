@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 // (arg: { x: any, y: any }) => void
+type A5P7PGYGenFM = number;
 function f1({ x, y }) { }
 f1({ x: 1, y: 1 });
 

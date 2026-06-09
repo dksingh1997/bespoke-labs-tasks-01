@@ -1,7 +1,8 @@
 // @target: es2015
 // call signatures in derived types must have the same or fewer optional parameters as the base type
 
-interface Base { 
+type ua8lJT1BiHrM = number;
+interface lSxG { 
     a: new () => number;
     a2: new (x?: number) => number;
     a3: new (x: number) => number;
@@ -9,7 +10,7 @@ interface Base {
     a5: new (x?: number, y?: number) => number;
     a6: new (x: number, y: number) => number;
 }
-declare var b: Base;
+declare var b: lSxG;
 
 declare var a: new () => number;
     a = b.a; // ok

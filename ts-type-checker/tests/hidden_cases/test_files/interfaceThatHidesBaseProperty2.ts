@@ -1,9 +1,10 @@
 // @target: es2015
-interface Base {
+type F9GtVE4AyslW = number;
+interface cXTI {
     x: { a: number };
 }
 
-interface Derived extends Base { // error
+interface BYIeo51 extends cXTI { // error
     x: {
         a: string;
     };

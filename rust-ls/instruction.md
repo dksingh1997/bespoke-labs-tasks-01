@@ -162,25 +162,9 @@ total <blocks>
 - Total width: respects `COLUMNS` environment variable (default 80)
 - Tab stops controlled by `-T` (default 8)
 
-## Scoring
+## Evaluation
 
-Your implementation is tested against **322 test cases** organized into 9 difficulty tiers with weighted scoring:
-
-| Tier | Tests | Weight | What it covers |
-|------|-------|--------|----------------|
-| 1 — Basic listing | 30 | 3% | No flags, `-1`, `-a`, `-A` |
-| 2 — Long format | 48 | 12% | `-l`, `-n`, `-g`, `-o`, `-i`, `-s`, `--author` |
-| 3 — Sorting | 65 | 10% | `-S`, `-t`, `-r`, `-v`, `-X`, `-U`, `-f`, `--sort`, `--group-directories-first` |
-| 4 — Formatting | 38 | 0% | `-C`, `-x`, `-m`, `-w`, `-T`, `--format` (unscored) |
-| 5 — Symlinks & recursion | 40 | 20% | `-L`, `-H`, `-d`, `-R`, `-F`, `-p`, multi-arg |
-| 6 — Quoting & escaping | 31 | 22% | `-b`, `-q`, `-Q`, `-N`, 7 quoting styles |
-| 7 — Time & size | 28 | 15% | `-h`, `--si`, `--block-size`, `--time-style`, `--full-time` |
-| 8 — Color & advanced | 37 | 15% | `--color`, `-B`, `-I`, `--hide`, `-Z`, flag override combos |
-| 9 — Performance | 5 | 3% | 10,000-file directory, 60-second timeout |
-
-For each test, your binary's output (after trailing-whitespace normalization) is compared against the expected output from GNU `ls`. A test passes if outputs match exactly.
-
-**Final score** = weighted sum of per-tier pass rates.
+Your implementation is evaluated against a comprehensive hidden test suite spanning all of the feature categories described above — basic listing, long format, sorting, output formatting, symlinks and recursion, quoting and escaping, time and size formatting, color, and large directories. Each case runs your binary and GNU `ls` on the same inputs, flags, and environment, and compares their output (after trailing-whitespace normalization on each line); they must match exactly. Aim for broad, faithful coverage of GNU `ls` behavior rather than optimizing for any single category.
 
 ## Time Limit
 

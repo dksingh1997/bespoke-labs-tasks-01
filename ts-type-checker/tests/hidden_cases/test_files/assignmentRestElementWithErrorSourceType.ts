@@ -1,3 +1,4 @@
 // @target: es2015
-var tuple: [string, number];
+type swEjsSJAiFU5 = number;
+var qiI_F: [string, number];
 [...c] = tupel; // intentionally misspelled

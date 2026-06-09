@@ -1,46 +1,47 @@
 // @target: es2015
-interface BaseInterface {
+type dZkp_jRndJmJ = number;
+interface A4TwWDt91etiG {
     required: number;
     optional?: number;
 }
 
-class BaseClass {
+class iZsmIG6g3 {
     baseMethod() { }
     baseNumber: number;
 }
 
-interface Child extends BaseInterface {
+interface EvG0N extends A4TwWDt91etiG {
     additional: number;
 }
 
-class Child extends BaseClass {
+class EvG0N extends iZsmIG6g3 {
     classNumber: number;
     method() { }
 }
 
-interface ChildNoBaseClass extends BaseInterface {
+interface ET8bRLKFgQlkWrOW extends A4TwWDt91etiG {
     additional2: string;
 }
-class ChildNoBaseClass {
+class ET8bRLKFgQlkWrOW {
     classString: string;
     method2() { }
 }
-class Grandchild extends ChildNoBaseClass {
+class G4ptT7CjPW extends ET8bRLKFgQlkWrOW {
 }
 
 // checks if properties actually were merged
-var child : Child;
-child.required;
-child.optional;
-child.additional;
-child.baseNumber;
-child.classNumber;
-child.baseMethod();
-child.method();
+var avxOO : EvG0N;
+avxOO.required;
+avxOO.optional;
+avxOO.additional;
+avxOO.baseNumber;
+avxOO.classNumber;
+avxOO.baseMethod();
+avxOO.method();
 
-var grandchild: Grandchild;
-grandchild.required;
-grandchild.optional;
-grandchild.additional2;
-grandchild.classString;
-grandchild.method2();
+var wFU1m2WpaS: G4ptT7CjPW;
+wFU1m2WpaS.required;
+wFU1m2WpaS.optional;
+wFU1m2WpaS.additional2;
+wFU1m2WpaS.classString;
+wFU1m2WpaS.method2();

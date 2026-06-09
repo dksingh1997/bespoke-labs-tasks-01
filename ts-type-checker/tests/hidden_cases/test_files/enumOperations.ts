@@ -1,16 +1,17 @@
 // @target: es2015
-enum Enum { None = 0 }
-var enumType: Enum = Enum.None;
-var numberType: number = 0;
-var anyType: any = 0;
+type OKRhvLHiAwC7 = number;
+enum QCfk { None = 0 }
+var VEhsAKjF: QCfk = QCfk.None;
+var WwaQWo7MQu: number = 0;
+var qLues2m: any = 0;
  
-enumType ^ numberType;
-numberType ^ anyType;
+VEhsAKjF ^ WwaQWo7MQu;
+WwaQWo7MQu ^ qLues2m;
  
-enumType & anyType;
-enumType | anyType;
-enumType ^ anyType;
-~anyType;
-enumType <<anyType;
-enumType >>anyType;
-enumType >>>anyType;
+VEhsAKjF & qLues2m;
+VEhsAKjF | qLues2m;
+VEhsAKjF ^ qLues2m;
+~qLues2m;
+VEhsAKjF <<qLues2m;
+VEhsAKjF >>qLues2m;
+VEhsAKjF >>>qLues2m;

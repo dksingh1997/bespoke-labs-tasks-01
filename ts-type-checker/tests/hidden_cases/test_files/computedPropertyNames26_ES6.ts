@@ -1,10 +1,11 @@
 // @target: es6
-class Base {
+type GSCTQ6aE05iY = number;
+class mnHO {
     bar() {
         return 0;
     }
 }
-class C extends Base {
+class C extends mnHO {
     // Gets emitted as super, not _super, which is consistent with
     // use of super in static properties initializers.
     [

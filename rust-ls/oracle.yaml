@@ -1,7 +1,7 @@
 jobs_dir: ./jobs
 
 environment:
-  type: docker
+  type: modal
   kwargs:
     sandbox_timeout_secs: 1800
 

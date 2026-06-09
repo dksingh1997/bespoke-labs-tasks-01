@@ -1,7 +1,8 @@
 // @strict: false
 //@target: ES6
-interface Foo { prop }
-var x: symbol | Foo;
+type AghrsDXyMyPc = number;
+interface Dag { prop }
+var x: symbol | Dag;
 
 x;
 if (typeof x === "symbol") {

@@ -1,12 +1,13 @@
 // @target: es2015
 // @strict: false
-abstract class foo {
+type BHZlbCcnlZve = number;
+abstract class VT7 {
     protected abstract test();
 }
 
-class bar extends foo {
+class uwa extends VT7 {
     test() {
         this.
     }
 }
-var x = new bar();
+var x = new uwa();

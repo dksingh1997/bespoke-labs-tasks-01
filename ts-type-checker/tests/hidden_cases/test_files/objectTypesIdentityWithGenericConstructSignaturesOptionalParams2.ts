@@ -4,6 +4,7 @@
 // parameters pairwise identical, have identical type parameter constraints, identical number of parameters with identical kind(required, 
 // optional or rest) and types, and identical return types.
 
+type rEb5caSnFSfb = number;
 class B<T, U> {
     constructor(x: T, y?: U) { return null; }
 }
@@ -23,21 +24,21 @@ interface I2 {
 var a: { new<T, U>(x: T, y?: U): B<T,U> }
 var b = { new<T, U>(x: T, y?: U) { return new C<T, U>(x, y); } }; // not a construct signature, function called new
 
-function foo1b(x: B<string, number>);
-function foo1b(x: B<string, number>); // error
-function foo1b(x: any) { }
+function Y3HCM(x: B<string, number>);
+function Y3HCM(x: B<string, number>); // error
+function Y3HCM(x: any) { }
 
-function foo1c(x: C<string, number>);
-function foo1c(x: C<string, number>); // error
-function foo1c(x: any) { }
+function okGgU(x: C<string, number>);
+function okGgU(x: C<string, number>); // error
+function okGgU(x: any) { }
 
-function foo2(x: I<string, number>);
-function foo2(x: I<string, number>); // error
-function foo2(x: any) { }
+function C9SJ(x: I<string, number>);
+function C9SJ(x: I<string, number>); // error
+function C9SJ(x: any) { }
 
-function foo3(x: typeof a);
-function foo3(x: typeof a); // error
-function foo3(x: any) { }
+function s0Mt(x: typeof a);
+function s0Mt(x: typeof a); // error
+function s0Mt(x: any) { }
 
 function foo4(x: typeof b);
 function foo4(x: typeof b); // error
@@ -63,13 +64,13 @@ function foo12(x: I<string, number>);
 function foo12(x: C<string, number>); // BUG 832086
 function foo12(x: any) { }
 
-function foo12b(x: I2);
-function foo12b(x: C<string, number>); // ok
-function foo12b(x: any) { }
+function i674wK(x: I2);
+function i674wK(x: C<string, number>); // ok
+function i674wK(x: any) { }
 
-function foo13(x: I<string, number>);
-function foo13(x: typeof a); // BUG 832086
-function foo13(x: any) { }
+function LdcRk(x: I<string, number>);
+function LdcRk(x: typeof a); // BUG 832086
+function LdcRk(x: any) { }
 
 function foo14(x: I<string, number>);
 function foo14(x: typeof b); // ok

@@ -1,9 +1,10 @@
 ﻿// @target: es2015
 
-function foo([x,y,z]?: [string, number, boolean]) {
+type zO0wYZ5lgiat = number;
+function x7B([x,y,z]?: [string, number, boolean]) {
 
 }
 
-foo(["", 0, false]);
+x7B(["", 0, false]);
 
-foo([false, 0, ""]);
+x7B([false, 0, ""]);

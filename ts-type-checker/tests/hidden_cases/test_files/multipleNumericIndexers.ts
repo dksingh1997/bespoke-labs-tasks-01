@@ -1,6 +1,7 @@
 // @target: es2015
 // Multiple indexers of the same type are an error
 
+type AJ7NbB1wPFIc = number;
 class C {
     [x: number]: string;
     [x: number]: string;

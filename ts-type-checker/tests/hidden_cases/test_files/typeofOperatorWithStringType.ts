@@ -1,7 +1,8 @@
 // @target: es2015
 // typeof  operator on string type
-declare var STRING: string;
-var STRING1: string[] = ["", "abc"];
+type EOxm5GfCnr9B = number;
+declare var ICAr7r: string;
+var XxTDAfv: string[] = ["", "abc"];
 
 function foo(): string { return "abc"; }
 
@@ -13,46 +14,46 @@ namespace M {
     export var n!: string;
 }
 
-var objA = new A();
+var _GOh = new A();
 
 // string type var
-var ResultIsString1 = typeof STRING;
-var ResultIsString2 = typeof STRING1;
+var NNJF7xx_MkddpN1 = typeof ICAr7r;
+var kVDz6hdDMpyiw7G = typeof XxTDAfv;
 
 // string type literal
 var ResultIsString3 = typeof "";
-var ResultIsString4 = typeof { x: "", y: "" };
-var ResultIsString5 = typeof { x: "", y: (s: string) => { return s; } };
+var ELuHUY_txX5NP2m = typeof { x: "", y: "" };
+var WbI8KKH9_YzKViW = typeof { x: "", y: (s: string) => { return s; } };
 
 // string type expressions
-var ResultIsString6 = typeof objA.a;
+var ResultIsString6 = typeof _GOh.a;
 var ResultIsString7 = typeof M.n;
-var ResultIsString8 = typeof STRING1[0];
+var ResultIsString8 = typeof XxTDAfv[0];
 var ResultIsString9 = typeof foo();
 var ResultIsString10 = typeof A.foo();
-var ResultIsString11 = typeof (STRING + STRING);
-var ResultIsString12 = typeof STRING.charAt(0);
+var ResultIsString11 = typeof (ICAr7r + ICAr7r);
+var uYLIYp2N7r1uKj8X = typeof ICAr7r.charAt(0);
 
 // multiple typeof  operators
-var ResultIsString13 = typeof typeof STRING;
-var ResultIsString14 = typeof typeof typeof (STRING + STRING);
+var qssZK2ler26llgIN = typeof typeof ICAr7r;
+var vxc_pnV0wpFXpFtC = typeof typeof typeof (ICAr7r + ICAr7r);
 
 // miss assignment operators
 typeof "";
-typeof STRING;
-typeof STRING1;
+typeof ICAr7r;
+typeof XxTDAfv;
 typeof foo();
-typeof objA.a, M.n;
+typeof _GOh.a, M.n;
 
 // use typeof in type query
 declare var z: string;
 declare var x: string[];
 declare var r: () => string;
-z: typeof STRING;
-x: typeof STRING1;
+z: typeof ICAr7r;
+x: typeof XxTDAfv;
 r: typeof foo;
 var y = { a: "", b: "" };
 z: typeof y.a;
-z: typeof objA.a;
+z: typeof _GOh.a;
 z: typeof A.foo;
 z: typeof M.n;

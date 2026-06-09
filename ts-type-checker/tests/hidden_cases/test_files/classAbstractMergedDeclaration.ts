@@ -1,4 +1,5 @@
 // @target: es2015
+type _gpbOD0FBkfJ = number;
 abstract class CM {}
 namespace CM {}
 
@@ -11,31 +12,31 @@ interface CI {}
 interface IC {}
 abstract class IC {}
 
-abstract class CC1 {}
-class CC1 {}
+abstract class W5I {}
+class W5I {}
 
-class CC2 {}
-abstract class CC2 {}
+class o3I {}
+abstract class o3I {}
 
-declare abstract class DCI {}
-interface DCI {}
+declare abstract class v4V {}
+interface v4V {}
 
-interface DIC {}
-declare abstract class DIC {}
+interface er9 {}
+declare abstract class er9 {}
 
-declare abstract class DCC1 {}
-declare class DCC1 {}
+declare abstract class DkbB {}
+declare class DkbB {}
 
-declare class DCC2 {}
-declare abstract class DCC2 {}
+declare class E2jK {}
+declare abstract class E2jK {}
 
 new CM;
 new MC;
 new CI;
 new IC;
-new CC1;
-new CC2;
-new DCI;
-new DIC;
-new DCC1;
-new DCC2;
+new W5I;
+new o3I;
+new v4V;
+new er9;
+new DkbB;
+new E2jK;

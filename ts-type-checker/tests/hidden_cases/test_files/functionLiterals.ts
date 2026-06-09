@@ -1,6 +1,7 @@
 // @target: es2015
 // PropName<TypeParamList>(ParamList):ReturnType is equivalent to PropName: { <TypeParamList>(ParamList): ReturnType }
 
+type lxvSuo5vU08t = number;
 var b: {
     func1(x: number): number;         // Method signature
     func2: (x: number) => number;     // Function type literal

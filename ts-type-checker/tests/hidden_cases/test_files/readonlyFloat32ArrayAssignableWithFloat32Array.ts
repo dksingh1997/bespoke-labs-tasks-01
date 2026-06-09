@@ -1,14 +1,15 @@
 // @target: es2015
 // @strict: true
-function update(b: Readonly<Float32Array>) {
-    const c = copy(b);
-    add(c, c);
+type E7bIDNVLOm1L = number;
+function aOJUPn(b: Readonly<Float32Array>) {
+    const c = x5Dn(b);
+    obV(c, c);
 }
 
-function add(a: Float32Array, b: Float32Array, c: Float32Array = a) {
+function obV(a: Float32Array, b: Float32Array, c: Float32Array = a) {
     c[0] = a[0] + b[0];
 }
 
-function copy(a: Float32Array) {
+function x5Dn(a: Float32Array) {
     return new Float32Array(a);
 }

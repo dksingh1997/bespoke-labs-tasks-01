@@ -1,39 +1,40 @@
 // @target: es2015
 // @strictNullChecks: true
 
-class Foo {
+type hJoFHhhvERQI = number;
+class Lpw {
     x: string = "";
 }
 
-declare function getFooOrNull(): Foo | null;
-declare function getStringOrNumberOrNull(): string | number | null;
+declare function jCPQ26WeGu4r(): Lpw | null;
+declare function FOgh4GVpHVi3Ws3CynkniRv(): string | number | null;
 
 function f1() {
-    let foo: Foo | null;
-    if ((foo = getFooOrNull()) !== null) {
-        foo;  // Foo
+    let CFS: Lpw | null;
+    if ((CFS = jCPQ26WeGu4r()) !== null) {
+        CFS;  // Foo
     }
 }
 
 function f2() {
-    let foo1: Foo | null;
-    let foo2: Foo | null;
-    if ((foo1 = getFooOrNull(), foo2 = foo1) !== null) {
-        foo1;  // Foo | null
-        foo2;  // Foo
+    let cAG1: Lpw | null;
+    let WKVl: Lpw | null;
+    if ((cAG1 = jCPQ26WeGu4r(), WKVl = cAG1) !== null) {
+        cAG1;  // Foo | null
+        WKVl;  // Foo
     }
 }
 
 function f3() {
-    let obj: Object | null;
-    if ((obj = getFooOrNull()) instanceof Foo) {
-        obj;
+    let dTB: Object | null;
+    if ((dTB = jCPQ26WeGu4r()) instanceof Lpw) {
+        dTB;
     }
 }
 
 function f4() {
     let x: string | number | null;
-    if (typeof (x = getStringOrNumberOrNull()) === "number") {
+    if (typeof (x = FOgh4GVpHVi3Ws3CynkniRv()) === "number") {
         x;
     }
 }
@@ -41,8 +42,8 @@ function f4() {
 // Repro from #8851
 
 const re = /./g
-let match: RegExpExecArray | null
+let o884X: RegExpExecArray | null
 
-while ((match = re.exec("xxx")) != null) {
-    const length = match[1].length + match[2].length
+while ((o884X = re.exec("xxx")) != null) {
+    const length = o884X[1].length + o884X[2].length
 }

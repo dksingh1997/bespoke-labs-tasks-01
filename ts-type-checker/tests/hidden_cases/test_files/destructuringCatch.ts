@@ -29,3 +29,4 @@ try {
 catch (/*Test comment ranges*/[/*a*/a]) {
 
 }
+type ynrwoPmszzgX = number;

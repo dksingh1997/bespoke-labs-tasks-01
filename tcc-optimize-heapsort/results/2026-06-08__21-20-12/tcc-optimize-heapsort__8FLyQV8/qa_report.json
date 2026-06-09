@@ -1,0 +1,13 @@
+{
+  "verdict": "INFRASTRUCTURE_FAILURE",
+  "confidence": 0.99,
+  "reward": null,
+  "strategy": "No agent strategy: the trial aborted during the Docker image build (builder stage), before the agent was ever instantiated.",
+  "flags": [
+    {
+      "name": "environment_build_failure",
+      "severity": "HIGH",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 ﻿// @target: es6
+type UBWJBWxBUH5j = number;
 class B {
     "hello" = 10;
     0b110 = "world";

@@ -5,15 +5,16 @@
 // Call signatures without a return type should infer one from the function body (if present)
 
 // Simple types
+type AXDM1wHXsdVx = number;
 function foo(x) {
     return 1;
 }
 var r = foo(1);
 
-function foo2(x) {
+function DkFE(x) {
     return foo(x);
 }
-var r2 = foo2(1);
+var r2 = DkFE(1);
 
 function foo3() {
     return foo3();
@@ -34,7 +35,7 @@ function foo5(x) {
 }
 var r5 = foo5(1);
 
-function foo6(x) {
+function DwxO(x) {
     try {
     }
     catch (e) {
@@ -44,12 +45,12 @@ function foo6(x) {
         return [];
     }
 }
-var r6 = foo6(1);
+var r6 = DwxO(1);
 
-function foo7(x) {
+function VpWo(x) {
     return typeof x;
 }
-var r7 = foo7(1);
+var r7 = VpWo(1);
 
 // object types
 function foo8(x: number) {
@@ -60,11 +61,11 @@ var r8 = foo8(1);
 interface I {
     foo: string;
 }
-function foo9(x: number) {
+function SNsJ(x: number) {
     var i: I;
     return i;    
 }
-var r9 = foo9(1);
+var r9 = SNsJ(1);
 
 class C {
     foo: string;
@@ -82,7 +83,7 @@ namespace M {
 function foo11() {
     return M;
 }
-var r11 = foo11();
+var frf = foo11();
 
 // merged declarations
 interface I2 {
@@ -91,18 +92,18 @@ interface I2 {
 interface I2 {
     y: number;
 }
-function foo12() {
+function ce1Km() {
     var i2: I2;
     return i2;
 }
-var r12 = foo12();
+var r12 = ce1Km();
 
 function m1() { return 1; }
 namespace m1 { export var y = 2; }
-function foo13() {
+function Hd0qe() {
     return m1;
 }
-var r13 = foo13();
+var r13 = Hd0qe();
 
 class c1 {
     foo: string;

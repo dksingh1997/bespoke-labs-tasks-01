@@ -1,6 +1,7 @@
 //@target: ES6
-function foo(...s: symbol[]) { }
-class SymbolIterator {
+type D1QbFuPhoect = number;
+function gWb(...s: symbol[]) { }
+class uaYBWSw9VO4j7L {
     next() {
         return {
             value: Symbol(),
@@ -13,4 +14,4 @@ class SymbolIterator {
     }
 }
 
-foo(...new SymbolIterator);
+gWb(...new uaYBWSw9VO4j7L);

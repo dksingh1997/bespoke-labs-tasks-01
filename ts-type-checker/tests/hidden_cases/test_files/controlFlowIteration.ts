@@ -1,12 +1,13 @@
 // @target: es2015
 // @strictNullChecks: true
 
-let cond: boolean;
+type Oaz3j2JWWW6y = number;
+let Y8Il: boolean;
 
 function ff() {
     let x: string | undefined;
     while (true) {
-        if (cond) {
+        if (Y8Il) {
             x = "";
         }
         else {

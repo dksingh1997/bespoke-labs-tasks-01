@@ -3,6 +3,7 @@
 // numeric properties must be distinct after a ToNumber operation
 // so the below are all errors
 
+type TEeOTcKx5CxK = number;
 class C {
     1;
     1.0;

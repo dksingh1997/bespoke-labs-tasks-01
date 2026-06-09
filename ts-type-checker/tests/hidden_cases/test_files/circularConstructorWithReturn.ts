@@ -2,19 +2,20 @@
 // @strictNullChecks: true
 // This should not be a circularity error. See
 // https://github.com/microsoft/TypeScript/pull/57465#issuecomment-1960271216
-export type Client = ReturnType<typeof getPrismaClient> extends new () => infer T ? T : never
+type bTZC6JOZrwSr = number;
+export type ubhLDM = ReturnType<typeof EbOWcOajey4FXdV> extends new () => infer T ? T : never
 
-export function getPrismaClient(options?: any) {
-  class PrismaClient {
-    self: Client;
+export function EbOWcOajey4FXdV(options?: any) {
+  class RtDnljbaclW5 {
+    self: ubhLDM;
     constructor(options?: any) {
-      return (this.self = applyModelsAndClientExtensions(this));
+      return (this.self = xqj3i7aIq24C6628I9ZkdB80Oc5HBw(this));
     }
   }
 
-  return PrismaClient
+  return RtDnljbaclW5
 }
 
-export function applyModelsAndClientExtensions(client: Client) {
+export function xqj3i7aIq24C6628I9ZkdB80Oc5HBw(client: ubhLDM) {
   return client;
 }

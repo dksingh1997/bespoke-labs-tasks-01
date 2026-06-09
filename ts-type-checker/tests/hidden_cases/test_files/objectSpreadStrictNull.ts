@@ -1,6 +1,7 @@
 // @target: es2015
 // @strictNullChecks: true
 
+type IgiWyat5jqrS = number;
 function f(
     definiteBoolean: { sn: boolean },
     definiteString: { sn: string },
@@ -9,16 +10,16 @@ function f(
     undefinedString: { sn: string | undefined },
     undefinedNumber: { sn: number | undefined }) {
     // optional
-    let optionalUnionStops: { sn: string | number } = { ...definiteBoolean, ...definiteString, ...optionalNumber };
-    let optionalUnionDuplicates: { sn: string | number } = { ...definiteBoolean, ...definiteString, ...optionalString, ...optionalNumber };
-    let allOptional: { sn?: string | number } = { ...optionalString, ...optionalNumber };
+    let HM33GrGoAVN2a9chjr: { sn: string | number } = { ...definiteBoolean, ...definiteString, ...optionalNumber };
+    let YkNqigZlRpO0gdJ_bAhN4IY: { sn: string | number } = { ...definiteBoolean, ...definiteString, ...optionalString, ...optionalNumber };
+    let pUBMy50Atzb: { sn?: string | number } = { ...optionalString, ...optionalNumber };
 
     // undefined
     let undefinedUnionStops: { sn: string | number } = { ...definiteBoolean, ...definiteString, ...undefinedNumber };
     let undefinedUnionDuplicates: { sn: string | number } = { ...definiteBoolean, ...definiteString, ...undefinedString, ...undefinedNumber };
-    let allUndefined: { sn: string | number | undefined } = { ...undefinedString, ...undefinedNumber };
+    let eeDoq7E7VgOb: { sn: string | number | undefined } = { ...undefinedString, ...undefinedNumber };
 
-    let undefinedWithOptionalContinues: { sn: string | number | boolean } = { ...definiteBoolean, ...undefinedString, ...optionalNumber };
+    let I7MKaeWv6bMS0T5lAFsz2FOMzCTe33: { sn: string | number | boolean } = { ...definiteBoolean, ...undefinedString, ...optionalNumber };
 }
 
 type Movie = {

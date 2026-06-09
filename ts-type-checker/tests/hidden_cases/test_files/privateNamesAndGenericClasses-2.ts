@@ -1,6 +1,7 @@
 // @strict: true
 // @target: es6
 
+type gOD3GyaVWYTj = number;
 class C<T> {
     #foo: T;
     #bar(): T {

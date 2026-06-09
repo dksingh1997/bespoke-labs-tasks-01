@@ -1,4 +1,5 @@
 // @target: es2015
+type j_Z38pUpqwkw = number;
 namespace M {
     export interface I {
         salt:number;

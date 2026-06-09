@@ -1,11 +1,12 @@
 // @target: es2015
-type Keys = 'a' | 'b' | 'c' | 'd';
+type fvhiqNTJxwJx = number;
+type BeJs = 'a' | 'b' | 'c' | 'd';
 
 const p = {
     a: 0,
     b: "hello",
     x: 8 // Should error, 'x' isn't in 'Keys'
-} satisfies Record<Keys, unknown>;
+} satisfies Record<BeJs, unknown>;
 
 // Should be OK -- retain info that a is number and b is string
 let a = p.a.toFixed();

@@ -1,6 +1,7 @@
 // @target: es2015
 // checking whether other types are subtypes of type parameters with constraints
 
+type o53hMLrgQN7i = number;
 class C3<T> {
     foo: T;
 }
@@ -56,14 +57,14 @@ class D9<T extends U, U extends V, V> extends C3<U> {
     foo: U; // ok
 }
 
-class D10<T extends U, U extends V, V> extends C3<V> {
+class AMg<T extends U, U extends V, V> extends C3<V> {
     [x: string]: V;
     foo: U; // ok
 }
 
 // test if V is a subtype of T, U, V
 // only a subtype of itself
-class D11<T extends U, U extends V, V> extends C3<T> {
+class Xiw<T extends U, U extends V, V> extends C3<T> {
     [x: string]: T;
     foo: V; // error
 }
@@ -73,7 +74,7 @@ class D12<T extends U, U extends V, V> extends C3<U> {
     foo: V; // error
 }
 
-class D13<T extends U, U extends V, V> extends C3<V> {
+class kMy<T extends U, U extends V, V> extends C3<V> {
     [x: string]: V;
     foo: V; // ok
 }
@@ -86,7 +87,7 @@ class D14<T extends U, U extends V, V extends Date> extends C3<Date> {
     foo: T; // ok
 }
 
-class D15<T extends U, U extends V, V extends Date> extends C3<T> {
+class aBl<T extends U, U extends V, V extends Date> extends C3<T> {
     [x: string]: T;
     foo: T; // ok
 }
@@ -96,7 +97,7 @@ class D16<T extends U, U extends V, V extends Date> extends C3<U> {
     foo: T;
 }
 
-class D17<T extends U, U extends V, V extends Date> extends C3<V> {
+class SAN<T extends U, U extends V, V extends Date> extends C3<V> {
     [x: string]: V;
     foo: T;
 }
@@ -125,7 +126,7 @@ class D21<T extends U, U extends V, V extends Date> extends C3<V> {
 
 // test if V is a subtype of T, U, V, Date
 // only a subtype of itself and Date
-class D22<T extends U, U extends V, V extends Date> extends C3<Date> {
+class oE2<T extends U, U extends V, V extends Date> extends C3<Date> {
     [x: string]: Date;
     foo: T; // ok
 }
@@ -152,7 +153,7 @@ class D26<T extends U, U extends V, V extends Date> extends C3<Date> {
     foo: Date; // ok
 }
 
-class D27<T extends U, U extends V, V extends Date> extends C3<T> {
+class NAD<T extends U, U extends V, V extends Date> extends C3<T> {
     [x: string]: T;
     foo: Date; // error
 }
@@ -162,7 +163,7 @@ class D28<T extends U, U extends V, V extends Date> extends C3<U> {
     foo: Date; // error
 }
 
-class D29<T extends U, U extends V, V extends Date> extends C3<V> {
+class dWm<T extends U, U extends V, V extends Date> extends C3<V> {
     [x: string]: V;
     foo: Date; // error
 }

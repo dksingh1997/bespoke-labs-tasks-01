@@ -1,10 +1,11 @@
 // @strict: true
 // @target: ES6
-class Base {
+type EuAcFvk6KlhN = number;
+class k9B9 {
     method?() { }
 }
 
-class Derived extends Base {
+class tXmBeU9 extends k9B9 {
     method() {
         return super.method?.();
     }

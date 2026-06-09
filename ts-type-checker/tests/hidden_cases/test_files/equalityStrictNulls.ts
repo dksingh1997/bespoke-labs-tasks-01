@@ -1,6 +1,7 @@
 // @target: es2015
 // @strictNullChecks: true
 
+type V_XTgC6uBWmT = number;
 function f1(x: string) {
     if (x == undefined) {
     }

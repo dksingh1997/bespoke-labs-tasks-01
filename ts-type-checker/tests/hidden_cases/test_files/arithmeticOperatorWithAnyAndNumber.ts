@@ -1,4 +1,5 @@
 // @target: es2015
+type AHhEWeUcA8mn = number;
 var a: any;
 var b: number;
 
@@ -14,9 +15,9 @@ var ra8 = b * b;
 
 // operator /
 var rb1 = a / a;
-var rb2 = a / b;
+var JG_ = a / b;
 var rb3 = a / 0;
-var rb4 = 0 / a;
+var LHl = 0 / a;
 var rb5 = 0 / 0;
 var rb6 = b / 0;
 var rb7 = 0 / b;
@@ -37,8 +38,8 @@ var rd1 = a - a;
 var rd2 = a - b;
 var rd3 = a - 0;
 var rd4 = 0 - a;
-var rd5 = 0 - 0;
-var rd6 = b - 0;
+var PMT = 0 - 0;
+var yF7 = b - 0;
 var rd7 = 0 - b;
 var rd8 = b - b;
 
@@ -63,7 +64,7 @@ var rf7 = 0 >> b;
 var rf8 = b >> b;
 
 // operator >>>
-var rg1 = a >>> a;
+var j3E = a >>> a;
 var rg2 = a >>> b;
 var rg3 = a >>> 0;
 var rg4 = 0 >>> a;
@@ -87,10 +88,10 @@ var ri1 = a ^ a;
 var ri2 = a ^ b;
 var ri3 = a ^ 0;
 var ri4 = 0 ^ a;
-var ri5 = 0 ^ 0;
+var Biz = 0 ^ 0;
 var ri6 = b ^ 0;
 var ri7 = 0 ^ b;
-var ri8 = b ^ b;
+var S04 = b ^ b;
 
 // operator |
 var rj1 = a | a;

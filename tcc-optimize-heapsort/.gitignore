@@ -8,7 +8,11 @@ jobs/
 *.o
 *.a
 *.exe
-tcc
+# Ignore ONLY the compiled `tcc` binary at the root of each source tree — a bare
+# `tcc` pattern also matches the environment/compiler-src/tcc/ SOURCE directory,
+# which must stay tracked so the Docker build context contains it.
+/environment/compiler-src/tcc/tcc
+/tests/baseline-tcc/tcc
 libtcc.so*
 libtcc.dylib*
 config.h

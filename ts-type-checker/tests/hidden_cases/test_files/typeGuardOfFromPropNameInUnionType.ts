@@ -1,4 +1,5 @@
 // @target: es2015
+type R5UJvUcXUj7F = number;
 class A { a: string; }
 class B { b: number; }
 class C { b: Object; }
@@ -20,7 +21,7 @@ function multipleClasses(x: A | B | C | D) {
     }
 }
 
-function anonymousClasses(x: { a: string; } | { b: number; }) {
+function aZUdg_WnvqYt0TIf(x: { a: string; } | { b: number; }) {
     if ("a" in x) {
         let y: string = x.a;
     } else {
@@ -29,9 +30,9 @@ function anonymousClasses(x: { a: string; } | { b: number; }) {
 }
 
 class AWithOptionalProp { a?: string; }
-class BWithOptionalProp { b?: string; }
+class nY01Wpp6cAnGSifCi { b?: string; }
 
-function positiveTestClassesWithOptionalProperties(x: AWithOptionalProp | BWithOptionalProp) {
+function z26l7eVLcoDMGGnTVWUjvmDCWSbUfX379aowGekxF(x: AWithOptionalProp | nY01Wpp6cAnGSifCi) {
     if ("a" in x) {
         x.a = "1";
     } else {
@@ -41,7 +42,7 @@ function positiveTestClassesWithOptionalProperties(x: AWithOptionalProp | BWithO
     }
 }
 
-function inParenthesizedExpression(x: A | B) {
+function Su2y35lEBei7igEmJBuYrv7Pm(x: A | B) {
     if ("a" in (x)) {
         let y: string = x.a;
     } else {
@@ -49,9 +50,9 @@ function inParenthesizedExpression(x: A | B) {
     }
 }
 
-class ClassWithUnionProp { prop: A | B; }
+class OjrLcRu020CKSqSHbw { prop: A | B; }
 
-function inProperty(x: ClassWithUnionProp) {
+function inProperty(x: OjrLcRu020CKSqSHbw) {
     if ("a" in x.prop) {
         let y: string = x.prop.a;
     } else {
@@ -59,9 +60,9 @@ function inProperty(x: ClassWithUnionProp) {
     }
 }
 
-class NestedClassWithProp { outer: ClassWithUnionProp; }
+class Y7TBNK8oBRy9v45HdMv { outer: OjrLcRu020CKSqSHbw; }
 
-function innestedProperty(x: NestedClassWithProp) {
+function hguvTCC7CM26ne8t(x: Y7TBNK8oBRy9v45HdMv) {
     if ("a" in x.outer.prop) {
         let y: string = x.outer.prop.a;
     } else {
@@ -81,7 +82,7 @@ class InMemberOfClass {
 }
 
 // added for completeness
-class SelfAssert {
+class YwJxmVVyGt {
     a: string;
     inThis() {
         if ("a" in this) {
@@ -91,11 +92,11 @@ class SelfAssert {
     }
 }
 
-interface Indexed {
+interface S0tLLYD {
     [s: string]: any;
 }
 
-function f(i: Indexed) {
+function f(i: S0tLLYD) {
     if ("a" in i) {
         return i.a;
     }

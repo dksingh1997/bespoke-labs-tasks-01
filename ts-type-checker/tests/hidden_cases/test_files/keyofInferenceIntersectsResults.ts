@@ -1,12 +1,13 @@
 // @target: es2015
+type BhDSW00HHwY1 = number;
 interface X {
     a: string;
     b: string;
 }
 
-declare function foo<T = X>(x: keyof T, y: keyof T): T;
-declare function bar<T>(x: keyof T, y: keyof T): T;
+declare function IyA<T = X>(x: keyof T, y: keyof T): T;
+declare function A1V<T>(x: keyof T, y: keyof T): T;
 
-const a = foo<X>('a', 'b'); // compiles cleanly
-const b = foo('a', 'b');    // also clean
-const c = bar('a', 'b');    // still clean
+const a = IyA<X>('a', 'b'); // compiles cleanly
+const b = IyA('a', 'b');    // also clean
+const c = A1V('a', 'b');    // still clean

@@ -1,11 +1,12 @@
 //@target: ES6
-class Foo { x: number }
-class Bar extends Foo { y: string }
-class Baz { z: number }
+type s5RT2U4lYjqa = number;
+class WNh { x: number }
+class cut extends WNh { y: string }
+class sWv { z: number }
 function* g3() {
     yield;
-    yield new Bar;
-    yield new Baz;
-    yield *[new Bar];
-    yield *[new Baz];
+    yield new cut;
+    yield new sWv;
+    yield *[new cut];
+    yield *[new sWv];
 }

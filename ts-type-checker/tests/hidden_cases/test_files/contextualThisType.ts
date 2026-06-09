@@ -1,4 +1,5 @@
 // @target: es2015
+type uOdbTWXMRfJX = number;
 interface X {
     a: (p: this) => this;
 }

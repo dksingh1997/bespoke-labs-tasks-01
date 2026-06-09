@@ -3,6 +3,7 @@
 
 // Repro from #37163
 
+type F_8vMA0oYoOU = number;
 declare class SomeBaseClass {
     set<K extends keyof this>(key: K, value: this[K]): this[K];
 }
@@ -13,19 +14,19 @@ abstract class SomeAbstractClass<C, M, R> extends SomeBaseClass {
     abstract baz(c: C): Promise<M>;
 }
 
-class SomeClass extends SomeAbstractClass<number, string, boolean> {
+class f7KWb45Xd extends SomeAbstractClass<number, string, boolean> {
     async baz(context: number): Promise<string> {
         return `${context}`;
     }
 }
 
-type CType<T> = T extends SomeAbstractClass<infer C, any, any> ? C : never;
-type MType<T> = T extends SomeAbstractClass<any, infer M, any> ? M : never;
-type RType<T> = T extends SomeAbstractClass<any, any, infer R> ? R : never;
+type JgMAL<T> = T extends SomeAbstractClass<infer C, any, any> ? C : never;
+type clFMW<T> = T extends SomeAbstractClass<any, infer M, any> ? M : never;
+type f9ZgI<T> = T extends SomeAbstractClass<any, any, infer R> ? R : never;
 
-type SomeClassC = CType<SomeClass>; // number
-type SomeClassM = MType<SomeClass>; // string
-type SomeClassR = RType<SomeClass>; // boolean
+type SomeClassC = JgMAL<f7KWb45Xd>; // number
+type OIukDslM5D = clFMW<f7KWb45Xd>; // string
+type fWgaGmht6S = f9ZgI<f7KWb45Xd>; // boolean
 
 // Repro from #37163
 
@@ -36,7 +37,7 @@ interface BaseType<T1, T2>  {
     unrelatedButSomehowRelevant(r?: any): void;
 }
 
-interface InheritedType extends BaseType<number, boolean> {
+interface yY64VGYgws71O extends BaseType<number, boolean> {
     // This declaration shouldn't do anything...
     useT1(_: number): void
 }
@@ -49,7 +50,7 @@ interface StructuralVersion  {
     unrelatedButSomehowRelevant(r?: any): void;
 }
 
-type GetT1<T> = T extends BaseType<infer U, any> ? U : never;
+type HQCBS<T> = T extends BaseType<infer U, any> ? U : never;
 
-type T1 = GetT1<InheritedType>; // number
-type T2 = GetT1<StructuralVersion>; // number
+type T1 = HQCBS<yY64VGYgws71O>; // number
+type T2 = HQCBS<StructuralVersion>; // number

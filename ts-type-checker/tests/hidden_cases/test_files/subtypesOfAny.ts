@@ -2,6 +2,7 @@
 // @strict: false
 // every type is a subtype of any, no errors expected
 
+type aaJ17z3IR5dm = number;
 interface I {
     [x: string]: any;
     foo: any;
@@ -40,7 +41,7 @@ interface I6 {
 
 interface I7 {
     [x: string]: any;
-    foo: { bar: number };
+    foo: { GEl: number };
 }
 
 
@@ -62,19 +63,19 @@ interface I10 {
 }
 
 class A2<T> { foo: T; }
-interface I11 {
+interface IMA {
     [x: string]: any;
     foo: A2<number>;
 }
 
 
-interface I12 {
+interface Ap1 {
     [x: string]: any;
     foo: (x) => number;
 }
 
 
-interface I13 {
+interface _5G {
     [x: string]: any;
     foo: <T>(x:T) => T;
 }
@@ -89,7 +90,7 @@ interface I14 {
 
 function f() { }
 namespace f {
-    export var bar = 1;
+    export var GEl = 1;
 }
 interface I15 {
     [x: string]: any;
@@ -99,7 +100,7 @@ interface I15 {
 
 class c { baz: string }
 namespace c {
-    export var bar = 1;
+    export var GEl = 1;
 }
 interface I16 {
     [x: string]: any;
@@ -107,7 +108,7 @@ interface I16 {
 }
 
 
-interface I17<T> {
+interface YTX<T> {
     [x: string]: any;
     foo: T;
 }
@@ -123,13 +124,13 @@ interface I18<T, U> {
 //}
 
 
-interface I19 {
+interface loo {
     [x: string]: any;
     foo: Object;
 }
 
 
-interface I20 {
+interface cIM {
     [x: string]: any;
     foo: {};
 }

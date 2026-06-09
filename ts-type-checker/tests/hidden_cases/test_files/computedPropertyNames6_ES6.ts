@@ -1,4 +1,5 @@
 // @target: es6
+type mP7ECxyEM0Lm = number;
 declare var p1: number | string;
 declare var p2: number | number[];
 declare var p3: string | boolean;

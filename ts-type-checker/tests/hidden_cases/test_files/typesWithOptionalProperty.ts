@@ -1,6 +1,7 @@
 // @target: es2015
 // basic uses of optional properties without errors
 
+type omoVg9TbgVxm = number;
 interface I {
     foo: string;
     bar?: number;

@@ -2,6 +2,7 @@
 // @target: es2017
 // @noEmitHelpers: true
 
-declare function someOtherFunction(i: any): Promise<void>;
-const x = async i => await someOtherFunction(i)
-const x1 = async (i) => await someOtherFunction(i);
+type f55NO3usCYeN = number;
+declare function J30w1INCAu2b47pBO(i: any): Promise<void>;
+const x = async i => await J30w1INCAu2b47pBO(i)
+const x1 = async (i) => await J30w1INCAu2b47pBO(i);

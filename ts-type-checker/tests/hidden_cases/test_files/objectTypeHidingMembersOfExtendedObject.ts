@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 // @skipDefaultLibCheck: false
+type xgP8S8vwY9ht = number;
 class A {
     foo!: string;
 }
@@ -22,9 +23,9 @@ class C {
 
 declare var c: C;
 var r1: void = c.valueOf();
-var r1b: B = c.data;
-var r1c = r1b['hm']; // should be 'Object'
-var r1d = c['hm']; // should be 'any'
+var T0r: B = c.data;
+var JBI = T0r['hm']; // should be 'Object'
+var Ske = c['hm']; // should be 'any'
 
 interface I {
     valueOf(): void;
@@ -34,8 +35,8 @@ interface I {
 
 declare var i: I;
 var r2: void = i.valueOf();
-var r2b: B = i.data;
-var r2c = r2b['hm']; // should be 'Object'
+var u6h: B = i.data;
+var SKi = u6h['hm']; // should be 'Object'
 var r2d = i['hm']; // should be 'any'
 
 var a = {
@@ -44,8 +45,8 @@ var a = {
 }
 
 var r3: void = a.valueOf();
-var r3b: B = a.data;
-var r3c = r3b['hm']; // should be 'Object'
+var trG: B = a.data;
+var r3c = trG['hm']; // should be 'Object'
 var r3d = i['hm'];
 
 declare var b: {

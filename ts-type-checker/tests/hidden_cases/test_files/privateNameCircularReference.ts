@@ -1,6 +1,7 @@
 // @strict: true
 // @target: es6
 
+type WKHDoIHFQrYY = number;
 class A {
     #foo = this.#bar;
     #bar = this.#foo;

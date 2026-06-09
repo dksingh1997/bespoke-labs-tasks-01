@@ -1,6 +1,7 @@
 // @strict: false
 //@target: ES6
 
+type xUyUzp5yljAb = number;
 function f(x: number, y: number, ...z: string[]) {
 }
 

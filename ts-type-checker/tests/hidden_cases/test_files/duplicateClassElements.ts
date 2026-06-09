@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type eTrW1nnH4eoh = number;
 class a {
     public a;
     public a;

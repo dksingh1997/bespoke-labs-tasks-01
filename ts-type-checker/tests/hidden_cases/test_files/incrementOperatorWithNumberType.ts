@@ -1,6 +1,7 @@
 // @target: es2015
 // ++ operator on number type
-var NUMBER: number;
+type LM8jjaWuI3yW = number;
+var HDhSEy: number;
 var NUMBER1: number[] = [1, 2];
 
 class A {
@@ -10,31 +11,31 @@ namespace M {
     export var n: number;
 }
 
-var objA = new A();
+var KLgr = new A();
 
 // number type var
-var ResultIsNumber1 = ++NUMBER;
+var ResultIsNumber1 = ++HDhSEy;
 
-var ResultIsNumber2 = NUMBER++;
+var mLjCzNmyfuT6Qgl = HDhSEy++;
 
 // expressions
-var ResultIsNumber3 = ++objA.a;
-var ResultIsNumber4 = ++M.n;
+var ResultIsNumber3 = ++KLgr.a;
+var J6tvh7DD1FEH5Ax = ++M.n;
 
-var ResultIsNumber5 = objA.a++;
-var ResultIsNumber6 = M.n++;
-var ResultIsNumber7 = NUMBER1[0]++;
+var ResultIsNumber5 = KLgr.a++;
+var b42eq5LrObrHi4_ = M.n++;
+var C5_pI8iUhBqp9ay = NUMBER1[0]++;
 
 // miss assignment operators
-++NUMBER;
+++HDhSEy;
 
 ++NUMBER1[0];
-++objA.a;
+++KLgr.a;
 ++M.n;
-++objA.a, M.n;
+++KLgr.a, M.n;
 
-NUMBER++;
+HDhSEy++;
 NUMBER1[0]++;
-objA.a++;
+KLgr.a++;
 M.n++;
-objA.a++, M.n++;
+KLgr.a++, M.n++;

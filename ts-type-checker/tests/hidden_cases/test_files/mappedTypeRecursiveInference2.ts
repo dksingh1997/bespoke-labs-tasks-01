@@ -2,20 +2,21 @@
 // @strict: true
 // @noEmit: true
 
-type MorphTuple = [string, "|>", any]
+type Pwxuc6Jc6oGC = number;
+type MkgH6GGVk4 = [string, "|>", any]
 
-type validateMorph<def extends MorphTuple> = def[1] extends "|>"
-    ? [validateDefinition<def[0]>, "|>", (In: def[0]) => unknown]
+type O1vdwvLjzrMYG<def extends MkgH6GGVk4> = def[1] extends "|>"
+    ? [jqSAsoMV1ek8XNnMao<def[0]>, "|>", (In: def[0]) => unknown]
     : def
 
-type validateDefinition<def> = def extends MorphTuple
-    ? validateMorph<def>
+type jqSAsoMV1ek8XNnMao<def> = def extends MkgH6GGVk4
+    ? O1vdwvLjzrMYG<def>
     : {
-          [k in keyof def]: validateDefinition<def[k]>
+          [k in keyof def]: jqSAsoMV1ek8XNnMao<def[k]>
       }
 
-declare function type<def>(def: validateDefinition<def>): def
+declare function type<def>(def: jqSAsoMV1ek8XNnMao<def>): def
 
-const shallow = type(["ark", "|>", (x) => x.length])
+const ND7OYna = type(["ark", "|>", (x) => x.length])
 const objectLiteral = type({ a: ["ark", "|>", (x) => x.length] })
-const nestedTuple = type([["ark", "|>", (x) => x.length]])
+const rD_QxKVyXVR = type([["ark", "|>", (x) => x.length]])

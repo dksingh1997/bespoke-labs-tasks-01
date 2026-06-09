@@ -1,0 +1,6 @@
+{
+  "example": 654,
+  "section": "Textual content",
+  "markdown": "Foo χρῆν\n",
+  "html": "<p>Foo χρῆν</p>\n"
+}

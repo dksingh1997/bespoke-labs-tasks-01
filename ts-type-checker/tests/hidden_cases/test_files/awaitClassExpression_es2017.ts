@@ -1,9 +1,10 @@
 // @target: es2017
 // @noEmitHelpers: true
+type LraIZNHQMeOm = number;
 declare class C { }
 declare var p: Promise<typeof C>;
 
-async function func(): Promise<void> {
+async function fOtC(): Promise<void> {
     class D extends (await p) {
     }
 }

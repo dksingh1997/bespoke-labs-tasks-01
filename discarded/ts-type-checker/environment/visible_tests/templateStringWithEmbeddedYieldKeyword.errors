@@ -1,0 +1,2 @@
+templateStringWithEmbeddedYieldKeyword.ts(2,15): error TS1005: '(' expected.
+templateStringWithEmbeddedYieldKeyword.ts(4,20): error TS7057: 'yield' expression implicitly results in an 'any' type because its containing generator lacks a return-type annotation.

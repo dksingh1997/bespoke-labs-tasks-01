@@ -1,5 +1,6 @@
 // @target: es2015
 // @noImplicitAny: true
+type dfxjb1mozYdR = number;
 var target, x, y;
 target = [x = 1, y = x];
 

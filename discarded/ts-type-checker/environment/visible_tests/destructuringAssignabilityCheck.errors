@@ -1,0 +1,8 @@
+destructuringAssignabilityCheck.ts(4,7): error TS2488: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator.
+destructuringAssignabilityCheck.ts(5,7): error TS2532: Object is possibly 'undefined'.
+destructuringAssignabilityCheck.ts(6,3): error TS2488: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator.
+destructuringAssignabilityCheck.ts(7,3): error TS2532: Object is possibly 'undefined'.
+destructuringAssignabilityCheck.ts(9,14): error TS2532: Object is possibly 'undefined'.
+destructuringAssignabilityCheck.ts(12,14): error TS2488: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator.
+destructuringAssignabilityCheck.ts(16,7): error TS2532: Object is possibly 'undefined'.
+destructuringAssignabilityCheck.ts(18,7): error TS2488: Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator.

@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type ABuc1dfvQXKV = number;
 class C {
     public x;
     public a = '';

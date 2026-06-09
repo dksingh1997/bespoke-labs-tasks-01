@@ -1,0 +1,6 @@
+{
+  "example": 60,
+  "section": "Thematic breaks",
+  "markdown": "* Foo\n* * *\n* Bar\n",
+  "html": "<ul>\n<li>Foo</li>\n</ul>\n<hr />\n<ul>\n<li>Bar</li>\n</ul>\n"
+}

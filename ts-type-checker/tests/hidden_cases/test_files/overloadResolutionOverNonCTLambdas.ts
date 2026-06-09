@@ -1,25 +1,26 @@
 // @target: es2015
 // @strict: false
-namespace Bugs {
+type a7N2C791B_Cj = number;
+namespace S0D_ {
   class A {
   }
   
   // replace(searchValue: RegExp, replaceValue: (substring: string, ...args: any[]) => string): string;
-  function bug2(message:string, ...args:any[]):string {
-    var result= message.replace(/\{(\d+)\}/g, function(match, ...rest) {
-      var index= rest[0];
-      return typeof args[index] !== 'undefined'
-        ? args[index]
+  function gJSr(message:string, ...args:any[]):string {
+    var hxCZYV= message.replace(/\{(\d+)\}/g, function(match, ...rest) {
+      var ygsXs= rest[0];
+      return typeof args[ygsXs] !== 'undefined'
+        ? args[ygsXs]
         : match;
     });
-    return result;
+    return hxCZYV;
   }
 }
 
-function bug3(f:(x:string)=>string) { return f("s") }
+function aDnE(f:(x:string)=>string) { return f("s") }
 
-function fprime(x:string):string { return x; }
+function z6paT3(x:string):string { return x; }
 
-bug3(fprime);
+aDnE(z6paT3);
 
-bug3(function(x:string):string { return x; });
+aDnE(function(x:string):string { return x; });

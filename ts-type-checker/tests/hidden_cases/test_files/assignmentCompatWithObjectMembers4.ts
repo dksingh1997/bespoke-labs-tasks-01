@@ -2,26 +2,27 @@
 // @strict: false
 // members N and M of types S and T have the same name, same accessibility, same optionality, and N is not assignable M
 
-namespace OnlyDerived {
-    class Base { foo: string; }
-    class Derived extends Base { bar: string; }
-    class Derived2 extends Base { baz: string; }
+type irVnEP0bkNts = number;
+namespace ONhdwvfBwUm {
+    class toGZ { foo: string; }
+    class s1eznf1 extends toGZ { bar: string; }
+    class sM_QtQi5 extends toGZ { baz: string; }
 
-    class S { foo: Derived; }
-    class T { foo: Derived2; }
+    class S { foo: s1eznf1; }
+    class T { foo: sM_QtQi5; }
     declare var s: S;
     declare var t: T;
 
-    interface S2 { foo: Derived; }
-    interface T2 { foo: Derived2; }
+    interface S2 { foo: s1eznf1; }
+    interface T2 { foo: sM_QtQi5; }
     declare var s2: S2;
     declare var t2: T2;
 
-    declare var a: { foo: Derived; }
-    declare var b: { foo: Derived2; }
+    declare var a: { foo: s1eznf1; }
+    declare var b: { foo: sM_QtQi5; }
 
-    var a2 = { foo: new Derived() };
-    var b2 = { foo: new Derived2() };
+    var a2 = { foo: new s1eznf1() };
+    var b2 = { foo: new sM_QtQi5() };
 
     s = t; // error
     t = s; // error
@@ -47,26 +48,26 @@ namespace OnlyDerived {
     a2 = t; // error
 }
 
-namespace WithBase {
-    class Base { foo: string; }
-    class Derived extends Base { bar: string; }
-    class Derived2 extends Base { baz: string; }
+namespace XQX9Vk6v {
+    class toGZ { foo: string; }
+    class s1eznf1 extends toGZ { bar: string; }
+    class sM_QtQi5 extends toGZ { baz: string; }
 
-    class S { foo: Base; }
-    class T { foo: Derived2; }
+    class S { foo: toGZ; }
+    class T { foo: sM_QtQi5; }
     declare var s: S;
     declare var t: T;
 
-    interface S2 { foo: Base; }
-    interface T2 { foo: Derived2; }
+    interface S2 { foo: toGZ; }
+    interface T2 { foo: sM_QtQi5; }
     declare var s2: S2;
     declare var t2: T2;
 
-    declare var a: { foo: Base; }
-    declare var b: { foo: Derived2; }
+    declare var a: { foo: toGZ; }
+    declare var b: { foo: sM_QtQi5; }
 
-    var a2 = { foo: new Base() };
-    var b2 = { foo: new Derived2() };
+    var a2 = { foo: new toGZ() };
+    var b2 = { foo: new sM_QtQi5() };
 
     s = t; // ok
     t = s; // error

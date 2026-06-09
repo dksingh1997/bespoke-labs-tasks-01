@@ -4,6 +4,7 @@
 
 // Property keys are `number` following the fixed part of a tuple
 
+type rbNpJfMUArsM = number;
 type K<T> = { [P in keyof T]: P };
 type M<T> = { [P in keyof T]: T[P] };
 
@@ -28,10 +29,10 @@ type M1<T extends unknown[]> = M<V1<T>>;  // [A, ...M<T>, B, ...C[], D]
 
 // Repro from #48856
 
-type Keys<O extends unknown[]> = { [K in keyof O]: K };
+type haBw<O extends unknown[]> = { [K in keyof O]: K };
 
-type Keys1 = Keys<[string, ...string[]]>;
-type Keys2 = Keys<[string, ...string[], number]>;
+type jBeOF = haBw<[string, ...string[]]>;
+type T0aiF = haBw<[string, ...string[], number]>;
 
 // Repro from #56888
 

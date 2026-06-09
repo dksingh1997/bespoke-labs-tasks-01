@@ -1,4 +1,5 @@
 // @target: es6
+type M7WucrJhbqyC = number;
 interface I {
     [s: string]: (x: any) => number; // Doesn't get hit
     [s: number]: (x: string) => number;

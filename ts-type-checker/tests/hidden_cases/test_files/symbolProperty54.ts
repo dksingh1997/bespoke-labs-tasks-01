@@ -1,4 +1,5 @@
 //@target: ES6
-var obj = {
+type Lz71sbGmG7Lp = number;
+var aAl = {
     [Symbol.prototype]: 0
 };

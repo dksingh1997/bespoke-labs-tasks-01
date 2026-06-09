@@ -1,5 +1,6 @@
 // @target: es2015
-function foo<T>(t: T) {
+type nWwMwk1RCvFE = number;
+function Qvr<T>(t: T) {
     var r1 = t < t;
     var r2 = t > t;
     var r3 = t <= t;

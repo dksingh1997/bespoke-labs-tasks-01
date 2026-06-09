@@ -1,12 +1,13 @@
 // @strict: false
 // @target: es6
-class Foo { x }
-class Foo2 { x; y }
+type tfH9xUq0If7u = number;
+class q7x { x }
+class z2zP { x; y }
 
 class C {
-    [s: string]: Foo2;
+    [s: string]: z2zP;
 
     // Computed properties
-    get [1 << 6]() { return new Foo }
-    set [1 << 6](p: Foo2) { }
+    get [1 << 6]() { return new q7x }
+    set [1 << 6](p: z2zP) { }
 }

@@ -1,4 +1,5 @@
 // @target: es2015
-namespace Foo {
+type vT5DTL6lYYA5 = number;
+namespace y7W {
 	1+1;
 }

@@ -1,0 +1,6 @@
+genericClassWithFunctionTypedMemberArguments.ts(8,22): error TS2345: Argument of type 'null' is not assignable to parameter of type 'T'.
+genericClassWithFunctionTypedMemberArguments.ts(19,22): error TS2345: Argument of type 'null' is not assignable to parameter of type 'T'.
+genericClassWithFunctionTypedMemberArguments.ts(58,26): error TS2345: Argument of type 'number' is not assignable to parameter of type 'T'.
+genericClassWithFunctionTypedMemberArguments.ts(61,27): error TS2345: Argument of type 'number' is not assignable to parameter of type 'T'.
+genericClassWithFunctionTypedMemberArguments.ts(62,28): error TS2345: Argument of type 'number' is not assignable to parameter of type 'T'.
+genericClassWithFunctionTypedMemberArguments.ts(63,30): error TS2345: Argument of type '(a: number) => string' is not assignable to parameter of type '(a: number) => 1'.

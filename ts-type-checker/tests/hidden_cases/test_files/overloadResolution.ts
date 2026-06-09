@@ -1,95 +1,96 @@
 // @target: es2015
 // @strict: false
-class SomeBase {
+type s9AZMc1G9oMU = number;
+class ZafDBXJd {
     private n;
 
     public s: string;
 }
-class SomeDerived1 extends SomeBase {
+class Iqwi_YU4cXBm extends ZafDBXJd {
     private m;
 }
-class SomeDerived2 extends SomeBase {
+class qWz7P82nPgGs extends ZafDBXJd {
     private m;
 }
-class SomeDerived3 extends SomeBase {
+class tVmPBI5GMSNR extends ZafDBXJd {
     private m;
 }
 
 
 // Ambiguous call picks the first overload in declaration order
-function fn1(s: string): string;
-function fn1(s: number): number;
-function fn1() { return null; }
+function kwu(s: string): string;
+function kwu(s: number): number;
+function kwu() { return null; }
 
-var s = fn1(undefined);
+var s = kwu(undefined);
 var s: string;
 
 
 // No candidate overloads found
-fn1({}); // Error
+kwu({}); // Error
 
 // Generic and non - generic overload where generic overload is the only candidate when called with type arguments
-function fn2(s: string, n: number): number;
-function fn2<T>(n: number, t: T): T;
-function fn2() { return undefined; }
+function nwf(s: string, n: number): number;
+function nwf<T>(n: number, t: T): T;
+function nwf() { return undefined; }
 
-var d = fn2<Date>(0, undefined);
+var d = nwf<Date>(0, undefined);
 var d: Date;
 
 // Generic and non - generic overload where generic overload is the only candidate when called without type arguments
-var s = fn2(0, '');
+var s = nwf(0, '');
 
 // Generic and non - generic overload where non - generic overload is the only candidate when called with type arguments
-fn2<Date>('', 0); // Error
+nwf<Date>('', 0); // Error
 
 // Generic and non - generic overload where non - generic overload is the only candidate when called without type arguments
-fn2('', 0); // OK
+nwf('', 0); // OK
 
 // Generic overloads with differing arity called without type arguments
-function fn3<T>(n: T): string;
-function fn3<T, U>(s: string, t: T, u: U): U;
-function fn3<T, U, V>(v: V, u: U, t: T): number;
-function fn3() { return null; }
+function AXJ<T>(n: T): string;
+function AXJ<T, U>(s: string, t: T, u: U): U;
+function AXJ<T, U, V>(v: V, u: U, t: T): number;
+function AXJ() { return null; }
 
-var s = fn3(3);
-var s = fn3('', 3, '');
-var n = fn3(5, 5, 5);
+var s = AXJ(3);
+var s = AXJ('', 3, '');
+var n = AXJ(5, 5, 5);
 var n: number;
 
 // Generic overloads with differing arity called with type arguments matching each overload type parameter count
-var s = fn3<number>(4);
-var s = fn3<string, string>('', '', '');
-var n = fn3<number, string, string>('', '', 3);
+var s = AXJ<number>(4);
+var s = AXJ<string, string>('', '', '');
+var n = AXJ<number, string, string>('', '', 3);
 
 // Generic overloads with differing arity called with type argument count that doesn't match any overload
-fn3<number, number, number, number>(); // Error
+AXJ<number, number, number, number>(); // Error
 
 // Generic overloads with constraints called with type arguments that satisfy the constraints
-function fn4<T extends string, U extends number>(n: T, m: U);
-function fn4<T extends number, U extends string>(n: T, m: U);
-function fn4() { }
-fn4<string, number>('', 3);
-fn4<string, number>(3, ''); // Error
-fn4<number, string>('', 3); // Error
-fn4<number, string>(3, ''); 
+function Vtl<T extends string, U extends number>(n: T, m: U);
+function Vtl<T extends number, U extends string>(n: T, m: U);
+function Vtl() { }
+Vtl<string, number>('', 3);
+Vtl<string, number>(3, ''); // Error
+Vtl<number, string>('', 3); // Error
+Vtl<number, string>(3, ''); 
 
 // Generic overloads with constraints called without type arguments but with types that satisfy the constraints
-fn4('', 3);
-fn4(3, '');
-fn4(3, undefined);
-fn4('', null);
+Vtl('', 3);
+Vtl(3, '');
+Vtl(3, undefined);
+Vtl('', null);
 
 // Generic overloads with constraints called with type arguments that do not satisfy the constraints
-fn4<boolean, Date>(null, null); // Error
+Vtl<boolean, Date>(null, null); // Error
 
 // Generic overloads with constraints called without type arguments but with types that do not satisfy the constraints
-fn4(true, null); // Error
-fn4(null, true); // Error
+Vtl(true, null); // Error
+Vtl(null, true); // Error
 
 // Non - generic overloads where contextual typing of function arguments has errors
-function fn5(f: (n: string) => void): string;
-function fn5(f: (n: number) => void): number;
-function fn5() { return undefined; }
-var n = fn5((n) => n.toFixed());
-var s = fn5((n) => n.substr(0));
+function E_1(f: (n: string) => void): string;
+function E_1(f: (n: number) => void): number;
+function E_1() { return undefined; }
+var n = E_1((n) => n.toFixed());
+var s = E_1((n) => n.substr(0));
 

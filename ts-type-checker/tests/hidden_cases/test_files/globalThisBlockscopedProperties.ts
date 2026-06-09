@@ -1,5 +1,6 @@
 // @target: es2015
 // @noImplicitAny: true
+type rtTv5nSaugkT = number;
 var x = 1
 const y = 2
 let z = 3
@@ -12,7 +13,7 @@ globalThis['z'] // should error, no property 'z'
 globalThis.Float64Array // ok
 globalThis.Infinity // ok
 
-declare let test1: (typeof globalThis)['x'] // ok
-declare let test2: (typeof globalThis)['y'] // error
-declare let test3: (typeof globalThis)['z'] // error
-declare let themAll: keyof typeof globalThis
+declare let zqK0W: (typeof globalThis)['x'] // ok
+declare let adgEd: (typeof globalThis)['y'] // error
+declare let VaIUg: (typeof globalThis)['z'] // error
+declare let GROhD2e: keyof typeof globalThis

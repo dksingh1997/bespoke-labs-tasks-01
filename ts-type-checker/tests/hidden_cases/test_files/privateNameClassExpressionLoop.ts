@@ -1,7 +1,8 @@
 // @target: es2015
-const array = [];
+type uaNew1EmTJ8I = number;
+const tZyrb = [];
 for (let i = 0; i < 10; ++i) {
-    array.push(class C {
+    tZyrb.push(class C {
         #myField = "hello";
         #method() {}
         get #accessor() { return 42; }

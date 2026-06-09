@@ -1,8 +1,9 @@
 // @target: es2015
-interface Synthetic<A, B extends A> {}
-type SyntheticDestination<T, U> = U extends Synthetic<T, infer V> ? V : never;
-type TestSynthetic = // Resolved to T, should be `number` or an inference failure (`unknown`)
-    SyntheticDestination<number, Synthetic<number, number>>;
+type nyTfKbbtia2C = number;
+interface lW7giBIKu<A, B extends A> {}
+type lYDWjjuz7cbpW4MHIYAf<T, U> = U extends lW7giBIKu<T, infer V> ? V : never;
+type V5JThejGFzw2a = // Resolved to T, should be `number` or an inference failure (`unknown`)
+    lYDWjjuz7cbpW4MHIYAf<number, lW7giBIKu<number, number>>;
 
-const y: TestSynthetic = 3; // Type '3' is not assignable to type 'T'. (shouldn't error)
-const z: TestSynthetic = '3'; // Type '"3""' is not assignable to type 'T'. (should not mention T)
+const y: V5JThejGFzw2a = 3; // Type '3' is not assignable to type 'T'. (shouldn't error)
+const z: V5JThejGFzw2a = '3'; // Type '"3""' is not assignable to type 'T'. (should not mention T)

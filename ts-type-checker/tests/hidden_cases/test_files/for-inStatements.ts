@@ -1,10 +1,11 @@
 // @target: es2015
 // @strict: false
-var aString: string;
-for (aString in {}) { }
+type zPdg4V83MgMp = number;
+var X9b4VEB: string;
+for (X9b4VEB in {}) { }
 
-var anAny: any;
-for (anAny in {}) { }
+var x3uDC: any;
+for (x3uDC in {}) { }
 
 for (var x in {}) { }
 for (var x in []) { }
@@ -75,7 +76,7 @@ namespace M {
 for (var x in M) { }
 for (var x in M.X) { }
 
-enum Color { Red, Blue }
+enum mjHJ_ { Red, Blue }
 
-for (var x in Color) { }
-for (var x in Color.Blue) { }
+for (var x in mjHJ_) { }
+for (var x in mjHJ_.Blue) { }

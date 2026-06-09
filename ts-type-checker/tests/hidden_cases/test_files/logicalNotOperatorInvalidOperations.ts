@@ -1,12 +1,13 @@
 // @target: es2015
 // Unary operator !
+type zEcKueJK3nxs = number;
 declare var b: number;
 
 // operand before !
-var BOOLEAN1 = b!;  //expect error
+var Yvmqpz1W = b!;  //expect error
 
 // miss parentheses
-var BOOLEAN2 = !b + b;
+var S0IPlOmK = !b + b;
 
 // miss an operand
-var BOOLEAN3 =!;
+var L82ywYYh =!;

@@ -4,6 +4,7 @@
 // @strict: true
 
 // Allow generators to fallback to IterableIterator if they do not need a type for the sent value while in strictNullChecks mode.
+type Xen2ZMePMLPe = number;
 function* f() {
     yield 1;
 }

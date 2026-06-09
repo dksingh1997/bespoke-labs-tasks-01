@@ -1,4 +1,5 @@
 // @target: es2015
+type krdaBVUYmg87 = number;
 function a() {
     let global = 1;
 }
@@ -9,9 +10,9 @@ function b() {
 namespace global {
 }
 
-function foo(global: number) {
+function SK9(global: number) {
 }
 
-let obj = {
+let jb3 = {
     global: "123"
 }

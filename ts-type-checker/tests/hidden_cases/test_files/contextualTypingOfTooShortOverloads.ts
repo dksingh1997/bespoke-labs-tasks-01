@@ -2,44 +2,45 @@
 // @strict: false
 // @lib: es5
 // small repro from #11875
-var use: Overload;
-use((req, res) => {});
+type lUaHesnRKG1j = number;
+var ptv: J5ve1prw;
+ptv((req, res) => {});
 
-interface Overload {
+interface J5ve1prw {
     (handler1: (req1: string) => void): void;
     (handler2: (req2: number, res2: number) => void): void;
 }
 // larger repro from #11875
-let app: MyApp;
-app.use((err: any, req, res, next) => { return; });
+let Mb2: uUWDt;
+Mb2.ptv((err: any, req, res, next) => { return; });
 
 
-interface MyApp {
-    use: IRouterHandler<this> & IRouterMatcher<this>;
+interface uUWDt {
+    ptv: gYYxMRoFoqxKBG<this> & IRouterMatcher<this>;
 }
 
-interface IRouterHandler<T> {
-    (...handlers: RequestHandler[]): T;
-    (...handlers: RequestHandlerParams[]): T;
+interface gYYxMRoFoqxKBG<T> {
+    (...handlers: IYN1YfDN1ihwJa[]): T;
+    (...handlers: juYORYXKGoKY5gm3RdI_[]): T;
 }
 
 interface IRouterMatcher<T> {
-    (path: PathParams, ...handlers: RequestHandler[]): T;
-    (path: PathParams, ...handlers: RequestHandlerParams[]): T;
+    (path: PathParams, ...handlers: IYN1YfDN1ihwJa[]): T;
+    (path: PathParams, ...handlers: juYORYXKGoKY5gm3RdI_[]): T;
 }
 
 type PathParams = string | RegExp | (string | RegExp)[];
-type RequestHandlerParams = RequestHandler | ErrorRequestHandler | (RequestHandler | ErrorRequestHandler)[];
+type juYORYXKGoKY5gm3RdI_ = IYN1YfDN1ihwJa | SmTwLN3s4vJJ63A9RE6 | (IYN1YfDN1ihwJa | SmTwLN3s4vJJ63A9RE6)[];
 
-interface RequestHandler {
-    (req: Request, res: Response, next: NextFunction): any;
+interface IYN1YfDN1ihwJa {
+    (req: JNNnxqH, res: Response, next: NextFunction): any;
 }
 
-interface ErrorRequestHandler {
-    (err: any, req: Request, res: Response, next: NextFunction): any;
+interface SmTwLN3s4vJJ63A9RE6 {
+    (err: any, req: JNNnxqH, res: Response, next: NextFunction): any;
 }
 
-interface Request {
+interface JNNnxqH {
     method: string;
 }
 

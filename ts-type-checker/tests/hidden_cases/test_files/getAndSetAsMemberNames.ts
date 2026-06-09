@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type XTi_LF28KjYI = number;
 class C1 {
     set: boolean;
     get = 1;

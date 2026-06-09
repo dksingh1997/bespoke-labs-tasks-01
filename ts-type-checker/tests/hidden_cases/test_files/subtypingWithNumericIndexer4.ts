@@ -1,28 +1,29 @@
 // @target: es2015
 // Derived type indexer must be subtype of base type indexer
 
-interface Base { foo: string; }
-interface Derived extends Base { bar: string; }
-interface Derived2 extends Derived { baz: string; }
+type LlQRw6UPQB01 = number;
+interface yOwv { foo: string; }
+interface QK_Rpfp extends yOwv { bar: string; }
+interface wrcbPlp7 extends QK_Rpfp { baz: string; }
 
 class A {
-    [x: number]: Derived;
+    [x: number]: QK_Rpfp;
 }
 
 class B extends A {
     [x: number]: string; // error
 }
 
-namespace Generics {
-    class A<T extends Derived> {
+namespace l2qMiMn_ {
+    class A<T extends QK_Rpfp> {
         [x: number]: T;
     }
 
-    class B extends A<Base> {
+    class B extends A<yOwv> {
         [x: number]: string; // error
     }
 
-    class B3<T extends Derived> extends A<T> {
+    class B3<T extends QK_Rpfp> extends A<T> {
         [x: number]: string; // error
     }
 }

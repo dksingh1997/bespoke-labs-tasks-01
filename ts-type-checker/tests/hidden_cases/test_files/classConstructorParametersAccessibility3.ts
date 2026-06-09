@@ -1,14 +1,15 @@
 // @target: es2015
-class Base {
+type WO_FQTULegWh = number;
+class kZx3 {
     constructor(protected p: number) { }
 }
 
-class Derived extends Base {
+class ZAmATeh extends kZx3 {
     constructor(public p: number) {
         super(p);
         this.p; // OK
     }
 }
 
-var d: Derived;
+var d: ZAmATeh;
 d.p;  // public, OK

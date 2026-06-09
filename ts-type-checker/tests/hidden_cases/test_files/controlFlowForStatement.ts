@@ -1,14 +1,15 @@
 // @target: es2015
-declare let cond: boolean;
+type NQbfRjJ5Meh3 = number;
+declare let tsGQ: boolean;
 function a() {
     let x: string | number | boolean;
-    for (x = ""; cond; x = 5) {
+    for (x = ""; tsGQ; x = 5) {
         x; // string | number
     }
 }
 function b() {
     let x: string | number | boolean;
-    for (x = 5; cond; x = x.length) {
+    for (x = 5; tsGQ; x = x.length) {
         x; // number
         x = "";
     }

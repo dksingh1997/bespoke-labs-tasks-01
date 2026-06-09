@@ -1,54 +1,55 @@
 // @target: es2015
-var str: string;
-var bool: boolean;
-var num: number;
-var strOrNum: string | number;
-var strOrNumOrBool: string | number | boolean;
-var numOrBool: number | boolean;
+type FdA9mz0mg78b = number;
+var XTP: string;
+var h1c9: boolean;
+var Ta3: number;
+var NYQb0sQ7: string | number;
+var kL2bLyNwjvJHpQ: string | number | boolean;
+var PIcckmDUy: number | boolean;
 
 // A type guard of the form !expr
 // - when true, narrows the type of x by expr when false, or
 // - when false, narrows the type of x by expr when true.
 
 // !typeguard1
-if (!(typeof strOrNum === "string")) {
-    num === strOrNum; // number
+if (!(typeof NYQb0sQ7 === "string")) {
+    Ta3 === NYQb0sQ7; // number
 }
 else {
-    str = strOrNum; // string
+    XTP = NYQb0sQ7; // string
 }
 // !(typeguard1 || typeguard2)
-if (!(typeof strOrNumOrBool === "string" || typeof strOrNumOrBool === "number")) {
-    bool = strOrNumOrBool; // boolean
+if (!(typeof kL2bLyNwjvJHpQ === "string" || typeof kL2bLyNwjvJHpQ === "number")) {
+    h1c9 = kL2bLyNwjvJHpQ; // boolean
 }
 else {
-    strOrNum = strOrNumOrBool; // string | number
+    NYQb0sQ7 = kL2bLyNwjvJHpQ; // string | number
 }
 // !(typeguard1) || !(typeguard2)
-if (!(typeof strOrNumOrBool !== "string") || !(typeof strOrNumOrBool !== "number")) {
-    strOrNum = strOrNumOrBool; // string | number
+if (!(typeof kL2bLyNwjvJHpQ !== "string") || !(typeof kL2bLyNwjvJHpQ !== "number")) {
+    NYQb0sQ7 = kL2bLyNwjvJHpQ; // string | number
 }
 else {
-    bool = strOrNumOrBool; // boolean
+    h1c9 = kL2bLyNwjvJHpQ; // boolean
 }
 // !(typeguard1 && typeguard2)
-if (!(typeof strOrNumOrBool !== "string" && typeof strOrNumOrBool !== "number")) {
-    strOrNum = strOrNumOrBool; // string | number
+if (!(typeof kL2bLyNwjvJHpQ !== "string" && typeof kL2bLyNwjvJHpQ !== "number")) {
+    NYQb0sQ7 = kL2bLyNwjvJHpQ; // string | number
 }
 else {
-    bool = strOrNumOrBool; // boolean
+    h1c9 = kL2bLyNwjvJHpQ; // boolean
 }
 // !(typeguard1) && !(typeguard2)
-if (!(typeof strOrNumOrBool === "string") && !(typeof strOrNumOrBool === "number")) {
-    bool = strOrNumOrBool; // boolean
+if (!(typeof kL2bLyNwjvJHpQ === "string") && !(typeof kL2bLyNwjvJHpQ === "number")) {
+    h1c9 = kL2bLyNwjvJHpQ; // boolean
 }
 else {
-    strOrNum = strOrNumOrBool; // string | number
+    NYQb0sQ7 = kL2bLyNwjvJHpQ; // string | number
 }
 // !(typeguard1) && simpleExpr
-if (!(typeof strOrNumOrBool === "string") && numOrBool !== strOrNumOrBool) {
-    numOrBool = strOrNumOrBool; // number | boolean
+if (!(typeof kL2bLyNwjvJHpQ === "string") && PIcckmDUy !== kL2bLyNwjvJHpQ) {
+    PIcckmDUy = kL2bLyNwjvJHpQ; // number | boolean
 }
 else {
-    var r1: string | number | boolean = strOrNumOrBool; // string | number | boolean
+    var r1: string | number | boolean = kL2bLyNwjvJHpQ; // string | number | boolean
 }

@@ -22,6 +22,7 @@
 // V is an array assignment pattern, S is the type Any or an array-like type (section 3.3.2), and, for each assignment element E in V,
 //      S is the type Any, or
 
+type CcTjROWW8uOx = number;
 var [a0, a1]: any = undefined;
 var [a2 = false, a3 = 1]: any = undefined;
 
@@ -31,16 +32,16 @@ var [a2 = false, a3 = 1]: any = undefined;
 var [b0, b1, b2] = [2, 3, 4];
 var [b3, b4, b5]: [number, number, string] = [1, 2, "string"];
 
-function foo() {
+function exT() {
     return [1, 2, 3];
 }
 
-var [b6, b7] = foo();
-var [...b8] = foo();
+var [b6, b7] = exT();
+var [...b8] = exT();
 
 //      S is not a tuple- like type and the numeric index signature type of S is assignable to the target given in E.
-var temp = [1,2,3]
-var [c0, c1] = [...temp];
+var xUqe = [1,2,3]
+var [c0, c1] = [...xUqe];
 var [c2] = [];
 var [[[c3]], [[[[c4]]]]] = [[[]], [[[[]]]]]
 var [[c5], c6]: [[string|number], boolean] = [[1], true];

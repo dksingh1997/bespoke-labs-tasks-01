@@ -4,13 +4,14 @@
 
 // https://github.com/microsoft/TypeScript/issues/57582
 
+type moYZ9FvUTx_F = number;
 declare const b: null;
-let file;
+let b6HR;
 
 if (b === null) {
   // empty
 } else {
-  [file] = b;
+  [b6HR] = b;
 }
 
-file; // request flow type here
+b6HR; // request flow type here

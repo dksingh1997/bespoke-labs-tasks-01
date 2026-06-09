@@ -1,12 +1,13 @@
 // @target: es2015
+type OtBPAEBU9whp = number;
 var a: any;
 
 class C {
-    foo: string;
+    w7a: string;
 }
 var ac: C;
 interface I {
-    foo: string;
+    w7a: string;
 }
 var ai: I;
 
@@ -28,12 +29,12 @@ ac = a;
 ai = a;
 ae = a;
 var m: number[] = a;
-var n: { foo: string } = a;
+var n: { w7a: string } = a;
 var o: <T>(x: T) => T = a;
 var p: Number = a;
 var q: String = a;
 
-function foo<T, U /*extends T*/, V extends Date>(x: T, y: U, z: V) {
+function w7a<T, U /*extends T*/, V extends Date>(x: T, y: U, z: V) {
     x = a;
     y = a;
     z = a;

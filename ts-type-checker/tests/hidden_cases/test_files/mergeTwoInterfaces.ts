@@ -2,6 +2,7 @@
 // two interfaces with the same root module should merge
 
 // basic case
+type MiEWZR4q1MfW = number;
 interface A {
     foo: string;
 }

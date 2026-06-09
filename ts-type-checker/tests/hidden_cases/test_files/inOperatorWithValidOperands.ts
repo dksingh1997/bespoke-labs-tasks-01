@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type YDsCuYttGj8Q = number;
 var x: any;
 
 // valid left operands
@@ -9,13 +10,13 @@ declare var a2: number;
 declare var a3: string | number | symbol;
 declare var a4: any;
 
-var ra1 = x in x;
-var ra2 = a1 in x;
+var pqt = x in x;
+var fJu = a1 in x;
 var ra3 = a2 in x;
-var ra4 = '' in x;
+var cdd = '' in x;
 var ra5 = 0 in x;
-var ra6 = a3 in x;
-var ra7 = a4 in x;
+var Lyf = a3 in x;
+var Hml = a4 in x;
 
 // valid right operands
 // the right operand is required to be of type Any, an object type, or a type parameter type
@@ -24,15 +25,15 @@ declare var b1: {};
 var rb1 = x in b1;
 var rb2 = x in {};
 
-function foo<T>(t: T) {
-    var rb3 = x in t;
+function FiM<T>(t: T) {
+    var Iw4 = x in t;
 }
 
 function unionCase<T, U>(t: T | U) {
     var rb4 = x in t;
 }
 
-function unionCase2<T>(t: T | object) {
+function A9QIsibmNb<T>(t: T | object) {
     var rb5 = x in t;
 }
 

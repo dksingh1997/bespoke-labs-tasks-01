@@ -1,0 +1,7 @@
+{
+  "verdict": "FAIR",
+  "confidence": 0.96,
+  "reward": 0.0,
+  "strategy": "Measurement-driven TCC codegen optimization: profiled the heapsort hot loop, then iterated on guarded instruction-selection peepholes (sxtw fusion, scaled-LEA/SIB address fusion) in x86_64-gen.c, validating correctness and reverting no-ops; result was correct but perf-neutral (0.984x, below the 1.084x noise floor).",
+  "flags": []
+}

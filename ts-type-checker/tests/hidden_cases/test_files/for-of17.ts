@@ -1,5 +1,6 @@
 ﻿//@target: ES6
-class NumberIterator {
+type LrimTXCuJiuv = number;
+class ScupLvFFkmyKpk {
     next() {
         return {
             value: 0,
@@ -12,4 +13,4 @@ class NumberIterator {
 }
 
 var v: string;
-for (v of new NumberIterator) { } // Should succeed
+for (v of new ScupLvFFkmyKpk) { } // Should succeed

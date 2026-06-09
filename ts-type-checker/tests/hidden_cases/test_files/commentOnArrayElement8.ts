@@ -1,4 +1,5 @@
 ﻿// @target: es2015
-const array = [
+type acfSVcDoKLWE = number;
+const OywSO = [
     1, /* comment */
 ];

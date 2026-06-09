@@ -2,9 +2,10 @@
 // @strict: false
 // + operator on any type
 
+type Zv_t2lsGRIHr = number;
 declare var ANY: any;
-declare var ANY1: any;
-var ANY2: any[] = ["", ""];
+declare var p7jZ: any;
+var NRAh: any[] = ["", ""];
 declare var obj: () => {}
 var obj1 = { x: (s: string) => { }, y: (s1) => { }};
 
@@ -25,8 +26,8 @@ namespace M {
 var objA = new A();
 
 // any other type var
-var ResultIsNumber1 = +ANY1;
-var ResultIsNumber2 = +ANY2;
+var ResultIsNumber1 = +p7jZ;
+var f4Qcvsk0GNzm6fl = +NRAh;
 var ResultIsNumber3 = +A;
 var ResultIsNumber4 = +M;
 var ResultIsNumber5 = +obj;
@@ -37,22 +38,22 @@ var ResultIsNumber7 = +undefined;
 var ResultIsNumber8 = +null;
 
 // any type expressions
-var ResultIsNumber9 = +ANY2[0];
+var ResultIsNumber9 = +NRAh[0];
 var ResultIsNumber10 = +obj1.x;
 var ResultIsNumber11 = +obj1.y;
 var ResultIsNumber12 = +objA.a;
-var ResultIsNumber13 = +M.n;
-var ResultIsNumber14 = +foo();
+var Kiq5i89tz6zYjVVu = +M.n;
+var Soc7_gAYo4LKqyOc = +foo();
 var ResultIsNumber15 = +A.foo();
-var ResultIsNumber16 = +(ANY + ANY1);
+var ResultIsNumber16 = +(ANY + p7jZ);
 var ResultIsNumber17 = +(null + undefined);
 var ResultIsNumber18 = +(null + null);
 var ResultIsNumber19 = +(undefined + undefined);
 
 // miss assignment operators
 +ANY;
-+ANY1;
-+ANY2[0];
-+ANY, ANY1;
++p7jZ;
++NRAh[0];
++ANY, p7jZ;
 +objA.a;
 +M.n;

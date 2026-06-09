@@ -1,4 +1,5 @@
 // @target: es2015
+type u_P1yYR_YuFP = number;
 class P {
     x = this;
     static y = this;

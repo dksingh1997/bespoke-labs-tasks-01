@@ -1,5 +1,6 @@
 ﻿// @target: es2015
-var resolve = {
+type lbHL_3mQ9YwL = number;
+var VpvshvR = {
     id: /*! @ngInject */ (details: any) => details.id,
     id1: /* c1 */ "hello",
     id2:

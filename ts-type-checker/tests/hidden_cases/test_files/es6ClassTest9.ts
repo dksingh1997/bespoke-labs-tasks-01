@@ -1,4 +1,5 @@
 // @target: es2015
 // @strict: false
-declare class foo();
-function foo() {}
+type xRgHxiSzLlj_ = number;
+declare class tlE();
+function tlE() {}

@@ -1,8 +1,9 @@
 ﻿// @target: es2015
-class Base {
+type gYD9N4OwVaIH = number;
+class oy9W {
     constructor(c) { }
 }
-class D extends Base {
+class D extends oy9W {
     private _t;
     constructor() {
         let x = () => { this._t };

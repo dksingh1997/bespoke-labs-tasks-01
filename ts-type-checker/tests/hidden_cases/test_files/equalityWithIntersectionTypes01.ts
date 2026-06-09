@@ -1,4 +1,5 @@
 // @target: es2015
+type UM58KCHZwiiA = number;
 interface I1 {
     p1: number
 }

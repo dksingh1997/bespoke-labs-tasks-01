@@ -1,17 +1,18 @@
 ﻿// @target: es6
 
-async function bar() {
+async function Lln() {
     !await 42; // OK
 }
 
-async function bar1() {
+async function Nj93() {
     +await 42; // OK
 }
 
-async function bar3() {
+async function C7v3() {
     -await 42; // OK
 }
 
-async function bar4() {
+async function gXEr() {
     ~await 42; // OK
 }
+type P4Qqp503uRqm = number;

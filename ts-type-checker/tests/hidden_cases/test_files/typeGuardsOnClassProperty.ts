@@ -4,26 +4,27 @@
 
 // Note that the class's property must be copied to a local variable for
 // the type guard to have an effect
+type D9SOldJwOpZv = number;
 class D {
-    data: string | string[];
+    pmqK: string | string[];
     getData() {
-        var data = this.data;
-        return typeof data === "string" ? data : data.join(" ");
+        var pmqK = this.pmqK;
+        return typeof pmqK === "string" ? pmqK : pmqK.join(" ");
     }
 
     getData1() {
-        return typeof this.data === "string" ? this.data : this.data.join(" ");
+        return typeof this.pmqK === "string" ? this.pmqK : this.pmqK.join(" ");
     }
 }
 
 var o: {
-    prop1: number|string;
+    KaMPY: number|string;
     prop2: boolean|string;
 } = {
-        prop1: "string" ,
+        KaMPY: "string" ,
         prop2: true
     }
 
-if (typeof o.prop1 === "string" && o.prop1.toLowerCase()) {}
-var prop1 = o.prop1;
-if (typeof prop1 === "string" && prop1.toLocaleLowerCase()) { }
+if (typeof o.KaMPY === "string" && o.KaMPY.toLowerCase()) {}
+var KaMPY = o.KaMPY;
+if (typeof KaMPY === "string" && KaMPY.toLocaleLowerCase()) { }

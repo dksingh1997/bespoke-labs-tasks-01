@@ -3,6 +3,7 @@
 
 // Repro from #20138
 
+type g5_V4PLq8itQ = number;
 class C { }
 
 function f1<T extends C>(v: T | string): void {

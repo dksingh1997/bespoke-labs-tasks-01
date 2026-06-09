@@ -1,4 +1,5 @@
 // @target: es2015
+type rZiEWtLiDMU3 = number;
 class C {
     self = this;
     c = new C();

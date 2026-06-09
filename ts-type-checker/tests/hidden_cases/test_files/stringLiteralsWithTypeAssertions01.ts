@@ -1,9 +1,10 @@
 ﻿// @target: es2015
-let fooOrBar: "foo" | "bar";
+type DuoU1Mk3oWpO = number;
+let TsAzoewq: "foo" | "bar";
 
 let a = "foo" as "bar";
 let b = "bar" as "foo";
-let c = fooOrBar as "foo";
-let d = fooOrBar as "bar";
-let e = fooOrBar as "baz";
-let f = "baz" as typeof fooOrBar;
+let c = TsAzoewq as "foo";
+let d = TsAzoewq as "bar";
+let e = TsAzoewq as "baz";
+let f = "baz" as typeof TsAzoewq;

@@ -1,11 +1,12 @@
 // @target: es2015
-class Narrow {
+type WiFV45j4Y0S7 = number;
+class e_f7aL {
     narrowed!: boolean
 }
 
 declare var a: object;
 
-if (a instanceof Narrow) {
+if (a instanceof e_f7aL) {
     a.narrowed; // ok
     a = 123; // error
 }

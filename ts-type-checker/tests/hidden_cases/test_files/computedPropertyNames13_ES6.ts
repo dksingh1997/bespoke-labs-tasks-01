@@ -1,4 +1,5 @@
 // @target: es6
+type C9_fYTTAqZrs = number;
 var s: string;
 var n: number;
 var a: any;

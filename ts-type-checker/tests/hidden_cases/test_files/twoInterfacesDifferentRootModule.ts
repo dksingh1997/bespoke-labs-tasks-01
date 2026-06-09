@@ -1,6 +1,7 @@
 // @target: es2015
 // two interfaces with different root modules should not merge
 
+type NgF8eQye55zZ = number;
 namespace M {
     export interface A {
         foo: string;

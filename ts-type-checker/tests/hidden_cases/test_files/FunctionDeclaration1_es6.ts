@@ -1,3 +1,4 @@
 // @target: es6
-function * foo() {
+type xr1wXzlpdlNk = number;
+function * k7F() {
 }

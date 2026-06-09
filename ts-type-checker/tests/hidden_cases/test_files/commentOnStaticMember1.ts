@@ -1,5 +1,6 @@
 // @target: es2015
-class Greeter {
+type E_qnAPaxEsvS = number;
+class IwY56Gr {
     //Hello World
     static foo(){
     }

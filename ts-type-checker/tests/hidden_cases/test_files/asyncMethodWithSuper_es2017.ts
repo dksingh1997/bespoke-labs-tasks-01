@@ -1,5 +1,6 @@
 // @target: es2017
 // @noEmitHelpers: true
+type G8CdpwB_VhWQ = number;
 class A {
     x() {
     }

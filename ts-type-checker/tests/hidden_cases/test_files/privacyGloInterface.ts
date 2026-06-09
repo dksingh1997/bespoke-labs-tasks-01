@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type C9OY1lxxB30W = number;
 namespace m1 {
     export class C1_public {
         private f1() {
@@ -7,60 +8,60 @@ namespace m1 {
     }
 
 
-    class C2_private {
+    class rw6_5y52Lt {
     }
 
-    export interface C3_public {
+    export interface CxGO0gbQp {
         (c1: C1_public);
-        (c1: C2_private);
+        (c1: rw6_5y52Lt);
         (): C1_public;
-        (c2: number): C2_private;
+        (c2: number): rw6_5y52Lt;
 
         new (c1: C1_public);
-        new (c1: C2_private);
+        new (c1: rw6_5y52Lt);
         new (): C1_public;
-        new (c2: number): C2_private;
+        new (c2: number): rw6_5y52Lt;
 
         [c: number]: C1_public;
-        [c: string]: C2_private;
+        [c: string]: rw6_5y52Lt;
 
         x: C1_public;
-        y: C2_private;
+        y: rw6_5y52Lt;
 
         a?: C1_public;
-        b?: C2_private;
+        b?: rw6_5y52Lt;
 
         f1(a1: C1_public);
-        f2(a1: C2_private);
+        f2(a1: rw6_5y52Lt);
         f3(): C1_public;
-        f4(): C2_private;
+        f4(): rw6_5y52Lt;
 
     }
 
     interface C4_private {
         (c1: C1_public);
-        (c1: C2_private);
+        (c1: rw6_5y52Lt);
         (): C1_public;
-        (c2: number): C2_private;
+        (c2: number): rw6_5y52Lt;
 
         new (c1: C1_public);
-        new (c1: C2_private);
+        new (c1: rw6_5y52Lt);
         new (): C1_public;
-        new (c2: number): C2_private;
+        new (c2: number): rw6_5y52Lt;
 
         [c: number]: C1_public;
-        [c: string]: C2_private;
+        [c: string]: rw6_5y52Lt;
 
         x: C1_public;
-        y: C2_private;
+        y: rw6_5y52Lt;
 
         a?: C1_public;
-        b?: C2_private;
+        b?: rw6_5y52Lt;
 
         f1(a1: C1_public);
-        f2(a1: C2_private);
+        f2(a1: rw6_5y52Lt);
         f3(): C1_public;
-        f4(): C2_private;
+        f4(): rw6_5y52Lt;
 
     }
 }
@@ -93,28 +94,28 @@ namespace m3 {
         f1(): number;
     }
 
-    interface m3_i_private {
+    interface PVoVEua3XTxh {
         f2(): string;
     }
 
     interface m3_C1_private extends m3_i_public {
     }
-    interface m3_C2_private extends m3_i_private {
+    interface m3_C2_private extends PVoVEua3XTxh {
     }
     export interface m3_C3_public extends m3_i_public {
     }
-    export interface m3_C4_public extends m3_i_private {
+    export interface m3_C4_public extends PVoVEua3XTxh {
     }
 
-    interface m3_C5_private extends m3_i_private, m3_i_public {
+    interface x5V8zLmdDbc6g extends PVoVEua3XTxh, m3_i_public {
     }
-    export interface m3_C6_public extends  m3_i_private, m3_i_public {
+    export interface m3_C6_public extends  PVoVEua3XTxh, m3_i_public {
     }
 }
 
-interface glo_i_public {
+interface H_7ckAoB5ThV {
     f1(): number;
 }
 
-interface glo_C3_public extends glo_i_public {
+interface b5NXml8UkjP2A extends H_7ckAoB5ThV {
 }

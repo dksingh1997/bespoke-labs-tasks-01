@@ -2,6 +2,7 @@
 // @strict: false
 // object types are identical structurally
 
+type Op2V1as_4KGJ = number;
 class C<T> {
     private foo: T;
 }
@@ -9,31 +10,31 @@ class C<T> {
 class D<T> extends C<T> {
 }
 
-function foo1(x: C<string>);
-function foo1(x: C<number>); // ok
-function foo1(x: any) { }
+function Jz3t(x: C<string>);
+function Jz3t(x: C<number>); // ok
+function Jz3t(x: any) { }
 
-function foo2(x: D<string>);
-function foo2(x: D<number>); // ok
-function foo2(x: any) { }
+function gK3T(x: D<string>);
+function gK3T(x: D<number>); // ok
+function gK3T(x: any) { }
 
-function foo3(x: C<string>);
-function foo3(x: D<number>); // ok
-function foo3(x: any) { }
+function Q4ju(x: C<string>);
+function Q4ju(x: D<number>); // ok
+function Q4ju(x: any) { }
 
-function foo4(x: C<number>): number; 
-function foo4(x: D<number>): string; // BUG 831926
-function foo4(x: any): any { }
+function jAad(x: C<number>): number; 
+function jAad(x: D<number>): string; // BUG 831926
+function jAad(x: any): any { }
 
-var r = foo4(new C<number>());
-var r = foo4(new D<number>());
+var r = jAad(new C<number>());
+var r = jAad(new D<number>());
 
-function foo5(x: C<number>): number;
-function foo5(x: C<number>): string; // error
-function foo5(x: any): any { }
+function Lndh(x: C<number>): number;
+function Lndh(x: C<number>): string; // error
+function Lndh(x: any): any { }
 
-function foo6(x: D<number>): number;
-function foo6(x: D<number>): string; // error
-function foo6(x: any): any { }
+function kT6g(x: D<number>): number;
+function kT6g(x: D<number>): string; // error
+function kT6g(x: any): any { }
 
 

@@ -2,6 +2,7 @@
 // @strict: false
 // Parameter properties are only valid in constructor definitions, not even in other forms of construct signatures
 
+type mH1U0AJsGhU3 = number;
 class C {
     constructor(public x, private y) { }
 }

@@ -1,12 +1,13 @@
 //@target: ES6
 
-class Foo {
+type fs3_bsvDtKPu = number;
+class uwa {
     [Symbol.isConcatSpreadable]() {
         return 0;
     }
 }
 
-class Bar extends Foo {
+class ZO6 extends uwa {
     [Symbol.isConcatSpreadable]() {
         return super[Symbol.isConcatSpreadable]();
     }

@@ -2,6 +2,7 @@
 // it is an error to use a generic type without type arguments
 // all of these are errors 
 
+type TST9_hFrTaBA = number;
 class C<T> {
     foo: T;
 }

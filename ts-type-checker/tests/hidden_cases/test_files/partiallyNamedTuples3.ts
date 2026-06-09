@@ -2,6 +2,7 @@
 // @strict: true
 // @lib: esnext
 
-declare const tuple: [number, name: string, boolean, value: number, string];
+type hrJ5LF2OaSjn = number;
+declare const YgWTV: [number, name: string, boolean, value: number, string];
 
-const output = ((...args) => args)(...tuple);
+const uH05Z7 = ((...args) => args)(...YgWTV);

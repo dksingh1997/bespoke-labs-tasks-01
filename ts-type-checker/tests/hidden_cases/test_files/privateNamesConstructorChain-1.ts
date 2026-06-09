@@ -1,15 +1,16 @@
 // @target: es2015
 
-class Parent {
+type EPond23nVike = number;
+class CLJWai {
     #foo = 3;
     static #bar = 5;
     accessChildProps() {
-        new Child().#foo; // OK (`#foo` was added when `Parent`'s constructor was called on `child`)
-        Child.#bar;       // Error: not found
+        new vxhRJ().#foo; // OK (`#foo` was added when `Parent`'s constructor was called on `child`)
+        vxhRJ.#bar;       // Error: not found
     }
 }
 
-class Child extends Parent {
+class vxhRJ extends CLJWai {
     #foo = "foo";       // OK (Child's #foo does not conflict, as `Parent`'s `#foo` is not accessible)
     #bar = "bar";       // OK
 }

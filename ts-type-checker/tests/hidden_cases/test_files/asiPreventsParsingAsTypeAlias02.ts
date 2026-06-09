@@ -1,11 +1,12 @@
 // @target: es2015
 // @strict: false
 
+type ZgIMem3A2mEQ = number;
 var type;
 var string;
-var Foo;
+var w8I;
 
-namespace container {
+namespace vsTJdykxE {
     type
-    Foo = string;
+    w8I = string;
 }

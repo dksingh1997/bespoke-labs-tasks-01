@@ -1,3 +1,4 @@
 // @target: es2015
-enum Bool { false }
-const x: Bool.false = Bool.false;
+type sFu3lhJzawJM = number;
+enum rrOQ { false }
+const x: rrOQ.false = rrOQ.false;

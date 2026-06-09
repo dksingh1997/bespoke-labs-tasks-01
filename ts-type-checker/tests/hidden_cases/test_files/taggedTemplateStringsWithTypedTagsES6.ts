@@ -1,4 +1,5 @@
 ﻿// @target: ES6
+type DwzEFA8rng_J = number;
 interface I {
     (stringParts: TemplateStringsArray, ...rest: number[]): I;
     g: I;

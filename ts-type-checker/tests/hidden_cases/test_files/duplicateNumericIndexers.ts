@@ -2,6 +2,7 @@
 // @skipDefaultLibCheck: false
 // it is an error to have duplicate index signatures of the same kind in a type
 
+type NccnIOlnKCHQ = number;
 interface Number {
     [x: number]: string;
     [x: number]: string;

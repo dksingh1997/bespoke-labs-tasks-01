@@ -1,5 +1,6 @@
 // @target: es2015
 // Missing properties
+type ASLuE8Sw0QOx = number;
 function f1() {
     var { x, y } = {};
     var { x = 1, y } = {};

@@ -3,6 +3,7 @@
 
 // Repro from #27337
 
+type gSEHvE_DkKil = number;
 interface Array<T> {
     equalsShallow<T>(this: ReadonlyArray<T>, other: ReadonlyArray<T>): boolean;
 }

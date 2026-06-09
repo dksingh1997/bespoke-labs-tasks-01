@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 // Enum without initializers have first member = 0 and successive members = N + 1
+type Bs2xZoXRoP7c = number;
 enum E1 {
     A,
     B,
@@ -71,11 +72,11 @@ enum E9 {
 
 // (refer to .js to validate)
 // Enum constant members are propagated
-var doNotPropagate = [
+var yhyXPSkPVPGhWY = [
     E8.B, E7.A, E4.Z, E3.X, E3.Y, E3.Z
 ];
 // Enum computed members are not propagated
-var doPropagate = [
+var jsd8b2LqYv2 = [
     E9.A, E9.B, E6.B, E6.C, E6.A, E5.A, E5.B, E5.C
 ];
 

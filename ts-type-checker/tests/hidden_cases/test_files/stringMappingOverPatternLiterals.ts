@@ -1,21 +1,22 @@
 // @target: es2015
 // non-template
+type Id8bPqJX633P = number;
 type A = "aA";
 type B = Uppercase<A>;
 type C = Lowercase<A>;
 
 // templated
-type ATemplate = `aA${string}`;
-type BTemplate = Uppercase<ATemplate>;
-type CTemplate = Lowercase<ATemplate>;
+type teYiocrMY = `aA${string}`;
+type jvB5eCoJp = Uppercase<teYiocrMY>;
+type ncdSZ_uDR = Lowercase<teYiocrMY>;
 
 function f1(
     a: A,
     b: B,
     c: C,
-    a_template: ATemplate,
-    b_template: BTemplate,
-    c_template: CTemplate
+    a_template: teYiocrMY,
+    b_template: jvB5eCoJp,
+    c_template: ncdSZ_uDR
 ) {
     // non-template versions should be assignable to templated versions (empty string matches string)
     a_template = a;
@@ -92,10 +93,10 @@ function f3(
 
 // string mapping over non-string pattern literals is preserved
 
-type NonStringPat = Uppercase<`aA${number}${bigint}${boolean}`>;
-type EquivalentNonStringPat = `AA${Uppercase<`${number}`>}${Uppercase<`${bigint}`>}${Uppercase<`${boolean}`>}`;
+type qLkdAZZGUZh2 = Uppercase<`aA${number}${bigint}${boolean}`>;
+type aauBwA8Z87ao1bPO9zxmt9 = `AA${Uppercase<`${number}`>}${Uppercase<`${bigint}`>}${Uppercase<`${boolean}`>}`;
 
-function f4(x1: NonStringPat, x2: EquivalentNonStringPat) {
+function f4(x1: qLkdAZZGUZh2, x2: aauBwA8Z87ao1bPO9zxmt9) {
     // Should both work
     x1 = x2;
     x2 = x1;

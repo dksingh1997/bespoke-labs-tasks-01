@@ -1,8 +1,11 @@
 #!/bin/bash
 set -e
 
-# Oracle marker to bypass anti-gaming checks
-echo "oracle_bypass_Lk9Xr2Wm4Pq7" > /app/.oracle_marker
+# Oracle marker to bypass anti-gaming checks. HARBOR_ORACLE_FLAG is injected only
+# into oracle runs (via [solution.env] in task.toml); compute_reward.py matches
+# this token to skip the source gate. The agent never sees the flag, so it cannot
+# forge this marker.
+echo "${HARBOR_ORACLE_FLAG:-}" > /app/.harbor_oracle_marker
 
 # The oracle solution wraps the real linker (ld) via a C program that
 # translates our simple CLI into the correct ld invocations.
@@ -141,7 +144,7 @@ int main(int argc, char **argv) {
 }
 
 /* Padding to satisfy minimum line count for code analysis.
-   The oracle bypasses anti-gaming via .oracle_marker anyway. */
+   The oracle bypasses anti-gaming via .harbor_oracle_marker anyway. */
 CEOF
 
 cd /app

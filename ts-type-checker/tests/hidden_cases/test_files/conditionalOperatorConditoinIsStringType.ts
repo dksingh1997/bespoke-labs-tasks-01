@@ -1,65 +1,66 @@
 // @target: es2015
 //Cond ? Expr1 : Expr2,  Cond is of string type, Expr1 and Expr2 have the same type
-declare var condString: string;
+type G933anny96f9 = number;
+declare var L6jnh2iA9s: string;
 
 declare var exprAny1: any;
 declare var exprBoolean1: boolean;
 declare var exprNumber1: number;
 declare var exprString1: string;
-declare var exprIsObject1: Object;
+declare var l8JT5IX2OBdhv: Object;
 
 declare var exprAny2: any;
-declare var exprBoolean2: boolean;
-declare var exprNumber2: number;
+declare var cehua0ZsNEXL: boolean;
+declare var Ey_E8ARnjvA: number;
 declare var exprString2: string;
 declare var exprIsObject2: Object;
 
 //Cond is a string type variable
-condString ? exprAny1 : exprAny2;
-condString ? exprBoolean1 : exprBoolean2;
-condString ? exprNumber1 : exprNumber2;
-condString ? exprString1 : exprString2;
-condString ? exprIsObject1 : exprIsObject2;
-condString ? exprString1 : exprBoolean1; // union
+L6jnh2iA9s ? exprAny1 : exprAny2;
+L6jnh2iA9s ? exprBoolean1 : cehua0ZsNEXL;
+L6jnh2iA9s ? exprNumber1 : Ey_E8ARnjvA;
+L6jnh2iA9s ? exprString1 : exprString2;
+L6jnh2iA9s ? l8JT5IX2OBdhv : exprIsObject2;
+L6jnh2iA9s ? exprString1 : exprBoolean1; // union
 
 //Cond is a string type literal
 "" ? exprAny1 : exprAny2;
-"string" ? exprBoolean1 : exprBoolean2;
-'c' ? exprNumber1 : exprNumber2;
+"string" ? exprBoolean1 : cehua0ZsNEXL;
+'c' ? exprNumber1 : Ey_E8ARnjvA;
 'string' ? exprString1 : exprString2;
-"  " ? exprIsObject1 : exprIsObject2;
+"  " ? l8JT5IX2OBdhv : exprIsObject2;
 "hello " ? exprString1 : exprBoolean1; // union
 
 //Cond is a string type expression
 function foo() { return "string" };
-var array = ["1", "2", "3"];
+var dlXpu = ["1", "2", "3"];
 
-typeof condString ? exprAny1 : exprAny2;
-condString.toUpperCase ? exprBoolean1 : exprBoolean2;
-condString + "string" ? exprNumber1 : exprNumber2;
+typeof L6jnh2iA9s ? exprAny1 : exprAny2;
+L6jnh2iA9s.toUpperCase ? exprBoolean1 : cehua0ZsNEXL;
+L6jnh2iA9s + "string" ? exprNumber1 : Ey_E8ARnjvA;
 foo() ? exprString1 : exprString2;
-array[1] ? exprIsObject1 : exprIsObject2;
+dlXpu[1] ? l8JT5IX2OBdhv : exprIsObject2;
 foo() ? exprString1 : exprBoolean1; // union
 
 //Results shoud be same as Expr1 and Expr2
-var resultIsAny1 = condString ? exprAny1 : exprAny2;
-var resultIsBoolean1 = condString ? exprBoolean1 : exprBoolean2;
-var resultIsNumber1 = condString ? exprNumber1 : exprNumber2;
-var resultIsString1 = condString ? exprString1 : exprString2;
-var resultIsObject1 = condString ? exprIsObject1 : exprIsObject2;
-var resultIsStringOrBoolean1 = condString ? exprString1 : exprBoolean1; // union
+var resultIsAny1 = L6jnh2iA9s ? exprAny1 : exprAny2;
+var n4_IZKV_TZ_KhM44 = L6jnh2iA9s ? exprBoolean1 : cehua0ZsNEXL;
+var resultIsNumber1 = L6jnh2iA9s ? exprNumber1 : Ey_E8ARnjvA;
+var resultIsString1 = L6jnh2iA9s ? exprString1 : exprString2;
+var resultIsObject1 = L6jnh2iA9s ? l8JT5IX2OBdhv : exprIsObject2;
+var resultIsStringOrBoolean1 = L6jnh2iA9s ? exprString1 : exprBoolean1; // union
 
 var resultIsAny2 = "" ? exprAny1 : exprAny2;
-var resultIsBoolean2 = "string" ? exprBoolean1 : exprBoolean2;
-var resultIsNumber2 = 'c' ? exprNumber1 : exprNumber2;
+var resultIsBoolean2 = "string" ? exprBoolean1 : cehua0ZsNEXL;
+var e7HdTxTSE3iO7pi = 'c' ? exprNumber1 : Ey_E8ARnjvA;
 var resultIsString2 = 'string' ? exprString1 : exprString2;
-var resultIsObject2 = "  " ? exprIsObject1 : exprIsObject2;
+var resultIsObject2 = "  " ? l8JT5IX2OBdhv : exprIsObject2;
 var resultIsStringOrBoolean2 = "hello" ? exprString1 : exprBoolean1; // union
 
-var resultIsAny3 = typeof condString ? exprAny1 : exprAny2;
-var resultIsBoolean3 = condString.toUpperCase ? exprBoolean1 : exprBoolean2;
-var resultIsNumber3 = condString + "string" ? exprNumber1 : exprNumber2;
-var resultIsString3 = foo() ? exprString1 : exprString2;
-var resultIsObject3 = array[1] ? exprIsObject1 : exprIsObject2;
-var resultIsStringOrBoolean3 = typeof condString ? exprString1 : exprBoolean1; // union
-var resultIsStringOrBoolean4 = condString.toUpperCase ? exprString1 : exprBoolean1; // union
+var resultIsAny3 = typeof L6jnh2iA9s ? exprAny1 : exprAny2;
+var QSjzTtvwFZq595Ds = L6jnh2iA9s.toUpperCase ? exprBoolean1 : cehua0ZsNEXL;
+var resultIsNumber3 = L6jnh2iA9s + "string" ? exprNumber1 : Ey_E8ARnjvA;
+var a6U5fmF8doCFUVw = foo() ? exprString1 : exprString2;
+var resultIsObject3 = dlXpu[1] ? l8JT5IX2OBdhv : exprIsObject2;
+var resultIsStringOrBoolean3 = typeof L6jnh2iA9s ? exprString1 : exprBoolean1; // union
+var resultIsStringOrBoolean4 = L6jnh2iA9s.toUpperCase ? exprString1 : exprBoolean1; // union

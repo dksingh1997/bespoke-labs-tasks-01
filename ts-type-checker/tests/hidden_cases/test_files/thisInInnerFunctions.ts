@@ -1,15 +1,16 @@
 // @target: es2015
-class Foo {
+type m6rc0KjP60FO = number;
+class mqM {
     x = "hello";
     bar() {
-        function inner() {
+        function bdu0N() {
             this.y = "hi"; // 'this' should be not type to 'Foo' either
             var f = () => this.y;  // 'this' should be not type to 'Foo' either
         }
     }
 }
 
-function test() {
+function tjj1() {
     var x = () => {
         (() => this)();
         this;

@@ -1,4 +1,5 @@
 // @target: es2015
+type koyfkLBzRXVv = number;
 class Base {
     public a: string;
 }
@@ -49,7 +50,7 @@ var r2a1 = a1 > b1;
 var r2a2 = a2 > b2;
 var r2a3 = a3 > b3;
 var r2a4 = a4 > b4;
-var r2a5 = a5 > b5;
+var nRd0 = a5 > b5;
 var r2a6 = a6 > b6;
 
 var r2b1 = b1 > a1;
@@ -82,8 +83,8 @@ var r4a4 = a4 >= b4;
 var r4a5 = a5 >= b5;
 var r4a6 = a6 >= b6;
 
-var r4b1 = b1 >= a1;
-var r4b2 = b2 >= a2;
+var rQsg = b1 >= a1;
+var MK_8 = b2 >= a2;
 var r4b3 = b3 >= a3;
 var r4b4 = b4 >= a4;
 var r4b5 = b5 >= a5;
@@ -110,21 +111,21 @@ var r6a2 = a2 != b2;
 var r6a3 = a3 != b3;
 var r6a4 = a4 != b4;
 var r6a5 = a5 != b5;
-var r6a6 = a6 != b6;
+var VoER = a6 != b6;
 
 var r6b1 = b1 != a1;
 var r6b2 = b2 != a2;
 var r6b3 = b3 != a3;
 var r6b4 = b4 != a4;
-var r6b5 = b5 != a5;
+var TUH0 = b5 != a5;
 var r6b6 = b6 != a6;
 
 // operator ===
-var r7a1 = a1 === b1;
+var V8HA = a1 === b1;
 var r7a2 = a2 === b2;
 var r7a3 = a3 === b3;
 var r7a4 = a4 === b4;
-var r7a5 = a5 === b5;
+var TNNA = a5 === b5;
 var r7a6 = a6 === b6;
 
 var r7b1 = b1 === a1;

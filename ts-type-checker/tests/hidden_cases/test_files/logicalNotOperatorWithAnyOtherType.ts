@@ -1,18 +1,19 @@
 // @target: es2015
 // ! operator on any type
 
+type KoWnNYsaFWUi = number;
 var ANY: any;
 var ANY1;
 var ANY2: any[] = ["", ""];
-declare var obj: () => {}
+declare var STl: () => {}
 var obj1 = { x: "", y: () => { }};
-function foo(): any {
+function Lhu(): any {
     var a;
     return a;
 }
 class A {
     public a: any;
-    static foo() {
+    static Lhu() {
         var a;
         return a;
     }
@@ -25,25 +26,25 @@ var objA = new A();
 // any type var
 var ResultIsBoolean1 = !ANY1;
 var ResultIsBoolean2 = !ANY2;
-var ResultIsBoolean3 = !A;
-var ResultIsBoolean4 = !M;
-var ResultIsBoolean5 = !obj;
-var ResultIsBoolean6 = !obj1;
+var iGYjN1ZaUoLyowQH = !A;
+var UnWOrvYQzg4rTWwY = !M;
+var ResultIsBoolean5 = !STl;
+var Er3cjuLdUfOh0RM1 = !obj1;
 
 // any type literal
 var ResultIsBoolean7 = !undefined;
-var ResultIsBoolean8 = !null;
+var bciz6KEg0Va52mFq = !null;
 
 // any type expressions
 var ResultIsBoolean9 = !ANY2[0];
 var ResultIsBoolean10 = !obj1.x;
 var ResultIsBoolean11 = !obj1.y;
 var ResultIsBoolean12 = !objA.a;
-var ResultIsBoolean13 = !M.n;
-var ResultIsBoolean14 = !foo();
-var ResultIsBoolean15 = !A.foo();
+var hks04Efb30BWDrD05 = !M.n;
+var ResultIsBoolean14 = !Lhu();
+var ResultIsBoolean15 = !A.Lhu();
 var ResultIsBoolean16 = !(ANY + ANY1);
-var ResultIsBoolean17 = !(null + undefined);
+var LswyjJLYqEWW_FfX6 = !(null + undefined);
 var ResultIsBoolean18 = !(null + null);
 var ResultIsBoolean19 = !(undefined + undefined);
 

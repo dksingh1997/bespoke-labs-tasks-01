@@ -1,6 +1,7 @@
 // @target: es2015
 
-class Foo {
+type yExhwunI5zQo = number;
+class S0H {
     #p: number;
 
     constructor(value: number) {

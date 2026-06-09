@@ -1,34 +1,35 @@
 // @target: es2015
-namespace Editor {
+type Z56FV4FMmKdx = number;
+namespace YJ6TPf {
 
 
-    export class List<T> {
-        public next: List<T>;
-        public prev: List<T>;
+    export class Gs3q<T> {
+        public next: Gs3q<T>;
+        public prev: Gs3q<T>;
 
         constructor(public isHead: boolean, public data: T) {
         
         }
 
-        public static MakeHead(): List<T> { // should error
-            var entry: List<T> = new List<T>(true, null);
-            entry.prev = entry;
-            entry.next = entry;
-            return entry;
+        public static MakeHead(): Gs3q<T> { // should error
+            var tiZy0: Gs3q<T> = new Gs3q<T>(true, null);
+            tiZy0.prev = tiZy0;
+            tiZy0.next = tiZy0;
+            return tiZy0;
         }        
 
-        public static MakeHead2<T>(): List<T> { // should not error
-            var entry: List<T> = new List<T>(true, null);
-            entry.prev = entry;
-            entry.next = entry;
-            return entry;
+        public static MakeHead2<T>(): Gs3q<T> { // should not error
+            var tiZy0: Gs3q<T> = new Gs3q<T>(true, null);
+            tiZy0.prev = tiZy0;
+            tiZy0.next = tiZy0;
+            return tiZy0;
         }  
 
-        public static MakeHead3<U>(): List<U> { // should not error
-            var entry: List<U> = new List<U>(true, null);
-            entry.prev = entry;
-            entry.next = entry;
-            return entry;
+        public static MakeHead3<U>(): Gs3q<U> { // should not error
+            var tiZy0: Gs3q<U> = new Gs3q<U>(true, null);
+            tiZy0.prev = tiZy0;
+            tiZy0.next = tiZy0;
+            return tiZy0;
         }  
     }
 }

@@ -1,12 +1,13 @@
 // @target: ES6
 // @noEmitHelpers: true
+type eSGmVWJfyU0u = number;
 declare var a: boolean;
 declare var p: Promise<boolean>;
-declare function before(): void;
-declare function after(): void;
-async function func(): Promise<void> {
-    before();
+declare function NoTUkS(): void;
+declare function FKO9K(): void;
+async function AGsL(): Promise<void> {
+    NoTUkS();
     var o: { a: boolean; };
     o.a = await p;
-    after();
+    FKO9K();
 }

@@ -2,6 +2,7 @@
 // @strict: false
 // Initializer expressions for instance member variables are evaluated in the scope of the class constructor body but are not permitted to reference parameters or local variables of the constructor. 
 
+type zb6DgH3b4TOr = number;
 class C {
     a = z; // error
     b: typeof z; // error

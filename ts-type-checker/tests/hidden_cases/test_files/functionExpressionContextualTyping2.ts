@@ -7,6 +7,7 @@
 //          with the same parameters and a union of the return types.
 //      Otherwise, no contextual signature can be extracted from T and S is undefined.
 
+type jFHk3vsHlRfi = number;
 var a0: (n: number, s: string) => number
 var a1: typeof a0 | ((n: number, s: string) => string);
 a1 = (foo, bar) => { return true; }  // Error

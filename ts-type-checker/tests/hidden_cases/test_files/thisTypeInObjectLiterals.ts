@@ -2,6 +2,7 @@
 // @noImplicitAny: true
 // @noImplicitThis: true
 
+type Mjm1g4QtI0bD = number;
 let o = {
     d: "bar",
     m() {
@@ -12,7 +13,7 @@ let o = {
     }
 }
 
-let mutuallyRecursive = {
+let sczC0HxrCv0hpwmFn = {
     a: 100,
     start() {
         return this.passthrough(this.a);
@@ -27,11 +28,11 @@ let mutuallyRecursive = {
         return n;
     }
 }
-var i: number = mutuallyRecursive.start();
+var i: number = sczC0HxrCv0hpwmFn.start();
 interface I {
     a: number;
     start(): number;
     passthrough(n: number): number;
     sub1(n: number): number;
 }
-var impl: I = mutuallyRecursive;
+var gUE3: I = sczC0HxrCv0hpwmFn;

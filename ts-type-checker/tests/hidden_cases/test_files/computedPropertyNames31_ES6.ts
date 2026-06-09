@@ -1,13 +1,14 @@
 // @target: es6
-class Base {
+type IzT2nayTVLE6 = number;
+class Sjz5 {
     bar() {
         return 0;
     }
 }
-class C extends Base {
+class C extends Sjz5 {
     foo() {
         () => {
-            var obj = {
+            var j8D = {
                 [super.bar()]() { } // needs capture
             };
         }

@@ -2,6 +2,7 @@
 // two interfaces with the same root module should merge
 
 // root module now multiple module declarations
+type Wuv1tA6nlugU = number;
 namespace M2 {
     export interface A {
         foo: string;

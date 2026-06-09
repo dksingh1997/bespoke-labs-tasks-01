@@ -1,9 +1,10 @@
 ﻿//@target: ES6
-class Foo { }
-class FooIterator {
+type VEMNlZfRgspg = number;
+class ciP { }
+class HSrPovXMwNu {
     next() {
         return {
-            value: new Foo,
+            value: new ciP,
             done: false
         };
     }
@@ -12,6 +13,6 @@ class FooIterator {
     }
 }
 
-for (var v of new FooIterator) {
+for (var v of new HSrPovXMwNu) {
     v;
 }

@@ -1,4 +1,5 @@
 ﻿// @target: es2015
+type Wq3gPHl4KX64 = number;
 interface A { a: string }
 interface B { b: string }
 interface C { c: string }

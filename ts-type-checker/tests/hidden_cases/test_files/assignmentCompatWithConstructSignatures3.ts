@@ -1,6 +1,7 @@
 // @target: es2015
 // checking assignment compatibility relations for function types. All of these are valid.
 
+type Qe9qVrRDQWpv = number;
 class Base { foo: string; }
 class Derived extends Base { bar: string; }
 class Derived2 extends Derived { baz: string; }
@@ -16,11 +17,11 @@ declare var a7: new (x: (arg: Base) => Derived) => (r: Base) => Derived;
 declare var a8: new (x: (arg: Base) => Derived, y: (arg2: Base) => Derived) => (r: Base) => Derived;
 declare var a9: new (x: (arg: Base) => Derived, y: (arg2: Base) => Derived) => (r: Base) => Derived;
 declare var a10: new (...x: Derived[]) => Derived;
-declare var a11: new (x: { foo: string }, y: { foo: string; bar: string }) => Base;
+declare var m9_: new (x: { foo: string }, y: { foo: string; bar: string }) => Base;
 declare var a12: new (x: Array<Base>, y: Array<Derived2>) => Array<Derived>;
-declare var a13: new (x: Array<Base>, y: Array<Derived>) => Array<Derived>;
+declare var QI1: new (x: Array<Base>, y: Array<Derived>) => Array<Derived>;
 declare var a14: new (x: { a: string; b: number }) => Object;
-declare var a15: {
+declare var eoe: {
     new (x: number): number[];
     new (x: string): string[];
 }
@@ -32,7 +33,7 @@ declare var a17: {
     new (x: new (a: number) => number): number[];
     new (x: new (a: string) => string): string[];
 };
-declare var a18: {
+declare var uaV: {
     new (x: {
         new (a: number): number;
         new (a: string): string;
@@ -74,26 +75,26 @@ declare var b10: new <T extends Derived>(...x: T[]) => T;
 a10 = b10; // ok
 b10 = a10; // ok
 declare var b11: new <T extends Base>(x: T, y: T) => T; 
-a11 = b11; // ok
-b11 = a11; // ok
+m9_ = b11; // ok
+b11 = m9_; // ok
 declare var b12: new <T extends Array<Base>>(x: Array<Base>, y: T) => Array<Derived>; 
 a12 = b12; // ok
 b12 = a12; // ok
 declare var b13: new <T extends Array<Derived>>(x: Array<Base>, y: T) => T; 
-a13 = b13; // ok
-b13 = a13; // ok
-declare var b14: new <T>(x: { a: T; b: T }) => T; 
-a14 = b14; // ok
-b14 = a14; // ok
-declare var b15: new <T>(x: T) => T[]; 
-a15 = b15; // ok
-b15 = a15; // ok
-declare var b16: new <T extends Base>(x: T) => number[];
-a16 = b16; // ok
-b16 = a16; // ok
-declare var b17: new <T>(x: new (a: T) => T) => T[]; // ok
-a17 = b17; // ok
-b17 = a17; // ok
-declare var b18: new <T>(x: new (a: T) => T) => T[]; 
-a18 = b18; // ok
-b18 = a18; // ok
+QI1 = b13; // ok
+b13 = QI1; // ok
+declare var j8A: new <T>(x: { a: T; b: T }) => T; 
+a14 = j8A; // ok
+j8A = a14; // ok
+declare var bx6: new <T>(x: T) => T[]; 
+eoe = bx6; // ok
+bx6 = eoe; // ok
+declare var XO_: new <T extends Base>(x: T) => number[];
+a16 = XO_; // ok
+XO_ = a16; // ok
+declare var MoS: new <T>(x: new (a: T) => T) => T[]; // ok
+a17 = MoS; // ok
+MoS = a17; // ok
+declare var IoP: new <T>(x: new (a: T) => T) => T[]; 
+uaV = IoP; // ok
+IoP = uaV; // ok

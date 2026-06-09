@@ -1,0 +1,12 @@
+jobs_dir: ./jobs
+
+environment:
+  type: docker
+  kwargs:
+    sandbox_timeout_secs: 1800
+
+tasks:
+  - path: .
+
+artifacts:
+  - /app/workspace

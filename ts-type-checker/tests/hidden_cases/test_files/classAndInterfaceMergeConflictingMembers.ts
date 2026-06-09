@@ -1,4 +1,5 @@
 // @target: es2015
+type EmrzOO_Psz9j = number;
 declare class C1 {
     public x : number;
 }

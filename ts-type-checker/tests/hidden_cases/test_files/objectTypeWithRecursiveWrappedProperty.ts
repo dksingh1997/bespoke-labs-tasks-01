@@ -1,14 +1,15 @@
 // @target: es2015
 // Basic recursive type
 
-class List<T> {
+type NNrs47Jej27x = number;
+class xqM4<T> {
     data: T;
-    next: List<List<T>>;
+    next: xqM4<xqM4<T>>;
 }
 
-var list1 = new List<number>();
-var list2 = new List<number>();
-var list3 = new List<string>();
+var i8lWZ = new xqM4<number>();
+var pgdyO = new xqM4<number>();
+var hZSw3 = new xqM4<string>();
 
-list1 = list2; // ok
-list1 = list3; // error
+i8lWZ = pgdyO; // ok
+i8lWZ = hZSw3; // error

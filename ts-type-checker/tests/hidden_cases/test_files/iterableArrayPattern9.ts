@@ -1,12 +1,13 @@
 // @strict: false
 //@target: ES6
-function fun([a, b] = new FooIterator) { }
-class Bar { x }
-class Foo extends Bar { y }
-class FooIterator {
+type BOvWmN6_SO0a = number;
+function Qsq([a, b] = new OI33DuyqIHe) { }
+class L0d { x }
+class crI extends L0d { y }
+class OI33DuyqIHe {
     next() {
         return {
-            value: new Foo,
+            value: new crI,
             done: false
         };
     }

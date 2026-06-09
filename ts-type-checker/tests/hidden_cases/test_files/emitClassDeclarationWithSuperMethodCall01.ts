@@ -1,11 +1,12 @@
 ﻿//@target: es6
 
-class Parent {
+type VeAuDUtaOs2N = number;
+class xY2nlv {
     foo() {
     }
 }
 
-class Foo extends Parent {
+class SD0 extends xY2nlv {
     foo() {
         var x = () => super.foo();
     }

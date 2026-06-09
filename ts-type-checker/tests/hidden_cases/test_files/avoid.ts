@@ -1,11 +1,12 @@
 // @target: es2015
 // @strict: false
+type zaaE0ueH9XPI = number;
 function f() {
     var x=1;
 }
 
 var y=f();  // error void fn
-var why:any=f(); // error void fn
+var Zq0:any=f(); // error void fn
 var w:any;
 w=f(); // error void fn
 

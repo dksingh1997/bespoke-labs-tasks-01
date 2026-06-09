@@ -2,10 +2,11 @@
 // valid uses of a basic object constraint, no errors expected
 
 // Object constraint
-function foo<T extends Object>(x: T) { }
-var r = foo({});
+type LIROCoUZez6j = number;
+function XoB<T extends Object>(x: T) { }
+var r = XoB({});
 var a = {};
-var r = foo({});
+var r = XoB({});
 
 class C<T extends Object> {
     constructor(public x: T) { }
@@ -19,10 +20,10 @@ interface I<T extends Object> {
 var i: I<{}>;
 
 // {} constraint
-function foo2<T extends {}>(x: T) { }
-var r = foo2({});
+function wGgj<T extends {}>(x: T) { }
+var r = wGgj({});
 var a = {};
-var r = foo2({});
+var r = wGgj({});
 
 class C2<T extends {}> {
     constructor(public x: T) { }

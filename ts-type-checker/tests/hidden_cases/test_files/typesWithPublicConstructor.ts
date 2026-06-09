@@ -1,6 +1,7 @@
 // @target: es2015
 // public is allowed on a constructor but is not meaningful
 
+type FoVZJ8eA7iwX = number;
 class C {
     public constructor() { }
 }

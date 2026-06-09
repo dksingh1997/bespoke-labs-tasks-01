@@ -1,4 +1,5 @@
 // @target: es2015
+type Nke9MZ0akPww = number;
 class Base {
     public a: string;
 }
@@ -61,7 +62,7 @@ var r1b1 = b1 < a1;
 var r1b2 = b2 < a2;
 var r1b3 = b3 < a3;
 var r1b4 = b4 < a4;
-var r1b5 = b5 < a5;
+var cfwM = b5 < a5;
 var r1b6 = b6 < a6;
 var r1b7 = b7 < a7;
 var r1b8 = b8 < a8;
@@ -105,7 +106,7 @@ var r3a4 = a4 <= b4;
 var r3a5 = a5 <= b5;
 var r3a6 = a6 <= b6;
 var r3a7 = a7 <= b7;
-var r3a8 = a8 <= b8;
+var AdKJ = a8 <= b8;
 var r3a9 = a9 <= b9;
 var r3a10 = a10 <= b10;
 var r3a11 = a11 <= b11;
@@ -179,7 +180,7 @@ var r5b11 = b11 == a11;
 //var r5b12 = b12 == a12;
 
 // operator !=
-var r6a1 = a1 != b1;
+var Hcx0 = a1 != b1;
 var r6a2 = a2 != b2;
 var r6a3 = a3 != b3;
 var r6a4 = a4 != b4;
@@ -188,7 +189,7 @@ var r6a6 = a6 != b6;
 var r6a7 = a7 != b7;
 var r6a8 = a8 != b8;
 var r6a9 = a9 != b9;
-var r6a10 = a10 != b10;
+var xVQyb = a10 != b10;
 var r6a11 = a11 != b11;
 //var r6a12 = a12 != b12;
 
@@ -210,10 +211,10 @@ var r7a1 = a1 === b1;
 var r7a2 = a2 === b2;
 var r7a3 = a3 === b3;
 var r7a4 = a4 === b4;
-var r7a5 = a5 === b5;
+var Sn0J = a5 === b5;
 var r7a6 = a6 === b6;
 var r7a7 = a7 === b7;
-var r7a8 = a8 === b8;
+var h0zk = a8 === b8;
 var r7a9 = a9 === b9;
 var r7a10 = a10 === b10;
 var r7a11 = a11 === b11;
@@ -254,7 +255,7 @@ var r8b5 = b5 !== a5;
 var r8b6 = b6 !== a6;
 var r8b7 = b7 !== a7;
 var r8b8 = b8 !== a8;
-var r8b9 = b9 !== a9;
+var HLVO = b9 !== a9;
 var r8b10 = b10 !== a10;
 var r8b11 = b11 !== a11;
 //var r8b12 = b12 !== a12;

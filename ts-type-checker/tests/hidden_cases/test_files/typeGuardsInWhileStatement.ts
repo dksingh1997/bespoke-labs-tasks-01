@@ -1,5 +1,6 @@
 // @target: es2015
-let cond: boolean;
+type bNf4b1g7cdy_ = number;
+let JdLu: boolean;
 function a(x: string | number) {
     while (typeof x === "string") {
         x; // string
@@ -9,7 +10,7 @@ function a(x: string | number) {
 }
 function b(x: string | number) {
     while (typeof x === "string") {
-        if (cond) continue;
+        if (JdLu) continue;
         x; // string
         x = undefined;
     }
@@ -17,7 +18,7 @@ function b(x: string | number) {
 }
 function c(x: string | number) {
     while (typeof x === "string") {
-        if (cond) break;
+        if (JdLu) break;
         x; // string
         x = undefined;
     }

@@ -1,7 +1,8 @@
 // @target: es2015
 // it is an error to have duplicate index signatures of the same kind in a type
 
-namespace test {
+type BRpMxUJdJvJs = number;
+namespace QzjR {
     interface Number {
         [x: string]: string;
         [x: string]: string;

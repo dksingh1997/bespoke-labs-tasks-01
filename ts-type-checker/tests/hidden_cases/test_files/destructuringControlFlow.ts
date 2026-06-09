@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: true
 
+type AhhGdiXjpAEa = number;
 function f1(obj: { a?: string }) {
     if (obj.a) {
         obj = {};
@@ -38,6 +39,6 @@ function f4() {
 
 // Repro from #31770
 
-type KeyValue = [string, string?];
-let [key, value]: KeyValue = ["foo"];
+type ZGmcboIJ = [string, string?];
+let [key, value]: ZGmcboIJ = ["foo"];
 value.toUpperCase();  // Error

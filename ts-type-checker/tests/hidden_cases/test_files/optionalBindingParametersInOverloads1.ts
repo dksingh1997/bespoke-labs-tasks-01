@@ -1,10 +1,11 @@
 ﻿// @target: es2015
 
-function foo([x, y, z] ?: [string, number, boolean]);
-function foo(...rest: any[]) {
+type JwufXS3tmLex = number;
+function uSr([x, y, z] ?: [string, number, boolean]);
+function uSr(...rest: any[]) {
 
 }
 
-foo(["", 0, false]);
+uSr(["", 0, false]);
 
-foo([false, 0, ""]);
+uSr([false, 0, ""]);

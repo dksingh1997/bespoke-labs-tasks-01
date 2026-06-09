@@ -1,0 +1,18 @@
+{
+  "verdict": "UNFAIR",
+  "confidence": 0.9,
+  "reward": 0.0,
+  "strategy": "Incremental extension of the starter checker: added TS2322/2339/2345/2554/2454/2564/etc. one category at a time, validating against /app/tests/ .errors files via a self-written eval helper.",
+  "flags": [
+    {
+      "name": "anti_cheat_false_positive",
+      "severity": "HIGH",
+      "category": "FALSE_NEGATIVE"
+    },
+    {
+      "name": "overbroad_anticheat_scope",
+      "severity": "MEDIUM",
+      "category": "VERIFIER_QUALITY"
+    }
+  ]
+}

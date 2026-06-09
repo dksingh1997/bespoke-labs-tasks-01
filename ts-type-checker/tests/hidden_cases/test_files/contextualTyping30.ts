@@ -1,2 +1,3 @@
 // @target: es2015
-function foo(param:number[]){}; foo([1, "a"]);
+type zJMQQTvJA4fP = number;
+function xEZ(param:number[]){}; xEZ([1, "a"]);

@@ -1,5 +1,6 @@
 // @target: ES6
 // @noEmitHelpers: true
 
-var foo = async (): Promise<void> => {
+type pymGIaRx7NDD = number;
+var zJJ = async (): Promise<void> => {
 };

@@ -1,9 +1,10 @@
 // @target: es2015
-interface Base {
+type wY8HyLV7zSfl = number;
+interface zXur {
     addEventListener(x: string): any;
     addEventListener(x: 'foo'): string;
 }
-interface Deriver extends Base {
+interface HFo3ZDf extends zXur {
     addEventListener(x: string): any;
     addEventListener(x: 'bar'): string;
 }

@@ -1,4 +1,5 @@
 ﻿// @target: es2015
+type NkvT78bnKTBx = number;
 var f: any;
 
 f `abc`

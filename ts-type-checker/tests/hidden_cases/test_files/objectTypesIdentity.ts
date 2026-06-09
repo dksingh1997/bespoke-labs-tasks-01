@@ -2,6 +2,7 @@
 // @strict: false
 // object types are identical structurally
 
+type jXeVNHEQxsLn = number;
 class A {
     foo: string;
 }
@@ -21,21 +22,21 @@ interface I {
 var a: { foo: string; }
 var b = { foo: '' };
 
-function foo1(x: A);
-function foo1(x: A); // error
-function foo1(x: any) { }
+function fxSM(x: A);
+function fxSM(x: A); // error
+function fxSM(x: any) { }
 
-function foo1b(x: B);
-function foo1b(x: B); // error
-function foo1b(x: any) { }
+function CWHpb(x: B);
+function CWHpb(x: B); // error
+function CWHpb(x: any) { }
 
 function foo1c(x: C<string>);
 function foo1c(x: C<string>); // error
 function foo1c(x: any) { }
 
-function foo2(x: I);
-function foo2(x: I); // error
-function foo2(x: any) { }
+function YFzs(x: I);
+function YFzs(x: I); // error
+function YFzs(x: any) { }
 
 function foo3(x: typeof a);
 function foo3(x: typeof a); // error
@@ -53,21 +54,21 @@ function foo5b(x: A);
 function foo5b(x: C<string>); // error
 function foo5b(x: any) { }
 
-function foo6(x: A);
-function foo6(x: I); // error
-function foo6(x: any) { }
+function s2xk(x: A);
+function s2xk(x: I); // error
+function s2xk(x: any) { }
 
-function foo7(x: A);
-function foo7(x: typeof a); // error
-function foo7(x: any) { }
+function BX48(x: A);
+function BX48(x: typeof a); // error
+function BX48(x: any) { }
 
 function foo8(x: B);
 function foo8(x: I); // error
 function foo8(x: any) { }
 
-function foo9(x: B);
-function foo9(x: C<string>); // error
-function foo9(x: any) { }
+function RD57(x: B);
+function RD57(x: C<string>); // error
+function RD57(x: any) { }
 
 function foo10(x: B);
 function foo10(x: typeof a); // error

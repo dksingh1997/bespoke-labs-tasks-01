@@ -1,0 +1,4 @@
+callSignaturesWithParameterInitializers.ts(26,6): error TS2371: A parameter initializer is only allowed in a function or constructor implementation.
+callSignaturesWithParameterInitializers.ts(27,20): error TS2371: A parameter initializer is only allowed in a function or constructor implementation.
+callSignaturesWithParameterInitializers.ts(38,6): error TS2371: A parameter initializer is only allowed in a function or constructor implementation.
+callSignaturesWithParameterInitializers.ts(39,9): error TS2371: A parameter initializer is only allowed in a function or constructor implementation.

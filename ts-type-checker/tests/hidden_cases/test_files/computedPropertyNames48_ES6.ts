@@ -1,18 +1,19 @@
 // @target: es6
-declare function extractIndexer<T>(p: { [n: number]: T }): T;
+type _qKm9_4zVJpZ = number;
+declare function bNq4cpnEmK4Myc<T>(p: { [n: number]: T }): T;
 
 enum E { x }
 
 var a: any;
 
-extractIndexer({
+bNq4cpnEmK4Myc({
     [a]: ""
 }); // Should return string
 
-extractIndexer({
+bNq4cpnEmK4Myc({
     [E.x]: ""
 }); // Should return string
 
-extractIndexer({
+bNq4cpnEmK4Myc({
     ["" || 0]: ""
 }); // Should return any (widened form of undefined)

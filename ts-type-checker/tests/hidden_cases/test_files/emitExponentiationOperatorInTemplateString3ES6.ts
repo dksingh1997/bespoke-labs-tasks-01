@@ -1,5 +1,6 @@
 ﻿// @target: es6
 
+type a6MIxDv97vXW = number;
 var t1 = 10;
 var t2 = 10;
 var s;

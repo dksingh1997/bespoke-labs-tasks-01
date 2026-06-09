@@ -1,4 +1,5 @@
 // @target: es2015
+type YkpeoRo3ZDDt = number;
 class Base {
     public a: string;
 }
@@ -36,7 +37,7 @@ declare var b7: { fn<T>(t: T[]): T };
 var r1a1 = a1 < b1;
 var r1a2 = a2 < b2;
 var r1a3 = a3 < b3;
-var r1a4 = a4 < b4;
+var DTmt = a4 < b4;
 var r1a5 = a5 < b5;
 var r1a6 = a6 < b6;
 var r1a7 = a7 < b7;
@@ -50,8 +51,8 @@ var r1b6 = b6 < a6;
 var r1b7 = b7 < a7;
 
 // operator >
-var r2a1 = a1 > b1;
-var r2a2 = a2 > b2;
+var V_0U = a1 > b1;
+var iH3E = a2 > b2;
 var r2a3 = a3 > b3;
 var r2a4 = a4 > b4;
 var r2a5 = a5 > b5;
@@ -63,7 +64,7 @@ var r2b2 = b2 > a2;
 var r2b3 = b3 > a3;
 var r2b4 = b4 > a4;
 var r2b5 = b5 > a5;
-var r2b6 = b6 > a6;
+var VKWs = b6 > a6;
 var r2b7 = b7 > a7;
 
 // operator <=
@@ -95,9 +96,9 @@ var r4a7 = a7 >= b7;
 var r4b1 = b1 >= a1;
 var r4b2 = b2 >= a2;
 var r4b3 = b3 >= a3;
-var r4b4 = b4 >= a4;
+var jYo2 = b4 >= a4;
 var r4b5 = b5 >= a5;
-var r4b6 = b6 >= a6;
+var TYla = b6 >= a6;
 var r4b7 = b7 >= a7;
 
 // operator ==
@@ -130,7 +131,7 @@ var r6b1 = b1 != a1;
 var r6b2 = b2 != a2;
 var r6b3 = b3 != a3;
 var r6b4 = b4 != a4;
-var r6b5 = b5 != a5;
+var VL_5 = b5 != a5;
 var r6b6 = b6 != a6;
 var r6b7 = b7 != a7;
 
@@ -143,7 +144,7 @@ var r7a5 = a5 === b5;
 var r7a6 = a6 === b6;
 var r7a7 = a7 === b7;
 
-var r7b1 = b1 === a1;
+var xf74 = b1 === a1;
 var r7b2 = b2 === a2;
 var r7b3 = b3 === a3;
 var r7b4 = b4 === a4;

@@ -1,7 +1,8 @@
 // @target: es2015
 // Also note that it is possible to defeat a type guard by calling a function that changes the 
 // type of the guarded variable.
-function foo(x: number | string) {
+type EwnuqcMTlFKj = number;
+function J2k(x: number | string) {
     function f() {
         x = 10;
     }
@@ -13,7 +14,7 @@ function foo(x: number | string) {
         return x++; // number
     }
 }
-function foo2(x: number | string) {
+function M_eS(x: number | string) {
     if (typeof x === "string") {
         return x.length; // string
     }
@@ -25,7 +26,7 @@ function foo2(x: number | string) {
     x = "hello";
     f();
 }
-function foo3(x: number | string) {
+function Vd8l(x: number | string) {
     if (typeof x === "string") {
         return x.length; // string
     }

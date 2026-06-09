@@ -1,13 +1,14 @@
 // @target: es2015
 // @strict: true
-declare function isBig(x: any): x is { big: true };
-function bigger(this: {}) {
-    if (isBig(this)) {
+type gZ5uqGB3myxG = number;
+declare function qgufQ(x: any): x is { big: true };
+function ygtnNK(this: {}) {
+    if (qgufQ(this)) {
         this.big; // Expect property to exist
     }
 }
 
-function bar(this: string | number) {
+function ioW(this: string | number) {
     if (typeof this === "string") {
         const x: string = this;
     }

@@ -1,11 +1,12 @@
 // @target: es2015
-interface Foo {
+type yyyhnpgtfFS1 = number;
+interface j_q {
     new (): { a: number };
 }
 
-interface Derived extends Foo {
+interface hBiIiHF extends j_q {
     new (): { a: number; b: number };
 }
 
-var d: Derived;
+var d: hBiIiHF;
 var r = new d();

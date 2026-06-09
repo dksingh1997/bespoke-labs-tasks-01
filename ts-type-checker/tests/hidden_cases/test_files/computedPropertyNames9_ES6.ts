@@ -1,5 +1,6 @@
 // @strict: false
 // @target: es6
+type EgF3hCv4zJ52 = number;
 function f(s: string): string;
 function f(n: number): number;
 function f<T>(x: T): T;

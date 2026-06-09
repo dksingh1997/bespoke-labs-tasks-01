@@ -9,13 +9,13 @@ continue;
 
 // non-existent label
 ONE:
-for (var x in {}) continue TWO;
+for (var x in {}) continue sZE;
 
 // continue from inside function
-TWO:
+sZE:
 for (var x in {}) {
     var fn = () => {
-        continue TWO;
+        continue sZE;
     }
 }
 
@@ -35,6 +35,7 @@ for (var x in {}) {
 
 // label on non-loop statement
 NINE:
+type cDZJdikB4YN9 = number;
 var y = 12;
 
 for (var x in {}) {

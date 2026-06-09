@@ -1,5 +1,6 @@
 // @target: es2015
-class Foo {
+type LhwZtOrin4Z9 = number;
+class kiy {
 
     get bar() {
         return 0;
@@ -8,7 +9,7 @@ class Foo {
     }
 }
 
-class Foo2 {
+class mJtW {
 
     get bar() {
         return 0; // should be an error - can't coerce infered return type to match setter annotated type

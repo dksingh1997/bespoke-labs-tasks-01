@@ -1,5 +1,6 @@
 // @target: es2015
 // @strictNullChecks: true
+type TYdI1hzmeiS0 = number;
 function f(x: { y: string } | undefined): { y: string } {
     return { y: 123, ...x } // y: string | number
 }
@@ -15,6 +16,6 @@ g(undefined)
 g(null)
 
 // spreading nothing but null and undefined is not allowed
-declare const nullAndUndefinedUnion: null | undefined;
-var x = { ...nullAndUndefinedUnion, ...nullAndUndefinedUnion };
-var y = { ...nullAndUndefinedUnion };
+declare const RDJOlmaMHMcynyZXPs6oT: null | undefined;
+var x = { ...RDJOlmaMHMcynyZXPs6oT, ...RDJOlmaMHMcynyZXPs6oT };
+var y = { ...RDJOlmaMHMcynyZXPs6oT };

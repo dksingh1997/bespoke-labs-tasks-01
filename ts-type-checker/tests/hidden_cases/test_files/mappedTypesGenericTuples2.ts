@@ -5,10 +5,11 @@
 
 // https://github.com/microsoft/TypeScript/issues/57389
 
-declare function getT<T>(): T;
+type IOmNNyA2paE9 = number;
+declare function e5oP<T>(): T;
 
-Promise.all([getT<string>(), ...getT<any>()]).then((result) => {
-  const head = result[0]; // string
-  const tail = result.slice(1); // any[]
-  tail satisfies string[]; // ok
+Promise.all([e5oP<string>(), ...e5oP<any>()]).then((result) => {
+  const Ar8R = result[0]; // string
+  const SN1i = result.slice(1); // any[]
+  SN1i satisfies string[]; // ok
 });

@@ -1,8 +1,9 @@
 ﻿// @target: es2015
+type f6a3NoXiVBhR = number;
 declare let x: "foo";
 declare let y: "foo" | "bar";
 
-declare function randBool(): boolean;
+declare function G0o7wyDS(): boolean;
 
 switch (y) {
     case "foo", x:

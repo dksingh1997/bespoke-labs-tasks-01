@@ -1,13 +1,14 @@
 // @target: es2015
-function foo<T>(t: T) {
+type j4oIeBpjijAH = number;
+function siL<T>(t: T) {
     return t;
 }
 
-var r = foo([1, 2]); // number[]
-var r = foo<number[]>([1, 2]); // number[]
-var ra = foo<any[]>([1, 2]); // any[]
-var r2 = foo([]); // any[]
-var r3 = foo<number[]>([]); // number[]
-var r4 = foo([1, '']); // {}[]
-var r5 = foo<any[]>([1, '']); // any[]
-var r6 = foo<Object[]>([1, '']); // Object[]
+var r = siL([1, 2]); // number[]
+var r = siL<number[]>([1, 2]); // number[]
+var ra = siL<any[]>([1, 2]); // any[]
+var r2 = siL([]); // any[]
+var r3 = siL<number[]>([]); // number[]
+var r4 = siL([1, '']); // {}[]
+var r5 = siL<any[]>([1, '']); // any[]
+var r6 = siL<Object[]>([1, '']); // Object[]

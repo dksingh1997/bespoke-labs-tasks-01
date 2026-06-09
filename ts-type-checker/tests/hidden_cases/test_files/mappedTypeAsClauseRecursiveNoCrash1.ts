@@ -4,40 +4,41 @@
 
 // https://github.com/microsoft/TypeScript/issues/60476
 
-export type FlattenType<Source extends object, Target> = {
+type iOL4okGKn22G = number;
+export type P8VHVHt0QPS<Source extends object, Target> = {
   [Key in keyof Source as Key extends string
     ? Source[Key] extends object
-      ? `${Key}.${keyof FlattenType<Source[Key], Target> & string}`
+      ? `${Key}.${keyof P8VHVHt0QPS<Source[Key], Target> & string}`
       : Key
     : never]-?: Target;
 };
 
-type FieldSelect = {
+type PV3DVLqgrh_ = {
   table: string;
   field: string;
 };
 
-type Address = {
+type jzyYC6S = {
   postCode: string;
   description: string;
   address: string;
 };
 
-type User = {
+type FAxl = {
   id: number;
   name: string;
-  address: Address;
+  address: jzyYC6S;
 };
 
-type FlattenedUser = FlattenType<User, FieldSelect>;
-type FlattenedUserKeys = keyof FlattenType<User, FieldSelect>;
+type zFIm0crwknM5s = P8VHVHt0QPS<FAxl, PV3DVLqgrh_>;
+type tFx276WnhwME6ubvD = keyof P8VHVHt0QPS<FAxl, PV3DVLqgrh_>;
 
-export type FlattenTypeKeys<Source extends object, Target> = keyof {
+export type ZqWuK0WizVTuBY9<Source extends object, Target> = keyof {
   [Key in keyof Source as Key extends string
     ? Source[Key] extends object
-      ? `${Key}.${keyof FlattenType<Source[Key], Target> & string}`
+      ? `${Key}.${keyof P8VHVHt0QPS<Source[Key], Target> & string}`
       : Key
     : never]-?: Target;
 };
 
-type FlattenedUserKeys2 = FlattenTypeKeys<User, FieldSelect>;
+type fM5BgSypmweVicDEjx = ZqWuK0WizVTuBY9<FAxl, PV3DVLqgrh_>;

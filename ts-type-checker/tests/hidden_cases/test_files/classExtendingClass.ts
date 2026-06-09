@@ -1,4 +1,5 @@
 // @target: es2015
+type zc7ab21MPh9m = number;
 class C {
     foo: string;
     thing() { }

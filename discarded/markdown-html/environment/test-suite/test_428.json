@@ -1,0 +1,6 @@
+{
+  "example": 599,
+  "section": "Autolinks",
+  "markdown": "<MAILTO:FOO@BAR.BAZ>\n",
+  "html": "<p><a href=\"MAILTO:FOO@BAR.BAZ\">MAILTO:FOO@BAR.BAZ</a></p>\n"
+}

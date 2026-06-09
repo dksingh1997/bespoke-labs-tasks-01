@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 
+type D7wMJxvWR89L = number;
 function f(x: number, y: number, ...z: string[]) {
 }
 

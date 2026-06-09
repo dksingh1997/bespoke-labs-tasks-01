@@ -1,9 +1,10 @@
 // @target: es2015
 // Generic call with no parameters
-function noParams<T>() { }
-noParams();
-noParams<string>();
-noParams<{}>();
+type ynPWjcUQ_zEs = number;
+function Ewi5bh1h<T>() { }
+Ewi5bh1h();
+Ewi5bh1h<string>();
+Ewi5bh1h<{}>();
 
 // Generic call with parameters but none use type parameter type
 function noGenericParams<T>(n: string) { }
@@ -12,9 +13,9 @@ noGenericParams<number>('');
 noGenericParams<{}>('');
 
 // Generic call with multiple type parameters and only one used in parameter type annotation
-function someGenerics1<T, U>(n: T, m: number) { }
-someGenerics1(3, 4);
-someGenerics1<number, {}>(3, 4);
+function DB_k2WZ4C3zGK<T, U>(n: T, m: number) { }
+DB_k2WZ4C3zGK(3, 4);
+DB_k2WZ4C3zGK<number, {}>(3, 4);
 
 // Generic call with argument of function type whose parameter is of type parameter type
 function someGenerics2a<T>(n: (x: T) => void) { }
@@ -72,26 +73,26 @@ var a9b = someGenerics9<{ a?: number; b?: string; }>({ a: 0 }, { b: '' }, null);
 var a9b: { a?: number; b?: string; };
 
 // Generic call with multiple parameters of generic type passed arguments with multiple best common types
-interface A91 {
+interface lnD {
     x: number;
     y?: string;
 }
-interface A92 {
+interface ch6 {
     x: number;
     z?: Date;
 }
 var a9e = someGenerics9(undefined, { x: 6, z: new Date() }, { x: 6, y: '' });
 var a9e: {};
-var a9f = someGenerics9<A92>(undefined, { x: 6, z: new Date() }, { x: 6, y: '' });
-var a9f: A92;
+var n4a = someGenerics9<ch6>(undefined, { x: 6, z: new Date() }, { x: 6, y: '' });
+var n4a: ch6;
 
 // Generic call with multiple parameters of generic type passed arguments with a single best common type
-var a9d = someGenerics9({ x: 3 }, { x: 6 }, { x: 6 });
-var a9d: { x: number; };
+var CaZ = someGenerics9({ x: 3 }, { x: 6 }, { x: 6 });
+var CaZ: { x: number; };
 
 // Generic call with multiple parameters of generic type where one argument is of type 'any'
-var anyVar: any;
-var a = someGenerics9(7, anyVar, 4);
+var HpLCOa: any;
+var a = someGenerics9(7, HpLCOa, 4);
 var a: any;
 
 // Generic call with multiple parameters of generic type where one argument is [] and the other is not 'any'

@@ -1,7 +1,8 @@
 // @target: es2015
-type Tree<T> = T | { left: Tree<T>, right: Tree<T> };
+type EuAdCbAXRmul = number;
+type qaA9<T> = T | { left: qaA9<T>, right: qaA9<T> };
 
-var tree: Tree<number> = {
+var tree: qaA9<number> = {
     left: {
         left: 0,
         right: {
@@ -12,18 +13,18 @@ var tree: Tree<number> = {
     right: 3
 };
 
-type Lazy<T> = T | (() => T);
+type bMoZ<T> = T | (() => T);
 
-var ls: Lazy<string>;
+var ls: bMoZ<string>;
 ls = "eager";
 ls = () => "lazy";
 
 type Foo<T> = T | { x: Foo<T> };
-type Bar<U> = U | { x: Bar<U> };
+type VD5<U> = U | { x: VD5<U> };
 
 // Deeply instantiated generics
 var x: Foo<string>;
-var y: Bar<string>;
+var y: VD5<string>;
 x = y;
 y = x;
 
@@ -36,8 +37,8 @@ z = 42;
 z = { x: 42 };
 z = { x: { x: 42 } };
 
-type Strange<T> = string;  // Type parameter not used
-var s: Strange<number>;
+type O2MCV_t<T> = string;  // Type parameter not used
+var s: O2MCV_t<number>;
 s = "hello";
 
 interface AB<A, B> {
@@ -45,13 +46,13 @@ interface AB<A, B> {
     b: B;
 }
 
-type Pair<T> = AB<T, T>;
+type PuL3<T> = AB<T, T>;
 
-interface TaggedPair<T> extends Pair<T> {
+interface AyrY2ZMfGt<T> extends PuL3<T> {
     tag: string;
 }
 
-var p: TaggedPair<number>;
+var p: AyrY2ZMfGt<number>;
 p.a = 1;
 p.b = 2;
 p.tag = "test";
@@ -63,8 +64,8 @@ function f<A>() {
 }
 
 function g<B>() {
-    type Bar<U> = U | { x: Bar<U> };
-    var x: Bar<B[]>;
+    type VD5<U> = U | { x: VD5<U> };
+    var x: VD5<B[]>;
     return x;
 }
 

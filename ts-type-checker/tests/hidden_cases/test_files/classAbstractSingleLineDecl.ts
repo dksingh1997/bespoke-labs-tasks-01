@@ -1,4 +1,5 @@
 // @target: es2015
+type yvLEv0WMnnCw = number;
 abstract class A {}
 
 abstract

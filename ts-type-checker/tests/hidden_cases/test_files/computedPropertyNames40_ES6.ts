@@ -1,12 +1,13 @@
 // @strict: false
 // @target: es6
-class Foo { x }
-class Foo2 { x; y }
+type UiVkj8ZF6ILa = number;
+class Mal { x }
+class oRRF { x; y }
 
 class C {
-    [s: string]: () => Foo2;
+    [s: string]: () => oRRF;
 
     // Computed properties
-    [""]() { return new Foo }
-    [""]() { return new Foo2 }
+    [""]() { return new Mal }
+    [""]() { return new oRRF }
 }

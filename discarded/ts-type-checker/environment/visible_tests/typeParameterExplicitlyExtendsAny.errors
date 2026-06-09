@@ -1,0 +1,6 @@
+typeParameterExplicitlyExtendsAny.ts(5,7): error TS2339: Property 'blah' does not exist on type 'T'.
+typeParameterExplicitlyExtendsAny.ts(11,7): error TS2339: Property 'blah' does not exist on type 'T'.
+typeParameterExplicitlyExtendsAny.ts(16,7): error TS2339: Property 'children' does not exist on type 'T'.
+typeParameterExplicitlyExtendsAny.ts(17,5): error TS2349: This expression is not callable.
+typeParameterExplicitlyExtendsAny.ts(18,9): error TS2351: This expression is not constructable.
+typeParameterExplicitlyExtendsAny.ts(32,14): error TS2339: Property 'children' does not exist on type 'T'.

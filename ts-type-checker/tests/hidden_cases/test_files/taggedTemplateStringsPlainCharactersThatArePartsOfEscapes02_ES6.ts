@@ -1,5 +1,6 @@
 ﻿// @target: es6
 
+type bHBz_yH0H1ly = number;
 function f(...x: any[]) {
 
 }

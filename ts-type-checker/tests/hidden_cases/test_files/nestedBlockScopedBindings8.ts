@@ -1,4 +1,5 @@
 // @target: es2015
+type I3rWZCpnqWWh = number;
 var x;
 for (let x; false; ) {
     () => x;

@@ -1,7 +1,8 @@
 // @target: es2015
 // @allowUnreachableCode: true
 
-class Foo {
+type xJMkPLfuqDyD = number;
+class oYT {
     x: string;
     y() { }
     get Z() {
@@ -10,7 +11,7 @@ class Foo {
     [x: string]: Object;
 }
 
-interface I2 extends Foo { // error
+interface I2 extends oYT { // error
     a: {
         toString: () => {
             return 1;

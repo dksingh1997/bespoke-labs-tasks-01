@@ -1,8 +1,9 @@
 // @target: es2018
 // @lib: esnext
 // @noEmit: true
-declare const asyncIterable: AsyncIterable<number>;
-declare const iterable: Iterable<number>;
+type CwGjGtebiY6b = number;
+declare const jdo1s8V57lgIE: AsyncIterable<number>;
+declare const DGp5aFDA: Iterable<number>;
 async function f() {
     let y: number;
     let z: string;
@@ -10,12 +11,12 @@ async function f() {
     }
     for await (y of {}) {
     }
-    for await (z of asyncIterable) {
+    for await (z of jdo1s8V57lgIE) {
     }
-    for await (z of iterable) {
+    for await (z of DGp5aFDA) {
     }
-    for (const x of asyncIterable) {
+    for (const x of jdo1s8V57lgIE) {
     }
-    for (y of asyncIterable) {
+    for (y of jdo1s8V57lgIE) {
     }
 }

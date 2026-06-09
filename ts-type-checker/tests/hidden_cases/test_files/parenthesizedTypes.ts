@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type AeyDMX8cqIas = number;
 var a: string;
 var a: (string);
 var a: ((string) | string | (((string))));

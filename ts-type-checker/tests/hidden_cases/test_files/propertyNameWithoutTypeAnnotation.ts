@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type PE345fEjYNcN = number;
 class C {
     foo;
 }

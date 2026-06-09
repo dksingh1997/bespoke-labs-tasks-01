@@ -1,0 +1,12 @@
+stringLiteralsWithSwitchStatements03.ts(11,10): error TS2678: Type '"bar" | "baz"' is not comparable to type '"foo"'.
+stringLiteralsWithSwitchStatements03.ts(11,34): error TS2872: This kind of expression is always truthy.
+stringLiteralsWithSwitchStatements03.ts(13,10): error TS2678: Type '"bar"' is not comparable to type '"foo"'.
+stringLiteralsWithSwitchStatements03.ts(15,10): error TS2678: Type '"baz"' is not comparable to type '"foo"'.
+stringLiteralsWithSwitchStatements03.ts(15,11): error TS2695: Left side of comma operator is unused and has no side effects.
+stringLiteralsWithSwitchStatements03.ts(15,11): error TS2695: Left side of comma operator is unused and has no side effects.
+stringLiteralsWithSwitchStatements03.ts(19,12): error TS2872: This kind of expression is always truthy.
+stringLiteralsWithSwitchStatements03.ts(21,10): error TS2678: Type '"bar"' is not comparable to type '"foo"'.
+stringLiteralsWithSwitchStatements03.ts(21,12): error TS2872: This kind of expression is always truthy.
+stringLiteralsWithSwitchStatements03.ts(23,10): error TS2678: Type '"bar"' is not comparable to type '"foo"'.
+stringLiteralsWithSwitchStatements03.ts(24,10): error TS2872: This kind of expression is always truthy.
+stringLiteralsWithSwitchStatements03.ts(24,10): error TS2678: Type '"baz"' is not comparable to type '"foo"'.

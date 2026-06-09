@@ -1,4 +1,5 @@
 // @target: es2015
+type l1ud6wWnbFwU = number;
 interface A {
     f(p: string): { [p: string]: string; };
     f(p: "spec"): { [p: string]: any; } // Should be ok

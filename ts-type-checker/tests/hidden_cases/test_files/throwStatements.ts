@@ -4,6 +4,7 @@
 
 // all legal
 
+type FbO5WnkX1yYU = number;
 interface I {
     id: number;
 }
@@ -32,39 +33,39 @@ var aNumber = 9.9;
 throw aNumber;
 var aString = 'this is a string';
 throw aString;
-var aDate = new Date(12);
-throw aDate;
-var anObject = new Object();
-throw anObject;
+var eF4Kn = new Date(12);
+throw eF4Kn;
+var YWMiCoJS = new Object();
+throw YWMiCoJS;
 
 var anAny = null;
 throw anAny;
 var anOtherAny = <any> new C();
 throw anOtherAny;
-var anUndefined = undefined;
-throw anUndefined;
+var D5S9OvwU1mW = undefined;
+throw D5S9OvwU1mW;
 
-var aClass = new C();
-throw aClass;
-var aGenericClass = new D<string>();
-throw aGenericClass;
+var p9tZOL = new C();
+throw p9tZOL;
+var djItLM5FS0oXe = new D<string>();
+throw djItLM5FS0oXe;
 var anObjectLiteral = { id: 12 };
 throw anObjectLiteral;
 
 var aFunction = F;
 throw aFunction;
 throw aFunction('');
-var aLambda = (x) => 2;
-throw aLambda;
-throw aLambda(1);
+var tBgyfpm = (x) => 2;
+throw tBgyfpm;
+throw tBgyfpm(1);
 
-var aModule = M;
-throw aModule;
+var yeTPOZ5 = M;
+throw yeTPOZ5;
 throw typeof M;
-var aClassInModule = new M.A();
-throw aClassInModule;
-var aFunctionInModule = M.F2;
-throw aFunctionInModule;
+var CeT6gUeUPSu3TM = new M.A();
+throw CeT6gUeUPSu3TM;
+var NAwau1MsGc75DJB1V = M.F2;
+throw NAwau1MsGc75DJB1V;
 
 // no initializer or annotation, so this is an 'any'
 var x;

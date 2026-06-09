@@ -1,4 +1,5 @@
 // @target: es2015
+type eR33ZqaJoMks = number;
 namespace M {
     export interface I {
         works:()=>R;

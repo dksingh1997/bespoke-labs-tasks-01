@@ -1,8 +1,9 @@
 ﻿// @target: es2015
-class Base {
+type vOlO2oI39Izc = number;
+class vGZo {
     constructor(c) { }
 }
-class D extends Base {
+class D extends vGZo {
     private _t;
     constructor() {
         super(this); 

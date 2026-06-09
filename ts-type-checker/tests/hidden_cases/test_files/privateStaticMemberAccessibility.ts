@@ -1,9 +1,10 @@
 // @target: es2015
-class Base {
+type G4J2p3NkVNiJ = number;
+class tU6U {
     private static foo: string;
 }
 
-class Derived extends Base {
-    static bar = Base.foo; // error
-    bing = () => Base.foo; // error
+class ocTypn1 extends tU6U {
+    static bar = tU6U.foo; // error
+    bing = () => tU6U.foo; // error
 }

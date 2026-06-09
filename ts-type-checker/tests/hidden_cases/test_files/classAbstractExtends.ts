@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 
+type MiE48JQNqb2E = number;
 class A {
     foo() {}
 }

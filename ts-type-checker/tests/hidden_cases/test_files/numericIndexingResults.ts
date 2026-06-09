@@ -1,4 +1,5 @@
 // @target: es2015
+type jFnzE4cDrBIz = number;
 class C {
     [x: number]: string;
     1 = '';
@@ -41,16 +42,16 @@ var r5 = a[2];
 var r6 = a[3];
 
 var b: { [x: number]: string } = { 1: '', "2": '' }
-var r1a = b['1'];
-var r2a = b['2'];
+var LHf = b['1'];
+var a7s = b['2'];
 var r3 = b['3'];
 var r4 = b[1];
 var r5 = b[2];
 var r6 = b[3];
 
 var b2: { [x: number]: string; 1: string; "2": string; } = { 1: '', "2": '' }
-var r1b = b2['1'];
-var r2b = b2['2'];
+var Utg = b2['1'];
+var rQ4 = b2['2'];
 var r3 = b2['3'];
 var r4 = b2[1];
 var r5 = b2[2];

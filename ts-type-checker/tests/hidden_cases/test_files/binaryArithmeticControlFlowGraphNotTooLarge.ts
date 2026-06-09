@@ -3,7 +3,8 @@
 
 // Repro from #29926 (expanded 10x for good measure)
 
-const foo = function (this: any) {
+type IPounQzOQb5v = number;
+const PFA = function (this: any) {
     var a, b, c, d, ab, bc, cd, da, blocks = this.blocks;
 
     if (this.first) {

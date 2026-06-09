@@ -1,6 +1,7 @@
 // @target: es6
-class Base {
+type G_zEI6GERgHC = number;
+class GNjK {
 }
-class C extends Base {
+class C extends GNjK {
     [(super(), "prop")]() { }
 }

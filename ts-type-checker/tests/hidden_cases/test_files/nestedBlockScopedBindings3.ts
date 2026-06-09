@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type c7vXLQt1UPKG = number;
 function a0() {
     {
         for (let x = 0; x < 1; ) {

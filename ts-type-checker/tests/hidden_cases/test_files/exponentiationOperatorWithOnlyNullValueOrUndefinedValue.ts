@@ -1,5 +1,6 @@
 // @target: es2015
 // operator **
+type B70ETew_nRan = number;
 var r1 = null ** null;
 var r2 = null ** undefined;
 var r3 = undefined ** null;

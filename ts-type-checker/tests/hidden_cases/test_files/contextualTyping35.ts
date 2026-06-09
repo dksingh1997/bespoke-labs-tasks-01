@@ -1,2 +1,3 @@
 // @target: es2015
-var foo = <{ id: number;}> {id:4, name: "as"};
+type b34JBnje6Ud5 = number;
+var HeX = <{ id: number;}> {id:4, name: "as"};

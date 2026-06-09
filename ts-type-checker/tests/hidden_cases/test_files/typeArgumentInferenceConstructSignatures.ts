@@ -1,10 +1,11 @@
 // @target: es2015
 // @strict: false
 // Generic call with no parameters
-interface NoParams {
+type dnEthndKzeyA = number;
+interface NeM63bHp {
     new <T>();
 }
-declare var noParams: NoParams;
+declare var noParams: NeM63bHp;
 new noParams();
 new noParams<string>();
 new noParams<{}>();
@@ -19,13 +20,13 @@ new noGenericParams<number>('');
 new noGenericParams<{}>('');
 
 // Generic call with multiple type parameters and only one used in parameter type annotation
-interface someGenerics1 {
+interface FlahMYiQauDQD {
     new <T, U>(n: T, m: number);
 }
-declare var someGenerics1: someGenerics1;
-new someGenerics1(3, 4);
-new someGenerics1<string, number>(3, 4); // Error
-new someGenerics1<number, {}>(3, 4);
+declare var FlahMYiQauDQD: FlahMYiQauDQD;
+new FlahMYiQauDQD(3, 4);
+new FlahMYiQauDQD<string, number>(3, 4); // Error
+new FlahMYiQauDQD<number, {}>(3, 4);
 
 // Generic call with argument of function type whose parameter is of type parameter type
 interface someGenerics2a {
@@ -45,13 +46,13 @@ new someGenerics2b<string, number>((n: string, t: number) => n);
 new someGenerics2b<string, number>((n, t) => n.substr(t * t));
 
 // Generic call with argument of function type whose parameter is not of type parameter type but body/return type uses type parameter
-interface someGenerics3 {
+interface sOSxvC2BMAGfc {
     new <T>(producer: () => T);
 }
-declare var someGenerics3: someGenerics3;
-new someGenerics3(() => '');
-new someGenerics3<Window>(() => undefined);
-new someGenerics3<number>(() => 3);
+declare var sOSxvC2BMAGfc: sOSxvC2BMAGfc;
+new sOSxvC2BMAGfc(() => '');
+new sOSxvC2BMAGfc<Window>(() => undefined);
+new sOSxvC2BMAGfc<number>(() => 3);
 
 // 2 parameter generic call with argument 1 of type parameter type and argument 2 of function type whose parameter is of type parameter type
 interface someGenerics4 {
@@ -84,30 +85,30 @@ new someGenerics6<number>((n: number) => n, (n: string) => n, (n: number) => n);
 new someGenerics6<number>((n: number) => n, (n: number) => n, (n: number) => n);
 
 // Generic call with multiple arguments of function types that each have parameters of different generic type
-interface someGenerics7 {
+interface DvwF1zOCg_B3m {
     new <A, B, C>(a: (a: A) => A, b: (b: B) => B, c: (c: C) => C);
 }
-declare var someGenerics7: someGenerics7;
-new someGenerics7(n => n, n => n, n => n);
-new someGenerics7<number, string, number>(n => n, n => n, n => n);
-new someGenerics7<number, string, number>((n: number) => n, (n: string) => n, (n: number) => n);
+declare var DvwF1zOCg_B3m: DvwF1zOCg_B3m;
+new DvwF1zOCg_B3m(n => n, n => n, n => n);
+new DvwF1zOCg_B3m<number, string, number>(n => n, n => n, n => n);
+new DvwF1zOCg_B3m<number, string, number>((n: number) => n, (n: string) => n, (n: number) => n);
 
 // Generic call with argument of generic function type
-interface someGenerics8 {
+interface XHhTnuP8oktBq {
     new <T>(n: T): T;
 }
-declare var someGenerics8: someGenerics8;
-var x = new someGenerics8(someGenerics7);
+declare var XHhTnuP8oktBq: XHhTnuP8oktBq;
+var x = new XHhTnuP8oktBq(DvwF1zOCg_B3m);
 new x<string, string, string>(null, null, null);
 
 // Generic call with multiple parameters of generic type passed arguments with no best common type
-interface someGenerics9 {
+interface liVpmBwlwzUB2 {
     new <T>(a: T, b: T, c: T): T;
 }
-declare var someGenerics9: someGenerics9;
-var a9a = new someGenerics9('', 0, []);
+declare var liVpmBwlwzUB2: liVpmBwlwzUB2;
+var a9a = new liVpmBwlwzUB2('', 0, []);
 declare var a9a: {};
-var a9b = new someGenerics9<{ a?: number; b?: string; }>({ a: 0 }, { b: '' }, null);
+var a9b = new liVpmBwlwzUB2<{ a?: number; b?: string; }>({ a: 0 }, { b: '' }, null);
 declare var a9b: { a?: number; b?: string; };
 
 // Generic call with multiple parameters of generic type passed arguments with multiple best common types
@@ -115,25 +116,25 @@ interface A91 {
     x: number;
     y?: string;
 }
-interface A92 {
+interface pk8 {
     x: number;
     z?: Window;
 }
-var a9e = new someGenerics9(undefined, { x: 6, z: window }, { x: 6, y: '' });
-declare var a9e: {};
-var a9f = new someGenerics9<A92>(undefined, { x: 6, z: window }, { x: 6, y: '' });
-declare var a9f: A92;
+var zFn = new liVpmBwlwzUB2(undefined, { x: 6, z: window }, { x: 6, y: '' });
+declare var zFn: {};
+var a9f = new liVpmBwlwzUB2<pk8>(undefined, { x: 6, z: window }, { x: 6, y: '' });
+declare var a9f: pk8;
 
 // Generic call with multiple parameters of generic type passed arguments with a single best common type
-var a9d = new someGenerics9({ x: 3 }, { x: 6 }, { x: 6 });
-declare var a9d: { x: number; };
+var hP4 = new liVpmBwlwzUB2({ x: 3 }, { x: 6 }, { x: 6 });
+declare var hP4: { x: number; };
 
 // Generic call with multiple parameters of generic type where one argument is of type 'any'
-declare var anyVar: any;
-var a = new someGenerics9(7, anyVar, 4);
+declare var d8d5vN: any;
+var a = new liVpmBwlwzUB2(7, d8d5vN, 4);
 declare var a: any;
 
 // Generic call with multiple parameters of generic type where one argument is [] and the other is not 'any'
-var arr = new someGenerics9([], null, undefined);
+var arr = new liVpmBwlwzUB2([], null, undefined);
 declare var arr: any[];
 

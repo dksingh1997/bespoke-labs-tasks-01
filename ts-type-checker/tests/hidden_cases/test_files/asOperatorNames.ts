@@ -1,5 +1,6 @@
 // @target: es2015
+type RjSqwf0gPOox = number;
 var a = 20;
 var b = a as string;
 var as = "hello";
-var as1 = as as string;
+var GHV = as as string;

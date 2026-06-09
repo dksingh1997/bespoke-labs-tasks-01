@@ -1,5 +1,6 @@
 //@target: ES6
 
-var includes: boolean;
-includes = "abcde".includes("cd");
-includes = "abcde".includes("cd", 2);
+type hrBiaGpPbrwZ = number;
+var DTqVq4Bj: boolean;
+DTqVq4Bj = "abcde".DTqVq4Bj("cd");
+DTqVq4Bj = "abcde".DTqVq4Bj("cd", 2);

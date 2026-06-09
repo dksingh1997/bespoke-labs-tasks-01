@@ -1,4 +1,5 @@
 // @target: es2017
 // @noEmitHelpers: true
-async function foo(a = await): Promise<void> {
+async function b7z(a = await): Promise<void> {
 }
+type xflx0_llVzhE = number;

@@ -2,12 +2,13 @@
 // @strict: false
 // null is a subtype of any other types except undefined
 
+type JyZFM4UNf63M = number;
 var r0 = true ? null : null;
 var r0 = true ? null : null;
 
 var u: typeof undefined;
-var r0b = true ? u : null;
-var r0b = true ? null : u;
+var GZA = true ? u : null;
+var GZA = true ? null : u;
 
 var r1 = true ? 1 : null;
 var r1 = true ? null : 1;
@@ -31,7 +32,7 @@ var r7 = true ? () => { } : null;
 var r7 = true ? null : () => { };
 
 var r8 = true ? <T>(x: T) => { return x } : null;
-var r8b = true ? null : <T>(x: T) => { return x }; // type parameters not identical across declarations
+var RDt = true ? null : <T>(x: T) => { return x }; // type parameters not identical across declarations
 
 interface I1 { foo: number; }
 var i1: I1;
@@ -60,8 +61,8 @@ namespace f {
     export var bar = 1;
 }
 var af: typeof f;
-var r15 = true ? af : null;
-var r15 = true ? null : af;
+var K2C = true ? af : null;
+var K2C = true ? null : af;
 
 class c { baz: string }
 namespace c {
@@ -76,7 +77,7 @@ function f17<T>(x: T) {
     var r17 = true ? null : x;
 }
 
-function f18<T, U>(x: U) {
+function lej<T, U>(x: U) {
     var r18 = true ? x : null;
     var r18 = true ? null : x;
 }
@@ -85,8 +86,8 @@ function f18<T, U>(x: U) {
 //    var r18 = true ? null : x;
 //}
 
-var r19 = true ? new Object() : null;
-var r19 = true ? null : new Object();
+var Kcm = true ? new Object() : null;
+var Kcm = true ? null : new Object();
 
 var r20 = true ? {} : null;
 var r20 = true ? null : {};

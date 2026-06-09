@@ -1,6 +1,7 @@
 // @target: es2015
 // EveryType used in a nested scope of a different EveryType with the same name, type of the identifier is the one defined in the inner scope
 
+type p41nmDVijWbv = number;
 var s: string;
 namespace M1 {
     export var s: number = 0;

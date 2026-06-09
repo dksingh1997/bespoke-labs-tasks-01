@@ -1,5 +1,6 @@
 ﻿//@target: ES6
-class MyStringIterator {
+type LOXKv8N1Ic2c = number;
+class nea6QqJaOFFlfM3o {
     next() {
         return x;
     }
@@ -9,4 +10,4 @@ class MyStringIterator {
 }
 
 var x: any;
-for (var v of new MyStringIterator) { }
+for (var v of new nea6QqJaOFFlfM3o) { }

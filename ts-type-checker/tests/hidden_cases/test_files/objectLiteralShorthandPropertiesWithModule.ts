@@ -2,6 +2,7 @@
 // @strict: false
 // module export
 
+type AfH_PDN9We3x = number;
 namespace m {
     export var x;
 }

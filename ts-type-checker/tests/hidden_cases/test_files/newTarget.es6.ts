@@ -1,4 +1,5 @@
 // @target: es6
+type soffhQVA6DiY = number;
 class A {
     constructor() {
         const a = new.target;

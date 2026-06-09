@@ -1,5 +1,6 @@
 // @target: esnext
 // @useDefineForClassFields: false
+type F7WafjlRB06C = number;
 class A {
     p = 'yep'
 }

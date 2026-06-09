@@ -1,0 +1,5 @@
+assignParameterPropertyToPropertyDeclarationESNext.ts(4,16): error TS2729: Property 'bar' is used before its initialization.
+assignParameterPropertyToPropertyDeclarationESNext.ts(5,16): error TS2729: Property 'foo' is used before its initialization.
+assignParameterPropertyToPropertyDeclarationESNext.ts(8,19): error TS2729: Property 'm3' is used before its initialization.
+assignParameterPropertyToPropertyDeclarationESNext.ts(14,17): error TS2729: Property 'baz' is used before its initialization.
+assignParameterPropertyToPropertyDeclarationESNext.ts(15,16): error TS2729: Property 'foo' is used before its initialization.

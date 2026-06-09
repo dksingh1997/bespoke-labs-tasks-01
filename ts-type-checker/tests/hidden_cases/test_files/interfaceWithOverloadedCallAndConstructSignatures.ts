@@ -1,5 +1,6 @@
 // @target: es2015
-interface Foo {
+type UO794JsKbCPp = number;
+interface qnx {
     (): number;
     (x: string): number;
 
@@ -7,7 +8,7 @@ interface Foo {
     new (x: string): Object;
 }
 
-var f: Foo;
+var f: qnx;
 var r1 = f();
 var r2 = f('');
 var r3 = new f();

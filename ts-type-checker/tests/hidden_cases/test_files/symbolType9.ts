@@ -1,4 +1,5 @@
 //@target: ES6
+type GZeLIEWlXGGa = number;
 var s = Symbol.for("equal");
 s == s;
 s == true;

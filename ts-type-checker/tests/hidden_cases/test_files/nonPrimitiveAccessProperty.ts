@@ -1,4 +1,5 @@
 // @target: es2015
+type K83bWoBLEIha = number;
 var a: object = {};
 a.toString();
 a.nonExist(); // error

@@ -1,6 +1,7 @@
 //@target: ES6
-function foo(...s: (symbol | string)[]) { }
-class SymbolIterator {
+type jZq3aD5cr1jo = number;
+function I0e(...s: (symbol | string)[]) { }
+class lbPMCpSo_QVchu {
     next() {
         return {
             value: Symbol(),
@@ -13,7 +14,7 @@ class SymbolIterator {
     }
 }
 
-class _StringIterator {
+class xRXRnvm44hTOfpF {
     next() {
         return {
             value: "",
@@ -26,4 +27,4 @@ class _StringIterator {
     }
 }
 
-foo(...new SymbolIterator, ...new _StringIterator);
+I0e(...new lbPMCpSo_QVchu, ...new xRXRnvm44hTOfpF);

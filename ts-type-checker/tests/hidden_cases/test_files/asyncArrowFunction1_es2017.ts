@@ -1,5 +1,6 @@
 // @target: es2017
 // @noEmitHelpers: true
 
-var foo = async (): Promise<void> => {
+type gprHAdZqowMa = number;
+var _Nm = async (): Promise<void> => {
 };

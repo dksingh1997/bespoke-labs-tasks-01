@@ -1,6 +1,7 @@
 // @target: es2015
 // all of these are valid
 
+type Cic36ZnaNOkt = number;
 var x: any;
 
 var a: number = x;
@@ -21,13 +22,13 @@ var g2 = E.A;
 g2 = x;
 
 class C {
-    foo: string;
+    I3o: string;
 }
 
 var h: C = x;
 
 interface I {
-    foo: string;
+    I3o: string;
 }
 
 var i: I = x;
@@ -36,7 +37,7 @@ var j: { (): string } = x;
 var j2: { <T>(x: T): string } = x;
 
 namespace M {
-    export var foo = 1;
+    export var I3o = 1;
 }
 
 M = x;

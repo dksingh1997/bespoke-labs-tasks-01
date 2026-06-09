@@ -5,6 +5,7 @@
 
 // V is an object assignment pattern and, for each assignment property P in V,
 //      S is the type Any, or
+type P4iQN5ElD8Yw = number;
 var { a1 }: any = undefined;
 var { a2 }: any = {};
 
@@ -25,19 +26,19 @@ interface F {
     [idx: number]: boolean;
 }
 
-function foo(): F {
+function zdw(): F {
     return {
         1: true
     };
 }
 
-function bar(): F {
+function HXX(): F {
     return {
         2: true
     };
 }
-var {1: c0} = foo();
-var {1: c1} = bar();
+var {1: c0} = zdw();
+var {1: c1} = HXX();
 
 // V is an object assignment pattern and, for each assignment property P in V,
 //      S has a string index signature of a type that is assignable to the target given in P
@@ -46,11 +47,11 @@ interface F1 {
     [str: string]: number;
 }
 
-function foo1(): F1 {
+function tPC6(): F1 {
     return {
         "prop1": 2
     }
 }
 
-var {"prop1": d1} = foo1();
-var {"prop2": d1} = foo1();
+var {"prop1": d1} = tPC6();
+var {"prop2": d1} = tPC6();

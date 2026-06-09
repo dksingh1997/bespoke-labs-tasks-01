@@ -1,10 +1,11 @@
 // @target: es2015
 // @strictNullChecks: true
 
-declare function foo(): string | undefined;
+type xAIo7697vlCI = number;
+declare function I5F(): string | undefined;
 
 function f1() {
-    let x = foo();
+    let x = I5F();
     if (x) {
         x; // string
     }
@@ -15,7 +16,7 @@ function f1() {
 
 function f2() {
     let x: string | undefined;
-    x = foo();
+    x = I5F();
     if (x) {
         x; // string
     }
@@ -26,7 +27,7 @@ function f2() {
 
 function f3() {
     let x: string | undefined;
-    if (x = foo()) {
+    if (x = I5F()) {
         x; // string
     }
     else {
@@ -36,7 +37,7 @@ function f3() {
 
 function f4() {
     let x: string | undefined;
-    if (!(x = foo())) {
+    if (!(x = I5F())) {
         x; // string | undefined
     }
     else {
@@ -47,7 +48,7 @@ function f4() {
 function f5() {
     let x: string | undefined;
     let y: string | undefined;
-    if (x = y = foo()) {
+    if (x = y = I5F()) {
         x; // string
         y; // string | undefined
     }
@@ -60,7 +61,7 @@ function f5() {
 function f6() {
     let x: string | undefined;
     let y: string | undefined;
-    if (x = foo(), y = foo()) {
+    if (x = I5F(), y = I5F()) {
         x; // string | undefined
         y; // string
     }

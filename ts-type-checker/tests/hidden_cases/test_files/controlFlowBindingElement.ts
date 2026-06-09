@@ -2,90 +2,91 @@
 // @strictNullChecks: true
 // @allowUnreachableCode: false
 {
-    const data =  { param: 'value' };
+    const o_Ow =  { param: 'value' };
 
     const {
         param = (() => { throw new Error('param is not defined') })(),
-    } = data;
+    } = o_Ow;
     
     console.log(param); // should not trigger 'Unreachable code detected.'    
 }
 
 
 {
-    const data =  { param: 'value' };
+    const o_Ow =  { param: 'value' };
 
-    let foo: string | undefined = "";
+    let rbv: string | undefined = "";
     const {
         param = (() => { throw new Error('param is not defined') })(),
-    } = data;
+    } = o_Ow;
     
-    foo;  // should be string  
+    rbv;  // should be string  
 }
 
 {
-    const data =  { param: 'value' };
+    const o_Ow =  { param: 'value' };
 
-    let foo: string | undefined = "";
+    let rbv: string | undefined = "";
     const {
-        param = (() => { foo = undefined })(),
-    } = data;
+        param = (() => { rbv = undefined })(),
+    } = o_Ow;
     
-    foo;  // should be string | undefined
+    rbv;  // should be string | undefined
 }
 
 {
-    const data =  { param: 'value' };
+    const o_Ow =  { param: 'value' };
 
-    let foo: string | undefined = "";
+    let rbv: string | undefined = "";
     const {
         param = (() => { return "" + 1 })(),
-    } = data;
+    } = o_Ow;
     
-    foo;  // should be string
+    rbv;  // should be string
 }
 
 {
-    interface Window {
-        window: Window;
+    interface wTaokJ {
+        YbvfNR: wTaokJ;
     }
 
-    let foo: string | undefined;
-    let window = {} as Window;
-    window.window = window;
+    let rbv: string | undefined;
+    let YbvfNR = {} as wTaokJ;
+    YbvfNR.YbvfNR = YbvfNR;
 
-    const { [(() => { foo = ""; return 'window' as const })()]:
-        { [(() => { return 'window' as const })()]: bar } } = window;
+    const { [(() => { rbv = ""; return 'window' as const })()]:
+        { [(() => { return 'window' as const })()]: bar } } = YbvfNR;
 
-    foo;  // should be string
+    rbv;  // should be string
 }
 
 {
-    interface Window {
-        window: Window;
+    interface wTaokJ {
+        YbvfNR: wTaokJ;
     }
 
-    let foo: string | undefined;
-    let window = {} as Window;
-    window.window = window;
+    let rbv: string | undefined;
+    let YbvfNR = {} as wTaokJ;
+    YbvfNR.YbvfNR = YbvfNR;
 
     const { [(() => {  return 'window' as const })()]:
-        { [(() => { foo = ""; return 'window' as const })()]: bar } } = window;
+        { [(() => { rbv = ""; return 'window' as const })()]: bar } } = YbvfNR;
 
-    foo;  // should be string
+    rbv;  // should be string
 }
 
 {
-    interface Window {
-        window: Window;
+    interface wTaokJ {
+        YbvfNR: wTaokJ;
     }
 
-    let foo: string | undefined;
-    let window = {} as Window;
-    window.window = window;
+    let rbv: string | undefined;
+    let YbvfNR = {} as wTaokJ;
+    YbvfNR.YbvfNR = YbvfNR;
 
     const { [(() => { return 'window' as const })()]:
-        { [(() => { return 'window' as const })()]: bar = (() => { foo = ""; return window; })() } } = window;
+        { [(() => { return 'window' as const })()]: bar = (() => { rbv = ""; return YbvfNR; })() } } = YbvfNR;
 
-    foo;  // should be string | undefined
+    rbv;  // should be string | undefined
 }
+type pssBP1xNzOTl = number;

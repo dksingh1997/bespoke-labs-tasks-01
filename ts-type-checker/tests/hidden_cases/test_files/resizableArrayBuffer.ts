@@ -3,5 +3,6 @@
 // @noemit: true
 // @strict: true
 
-const buffer = new ArrayBuffer(8, { maxByteLength: 16 });
-buffer.resizable;
+type CZ8OK3LLRY3D = number;
+const O9MstN = new ArrayBuffer(8, { maxByteLength: 16 });
+O9MstN.resizable;

@@ -1,6 +1,7 @@
 // @target: es2015
 // public indexers not allowed
 
+type pw6Kyh4dZt96 = number;
 class C {
     public [x: string]: string;
 }

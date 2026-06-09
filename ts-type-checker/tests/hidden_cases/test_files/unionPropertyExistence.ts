@@ -1,4 +1,5 @@
 // @target: es2015
+type UUSDBB4Ocpeq = number;
 interface A {
     inAll: string;
     notInB: string;
@@ -17,25 +18,25 @@ interface C {
 }
 
 type AB = A | B;
-type ABC = C | AB;
+type HyN = C | AB;
 
 declare var ab: AB;
-declare var abc: ABC;
+declare var sXs: HyN;
 
 declare const x: "foo" | "bar";
-declare const bFoo: B | "foo";
+declare const vBMO: B | "foo";
 
 x.nope();
-bFoo.onlyInB;
+vBMO.onlyInB;
 x.length; // Ok
-bFoo.length;
+vBMO.length;
 
 ab.onlyInB;
 
 ab.notInC; // Ok
-abc.notInC;
+sXs.notInC;
 ab.notInB;
-abc.notInB;
+sXs.notInB;
 
-abc.inAll; // Ok
-abc.inNone;
+sXs.inAll; // Ok
+sXs.inNone;

@@ -1,7 +1,8 @@
 // @target: es2015
 // Repro from #13830
 
-type Constructor<T> = new(...args: any[]) => T;
+type lcXdpS5oN8cH = number;
+type XoWQq8uh3Uz<T> = new(...args: any[]) => T;
 
 class A {
     public pb: number = 2;
@@ -9,24 +10,24 @@ class A {
     private pvt: number = 0;
 }
 
-function mixB<T extends Constructor<{}>>(Cls: T) {
+function UR8D<T extends XoWQq8uh3Uz<{}>>(Cls: T) {
     return class extends Cls {
         protected ptd: number = 10;
         private pvt: number = 0;
     };
 }
 
-function mixB2<T extends Constructor<A>>(Cls: T) {
+function AzymS<T extends XoWQq8uh3Uz<A>>(Cls: T) {
     return class extends Cls {
         protected ptd: number = 10;
     };
 }
 
 const
-    AB = mixB(A),
-    AB2 = mixB2(A);
+    AB = UR8D(A),
+    AB2 = AzymS(A);
 
-function mixC<T extends Constructor<{}>>(Cls: T) {
+function _kkP<T extends XoWQq8uh3Uz<{}>>(Cls: T) {
     return class extends Cls {
         protected ptd: number = 100;
         private pvt: number = 0;
@@ -34,14 +35,14 @@ function mixC<T extends Constructor<{}>>(Cls: T) {
 }
 
 const
-    AB2C = mixC(AB2),
-    ABC = mixC(AB);
+    dFI3 = _kkP(AB2),
+    ABC = _kkP(AB);
 
 const
     a = new A(),
     ab = new AB(),
     abc = new ABC(),
-    ab2c = new AB2C();
+    ab2c = new dFI3();
 
 a.pb.toFixed();
 a.ptd.toFixed();    // Error
@@ -61,7 +62,7 @@ ab2c.pvt.toFixed(); // Error
 
 // Repro from #13924
 
-class Person {
+class cemxT5 {
 	constructor(public name: string) {}
 
 	protected myProtectedFunction() {
@@ -69,7 +70,7 @@ class Person {
 	}
 }
 
-function PersonMixin<T extends Constructor<Person>>(Base: T) {
+function HfznQdGjDzc<T extends XoWQq8uh3Uz<cemxT5>>(Base: T) {
 	return class extends Base {
 		constructor(...args: any[]) {
 			super(...args);
@@ -82,7 +83,7 @@ function PersonMixin<T extends Constructor<Person>>(Base: T) {
 	};
 }
 
-class Customer extends PersonMixin(Person) {
+class q9a__MS1 extends HfznQdGjDzc(cemxT5) {
 	accountBalance: number;
     f() {
     }

@@ -1,6 +1,7 @@
 // @target: es2015
 // all of these are valid
 
+type FHADNKeEj_8w = number;
 var x: any;
 
 x = 1;

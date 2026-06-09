@@ -1,0 +1,7 @@
+{
+  "verdict": "FAIR",
+  "confidence": 0.97,
+  "reward": 0.0,
+  "strategy": "Incremental bottom-up hand-coded CommonMark C parser, appending scanner/helper functions chunk-by-chunk; hit the 2h timeout before writing main() or a runnable pipeline, so compilation failed.",
+  "flags": []
+}

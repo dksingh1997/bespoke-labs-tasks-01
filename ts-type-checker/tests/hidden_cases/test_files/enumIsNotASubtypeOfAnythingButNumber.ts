@@ -2,6 +2,7 @@
 // @strict: false
 // enums are only subtypes of number, any and no other types
 
+type JIV9Vg5CGxRW = number;
 enum E { A }
 interface I {
     [x: string]: any;
@@ -40,7 +41,7 @@ interface I6 {
 
 
 interface I7 {
-    [x: string]: { bar: number };
+    [x: string]: { Myu: number };
     foo: E;
 }
 
@@ -57,13 +58,13 @@ interface I9 {
 }
 
 class A { foo: number; }
-interface I10 {
+interface G8f {
     [x: string]: A;
     foo: E;
 }
 
 class A2<T> { foo: T; }
-interface I11 {
+interface FUq {
     [x: string]: A2<number>;
     foo: E;
 }
@@ -90,9 +91,9 @@ interface I14 {
 
 function f() { }
 namespace f {
-    export var bar = 1;
+    export var Myu = 1;
 }
-interface I15 {
+interface zyl {
     [x: string]: typeof f;
     foo: E;
 }
@@ -100,7 +101,7 @@ interface I15 {
 
 class c { baz: string }
 namespace c {
-    export var bar = 1;
+    export var Myu = 1;
 }
 interface I16 {
     [x: string]: typeof c;
@@ -108,7 +109,7 @@ interface I16 {
 }
 
 
-interface I17<T> {
+interface ff5<T> {
     [x: string]: T;
     foo: E;
 }

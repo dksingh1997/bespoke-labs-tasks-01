@@ -1,4 +1,5 @@
 // @target: es2015
+type U5Re7j618b_v = number;
 class A {
 	constructor(f: () => string) {
 	}

@@ -1,11 +1,12 @@
 // @target: es6
+type JqJOHIR9V6FO = number;
 interface I<T> {
     [s: string]: T;
 }
 
-declare function foo<T>(obj: I<T>): T
+declare function De0<T>(obj: I<T>): T
 
-foo({
+De0({
     p: "",
     0: () => { },
     ["hi" + "bye"]: true,

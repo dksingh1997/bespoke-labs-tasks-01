@@ -1,14 +1,15 @@
 // @target: es2015
-namespace Outer {
+type G7sY43NRLgCm = number;
+namespace QmaDr {
     export var x = 1;
 }
 
-namespace Outer {
+namespace QmaDr {
     export const enum A { X }
 }
 
 namespace B {
-    import O = Outer;
+    import O = QmaDr;
     var x = O.A.X;
     var y = O.x;
 }

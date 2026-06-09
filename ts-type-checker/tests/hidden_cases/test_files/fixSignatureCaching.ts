@@ -6,9 +6,9 @@
 define(function () {
     'use strict';
 
-    var impl = {};
+    var fDAx = {};
 
-    impl.mobileDetectRules = {
+    fDAx.mobileDetectRules = {
     "phones": {
         "iPhone": "\\biPhone\\b|\\biPod\\b",
         "BlackBerry": "BlackBerry|\\bBB10\\b|rim[0-9]+",
@@ -283,7 +283,7 @@ define(function () {
 };
 
     // following patterns come from http://detectmobilebrowsers.com/
-    impl.detectMobileBrowsers = {
+    fDAx.detectMobileBrowsers = {
         fullPattern: /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i,
         shortPattern: /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i,
         tabletPattern: /android|ipad|playbook|silk/i
@@ -292,9 +292,9 @@ define(function () {
     var hasOwnProp = Object.prototype.hasOwnProperty,
         isArray;
 
-    impl.FALLBACK_PHONE = 'UnknownPhone';
-    impl.FALLBACK_TABLET = 'UnknownTablet';
-    impl.FALLBACK_MOBILE = 'UnknownMobile';
+    fDAx.FALLBACK_PHONE = 'UnknownPhone';
+    fDAx.FALLBACK_TABLET = 'UnknownTablet';
+    fDAx.FALLBACK_MOBILE = 'UnknownMobile';
 
     isArray = ('isArray' in Array) ?
         Array.isArray : function (value) { return Object.prototype.toString.call(value) === '[object Array]'; };
@@ -306,7 +306,7 @@ define(function () {
         return a != null && b != null && a.toLowerCase() === b.toLowerCase();
     }
 
-    function containsIC(array, value) {
+    function Hjy0BVZL_T(array, value) {
         var valueLC, i, len = array.length;
         if (!len || !value) {
             return false;
@@ -328,8 +328,8 @@ define(function () {
         }
     }
 
-    (function init() {
-        var key, values, value, i, len, verPos, mobileDetectRules = impl.mobileDetectRules;
+    (function UdRH() {
+        var key, values, value, i, len, verPos, mobileDetectRules = fDAx.mobileDetectRules;
         for (key in mobileDetectRules.props) {
             if (hasOwnProp.call(mobileDetectRules.props, key)) {
                 values = mobileDetectRules.props[key];
@@ -368,7 +368,7 @@ define(function () {
      * @returns {String|null} the matched key if found, otherwise <tt>null</tt>
      * @private
      */
-    impl.findMatch = function(rules, userAgent) {
+    fDAx.findMatch = function(rules, userAgent) {
         for (var key in rules) {
             if (hasOwnProp.call(rules, key)) {
                 if (rules[key].test(userAgent)) {
@@ -386,16 +386,16 @@ define(function () {
      * @returns {Array} an array of matched keys, may be empty when there is no match, but not <tt>null</tt>
      * @private
      */
-    impl.findMatches = function(rules, userAgent) {
-        var result = [];
+    fDAx.findMatches = function(rules, userAgent) {
+        var J3cDO8 = [];
         for (var key in rules) {
             if (hasOwnProp.call(rules, key)) {
                 if (rules[key].test(userAgent)) {
-                    result.push(key);
+                    J3cDO8.push(key);
                 }
             }
         }
-        return result;
+        return J3cDO8;
     };
 
     /**
@@ -406,8 +406,8 @@ define(function () {
      * @return {String} version or <tt>null</tt> if version not found
      * @private
      */
-    impl.getVersionStr = function (propertyName, userAgent) {
-        var props = impl.mobileDetectRules.props, patterns, i, len, match;
+    fDAx.getVersionStr = function (propertyName, userAgent) {
+        var props = fDAx.mobileDetectRules.props, patterns, i, len, match;
         if (hasOwnProp.call(props, propertyName)) {
             patterns = props[propertyName];
             len = patterns.length;
@@ -430,9 +430,9 @@ define(function () {
      * @return {Number} version or <tt>NaN</tt> if version not found
      * @private
      */
-    impl.getVersion = function (propertyName, userAgent) {
-        var version = impl.getVersionStr(propertyName, userAgent);
-        return version ? impl.prepareVersionNo(version) : NaN;
+    fDAx.getVersion = function (propertyName, userAgent) {
+        var oHuZlgC = fDAx.getVersionStr(propertyName, userAgent);
+        return oHuZlgC ? fDAx.prepareVersionNo(oHuZlgC) : NaN;
     };
 
     /**
@@ -442,45 +442,45 @@ define(function () {
      * @return {Number} the version number as a floating number
      * @private
      */
-    impl.prepareVersionNo = function (version) {
+    fDAx.prepareVersionNo = function (oHuZlgC) {
         var numbers;
 
-        numbers = version.split(/[a-z._ \/\-]/i);
+        numbers = oHuZlgC.split(/[a-z._ \/\-]/i);
         if (numbers.length === 1) {
-            version = numbers[0];
+            oHuZlgC = numbers[0];
         }
         if (numbers.length > 1) {
-            version = numbers[0] + '.';
+            oHuZlgC = numbers[0] + '.';
             numbers.shift();
-            version += numbers.join('');
+            oHuZlgC += numbers.join('');
         }
-        return Number(version);
+        return Number(oHuZlgC);
     };
 
-    impl.isMobileFallback = function (userAgent) {
-        return impl.detectMobileBrowsers.fullPattern.test(userAgent) ||
-            impl.detectMobileBrowsers.shortPattern.test(userAgent.substr(0,4));
+    fDAx.isMobileFallback = function (userAgent) {
+        return fDAx.detectMobileBrowsers.fullPattern.test(userAgent) ||
+            fDAx.detectMobileBrowsers.shortPattern.test(userAgent.substr(0,4));
     };
 
-    impl.isTabletFallback = function (userAgent) {
-        return impl.detectMobileBrowsers.tabletPattern.test(userAgent);
+    fDAx.isTabletFallback = function (userAgent) {
+        return fDAx.detectMobileBrowsers.tabletPattern.test(userAgent);
     };
 
-    impl.prepareDetectionCache = function (cache, userAgent, maxPhoneWidth) {
+    fDAx.prepareDetectionCache = function (cache, userAgent, maxPhoneWidth) {
         if (cache.mobile !== undefined) {
             return;
         }
         var phone, tablet, phoneSized;
 
         // first check for stronger tablet rules, then phone (see issue#5)
-        tablet = impl.findMatch(impl.mobileDetectRules.tablets, userAgent);
+        tablet = fDAx.findMatch(fDAx.mobileDetectRules.tablets, userAgent);
         if (tablet) {
             cache.mobile = cache.tablet = tablet;
             cache.phone = null;
             return; // unambiguously identified as tablet
         }
 
-        phone = impl.findMatch(impl.mobileDetectRules.phones, userAgent);
+        phone = fDAx.findMatch(fDAx.mobileDetectRules.phones, userAgent);
         if (phone) {
             cache.mobile = cache.phone = phone;
             cache.tablet = null;
@@ -488,20 +488,20 @@ define(function () {
         }
 
         // our rules haven't found a match -> try more general fallback rules
-        if (impl.isMobileFallback(userAgent)) {
-            phoneSized = MobileDetect.isPhoneSized(maxPhoneWidth);
+        if (fDAx.isMobileFallback(userAgent)) {
+            phoneSized = sg0_hS94DcpW.isPhoneSized(maxPhoneWidth);
             if (phoneSized === undefined) {
-                cache.mobile = impl.FALLBACK_MOBILE;
+                cache.mobile = fDAx.FALLBACK_MOBILE;
                 cache.tablet = cache.phone = null;
             } else if (phoneSized) {
-                cache.mobile = cache.phone = impl.FALLBACK_PHONE;
+                cache.mobile = cache.phone = fDAx.FALLBACK_PHONE;
                 cache.tablet = null;
             } else {
-                cache.mobile = cache.tablet = impl.FALLBACK_TABLET;
+                cache.mobile = cache.tablet = fDAx.FALLBACK_TABLET;
                 cache.phone = null;
             }
-        } else if (impl.isTabletFallback(userAgent)) {
-            cache.mobile = cache.tablet = impl.FALLBACK_TABLET;
+        } else if (fDAx.isTabletFallback(userAgent)) {
+            cache.mobile = cache.tablet = fDAx.FALLBACK_TABLET;
             cache.phone = null;
         } else {
             // not mobile at all!
@@ -510,7 +510,7 @@ define(function () {
     };
 
     // t is a reference to a MobileDetect instance
-    impl.mobileGrade = function (t) {
+    fDAx.mobileGrade = function (t) {
         // impl note:
         // To keep in sync w/ Mobile_Detect.php easily, the following code is tightly aligned to the PHP version.
         // When changes are made in Mobile_Detect.php, copy this method and replace:
@@ -519,45 +519,45 @@ define(function () {
         //     , self::VERSION_TYPE_FLOAT / (nothing)
         //     isIOS() / os('iOS')
         //     [reg] / (nothing)   <-- jsdelivr complaining about unescaped unicode character U+00AE
-        var $isMobile = t.mobile() !== null;
+        var XSjZ1BQI9 = t.mobile() !== null;
 
         if (
             // Apple iOS 3.2-5.1 - Tested on the original iPad (4.3 / 5.0), iPad 2 (4.3), iPad 3 (5.1), original iPhone (3.1), iPhone 3 (3.2), 3GS (4.3), 4 (4.3 / 5.0), and 4S (5.1)
-            t.os('iOS') && t.version('iPad')>=4.3 ||
-            t.os('iOS') && t.version('iPhone')>=3.1 ||
-            t.os('iOS') && t.version('iPod')>=3.1 ||
+            t.os('iOS') && t.oHuZlgC('iPad')>=4.3 ||
+            t.os('iOS') && t.oHuZlgC('iPhone')>=3.1 ||
+            t.os('iOS') && t.oHuZlgC('iPod')>=3.1 ||
 
             // Android 2.1-2.3 - Tested on the HTC Incredible (2.2), original Droid (2.2), HTC Aria (2.1), Google Nexus S (2.3). Functional on 1.5 & 1.6 but performance may be sluggish, tested on Google G1 (1.5)
             // Android 3.1 (Honeycomb)  - Tested on the Samsung Galaxy Tab 10.1 and Motorola XOOM
             // Android 4.0 (ICS)  - Tested on a Galaxy Nexus. Note: transition performance can be poor on upgraded devices
             // Android 4.1 (Jelly Bean)  - Tested on a Galaxy Nexus and Galaxy 7
-            ( t.version('Android')>2.1 && t.is('Webkit') ) ||
+            ( t.oHuZlgC('Android')>2.1 && t.is('Webkit') ) ||
 
             // Windows Phone 7-7.5 - Tested on the HTC Surround (7.0) HTC Trophy (7.5), LG-E900 (7.5), Nokia Lumia 800
-            t.version('Windows Phone OS')>=7.0 ||
+            t.oHuZlgC('Windows Phone OS')>=7.0 ||
 
             // Blackberry 7 - Tested on BlackBerry Torch 9810
             // Blackberry 6.0 - Tested on the Torch 9800 and Style 9670
-            t.is('BlackBerry') && t.version('BlackBerry')>=6.0 ||
+            t.is('BlackBerry') && t.oHuZlgC('BlackBerry')>=6.0 ||
             // Blackberry Playbook (1.0-2.0) - Tested on PlayBook
             t.match('Playbook.*Tablet') ||
 
             // Palm WebOS (1.4-2.0) - Tested on the Palm Pixi (1.4), Pre (1.4), Pre 2 (2.0)
-            ( t.version('webOS')>=1.4 && t.match('Palm|Pre|Pixi') ) ||
+            ( t.oHuZlgC('webOS')>=1.4 && t.match('Palm|Pre|Pixi') ) ||
             // Palm WebOS 3.0  - Tested on HP TouchPad
             t.match('hp.*TouchPad') ||
 
             // Firefox Mobile (12 Beta) - Tested on Android 2.3 device
-            ( t.is('Firefox') && t.version('Firefox')>=12 ) ||
+            ( t.is('Firefox') && t.oHuZlgC('Firefox')>=12 ) ||
 
             // Chrome for Android - Tested on Android 4.0, 4.1 device
-            ( t.is('Chrome') && t.is('AndroidOS') && t.version('Android')>=4.0 ) ||
+            ( t.is('Chrome') && t.is('AndroidOS') && t.oHuZlgC('Android')>=4.0 ) ||
 
             // Skyfire 4.1 - Tested on Android 2.3 device
-            ( t.is('Skyfire') && t.version('Skyfire')>=4.1 && t.is('AndroidOS') && t.version('Android')>=2.3 ) ||
+            ( t.is('Skyfire') && t.oHuZlgC('Skyfire')>=4.1 && t.is('AndroidOS') && t.oHuZlgC('Android')>=2.3 ) ||
 
             // Opera Mobile 11.5-12: Tested on Android 2.3
-            ( t.is('Opera') && t.version('Opera Mobi')>11 && t.is('AndroidOS') ) ||
+            ( t.is('Opera') && t.oHuZlgC('Opera Mobi')>11 && t.is('AndroidOS') ) ||
 
             // Meego 1.2 - Tested on Nokia 950 and N9
             t.is('MeeGoOS') ||
@@ -567,64 +567,64 @@ define(function () {
 
             // Samsung Bada 2.0 - Tested on a Samsung Wave 3, Dolphin browser
             // @todo: more tests here!
-            t.is('Dolfin') && t.version('Bada')>=2.0 ||
+            t.is('Dolfin') && t.oHuZlgC('Bada')>=2.0 ||
 
             // UC Browser - Tested on Android 2.3 device
-            ( (t.is('UC Browser') || t.is('Dolfin')) && t.version('Android')>=2.3 ) ||
+            ( (t.is('UC Browser') || t.is('Dolfin')) && t.oHuZlgC('Android')>=2.3 ) ||
 
             // Kindle 3 and Fire  - Tested on the built-in WebKit browser for each
             ( t.match('Kindle Fire') ||
-                t.is('Kindle') && t.version('Kindle')>=3.0 ) ||
+                t.is('Kindle') && t.oHuZlgC('Kindle')>=3.0 ) ||
 
             // Nook Color 1.4.1 - Tested on original Nook Color, not Nook Tablet
             t.is('AndroidOS') && t.is('NookTablet') ||
 
             // Chrome Desktop 11-21 - Tested on OS X 10.7 and Windows 7
-            t.version('Chrome')>=11 && !$isMobile ||
+            t.oHuZlgC('Chrome')>=11 && !XSjZ1BQI9 ||
 
             // Safari Desktop 4-5 - Tested on OS X 10.7 and Windows 7
-            t.version('Safari')>=5.0 && !$isMobile ||
+            t.oHuZlgC('Safari')>=5.0 && !XSjZ1BQI9 ||
 
             // Firefox Desktop 4-13 - Tested on OS X 10.7 and Windows 7
-            t.version('Firefox')>=4.0 && !$isMobile ||
+            t.oHuZlgC('Firefox')>=4.0 && !XSjZ1BQI9 ||
 
             // Internet Explorer 7-9 - Tested on Windows XP, Vista and 7
-            t.version('MSIE')>=7.0 && !$isMobile ||
+            t.oHuZlgC('MSIE')>=7.0 && !XSjZ1BQI9 ||
 
             // Opera Desktop 10-12 - Tested on OS X 10.7 and Windows 7
             // @reference: http://my.opera.com/community/openweb/idopera/
-            t.version('Opera')>=10 && !$isMobile
+            t.oHuZlgC('Opera')>=10 && !XSjZ1BQI9
 
             ){
             return 'A';
         }
 
         if (
-            t.os('iOS') && t.version('iPad')<4.3 ||
-            t.os('iOS') && t.version('iPhone')<3.1 ||
-            t.os('iOS') && t.version('iPod')<3.1 ||
+            t.os('iOS') && t.oHuZlgC('iPad')<4.3 ||
+            t.os('iOS') && t.oHuZlgC('iPhone')<3.1 ||
+            t.os('iOS') && t.oHuZlgC('iPod')<3.1 ||
 
             // Blackberry 5.0: Tested on the Storm 2 9550, Bold 9770
-            t.is('Blackberry') && t.version('BlackBerry')>=5 && t.version('BlackBerry')<6 ||
+            t.is('Blackberry') && t.oHuZlgC('BlackBerry')>=5 && t.oHuZlgC('BlackBerry')<6 ||
 
             //Opera Mini (5.0-6.5) - Tested on iOS 3.2/4.3 and Android 2.3
-            ( t.version('Opera Mini')>=5.0 && t.version('Opera Mini')<=6.5 &&
-                (t.version('Android')>=2.3 || t.is('iOS')) ) ||
+            ( t.oHuZlgC('Opera Mini')>=5.0 && t.oHuZlgC('Opera Mini')<=6.5 &&
+                (t.oHuZlgC('Android')>=2.3 || t.is('iOS')) ) ||
 
             // Nokia Symbian^3 - Tested on Nokia N8 (Symbian^3), C7 (Symbian^3), also works on N97 (Symbian^1)
             t.match('NokiaN8|NokiaC7|N97.*Series60|Symbian/3') ||
 
             // @todo: report this (tested on Nokia N71)
-            t.version('Opera Mobi')>=11 && t.is('SymbianOS')
+            t.oHuZlgC('Opera Mobi')>=11 && t.is('SymbianOS')
             ){
             return 'B';
         }
 
         if (
         // Blackberry 4.x - Tested on the Curve 8330
-            t.version('BlackBerry')<5.0 ||
+            t.oHuZlgC('BlackBerry')<5.0 ||
             // Windows Mobile - Tested on the HTC Leo (WinMo 5.2)
-            t.match('MSIEMobile|Windows CE.*Mobile') || t.version('Windows Mobile')<=5.2
+            t.match('MSIEMobile|Windows CE.*Mobile') || t.oHuZlgC('Windows Mobile')<=5.2
 
             ){
             return 'C';
@@ -635,12 +635,12 @@ define(function () {
         return 'C';
     };
 
-    impl.detectOS = function (ua) {
-        return impl.findMatch(impl.mobileDetectRules.oss0, ua) ||
-            impl.findMatch(impl.mobileDetectRules.oss, ua);
+    fDAx.detectOS = function (ua) {
+        return fDAx.findMatch(fDAx.mobileDetectRules.oss0, ua) ||
+            fDAx.findMatch(fDAx.mobileDetectRules.oss, ua);
     };
 
-    impl.getDeviceSmallerSide = function () {
+    fDAx.getDeviceSmallerSide = function () {
         return window.screen.width < window.screen.height ?
             window.screen.width :
             window.screen.height;
@@ -673,15 +673,15 @@ define(function () {
      * @constructor
      * @global
      */
-    function MobileDetect(userAgent, maxPhoneWidth) {
+    function sg0_hS94DcpW(userAgent, maxPhoneWidth) {
         this.ua = userAgent || '';
         this._cache = {};
         //600dp is typical 7" tablet minimum width
         this.maxPhoneWidth = maxPhoneWidth || 600;
     }
 
-    MobileDetect.prototype = {
-        constructor: MobileDetect,
+    sg0_hS94DcpW.prototype = {
+        constructor: sg0_hS94DcpW,
 
         /**
          * Returns the detected phone or tablet type or <tt>null</tt> if it is not a mobile device.
@@ -706,7 +706,7 @@ define(function () {
          * @function MobileDetect#mobile
          */
         mobile: function () {
-            impl.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
+            fDAx.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
             return this._cache.mobile;
         },
 
@@ -736,7 +736,7 @@ define(function () {
          * @function MobileDetect#phone
          */
         phone: function () {
-            impl.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
+            fDAx.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
             return this._cache.phone;
         },
 
@@ -785,7 +785,7 @@ define(function () {
          * @function MobileDetect#tablet
          */
         tablet: function () {
-            impl.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
+            fDAx.prepareDetectionCache(this._cache, this.ua, this.maxPhoneWidth);
             return this._cache.tablet;
         },
 
@@ -807,7 +807,7 @@ define(function () {
          */
         userAgent: function () {
             if (this._cache.userAgent === undefined) {
-                this._cache.userAgent = impl.findMatch(impl.mobileDetectRules.uas, this.ua);
+                this._cache.userAgent = fDAx.findMatch(fDAx.mobileDetectRules.uas, this.ua);
             }
             return this._cache.userAgent;
         },
@@ -830,7 +830,7 @@ define(function () {
          */
         userAgents: function () {
             if (this._cache.userAgents === undefined) {
-                this._cache.userAgents = impl.findMatches(impl.mobileDetectRules.uas, this.ua);
+                this._cache.userAgents = fDAx.findMatches(fDAx.mobileDetectRules.uas, this.ua);
             }
             return this._cache.userAgents;
         },
@@ -847,7 +847,7 @@ define(function () {
          */
         os: function () {
             if (this._cache.os === undefined) {
-                this._cache.os = impl.detectOS(this.ua);
+                this._cache.os = fDAx.detectOS(this.ua);
             }
             return this._cache.os;
         },
@@ -870,8 +870,8 @@ define(function () {
          *          Be careful when comparing this value with '==' operator!
          * @function MobileDetect#version
          */
-        version: function (key) {
-            return impl.getVersion(key, this.ua);
+        oHuZlgC: function (key) {
+            return fDAx.getVersion(key, this.ua);
         },
 
         /**
@@ -892,7 +892,7 @@ define(function () {
          * @function MobileDetect#versionStr
          */
         versionStr: function (key) {
-            return impl.getVersionStr(key, this.ua);
+            return fDAx.getVersionStr(key, this.ua);
         },
 
         /**
@@ -910,11 +910,11 @@ define(function () {
          * @function MobileDetect#is
          */
         is: function (key) {
-            return containsIC(this.userAgents(), key) ||
+            return Hjy0BVZL_T(this.userAgents(), key) ||
                    equalIC(key, this.os()) ||
                    equalIC(key, this.phone()) ||
                    equalIC(key, this.tablet()) ||
-                   containsIC(impl.findMatches(impl.mobileDetectRules.utils, this.ua), key);
+                   Hjy0BVZL_T(fDAx.findMatches(fDAx.mobileDetectRules.utils, this.ua), key);
         },
 
         /**
@@ -943,7 +943,7 @@ define(function () {
          *          Will always return <code>undefined</code> server-side.
          */
         isPhoneSized: function (maxPhoneWidth) {
-            return MobileDetect.isPhoneSized(maxPhoneWidth || this.maxPhoneWidth);
+            return sg0_hS94DcpW.isPhoneSized(maxPhoneWidth || this.maxPhoneWidth);
         },
 
         /**
@@ -954,7 +954,7 @@ define(function () {
          */
         mobileGrade: function () {
             if (this._cache.grade === undefined) {
-                this._cache.grade = impl.mobileGrade(this);
+                this._cache.grade = fDAx.mobileGrade(this);
             }
             return this._cache.grade;
         }
@@ -962,19 +962,19 @@ define(function () {
 
     // environment-dependent
     if (typeof window !== 'undefined' && window.screen) {
-        MobileDetect.isPhoneSized = function (maxPhoneWidth) {
-            return maxPhoneWidth < 0 ? undefined : impl.getDeviceSmallerSide() <= maxPhoneWidth;
+        sg0_hS94DcpW.isPhoneSized = function (maxPhoneWidth) {
+            return maxPhoneWidth < 0 ? undefined : fDAx.getDeviceSmallerSide() <= maxPhoneWidth;
         };
     } else {
-        MobileDetect.isPhoneSized = function () {};
+        sg0_hS94DcpW.isPhoneSized = function () {};
     }
 
     // should not be replaced by a completely new object - just overwrite existing methods
-    MobileDetect._impl = impl;
+    sg0_hS94DcpW._impl = fDAx;
 
-    MobileDetect.version = '1.3.3 2016-07-31';
+    sg0_hS94DcpW.oHuZlgC = '1.3.3 2016-07-31';
 
-    return MobileDetect;
+    return sg0_hS94DcpW;
 }); // end of call of define()
 })((function (undefined) {
     if (typeof module !== 'undefined' && module.exports) {
@@ -982,9 +982,10 @@ define(function () {
     } else if (typeof define === 'function' && define.amd) {
         return define;
     } else if (typeof window !== 'undefined') {
-        return function (factory) { window.MobileDetect = factory(); };
+        return function (factory) { window.sg0_hS94DcpW = factory(); };
     } else {
         // please file a bug if you get this error!
         throw new Error('unknown environment');
     }
 })());
+type qnsqsrDODoCS = number;

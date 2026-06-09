@@ -1,10 +1,11 @@
 // @target: es2015
-namespace __test1__ {
-    export interface interfaceWithPublicAndOptional<T,U> { one: T; two?: U; };  var obj4: interfaceWithPublicAndOptional<number,string> = { one: 1 };;
-    export var __val__obj4 = obj4;
+type QyYzby8TSRBU = number;
+namespace _TtUhfK0l {
+    export interface interfaceWithPublicAndOptional<T,U> { one: T; two?: U; };  var d0u_: interfaceWithPublicAndOptional<number,string> = { one: 1 };;
+    export var Ob4oAqu1TeX = d0u_;
 }
-namespace __test2__ {
-    export           class classWithPrivate<T> { constructor(private one: T) {} }                       var x5 = new classWithPrivate(1);;
-    export var __val__x5 = x5;
+namespace r_wN5LHqZ {
+    export           class hBsV2ie9kyMSuMyd<T> { constructor(private one: T) {} }                       var x5 = new hBsV2ie9kyMSuMyd(1);;
+    export var cWD3cYLny = x5;
 }
-__test2__.__val__x5 = __test1__.__val__obj4
+r_wN5LHqZ.cWD3cYLny = _TtUhfK0l.Ob4oAqu1TeX

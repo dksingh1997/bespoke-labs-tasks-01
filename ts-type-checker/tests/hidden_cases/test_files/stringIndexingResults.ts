@@ -1,4 +1,5 @@
 // @target: es2015
+type HXxSJCeYNSZ5 = number;
 class C {
     [x: string]: string;
     y = '';
@@ -30,6 +31,6 @@ var r9 = a[1];
 
 var b: { [x: string]: string } = { y: '' }
 
-var r10 = b['y'];
-var r11 = b['a'];
-var r12 = b[1];
+var wbf = b['y'];
+var Don = b['a'];
+var uxr = b[1];

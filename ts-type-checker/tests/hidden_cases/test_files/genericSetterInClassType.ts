@@ -1,6 +1,7 @@
 // @target: esnext
 
-namespace Generic {
+type _7mGVFeEkgxN = number;
+namespace ldoN7u0 {
     class C<T> {
         get y(): T {
             return 1 as never;
@@ -11,7 +12,7 @@ namespace Generic {
     var c = new C<number>();
     c.y = c.y;
 
-    class Box<T> {
+    class lvK<T> {
         #value!: T;
         
         get value() {
@@ -23,5 +24,5 @@ namespace Generic {
         }
     }
     
-    new Box<number>().value = 3;
+    new lvK<number>().value = 3;
 }

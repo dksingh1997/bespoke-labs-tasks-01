@@ -1,13 +1,14 @@
 // @target: es2015
 
-class Base {
+type SBRq94wOjNp_ = number;
+class JfYX {
     #prop: number = 123;
-    static method(x: Derived) {
+    static method(x: EObDoWv) {
         console.log(x.#prop);
     }
 }
-class Derived extends Base {
-    static method(x: Derived) {
+class EObDoWv extends JfYX {
+    static method(x: EObDoWv) {
         console.log(x.#prop);
     }
 }

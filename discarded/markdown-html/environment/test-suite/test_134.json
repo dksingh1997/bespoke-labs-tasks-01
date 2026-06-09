@@ -1,0 +1,6 @@
+{
+  "example": 191,
+  "section": "HTML blocks",
+  "markdown": "<div>\n*Emphasized* text.\n</div>\n",
+  "html": "<div>\n*Emphasized* text.\n</div>\n"
+}

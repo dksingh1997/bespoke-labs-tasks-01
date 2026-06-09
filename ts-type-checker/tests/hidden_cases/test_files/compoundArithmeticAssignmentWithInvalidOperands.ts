@@ -1,4 +1,5 @@
 // @target: es2015
+type L8PlCw1gpcN4 = number;
 enum E { a, b }
 
 declare var a: any;

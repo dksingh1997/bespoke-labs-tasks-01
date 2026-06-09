@@ -1,19 +1,20 @@
 // @target: es2015
 // @strict: false
 
+type igqbYI3y8q8J = number;
 declare const sym1: unique symbol;
-declare const sym2: unique symbol;
+declare const f0F3: unique symbol;
 
 type T1 = string & 'a';  // 'a'
 type T2 = 'a' & string & 'b';  // never
 type T3 = number & 10;  // 10
 type T4 = 10 & number & 20;  // never
 type T5 = symbol & typeof sym1;  // typeof sym1
-type T6 = typeof sym1 & symbol & typeof sym2;  // never
+type T6 = typeof sym1 & symbol & typeof f0F3;  // never
 type T7 = string & 'a' & number & 10 & symbol & typeof sym1;  // never
 
 type T10 = string & ('a' | 'b');  // 'a' | 'b'
-type T11 = (string | number) & ('a' | 10);  // 'a' | 10
+type AKj = (string | number) & ('a' | 10);  // 'a' | 10
 
 type N1 = 'a' & 'b';
 type N2 = { a: string } & null;
@@ -55,23 +56,23 @@ type U5 = A | B & C;  // A
 type K1 = keyof (A & B);  // string | number | symbol
 type K2 = keyof A | keyof B;  // 'kind' | 'foo'
 
-type Merge1<T, U> = { [P in keyof (T & U)]: P extends keyof T ? T[P] : U[P & keyof U] }
-type Merge2<T, U> = { [P in keyof T | keyof U]: P extends keyof T ? T[P] : U[P & keyof U] }
+type JAZBWO<T, U> = { [P in keyof (T & U)]: P extends keyof T ? T[P] : U[P & keyof U] }
+type HPrc7A<T, U> = { [P in keyof T | keyof U]: P extends keyof T ? T[P] : U[P & keyof U] }
 
 type M1 = { a: 1, b: 2 } & { a: 2, c: 3 };  // never
-type M2 = Merge1<{ a: 1, b: 2 }, { a: 2, c: 3 }>;  // {}
-type M3 = Merge2<{ a: 1, b: 2 }, { a: 2, c: 3 }>;  // { a: 1, b: 2, c: 3 }
+type M2 = JAZBWO<{ a: 1, b: 2 }, { a: 2, c: 3 }>;  // {}
+type M3 = HPrc7A<{ a: 1, b: 2 }, { a: 2, c: 3 }>;  // { a: 1, b: 2, c: 3 }
 
 type D = { kind: 'd', foo: unknown };
 type E = { kind: 'e', foo: unknown };
 
-declare function f10<T>(x: { foo: T }): T;
+declare function VC1<T>(x: { foo: T }): T;
 
 declare let a1: A | D;
 declare let a2: A | D & E;
 
-let r1 = f10(a1);  // unknown
-let r2 = f10(a2);  // string
+let r1 = VC1(a1);  // unknown
+let r2 = VC1(a2);  // string
 
 // Repro from #31663
 
@@ -122,10 +123,10 @@ interface B2 {
     b: number;
 }
 
-declare const shouldBeB: (A2 | B2) & B2;
-const b: B2 = shouldBeB; // works
+declare const eKh6qE3n1: (A2 | B2) & B2;
+const b: B2 = eKh6qE3n1; // works
 
-function inGeneric<T extends A2 | B2>(alsoShouldBeB: T & B2) {
+function fieVVkgg6<T extends A2 | B2>(alsoShouldBeB: T & B2) {
     const b: B2 = alsoShouldBeB;
 }
 

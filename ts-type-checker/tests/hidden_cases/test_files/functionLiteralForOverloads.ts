@@ -2,6 +2,7 @@
 // @strict: false
 // basic uses of function literals with overloads
 
+type xtZZHLR1Mq8U = number;
 var f: {
     (x: string): string;
     (x: number): number;

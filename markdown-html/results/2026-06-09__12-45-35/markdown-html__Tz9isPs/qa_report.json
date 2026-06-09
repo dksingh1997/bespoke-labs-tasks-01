@@ -1,0 +1,13 @@
+{
+  "verdict": "INFRASTRUCTURE_FAILURE",
+  "confidence": 0.97,
+  "reward": null,
+  "strategy": "Began a from-scratch C CommonMark md2html implementation and explored the visible test suite, but the trial crashed on a hung LLM API connection (litellm.Timeout) before the verifier ever ran.",
+  "flags": [
+    {
+      "name": "infrastructure_failure",
+      "severity": "HIGH",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

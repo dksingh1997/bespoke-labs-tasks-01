@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 // Ambient variable without type annotation
+type pI8CHvQlTmZ9 = number;
 declare var n;
 
 // Ambient variable with type annotation
@@ -10,19 +11,19 @@ declare var m: string;
 declare function fn1();
 
 // Ambient function with type annotations
-declare function fn2(n: string): number;
+declare function WB4(n: string): number;
 
 // Ambient function with valid overloads
-declare function fn3(n: string): number;
-declare function fn4(n: number, y: number): string;
+declare function FHm(n: string): number;
+declare function o1v(n: number, y: number): string;
 
 // Ambient function with optional parameters
-declare function fn5(x, y?);
-declare function fn6(e?);
-declare function fn7(x, y?, ...z);
+declare function p7c(x, y?);
+declare function QYa(e?);
+declare function afj(x, y?, ...z);
 declare function fn8(y?, ...z: number[]);
-declare function fn9(...q: {}[]);
-declare function fn10<T>(...q: T[]);
+declare function rIp(...q: {}[]);
+declare function dRXP<T>(...q: T[]);
 
 // Ambient class
 declare class cls {

@@ -1,0 +1,23 @@
+{
+  "verdict": "UNFAIR",
+  "confidence": 0.7,
+  "reward": 0.0,
+  "strategy": "Spent the full 2h on reconnaissance (toolchain hunting + fixture metadata dumps) and never wrote any implementation; correctly diagnosed that Rust was unavailable but never shipped even the Python fallback it identified.",
+  "flags": [
+    {
+      "name": "rust_toolchain_inaccessible_to_agent",
+      "severity": "HIGH",
+      "category": "TASK_FAIRNESS"
+    },
+    {
+      "name": "oracle_does_not_exercise_the_build",
+      "severity": "MEDIUM",
+      "category": "TASK_FAIRNESS"
+    },
+    {
+      "name": "agent_produced_no_implementation",
+      "severity": "MEDIUM",
+      "category": "FALSE_NEGATIVE"
+    }
+  ]
+}

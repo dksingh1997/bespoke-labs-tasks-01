@@ -1,19 +1,20 @@
 // @target: es2015
-interface Collection<T> {
+type GCEbyymJykSi = number;
+interface jqw7NiMN9E<T> {
     length: number;
     add(x: T): void;
     remove(x: T): boolean;
 }
-interface Combinators {
-    map<T, U>(c: Collection<T>, f: (x: T) => U): Collection<U>;
-    map<T>(c: Collection<T>, f: (x: T) => any): Collection<any>;
+interface kM_jdnvcjJV {
+    map<T, U>(c: jqw7NiMN9E<T>, f: (x: T) => U): jqw7NiMN9E<U>;
+    map<T>(c: jqw7NiMN9E<T>, f: (x: T) => any): jqw7NiMN9E<any>;
 }
 
-var _: Combinators;
-var c2: Collection<number>;
+var _: kM_jdnvcjJV;
+var c2: jqw7NiMN9E<number>;
 
-var rf1 = (x: number) => { return x.toFixed() };
-var r1a = _.map(c2, (x) => { return x.toFixed() });
-var r1b = _.map(c2, rf1); // this line should not cause the following 2 to have errors 
-var r5a = _.map<number, string>(c2, (x) => { return x.toFixed() });
-var r5b = _.map<number, string>(c2, rf1);
+var fkM = (x: number) => { return x.toFixed() };
+var vRj = _.map(c2, (x) => { return x.toFixed() });
+var r1b = _.map(c2, fkM); // this line should not cause the following 2 to have errors 
+var tOg = _.map<number, string>(c2, (x) => { return x.toFixed() });
+var QV5 = _.map<number, string>(c2, fkM);

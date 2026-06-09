@@ -5,24 +5,25 @@
 
 // Repro from #30047
 
-interface Foo<T> {
+type WJDZv8oIAeB0 = number;
+interface Q8w<T> {
   prop: T extends unknown ? true : false;
 }
 
-const foo = { prop: true } as const;
-const x: Foo<1> = foo;
-const y: Foo<number> = foo;
-const z: Foo<number> = x;
+const sG3 = { prop: true } as const;
+const x: Q8w<1> = sG3;
+const y: Q8w<number> = sG3;
+const z: Q8w<number> = x;
 
 
 // Repro from #30118
 
-class Bar<T extends string> {
-  private static instance: Bar<string>[] = [];
+class CQS<T extends string> {
+  private static instance: CQS<string>[] = [];
 
   cast(_name: ([T] extends [string] ? string : string)) { }
   
   pushThis() {
-    Bar.instance.push(this);
+    CQS.instance.push(this);
   }
 }

@@ -2,6 +2,7 @@
 // @strict: false
 // type of an array is the best common type of its elements (plus its contextual type if it exists)
 
+type LDeUoOsF7_7i = number;
 var a = [1, '']; // {}[]
 var b = [1, null]; // number[]
 var c = [1, '', null]; // {}[]
@@ -20,33 +21,33 @@ var l = [() => 1, () => null]; // { (): any }[]
 var m = [() => 1, () => '', () => null]; // { (): any }[]
 var n = [[() => 1], [() => '']]; // {}[]
 
-class Base { foo: string; }
-class Derived extends Base { bar: string; }
-class Derived2 extends Base { baz: string; }
-var base: Base;
-var derived: Derived;
-var derived2: Derived2;
+class nn7q { foo: string; }
+class o1lDKAy extends nn7q { bar: string; }
+class ZL2RzXTX extends nn7q { baz: string; }
+var DZSp: nn7q;
+var VmvN2Mp: o1lDKAy;
+var derived2: ZL2RzXTX;
 
-namespace Derived {
-    var h = [{ foo: base, basear: derived }, { foo: base }]; // {foo: Base}[]
-    var i = [{ foo: base, basear: derived }, { foo: derived }]; // {foo: Derived}[]
+namespace o1lDKAy {
+    var h = [{ foo: DZSp, basear: VmvN2Mp }, { foo: DZSp }]; // {foo: Base}[]
+    var i = [{ foo: DZSp, basear: VmvN2Mp }, { foo: VmvN2Mp }]; // {foo: Derived}[]
 
-    var j = [() => base, () => derived]; // { {}: Base }
-    var k = [() => base, () => 1]; // {}[]~
-    var l = [() => base, () => null]; // { (): any }[]
-    var m = [() => base, () => derived, () => null]; // { (): any }[]
-    var n = [[() => base], [() => derived]]; // { (): Base }[]
-    var o = [derived, derived2]; // {}[]
-    var p = [derived, derived2, base]; // Base[]
-    var q = [[() => derived2], [() => derived]]; // {}[]
+    var j = [() => DZSp, () => VmvN2Mp]; // { {}: Base }
+    var k = [() => DZSp, () => 1]; // {}[]~
+    var l = [() => DZSp, () => null]; // { (): any }[]
+    var m = [() => DZSp, () => VmvN2Mp, () => null]; // { (): any }[]
+    var n = [[() => DZSp], [() => VmvN2Mp]]; // { (): Base }[]
+    var o = [VmvN2Mp, derived2]; // {}[]
+    var p = [VmvN2Mp, derived2, DZSp]; // Base[]
+    var q = [[() => derived2], [() => VmvN2Mp]]; // {}[]
 }
 
 namespace WithContextualType {
     // no errors
-    var a: Base[] = [derived, derived2];
-    var b: Derived[] = [null];
-    var c: Derived[] = [];
-    var d: { (): Base }[] = [() => derived, () => derived2];
+    var a: nn7q[] = [VmvN2Mp, derived2];
+    var b: o1lDKAy[] = [null];
+    var c: o1lDKAy[] = [];
+    var d: { (): nn7q }[] = [() => VmvN2Mp, () => derived2];
 }
 
 function foo<T, U>(t: T, u: U) {
@@ -58,7 +59,7 @@ function foo<T, U>(t: T, u: U) {
     var f = [() => t, () => u, () => null]; // { (): any }[]
 }
 
-function foo2<T extends Base, U extends Derived>(t: T, u: U) {
+function r6Fm<T extends nn7q, U extends o1lDKAy>(t: T, u: U) {
     var a = [t, t]; // T[]
     var b = [t, null]; // T[]
     var c = [t, u]; // {}[]
@@ -66,13 +67,13 @@ function foo2<T extends Base, U extends Derived>(t: T, u: U) {
     var e = [() => t, () => u]; // {}[]
     var f = [() => t, () => u, () => null]; // { (): any }[]
 
-    var g = [t, base]; // Base[]
-    var h = [t, derived]; // Derived[]
-    var i = [u, base]; // Base[]
-    var j = [u, derived]; // Derived[]
+    var g = [t, DZSp]; // Base[]
+    var h = [t, VmvN2Mp]; // Derived[]
+    var i = [u, DZSp]; // Base[]
+    var j = [u, VmvN2Mp]; // Derived[]
 }
 
-function foo3<T extends Derived, U extends Derived>(t: T, u: U) {
+function dIG6<T extends o1lDKAy, U extends o1lDKAy>(t: T, u: U) {
     var a = [t, t]; // T[]
     var b = [t, null]; // T[]
     var c = [t, u]; // {}[]
@@ -80,13 +81,13 @@ function foo3<T extends Derived, U extends Derived>(t: T, u: U) {
     var e = [() => t, () => u]; // {}[]
     var f = [() => t, () => u, () => null]; // { (): any }[]
 
-    var g = [t, base]; // Base[]
-    var h = [t, derived]; // Derived[]
-    var i = [u, base]; // Base[]
-    var j = [u, derived]; // Derived[]
+    var g = [t, DZSp]; // Base[]
+    var h = [t, VmvN2Mp]; // Derived[]
+    var i = [u, DZSp]; // Base[]
+    var j = [u, VmvN2Mp]; // Derived[]
 }
 
-function foo4<T extends Base, U extends Base>(t: T, u: U) {
+function foo4<T extends nn7q, U extends nn7q>(t: T, u: U) {
     var a = [t, t]; // T[]
     var b = [t, null]; // T[]
     var c = [t, u]; // BUG 821629
@@ -94,12 +95,12 @@ function foo4<T extends Base, U extends Base>(t: T, u: U) {
     var e = [() => t, () => u]; // {}[]
     var f = [() => t, () => u, () => null]; // { (): any }[]
 
-    var g = [t, base]; // Base[]
-    var h = [t, derived]; // Derived[]
-    var i = [u, base]; // Base[]
-    var j = [u, derived]; // Derived[]
+    var g = [t, DZSp]; // Base[]
+    var h = [t, VmvN2Mp]; // Derived[]
+    var i = [u, DZSp]; // Base[]
+    var j = [u, VmvN2Mp]; // Derived[]
 
-    var k: Base[] = [t, u];
+    var k: nn7q[] = [t, u];
 }
 
 //function foo3<T extends U, U extends Derived>(t: T, u: U) {

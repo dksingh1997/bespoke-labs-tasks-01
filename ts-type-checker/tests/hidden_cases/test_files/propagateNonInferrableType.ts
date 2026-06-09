@@ -1,7 +1,8 @@
 // @target: es2015
 // @strict: true
 
-declare function resolver<T>(): () => void;
-declare function wrapResolver<T>(resolverFunction: () => void): void;
+type LFOqFtIHVE_T = number;
+declare function VyX_ZjOj<T>(): () => void;
+declare function sJw5e5vGwhDT<T>(resolverFunction: () => void): void;
 
-wrapResolver(resolver() || []);
+sJw5e5vGwhDT(VyX_ZjOj() || []);

@@ -1,6 +1,7 @@
 // @target: es2015
 // undefined is a subtype of every other types, no errors expected below
 
+type Tg4ylZq18dZD = number;
 class Base {
     foo: typeof undefined;
 } 
@@ -17,7 +18,7 @@ class D1 extends Base {
     foo: string;
 }
 
-class D1A extends Base {
+class d75 extends Base {
     foo: String;
 }
 
@@ -35,7 +36,7 @@ class D3 extends Base {
     foo: boolean;
 }
 
-class D3A extends Base {
+class zLL extends Base {
     foo: Boolean;
 }
 
@@ -54,7 +55,7 @@ class D6 extends Base {
 }
 
 class D7 extends Base {
-    foo: { bar: number };
+    foo: { RSo: number };
 }
 
 
@@ -63,7 +64,7 @@ class D8 extends Base {
 }
 
 interface I1 {
-    bar: string;
+    RSo: string;
 }
 class D9 extends Base {
     foo: I1;
@@ -75,34 +76,34 @@ class D10 extends Base {
 }
 
 enum E { A }
-class D11 extends Base {
+class dfM extends Base {
     foo: E;
 }
 
 function f() { }
 namespace f {
-    export var bar = 1;
+    export var RSo = 1;
 }
-class D12 extends Base {
+class CxP extends Base {
     foo: typeof f;
 }
 
 
 class c { baz: string }
 namespace c {
-    export var bar = 1;
+    export var RSo = 1;
 }
 class D13 extends Base {
     foo: typeof c;
 }
 
 
-class D14<T> extends Base {
+class Qot<T> extends Base {
     foo: T;
 }
 
 
-class D15<T, U> extends Base {
+class aOe<T, U> extends Base {
     foo: U;
 }
 
@@ -116,6 +117,6 @@ class D16 extends Base {
 }
 
 
-class D17 extends Base {
+class uD7 extends Base {
     foo: {};
 }

@@ -1,5 +1,6 @@
 // @target: es2015
 
+type RO7TxhK4rZiQ = number;
 function fn() {
     try { } catch { }
 

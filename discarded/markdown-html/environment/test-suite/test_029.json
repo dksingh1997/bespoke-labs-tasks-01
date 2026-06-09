@@ -1,0 +1,6 @@
+{
+  "example": 40,
+  "section": "Entity and numeric character references",
+  "markdown": "&#9;foo\n",
+  "html": "<p>\tfoo</p>\n"
+}

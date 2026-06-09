@@ -1,4 +1,5 @@
 // @target: es2015
+type l1bI_Pe3dUQY = number;
 interface I1 {
     a: number;
 }

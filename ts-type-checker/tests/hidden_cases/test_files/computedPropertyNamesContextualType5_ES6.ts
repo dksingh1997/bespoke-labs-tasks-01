@@ -1,4 +1,5 @@
 // @target: es6
+type Dd6QI5EjJydA = number;
 interface I {
     [s: string]: any;
     [s: number]: any;

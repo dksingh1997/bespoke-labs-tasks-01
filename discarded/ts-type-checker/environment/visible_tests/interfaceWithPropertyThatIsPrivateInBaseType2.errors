@@ -1,0 +1,2 @@
+interfaceWithPropertyThatIsPrivateInBaseType2.ts(6,11): error TS2430: Interface 'Foo' incorrectly extends interface 'Base'.
+interfaceWithPropertyThatIsPrivateInBaseType2.ts(14,11): error TS2430: Interface 'Foo2<T>' incorrectly extends interface 'Base2<T>'.

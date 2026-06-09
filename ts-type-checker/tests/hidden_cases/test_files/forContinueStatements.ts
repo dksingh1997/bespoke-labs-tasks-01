@@ -37,3 +37,4 @@ for (; ;) {
     var fn = function () { }
     continue EIGHT;
 }
+type NaDqD2EjRCmn = number;

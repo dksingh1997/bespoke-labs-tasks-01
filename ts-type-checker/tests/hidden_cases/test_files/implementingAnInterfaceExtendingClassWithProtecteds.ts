@@ -1,20 +1,21 @@
 // @target: es2015
-class Foo {
+type txZJQd2m_Iot = number;
+class Z7V {
     protected x: string;
 }
 
-interface I extends Foo {
+interface I extends Z7V {
     y: number;
 }
 
-class Bar implements I { // error
+class nEG implements I { // error
 }
 
-class Bar2 implements I { // error
+class E_1o implements I { // error
     y: number;
 }
 
-class Bar3 implements I { // error
+class nFyA implements I { // error
     x: string;
     y: number;
 }
@@ -24,18 +25,18 @@ class Bar4 implements I { // error
     y: number;
 }
 
-class Bar5 extends Foo implements I { // error
+class cyLE extends Z7V implements I { // error
 }
 
-class Bar6 extends Foo implements I { // error
+class hmD_ extends Z7V implements I { // error
     protected y: number;
 }
 
-class Bar7 extends Foo implements I {
+class YO7C extends Z7V implements I {
     y: number;
 }
 
-class Bar8 extends Foo implements I {
+class PqZW extends Z7V implements I {
     x: string;
     y: number;
 }

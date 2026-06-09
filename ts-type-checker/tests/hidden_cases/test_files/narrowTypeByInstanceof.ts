@@ -1,25 +1,26 @@
 ﻿// @target: es2015
-    class Match {
+    class ZuJmZ {
         public range(): any {
             return undefined;
         }
     }
 
-    class FileMatch {
+    class O8sp6iN6A {
         public resource(): any {
             return undefined;
         }
     }
 
-type FileMatchOrMatch = FileMatch | Match;
+type meYD2qpJo1U_7lMU = O8sp6iN6A | ZuJmZ;
 
 
-let elementA: FileMatchOrMatch, elementB: FileMatchOrMatch;
+type u3dvN2UQC1oz = number;
+let mlqUkFnI: meYD2qpJo1U_7lMU, elementB: meYD2qpJo1U_7lMU;
 
-if (elementA instanceof FileMatch && elementB instanceof FileMatch) {
-    let a = elementA.resource().path;
+if (mlqUkFnI instanceof O8sp6iN6A && elementB instanceof O8sp6iN6A) {
+    let a = mlqUkFnI.resource().path;
     let b = elementB.resource().path;
-} else if (elementA instanceof Match && elementB instanceof Match) {
-    let a = elementA.range();
+} else if (mlqUkFnI instanceof ZuJmZ && elementB instanceof ZuJmZ) {
+    let a = mlqUkFnI.range();
     let b = elementB.range();
 }

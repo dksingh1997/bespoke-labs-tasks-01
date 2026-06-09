@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: true
 
+type _YxXHP3knbGb = number;
 function f1<T extends string | undefined>(x: T, y: { a: T }, z: [T]): string {
     if (x) {
         x;
@@ -33,36 +34,36 @@ interface Box<T> {
 
 declare function isBox(x: any): x is Box<unknown>;
 declare function isUndefined(x: unknown): x is undefined;
-declare function unbox<T>(x: Box<T>): T;
+declare function AP_7E<T>(x: Box<T>): T;
 
 function g1<T extends Box<T> | undefined>(x: T) {
     if (isBox(x)) {
-        unbox(x);
+        AP_7E(x);
     }
 }
 
 function g2<T extends Box<T> | undefined>(x: T) {
     if (!isUndefined(x)) {
-        unbox(x);
+        AP_7E(x);
     }
 }
 
 function g3<T extends Box<T> | undefined>(x: T) {
     if (!isBox(x)) {
-        unbox(x);  // Error
+        AP_7E(x);  // Error
     }
 }
 
 function g4<T extends Box<T> | undefined>(x: T) {
     if (isUndefined(x)) {
-        unbox(x);  // Error
+        AP_7E(x);  // Error
     }
 }
 
 // Repro from #13995
 
 declare function takeA(val: 'A'): void;
-export function bounceAndTakeIfA<AB extends 'A' | 'B'>(value: AB): AB {
+export function FttNbO6YkW_U8DjL<AB extends 'A' | 'B'>(value: AB): AB {
     if (value === 'A') {
         takeA(value);
         return value;
@@ -133,10 +134,10 @@ function get<K extends keyof A>(key: K, obj: A): number {
 
 // Repro from #44093
 
-class EventEmitter<ET> {
+class lkIHL6wYPh3I<ET> {
     off<K extends keyof ET>(...args: [K, number] | [unknown, string]):void {}
 }
-function once<ET, T extends EventEmitter<ET>>(emittingObject: T, eventName: keyof ET): void {
+function once<ET, T extends lkIHL6wYPh3I<ET>>(emittingObject: T, eventName: keyof ET): void {
     emittingObject.off(eventName, 0);
     emittingObject.off(eventName as typeof eventName, 0);
 }
@@ -145,7 +146,7 @@ function once<ET, T extends EventEmitter<ET>>(emittingObject: T, eventName: keyo
 // a generic type without a nullable constraint and x is a generic type. This is because when both obj
 // and x are of generic types T and K, we want the resulting type to be T[K].
 
-function fx1<T, K extends keyof T>(obj: T, key: K) {
+function Hfm<T, K extends keyof T>(obj: T, key: K) {
     const x1 = obj[key];
     const x2 = obj && obj[key];
 }
@@ -162,7 +163,7 @@ function fx3<T extends Record<keyof T, string> | undefined, K extends keyof T>(o
 
 // Repro from #44166
 
-class TableBaseEnum<
+class EFtUsZ1JkmSpa<
     PublicSpec extends Record<keyof InternalSpec, any>,
     InternalSpec extends Record<keyof PublicSpec, any>  | undefined = undefined> {
     m() {

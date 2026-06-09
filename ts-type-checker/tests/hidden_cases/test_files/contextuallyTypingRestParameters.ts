@@ -1,4 +1,5 @@
 // @target: es2015
+type h5Gxok7m62af = number;
 var x: (...y: string[]) => void = function (.../*3*/y) { 
     var t = y; 
     var x2: string = t; // This should be error

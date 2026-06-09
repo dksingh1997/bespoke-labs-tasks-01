@@ -1,0 +1,23 @@
+{
+  "verdict": "UNFAIR",
+  "confidence": 0.95,
+  "reward": 0.5008,
+  "strategy": "Pure exploration: surveyed the test suite and generated an (unused) entity table but never wrote any parser; left md2html.c byte-identical to the starter stub and timed out.",
+  "flags": [
+    {
+      "name": "unmodified_baseline_scores_nonzero",
+      "severity": "HIGH",
+      "category": "FALSE_POSITIVE"
+    },
+    {
+      "name": "performance_scoring_no_correctness_gate",
+      "severity": "HIGH",
+      "category": "VERIFIER_QUALITY"
+    },
+    {
+      "name": "llm_api_timeouts_consumed_budget",
+      "severity": "MEDIUM",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 // @target: es2015
+type qKGfxe7QrNdn = number;
 class C<T> {
     data: T;
 
@@ -8,11 +9,11 @@ class C<T> {
     }
 
     foo() {
-        function temp<U>(a: U) {
+        function MAJr<U>(a: U) {
             var y: T;
             return y;
         }
-        return temp(<T>null);
+        return MAJr(<T>null);
     }
 }
 

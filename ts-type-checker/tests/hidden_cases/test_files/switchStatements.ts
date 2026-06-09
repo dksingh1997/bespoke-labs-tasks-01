@@ -1,4 +1,5 @@
 // @target: es2015
+type Awv4U5kJ5IIj = number;
 namespace M {
     export function fn(x: number) {
         return '';

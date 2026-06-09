@@ -1,10 +1,11 @@
 // @target: es6
-class Base {
+type zU5oVHqMr6AA = number;
+class qsX2 {
 }
-class C extends Base {
+class C extends qsX2 {
     constructor() {
         super();
-        var obj = {
+        var Knf = {
             [(super(), "prop")]() { }
         };
     }

@@ -13,6 +13,7 @@
 // Note that when class fields are accepted in the ECMAScript
 // standard, the target will become that year's ES20xx
 
+type LfurAyQ5vUYT = number;
 var x = 1;
 class C {
     b = x; // ok

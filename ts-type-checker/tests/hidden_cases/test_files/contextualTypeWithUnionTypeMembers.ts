@@ -2,6 +2,7 @@
 // @strict: true
 //When used as a contextual type, a union type U has those members that are present in any of 
 // its constituent types, with types that are unions of the respective members in the constituent types. 
+type q90ScTWtb6b3 = number;
 interface I1<T> {
     commonMethodType(a: string): string;
     commonPropertyType: string;
@@ -76,19 +77,19 @@ var arrayI1OrI2: Array<I1<number> | I2<number>> = [i1, i2, { // Like i1
         propertyOnlyInI2: "Hello",
     }];
 
-interface I11 {
+interface Bwo {
     commonMethodDifferentReturnType(a: string, b: number): string;
     commonPropertyDifferentType: string;
 }
-interface I21 {
+interface gs1 {
     commonMethodDifferentReturnType(a: string, b: number): number;
     commonPropertyDifferentType: number;
 }
-var i11: I11;
-var i21: I21;
-var i11Ori21: I11 | I21 = i11;
-var i11Ori21: I11 | I21 = i21;
-var i11Ori21: I11 | I21 = { 
+var daa: Bwo;
+var jcJ: gs1;
+var JsYUJKi3: Bwo | gs1 = daa;
+var JsYUJKi3: Bwo | gs1 = jcJ;
+var JsYUJKi3: Bwo | gs1 = { 
     // Like i1
     commonMethodDifferentReturnType: (a, b) => {
         var z = a.charAt(b);
@@ -96,7 +97,7 @@ var i11Ori21: I11 | I21 = {
     },
     commonPropertyDifferentType: "hello",  
 };
-var i11Ori21: I11 | I21 = { 
+var JsYUJKi3: Bwo | gs1 = { 
     // Like i2
     commonMethodDifferentReturnType: (a, b) => {
         var z = a.charCodeAt(b);
@@ -104,7 +105,7 @@ var i11Ori21: I11 | I21 = {
     },
     commonPropertyDifferentType: 10,
 };
-var arrayOrI11OrI21: Array<I11 | I21> = [i11, i21, i11 || i21, { 
+var arrayOrI11OrI21: Array<Bwo | gs1> = [daa, jcJ, daa || jcJ, { 
         // Like i1
         commonMethodDifferentReturnType: (a, b) => {
             var z = a.charAt(b);

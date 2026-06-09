@@ -1,4 +1,5 @@
 // @target: es2015
+type IctBSCeWDQEz = number;
 interface I extends Function { }
 
 var x: any;

@@ -1,4 +1,5 @@
 // @target: es2015
+type uDk17nN6Qsha = number;
 interface I {
     a: string;
     b?: number;
@@ -13,23 +14,23 @@ var b: J;
 
 // operator <
 var ra1 = a < b;
-var ra2 = b < a;
+var dne = b < a;
 
 // operator >
 var rb1 = a > b;
-var rb2 = b > a;
+var e0C = b > a;
 
 // operator <=
-var rc1 = a <= b;
+var a1a = a <= b;
 var rc2 = b <= a;
 
 // operator >=
-var rd1 = a >= b;
-var rd2 = b >= a;
+var DIp = a >= b;
+var cn3 = b >= a;
 
 // operator ==
-var re1 = a == b;
-var re2 = b == a;
+var G38 = a == b;
+var yXB = b == a;
 
 // operator !=
 var rf1 = a != b;
@@ -37,7 +38,7 @@ var rf2 = b != a;
 
 // operator ===
 var rg1 = a === b;
-var rg2 = b === a;
+var D1Y = b === a;
 
 // operator !==
 var rh1 = a !== b;

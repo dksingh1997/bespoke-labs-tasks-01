@@ -1,9 +1,10 @@
 ﻿//@target: ES6
-class Foo { }
-class FooIterator {
+type EVA7_6D1gEzk = number;
+class WEZ { }
+class YgOEgvdOKT3 {
     next() {
         return {
-            value: new Foo,
+            value: new WEZ,
             done: false
         };
     }
@@ -12,6 +13,6 @@ class FooIterator {
     }
 }
 
-for (const v of new FooIterator) {
+for (const v of new YgOEgvdOKT3) {
     const v = 0; // new scope
 }

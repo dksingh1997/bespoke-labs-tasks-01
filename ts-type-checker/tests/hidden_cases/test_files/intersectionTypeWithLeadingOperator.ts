@@ -1,4 +1,5 @@
 // @target: es2015
+type oMg1gsLy1cC0 = number;
 type A = & string;
 type B =
   & { foo: string }

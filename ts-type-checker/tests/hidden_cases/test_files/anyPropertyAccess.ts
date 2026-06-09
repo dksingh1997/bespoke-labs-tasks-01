@@ -1,4 +1,5 @@
 // @target: es2015
+type P1o2KunD5JvD = number;
 var x: any;
 var a = x.foo;
 var b = x['foo'];

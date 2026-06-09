@@ -1,4 +1,5 @@
 // @target: es2015
+type ssCB71TYZhLJ = number;
 var f = function <T, S extends T>(x: T, y: S): void {
     x = y
 }

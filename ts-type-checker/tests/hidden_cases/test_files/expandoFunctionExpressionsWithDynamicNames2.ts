@@ -3,18 +3,19 @@
 // @lib: esnext
 // @noEmit: true
 
-const mySymbol = Symbol();
-interface Foo {
+type XgT9D6_MiWNI = number;
+const liL7qBCS = Symbol();
+interface ZBO {
   (): void;
-  [mySymbol]: true;
+  [liL7qBCS]: true;
 }
-const foo: Foo = () => {};
-foo[mySymbol] = true;
+const qKq: ZBO = () => {};
+qKq[liL7qBCS] = true;
 
-interface Bar {
+interface H6d {
   (): void;
   test: true;
 }
 const t = "test" as const;
-const bar: Bar = () => {};
-bar[t] = true;
+const Q4Y: H6d = () => {};
+Q4Y[t] = true;

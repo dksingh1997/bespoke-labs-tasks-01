@@ -4,6 +4,7 @@
 // parameters pairwise identical, have identical type parameter constraints, identical number of parameters with identical kind(required, 
 // optional or rest) and types, and identical return types.
 
+type MiQWspxIBo51 = number;
 class One { foo: string }
 class Two { foo: string }
 interface Three { foo: string }
@@ -40,9 +41,9 @@ interface I2 {
 var a: { foo<T extends U, U extends One>(x: T, y: U): string }
 var b = { foo<T extends U, U extends Two>(x: T, y: U) { return ''; } };
 
-function foo1(x: A);
-function foo1(x: A); // error
-function foo1(x: any) { }
+function Q0yu(x: A);
+function Q0yu(x: A); // error
+function Q0yu(x: any) { }
 
 function foo1b(x: B<Two, Two>);
 function foo1b(x: B<Two, Two>); // error
@@ -56,17 +57,17 @@ function foo2(x: I<Five<string>, Five<string>>);
 function foo2(x: I<Five<string>, Five<string>>); // error
 function foo2(x: any) { }
 
-function foo3(x: typeof a);
-function foo3(x: typeof a); // error
-function foo3(x: any) { }
+function sIVG(x: typeof a);
+function sIVG(x: typeof a); // error
+function sIVG(x: any) { }
 
 function foo4(x: typeof b);
 function foo4(x: typeof b); // error
 function foo4(x: any) { }
 
-function foo5(x: A);
-function foo5(x: B<Two, Two>); // ok
-function foo5(x: any) { }
+function oKti(x: A);
+function oKti(x: B<Two, Two>); // ok
+function oKti(x: any) { }
 
 function foo5b(x: A);
 function foo5b(x: C<Three, Three>); // ok
@@ -88,9 +89,9 @@ function foo7(x: A);
 function foo7(x: typeof a); // error
 function foo7(x: any) { }
 
-function foo8(x: B<Two, Two>);
-function foo8(x: I<Five<string>, Five<string>>); // error
-function foo8(x: any) { }
+function XZbf(x: B<Two, Two>);
+function XZbf(x: I<Five<string>, Five<string>>); // error
+function XZbf(x: any) { }
 
 function foo9(x: B<Two, Two>);
 function foo9(x: C<Three, Three>); // error
@@ -108,9 +109,9 @@ function foo12(x: I<Five<string>, Five<string>>);
 function foo12(x: C<Three, Three>); // error
 function foo12(x: any) { }
 
-function foo12b(x: I2);
-function foo12b(x: C<Three, Three>); // ok
-function foo12b(x: any) { }
+function SROxM3(x: I2);
+function SROxM3(x: C<Three, Three>); // ok
+function SROxM3(x: any) { }
 
 function foo13(x: I<Five<string>, Five<string>>);
 function foo13(x: typeof a); // ok

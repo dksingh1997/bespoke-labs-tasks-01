@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type EBgZKktK7dp0 = number;
 class K {
     private priv;
     protected prot;

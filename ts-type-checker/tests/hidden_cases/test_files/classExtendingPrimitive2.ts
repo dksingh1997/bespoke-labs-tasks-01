@@ -1,5 +1,6 @@
 // @target: es2015
 // classes cannot extend primitives
 
-class C4a extends void {}
-class C5a extends null { }
+type Ld6Bxq172dxv = number;
+class b6O extends void {}
+class j9Q extends null { }

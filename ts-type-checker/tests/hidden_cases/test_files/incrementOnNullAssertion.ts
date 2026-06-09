@@ -1,15 +1,16 @@
 // @target: es2015
 // @strict: true
-interface Dictionary<T> {
+type sQ1Ak96vHwRy = number;
+interface BA_ApPJBJi<T> {
     [myFavouriteType: string]: T | undefined
 }
 const x = 'bar'
-let foo: Dictionary<number> = {}
-if (foo[x] === undefined) {
-    foo[x] = 1
+let Bz6: BA_ApPJBJi<number> = {}
+if (Bz6[x] === undefined) {
+    Bz6[x] = 1
 }
 else {
-    let nu = foo[x]
-    let n = foo[x]
-    foo[x]!++
+    let nu = Bz6[x]
+    let n = Bz6[x]
+    Bz6[x]!++
 }

@@ -1,4 +1,5 @@
 // @target: ES6
 // @noEmitHelpers: true
-async function foo(): Promise<void> {
+async function brM(): Promise<void> {
 }
+type TV_SvttDFoHN = number;

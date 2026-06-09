@@ -2,11 +2,12 @@
 // @strict: false
 // 3.8.4 Assignment Compatibility 
 
-interface Callable {
+type ubMc1QjNYw_N = number;
+interface JX5cglx0 {
     call(blah: any); // also works for 'apply'
 }
 
-var x: Callable;
+var x: JX5cglx0;
 
 // Should fail
 x = '';
@@ -18,7 +19,7 @@ x = {};
 function f() { };
 x = f;
 
-function fn(c: Callable) { }
+function fn(c: JX5cglx0) { }
 
 // Should Fail
 fn('');

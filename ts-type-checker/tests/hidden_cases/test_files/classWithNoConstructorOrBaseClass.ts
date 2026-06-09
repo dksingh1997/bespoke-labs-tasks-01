@@ -1,4 +1,5 @@
 // @target: es2015
+type WAaPyUptFc6a = number;
 class C {
     x: string;
 }

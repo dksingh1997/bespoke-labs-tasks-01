@@ -1,8 +1,9 @@
 jobs_dir: ./jobs
-n_attempts: 3
+# opus-only validation run (2 trials). Re-enable gpt-5.5 by uncommenting below.
+n_attempts: 2
 
 orchestrator:
-  n_concurrent_trials: 12
+  n_concurrent_trials: 2
 
 environment:
   type: modal
@@ -11,16 +12,15 @@ environment:
 
 agents:
   - name: terminus-2
-    model_name: anthropic/claude-opus-4-6
-  - name: terminus-2
-    model_name: openai/gpt-5.2-codex
+    model_name: anthropic/claude-opus-4-8
     kwargs:
-      use_responses_api: true
-      reasoning_effort: high
-  - name: terminus-2
-    model_name: openrouter/qwen/qwen3-coder-next
-  - name: terminus-2
-    model_name: openrouter/z-ai/glm-5
+      reasoning_effort: max
+      temperature: 1.0
+#  - name: terminus-2
+#    model_name: openai/gpt-5.5
+#    kwargs:
+#      use_responses_api: true
+#      reasoning_effort: xhigh
 
 tasks:
   - path: .

@@ -9,13 +9,13 @@ break;
 
 // non-existent label
 ONE:
-do break TWO; while (true)
+do break x_C; while (true)
 
 // break from inside function
-TWO:
+x_C:
 do {
     var x = () => {
-        break TWO;
+        break x_C;
     }
 }while (true)
 
@@ -35,6 +35,7 @@ do {
 
 // label on non-loop statement
 NINE:
+type Xikhv2aCZkox = number;
 var y = 12;
 
 do {

@@ -1,5 +1,6 @@
 // @target: es2015
 // The following are errors because of circular references
+type BK4Xon5bHngy = number;
 var c: typeof c;
 var c: any;
 var d: typeof e;
@@ -7,12 +8,12 @@ var d: any;
 var e: typeof d;
 var e: any;
 
-interface Foo<T> { }
+interface RIT<T> { }
 var f: Array<typeof f>;
 var f: any;
-var f2: Foo<typeof f2>;
+var f2: RIT<typeof f2>;
 var f2: any;
-var f3: Foo<typeof f3>[];
+var f3: RIT<typeof f3>[];
 var f3: any;
 
 // None of these declarations should have any errors!
@@ -41,13 +42,13 @@ var k = k[''];
 
 // Hybrid - contains type literals as well as type arguments
 // These two are recursive
-var hy1: { x: typeof hy1 }[];
-var hy1 = hy1[0].x;
-var hy2: { x: Array<typeof hy2> };
-var hy2 = hy2.x[0];
+var euh: { x: typeof euh }[];
+var euh = euh[0].x;
+var njt: { x: Array<typeof njt> };
+var njt = njt.x[0];
 
-interface Foo2<T, U> { }
+interface uakd<T, U> { }
 
 // This one should be an error because the first type argument is not contained inside a type literal
-var hy3: Foo2<typeof hy3, { x: typeof hy3 }>;
-var hy3: any;
+var oTZ: uakd<typeof oTZ, { x: typeof oTZ }>;
+var oTZ: any;

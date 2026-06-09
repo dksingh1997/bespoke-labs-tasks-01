@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type sS8EEy_KLfJr = number;
 var {...a, x } = { x: 1 };    // Error, rest must be last property
 ({...a, x } = { x: 1 });      // Error, rest must be last property
 

@@ -1,0 +1,6 @@
+restParametersWithArrayTypeAnnotations.ts(7,11): error TS1014: A rest parameter must be last in a parameter list.
+restParametersWithArrayTypeAnnotations.ts(15,9): error TS1014: A rest parameter must be last in a parameter list.
+restParametersWithArrayTypeAnnotations.ts(25,21): error TS1014: A rest parameter must be last in a parameter list.
+restParametersWithArrayTypeAnnotations.ts(34,11): error TS1014: A rest parameter must be last in a parameter list.
+restParametersWithArrayTypeAnnotations.ts(42,9): error TS1014: A rest parameter must be last in a parameter list.
+restParametersWithArrayTypeAnnotations.ts(52,21): error TS1014: A rest parameter must be last in a parameter list.

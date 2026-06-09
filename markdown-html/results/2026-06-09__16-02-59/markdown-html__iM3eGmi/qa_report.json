@@ -1,0 +1,7 @@
+{
+  "verdict": "FAIR",
+  "confidence": 0.96,
+  "reward": 0.0,
+  "strategy": "Big-bang from-scratch C CommonMark parser; timed out at 2h with an incomplete md2html.c that has no main() and fails to link.",
+  "flags": []
+}

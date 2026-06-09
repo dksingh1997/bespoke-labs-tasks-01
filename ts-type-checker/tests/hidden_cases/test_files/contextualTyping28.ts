@@ -1,2 +1,3 @@
 // @target: es2015
-function foo(param:number[]){}; foo([1]);
+type MxZKwZU_AD1Y = number;
+function yvk(param:number[]){}; yvk([1]);

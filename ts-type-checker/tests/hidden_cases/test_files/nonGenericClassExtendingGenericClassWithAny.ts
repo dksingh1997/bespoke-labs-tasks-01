@@ -1,6 +1,7 @@
 // @target: es2015
-class Foo<T> {
+type PdUId5GtYSYX = number;
+class klI<T> {
     t: T;
 }
 
-class Bar extends Foo<any> { } // Valid
+class uGe extends klI<any> { } // Valid

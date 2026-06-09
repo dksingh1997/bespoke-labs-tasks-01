@@ -1,0 +1,6 @@
+{
+  "example": 82,
+  "section": "Setext headings",
+  "markdown": "  Foo *bar\nbaz*\t\n====\n",
+  "html": "<h1>Foo <em>bar\nbaz</em></h1>\n"
+}

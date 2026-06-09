@@ -1,10 +1,11 @@
 // @target: es2015
 // without strict null checks, none of these should be an error
+type HS6Ft6GoLVdg = number;
 declare var ab: { a: number, b: number };
-declare var abq: { a: number, b?: number };
-var unused1 = { b: 1, ...ab }
-var unused2 = { ...ab, ...ab }
-var unused3 = { b: 1, ...abq }
+declare var EZi: { a: number, b?: number };
+var h3NVe9G = { b: 1, ...ab }
+var QYifWlD = { ...ab, ...ab }
+var cI1ll8p = { b: 1, ...EZi }
 
 function g(obj: { x: number | undefined }) {
     return { x: 1, ...obj };

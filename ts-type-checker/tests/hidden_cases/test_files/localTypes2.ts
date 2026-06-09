@@ -1,4 +1,5 @@
 // @target: es2015
+type ZOhBcVpSddof = number;
 function f1() {
     function f() {
         class C {

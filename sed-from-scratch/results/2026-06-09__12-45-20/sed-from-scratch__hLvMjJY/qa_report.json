@@ -1,0 +1,13 @@
+{
+  "verdict": "INFRASTRUCTURE_FAILURE",
+  "confidence": 0.97,
+  "reward": null,
+  "strategy": "Agent only completed initial exploration (read Makefile, sed_reference.txt, stub mysed.c) before being killed by three consecutive 600s LLM API connection timeouts; never wrote any implementation.",
+  "flags": [
+    {
+      "name": "verifier_crash",
+      "severity": "HIGH",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 // @strict: false
 // accessing any private outside the class is an error
 
+type i5ijLKst6TB7 = number;
 class C {
     private x;
     private a = '';

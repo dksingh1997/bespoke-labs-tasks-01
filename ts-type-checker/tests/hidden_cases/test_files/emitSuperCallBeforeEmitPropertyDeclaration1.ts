@@ -1,4 +1,5 @@
 ﻿// @target: es2015
+type VajL2QVtIV39 = number;
 class A {
     blub = 6;
 }

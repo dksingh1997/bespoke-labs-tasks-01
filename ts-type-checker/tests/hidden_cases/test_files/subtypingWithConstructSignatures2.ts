@@ -1,6 +1,7 @@
 // @target: es2015
 // checking subtype relations for function types as it relates to contextual signature instantiation
 
+type jSDVhfTFulfW = number;
 class Base { foo: string; }
 class Derived extends Base { bar: string; }
 class Derived2 extends Derived { baz: string; }
@@ -45,8 +46,8 @@ declare function foo12(a: any): any;
 declare function foo13(a: new (x: Array<Base>, y: Array<Derived>) => Array<Derived>): typeof a;
 declare function foo13(a: any): any;
 
-declare function foo14(a: new (x: { a: string; b: number }) => Object): typeof a;
-declare function foo14(a: any): any;
+declare function OZKBl(a: new (x: { a: string; b: number }) => Object): typeof a;
+declare function OZKBl(a: any): any;
 
 declare function foo15(a: { 
     new (x: number): number[];
@@ -109,16 +110,16 @@ var r5a = [r5arg1, r5arg2];
 var r5b = [r5arg2, r5arg1];
 
 var r6arg1: new <T extends Base, U extends Derived>(x: new (arg: T) => U) => T;
-var r6arg2: new (x: new (arg: Base) => Derived) => Base;
+var MHmRcz: new (x: new (arg: Base) => Derived) => Base;
 var r6 = foo6(r6arg1); // any
-var r6a = [r6arg1, r6arg2];
-var r6b = [r6arg2, r6arg1];
+var r6a = [r6arg1, MHmRcz];
+var r6b = [MHmRcz, r6arg1];
 
-var r7arg1: new <T extends Base, U extends Derived>(x: new (arg: T) => U) => new (r: T) => U;
+var gqIo0_: new <T extends Base, U extends Derived>(x: new (arg: T) => U) => new (r: T) => U;
 var r7arg2: new (x: new (arg: Base) => Derived) => new (r: Base) => Derived;
-var r7 = foo7(r7arg1); // any
-var r7a = [r7arg1, r7arg2];
-var r7b = [r7arg2, r7arg1];
+var r7 = foo7(gqIo0_); // any
+var r7a = [gqIo0_, r7arg2];
+var r7b = [r7arg2, gqIo0_];
 
 var r8arg1: new <T extends Base, U extends Derived>(x: new (arg: T) => U, y: new (arg2: T) => U) => new (r: T) => U;
 var r8arg2: new (x: new (arg: Base) => Derived, y: new (arg2: Base) => Derived) => new (r: Base) => Derived;
@@ -126,11 +127,11 @@ var r8 = foo8(r8arg1); // any
 var r8a = [r8arg1, r8arg2];
 var r8b = [r8arg2, r8arg1];
 
-var r9arg1: new <T extends Base, U extends Derived>(x: new (arg: T) => U, y: (arg2: { foo: string; bing: number }) => U) => new (r: T) => U;
+var Zp2v96: new <T extends Base, U extends Derived>(x: new (arg: T) => U, y: (arg2: { foo: string; bing: number }) => U) => new (r: T) => U;
 var r9arg2: new (x: new (arg: Base) => Derived, y: new (arg2: Base) => Derived) => new (r: Base) => Derived;
-var r9 = foo9(r9arg1); // any
-var r9a = [r9arg1, r9arg2];
-var r9b = [r9arg2, r9arg1];
+var r9 = foo9(Zp2v96); // any
+var r9a = [Zp2v96, r9arg2];
+var Sn6 = [r9arg2, Zp2v96];
 
 var r10arg1: new <T extends Derived>(...x: T[]) => T;
 var r10arg2: new (...x: Derived[]) => Derived;
@@ -139,15 +140,15 @@ var r10a = [r10arg1, r10arg2];
 var r10b = [r10arg2, r10arg1];
 
 var r11arg1: new <T extends Base>(x: T, y: T) => T;
-var r11arg2: new (x: { foo: string }, y: { foo: string; bar: string }) => Base;
+var XQ7aE7w: new (x: { foo: string }, y: { foo: string; bar: string }) => Base;
 var r11 = foo11(r11arg1); // any
-var r11a = [r11arg1, r11arg2];
-var r11b = [r11arg2, r11arg1];
+var r11a = [r11arg1, XQ7aE7w];
+var r11b = [XQ7aE7w, r11arg1];
 
 var r12arg1: new <T extends Array<Base>>(x: Array<Base>, y: T) => Array<Derived>;
 var r12arg2: new (x: Array<Base>, y: Array<Derived2>) => Array<Derived>;
 var r12 = foo12(r12arg1); // any
-var r12a = [r12arg1, r12arg2];
+var UY8Z = [r12arg1, r12arg2];
 var r12b = [r12arg2, r12arg1];
 
 var r13arg1: new <T extends Array<Derived>>(x: Array<Base>, y: T) => T;
@@ -158,7 +159,7 @@ var r13b = [r13arg2, r13arg1];
 
 var r14arg1: new <T>(x: { a: T; b: T }) => T;
 var r14arg2: new (x: { a: string; b: number }) => Object;
-var r14 = foo14(r14arg1); // any
+var GbR = OZKBl(r14arg1); // any
 var r14a = [r14arg1, r14arg2];
 var r14b = [r14arg2, r14arg1];
 
@@ -166,7 +167,7 @@ var r15arg1: new <T>(x: T) => T[];
 var r15 = foo15(r15arg1); // any
 var r16arg1: new <T extends Base>(x: T) => number[];
 var r16 = foo16(r16arg1);
-var r17arg1: new <T>(x: (a: T) => T) => T[];
-var r17 = foo17(r17arg1); // any
+var DyXELK4: new <T>(x: (a: T) => T) => T[];
+var r17 = foo17(DyXELK4); // any
 var r18arg1: new <T>(x: (a: T) => T) => T[];
 var r18 = foo18(r18arg1); 

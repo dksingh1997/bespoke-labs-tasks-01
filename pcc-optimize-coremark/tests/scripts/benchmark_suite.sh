@@ -35,6 +35,22 @@ CUSTOM_CC=""         # path to custom compiler binary
 CUSTOM_FLAGS=""      # flags for custom compiler
 CUSTOM_NAME="custom" # name for custom compiler in results
 
+# === CoreMark robust-timing + output-validation knobs (HARBOR verifier) ===
+# CoreMark used to run ONCE and the verifier only grepped Iterations/Sec, so a
+# miscompiled-but-fast binary scored. We now run it multiple times (warmup
+# discarded, min/median reported) AND capture its self-CRC validation so the
+# verifier can gate on correctness. See the run_coremark() rewrite below.
+COREMARK_RUNS="${COREMARK_RUNS:-5}"       # measured runs (>=5 per HARBOR bar)
+COREMARK_WARMUP="${COREMARK_WARMUP:-1}"   # discarded warmup runs
+COREMARK_RUN_TIMEOUT="${COREMARK_RUN_TIMEOUT:-150}"  # per-invocation timeout (s)
+# CoreMark CLI: seed1 seed2 seed3 iterations execs ? size. iterations=0 ->
+# CoreMark auto-calibrates to ~10s, which (a) guarantees the >=10s validity
+# window so "Correct operation validated" is printed and (b) yields a stable
+# throughput (Iterations/Sec) for the speedup comparison.
+COREMARK_CLI="${COREMARK_CLI:-0x0 0x0 0x66 0 7 1 2000}"
+EXEC_AS=""           # if set (e.g. "agent"), run/build CoreMark as this user
+VALIDATION_OUT=""    # sidecar path for validation + CRC + timing stats
+
 # Benchmarks that DON'T produce verifiable output (timing data, stderr, or nothing meaningful)
 declare -A NO_VERIFY_BENCHMARKS=(
     ["dhrystone"]=1    # Prints performance stats (DMIPS, timing)
@@ -58,6 +74,11 @@ while [[ $# -gt 0 ]]; do
         --custom-flags)   CUSTOM_FLAGS="$2"; shift 2 ;;
         --timeout|-t)     TIMEOUT_SEC="$2"; shift 2 ;;
         --results-dir)    RESULTS_DIR="$2"; shift 2 ;;
+        --coremark-runs)   COREMARK_RUNS="$2"; shift 2 ;;
+        --coremark-warmup) COREMARK_WARMUP="$2"; shift 2 ;;
+        --coremark-cli)    COREMARK_CLI="$2"; shift 2 ;;
+        --exec-as)         EXEC_AS="$2"; shift 2 ;;
+        --validation-out)  VALIDATION_OUT="$2"; shift 2 ;;
         -h|--help)
             echo "Usage: $0 [OPTIONS]"
             echo ""
@@ -72,6 +93,11 @@ while [[ $# -gt 0 ]]; do
             echo "  --custom-flags FLG  Flags for custom compiler (default: none)"
             echo "  --timeout, -t SEC   Timeout per benchmark (default: 120)"
             echo "  --results-dir DIR   Override results directory"
+            echo "  --coremark-runs N   Measured CoreMark runs (default: 5)"
+            echo "  --coremark-warmup W Discarded CoreMark warmup runs (default: 1)"
+            echo "  --coremark-cli ARGS CoreMark CLI args (default auto-calibrate)"
+            echo "  --exec-as USER      Build+run CoreMark as USER via su (privilege drop)"
+            echo "  --validation-out F  Write CoreMark CRC/validation/timing sidecar to F"
             echo ""
             echo "Examples:"
             echo "  $0 --quick --suite llvm           # Quick LLVM-only run"
@@ -313,81 +339,209 @@ run_all() {
     done
 }
 
-# === SUITE 0: CoreMark ===
+# === SUITE 0: CoreMark (robust timing + self-CRC validation capture) ===
 COREMARK_DIR="$BASE_DIR/benchmarks/coremark"
+
+# Clean env for any su-dropped child (no result-dir / config side channels).
+CM_SAFE_PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# CPU pinning + priority are best-effort: taskset reduces core-migration jitter
+# and nice -n -5 reduces scheduler contention. Both are probed so a denied
+# capability (or a warning to stdout) never corrupts the captured CoreMark log.
+CM_PIN=""
+if command -v taskset >/dev/null 2>&1 && taskset -c 0 true >/dev/null 2>&1; then
+    CM_PIN="taskset -c 0"
+fi
+CM_NICE=""
+if command -v nice >/dev/null 2>&1 && [ -z "$(nice -n -5 true 2>&1)" ]; then
+    CM_NICE="nice -n -5"
+fi
+
+# Run the CoreMark binary once, capturing combined stdout+stderr to $2. When
+# EXEC_AS is set the binary executes as that user (privilege drop) via su with a
+# wiped env; the redirect is owned by THIS (root) script, so the captured log
+# cannot be tampered with by the dropped process.
+cm_run_once() {
+    local bin="$1" outf="$2"
+    if [ -n "$EXEC_AS" ]; then
+        timeout "$COREMARK_RUN_TIMEOUT" $CM_PIN $CM_NICE \
+            su "$EXEC_AS" -s /bin/bash -c \
+            "env -i PATH=$CM_SAFE_PATH HOME=/home/$EXEC_AS TMPDIR=/tmp '$bin' $COREMARK_CLI" \
+            > "$outf" 2>&1
+    else
+        timeout "$COREMARK_RUN_TIMEOUT" $CM_PIN $CM_NICE \
+            "$bin" $COREMARK_CLI > "$outf" 2>&1
+    fi
+}
+
+# Extract the first 0x.... hex token from the line matching $1 in file $2.
+cm_field() { grep -m1 "$1" "$2" 2>/dev/null | grep -oiE '0x[0-9a-f]+' | head -1; }
 
 if suite_enabled "coremark"; then
     echo "========================================"
     echo "  CoreMark Benchmark"
+    echo "  runs=$COREMARK_RUNS warmup=$COREMARK_WARMUP exec_as=${EXEC_AS:-root}"
+    echo "  pin='${CM_PIN:-none}' nice='${CM_NICE:-none}' cli='$COREMARK_CLI'"
     echo "========================================"
-    
-    # CoreMark iterations - use fewer for quick mode
-    COREMARK_ITERS=$((ITERATIONS * 3000))
-    [ $COREMARK_ITERS -lt 1000 ] && COREMARK_ITERS=1000
-    
+
     run_coremark() {
         local comp=$1
         local opt="${OPT_LEVELS[$comp]}"
         local cc="${COMPILERS[$comp]}"
         local label="${comp}${opt:+ $opt}"
         local extra_flags=""
-        
+
         [ -z "$cc" ] && return
-        
+
         # lacc needs GCC include path for system headers
         if [ "$comp" = "lacc" ]; then
             extra_flags="-I/usr/lib/gcc/x86_64-linux-gnu/12/include"
         fi
-        
-        printf "  %-12s " "$label"
-        
-        # Clean previous build
-        (cd "$COREMARK_DIR" && rm -f coremark.exe >/dev/null 2>&1)
-        
-        # Compile with make
-        local t0=$(date +%s.%N)
-        local compile_ok=0
-        
-        if (cd "$COREMARK_DIR" && make CC="$cc" PORT_CFLAGS="$opt $extra_flags" PORT_DIR=linux ITERATIONS=$COREMARK_ITERS link >/dev/null 2>&1); then
-            compile_ok=1
+
+        printf "  %-12s\n" "$label"
+
+        # --- Build coremark.exe from pristine source (as EXEC_AS if set) ---
+        # iterations=0 baked in; the CLI controls the actual run length.
+        (cd "$COREMARK_DIR" && rm -f coremark.exe ./*.o ./posix/*.o >/dev/null 2>&1) || true
+        local t0 t1 ct compile_ok=0
+        t0=$(date +%s.%N)
+        if [ -n "$EXEC_AS" ]; then
+            su "$EXEC_AS" -s /bin/bash -c \
+                "cd '$COREMARK_DIR' && env -i PATH=$CM_SAFE_PATH HOME=/home/$EXEC_AS TMPDIR=/tmp make CC='$cc' PORT_CFLAGS='$opt $extra_flags' PORT_DIR=linux ITERATIONS=0 link" \
+                >/dev/null 2>&1 && compile_ok=1
+        else
+            (cd "$COREMARK_DIR" && make CC="$cc" PORT_CFLAGS="$opt $extra_flags" PORT_DIR=linux ITERATIONS=0 link >/dev/null 2>&1) && compile_ok=1
         fi
-        
-        local t1=$(date +%s.%N)
-        local ct=$(echo "$t1 - $t0" | bc)
-        
-        if [ $compile_ok -eq 0 ]; then
-            echo "COMPILE FAILED"
+        t1=$(date +%s.%N)
+        ct=$(echo "$t1 - $t0" | bc)
+
+        if [ $compile_ok -eq 0 ] || [ ! -x "$COREMARK_DIR/coremark.exe" ]; then
+            echo "    COMPILE FAILED"
             [ $VERIFY -eq 1 ] && echo "coremark,coremark,$comp,$opt,$ct,0,0,FAIL,N/A" >> "$RESULTS_CSV" \
                               || echo "coremark,coremark,$comp,$opt,$ct,0,0,FAIL" >> "$RESULTS_CSV"
+            [ -n "$VALIDATION_OUT" ] && printf 'status=compile_failed\nvalidated=0\n' > "$VALIDATION_OUT"
             return
         fi
-        
-        local sz=$(stat --printf="%s" "$COREMARK_DIR/coremark.exe" 2>/dev/null || echo 0)
-        
-        # Run CoreMark and extract score
-        local output
-        output=$("$COREMARK_DIR/coremark.exe" 0x0 0x0 0x66 $COREMARK_ITERS 7 1 2000 2>&1)
-        local score=$(echo "$output" | grep "Iterations/Sec" | awk '{print $NF}')
-        
-        if [ -n "$score" ]; then
-            printf "ct=%.3fs sz=%6d score=%.1f iter/s\n" "$ct" "$sz" "$score"
-            [ $VERIFY -eq 1 ] && echo "coremark,coremark,$comp,$opt,$ct,$sz,$score,OK,N/A" >> "$RESULTS_CSV" \
-                              || echo "coremark,coremark,$comp,$opt,$ct,$sz,$score,OK" >> "$RESULTS_CSV"
+
+        local sz; sz=$(stat --printf="%s" "$COREMARK_DIR/coremark.exe" 2>/dev/null || echo 0)
+        local capdir; capdir=$(mktemp -d "${RESULTS_DIR}/cmcap_${comp}_XXXXXX")
+
+        # --- Warmup (discarded) + measured runs ---
+        local total=$((COREMARK_WARMUP + COREMARK_RUNS))
+        local samples=() i score
+        for ((i=1; i<=total; i++)); do
+            local outf="$capdir/run_${i}.log"
+            cm_run_once "$COREMARK_DIR/coremark.exe" "$outf" || true
+            score=$(grep -m1 "Iterations/Sec" "$outf" 2>/dev/null | awk '{print $NF}')
+            if [ $i -le $COREMARK_WARMUP ]; then
+                printf "    warmup %d/%d: %s iter/s\n" "$i" "$COREMARK_WARMUP" "${score:-FAIL}"
+                continue
+            fi
+            if [ -n "$score" ]; then
+                samples+=("$score")
+                printf "    run %d/%d: %s iter/s\n" "$((i-COREMARK_WARMUP))" "$COREMARK_RUNS" "$score"
+            else
+                printf "    run %d/%d: RUN FAILED\n" "$((i-COREMARK_WARMUP))" "$COREMARK_RUNS"
+            fi
+        done
+
+        # --- Parse self-CRC validation (time-INDEPENDENT) ---
+        # CoreMark always prints the list/matrix/state CRCs and emits an
+        # "ERROR! ... crc" line whenever one mismatches its built-in known-good
+        # table. Those CRCs are deterministic for the fixed seeds and do not
+        # depend on iteration count or runtime. We therefore key correctness on
+        # them (crc_ok), NOT on the "Correct operation validated" text line:
+        # that line additionally requires a >=10s run, which concurrent CI load
+        # makes flaky (a correct-but-<10s run prints "Errors detected" with
+        # perfectly correct CRCs). Pick a representative run: prefer a crc-clean
+        # one (CRC lines present, no "ERROR! ... crc"); else fall back.
+        local chosen="" f lg
+        for ((f=total; f>=1; f--)); do
+            lg="$capdir/run_${f}.log"
+            [ -f "$lg" ] || continue
+            if grep -q "crclist" "$lg" 2>/dev/null && ! grep -qE "ERROR!.*crc" "$lg" 2>/dev/null; then
+                chosen="$lg"; break
+            fi
+        done
+        if [ -z "$chosen" ]; then
+            for ((f=total; f>=1; f--)); do
+                [ -f "$capdir/run_${f}.log" ] && { chosen="$capdir/run_${f}.log"; break; }
+            done
+        fi
+        local validated=0 crc_errors=0 crc_ok=0
+        local seedcrc crclist crcmatrix crcstate crcfinal
+        if [ -n "$chosen" ]; then
+            grep -q "Correct operation validated" "$chosen" 2>/dev/null && validated=1
+            grep -qE "ERROR!.*crc" "$chosen" 2>/dev/null && crc_errors=1
+            seedcrc=$(cm_field "seedcrc" "$chosen")
+            crclist=$(cm_field "crclist" "$chosen")
+            crcmatrix=$(cm_field "crcmatrix" "$chosen")
+            crcstate=$(cm_field "crcstate" "$chosen")
+            crcfinal=$(cm_field "crcfinal" "$chosen")
+        fi
+        if [ -n "$crclist" ] && [ -n "$crcmatrix" ] && [ -n "$crcstate" ] && [ "$crc_errors" -eq 0 ]; then
+            crc_ok=1
+        fi
+
+        # --- min / median / mean / stdev over measured samples ---
+        local nsamp=${#samples[@]}
+        local cm_min=0 cm_med=0 cm_mean=0 cm_sd=0 cm_max=0
+        if [ "$nsamp" -gt 0 ]; then
+            local stats; stats=$(printf '%s\n' "${samples[@]}" | awk '
+                { a[NR]=$1+0; s+=$1 }
+                END {
+                  n=NR; if(n==0){print "0 0 0 0 0"; exit}
+                  for(i=1;i<=n;i++) for(j=i+1;j<=n;j++) if(a[j]<a[i]){t=a[i];a[i]=a[j];a[j]=t}
+                  min=a[1]; max=a[n]; mean=s/n;
+                  if(n%2==1) med=a[(n+1)/2]; else med=(a[n/2]+a[n/2+1])/2;
+                  sd=0; for(i=1;i<=n;i++) sd+=(a[i]-mean)^2; sd=sqrt(sd/n);
+                  printf "%.4f %.4f %.4f %.4f %.4f", min, med, mean, sd, max
+                }')
+            read -r cm_min cm_med cm_mean cm_sd cm_max <<< "$stats"
+        fi
+        if [ "$nsamp" -gt 0 ]; then
+            # runtime_sec column carries the representative throughput (median).
+            printf "    => median=%.1f min=%.1f stdev=%.1f n=%d crc_ok=%d validated=%d list=%s matrix=%s state=%s\n" \
+                "$cm_med" "$cm_min" "$cm_sd" "$nsamp" "$crc_ok" "$validated" \
+                "${crclist:-NA}" "${crcmatrix:-NA}" "${crcstate:-NA}"
+            [ $VERIFY -eq 1 ] && echo "coremark,coremark,$comp,$opt,$ct,$sz,$cm_med,OK,N/A" >> "$RESULTS_CSV" \
+                              || echo "coremark,coremark,$comp,$opt,$ct,$sz,$cm_med,OK" >> "$RESULTS_CSV"
         else
-            echo "RUN FAILED"
+            echo "    => RUN FAILED (no samples)"
             [ $VERIFY -eq 1 ] && echo "coremark,coremark,$comp,$opt,$ct,$sz,0,FAIL,N/A" >> "$RESULTS_CSV" \
                               || echo "coremark,coremark,$comp,$opt,$ct,$sz,0,FAIL" >> "$RESULTS_CSV"
         fi
+
+        # --- Validation + timing sidecar (root-written; consumed by the gate) ---
+        if [ -n "$VALIDATION_OUT" ]; then
+            {
+                echo "status=ok"
+                echo "compiler=$comp"
+                echo "crc_ok=$crc_ok"
+                echo "crc_errors=$crc_errors"
+                echo "validated=$validated"
+                echo "seedcrc=${seedcrc:-}"
+                echo "crclist=${crclist:-}"
+                echo "crcmatrix=${crcmatrix:-}"
+                echo "crcstate=${crcstate:-}"
+                echo "crcfinal=${crcfinal:-}"
+                echo "score_min=$cm_min"
+                echo "score_median=$cm_med"
+                echo "score_mean=$cm_mean"
+                echo "score_stdev=$cm_sd"
+                echo "score_max=$cm_max"
+                echo "n=$nsamp"
+            } > "$VALIDATION_OUT"
+        fi
     }
-    
+
     if [ -d "$COREMARK_DIR" ]; then
         echo ""
-        echo "[1/1] coremark (${COREMARK_ITERS} iterations)"
         for comp in gcc clang tcc pcc lacc custom; do
             run_coremark "$comp"
         done
-        # Clean up
-        (cd "$COREMARK_DIR" && rm -f coremark.exe >/dev/null 2>&1)
+        # Clean up build artifacts (best-effort; root can remove agent files).
+        (cd "$COREMARK_DIR" && rm -f coremark.exe ./*.o ./posix/*.o >/dev/null 2>&1) || true
     else
         echo "CoreMark not found at $COREMARK_DIR - skipping"
     fi

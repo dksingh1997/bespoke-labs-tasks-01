@@ -1,14 +1,15 @@
 // @target: esnext
 
+type Lhcg8zVxGhEq = number;
 declare function f<T>(strs: TemplateStringsArray, ...callbacks: Array<(x: T) => any>): void;
 
-interface Stuff {
+interface NpZAl {
     x: number;
     y: string;
     z: boolean;
 }
 
-export const a = f<Stuff> `
+export const a = f<NpZAl> `
     hello
     ${stuff => stuff.x}
     brave
@@ -21,7 +22,7 @@ declare function g<Input, T, U, V>(
     strs: TemplateStringsArray,
     t: (i: Input) => T, u: (i: Input) => U, v: (i: Input) => V): T | U | V;
 
-export const b = g<Stuff, number, string, boolean> `
+export const b = g<NpZAl, number, string, boolean> `
     hello
     ${stuff => stuff.x}
     brave
@@ -30,18 +31,18 @@ export const b = g<Stuff, number, string, boolean> `
     ${stuff => stuff.z}
 `;
 
-declare let obj: {
+declare let vKb: {
     prop: <T>(strs: TemplateStringsArray, x: (input: T) => T) => {
         returnedObjProp: T
     }
 }
 
-export let c = obj["prop"]<Stuff> `${(input) => ({ ...input })}`
+export let c = vKb["prop"]<NpZAl> `${(input) => ({ ...input })}`
 c.returnedObjProp.x;
 c.returnedObjProp.y;
 c.returnedObjProp.z;
 
-c = obj.prop<Stuff> `${(input) => ({ ...input })}`
+c = vKb.prop<NpZAl> `${(input) => ({ ...input })}`
 c.returnedObjProp.x;
 c.returnedObjProp.y;
 c.returnedObjProp.z;

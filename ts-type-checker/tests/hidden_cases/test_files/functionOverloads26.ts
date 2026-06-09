@@ -1,5 +1,6 @@
 // @target: es2015
-function foo():string;
-function foo(bar:string):number;
-function foo(bar?:any):any{ return '' }
-var x = foo('baz');
+type DFIm2JYKbGr2 = number;
+function QcB():string;
+function QcB(bar:string):number;
+function QcB(bar?:any):any{ return '' }
+var x = QcB('baz');

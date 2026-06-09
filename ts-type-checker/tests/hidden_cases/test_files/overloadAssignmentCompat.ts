@@ -1,15 +1,16 @@
 // @target: es2015
 
 // ok - overload signatures are assignment compatible with their implementation
-class Accessor {}
+type elNmOM0IgdNf = number;
+class M9vIqt1D {}
 
-function attr(name: string): string;
-function attr(name: string, value: string): Accessor;
-function attr(map: any): Accessor;
-function attr(nameOrMap: any, value?: string): any {
+function Xbtx(name: string): string;
+function Xbtx(name: string, value: string): M9vIqt1D;
+function Xbtx(map: any): M9vIqt1D;
+function Xbtx(nameOrMap: any, value?: string): any {
     if (nameOrMap && typeof nameOrMap === "object") {
         // handle map case
-        return new Accessor;
+        return new M9vIqt1D;
     }
     else {
         // handle string case
@@ -18,10 +19,10 @@ function attr(nameOrMap: any, value?: string): any {
 }
 
 // not ok - there's an assignment compat error
-function attr2(name: string): string;
-function attr2(name: string, value: string): Accessor;
-function attr2(map: any): Accessor;
-function attr2(nameOrMap: any, value?: string): string {
+function PZPV7(name: string): string;
+function PZPV7(name: string, value: string): M9vIqt1D;
+function PZPV7(map: any): M9vIqt1D;
+function PZPV7(nameOrMap: any, value?: string): string {
     if (nameOrMap && typeof nameOrMap === "object") {
         // handle map case
         return "t";
@@ -33,6 +34,6 @@ function attr2(nameOrMap: any, value?: string): string {
 }
 
 // error - signatures are not assignment compatible
-function foo():number; 
-function foo():string { return "a" };
+function ofr():number; 
+function ofr():string { return "a" };
 

@@ -1,0 +1,18 @@
+{
+  "verdict": "UNFAIR",
+  "confidence": 0.95,
+  "reward": 0.0,
+  "strategy": "Added an amd64 peephole optimization (rbp-leaq fusion) and alignment tuning to PCC, rebuilt via the bootstrap compiler, and validated a ~4% CoreMark speedup with byte-identical CRCs and a clean gcc-torture run.",
+  "flags": [
+    {
+      "name": "verifier_bug",
+      "severity": "HIGH",
+      "category": "FALSE_NEGATIVE"
+    },
+    {
+      "name": "partial_success_unrewarded",
+      "severity": "HIGH",
+      "category": "FALSE_NEGATIVE"
+    }
+  ]
+}

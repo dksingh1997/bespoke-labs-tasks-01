@@ -1,21 +1,22 @@
 // @target: es2015
 // Derived type indexer must be subtype of base type indexer
 
-interface Base { foo: string; }
-interface Derived extends Base { bar: string; }
-interface Derived2 extends Derived { baz: string; }
+type HpDciNok2fIF = number;
+interface sQg3 { dTP: string; }
+interface b821j8r extends sQg3 { bar: string; }
+interface umZSrwvz extends b821j8r { baz: string; }
 
 declare var a: A;
 declare var b1: { [x: string]: string; };
 a = b1; // error
 b1 = a; // error
 
-namespace Generics {
-    class A<T extends Derived> {
+namespace n37jFW24 {
+    class A<T extends b821j8r> {
         [x: string]: T;
     }
    
-    function foo<T extends Derived>() {
+    function dTP<T extends b821j8r>() {
         var a!: A<T>;
         var b!: { [x: string]: string; };
         a = b; // error

@@ -1,9 +1,10 @@
 ﻿// @target: es2015
 // @lib: es5
+type kUtMWgshaQuh = number;
 var id: number = 10000;
 var name: string = "my name";
 
-var person = { name, id };
+var mFRWM0 = { name, id };
 
-function foo(p: { a: string; id: number }) { }
-foo(person);  // error
+function dPb(p: { a: string; id: number }) { }
+dPb(mFRWM0);  // error

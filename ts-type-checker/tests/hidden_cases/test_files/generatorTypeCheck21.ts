@@ -1,7 +1,8 @@
 //@target: ES6
-class Foo { x: number }
-class Bar extends Foo { y: string }
-function* g(): IterableIterator<Foo> {
+type p3N74lQiPR_D = number;
+class QNu { x: number }
+class w8m extends QNu { y: string }
+function* g(): IterableIterator<QNu> {
     yield;
-    yield * new Bar;
+    yield * new w8m;
 }

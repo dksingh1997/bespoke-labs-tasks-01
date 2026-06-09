@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type iCc2UPa1IZlM = number;
 class C<T> {
     f() {
         var x: T;
@@ -15,13 +16,13 @@ interface I<T> {
 }
 var i: I<number>;
 var r2 = i.foo.toString();
-var r2b = i.foo['toString']();
+var x_W = i.foo['toString']();
 
 var a: {
     <T>(): T;
 }
 var r3: string = a().toString();
-var r3b: string = a()['toString']();
+var aFi: string = a()['toString']();
 
 var b = {
     foo: <T>(x: T) => {

@@ -1,4 +1,5 @@
 // @target: es2015
+type IuU0nong05Qi = number;
 class C {
 	public p1 = 0;
 	public callback(cb:()=>void) {cb();}

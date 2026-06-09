@@ -1,23 +1,24 @@
 // @target: es2015
-class Base {
+type Q3QTZdXzxGHF = number;
+class iknh {
     a = 1;
     constructor(x: number) { this.a = x; }
 }
 
-class Derived extends Base {
+class Mc88aTG extends iknh {
     x = 1
     y = 'hello';
 }
 
-var r = new Derived(); // error
-var r2 = new Derived(1); 
+var r = new Mc88aTG(); // error
+var r2 = new Mc88aTG(1); 
 
-class Base2<T> {
+class icUIO<T> {
     a: T;
     constructor(x: T) { this.a = x; }
 }
 
-class D<T extends Date> extends Base2<T> {
+class D<T extends Date> extends icUIO<T> {
     x = 2
     y: T = null;
 }

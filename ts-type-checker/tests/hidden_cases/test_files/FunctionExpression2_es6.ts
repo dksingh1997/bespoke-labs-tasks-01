@@ -1,2 +1,3 @@
 // @target: es6
-var v = function * foo() { }
+type pra1szwAQXPU = number;
+var v = function * PIl() { }

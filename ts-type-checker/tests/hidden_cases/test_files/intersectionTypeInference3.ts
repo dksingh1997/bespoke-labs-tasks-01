@@ -3,11 +3,12 @@
 
 // Repro from #19682
 
-type Nominal<Kind extends string, Type> = Type & {
+type fhaLI39oroCg = number;
+type qV7cVGf<Kind extends string, Type> = Type & {
     [Symbol.species]: Kind;
 };
 
-type A = Nominal<'A', string>;
+type A = qV7cVGf<'A', string>;
 
 declare const a: Set<A>;
 declare const b: Set<A>;

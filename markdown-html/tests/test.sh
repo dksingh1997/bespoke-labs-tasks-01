@@ -2,22 +2,79 @@
 #
 # Harbor verifier for the CommonMark Markdown-to-HTML task (C implementation).
 #
-# 1. Compile agent's C code
-# 2. Anti-cheat: scan for use of existing markdown libraries/tools
-# 3. Run correctness tests (visible + hidden JSON test cases)
-# 4. Run performance benchmarks (agent vs cmark on large documents)
-# 5. Compute weighted composite reward:
-#      50% correctness (fraction of tests passed)
-#      50% performance (speed vs cmark reference implementation)
+# Threat closed vs. the previous version: the verifier used to compile and run
+# the agent's md2html AS ROOT, so a malicious converter could simply open
+# /tests/hidden_cases/test_*.json (the answer keys) and echo the expected HTML.
+# Here EVERY build and EVERY md2html invocation runs AS THE `agent` USER under
+# strace, with /tests re-locked to mode 0700 — so the converter gets EACCES on
+# the answer keys, and scoring (which reads them) happens only as root, OUTSIDE
+# strace, where no agent code runs.
 #
-
-set -euo pipefail
+# Layout (no `set -euo pipefail` — early abort can leave the verifier in an
+# inconsistent state; use `|| fail_with` / explicit checks per step instead):
+#
+#   Prologue (root)        lock+wipe /logs/verifier, re-lock /tests, sanitise
+#                          env, kill leftover agent procs.
+#   Build  (as agent)      make / gcc under strace -> own log.
+#   Correctness (as agent) one strace'd batch of md2html runs writing into a
+#                          ROOT-owned 0755 staging dir (per-case files 0666);
+#                          graded afterwards by root (FD-pinned, reads keys).
+#   Performance (as agent) median-of-3 vs the root-only cmark reference.
+#   Tripwires (root)       reward-file writes (any phase) + external-converter
+#                          execve (md2html exec'ing cmark/pandoc/python/...).
+#   Reward (root)          standalone compute_reward.py, atomic reward.json.
+#
+# Scoring is unchanged: 50% correctness + 50% performance, with performance
+# GATED by correctness. Always exits 0; the outcome is in reward.{json,txt}.
 
 VERIFIER_DIR="/logs/verifier"
+TESTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+MD2HTML="/app/workspace/md2html"
+CMARK="/opt/verifier_tools/cmark_install/bin/cmark"
+AGENT_PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Staging paths (initialised so cleanup on an early fail is a no-op).
+INPUTS_DIR=""
+OUTPUTS_DIR=""
+PERF_INPUTS=""
+RUNNER=""
+
+# Must match [solution.env].HARBOR_ORACLE_FLAG in task.toml. Harbor injects that
+# value ONLY into the OracleAgent's env (never the verifier's, never the agent's),
+# and solve.sh writes it to /app/.harbor_oracle_marker. The agent cannot read
+# this string (it lives in this root-only, mode-0700 /tests/test.sh), so it
+# cannot forge the marker.
+EXPECTED_ORACLE_FLAG="md2html-oracle-7e3c9a1b5d2f8e64"
+
+# === MANDATORY: lock + wipe /logs/verifier (root-only) before anything else ===
+# Harbor sets it world-writable at container start. Lock first (immediately cuts
+# off any agent background process), then wipe anything the agent may have planted.
 mkdir -p "$VERIFIER_DIR"
+chmod 700 "$VERIFIER_DIR"
+rm -rf "${VERIFIER_DIR:?}"/*
+
+# === MANDATORY: /tests lockdown ===
+# Harbor's verify-phase upload of test.sh resets /tests back to 0755, undoing the
+# Dockerfile's `chmod 700 /tests`. Re-lock here so the agent (uid 1000) cannot
+# open the hidden answer keys or perf corpus, at build time or run time.
+chmod 700 /tests 2>/dev/null || true
+chmod -R go-rx /tests/hidden_cases /tests/perf_data 2>/dev/null || true
+
+# === MANDATORY: environment sanitisation ===
+# Strip preload/loader/interpreter/compiler side channels that could smuggle code
+# into the as-agent build or the root-side python helpers.
+unset LD_PRELOAD LD_LIBRARY_PATH PYTHONPATH PYTHONHOME BASH_ENV ENV CFLAGS CC CXX MAKEFLAGS
+export PATH="$AGENT_PATH"
+
+# Restore exec bits (Modal/Daytona drop them; harmless locally). -type f only, so
+# this does not relax the /tests dir mode set above.
+find /tests -type f -name '*.sh' -exec chmod +x {} + 2>/dev/null || true
 
 LOG="$VERIFIER_DIR/verifier.log"
 exec > >(tee -a "$LOG") 2>&1
+
+START_S=$SECONDS
 
 echo "========================================"
 echo "  CommonMark Markdown-to-HTML Verifier"
@@ -25,7 +82,79 @@ echo "========================================"
 echo "Start time: $(date)"
 echo ""
 
-# Snapshot the agent's workspace
+# ------------------------------------------------------------------
+# Helpers
+# ------------------------------------------------------------------
+relax_reward_perms() {
+    # On local-Docker runtimes /logs/verifier is bind-mounted; the 0700 dir +
+    # root-owned reward files lock out Harbor's host reader (uid 1000). Safe to
+    # widen reads — verification is complete and the agent container is dead.
+    chmod 755 "$VERIFIER_DIR" 2>/dev/null || true
+    chmod 644 "$VERIFIER_DIR"/reward.json "$VERIFIER_DIR"/reward.txt 2>/dev/null || true
+}
+
+cleanup_staging() {
+    rm -rf "$INPUTS_DIR" "$OUTPUTS_DIR" "$PERF_INPUTS" "$RUNNER" 2>/dev/null || true
+}
+
+fail_with() {
+    local reason="$1"
+    echo ""
+    echo "NON-SCORING OUTCOME: $reason  (score = 0.0)"
+    python3 -ISs "$TESTS_DIR/compute_reward.py" \
+        --fail "$reason" \
+        --output-dir "$VERIFIER_DIR" \
+        --total-time-s "$((SECONDS - START_S))"
+    cleanup_staging
+    relax_reward_perms
+    echo "End time: $(date)"
+    exit 0
+}
+
+reward_tamper_in() {
+    # $1 = strace log path. Any write-mode open of a reward file inside the
+    # strace window is agent code forging the reward (nothing legitimate writes
+    # reward.{txt,json} there — compute_reward.py runs afterwards as root).
+    grep -qE 'openat\([^)]*reward\.(txt|json)[^)]*(O_WRONLY|O_RDWR|O_CREAT)' \
+        "$1" 2>/dev/null
+}
+
+converter_execve_in() {
+    # $1 = strace log path. md2html (or a child it spawns) exec'ing an external
+    # Markdown converter / interpreter is spec-gaming. Build-phase logs are NOT
+    # passed here (a legitimate Makefile may run python for codegen); only the
+    # md2html RUN phases are checked.
+    grep -qE 'execve\([^)]*(\bcmark\b|\bpandoc\b|\bmarkdown\b|\bpython[0-9.]*\b|\bnode\b|\bperl\b|\bruby\b)' \
+        "$1" 2>/dev/null
+}
+
+# ------------------------------------------------------------------
+# Oracle marker detection (token-gated bypass of anti-cheat/execve walls).
+# ------------------------------------------------------------------
+ORACLE_DETECTED=0
+if [ -f /app/.harbor_oracle_marker ] && \
+   [ "$(cat /app/.harbor_oracle_marker 2>/dev/null)" = "$EXPECTED_ORACLE_FLAG" ]; then
+    ORACLE_DETECTED=1
+    echo "[oracle] marker verified — unlocking cmark for agent, skipping anti-cheat + execve tripwires"
+    # Let the agent-uid oracle wrapper read+exec the otherwise root-only cmark.
+    chmod -R go+rx /opt/verifier_tools 2>/dev/null || true
+fi
+
+# ------------------------------------------------------------------
+# Kill any pre-existing agent processes (cross-phase isolation).
+# ------------------------------------------------------------------
+pkill -9 -u agent 2>/dev/null || true
+sleep 0.5
+if pgrep -u agent >/dev/null 2>&1; then
+    sleep 1
+    pkill -9 -u agent 2>/dev/null || true
+    sleep 0.5
+    pgrep -u agent >/dev/null 2>&1 && fail_with "agent_processes_survived"
+fi
+
+# ------------------------------------------------------------------
+# Snapshot the agent's workspace (root, read-only, OUTSIDE strace).
+# ------------------------------------------------------------------
 SNAPSHOT_DIR="$VERIFIER_DIR/workspace_snapshot"
 if [ -d /app/workspace ]; then
     mkdir -p "$SNAPSHOT_DIR"
@@ -34,351 +163,266 @@ if [ -d /app/workspace ]; then
     echo ""
 fi
 
-VISIBLE_CASES_DIR="/app/test-suite"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-HIDDEN_CASES_DIR="$SCRIPT_DIR/hidden_cases"
-PERF_DATA_DIR="$SCRIPT_DIR/perf_data"
-MD2HTML="/app/workspace/md2html"
-CMARK="/app/verifier_tools/cmark_install/bin/cmark"
+# ------------------------------------------------------------------
+# Static anti-cheat source scan (root; no agent code runs). Skipped for the
+# oracle, whose wrapper legitimately exec()s the reference cmark.
+# ------------------------------------------------------------------
+if [ "$ORACLE_DETECTED" -eq 0 ]; then
+    echo "=== Anti-cheat source scan ==="
+    CHEAT=0
+    if [ -d /app/workspace ]; then
+        if grep -rE '#include\s*[<"].*\b(cmark|libmarkdown|sundown|hoedown|md4c|discount|mkdio)\b' \
+            /app/workspace/ --include="*.c" --include="*.h" -l 2>/dev/null; then
+            echo "CHEAT: #include of a known Markdown parsing library"; CHEAT=1
+        fi
+        if grep -rE '\b(system|popen|execvp?|execl|execlp|execle|execv|execvpe)\s*\(' \
+            /app/workspace/ --include="*.c" --include="*.h" -l 2>/dev/null >/dev/null; then
+            if grep -rE '\b(system|popen|execvp?|execl|execlp|execle|execv|execvpe)\s*\(.*\b(cmark|pandoc|python|node|perl|ruby|markdown)\b' \
+                /app/workspace/ --include="*.c" --include="*.h" -l 2>/dev/null; then
+                echo "CHEAT: exec/system/popen of an external converter"; CHEAT=1
+            fi
+        fi
+        if grep -rE '\-l(cmark|markdown|sundown|hoedown|md4c|discount)' \
+            /app/workspace/ --include="Makefile" --include="*.mk" -l 2>/dev/null; then
+            echo "CHEAT: linking against a Markdown library in build files"; CHEAT=1
+        fi
+        for wrapper in md2html.py md2html.js md2html.sh md2html.rb md2html.pl; do
+            if [ -f "/app/workspace/$wrapper" ]; then
+                echo "CHEAT: wrapper script $wrapper — converter must be C"; CHEAT=1
+            fi
+        done
+    fi
+    if [ "$CHEAT" -eq 1 ]; then
+        fail_with "cheat_detected"
+    fi
+    echo "Anti-cheat source scan passed."
+    echo ""
+fi
 
 # ------------------------------------------------------------------
-# Step 1: Compilation
+# Build the agent's converter AS THE agent USER, under strace.
+# Build runs as agent so a `#include "/tests/..."` cannot read the answer keys
+# (the /tests mode-0700 wall applies to the compiler). Stale artifacts are wiped
+# first so we build from the agent's stated source.
 # ------------------------------------------------------------------
-echo "=== Compilation ==="
-COMPILE_OK=0
+echo "=== Build (as agent, under strace) ==="
+rm -f "$MD2HTML" /app/workspace/*.o 2>/dev/null || true
+chown -R agent:agent /app/workspace 2>/dev/null || true
+
+BUILD_STRACE="$VERIFIER_DIR/build.strace.log"
 
 if [ -f /app/workspace/Makefile ]; then
-    echo "Found Makefile, running make..."
-    if make -C /app/workspace 2>&1 | tail -20; then
-        COMPILE_OK=1
-    fi
+    strace -f -e trace=clone,clone3,fork,vfork,execve,openat -o "$BUILD_STRACE" \
+        timeout 300 \
+        su agent -s /bin/bash -c \
+            "env -i PATH='$AGENT_PATH' HOME=/home/agent TMPDIR=/tmp LC_ALL=C make -C /app/workspace" \
+        > "$VERIFIER_DIR/make.log" 2>&1
+    tail -20 "$VERIFIER_DIR/make.log"
 fi
 
-if [ "$COMPILE_OK" -eq 0 ] && ls /app/workspace/*.c >/dev/null 2>&1; then
-    echo "Make failed or no Makefile; trying gcc directly..."
-    if gcc -O2 -Wall -std=c11 -o /app/workspace/md2html /app/workspace/*.c -lm 2>&1 | tail -20; then
-        COMPILE_OK=1
-    fi
+if [ ! -x "$MD2HTML" ] && ls /app/workspace/*.c >/dev/null 2>&1; then
+    echo "make produced no binary; falling back to gcc..."
+    strace -f -e trace=clone,clone3,fork,vfork,execve,openat -o "$BUILD_STRACE" \
+        timeout 300 \
+        su agent -s /bin/bash -c \
+            "env -i PATH='$AGENT_PATH' HOME=/home/agent TMPDIR=/tmp LC_ALL=C gcc -O2 -Wall -std=c11 -o '$MD2HTML' /app/workspace/*.c -lm" \
+        > "$VERIFIER_DIR/gcc.log" 2>&1
+    tail -20 "$VERIFIER_DIR/gcc.log"
 fi
 
-if [ "$COMPILE_OK" -eq 0 ] || [ ! -x "$MD2HTML" ]; then
-    echo ""
-    echo "Compilation FAILED. No executable at $MD2HTML. Score = 0."
-    echo "0.0" > "$VERIFIER_DIR/reward.txt"
-    python3 -c "
-import json
-reward = {'composite_score': 0.0, 'error': 'compilation_failed'}
-with open('$VERIFIER_DIR/reward.json', 'w') as f:
-    json.dump(reward, f, indent=2)
-print(json.dumps(reward, indent=2))
-"
-    exit 0
+if reward_tamper_in "$BUILD_STRACE"; then
+    fail_with "reward_file_manipulation"
 fi
-echo "Compilation succeeded: $MD2HTML"
+
+if [ ! -x "$MD2HTML" ]; then
+    fail_with "compilation_failed"
+fi
+
+# Verify it is an ELF binary, not a script masquerading as the converter.
+if [ "$ORACLE_DETECTED" -eq 0 ]; then
+    if file "$MD2HTML" 2>/dev/null | grep -qiE '(shell script|ascii text|python script|perl script)'; then
+        fail_with "cheat_detected"
+    fi
+fi
+echo "Build OK: $MD2HTML"
 echo ""
 
 # ------------------------------------------------------------------
-# Step 2: Anti-cheat
+# Stage correctness inputs (root). One python pass writes agent-readable input
+# files + ROOT-owned 0666 per-case output files, plus the run/grade manifests.
 # ------------------------------------------------------------------
-echo "=== Anti-cheat Check ==="
-CHEAT_DETECTED=0
+echo "=== Correctness (as agent, under strace) ==="
+INPUTS_DIR="$(mktemp -d /tmp/md_inputs_XXXXXXXX)"
+OUTPUTS_DIR="$(mktemp -d /tmp/md_outputs_XXXXXXXX)"
+chmod 755 "$INPUTS_DIR" "$OUTPUTS_DIR"
+RUN_MANIFEST="$INPUTS_DIR/run_manifest.tsv"
+GRADE_MANIFEST="$VERIFIER_DIR/grade_manifest.tsv"
 
-if [ -d /app/workspace ]; then
-    # Ban #include of known markdown libraries
-    if grep -rE '#include\s*[<"].*\b(cmark|libmarkdown|sundown|hoedown|md4c|discount|mkdio)\b' \
-        /app/workspace/ --include="*.c" --include="*.h" -l 2>/dev/null; then
-        echo "CHEAT: Found #include of a known Markdown parsing library"
-        CHEAT_DETECTED=1
-    fi
+STAGE_COUNTS="$(python3 -ISs "$TESTS_DIR/harness.py" stage \
+    --visible-dir /app/test-suite \
+    --hidden-dir /tests/hidden_cases \
+    --inputs-dir "$INPUTS_DIR" \
+    --outputs-dir "$OUTPUTS_DIR" \
+    --run-manifest "$RUN_MANIFEST" \
+    --grade-manifest "$GRADE_MANIFEST")"
+stage_rc=$?
+if [ "$stage_rc" -ne 0 ] || [ ! -s "$RUN_MANIFEST" ]; then
+    fail_with "staging_failed"
+fi
+echo "Staged cases (visible hidden): $STAGE_COUNTS"
 
-    # Ban system()/popen()/exec*() calling known tools
-    if grep -rE '\b(system|popen|execvp?|execl|execlp)\s*\(' /app/workspace/ --include="*.c" --include="*.h" -l 2>/dev/null; then
-        if grep -rE '\b(system|popen|execvp?|execl|execlp)\s*\(.*\b(cmark|pandoc|python|node|perl|ruby|markdown)\b' \
-            /app/workspace/ --include="*.c" --include="*.h" -l 2>/dev/null; then
-            echo "CHEAT: Found system()/popen()/exec() call to external tool"
-            CHEAT_DETECTED=1
-        fi
-    fi
+# Runner script: pure-bash loop, run AS agent. It only execs md2html (+timeout),
+# so any cmark/pandoc/python execve in this log is the converter cheating.
+RUNNER="/tmp/md_runner_$$.sh"
+cat > "$RUNNER" <<RUNNER_EOF
+#!/bin/bash
+while IFS=\$'\t' read -r inp out; do
+    [ -n "\$inp" ] || continue
+    /usr/bin/timeout 10 "$MD2HTML" < "\$inp" > "\$out" 2>/dev/null
+done < "$RUN_MANIFEST"
+RUNNER_EOF
+chmod 755 "$RUNNER"
 
-    # Ban linking against markdown libraries in Makefile
-    if grep -rE '\-l(cmark|markdown|sundown|hoedown|md4c|discount)' \
-        /app/workspace/ --include="Makefile" --include="*.mk" -l 2>/dev/null; then
-        echo "CHEAT: Found linking against a Markdown library in build files"
-        CHEAT_DETECTED=1
-    fi
+CORR_STRACE="$VERIFIER_DIR/correctness.strace.log"
+timeout 480 \
+    strace -f -e trace=clone,clone3,fork,vfork,execve,openat -o "$CORR_STRACE" \
+        su agent -s /bin/bash -c \
+            "env -i PATH='$AGENT_PATH' HOME=/home/agent TMPDIR=/tmp LC_ALL=C bash '$RUNNER'"
 
-    # Ban Python/JS/shell wrapper files
-    for wrapper in md2html.py md2html.js md2html.sh md2html.rb md2html.pl; do
-        if [ -f "/app/workspace/$wrapper" ]; then
-            echo "CHEAT: Found wrapper script $wrapper — converter must be written in C"
-            CHEAT_DETECTED=1
-        fi
-    done
-
-    # Check if the binary is actually an ELF executable (not a shell script)
-    if file "$MD2HTML" 2>/dev/null | grep -qv "ELF"; then
-        if file "$MD2HTML" 2>/dev/null | grep -qE "(script|text|ASCII)"; then
-            echo "CHEAT: md2html is a script, not a compiled C binary"
-            CHEAT_DETECTED=1
-        fi
-    fi
+# strace -f guarantees every descendant is dead here.
+if reward_tamper_in "$CORR_STRACE"; then
+    fail_with "reward_file_manipulation"
+fi
+if [ "$ORACLE_DETECTED" -eq 0 ] && converter_execve_in "$CORR_STRACE"; then
+    fail_with "external_converter_execve"
 fi
 
-if [ "$CHEAT_DETECTED" -eq 1 ]; then
-    echo ""
-    echo "Anti-cheat FAILED. Score = 0."
-    echo "0.0" > "$VERIFIER_DIR/reward.txt"
-    python3 -c "
-import json
-reward = {'composite_score': 0.0, 'error': 'cheat_detected'}
-with open('$VERIFIER_DIR/reward.json', 'w') as f:
-    json.dump(reward, f, indent=2)
-print(json.dumps(reward, indent=2))
-"
-    exit 0
-fi
-echo "Anti-cheat passed."
+# Grade as root (reads answer keys + FD-pinned agent outputs). OUTSIDE strace.
+GRADE_OUT="$(python3 -ISs "$TESTS_DIR/harness.py" grade \
+    --grade-manifest "$GRADE_MANIFEST" \
+    --failed-file "$VERIFIER_DIR/failed_cases.txt")"
+read -r VIS_PASS VIS_TOTAL HID_PASS HID_TOTAL <<< "$GRADE_OUT"
+VIS_PASS=${VIS_PASS:-0}; VIS_TOTAL=${VIS_TOTAL:-0}
+HID_PASS=${HID_PASS:-0}; HID_TOTAL=${HID_TOTAL:-0}
+CORRECT_PASSED=$((VIS_PASS + HID_PASS))
+CORRECT_TOTAL=$((VIS_TOTAL + HID_TOTAL))
+echo "  visible:  $VIS_PASS / $VIS_TOTAL"
+echo "  hidden:   $HID_PASS / $HID_TOTAL"
+echo "  subtotal: $CORRECT_PASSED / $CORRECT_TOTAL"
 echo ""
 
 # ------------------------------------------------------------------
-# Step 3: Correctness tests
+# Performance benchmarks. cmark reference runs as ROOT (root-only binary) and is
+# NOT traced — so its execve never pollutes the converter tripwire. The agent's
+# md2html runs AS agent, under strace, median-of-3.
 # ------------------------------------------------------------------
-correctness_total=0
-correctness_passed=0
-failed_cases=()
-timing_start=$SECONDS
-
-run_correctness_suite() {
-    local cases_dir="$1"
-    local suite_label="$2"
-
-    if [ ! -d "$cases_dir" ]; then
-        echo "WARNING: Cases directory not found: $cases_dir"
-        return
-    fi
-
-    local suite_cases
-    suite_cases=$(ls "$cases_dir"/test_*.json 2>/dev/null | wc -l)
-
-    if [ "$suite_cases" -eq 0 ]; then
-        echo "WARNING: No test cases found in $cases_dir"
-        return
-    fi
-
-    echo "=== Running $suite_label correctness tests ($suite_cases cases) ==="
-    echo ""
-
-    local suite_pass=0
-    local suite_fail=0
-
-    for test_file in "$cases_dir"/test_*.json; do
-        [ -f "$test_file" ] || continue
-
-        test_name=$(basename "$test_file" .json)
-        correctness_total=$((correctness_total + 1))
-
-        # Extract markdown and expected html using python
-        md_file=$(mktemp /tmp/md_XXXXXX.txt)
-        expected_file=$(mktemp /tmp/expected_XXXXXX.txt)
-
-        python3 -c "
-import json, sys
-with open('$test_file') as f:
-    t = json.load(f)
-with open('$md_file', 'w') as f:
-    f.write(t['markdown'])
-with open('$expected_file', 'w') as f:
-    f.write(t['html'])
-" 2>/dev/null
-
-        # Run the agent's converter
-        actual_file=$(mktemp /tmp/actual_XXXXXX.txt)
-        if timeout 10 "$MD2HTML" < "$md_file" > "$actual_file" 2>/dev/null; then
-            if diff -q "$actual_file" "$expected_file" >/dev/null 2>&1; then
-                correctness_passed=$((correctness_passed + 1))
-                suite_pass=$((suite_pass + 1))
-            else
-                suite_fail=$((suite_fail + 1))
-                failed_cases+=("[$suite_label] $test_name")
-            fi
-        else
-            suite_fail=$((suite_fail + 1))
-            failed_cases+=("[$suite_label] $test_name (timeout/crash)")
-        fi
-
-        rm -f "$md_file" "$expected_file" "$actual_file"
-    done
-
-    echo "  $suite_label: $suite_pass passed, $suite_fail failed (of $((suite_pass + suite_fail)))"
-    echo ""
-}
-
-run_correctness_suite "$VISIBLE_CASES_DIR" "visible"
-run_correctness_suite "$HIDDEN_CASES_DIR" "hidden"
-
-echo "Correctness subtotal: $correctness_passed / $correctness_total"
-echo ""
-
-# ------------------------------------------------------------------
-# Step 4: Performance benchmarks
-# ------------------------------------------------------------------
-perf_total=0
-perf_score_sum="0.0"
-
 echo "=== Performance Benchmarks ==="
-echo ""
+PERF_TOTAL=0
+PERF_SCORE_SUM="0.0"
+PERF_STRACE_DIR="$VERIFIER_DIR/perf_strace"
+mkdir -p "$PERF_STRACE_DIR"
+PERF_INPUTS="$(mktemp -d /tmp/md_perf_XXXXXXXX)"
+chmod 755 "$PERF_INPUTS"
+cp /tests/perf_data/perf_*.md "$PERF_INPUTS"/ 2>/dev/null || true
+chmod 644 "$PERF_INPUTS"/*.md 2>/dev/null || true
 
 if [ ! -x "$CMARK" ]; then
-    echo "WARNING: cmark reference not found at $CMARK — skipping performance tests"
+    echo "WARNING: cmark reference missing at $CMARK — skipping performance."
 else
-    for perf_file in "$PERF_DATA_DIR"/perf_*.md; do
+    for perf_file in "$PERF_INPUTS"/perf_*.md; do
         [ -f "$perf_file" ] || continue
+        perf_name="$(basename "$perf_file" .md)"
+        PERF_TOTAL=$((PERF_TOTAL + 1))
+        file_kb=$(( $(wc -c < "$perf_file") / 1024 ))
+        echo "  Benchmark: $perf_name (${file_kb} KB)"
 
-        perf_name=$(basename "$perf_file" .md)
-        perf_total=$((perf_total + 1))
-
-        file_size=$(wc -c < "$perf_file")
-        echo "  Benchmark: $perf_name ($(( file_size / 1024 )) KB)"
-
-        # Time cmark (3 runs, take median)
-        cmark_times=()
-        for run in 1 2 3; do
-            start_ns=$(date +%s%N 2>/dev/null || echo "0")
-            "$CMARK" < "$perf_file" > /dev/null 2>&1
-            end_ns=$(date +%s%N 2>/dev/null || echo "0")
-            elapsed=$(python3 -c "print(f'{($end_ns - $start_ns) / 1e9:.6f}')")
-            cmark_times+=("$elapsed")
-        done
+        # cmark reference median-of-3 (root, untraced).
+        c1=$(date +%s%N); "$CMARK" --unsafe < "$perf_file" > /dev/null 2>&1; c1e=$(date +%s%N)
+        c2=$(date +%s%N); "$CMARK" --unsafe < "$perf_file" > /dev/null 2>&1; c2e=$(date +%s%N)
+        c3=$(date +%s%N); "$CMARK" --unsafe < "$perf_file" > /dev/null 2>&1; c3e=$(date +%s%N)
         cmark_median=$(python3 -c "
-times = sorted([float(x) for x in '${cmark_times[0]},${cmark_times[1]},${cmark_times[2]}'.split(',')])
-print(f'{times[1]:.6f}')
-")
+t=sorted([($c1e-$c1)/1e9,($c2e-$c2)/1e9,($c3e-$c3)/1e9]); print(f'{t[1]:.6f}')")
 
-        # Time agent's md2html (3 runs, take median)
-        agent_times=()
+        # Agent md2html median-of-3 (as agent, UNTRACED). Timing the untraced
+        # runs keeps the measurement about the converter rather than ptrace
+        # overhead; security comes from the separate traced run below.
         agent_ok=1
+        a_times=()
         for run in 1 2 3; do
-            start_ns=$(date +%s%N 2>/dev/null || echo "0")
-            if timeout 60 "$MD2HTML" < "$perf_file" > /dev/null 2>&1; then
-                end_ns=$(date +%s%N 2>/dev/null || echo "0")
-                elapsed=$(python3 -c "print(f'{($end_ns - $start_ns) / 1e9:.6f}')")
-                agent_times+=("$elapsed")
+            s=$(date +%s%N)
+            if timeout 60 \
+                    su agent -s /bin/bash -c \
+                        "env -i PATH='$AGENT_PATH' HOME=/home/agent TMPDIR=/tmp LC_ALL=C '$MD2HTML' < '$perf_file' > /dev/null 2>&1"; then
+                e=$(date +%s%N)
+                a_times+=("$(python3 -c "print(f'{($e-$s)/1e9:.6f}')")")
             else
                 agent_ok=0
                 break
             fi
         done
 
-        if [ "$agent_ok" -eq 1 ] && [ "${#agent_times[@]}" -eq 3 ]; then
+        # One TRACED run (untimed, as agent) feeding the converter/reward-file
+        # tripwires. A converter that exec()s cmark/python for speed does so on
+        # every run, so a single traced run catches it.
+        plog="$PERF_STRACE_DIR/${perf_name}.strace.log"
+        timeout 60 \
+            strace -f -e trace=clone,clone3,fork,vfork,execve,openat -o "$plog" \
+                su agent -s /bin/bash -c \
+                    "env -i PATH='$AGENT_PATH' HOME=/home/agent TMPDIR=/tmp LC_ALL=C '$MD2HTML' < '$perf_file' > /dev/null 2>&1" \
+            >/dev/null 2>&1 || true
+        if reward_tamper_in "$plog"; then
+            fail_with "reward_file_manipulation"
+        fi
+        if [ "$ORACLE_DETECTED" -eq 0 ] && converter_execve_in "$plog"; then
+            fail_with "external_converter_execve"
+        fi
+
+        if [ "$agent_ok" -eq 1 ] && [ "${#a_times[@]}" -eq 3 ]; then
             agent_median=$(python3 -c "
-times = sorted([float(x) for x in '${agent_times[0]},${agent_times[1]},${agent_times[2]}'.split(',')])
-print(f'{times[1]:.6f}')
-")
-            # Score = min(1.0, (cmark_time * 5) / agent_time)
+t=sorted([float(x) for x in '${a_times[0]},${a_times[1]},${a_times[2]}'.split(',')]); print(f'{t[1]:.6f}')")
             test_score=$(python3 -c "
-cmark_t = max(float($cmark_median), 0.0001)
-agent_t = max(float($agent_median), 0.0001)
-score = min(1.0, (cmark_t * 5.0) / agent_t)
-print(f'{score:.4f}')
-")
-            perf_score_sum=$(python3 -c "print(round($perf_score_sum + $test_score, 4))")
+c=max($cmark_median,0.0001); a=max($agent_median,0.0001); print(f'{min(1.0,(c*5.0)/a):.4f}')")
+            PERF_SCORE_SUM=$(python3 -c "print(round($PERF_SCORE_SUM + $test_score, 4))")
             echo "    cmark: ${cmark_median}s, agent: ${agent_median}s, score: ${test_score}"
         else
             echo "    agent TIMEOUT/CRASH on $perf_name, score: 0.0"
         fi
     done
 fi
-
 echo ""
 
 # ------------------------------------------------------------------
-# Step 5: Composite score
+# Compute reward (root, OUTSIDE strace, counters only).
 # ------------------------------------------------------------------
-TOTAL_TIME=$((SECONDS - timing_start))
-
 echo "=========================================="
 echo "  Verifier Results"
 echo "=========================================="
-echo "  Correctness: $correctness_passed / $correctness_total"
-echo "  Perf benchmarks: $perf_total (score_sum=$perf_score_sum)"
-echo "  Total time: ${TOTAL_TIME}s"
-echo "=========================================="
+python3 -ISs "$TESTS_DIR/compute_reward.py" \
+    --output-dir "$VERIFIER_DIR" \
+    --correctness-passed "$CORRECT_PASSED" \
+    --correctness-total "$CORRECT_TOTAL" \
+    --perf-total "$PERF_TOTAL" \
+    --perf-score-sum "$PERF_SCORE_SUM" \
+    --total-time-s "$((SECONDS - START_S))" \
+    --failed-cases-file "$VERIFIER_DIR/failed_cases.txt"
 
-python3 -c "
-import json, sys
-
-correctness_passed = $correctness_passed
-correctness_total  = $correctness_total
-perf_total         = $perf_total
-perf_score_sum     = $perf_score_sum
-
-W_CORRECT = 0.50
-W_PERF    = 0.50
-
-correctness_rate = correctness_passed / correctness_total if correctness_total > 0 else 0.0
-perf_rate        = perf_score_sum / perf_total if perf_total > 0 else 0.0
-
-# If a category has no tests, redistribute weight
-active_weight = 0.0
-if correctness_total > 0: active_weight += W_CORRECT
-if perf_total > 0:        active_weight += W_PERF
-
-if active_weight > 0:
-    scale = 1.0 / active_weight
-else:
-    scale = 0.0
-
-w_c = (W_CORRECT * scale) if correctness_total > 0 else 0.0
-w_p = (W_PERF    * scale) if perf_total > 0         else 0.0
-
-composite = w_c * correctness_rate + w_p * perf_rate
-composite = round(composite, 4)
-
-print()
-print(f'  Correctness rate:  {correctness_rate:.4f}  (weight {w_c:.2f})')
-print(f'  Performance rate:  {perf_rate:.4f}  (weight {w_p:.2f})')
-print(f'  --')
-print(f'  Composite score:   {composite:.4f}')
-print()
-
-with open('$VERIFIER_DIR/reward.txt', 'w') as f:
-    f.write(str(composite))
-
-reward = {
-    'composite_score': composite,
-    'correctness': {
-        'passed': correctness_passed,
-        'total': correctness_total,
-        'rate': round(correctness_rate, 4),
-        'weight': round(w_c, 4),
-    },
-    'performance': {
-        'total': perf_total,
-        'score_sum': round(perf_score_sum, 4),
-        'rate': round(perf_rate, 4),
-        'weight': round(w_p, 4),
-    },
-    'total_time_s': $TOTAL_TIME,
-}
-with open('$VERIFIER_DIR/reward.json', 'w') as f:
-    json.dump(reward, f, indent=2)
-print(json.dumps(reward, indent=2))
-"
-
-if [ ${#failed_cases[@]} -gt 0 ]; then
+# Human-readable failed-case listing for the log.
+if [ -s "$VERIFIER_DIR/failed_cases.txt" ]; then
     echo ""
     echo "Failed/Error cases (first 50):"
     count=0
-    for c in "${failed_cases[@]}"; do
+    while IFS= read -r c; do
+        [ -n "$c" ] || continue
         echo "  - $c"
         count=$((count + 1))
-        if [ "$count" -ge 50 ]; then
-            echo "  ... and $((${#failed_cases[@]} - 50)) more"
-            break
-        fi
-    done
+        [ "$count" -ge 50 ] && break
+    done < "$VERIFIER_DIR/failed_cases.txt"
 fi
+
+cleanup_staging
+relax_reward_perms
 
 echo ""
 echo "End time: $(date)"
 echo "========================================"
+exit 0

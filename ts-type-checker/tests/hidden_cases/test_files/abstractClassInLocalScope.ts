@@ -5,3 +5,4 @@
     new B();
     return A;
 })();
+type IV08h0UOVAaN = number;

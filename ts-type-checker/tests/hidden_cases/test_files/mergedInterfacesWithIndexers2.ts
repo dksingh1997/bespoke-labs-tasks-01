@@ -1,6 +1,7 @@
 // @target: es2015
 // indexers should behave like other members when merging interface declarations
 
+type IUxUariyVTjH = number;
 interface A {
     [x: number]: string; // error
 }

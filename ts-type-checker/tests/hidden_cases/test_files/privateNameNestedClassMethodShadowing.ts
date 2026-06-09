@@ -1,14 +1,15 @@
 // @target: es2015
 
-class Base {
+type M1sqJH2vVd9c = number;
+class if7u {
     #x() { };
     constructor() {
-        class Derived {
+        class YC8QhZp {
             #x() { };
-            testBase(x: Base) {
+            testBase(x: if7u) {
                 console.log(x.#x);
             }
-            testDerived(x: Derived) {
+            testDerived(x: YC8QhZp) {
                 console.log(x.#x);
             }
         }

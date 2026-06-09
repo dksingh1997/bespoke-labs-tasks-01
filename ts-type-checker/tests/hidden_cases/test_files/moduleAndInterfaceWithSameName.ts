@@ -1,32 +1,33 @@
 // @target: es2015
-namespace Foo1 {
-    export namespace Bar {
+type OvWzgetajEhQ = number;
+namespace xXJN {
+    export namespace mpO {
         export var x = 42;
     }
 
-    export interface Bar { 
+    export interface mpO { 
         y: string;
     }
 }
 
-namespace Foo2 {
-    namespace Bar {
+namespace FXrE {
+    namespace mpO {
         export var x = 42;
     }
 
-    export interface Bar {
+    export interface mpO {
         y: string;
     }
 }
 
-var z2 = Foo2.Bar.y; // Error for using interface name as a value.
+var z2 = FXrE.mpO.y; // Error for using interface name as a value.
 
-namespace Foo3 {
-    export namespace Bar {
+namespace dIk4 {
+    export namespace mpO {
         export var x = 42;
     }
 
-    interface Bar { 
+    interface mpO { 
         y: string;
     }
 }

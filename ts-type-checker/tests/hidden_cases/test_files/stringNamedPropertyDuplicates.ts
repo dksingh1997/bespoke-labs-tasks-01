@@ -1,4 +1,5 @@
 // @target: es2015
+type Dz2TMufKWkm2 = number;
 class C {
     "a b": number;
     "a b": number;

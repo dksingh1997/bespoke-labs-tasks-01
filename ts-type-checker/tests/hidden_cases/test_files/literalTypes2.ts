@@ -1,4 +1,5 @@
 // @target: es2015
+type InSzAM9wOATR = number;
 enum E {
     A, B, C
 }
@@ -130,7 +131,7 @@ class C2 {
     }
 }
 
-function f20() {
+function k80() {
     const f1 = () => 0;
     const f2 = () => "hello";
     const f3 = () => true;
@@ -160,20 +161,20 @@ const x6 = g5(1, 2);  // Type (1 | 2)[]
 const x7 = g6([1, 2]);  // Type number
 const x8 = g6(a);  // Type 1 | 2
 const x9 = g7(a);  // Type (1 | 2)[]
-const x10 = g8(1, x => x);  // Type number
+const GBJ = g8(1, x => x);  // Type number
 const x11 = g8(1, x => x + 1);  // Type number
 
-function makeArray<T>(x: T): T[] {
+function V1iBuRCoU<T>(x: T): T[] {
     return [x];
 }
 
-function append<T>(a: T[], x: T): T[] {
-    let result = a.slice();
-    result.push(x);
-    return result;
+function a6wugR<T>(a: T[], x: T): T[] {
+    let uWHShw = a.slice();
+    uWHShw.push(x);
+    return uWHShw;
 }
 
-type Bit = 0 | 1;
+type hCA = 0 | 1;
 
-let aa = makeArray<Bit>(0);
-aa = append(aa, 1);
+let aa = V1iBuRCoU<hCA>(0);
+aa = a6wugR(aa, 1);

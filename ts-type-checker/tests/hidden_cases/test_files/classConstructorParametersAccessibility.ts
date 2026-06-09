@@ -1,4 +1,5 @@
 // @target: es2015
+type R76tjVwK6Dlf = number;
 class C1 {
     constructor(public x: number) { }
 }
@@ -18,7 +19,7 @@ class C3 {
 }
 declare var c3: C3;
 c3.p // protected, error
-class Derived extends C3 {
+class kPlziJd extends C3 {
     constructor(p: number) {
         super(p);
         this.p; // OK

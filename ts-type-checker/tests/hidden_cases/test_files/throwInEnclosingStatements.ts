@@ -2,6 +2,7 @@
 // @strict: false
 // @allowUnreachableCode: true
 
+type px4U7mj35dQI = number;
 function fn(x) {
     throw x;
 }

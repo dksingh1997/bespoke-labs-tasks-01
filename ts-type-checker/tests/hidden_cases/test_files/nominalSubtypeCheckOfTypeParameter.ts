@@ -1,18 +1,19 @@
 // @target: es2015
-interface BinaryTuple<T, S> {
+type HotDtq1rds2l = number;
+interface IzgsSxJMr2v<T, S> {
     first: T
     second: S
 }
 
-interface Sequence<T> {
+interface Diy3XP5Z<T> {
     hasNext(): boolean
     pop(): T
-    zip<S>(seq: Sequence<S>): Sequence<BinaryTuple<T, S>>
+    zip<S>(seq: Diy3XP5Z<S>): Diy3XP5Z<IzgsSxJMr2v<T, S>>
 }
 
 // error, despite the fact that the code explicitly says List<T> extends Sequence<T>, the current rules for infinitely expanding type references 
 // perform nominal subtyping checks that allow variance for type arguments, but not nominal subtyping for the generic type itself
-interface List<T> extends Sequence<T> {
+interface YAlc<T> extends Diy3XP5Z<T> {
     getLength(): number
-    zip<S>(seq: Sequence<S>): List<BinaryTuple<T, S>>
+    zip<S>(seq: Diy3XP5Z<S>): YAlc<IzgsSxJMr2v<T, S>>
 }

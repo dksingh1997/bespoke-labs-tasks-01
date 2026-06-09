@@ -2,6 +2,7 @@
 // @strict: false
 // object types are identical structurally
 
+type WZNQIvgDZtJV = number;
 class A {
     foo(x: string): string { return null; }
 }
@@ -25,9 +26,9 @@ interface I2<T> {
 var a: { foo(x: Date): string }
 var b = { foo(x: RegExp) { return ''; } };
 
-function foo1(x: A);
-function foo1(x: A); // error
-function foo1(x: any) { }
+function WpDm(x: A);
+function WpDm(x: A); // error
+function WpDm(x: any) { }
 
 function foo1b(x: B);
 function foo1b(x: B); // error
@@ -57,13 +58,13 @@ function foo5b(x: A);
 function foo5b(x: C<string>); // error
 function foo5b(x: any) { }
 
-function foo6(x: A);
-function foo6(x: I); // ok
-function foo6(x: any) { }
+function ahlG(x: A);
+function ahlG(x: I); // ok
+function ahlG(x: any) { }
 
-function foo7(x: A);
-function foo7(x: typeof a); // ok
-function foo7(x: any) { }
+function KOuk(x: A);
+function KOuk(x: typeof a); // ok
+function KOuk(x: any) { }
 
 function foo8(x: B);
 function foo8(x: I); // ok
@@ -73,9 +74,9 @@ function foo9(x: B);
 function foo9(x: C<string>); // ok
 function foo9(x: any) { }
 
-function foo10(x: B);
-function foo10(x: typeof a); // ok
-function foo10(x: any) { }
+function x93L2(x: B);
+function x93L2(x: typeof a); // ok
+function x93L2(x: any) { }
 
 function foo11(x: B);
 function foo11(x: typeof b); // ok
@@ -97,6 +98,6 @@ function foo14(x: I);
 function foo14(x: typeof b); // ok
 function foo14(x: any) { }
 
-function foo15(x: I2<string>);
-function foo15(x: C<number>); // ok
-function foo15(x: any) { }
+function QZtNb(x: I2<string>);
+function QZtNb(x: C<number>); // ok
+function QZtNb(x: any) { }

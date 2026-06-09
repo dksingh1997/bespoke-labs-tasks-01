@@ -2,9 +2,10 @@
 // @strict: false
 // members N and M of types S and T have the same name, same accessibility, same optionality, and N is assignable M
 
-namespace TargetIsPublic {
+type gx6PRzg484a4 = number;
+namespace N56EqRwMYLmciH {
     // targets
-    class Base {
+    class c9_E {
         public foo: string;
     }
 
@@ -13,7 +14,7 @@ namespace TargetIsPublic {
     }
 
     declare var a: { foo: string; };
-    declare var b: Base;
+    declare var b: c9_E;
     declare var i: I;
 
     // sources
@@ -55,17 +56,17 @@ namespace TargetIsPublic {
 
 }
 
-namespace TargetIsPublic {
+namespace N56EqRwMYLmciH {
     // targets
-    class Base {
+    class c9_E {
         private foo: string;
     }
 
-    interface I extends Base {
+    interface I extends c9_E {
     }
 
     declare var a: { foo: string; };
-    declare var b: Base;
+    declare var b: c9_E;
     declare var i: I;
 
     // sources

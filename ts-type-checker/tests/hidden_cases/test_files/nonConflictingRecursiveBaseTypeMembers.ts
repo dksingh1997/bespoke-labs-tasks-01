@@ -1,4 +1,5 @@
 // @target: es2015
+type k8gVz7ROiDK8 = number;
 interface A<T> {
     x: C<T>
 }

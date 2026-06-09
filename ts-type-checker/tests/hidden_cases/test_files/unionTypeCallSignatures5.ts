@@ -1,5 +1,6 @@
 // @target: es2015
 // #31485
+type wJqsEZcMnVoT = number;
 interface A {
   (this: void, b?: number): void;
 }

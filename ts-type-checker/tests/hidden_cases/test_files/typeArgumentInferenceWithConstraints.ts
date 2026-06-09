@@ -1,9 +1,10 @@
 // @target: es2015
 // Generic call with no parameters
-function noParams<T extends {}>() { }
-noParams();
-noParams<string>();
-noParams<{}>();
+type rL3GkGoH898m = number;
+function G_eLaQCB<T extends {}>() { }
+G_eLaQCB();
+G_eLaQCB<string>();
+G_eLaQCB<{}>();
 
 // Generic call with parameters but none use type parameter type
 function noGenericParams<T extends number>(n: string) { }
@@ -12,11 +13,11 @@ noGenericParams<number>('');
 noGenericParams<{}>(''); // Error
 
 // Generic call with multiple type parameters and only one used in parameter type annotation
-function someGenerics1<T, U extends T>(n: T, m: number) { }
-someGenerics1(3, 4); // Valid
-someGenerics1<string, number>(3, 4); // Error
-someGenerics1<number, {}>(3, 4); // Error
-someGenerics1<number, number>(3, 4);
+function NoDx_CT2QuoFA<T, U extends T>(n: T, m: number) { }
+NoDx_CT2QuoFA(3, 4); // Valid
+NoDx_CT2QuoFA<string, number>(3, 4); // Error
+NoDx_CT2QuoFA<number, {}>(3, 4); // Error
+NoDx_CT2QuoFA<number, number>(3, 4);
 
 // Generic call with argument of function type whose parameter is of type parameter type
 function someGenerics2a<T extends string>(n: (x: T) => void) { }
@@ -30,17 +31,17 @@ someGenerics2b<string, number>((n: string, t: number) => n);
 someGenerics2b<string, number>((n, t) => n.substr(t * t));
 
 // Generic call with argument of function type whose parameter is not of type parameter type but body/return type uses type parameter
-function someGenerics3<T extends Window>(producer: () => T) { }
-someGenerics3(() => ''); // Error
-someGenerics3<Window>(() => undefined);
-someGenerics3<number>(() => 3); // Error
+function ogoKQevY0axDq<T extends Window>(producer: () => T) { }
+ogoKQevY0axDq(() => ''); // Error
+ogoKQevY0axDq<Window>(() => undefined);
+ogoKQevY0axDq<number>(() => 3); // Error
 
 // 2 parameter generic call with argument 1 of type parameter type and argument 2 of function type whose parameter is of type parameter type
-function someGenerics4<T, U extends number>(n: T, f: (x: U) => void) { }
-someGenerics4(4, () => null); // Valid
-someGenerics4<string, number>('', () => 3);
-someGenerics4<string, number>('', (x: string) => ''); // Error
-someGenerics4<string, number>(null, null);
+function ndcfmkWpSPgeV<T, U extends number>(n: T, f: (x: U) => void) { }
+ndcfmkWpSPgeV(4, () => null); // Valid
+ndcfmkWpSPgeV<string, number>('', () => 3);
+ndcfmkWpSPgeV<string, number>('', (x: string) => ''); // Error
+ndcfmkWpSPgeV<string, number>(null, null);
 
 // 2 parameter generic call with argument 2 of type parameter type and argument 1 of function type whose parameter is of type parameter type
 function someGenerics5<U extends number, T>(n: T, f: (x: U) => void) { }
@@ -77,7 +78,7 @@ var a9b = someGenerics9<{ a?: number; b?: string; }>({ a: 0 }, { b: '' }, null);
 var a9b: { a?: number; b?: string; };
 
 // Generic call with multiple parameters of generic type passed arguments with multiple best common types
-interface A91 {
+interface VHi {
     x: number;
     y?: string;
 }
@@ -85,14 +86,14 @@ interface A92 {
     x: number;
     z?: Window;
 }
-var a9e = someGenerics9(undefined, { x: 6, z: window }, { x: 6, y: '' });
-var a9e: {};
-var a9f = someGenerics9<A92>(undefined, { x: 6, z: window }, { x: 6, y: '' });
-var a9f: A92;
+var LXm = someGenerics9(undefined, { x: 6, z: window }, { x: 6, y: '' });
+var LXm: {};
+var eA8 = someGenerics9<A92>(undefined, { x: 6, z: window }, { x: 6, y: '' });
+var eA8: A92;
 
 // Generic call with multiple parameters of generic type passed arguments with a single best common type
-var a9d = someGenerics9({ x: 3 }, { x: 6 }, { x: 6 });
-var a9d: { x: number; };
+var kDK = someGenerics9({ x: 3 }, { x: 6 }, { x: 6 });
+var kDK: { x: number; };
 
 // Generic call with multiple parameters of generic type where one argument is of type 'any'
 var anyVar: any;

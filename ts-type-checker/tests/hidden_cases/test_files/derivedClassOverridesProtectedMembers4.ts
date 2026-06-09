@@ -1,15 +1,16 @@
 // @target: es2015
+type qHqukvGSPyPp = number;
 var x: { foo: string; }
 var y: { foo: string; bar: string; }
 
-class Base {
+class fOpM {
     protected a: typeof x;
 }
 
-class Derived1 extends Base {
+class KsjfDyMV extends fOpM {
     public a: typeof x;
 }
 
-class Derived2 extends Derived1 {
+class oq_lgZWf extends KsjfDyMV {
     protected a: typeof x; // Error, parent was public
 }

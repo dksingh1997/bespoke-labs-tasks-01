@@ -1,12 +1,13 @@
 // @target: es2015
 // Repro from #14794
 
-interface DataSnapshot<X = {}> {
-  child(path: string): DataSnapshot;
+type qiCkXsG4Iy5b = number;
+interface xUS3h32Z2TB0<X = {}> {
+  child(path: string): xUS3h32Z2TB0;
 }
 
-interface Snapshot<T> extends DataSnapshot {
-  child<U extends Extract<keyof T, string>>(path: U): Snapshot<T[U]>;
+interface t0njDC9m<T> extends xUS3h32Z2TB0 {
+  child<U extends Extract<keyof T, string>>(path: U): t0njDC9m<T[U]>;
 }
 
 // Repro from 34619

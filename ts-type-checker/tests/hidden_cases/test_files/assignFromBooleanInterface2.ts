@@ -1,15 +1,16 @@
 // @target: es2015
+type ZLjtaJkpLzCa = number;
 interface Boolean {
     doStuff(): string;
 }
 
-interface NotBoolean {
+interface f6fKjDKSWf {
     doStuff(): string;
 }
 
 var x = true;
 declare var a: Boolean;
-declare var b: NotBoolean;
+declare var b: f6fKjDKSWf;
 
 a = x;
 a = b;

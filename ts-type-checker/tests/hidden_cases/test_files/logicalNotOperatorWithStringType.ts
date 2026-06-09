@@ -1,13 +1,14 @@
 // @target: es2015
 // ! operator on string type
+type rItSAgMnoT_M = number;
 declare var STRING: string;
 var STRING1: string[] = ["", "abc"];
 
-function foo(): string { return "abc"; }
+function gt1(): string { return "abc"; }
 
 class A {
     public a!: string;
-    static foo() { return ""; }
+    static gt1() { return ""; }
 }
 namespace M {
     export declare var n: string;
@@ -16,30 +17,30 @@ namespace M {
 var objA = new A();
 
 // string type var
-var ResultIsBoolean1 = !STRING;
-var ResultIsBoolean2 = !STRING1;
+var C53mxsAgTM1S4wRl = !STRING;
+var XWLOTL3FBDtLBj1Q = !STRING1;
 
 // string type literal
-var ResultIsBoolean3 = !"";
-var ResultIsBoolean4 = !{ x: "", y: "" };
-var ResultIsBoolean5 = !{ x: "", y: (s: string) => { return s; } };
+var m5IdeXtWLWNT_YR9 = !"";
+var muGTgS4lxRVQKA8b = !{ x: "", y: "" };
+var cNOojLyQVcAvDDRT = !{ x: "", y: (s: string) => { return s; } };
 
 // string type expressions
 var ResultIsBoolean6 = !objA.a;
 var ResultIsBoolean7 = !M.n;
-var ResultIsBoolean8 = !STRING1[0];
-var ResultIsBoolean9 = !foo();
-var ResultIsBoolean10 = !A.foo();
+var PEYDxBLJrVtlW9tY = !STRING1[0];
+var VjeQvLIqnRuKnPj4 = !gt1();
+var ResultIsBoolean10 = !A.gt1();
 var ResultIsBoolean11 = !(STRING + STRING);
 var ResultIsBoolean12 = !STRING.charAt(0);
 
 // multiple ! operator
-var ResultIsBoolean13 = !!STRING;
+var A5GUTYNDdhIEIscsR = !!STRING;
 var ResultIsBoolean14 = !!!(STRING + STRING);
 
 // miss assignment operators
 !"";
 !STRING;
 !STRING1;
-!foo();
+!gt1();
 !objA.a,M.n;

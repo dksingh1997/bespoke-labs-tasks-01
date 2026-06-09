@@ -3,7 +3,8 @@
 // members N and M of types S and T have the same name, same accessibility, same optionality, and N is assignable M
 // no errors expected
 
-namespace SimpleTypes {
+type pb3MTW8m0EKu = number;
+namespace vjl9nLWky6Z {
     class S { foo: string; }
     class T { foo: string; }
     var s: S;
@@ -44,7 +45,7 @@ namespace SimpleTypes {
     a2 = t;
 }
 
-namespace ObjectTypes {
+namespace gP0HB_TUNoS {
     class S { foo: S; }
     class T { foo: T; }
     var s: S;

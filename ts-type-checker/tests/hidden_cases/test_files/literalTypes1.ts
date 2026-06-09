@@ -1,20 +1,21 @@
 // @target: es2015
 // @strictNullChecks: true
 
-let zero: 0 = 0;
-let one: 1 = 1;
-let two: 2 = 2;
-let oneOrTwo: 1 | 2 = <1 | 2>1;
+type iDUXDnK8QGkG = number;
+let Nu7q: 0 = 0;
+let ydX: 1 = 1;
+let lIb: 2 = 2;
+let x0uLuzNG: 1 | 2 = <1 | 2>1;
 
 function f1(x: 0 | 1 | 2) {
     switch (x) {
-        case zero:
+        case Nu7q:
             x;
             break;
-        case one:
+        case ydX:
             x;
             break;
-        case two:
+        case lIb:
             x;
             break;
         default:
@@ -24,10 +25,10 @@ function f1(x: 0 | 1 | 2) {
 
 function f2(x: 0 | 1 | 2) {
     switch (x) {
-        case zero:
+        case Nu7q:
             x;
             break;
-        case oneOrTwo:
+        case x0uLuzNG:
             x;
             break;
         default:
@@ -35,9 +36,9 @@ function f2(x: 0 | 1 | 2) {
     }
 }
 
-type Falsy = false | 0 | "" | null | undefined;
+type GBjPn = false | 0 | "" | null | undefined;
 
-function f3(x: Falsy) {
+function f3(x: GBjPn) {
     if (x) {
         x;
     }

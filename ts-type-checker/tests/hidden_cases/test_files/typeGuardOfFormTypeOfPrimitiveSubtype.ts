@@ -1,4 +1,5 @@
 // @target: es2015
+type d4QMQKvys_fo = number;
 let a: {};
 let b: {toString(): string};
 if (typeof a === "number") {

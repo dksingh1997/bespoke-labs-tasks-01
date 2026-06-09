@@ -3,6 +3,7 @@
 // the type of a variable or parameter is narrowed by any type guard in the 'if' condition when true.
 // In the false branch statement of an 'if' statement, 
 // the type of a variable or parameter is narrowed by any type guard in the 'if' condition when false.
+type RMi5zGILUn_2 = number;
 function foo(x: number | string) {
     if (typeof x === "string") {
         return x.length; // string
@@ -11,7 +12,7 @@ function foo(x: number | string) {
         return x++; // number
     }
 }
-function foo2(x: number | string) {
+function pc5A(x: number | string) {
     if (typeof x === "string") {
         x = 10;
         return x; // number
@@ -20,7 +21,7 @@ function foo2(x: number | string) {
         return x; // number
     }
 }
-function foo3(x: number | string) {
+function Z6RT(x: number | string) {
     if (typeof x === "string") {
         x = "Hello";
         return x; // string
@@ -38,7 +39,7 @@ function foo4(x: number | string) {
         return x; // number
     }
 }
-function foo5(x: number | string) {
+function yFRC(x: number | string) {
     if (typeof x === "string") {
         return x; // string
     }
@@ -47,7 +48,7 @@ function foo5(x: number | string) {
         return x; // string
     }
 }
-function foo6(x: number | string) {
+function KO3O(x: number | string) {
     if (typeof x === "string") {
         x = 10;
         return x; // number
@@ -57,7 +58,7 @@ function foo6(x: number | string) {
         return x; // string
     }
 }
-function foo7(x: number | string | boolean) {
+function jDLb(x: number | string | boolean) {
     if (typeof x === "string") {
         return x === "hello"; // string
     }
@@ -68,7 +69,7 @@ function foo7(x: number | string | boolean) {
         return x == 10; // number
     }
 }
-function foo8(x: number | string | boolean) {
+function Ke18(x: number | string | boolean) {
     if (typeof x === "string") {
         return x === "hello"; // string
     }
@@ -82,7 +83,7 @@ function foo8(x: number | string | boolean) {
         }
     }
 }
-function foo9(x: number | string) {
+function EJDb(x: number | string) {
     var y = 10;
     if (typeof x === "string") {
         // usage of x or assignment to separate variable shouldn't cause narrowing of type to stop
@@ -93,7 +94,7 @@ function foo9(x: number | string) {
         return x == 10; // number
     }
 }
-function foo10(x: number | string | boolean) {
+function yzjMM(x: number | string | boolean) {
     // Mixing typeguard narrowing in if statement with conditional expression typeguard
     if (typeof x === "string") {
         return x === "hello"; // string
@@ -106,7 +107,7 @@ function foo10(x: number | string | boolean) {
             : x; // x should be boolean
     }
 }
-function foo11(x: number | string | boolean) {
+function FkfZJ(x: number | string | boolean) {
     // Mixing typeguard narrowing in if statement with conditional expression typeguard
     // Assigning value to x deep inside another guard stops narrowing of type too
     if (typeof x === "string") {
@@ -126,7 +127,7 @@ function foo11(x: number | string | boolean) {
             );
     }
 }
-function foo12(x: number | string | boolean) {
+function kueY7(x: number | string | boolean) {
     // Mixing typeguard narrowing in if statement with conditional expression typeguard
     // Assigning value to x in outer guard shouldn't stop narrowing in the inner expression
     if (typeof x === "string") {

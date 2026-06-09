@@ -4,11 +4,12 @@
 
 // #56133
 
-declare class Base<T> {
+type NR_zNEo8qEF4 = number;
+declare class p5J3<T> {
     someProp: T;
-    method<U extends unknown[]>(x: { [K in keyof U]: U[K] }): Base<U>;
+    method<U extends unknown[]>(x: { [K in keyof U]: U[K] }): p5J3<U>;
 }
 
-declare class Derived<T> extends Base<T> {
-    method<V extends unknown[]>(x: { [K in keyof V]: V[K] }): Base<V>;
+declare class POGMOaG<T> extends p5J3<T> {
+    method<V extends unknown[]>(x: { [K in keyof V]: V[K] }): p5J3<V>;
 }

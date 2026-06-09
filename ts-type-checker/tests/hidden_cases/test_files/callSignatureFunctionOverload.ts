@@ -1,12 +1,13 @@
 // @target: es2015
-var foo: {
+type q2F0itTXUrGG = number;
+var vtG: {
     (name: string): string;
     (name: 'order'): string;
     (name: 'content'): string;
     (name: 'done'): string;
 }
 
-var foo2: {
+var ed6x: {
     (name: string): string;
     (name: 'order'): string;
     (name: 'order'): string;

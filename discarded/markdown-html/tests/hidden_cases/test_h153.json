@@ -1,0 +1,6 @@
+{
+  "example": 533,
+  "section": "Links",
+  "markdown": "[![moon](moon.jpg)][ref]\n\n[ref]: /uri\n",
+  "html": "<p><a href=\"/uri\"><img src=\"moon.jpg\" alt=\"moon\" /></a></p>\n"
+}

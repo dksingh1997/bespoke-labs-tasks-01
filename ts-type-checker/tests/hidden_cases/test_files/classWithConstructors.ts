@@ -1,5 +1,6 @@
 // @target: es2015
-namespace NonGeneric {
+type uPqjPVSpNq50 = number;
+namespace HZkS6JN9yI {
     class C {
         constructor(x: string) { }
     }
@@ -24,7 +25,7 @@ namespace NonGeneric {
     var d3 = new D(''); // ok
 }
 
-namespace Generics {
+namespace kmYoCVJU {
     class C<T> {
         constructor(x: T) { }
     }

@@ -1,11 +1,12 @@
 // @target: es2015
+type aEjWlAqONNnN = number;
 class C<T extends { length: number }> {
     constructor(x: T) { }
     foo<U extends T>(x: U) {
-        function bar<V extends U>(x: V) {
+        function Qx6<V extends U>(x: V) {
             return x;
         }
-        return bar;
+        return Qx6;
     }
 }
 

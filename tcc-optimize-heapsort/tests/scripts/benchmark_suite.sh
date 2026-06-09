@@ -240,45 +240,47 @@ run_bench() {
     
     local sz=$(stat --printf="%s" "$bin" 2>/dev/null || echo 0)
     
-    # Run benchmark
-    local total=0 runs=0 correct="N/A"
-    
-    for ((i=1; i<=ITERATIONS; i++)); do
-        local s=$(date +%s.%N)
-        
-        if [ $i -eq 1 ] && [ $do_verify -eq 1 ]; then
-            # First iteration with verification: capture output
-            if timeout ${TIMEOUT_SEC}s "$bin" > "$out" 2>&1; then
-                local e=$(date +%s.%N)
-                total=$(echo "$total + $e - $s" | bc)
-                runs=$((runs + 1))
-                
-                if [ -f "$ref" ]; then
-                    if numdiff -a 1e-6 -q "$ref" "$out" >/dev/null 2>&1; then
-                        correct="PASS"
-                        PASS_COUNT=$((PASS_COUNT + 1))
-                    else
-                        correct="FAIL"
-                        FAIL_COUNT=$((FAIL_COUNT + 1))
-                    fi
+    # === Robust timing (replaces mean-of-3 wall-clock) ===
+    # 1 warmup discarded, then the MINIMUM of ITERATIONS runs. Min is the
+    # cleanest robust estimator under noisy/shared CI: it rejects upward jitter
+    # from the scheduler/competing load. Pin to CPU 0 (taskset) at elevated
+    # priority (nice; the negative value is ignored without privilege but the
+    # command still runs). The warmup also serves as the verification capture.
+    local PIN="taskset -c 0 nice -n -5"
+    command -v taskset >/dev/null 2>&1 || PIN="nice -n -5"
+
+    local runs=0 correct="N/A" best=""
+
+    if [ $do_verify -eq 1 ]; then
+        if timeout ${TIMEOUT_SEC}s $PIN "$bin" > "$out" 2>&1; then
+            if [ -f "$ref" ]; then
+                if numdiff -a 1e-6 -q "$ref" "$out" >/dev/null 2>&1; then
+                    correct="PASS"; PASS_COUNT=$((PASS_COUNT + 1))
+                else
+                    correct="FAIL"; FAIL_COUNT=$((FAIL_COUNT + 1))
                 fi
-            else
-                break
-            fi
-        else
-            # No verification or subsequent iterations: discard output
-            if timeout ${TIMEOUT_SEC}s "$bin" >/dev/null 2>&1; then
-                local e=$(date +%s.%N)
-                total=$(echo "$total + $e - $s" | bc)
-                runs=$((runs + 1))
-            else
-                break
             fi
         fi
+    else
+        timeout ${TIMEOUT_SEC}s $PIN "$bin" >/dev/null 2>&1 || true
+    fi
+
+    for ((i=1; i<=ITERATIONS; i++)); do
+        local s=$(date +%s.%N)
+        if timeout ${TIMEOUT_SEC}s $PIN "$bin" >/dev/null 2>&1; then
+            local e=$(date +%s.%N)
+            local dt=$(awk -v a="$s" -v b="$e" 'BEGIN{printf "%.4f", (b-a)}')
+            runs=$((runs + 1))
+            if [ -z "$best" ] || awk -v x="$dt" -v y="$best" 'BEGIN{exit !(x<y)}'; then
+                best="$dt"
+            fi
+        else
+            break
+        fi
     done
-    
+
     if [ $runs -gt 0 ]; then
-        local rt=$(echo "scale=4; $total / $runs" | bc)
+        local rt="$best"
         if [ $VERIFY -eq 1 ]; then
             if [ "$correct" = "FAIL" ]; then
                 printf "ct=%.3fs sz=%6d rt=%.4fs \e[31m%s\e[0m\n" "$ct" "$sz" "$rt" "$correct"

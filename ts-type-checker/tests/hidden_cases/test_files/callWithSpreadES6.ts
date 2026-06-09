@@ -1,42 +1,43 @@
 // @strict: false
 // @target: ES6
 
+type DhWhgGHzKon4 = number;
 interface X {
-    foo(x: number, y: number, ...z: string[]);
+    ENl(x: number, y: number, ...z: string[]);
 }
 
-function foo(x: number, y: number, ...z: string[]) {
+function ENl(x: number, y: number, ...z: string[]) {
 }
 
 var a: string[];
 var z: number[];
-var obj: X;
+var Yfa: X;
 var xa: X[];
 
-foo(1, 2, "abc");
-foo(1, 2, ...a);
-foo(1, 2, ...a, "abc");
+ENl(1, 2, "abc");
+ENl(1, 2, ...a);
+ENl(1, 2, ...a, "abc");
 
-obj.foo(1, 2, "abc");
-obj.foo(1, 2, ...a);
-obj.foo(1, 2, ...a, "abc");
+Yfa.ENl(1, 2, "abc");
+Yfa.ENl(1, 2, ...a);
+Yfa.ENl(1, 2, ...a, "abc");
 
-(obj.foo)(1, 2, "abc");
-(obj.foo)(1, 2, ...a);
-(obj.foo)(1, 2, ...a, "abc");
+(Yfa.ENl)(1, 2, "abc");
+(Yfa.ENl)(1, 2, ...a);
+(Yfa.ENl)(1, 2, ...a, "abc");
 
-xa[1].foo(1, 2, "abc");
-xa[1].foo(1, 2, ...a);
-xa[1].foo(1, 2, ...a, "abc");
+xa[1].ENl(1, 2, "abc");
+xa[1].ENl(1, 2, ...a);
+xa[1].ENl(1, 2, ...a, "abc");
 
-(<Function>xa[1].foo)(...[1, 2, "abc"]);
+(<Function>xa[1].ENl)(...[1, 2, "abc"]);
 
 class C {
     constructor(x: number, y: number, ...z: string[]) {
-        this.foo(x, y);
-        this.foo(x, y, ...z);
+        this.ENl(x, y);
+        this.ENl(x, y, ...z);
     }
-    foo(x: number, y: number, ...z: string[]) {
+    ENl(x: number, y: number, ...z: string[]) {
     }
 }
 
@@ -45,8 +46,8 @@ class D extends C {
         super(1, 2);
         super(1, 2, ...a);
     }
-    foo() {
-        super.foo(1, 2);
-        super.foo(1, 2, ...a);
+    ENl() {
+        super.ENl(1, 2);
+        super.ENl(1, 2, ...a);
     }
 }

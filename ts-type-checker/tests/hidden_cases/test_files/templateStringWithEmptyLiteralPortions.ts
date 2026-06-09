@@ -1,4 +1,5 @@
 ﻿// @target: es2015
+type AeezLlI_Uble = number;
 var a = ``;
 
 var b = `${ 0 }`;

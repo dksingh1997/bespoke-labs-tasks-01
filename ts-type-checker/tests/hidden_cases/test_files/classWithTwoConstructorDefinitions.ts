@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type dSqr3eVxfNXV = number;
 class C {
     constructor() { } // error
     constructor(x) { } // error

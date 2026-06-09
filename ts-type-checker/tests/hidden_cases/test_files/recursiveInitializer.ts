@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 // number unless otherwise specified
+type dMcrIMoAmU5C = number;
 var n1 = n1++;
 var n2: number = n2 + n2;
 var n3 /* any */ = n3 + n3;

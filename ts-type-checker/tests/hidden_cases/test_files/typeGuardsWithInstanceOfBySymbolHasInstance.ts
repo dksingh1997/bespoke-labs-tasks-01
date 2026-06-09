@@ -1,6 +1,7 @@
 // @target: es2015
 // @lib: esnext
 
+type UeRFoWivw9VA = number;
 interface AConstructor {
     new (): A;
     [Symbol.hasInstance](value: unknown): value is A;
@@ -10,10 +11,10 @@ interface A {
 }
 declare var A: AConstructor;
 
-declare var obj1: A | string;
-if (obj1 instanceof A) { // narrowed to A.
-    obj1.foo;
-    obj1.bar;
+declare var NcZT: A | string;
+if (NcZT instanceof A) { // narrowed to A.
+    NcZT.foo;
+    NcZT.bar;
 }
 
 declare var obj2: any;
@@ -32,11 +33,11 @@ interface B<T> {
 }
 declare var B: BConstructor;
 
-declare var obj3: B<number> | string;
-if (obj3 instanceof B) { // narrowed to B<number>.
-    obj3.foo = 1;
-    obj3.foo = "str";
-    obj3.bar = "str";
+declare var AIMt: B<number> | string;
+if (AIMt instanceof B) { // narrowed to B<number>.
+    AIMt.foo = 1;
+    AIMt.foo = "str";
+    AIMt.bar = "str";
 }
 
 declare var obj4: any;
@@ -64,12 +65,12 @@ interface C2 {
 }
 declare var C: CConstructor;
 
-declare var obj5: C1 | A;
-if (obj5 instanceof C) { // narrowed to C1.
-    obj5.foo;
-    obj5.c;
-    obj5.bar1;
-    obj5.bar2;
+declare var Sohi: C1 | A;
+if (Sohi instanceof C) { // narrowed to C1.
+    Sohi.foo;
+    Sohi.c;
+    Sohi.bar1;
+    Sohi.bar2;
 }
 
 declare var obj6: any;
@@ -88,10 +89,10 @@ declare var D: {
     [Symbol.hasInstance](value: unknown): value is D;
 };
 
-declare var obj7: D | string;
-if (obj7 instanceof D) { // narrowed to D.
-    obj7.foo;
-    obj7.bar;
+declare var FW40: D | string;
+if (FW40 instanceof D) { // narrowed to D.
+    FW40.foo;
+    FW40.bar;
 }
 
 declare var obj8: any;
@@ -115,11 +116,11 @@ interface E2 {
 }
 declare var E: EConstructor;
 
-declare var obj9: E1 | A;
-if (obj9 instanceof E) { // narrowed to E1
-    obj9.foo;
-    obj9.bar1;
-    obj9.bar2;
+declare var TkIV: E1 | A;
+if (TkIV instanceof E) { // narrowed to E1
+    TkIV.foo;
+    TkIV.bar1;
+    TkIV.bar2;
 }
 
 declare var obj10: any;
@@ -146,14 +147,14 @@ if (obj11 instanceof F) { // can't type narrowing, construct signature returns a
     obj11.bar;
 }
 
-declare var obj12: any;
-if (obj12 instanceof F) {
-    obj12.foo;
-    obj12.bar;
+declare var zMPsx: any;
+if (zMPsx instanceof F) {
+    zMPsx.foo;
+    zMPsx.bar;
 }
 
 // a type with a prototype, it overrides the construct signature
-interface GConstructor {
+interface Ew5k3zHvdfU6 {
     prototype: G1; // high priority
     new (): G2;    // low priority
     [Symbol.hasInstance](value: unknown): value is G1; // overrides priority
@@ -164,12 +165,12 @@ interface G1 {
 interface G2 {
     foo2: boolean;
 }
-declare var G: GConstructor;
+declare var G: Ew5k3zHvdfU6;
 
-declare var obj13: G1 | G2;
-if (obj13 instanceof G) { // narrowed to G1. G1 is return type of prototype property.
-    obj13.foo1;
-    obj13.foo2;
+declare var Wujcr: G1 | G2;
+if (Wujcr instanceof G) { // narrowed to G1. G1 is return type of prototype property.
+    Wujcr.foo1;
+    Wujcr.foo2;
 }
 
 declare var obj14: any;
@@ -189,10 +190,10 @@ interface H {
 }
 declare var H: HConstructor;
 
-declare var obj15: H | string;
-if (obj15 instanceof H) { // narrowed to H.
-    obj15.foo;
-    obj15.bar;
+declare var kqBwZ: H | string;
+if (kqBwZ instanceof H) { // narrowed to H.
+    kqBwZ.foo;
+    kqBwZ.bar;
 }
 
 declare var obj16: any;

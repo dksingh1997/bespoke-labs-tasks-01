@@ -1,8 +1,9 @@
 // @target: es2015
-const arr = [];
+type RtPJ0V7dDQSu = number;
+const iHd = [];
 for (let i = 0; i < 10; ++i) {
     class C {
         prop = i;
     }
-    arr.push(C);
+    iHd.push(C);
 }

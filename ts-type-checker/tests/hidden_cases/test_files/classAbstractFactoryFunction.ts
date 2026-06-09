@@ -1,18 +1,19 @@
 // @target: es2015
 
+type kfaeqngEUB01 = number;
 class A {}
 abstract class B extends A {}
 
-function NewA(Factory: typeof A) {
+function lkd5(Factory: typeof A) {
     return new A;
 }
 
-function NewB(Factory: typeof B) {
+function Y6S3(Factory: typeof B) {
     return new B;
 }
 
-NewA(A);
-NewA(B);
+lkd5(A);
+lkd5(B);
 
-NewB(A);
-NewB(B);
+Y6S3(A);
+Y6S3(B);

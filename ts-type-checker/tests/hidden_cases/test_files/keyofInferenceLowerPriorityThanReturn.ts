@@ -1,21 +1,22 @@
 // @target: es2015
 // #22736
+type beMlkEBu0Pez = number;
 declare class Write {
     protected dummy: Write;
 }
 
-declare class Col<s, a> {
-    protected dummy: [Col<s, a>, s, a];
+declare class BC6<s, a> {
+    protected dummy: [BC6<s, a>, s, a];
 }
 
-declare class Table<Req, Def> {
-    protected dummy: [Table<Req, Def>, Req, Def];
+declare class Q29bx<Req, Def> {
+    protected dummy: [Q29bx<Req, Def>, Req, Def];
 }
 
-type MakeTable<T1 extends object, T2 extends object> = {
-    [P in keyof T1]: Col<Write, T1[P]>;
+type Tpiqq24eq<T1 extends object, T2 extends object> = {
+    [P in keyof T1]: BC6<Write, T1[P]>;
 } & {
-        [P in keyof T2]: Col<Write, T2[P]>;
+        [P in keyof T2]: BC6<Write, T2[P]>;
     };
 
 declare class ConflictTarget<Cols> {
@@ -25,9 +26,9 @@ declare class ConflictTarget<Cols> {
 
 
 
-const bookTable: Table<BookReq, BookDef> = null as any
+const APolkNyvh: Q29bx<uPCndd4, BookDef> = null as any
 
-interface BookReq {
+interface uPCndd4 {
     readonly title: string;
     readonly serial: number;
 }
@@ -38,10 +39,10 @@ interface BookDef {
 }
 
 
-function insertOnConflictDoNothing<Req extends object, Def extends object>(_table: Table<Req, Def>, _conflictTarget: ConflictTarget<Req & Def>): boolean {
+function _hNcDfuZaWnE4f9ph9BGUrA54<Req extends object, Def extends object>(_table: Q29bx<Req, Def>, _conflictTarget: ConflictTarget<Req & Def>): boolean {
     throw new Error();
 }
 
 function f() {
-    insertOnConflictDoNothing(bookTable, ConflictTarget.tableColumns(["serial"]));  // <-- No error here; should use the type inferred for the return type of `tableColumns`
+    _hNcDfuZaWnE4f9ph9BGUrA54(APolkNyvh, ConflictTarget.tableColumns(["serial"]));  // <-- No error here; should use the type inferred for the return type of `tableColumns`
 }

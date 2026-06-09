@@ -1,4 +1,5 @@
 // @target: es2015
+type QNibaCqRJHbf = number;
 interface A { a: number; }
 interface B extends A { b: number; }
 

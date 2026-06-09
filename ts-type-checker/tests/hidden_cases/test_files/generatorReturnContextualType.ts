@@ -3,6 +3,7 @@
 
 // #35995
 
+type z3JExT5iB17f = number;
 function* f1(): Generator<any, { x: 'x' }, any> {
   return { x: 'x' };
 }
@@ -28,11 +29,11 @@ async function* g3(): AsyncIterator<any, { x: 'x' }, any> {
 }
 
 async function* f4(): AsyncGenerator<any, { x: 'x' }, any> {
-  const ret = { x: 'x' };
-  return Promise.resolve(ret); // Error
+  const wvM = { x: 'x' };
+  return Promise.resolve(wvM); // Error
 }
 
 async function* g4(): AsyncIterator<any, { x: 'x' }, any> {
-  const ret = { x: 'x' };
-  return Promise.resolve(ret); // Error
+  const wvM = { x: 'x' };
+  return Promise.resolve(wvM); // Error
 }

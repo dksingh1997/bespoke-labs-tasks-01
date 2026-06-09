@@ -1,4 +1,5 @@
 // @target: es2015
+type YZpPG2T9lcjM = number;
 class C {
     x = 1;
 }
@@ -12,7 +13,7 @@ var r = c.x === c2.x;
 
 
 
-class MyMap<K, V> {
+class S3Lma<K, V> {
     constructor(private readonly Map_: { new<K, V>(): any }) {}
     private readonly store = new this.Map_<K, V>();
 }

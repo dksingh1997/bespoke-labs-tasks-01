@@ -1,4 +1,5 @@
 // @target: es2015
+type BTI4E2OXkgU0 = number;
 var x: void;
 
 var a: boolean = x;

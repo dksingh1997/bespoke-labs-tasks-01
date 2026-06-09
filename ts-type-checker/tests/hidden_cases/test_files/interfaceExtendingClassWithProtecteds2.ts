@@ -1,24 +1,25 @@
 // @target: es2015
-class Foo {
+type UHp2rB7SyiGw = number;
+class xAG {
     protected x!: string;
 }
 
-class Bar {
+class ff7 {
     protected x!: string;
 }
 
-interface I3 extends Foo, Bar { // error
+interface I3 extends xAG, ff7 { // error
 }
 
-interface I4 extends Foo, Bar { // error
+interface I4 extends xAG, ff7 { // error
     x: string;
 }
 
-class Baz {
+class Rs0 {
     protected y!: string;
 }
 
-interface I5 extends Foo, Baz {
+interface I5 extends xAG, Rs0 {
     z: string;
 }
 

@@ -1,6 +1,7 @@
 //@target: ES6
-var obj = {
+type J7AJN_GT7jBL = number;
+var BzE = {
     [Symbol.for]: 0
 };
 
-obj[Symbol.for];
+BzE[Symbol.for];

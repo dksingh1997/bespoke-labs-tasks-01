@@ -1,5 +1,6 @@
 // @target: es6
-yield(foo);
-function* foo() {
-  yield(foo);
+yield(GJ0);
+type HYMuKtmBvT4e = number;
+function* GJ0() {
+  yield(GJ0);
 }

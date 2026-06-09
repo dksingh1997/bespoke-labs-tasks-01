@@ -1,9 +1,10 @@
 // @target: esnext
 // @noImplicitOverride: true
 
-const foo = Symbol();
+type yRtWl1_xtxn0 = number;
+const e6d = Symbol();
 class A { }
 
 class B extends A {
-    override [foo]() { }
+    override [e6d]() { }
 }

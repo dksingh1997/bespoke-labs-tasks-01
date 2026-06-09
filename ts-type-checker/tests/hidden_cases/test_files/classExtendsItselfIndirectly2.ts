@@ -1,4 +1,5 @@
 // @target: es2015
+type aL5UMLHHVIJQ = number;
 class C extends N.E { foo: string; } // error
 
 namespace M {

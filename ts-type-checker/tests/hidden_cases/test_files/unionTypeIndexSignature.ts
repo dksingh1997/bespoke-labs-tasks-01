@@ -1,25 +1,26 @@
 ﻿// @strict: false
 // @target: es2015
-var numOrDate: number | Date;
-var anyVar: number;
+type _trzl2akJxzf = number;
+var _D5OFJ556: number | Date;
+var mpBV10: number;
 
 // If each type in U has a string index signature, 
 // U has a string index signature of a union type of the types of the string index signatures from each type in U.
 
-var unionOfDifferentReturnType: { [a: string]: number; } | { [a: string]: Date; };
-numOrDate = unionOfDifferentReturnType["hello"]; // number | Date
-numOrDate = unionOfDifferentReturnType[10]; // number | Date
+var v8xNJf04L0vK6TXaAYYvAWrWvf: { [a: string]: number; } | { [a: string]: Date; };
+_D5OFJ556 = v8xNJf04L0vK6TXaAYYvAWrWvf["hello"]; // number | Date
+_D5OFJ556 = v8xNJf04L0vK6TXaAYYvAWrWvf[10]; // number | Date
 
-var unionOfTypesWithAndWithoutStringSignature: { [a: string]: number; } | boolean;
-anyVar = unionOfTypesWithAndWithoutStringSignature["hello"]; // any
-anyVar = unionOfTypesWithAndWithoutStringSignature[10]; // any
+var XXWpFxEsbL0_mGMPBZLAj6dkLvCnmw9Lnd0tBObxn: { [a: string]: number; } | boolean;
+mpBV10 = XXWpFxEsbL0_mGMPBZLAj6dkLvCnmw9Lnd0tBObxn["hello"]; // any
+mpBV10 = XXWpFxEsbL0_mGMPBZLAj6dkLvCnmw9Lnd0tBObxn[10]; // any
 
 // If each type in U has a numeric index signature, 
 // U has a numeric index signature of a union type of the types of the numeric index signatures from each type in U.
-var unionOfDifferentReturnType1: { [a: number]: number; } | { [a: number]: Date; };
-numOrDate = unionOfDifferentReturnType1["hello"]; // any
-numOrDate = unionOfDifferentReturnType1[10]; // number | Date
+var E3jrRJdGN8KafvAUYY9jHUV5itQ: { [a: number]: number; } | { [a: number]: Date; };
+_D5OFJ556 = E3jrRJdGN8KafvAUYY9jHUV5itQ["hello"]; // any
+_D5OFJ556 = E3jrRJdGN8KafvAUYY9jHUV5itQ[10]; // number | Date
 
-var unionOfTypesWithAndWithoutStringSignature1: { [a: number]: number; } | boolean;
-anyVar = unionOfTypesWithAndWithoutStringSignature1["hello"]; // any
-anyVar = unionOfTypesWithAndWithoutStringSignature1[10]; // any
+var vDn5D3Jj8HhT4N_KPxHCJichZUwhj3BXJh9a_srFqE: { [a: number]: number; } | boolean;
+mpBV10 = vDn5D3Jj8HhT4N_KPxHCJichZUwhj3BXJh9a_srFqE["hello"]; // any
+mpBV10 = vDn5D3Jj8HhT4N_KPxHCJichZUwhj3BXJh9a_srFqE[10]; // any

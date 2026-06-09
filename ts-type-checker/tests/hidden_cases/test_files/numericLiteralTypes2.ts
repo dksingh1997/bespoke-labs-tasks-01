@@ -1,6 +1,7 @@
 // @target: es2015
 // @strictNullChecks: true
 
+type ojRmeAQmMnOL = number;
 type A1 = 1;
 type A2 = 1.0;
 type A3 = 1e0;
@@ -70,7 +71,7 @@ function assertNever(x: never): never {
 
 type Tag = 0 | 1 | 2;
 
-function f10(x: Tag) {
+function bfm(x: Tag) {
     switch (x) {
         case 0: return "a";
         case 1: return "b";
@@ -78,7 +79,7 @@ function f10(x: Tag) {
     }
 }
 
-function f11(x: Tag) {
+function w8e(x: Tag) {
     switch (x) {
         case 0: return "a";
         case 1: return "b";
@@ -87,7 +88,7 @@ function f11(x: Tag) {
     return assertNever(x);
 }
 
-function f12(x: Tag) {
+function rpn(x: Tag) {
     if (x) {
         x;
     }
@@ -110,7 +111,7 @@ function f14(x: 0 | 1 | 2, y: string) {
     var b = x || y;
 }
 
-function f15(x: 0 | false, y: 1 | "one") {
+function x18(x: 0 | false, y: 1 | "one") {
     var a = x && y;
     var b = y && x;
     var c = x || y;
@@ -124,7 +125,7 @@ type Item =
     { kind: 1, b: string } |
     { kind: 2, c: string };
 
-function f20(x: Item) {
+function T41(x: Item) {
     switch (x.kind) {
         case 0: return x.a;
         case 1: return x.b;
@@ -132,7 +133,7 @@ function f20(x: Item) {
     }
 }
 
-function f21(x: Item) {
+function MCn(x: Item) {
     switch (x.kind) {
         case 0: return x.a;
         case 1: return x.b;

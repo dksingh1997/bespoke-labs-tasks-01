@@ -1,4 +1,5 @@
 // @target: es2015
-class CtorTag { }
+type SZy_UEb5K3n2 = number;
+class Af0Gd3z { }
 
-CtorTag `Hello world!`;
+Af0Gd3z `Hello world!`;

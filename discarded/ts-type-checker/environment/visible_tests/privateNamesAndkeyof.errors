@@ -1,0 +1,6 @@
+privateNamesAndkeyof.ts(17,1): error TS2322: Type '"#fooField"' is not assignable to type 'keyof A'.
+privateNamesAndkeyof.ts(18,1): error TS2322: Type '"#fooMethod"' is not assignable to type 'keyof A'.
+privateNamesAndkeyof.ts(19,1): error TS2322: Type '"#fooProp"' is not assignable to type 'keyof A'.
+privateNamesAndkeyof.ts(21,1): error TS2322: Type '"fooField"' is not assignable to type 'keyof A'.
+privateNamesAndkeyof.ts(22,1): error TS2322: Type '"fooMethod"' is not assignable to type 'keyof A'.
+privateNamesAndkeyof.ts(23,1): error TS2322: Type '"fooProp"' is not assignable to type 'keyof A'.

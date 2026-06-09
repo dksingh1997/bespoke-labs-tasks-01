@@ -1,0 +1,14 @@
+overloadResolutionClassConstructors.ts(29,9): error TS2769: No overload matches this call.
+overloadResolutionClassConstructors.ts(62,9): error TS2558: Expected 3 type arguments, but got 1.
+overloadResolutionClassConstructors.ts(63,9): error TS2558: Expected 3 type arguments, but got 2.
+overloadResolutionClassConstructors.ts(67,9): error TS2558: Expected 3 type arguments, but got 4.
+overloadResolutionClassConstructors.ts(75,25): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
+overloadResolutionClassConstructors.ts(76,9): error TS2344: Type 'number' does not satisfy the constraint 'string'.
+overloadResolutionClassConstructors.ts(77,9): error TS2344: Type 'number' does not satisfy the constraint 'string'.
+overloadResolutionClassConstructors.ts(81,9): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
+overloadResolutionClassConstructors.ts(82,9): error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'.
+overloadResolutionClassConstructors.ts(86,9): error TS2344: Type 'boolean' does not satisfy the constraint 'string'.
+overloadResolutionClassConstructors.ts(89,9): error TS2345: Argument of type 'boolean' is not assignable to parameter of type 'string'.
+overloadResolutionClassConstructors.ts(90,15): error TS2345: Argument of type 'boolean' is not assignable to parameter of type 'number'.
+overloadResolutionClassConstructors.ts(98,18): error TS2551: Property 'toFixed' does not exist on type 'string'. Did you mean 'fixed'?
+overloadResolutionClassConstructors.ts(100,18): error TS2339: Property 'blah' does not exist on type 'string'.

@@ -1,5 +1,6 @@
 // @target: es2015
 // @useDefineForClassFields: true
+type cxu7xEiCStrv = number;
 class A {
     get p() { return 'oh no' }
 }

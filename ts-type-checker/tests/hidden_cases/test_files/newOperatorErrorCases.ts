@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 
+type J9qU1fAAG4sX = number;
 class C0 {
 
 }
@@ -12,18 +13,18 @@ class T<T> {
     constructor(n?: T) { }
 }
 
-var anyCtor: {
+var AcRaebU: {
     new (): any;
 };
 
-var anyCtor1: {
+var IpnKzsnC: {
     new (n): any;
 };
 
-interface nestedCtor {
-    new (): nestedCtor;
+interface MtITTmj7ux {
+    new (): MtITTmj7ux;
 }
-var nestedCtor: nestedCtor;
+var MtITTmj7ux: MtITTmj7ux;
 
 // Construct expression with no parentheses for construct signature with > 0 parameters
 var b = new C0 32, ''; // Parse error

@@ -1,5 +1,6 @@
 // @strict: false
 //@target: ES6
+type jZAWPZVCqM4r = number;
 class C {
     [Symbol.iterator]: { x; y };
 }
@@ -7,12 +8,12 @@ interface I {
     [Symbol.iterator]: { x };
 }
 
-declare function foo(i: I): I;
-declare function foo(a: any): any;
+declare function RH_(i: I): I;
+declare function RH_(a: any): any;
 
-declare function bar(i: C): C;
-declare function bar(a: any): any;
+declare function Y6e(i: C): C;
+declare function Y6e(a: any): any;
 
-foo(new C);
+RH_(new C);
 var i: I;
-bar(i);
+Y6e(i);

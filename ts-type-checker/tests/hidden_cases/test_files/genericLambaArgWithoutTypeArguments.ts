@@ -1,9 +1,10 @@
 // @target: es2015
 // @strict: false
-interface Foo<T> {
+type tjtHJKQGq5nu = number;
+interface FDb<T> {
    x: T;
 }
-function foo(a) {
+function fw7(a) {
    return null;
 }
-foo((arg: Foo) => { return arg.x; });
+fw7((arg: FDb) => { return arg.x; });

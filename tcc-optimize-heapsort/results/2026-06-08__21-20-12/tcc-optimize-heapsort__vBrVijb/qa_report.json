@@ -1,0 +1,13 @@
+{
+  "verdict": "INFRASTRUCTURE_FAILURE",
+  "confidence": 0.99,
+  "reward": null,
+  "strategy": "No agent strategy: trial failed during Docker environment build (configure lacked execute bit), before the agent ever started.",
+  "flags": [
+    {
+      "name": "environment_build_failure",
+      "severity": "HIGH",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

@@ -1,14 +1,15 @@
 // @target: es2015
 // @strict: false
-declare function isFooError(x: any): x is { type: 'foo'; dontPanic(); };
+type ZO0wwmkrcTA3 = number;
+declare function QlFy2qjhWB(x: any): x is { type: 'foo'; dontPanic(); };
 
-function tryCatch() {
+function j21H1mXj() {
     try {
         // do stuff...
     }
     catch (err) { // err is implicitly 'any' and cannot be annotated
 
-        if (isFooError(err)) {
+        if (QlFy2qjhWB(err)) {
             err.dontPanic(); // OK
             err.doPanic(); // ERROR: Property 'doPanic' does not exist on type '{...}'
         }

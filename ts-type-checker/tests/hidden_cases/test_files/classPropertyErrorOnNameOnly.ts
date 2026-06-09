@@ -1,12 +1,13 @@
 // @target: es2015
 // @strict: true
-type Values = 1 | 2 | 3 | 4 | 5 | 6
+type wYoU9ZLAtHn5 = number;
+type adG6uz = 1 | 2 | 3 | 4 | 5 | 6
 
-type FuncType = (arg: Values) => string
+type _3HY1JpS = (arg: adG6uz) => string
 
 // turn on strictNullChecks
-class Example {
-  insideClass: FuncType = function(val) { // error span goes from here
+class AsqAKH3 {
+  insideClass: _3HY1JpS = function(val) { // error span goes from here
     switch (val) {
       case 1:
         return "1";
@@ -23,7 +24,7 @@ class Example {
   } // all the way to here
 }
 
-const outsideClass: FuncType = function(val) { // compare to errors only on this line in this case 
+const TJRfuFTe2Mix: _3HY1JpS = function(val) { // compare to errors only on this line in this case 
     switch (val) {
       case 1:
         return "1";

@@ -1,0 +1,180 @@
+# Expected Failures for Compiler Correctness Tests
+# Format: compiler:test_name:reason
+#
+# These tests fail due to known compiler limitations or GCC-specific behaviors,
+# not necessarily bugs. The GCC torture tests are designed for GCC and test
+# many GCC-specific extensions and optimizations.
+
+# === GCC Failures ===
+# GCC 12.2.0 has these known bugs (PR = GCC Bugzilla report)
+gcc:pr108789:known_gcc_bug_overflow_builtins
+gcc:pr111151:known_gcc_bug_overflow_optimization
+gcc:eeprof-1:requires_-finstrument-functions_flag
+
+# === Clang Failures ===
+# Builtin function behavior - GCC uses builtin instead of user-defined
+clang:20021127-1:gcc_builtin_llabs_behavior
+clang:20031003-1:gcc_builtin_behavior
+# Large bitfields (>32 bits) - GCC-specific truncation rules
+clang:bitfld-3:large_bitfield_40bit
+clang:bitfld-5:large_bitfield_behavior
+clang:pr32244-1:large_bitfield_40bit_shift
+clang:pr34971:large_bitfield_40bit_rotate
+# Other GCC-specific behaviors
+clang:20230630-2:gcc_specific_optimization
+clang:20230630-4:gcc_specific_optimization
+clang:pr92904:gcc_specific_behavior
+clang:eeprof-1:requires_-finstrument-functions_flag
+
+# === TCC Failures ===
+# memcpy alignment tests - TCC's memcpy differs from glibc
+tcc:memcpy-a1:memcpy_alignment_1byte
+tcc:memcpy-a2:memcpy_alignment_2byte
+tcc:memcpy-a4:memcpy_alignment_4byte
+tcc:memcpy-a8:memcpy_alignment_8byte
+# Bitfield handling
+tcc:bitfld-3:large_bitfield_40bit
+tcc:bf-sign-2:bitfield_sign_promotion
+# Builtin/optimization differences
+tcc:20021127-1:gcc_builtin_llabs_behavior
+tcc:20031003-1:gcc_builtin_behavior
+tcc:20020216-1:gcc_specific_behavior
+tcc:pr32244-1:large_bitfield_40bit_shift
+tcc:pr34971:large_bitfield_40bit_rotate
+tcc:pr34154:case_range_extension_runtime
+# Old test compatibility
+tcc:920603-1:old_gcc_test_compatibility
+tcc:920625-1:old_gcc_test_compatibility
+tcc:930603-1:old_gcc_test_compatibility
+tcc:941202-1:old_gcc_test_compatibility
+
+# === Custom Compiler Failures (TCC 0.9.28rc mob@4597a96 from source) ===
+# Baseline for --custom mode using locally-built TCC source at compiler-src/tcc/
+#
+# Runtime failures:
+custom:memcpy-a1:memcpy_alignment_1byte
+custom:memcpy-a2:memcpy_alignment_2byte
+custom:memcpy-a4:memcpy_alignment_4byte
+custom:memcpy-a8:memcpy_alignment_8byte
+custom:bitfld-3:large_bitfield_40bit
+custom:20021127-1:gcc_builtin_llabs_behavior
+custom:20031003-1:gcc_builtin_behavior
+custom:pr32244-1:large_bitfield_40bit_shift
+custom:pr34971:large_bitfield_40bit_rotate
+custom:970217-1:floating_point_precision
+#
+# Compile failures (GCC extensions TCC doesn't support):
+# Nested functions
+custom:20010209-1:nested_functions_unsupported
+custom:20010605-1:nested_functions_unsupported
+custom:20030501-1:nested_functions_unsupported
+custom:20040520-1:nested_functions_unsupported
+custom:20061220-1:nested_functions_unsupported
+custom:20090219-1:nested_functions_unsupported
+custom:nest-stdar-1:nested_functions_unsupported
+custom:nestfunc-7:nested_functions_unsupported
+custom:pr22061-3:nested_functions_unsupported
+custom:pr22061-4:nested_functions_unsupported
+# Complex number support
+custom:20030910-1:complex_number_unsupported
+# GCC predefined macros
+custom:cmpsf-1:gcc_predefined_macro_FLT_MAX
+custom:pr23941:gcc_predefined_macro_FLT_MIN
+# Inline asm clobbers
+custom:990413-2:inline_asm_clobber_unsupported
+# Missing type / header
+custom:pr42833:missing_stdint_types
+custom:pr71626-2:compile_error
+# GCC builtin at link time
+custom:20040709-3:builtin_classify_type_unsupported
+
+# === PCC Failures ===
+# Bitfields and builtins
+pcc:bitfld-3:large_bitfield_40bit
+pcc:20021127-1:gcc_builtin_llabs_behavior
+pcc:pr32244-1:large_bitfield_40bit_shift
+pcc:pr34971:large_bitfield_40bit_rotate
+# Missing features
+pcc:pushpop_macro:pragma_push_pop_macro_unsupported
+pcc:pr43220:gcc_specific_optimization
+pcc:pr40386:gcc_specific_behavior
+pcc:pr117498:gcc_specific_behavior
+# Standards/compatibility
+pcc:20020226-1:standards_compliance
+pcc:20020508-1:standards_compliance
+pcc:20020508-2:standards_compliance
+pcc:20020508-3:standards_compliance
+pcc:20040709-3:vla_handling
+pcc:20040811-1:vla_with_goto
+pcc:920710-1:old_gcc_test_compatibility
+pcc:970217-1:floating_point_precision
+pcc:990127-2:floating_point_precision
+
+# === lacc Failures ===
+# Bitfields
+lacc:bitfld-1:bitfield_behavior
+lacc:bitfld-3:large_bitfield_40bit
+lacc:20021127-1:gcc_builtin_llabs_behavior
+lacc:pr32244-1:large_bitfield_40bit_shift
+lacc:pr34971:large_bitfield_40bit_rotate
+# Missing features
+lacc:pushpop_macro:pragma_push_pop_macro_unsupported
+lacc:pr43220:gcc_specific_optimization
+lacc:20040811-1:vla_with_goto
+
+# ============================================================
+# LLVM UnitTests Expected Failures
+# ============================================================
+
+# === GCC LLVM Failures ===
+# These testcase-* tests have unusual expected outputs (test harness artifacts)
+gcc:testcase-CGExprConstant:llvm_test_harness_output_format
+gcc:testcase-Expr-1:llvm_test_harness_output_format
+gcc:testcase-ExprConstant-1:llvm_test_harness_output_format
+gcc:testcase-Value-1:llvm_test_harness_output_format
+
+# === Clang LLVM Failures ===
+clang:testcase-CGExprConstant:llvm_test_harness_output_format
+clang:testcase-Expr-1:llvm_test_harness_output_format
+clang:testcase-ExprConstant-1:llvm_test_harness_output_format
+clang:testcase-Value-1:llvm_test_harness_output_format
+
+# === TCC LLVM Failures ===
+tcc:testcase-CGExprConstant:llvm_test_harness_output_format
+tcc:testcase-Expr-1:llvm_test_harness_output_format
+tcc:testcase-ExprConstant-1:llvm_test_harness_output_format
+tcc:testcase-Value-1:llvm_test_harness_output_format
+tcc:2007-01-04-KNR-Args:knr_style_function_declarations
+tcc:ms_struct-bitfield:ms_struct_attribute_unsupported
+tcc:ms_struct-bitfield-init:ms_struct_attribute_unsupported
+tcc:ms_struct_pack_layout:ms_struct_attribute_unsupported
+
+# === Custom Compiler LLVM Failures (TCC 0.9.28rc from source) ===
+custom:testcase-CGExprConstant:llvm_test_harness_output_format
+custom:testcase-Expr-1:llvm_test_harness_output_format
+custom:testcase-ExprConstant-1:llvm_test_harness_output_format
+custom:testcase-Value-1:llvm_test_harness_output_format
+custom:ms_struct-bitfield:ms_struct_attribute_unsupported
+custom:ms_struct-bitfield-init:ms_struct_attribute_unsupported
+custom:ms_struct-bitfield-init-1:ms_struct_attribute_unsupported
+custom:ms_struct_pack_layout:ms_struct_attribute_unsupported
+custom:AtomicOps:compile_error
+custom:conditional-gnu-ext:compile_error
+
+# === PCC LLVM Failures ===
+pcc:testcase-CGExprConstant:llvm_test_harness_output_format
+pcc:testcase-Expr-1:llvm_test_harness_output_format
+pcc:testcase-ExprConstant-1:llvm_test_harness_output_format
+pcc:testcase-Value-1:llvm_test_harness_output_format
+pcc:2003-05-07-VarArgs:varargs_handling
+pcc:2003-08-11-VaListArg:va_list_handling
+pcc:2009-04-16-BitfieldInitialization:bitfield_initialization
+pcc:ms_struct-bitfield:ms_struct_attribute_unsupported
+pcc:ms_struct-bitfield-init:ms_struct_attribute_unsupported
+pcc:ms_struct_pack_layout:ms_struct_attribute_unsupported
+pcc:vla:variable_length_array_handling
+
+# === lacc LLVM Failures ===
+lacc:2003-05-31-CastToBool:cast_to_bool_behavior
+lacc:ms_struct-bitfield-init:ms_struct_attribute_unsupported
+lacc:ms_struct_pack_layout:ms_struct_attribute_unsupported

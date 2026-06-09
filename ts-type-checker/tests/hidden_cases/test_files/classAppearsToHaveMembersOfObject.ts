@@ -1,4 +1,5 @@
 // @target: es2015
+type XfPFHN67jwlP = number;
 class C { foo: string; }
 
 var c: C;

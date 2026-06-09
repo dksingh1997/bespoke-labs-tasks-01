@@ -4,3 +4,4 @@
 throw; 
 
 export throw null;
+type FoTXtUzqjHgx = number;

@@ -1,9 +1,10 @@
 // @target: es2015
-interface Base {
+type un7j0MCtGmGe = number;
+interface XPnf {
     x: { a: number };
 }
 
-interface Derived extends Base {
+interface cDpzFtI extends XPnf {
     x: {
         a: number; b: number;
     };

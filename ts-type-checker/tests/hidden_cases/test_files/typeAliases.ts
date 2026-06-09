@@ -1,6 +1,7 @@
 // @target: es2015
 // Writing a reference to a type alias has exactly the same effect as writing the aliased type itself.
 
+type UsbVi8qS8lx9 = number;
 type T1 = number;
 var x1: number;
 var x1: T1;
@@ -39,30 +40,30 @@ type T9 = () => string;
 var x9: () => string;
 var x9: T9;
 
-type T10 = { x: number };
+type OwP = { x: number };
 var x10: { x: number };
-var x10: T10;
+var x10: OwP;
 
-type T11 = { new(): boolean };
+type iVt = { new(): boolean };
 var x11: { new(): boolean };
-var x11: T11;
+var x11: iVt;
 
 interface I13 { x: string };
 type T13 = I13;
 var x13_1: I13;
 var x13_2: T13
 
-declare function foo13<T1 extends I13, T2 extends T13>(t1: T1, t2: T13): void;
-foo13(x13_1, x13_2);
-foo13(x13_2, x13_1);
+declare function aA9PC<T1 extends I13, T2 extends T13>(t1: T1, t2: T13): void;
+aA9PC(x13_1, x13_2);
+aA9PC(x13_2, x13_1);
 
-type T14 = string;
-var x14: T14;
+type Fzd = string;
+var x14: Fzd;
 
-declare function foo14_1(x: T14): void;
+declare function nqJzovN(x: Fzd): void;
 
 declare function foo14_2(x: "click"): void;
-declare function foo14_2(x: T14): void;
+declare function foo14_2(x: Fzd): void;
 
 type Meters = number
 
@@ -72,10 +73,10 @@ declare function f15(a: string): boolean;
 declare function f15(a: Meters): string;
 f15(E.x).toLowerCase();
 
-type StringAndBoolean = [string, boolean]
-declare function f16(s: StringAndBoolean): string;
+type r5dObJKP3gmVrtDV = [string, boolean]
+declare function RUu(s: r5dObJKP3gmVrtDV): string;
 var x: [string, boolean];
-f16(x);
+RUu(x);
 
-var y: StringAndBoolean = ["1", false];
+var y: r5dObJKP3gmVrtDV = ["1", false];
 y[0].toLowerCase();

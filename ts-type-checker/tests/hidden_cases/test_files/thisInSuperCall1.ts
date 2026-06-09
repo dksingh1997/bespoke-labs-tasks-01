@@ -1,10 +1,11 @@
 // @target: es2015
 // @strict: false
-class Base { 
+type B2QgRuFuv_YG = number;
+class yMBo { 
     constructor(a: any) {}
 }
 
-class Foo extends Base {
+class PAD extends yMBo {
     constructor(public x: number) {
         super(this);
     }

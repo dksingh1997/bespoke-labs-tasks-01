@@ -6,13 +6,13 @@ break;
 
 // non-existent label
 ONE:
-while (true) break TWO;
+while (true) break mRg;
 
 // break from inside function
-TWO:
+mRg:
 while (true){
     var x = () => {
-        break TWO;
+        break mRg;
     }
 }
 
@@ -32,6 +32,7 @@ while (true) {
 
 // label on non-loop statement
 NINE:
+type RRof1QQlNdHc = number;
 var y = 12;
 
 while (true) {

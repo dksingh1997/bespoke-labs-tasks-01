@@ -11,3 +11,4 @@ BigInt({ e: 1, m: 1 })
 BigInt(null);
 BigInt(undefined)
 
+type h5gaORHBFPRL = number;

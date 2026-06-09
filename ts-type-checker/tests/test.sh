@@ -2,21 +2,55 @@
 #
 # Harbor verifier for the ts-type-checker task.
 #
-# Scoring flow:
-#   1. Anti-cheat checks
-#   2. Run checker on canary tests (must pass 100% to qualify)
-#   3. Run checker on hidden tests (this is the actual score)
-#   Reward = hidden_passed / hidden_total  (only if canary gate passes)
+# Hardened to the reference type-checker anti-cheat bar (HARBOR
+# anti_cheats.md). Layered design:
+#
+#   Phase 1 (closes the answer-key read): the agent's checker
+#     (/app/checker/tscheck) runs AS the `agent` user under `strace -f`,
+#     with a sanitised env (env -i) and only the .ts inputs staged. /tests
+#     stays mode 0700 root-only, so the checker gets EACCES on the hidden
+#     answer key and cannot fabricate scores. An execve tripwire zeroes the
+#     reward if the checker shells out to the real tsc/tsserver/typescript.
+#
+#   Phase 3 (defeats corpus lookup + weak scoring): hidden inputs are
+#     perturbed at authoring time (identifier rename + mid-file insertion;
+#     see scripts/ts_perturb.py) and their expected diagnostics regenerated
+#     by re-running the real tsc (scripts/ts_oracle.js). Scoring is
+#     AND-match on (file,line,kind) AND code AND message_substr, combined
+#     multiplicatively as id_rate * non_id_rate (tests/compute_reward.py).
+#
+#   Phase 4: scoring is a standalone `python3 -ISs compute_reward.py`
+#     invocation that runs OUTSIDE strace as root, reads only root-owned
+#     files, imports only stdlib, and writes reward.{json,txt} atomically.
+#
+# The HARBOR_ORACLE_FLAG token bypass (oracle-only answer-key staging) and
+# the 100% canary gate are preserved. Always exits 0.
 #
 
-set -euo pipefail
-
 VERIFIER_DIR="/logs/verifier"
+
+# --- MANDATORY: lock + wipe /logs/verifier (root-only) before anything else ---
+# Harbor sets it to mode 777 at container start. Lock FIRST (cuts off any agent
+# background process), THEN wipe anything the agent planted.
 mkdir -p "$VERIFIER_DIR"
+chmod 700 "$VERIFIER_DIR"
 find "$VERIFIER_DIR" -mindepth 1 -delete 2>/dev/null || true
+
+# --- MANDATORY: re-lock /tests (Harbor's verify-phase upload resets it to
+# 0755; the agent runs as uid 1000 and could otherwise open the hidden
+# answer key directly). Re-apply 0700 root-only before anything reads /tests. ---
+chmod 700 /tests 2>/dev/null || true
+
+# --- MANDATORY: environment sanitisation (strip injection side-channels) ---
+unset NODE_OPTIONS LD_PRELOAD LD_LIBRARY_PATH PYTHONPATH BASH_ENV ENV
+unset PYTHONSTARTUP PYTHONHOME
 
 LOG="$VERIFIER_DIR/verifier.log"
 exec > >(tee -a "$LOG") 2>&1
+
+# Restore exec bits (some uploaders drop them; -type f so it never undoes a
+# directory chmod).
+find /tests -type f -name '*.sh' -exec chmod +x {} + 2>/dev/null || true
 
 echo "=========================================="
 echo "  TypeScript Type Checker Verifier"
@@ -28,378 +62,215 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CHECKER="/app/checker/tscheck"
 
 CANARY_DIR="$SCRIPT_DIR/canary_cases/test_files"
-export CANARY_EXPECTED="$SCRIPT_DIR/canary_cases/canary_expected.json"
+CANARY_EXPECTED="$SCRIPT_DIR/canary_cases/canary_expected.json"
 
 HIDDEN_DIR="$SCRIPT_DIR/hidden_cases/test_files"
-export HIDDEN_EXPECTED="$SCRIPT_DIR/hidden_cases/hidden_expected.json"
-export HIDDEN_MANIFEST="$SCRIPT_DIR/hidden_cases/hidden_manifest.json"
+HIDDEN_EXPECTED="$SCRIPT_DIR/hidden_cases/hidden_expected.json"
+HIDDEN_MANIFEST="$SCRIPT_DIR/hidden_cases/hidden_manifest.json"
+
+# Agent-execution environment (see Phase 1). NODE_PATH is required so the
+# checker can require('@babel/parser') etc. (root-owned, read-only globals).
+AGENT_PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+AGENT_NODE_PATH="/usr/local/lib/node_modules"
+
+CHECKER_MS=0
+
+# Relax /logs/verifier so the Harbor host (uid 1000) can read the reward
+# files on local-Docker (bind-mounted dir keeps in-container 0700). Safe:
+# verification is complete and the agent container is already dead.
+relax_reward_perms() {
+    chmod 755 "$VERIFIER_DIR" 2>/dev/null || true
+    chmod 644 "$VERIFIER_DIR"/reward.json "$VERIFIER_DIR"/reward.txt 2>/dev/null || true
+}
+
+# Hard-failure path: standalone scorer writes a clean zero reward atomically.
+fail_with() {
+    python3 -ISs "$SCRIPT_DIR/compute_reward.py" \
+        --output-dir "$VERIFIER_DIR" \
+        --checker-ms "$CHECKER_MS" \
+        --fail "$1" --detail "${2:-}"
+    relax_reward_perms
+    echo "RESULT: $1 — awarding 0."
+    echo "End time: $(date)"
+    exit 0
+}
+
+# --- MANDATORY: kill any pre-existing agent processes (cross-phase isolation) ---
+pkill -9 -u agent 2>/dev/null || true
+sleep 0.5
+if pgrep -u agent >/dev/null 2>&1; then
+    sleep 1; pkill -9 -u agent 2>/dev/null || true; sleep 0.5
+    if pgrep -u agent >/dev/null 2>&1; then
+        fail_with "agent_processes_survived" "Agent processes still alive after pkill -9."
+    fi
+fi
+
+# --- Oracle detection (HARBOR anti_cheats.md §7) ---
+# HARBOR_ORACLE_FLAG is injected only into oracle runs via [solution.env] in
+# task.toml; solve.sh writes the token to ORACLE_MARKER. We bypass anti-cheat
+# and stage the answer key (expected.json) ONLY when the marker exists AND
+# contains the exact token. The agent never sees the token, so it cannot forge
+# this marker.
+ORACLE_FLAG="tscheck_06d539db2a8ca05a"   # must match [solution.env] in task.toml
+ORACLE_MARKER="/app/.harbor_oracle_marker"
+
+IS_ORACLE=0
+if [ -f "$ORACLE_MARKER" ] && \
+   [ "$(cat "$ORACLE_MARKER" 2>/dev/null)" = "$ORACLE_FLAG" ]; then
+    IS_ORACLE=1
+    echo "Oracle marker detected — answer key will be staged; anti-cheat skipped."
+fi
 
 # ---------------------------------------------------------------------------
 # Step 0: Does the checker exist?
 # ---------------------------------------------------------------------------
 if [ ! -f "$CHECKER" ]; then
     echo "ERROR: $CHECKER not found — agent did not create the checker."
-    python3 -c "
-import json
-json.dump({
-    'score': 0.0,
-    'reward': 0.0,
-    'total_time_ms': 0,
-    'subscores': [],
-    'additional_data': {
-        'error': 'checker_not_found',
-        'error_detail': 'The agent did not create /app/checker/tscheck',
-        'canary_gate': {'status': 'skipped'},
-        'hidden_tests': {'passed': 0, 'total': 0},
-        'category_summary': {},
-    }
-}, open('$VERIFIER_DIR/reward.json', 'w'), indent=2)
-"
-    echo "0" > "$VERIFIER_DIR/reward.txt"
-    exit 0
+    fail_with "checker_not_found" "The agent did not create /app/checker/tscheck"
 fi
-
 if [ ! -x "$CHECKER" ]; then
     chmod +x "$CHECKER" 2>/dev/null || true
 fi
-
 echo "Checker found: $CHECKER"
 echo ""
 
 # ---------------------------------------------------------------------------
-# Step 1: Anti-cheat checks
+# Step 1: Static anti-cheat grep (defense-in-depth — no agent code runs here)
 # ---------------------------------------------------------------------------
-echo "=== Anti-cheat checks ==="
+echo "=== Anti-cheat checks (static) ==="
 CHEAT_DETECTED=0
-
-if [ -f "/app/.oracle_solution" ]; then
-    echo "Oracle solution detected — skipping anti-cheat."
+if [ "$IS_ORACLE" -eq 1 ]; then
+    echo "Oracle solution — skipping static anti-cheat."
 else
-    # 1a. Shelling out to tsc (exclude node_modules)
-    if grep -rqE --exclude-dir=node_modules "(child_process|execSync|spawnSync|exec\(|spawn\().*tsc" /app/checker/ 2>/dev/null; then
+    # Shelling out to the real tsc (whole-word \btsc\b so it does NOT match
+    # the agent's own checker name "tscheck"). Kept as defense-in-depth on top
+    # of the runtime execve tripwire below.
+    if grep -rqE --exclude-dir=node_modules "(child_process|execSync|spawnSync|exec\(|spawn\().*\btsc\b" /app/checker/ 2>/dev/null; then
         echo "CHEAT DETECTED: Checker shells out to tsc"
         CHEAT_DETECTED=1
     fi
-
-    # 1b. Importing the typescript package (exclude node_modules)
+    # Importing the typescript package
     if grep -rqE --exclude-dir=node_modules "require\(['\"]typescript['\"]\)|from ['\"]typescript['\"]" /app/checker/ 2>/dev/null; then
         echo "CHEAT DETECTED: Checker imports typescript package"
         CHEAT_DETECTED=1
     fi
-
-    # 1c. Reward hacking (exclude node_modules)
+    # Reward hacking
     if grep -rqP --exclude-dir=node_modules "(reward\.txt|reward\.json|/logs/verifier|verifier\.log)" /app/checker/ 2>/dev/null; then
         echo "CHEAT DETECTED: Checker contains reward-hacking patterns"
         CHEAT_DETECTED=1
     fi
-
-    # 1d. Reading canary/hidden expected files (exclude node_modules)
+    # Reading canary/hidden answer-key paths
     if grep -rqE --exclude-dir=node_modules "canary_expected|hidden_expected|canary_cases|hidden_cases" /app/checker/ 2>/dev/null; then
         echo "CHEAT DETECTED: Checker references test infrastructure"
         CHEAT_DETECTED=1
     fi
-
 fi
-
 if [ "$CHEAT_DETECTED" -eq 1 ]; then
-    echo ""
-    echo "RESULT: Cheating detected — awarding 0."
-    python3 -c "
-import json
-json.dump({
-    'score': 0.0,
-    'reward': 0.0,
-    'total_time_ms': 0,
-    'subscores': [],
-    'additional_data': {
-        'error': 'cheat_detected',
-        'error_detail': 'Anti-cheat checks found forbidden patterns in /app/checker/ (e.g. tsc usage, typescript import, reading expected data, or reward hacking)',
-        'canary_gate': {'status': 'skipped'},
-        'hidden_tests': {'passed': 0, 'total': 0},
-        'category_summary': {},
-    }
-}, open('$VERIFIER_DIR/reward.json', 'w'), indent=2)
-"
-    echo "0" > "$VERIFIER_DIR/reward.txt"
-    exit 0
+    fail_with "cheat_detected" "Static anti-cheat found forbidden patterns in /app/checker/ (tsc usage, typescript import, reading expected data, or reward hacking)."
 fi
-
-echo ""
-echo "Anti-cheat checks passed."
+echo "Static anti-cheat passed."
 echo ""
 
 # ---------------------------------------------------------------------------
-# Step 2: Canary gate — must pass 100% to qualify for scoring
+# Step 2: Stage inputs into AGENT-READABLE tmp dirs (never inside /app or /tests)
 # ---------------------------------------------------------------------------
-echo "=== Canary gate ==="
-
+# For NON-oracle runs the staged dir contains ONLY .ts inputs — never
+# expected.json. The oracle (token) path stages expected.json so its cheat
+# checker can read the answer key (that is the whole point of the marker).
+echo "=== Staging inputs ==="
 CANARY_TMP=$(mktemp -d /tmp/canary_eval_XXXXXX)
 cp "$CANARY_DIR"/*.ts "$CANARY_TMP/" 2>/dev/null || true
-if [ -f "/app/.oracle_solution" ] && [ -f "$CANARY_EXPECTED" ]; then
+if [ "$IS_ORACLE" -eq 1 ] && [ -f "$CANARY_EXPECTED" ]; then
     cp "$CANARY_EXPECTED" "$CANARY_TMP/expected.json"
 fi
-
-timeout 120 "$CHECKER" "$CANARY_TMP" > "$VERIFIER_DIR/canary_output.txt" 2>"$VERIFIER_DIR/canary_stderr.txt" || true
-rm -rf "$CANARY_TMP"
-
-CANARY_STATUS=$(python3 << 'CANARY_PY'
-import json, re, os, sys
-from collections import defaultdict
-
-VERIFIER_DIR = "/logs/verifier"
-output_file = os.path.join(VERIFIER_DIR, "canary_output.txt")
-expected_file = os.environ.get("CANARY_EXPECTED")
-
-with open(expected_file) as f:
-    expected = json.load(f)
-
-re1 = re.compile(r"^(.+?\.ts)\((\d+),\d+\):\s*error")
-re2 = re.compile(r"^(.+?\.ts):(\d+):\d+\s*-?\s*error")
-
-actual = defaultdict(set)
-with open(output_file, errors="replace") as f:
-    for line in f:
-        s = line.strip()
-        m = re1.match(s) or re2.match(s)
-        if m:
-            actual[m.group(1)].add(int(m.group(2)))
-
-passed = 0
-total = len(expected)
-canary_results = []
-
-for name, errs in sorted(expected.items()):
-    fname = name + ".ts"
-    exp_lines = set(e["line"] for e in errs)
-    act_lines = actual.get(fname, set())
-    ok = act_lines == exp_lines
-    if ok:
-        passed += 1
-        canary_results.append({"test": fname, "passed": True})
-    else:
-        fp = sorted(act_lines - exp_lines)
-        fn = sorted(exp_lines - act_lines)
-        canary_results.append({
-            "test": fname, "passed": False,
-            "expected_error_lines": sorted(exp_lines),
-            "actual_error_lines": sorted(act_lines),
-            "false_positives": fp, "false_negatives": fn,
-        })
-        print(f"  {fname}: expected={sorted(exp_lines)} got={sorted(act_lines)} fp={fp} fn={fn}")
-
-print(f"Canary: {passed}/{total}")
-
-if passed == total:
-    print("CANARY GATE: PASSED")
-else:
-    print("CANARY GATE: FAILED")
-    json.dump({
-        "score": 0.0,
-        "reward": 0.0,
-        "total_time_ms": 0,
-        "subscores": [],
-        "additional_data": {
-            "error": "canary_gate_failed",
-            "error_detail": f"Canary gate requires 100% pass rate. Got {passed}/{total}.",
-            "canary_gate": {
-                "status": "failed",
-                "passed": passed,
-                "total": total,
-                "results": canary_results,
-            },
-            "hidden_tests": {"passed": 0, "total": 0},
-            "category_summary": {},
-        },
-    }, open(os.path.join(VERIFIER_DIR, "reward.json"), "w"), indent=2)
-    with open(os.path.join(VERIFIER_DIR, "reward.txt"), "w") as f:
-        f.write("0")
-
-# Write canary detail for later use
-json.dump({"passed": passed, "total": total, "results": canary_results},
-          open(os.path.join(VERIFIER_DIR, "canary_detail.json"), "w"), indent=2)
-CANARY_PY
-)
-
-echo "$CANARY_STATUS"
-
-if echo "$CANARY_STATUS" | grep -q "CANARY GATE: FAILED"; then
-    echo ""
-    echo "RESULT: Canary gate failed — awarding 0."
-    exit 0
-fi
-
-echo ""
-
-# ---------------------------------------------------------------------------
-# Step 3: Run checker on hidden tests (this determines the actual score)
-# ---------------------------------------------------------------------------
-echo "=== Running checker on hidden tests ==="
-
-CHECKER_START=$(python3 -c "import time; print(int(time.time()*1000))")
 
 HIDDEN_TMP=$(mktemp -d /tmp/hidden_eval_XXXXXX)
 if [ -d "$HIDDEN_DIR" ]; then
     cp "$HIDDEN_DIR"/*.ts "$HIDDEN_TMP/" 2>/dev/null || true
-    if [ -f "/app/.oracle_solution" ] && [ -f "$HIDDEN_EXPECTED" ]; then
+    if [ "$IS_ORACLE" -eq 1 ] && [ -f "$HIDDEN_EXPECTED" ]; then
         cp "$HIDDEN_EXPECTED" "$HIDDEN_TMP/expected.json"
     fi
-    timeout 2700 "$CHECKER" "$HIDDEN_TMP" > "$VERIFIER_DIR/hidden_output.txt" 2>"$VERIFIER_DIR/hidden_stderr.txt" || true
-    HID_LINES=$(wc -l < "$VERIFIER_DIR/hidden_output.txt")
-    echo "Hidden: $HID_LINES output lines"
 else
     echo "WARNING: Hidden test directory not found at $HIDDEN_DIR"
-    touch "$VERIFIER_DIR/hidden_output.txt"
 fi
-rm -rf "$HIDDEN_TMP"
+
+# Make the staged dirs readable by the agent (it runs the checker as `agent`),
+# but not writable by group/other.
+chown -R agent:agent "$CANARY_TMP" "$HIDDEN_TMP" 2>/dev/null || true
+chmod -R go-w "$CANARY_TMP" "$HIDDEN_TMP" 2>/dev/null || true
+
+# ---------------------------------------------------------------------------
+# Step 3: Run the checker AS agent, under strace (Phase 1)
+# ---------------------------------------------------------------------------
+echo "=== Running checker as 'agent' (under strace) ==="
+STRACE_LOG="$VERIFIER_DIR/strace.log"
+CHECKER_START=$(python3 -c "import time; print(int(time.time()*1000))")
+
+# strace -f follows every fork and blocks until all descendants exit, so a
+# forked background reward-writer cannot outlive this window. The checker runs
+# under `su agent` with `env -i` (sanitised env) so the /tests 0700 wall and
+# the staged-only-.ts rule apply to the agent uid exactly as at runtime.
+RUN_SCRIPT="
+su agent -s /bin/bash -c 'env -i PATH=$AGENT_PATH HOME=/home/agent TMPDIR=/tmp NODE_PATH=$AGENT_NODE_PATH timeout 120 \"$CHECKER\" \"$CANARY_TMP\"' > \"$VERIFIER_DIR/canary_output.txt\" 2> \"$VERIFIER_DIR/canary_stderr.txt\"
+su agent -s /bin/bash -c 'env -i PATH=$AGENT_PATH HOME=/home/agent TMPDIR=/tmp NODE_PATH=$AGENT_NODE_PATH timeout 2700 \"$CHECKER\" \"$HIDDEN_TMP\"' > \"$VERIFIER_DIR/hidden_output.txt\" 2> \"$VERIFIER_DIR/hidden_stderr.txt\"
+"
+strace -f -e trace=clone,clone3,fork,vfork,execve,openat \
+    -o "$STRACE_LOG" \
+    bash -c "$RUN_SCRIPT" || true
 
 CHECKER_END=$(python3 -c "import time; print(int(time.time()*1000))")
 CHECKER_MS=$((CHECKER_END - CHECKER_START))
-echo "Checker finished in ${CHECKER_MS}ms"
+
+rm -rf "$CANARY_TMP" "$HIDDEN_TMP"
+
+HID_LINES=$(wc -l < "$VERIFIER_DIR/hidden_output.txt" 2>/dev/null || echo 0)
+echo "Hidden: $HID_LINES output lines; checker finished in ${CHECKER_MS}ms"
 echo ""
 
 # ---------------------------------------------------------------------------
-# Step 4: Score hidden tests only
+# Step 4: Runtime tripwires on the strace log (before any scoring)
 # ---------------------------------------------------------------------------
-echo "=== Scoring (hidden tests only) ==="
+# 4a. execve tripwire (Phase 1.3): zero the reward if the checker exec'd the
+#     real TypeScript compiler instead of implementing one. The whole-word
+#     anchors ("tsc" / /tsc" / tsc.js / typescript/bin|lib / tsserver) avoid
+#     matching the agent's own "tscheck" binary or @babel/node. Skipped for
+#     the oracle (its wrapper is allowed to use the reference path).
+if [ "$IS_ORACLE" -eq 0 ]; then
+    if grep -Eq 'execve\([^)]*("tsc"|/tsc"|"tsserver"|/tsserver"|tsc\.js|tsserver\.js|typescript/bin/|typescript/lib/)' \
+        "$STRACE_LOG" 2>/dev/null; then
+        echo "CHEAT DETECTED: checker execve'd the real tsc/tsserver/typescript."
+        fail_with "cheat_execve_tsc" "Checker shelled out to the TypeScript compiler (detected via strace execve)."
+    fi
+fi
 
-export CHECKER_MS="$CHECKER_MS"
+# 4b. reward-file write tripwire: nothing legitimate opens a reward file for
+#     writing during the strace window (scoring runs afterwards as root).
+if grep -qE 'openat\([^)]*reward\.(txt|json)[^)]*(O_WRONLY|O_RDWR|O_CREAT)' \
+    "$STRACE_LOG" 2>/dev/null; then
+    fail_with "reward_file_manipulation" "Checker opened a reward file for writing during execution (strace)."
+fi
 
-python3 << 'PYTHON'
-import json
-import os
-import re
-from collections import Counter, defaultdict
+# ---------------------------------------------------------------------------
+# Step 5: Score (OUTSIDE strace, as root — no agent code runs here) (Phase 4)
+# ---------------------------------------------------------------------------
+echo "=== Scoring (canary gate + AND-match + multiplicative) ==="
+python3 -ISs "$SCRIPT_DIR/compute_reward.py" \
+    --output-dir "$VERIFIER_DIR" \
+    --checker-ms "$CHECKER_MS" \
+    --canary-output "$VERIFIER_DIR/canary_output.txt" \
+    --canary-expected "$CANARY_EXPECTED" \
+    --hidden-output "$VERIFIER_DIR/hidden_output.txt" \
+    --hidden-expected "$HIDDEN_EXPECTED" \
+    --hidden-manifest "$HIDDEN_MANIFEST"
 
-VERIFIER_DIR = "/logs/verifier"
+# Safety net: scoring must always leave a reward behind (test.sh exits 0).
+if [ ! -f "$VERIFIER_DIR/reward.json" ]; then
+    echo "ERROR: scoring produced no reward.json — emitting zero."
+    fail_with "scoring_error" "Scoring step failed to produce a reward file."
+fi
 
-re1 = re.compile(r"^(.+?\.ts)\((\d+),\d+\):\s*error")
-re2 = re.compile(r"^(.+?\.ts):(\d+):\d+\s*-?\s*error")
-
-
-def parse_checker_output(output_file):
-    errors = defaultdict(set)
-    with open(output_file, "r", errors="replace") as f:
-        for line in f:
-            s = line.strip()
-            if not s:
-                continue
-            m = re1.match(s) or re2.match(s)
-            if m:
-                errors[m.group(1)].add(int(m.group(2)))
-    return errors
-
-
-hidden_expected_path = os.environ.get("HIDDEN_EXPECTED", "")
-hidden_manifest_path = os.environ.get("HIDDEN_MANIFEST", "")
-checker_ms = int(os.environ.get("CHECKER_MS", "0"))
-
-canary_detail = {}
-canary_path = os.path.join(VERIFIER_DIR, "canary_detail.json")
-if os.path.exists(canary_path):
-    with open(canary_path) as f:
-        canary_detail = json.load(f)
-
-if not os.path.exists(hidden_manifest_path):
-    print("Hidden manifest not found — scoring 0")
-    score = 0.0
-    hid_pass, hid_total = 0, 0
-    subscores = []
-    category_summary = {}
-else:
-    with open(hidden_expected_path) as f:
-        expected = json.load(f)
-    with open(hidden_manifest_path) as f:
-        manifest = json.load(f)
-
-    actual = parse_checker_output(os.path.join(VERIFIER_DIR, "hidden_output.txt"))
-
-    hid_pass = 0
-    hid_total = len(manifest)
-    subscores = []
-    cat_pass = Counter()
-    cat_total = Counter()
-
-    for test in manifest:
-        name = test["name"]
-        fname = test["file"]
-        cat = test.get("category", "unknown")
-        expected_lines = set(e["line"] for e in expected.get(name, []))
-        actual_lines = actual.get(fname, set())
-
-        cat_total[cat] += 1
-
-        if actual_lines == expected_lines:
-            hid_pass += 1
-            cat_pass[cat] += 1
-            subscores.append({
-                "subtask": f"{cat}/{name}",
-                "score": 1,
-            })
-        else:
-            fp = sorted(actual_lines - expected_lines)
-            fn = sorted(expected_lines - actual_lines)
-            reason_parts = []
-            if fp:
-                reason_parts.append(f"false_positives_on_lines={fp[:5]}")
-            if fn:
-                reason_parts.append(f"missed_error_lines={fn[:5]}")
-            subscores.append({
-                "subtask": f"{cat}/{name}",
-                "score": 0,
-                "reason": "; ".join(reason_parts) if reason_parts else "wrong_error_lines",
-            })
-
-    score = round(hid_pass / hid_total, 6) if hid_total > 0 else 0.0
-
-    print(f"Hidden: {hid_pass}/{hid_total} ({hid_pass/hid_total:.2%})")
-    print(f"Score: {score}")
-    print("")
-    print("By category:")
-
-    category_summary = {}
-    for cat in sorted(cat_total.keys()):
-        p = cat_pass[cat]
-        t = cat_total[cat]
-        r = round(p / t, 4) if t > 0 else 0.0
-        category_summary[cat] = {
-            "passed": p,
-            "total": t,
-            "pass_rate": r,
-        }
-        print(f"  {cat}: {p}/{t} ({r:.2%})")
-
-reward = {
-    "score": score,
-    "reward": score,
-    "subscores": subscores,
-    "additional_data": {
-        "total_time_ms": checker_ms,
-        "checker_time_ms": checker_ms,
-        "canary_gate": {
-            "status": "passed",
-            "passed": canary_detail.get("passed", 0),
-            "total": canary_detail.get("total", 0),
-            "results": canary_detail.get("results", []),
-        },
-        "hidden_tests": {
-            "passed": hid_pass,
-            "total": hid_total,
-        },
-        "category_summary": category_summary,
-    },
-}
-
-with open(os.path.join(VERIFIER_DIR, "reward.json"), "w") as f:
-    json.dump(reward, f, indent=2)
-
-with open(os.path.join(VERIFIER_DIR, "reward.txt"), "w") as f:
-    f.write(str(score))
-
-summary = {k: v for k, v in reward.items() if k != "subscores"}
-summary["subscores_count"] = len(subscores)
-print(f"\n{json.dumps(summary, indent=2)}")
-PYTHON
-
+relax_reward_perms
 echo ""
 echo "End time: $(date)"
 echo "=========================================="
+exit 0

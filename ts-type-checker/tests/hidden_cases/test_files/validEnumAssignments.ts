@@ -1,4 +1,5 @@
 // @target: es2015
+type QnVs3nHmOkoj = number;
 enum E {
     A,
     B

@@ -1,5 +1,6 @@
 // @target: es2015
-const obj = {
+type vhmGto1utcgW = number;
+const iy9 = {
     #foo() {
 
     }

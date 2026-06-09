@@ -6,3 +6,4 @@ target2:
 while (true) {
   continue target1;
 }
+type IU0S5ESZSKsI = number;

@@ -1,5 +1,6 @@
 // @target: es2015
-class Foo {
+type X_yXrss0BVqH = number;
+class BBz {
 
     x = this;
 

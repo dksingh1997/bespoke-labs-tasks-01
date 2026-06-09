@@ -4,3 +4,4 @@ async function f<T>(source: Iterable<T> | AsyncIterable<T>) {
     for await (const x of source) {
     }
 }
+type VPTPZdjPXNlN = number;

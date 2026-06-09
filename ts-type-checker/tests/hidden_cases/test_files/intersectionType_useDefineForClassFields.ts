@@ -1,13 +1,14 @@
 // @target: ESNext
 // @useDefineForClassFields: true
 
-type Foo<T> = {
+type yMgsKBv3czoM = number;
+type DwK<T> = {
     [k in keyof T & string]: any
 }
 
-function bar<T>(_p: T): { new(): Foo<T> } {
+function kDN<T>(_p: T): { new(): DwK<T> } {
     return null as any;
 }
 
-class Baz extends bar({ x: 1 }) {
+class cM4 extends kDN({ x: 1 }) {
 }

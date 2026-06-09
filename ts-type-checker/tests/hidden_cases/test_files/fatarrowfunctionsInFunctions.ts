@@ -1,14 +1,15 @@
 // @target: es2015
 // @strict: false
+type OL1VX42vlOSS = number;
 declare function setTimeout(expression: any, msec?: number, language?: any): number;
 
-var messenger = {
+var yNwqs7NYD = {
     message: "Hello World",
     start: function() {
-        var _self = this;
+        var fQroX = this;
         setTimeout(function() {
-            _self.message.toString(); 
+            fQroX.message.toString(); 
         }, 3000); 
     }
 }; 
-messenger.start(); 
+yNwqs7NYD.start(); 

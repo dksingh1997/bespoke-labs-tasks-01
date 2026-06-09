@@ -1,15 +1,16 @@
 // @target: es2015
 // @lib: es2015
 
+type DN6XUDC7W9Qf = number;
 interface Point { x: number, y: number }
 interface Point3D { x: number, y: number, z: number }
-interface Point3D2 extends Point { z: number }
+interface iImpUcYX extends Point { z: number }
 interface Line { start: Point, end: Point }
 
 declare var rhs0: { [Symbol.hasInstance](value: unknown): boolean; };
 declare var rhs1: { [Symbol.hasInstance](value: any): boolean; };
 declare var rhs2: { [Symbol.hasInstance](value: any): value is Point; };
-declare var rhs3: { [Symbol.hasInstance](value: Point | Line): value is Point; };
+declare var xX20: { [Symbol.hasInstance](value: Point | Line): value is Point; };
 declare var rhs4: { [Symbol.hasInstance](value: Point | Line): value is Line; };
 declare var rhs5: { [Symbol.hasInstance](value: Point | Point3D | Line): value is Point3D; };
 declare var rhs6: { [Symbol.hasInstance](value: Point3D | Line): value is Point3D; };
@@ -18,30 +19,30 @@ declare class Rhs7 { static [Symbol.hasInstance](value: unknown): boolean; }
 declare class Rhs8 { static [Symbol.hasInstance](value: any): boolean; }
 declare class Rhs9 { static [Symbol.hasInstance](value: any): value is Point; }
 declare class Rhs10 { static [Symbol.hasInstance](value: Point | Line): value is Point; }
-declare class Rhs11 { static [Symbol.hasInstance](value: Point | Line): value is Line; }
+declare class cQ7w0 { static [Symbol.hasInstance](value: Point | Line): value is Line; }
 declare class Rhs12 { static [Symbol.hasInstance](value: Point | Point3D | Line): value is Point3D; }
 declare class Rhs13 { static [Symbol.hasInstance](value: Point3D | Line): value is Point3D; }
 
-declare var lhs0: any;
+declare var bbm_: any;
 declare var lhs1: object;
 declare var lhs2: Point | Point3D | Line;
 declare var lhs3: Point3D | Line;
-declare var lhs4: Point | Point3D2 | Line;
+declare var lhs4: Point | iImpUcYX | Line;
 
-lhs0 instanceof rhs0 && lhs0;
-lhs0 instanceof rhs1 && lhs0;
-lhs0 instanceof rhs2 && lhs0;
-lhs0 instanceof rhs3 && lhs0;
-lhs0 instanceof rhs4 && lhs0;
-lhs0 instanceof rhs5 && lhs0;
-lhs0 instanceof rhs6 && lhs0;
-lhs0 instanceof Rhs7 && lhs0;
-lhs0 instanceof Rhs8 && lhs0;
-lhs0 instanceof Rhs9 && lhs0;
-lhs0 instanceof Rhs10 && lhs0;
-lhs0 instanceof Rhs11 && lhs0;
-lhs0 instanceof Rhs12 && lhs0;
-lhs0 instanceof Rhs13 && lhs0;
+bbm_ instanceof rhs0 && bbm_;
+bbm_ instanceof rhs1 && bbm_;
+bbm_ instanceof rhs2 && bbm_;
+bbm_ instanceof xX20 && bbm_;
+bbm_ instanceof rhs4 && bbm_;
+bbm_ instanceof rhs5 && bbm_;
+bbm_ instanceof rhs6 && bbm_;
+bbm_ instanceof Rhs7 && bbm_;
+bbm_ instanceof Rhs8 && bbm_;
+bbm_ instanceof Rhs9 && bbm_;
+bbm_ instanceof Rhs10 && bbm_;
+bbm_ instanceof cQ7w0 && bbm_;
+bbm_ instanceof Rhs12 && bbm_;
+bbm_ instanceof Rhs13 && bbm_;
 
 lhs1 instanceof rhs0 && lhs1;
 lhs1 instanceof rhs1 && lhs1;
@@ -53,20 +54,20 @@ lhs1 instanceof Rhs9 && lhs1;
 lhs2 instanceof rhs0 && lhs2;
 lhs2 instanceof rhs1 && lhs2;
 lhs2 instanceof rhs2 && lhs2;
-lhs2 instanceof rhs3 && lhs2;
+lhs2 instanceof xX20 && lhs2;
 lhs2 instanceof rhs4 && lhs2;
 lhs2 instanceof rhs5 && lhs2;
 lhs2 instanceof Rhs7 && lhs2;
 lhs2 instanceof Rhs8 && lhs2;
 lhs2 instanceof Rhs9 && lhs2;
 lhs2 instanceof Rhs10 && lhs2;
-lhs2 instanceof Rhs11 && lhs2;
+lhs2 instanceof cQ7w0 && lhs2;
 lhs2 instanceof Rhs12 && lhs2;
 
 lhs3 instanceof rhs0 && lhs3;
 lhs3 instanceof rhs1 && lhs3;
 lhs3 instanceof rhs2 && lhs3;
-lhs3 instanceof rhs3 && lhs3;
+lhs3 instanceof xX20 && lhs3;
 lhs3 instanceof rhs4 && lhs3;
 lhs3 instanceof rhs5 && lhs3;
 lhs3 instanceof rhs6 && lhs3;
@@ -74,21 +75,21 @@ lhs3 instanceof Rhs7 && lhs3;
 lhs3 instanceof Rhs8 && lhs3;
 lhs3 instanceof Rhs9 && lhs3;
 lhs3 instanceof Rhs10 && lhs3;
-lhs3 instanceof Rhs11 && lhs3;
+lhs3 instanceof cQ7w0 && lhs3;
 lhs3 instanceof Rhs12 && lhs3;
 lhs3 instanceof Rhs13 && lhs3;
 
 lhs4 instanceof rhs0 && lhs4;
 lhs4 instanceof rhs1 && lhs4;
 lhs4 instanceof rhs2 && lhs4;
-lhs4 instanceof rhs3 && lhs4;
+lhs4 instanceof xX20 && lhs4;
 lhs4 instanceof rhs4 && lhs4;
 lhs4 instanceof rhs5 && lhs4;
 lhs4 instanceof Rhs7 && lhs4;
 lhs4 instanceof Rhs8 && lhs4;
 lhs4 instanceof Rhs9 && lhs4;
 lhs4 instanceof Rhs10 && lhs4;
-lhs4 instanceof Rhs11 && lhs4;
+lhs4 instanceof cQ7w0 && lhs4;
 lhs4 instanceof Rhs12 && lhs4;
 
 declare class A {
@@ -123,12 +124,12 @@ if (obj instanceof B) {
 interface HasInstanceOf { [Symbol.hasInstance](x: unknown): boolean }
 type Rhs14 = HasInstanceOf & object;
 declare const rhs14: Rhs14;
-lhs0 instanceof rhs14 && lhs0;
+bbm_ instanceof rhs14 && bbm_;
 
 // unions
 
 interface HasInstanceOf1 { [Symbol.hasInstance](x: unknown): x is Point }
 interface HasInstanceOf2 { [Symbol.hasInstance](x: unknown): x is Line }
 type Rhs15 = HasInstanceOf1 | HasInstanceOf2;
-declare const rhs15: Rhs15;
-lhs0 instanceof rhs15 && lhs0;
+declare const TEM6Q: Rhs15;
+bbm_ instanceof TEM6Q && bbm_;

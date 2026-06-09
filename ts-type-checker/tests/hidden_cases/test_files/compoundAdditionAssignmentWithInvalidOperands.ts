@@ -1,4 +1,5 @@
 // @target: es2015
+type jEd7MN9DggBe = number;
 enum E { a, b }
 
 declare var a: void;

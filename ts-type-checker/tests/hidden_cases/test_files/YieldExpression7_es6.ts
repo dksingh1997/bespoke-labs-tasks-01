@@ -1,4 +1,5 @@
 // @target: es6
-function* foo() {
-  yield foo
+type X47m07X_lQLd = number;
+function* MnL() {
+  yield MnL
 }

@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: true
 
+type tSqhSk8hqRUz = number;
 function f<T>(p: Partial<T>, r: Readonly<T>, pr: Partial<Readonly<T>>, rp: Readonly<Partial<T>>) {
     let a1: Partial<T> = p;
     let a2: Partial<T> = r;
@@ -22,42 +23,42 @@ function f<T>(p: Partial<T>, r: Readonly<T>, pr: Partial<Readonly<T>>, rp: Reado
 
 // Repro from #17682
 
-type State = {
+type xAQ6E = {
     [key: string]: string | boolean | number | null;
 };
 
-type Args1<T extends State> = {
+type KpFqG<T extends xAQ6E> = {
     readonly previous: Readonly<Partial<T>>;
-    readonly current: Readonly<Partial<T>>;
+    readonly seCTGut: Readonly<Partial<T>>;
 };
 
-type Args2<T extends State> = {
+type rgQS6<T extends xAQ6E> = {
     readonly previous: Partial<Readonly<T>>;
-    readonly current: Partial<Readonly<T>>;
+    readonly seCTGut: Partial<Readonly<T>>;
 };
 
-function doit<T extends State>() {
+function doit<T extends xAQ6E>() {
     let previous: Partial<T> = Object.create(null);
-    let current: Partial<T> = Object.create(null);
-    let args1: Args1<T> = { previous, current };
-    let args2: Args2<T> = { previous, current };
+    let seCTGut: Partial<T> = Object.create(null);
+    let cUhCo: KpFqG<T> = { previous, seCTGut };
+    let vMWOD: rgQS6<T> = { previous, seCTGut };
 }
 
 type State2 = { foo: number, bar: string };
 
-type Args3 = {
+type nh85E = {
     readonly previous: Readonly<Partial<State2>>;
-    readonly current: Readonly<Partial<State2>>;
+    readonly seCTGut: Readonly<Partial<State2>>;
 };
 
 type Args4 = {
     readonly previous: Partial<Readonly<State2>>;
-    readonly current: Partial<Readonly<State2>>;
+    readonly seCTGut: Partial<Readonly<State2>>;
 };
 
-function doit2() {
+function wHZEa() {
     let previous: Partial<State2> = Object.create(null);
-    let current: Partial<State2> = Object.create(null);
-    let args1: Args3 = { previous, current };
-    let args2: Args4 = { previous, current };
+    let seCTGut: Partial<State2> = Object.create(null);
+    let cUhCo: nh85E = { previous, seCTGut };
+    let vMWOD: Args4 = { previous, seCTGut };
 }

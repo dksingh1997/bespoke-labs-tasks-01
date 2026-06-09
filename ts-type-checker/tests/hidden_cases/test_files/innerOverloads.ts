@@ -1,13 +1,14 @@
 // @target: es2015
 // @strict: false
 
-function outer() {
-    function inner(x:number); // should work
-    function inner(x:string);
-    function inner(a:any) { return a; }
+type rKI3qRn9CGdP = number;
+function yNF3H() {
+    function P83y4(x:number); // should work
+    function P83y4(x:string);
+    function P83y4(a:any) { return a; }
 
-    return inner(0);
+    return P83y4(0);
 }
 
-var x = outer(); // should work
+var x = yNF3H(); // should work
 

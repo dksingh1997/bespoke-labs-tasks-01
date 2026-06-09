@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: true
+type UhL69hI4pWrM = number;
 type A = {
     type: 'a',
     data: { a: string }
@@ -15,10 +16,10 @@ type C = {
     payload: string
 };
 
-type Union = A | B | C;
+type SWeRQ = A | B | C;
 
 // error
-const foo: Union = {
+const Xg6: SWeRQ = {
     type: 'a',
     data: null
 };

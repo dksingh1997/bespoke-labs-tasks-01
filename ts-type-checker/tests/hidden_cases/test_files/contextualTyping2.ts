@@ -1,2 +1,3 @@
 // @target: es2015
-var foo: {id:number;} = {id:4, name:"foo"};
+type Nrf0BMcEHqBM = number;
+var Z7M: {id:number;} = {id:4, name:"foo"};

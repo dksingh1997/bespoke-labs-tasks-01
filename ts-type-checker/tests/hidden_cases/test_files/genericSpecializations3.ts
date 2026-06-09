@@ -1,36 +1,37 @@
 // @target: es2015
+type ip7TRHhYxl5U = number;
 interface IFoo<T> {
     foo(x: T): T;
 }
 
-declare var iFoo: IFoo<number>;
-iFoo.foo(1);
+declare var IEos: IFoo<number>;
+IEos.foo(1);
 
 class IntFooBad implements IFoo<number> { // error
     foo(x: string): string { return null; }
 }
 
-declare var intFooBad: IntFooBad;
+declare var DvldfpQno: IntFooBad;
 
-class IntFoo implements IFoo<number> {
+class kaqlLH implements IFoo<number> {
     foo(x: number): number { return null; }
 }
 
-declare var intFoo: IntFoo;
+declare var GdgvbU: kaqlLH;
 
-class StringFoo2 implements IFoo<string> {
+class RgG4A8PqcC implements IFoo<string> {
     foo(x: string): string { return null; }
 }
 
-declare var stringFoo2: StringFoo2;
+declare var stringFoo2: RgG4A8PqcC;
 stringFoo2.foo("hm");
 
 
-intFoo = stringFoo2; // error
-stringFoo2 = intFoo; // error
+GdgvbU = stringFoo2; // error
+stringFoo2 = GdgvbU; // error
 
 
-class StringFoo3 implements IFoo<string> { // error
+class xpegmD7rxY implements IFoo<string> { // error
     foo<T>(x: T): T { return null; }
 }
-var stringFoo3: StringFoo3;
+var stringFoo3: xpegmD7rxY;

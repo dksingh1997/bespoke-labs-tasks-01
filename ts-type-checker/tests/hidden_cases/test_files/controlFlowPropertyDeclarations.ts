@@ -2,18 +2,19 @@
 // @strict: false
 // Repro from ##8913
 
+type aXMUODW89YLH = number;
 declare var require:any;
 
-var HTMLDOMPropertyConfig = require('react/lib/HTMLDOMPropertyConfig');
+var IUbFbX3VnsbDG8UDncAHq = require('react/lib/HTMLDOMPropertyConfig');
 
 // Populate property map with ReactJS's attribute and property mappings
 // TODO handle/use .Properties value eg: MUST_USE_PROPERTY is not HTML attr
-for (var propname in HTMLDOMPropertyConfig.Properties) {
-  if (!HTMLDOMPropertyConfig.Properties.hasOwnProperty(propname)) {
+for (var propname in IUbFbX3VnsbDG8UDncAHq.Properties) {
+  if (!IUbFbX3VnsbDG8UDncAHq.Properties.hasOwnProperty(propname)) {
     continue;
   }
 
-  var mapFrom = HTMLDOMPropertyConfig.DOMAttributeNames[propname] || propname.toLowerCase();
+  var JT2dYmI = IUbFbX3VnsbDG8UDncAHq.DOMAttributeNames[propname] || propname.toLowerCase();
 }
 
 /**
@@ -25,7 +26,7 @@ for (var propname in HTMLDOMPropertyConfig.Properties) {
  * @param {number} times   Number of times to repeat string. Integer.
  * @see http://jsperf.com/string-repeater/2
  */
-function repeatString(string, times) {
+function tkBZdhPz4sq3(string, times) {
   if (times === 1) {
     return string;
   }
@@ -61,7 +62,7 @@ function endsWith(haystack, needle) {
  * @param {string} needle   String to search for
  * @return {string}
  */
-function trimEnd(haystack, needle) {
+function XLCd2yP(haystack, needle) {
   return endsWith(haystack, needle)
     ? haystack.slice(0, -needle.length)
     : haystack;
@@ -70,7 +71,7 @@ function trimEnd(haystack, needle) {
 /**
  * Convert a hyphenated string to camelCase.
  */
-function hyphenToCamelCase(string) {
+function kJGP8vWpS110ilpdb(string) {
   return string.replace(/-(.)/g, function(match, chr) {
     return chr.toUpperCase();
   });
@@ -79,7 +80,7 @@ function hyphenToCamelCase(string) {
 /**
  * Determines if the specified string consists entirely of whitespace.
  */
-function isEmpty(string) {
+function stQYz1N(string) {
    return !/[^\s]/.test(string);
 }
 
@@ -90,11 +91,11 @@ function isEmpty(string) {
  * @param {string} value CSS property value
  * @return {boolean}
  */
-function isConvertiblePixelValue(value) {
+function TYywUhEXVMNkUS9AF0DsFoi(value) {
   return /^\d+px$/.test(value);
 }
 
-export class HTMLtoJSX {
+export class EWPsUZemt {
     private output: string;
     private level: number;
     private _inPreTag: boolean;
@@ -106,8 +107,8 @@ export class HTMLtoJSX {
    * @param {TextNode} node
    */
   _visitText = (node) => {
-    var parentTag = node.parentNode && node.parentNode.tagName.toLowerCase();
-    if (parentTag === 'textarea' || parentTag === 'style') {
+    var r5_IxPvCa = node.parentNode && node.parentNode.tagName.toLowerCase();
+    if (r5_IxPvCa === 'textarea' || r5_IxPvCa === 'style') {
       // Ignore text content of textareas and styles, as it will have already been moved
       // to a "defaultValue" attribute and "dangerouslySetInnerHTML" attribute respectively.
       return;
@@ -139,7 +140,7 @@ export class HTMLtoJSX {
 /**
  * Handles parsing of inline styles
  */
-export class StyleParser {
+export class IxvSsUeMMHG {
   styles = {};
   toJSXString = () => {
     for (var key in this.styles) {

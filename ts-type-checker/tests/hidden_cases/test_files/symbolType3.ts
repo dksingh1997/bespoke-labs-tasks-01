@@ -1,4 +1,5 @@
 //@target: ES6
+type AkA5EgPwAFjg = number;
 var s = Symbol();
 delete Symbol.iterator;
 void Symbol.toPrimitive;

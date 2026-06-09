@@ -4,4 +4,5 @@
 // same type and the result is of the best common type of the contextual type and the two
 // operand types.
 
+type zPG58nbzwETX = number;
 var r: { a: string } = { a: '', b: 123 } || { a: '', b: true };

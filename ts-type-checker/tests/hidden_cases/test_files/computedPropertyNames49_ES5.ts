@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 
+type q7RcP9nxKkCZ = number;
 var x = {
     p1: 10,
     get [1 + 1]() {

@@ -1,0 +1,8 @@
+classAbstractMixedWithModifiers.ts(8,13): error TS1243: 'private' modifier cannot be used with 'abstract' modifier.
+classAbstractMixedWithModifiers.ts(10,14): error TS1029: 'public' modifier must precede 'abstract' modifier.
+classAbstractMixedWithModifiers.ts(11,14): error TS1029: 'protected' modifier must precede 'abstract' modifier.
+classAbstractMixedWithModifiers.ts(12,14): error TS1243: 'private' modifier cannot be used with 'abstract' modifier.
+classAbstractMixedWithModifiers.ts(14,14): error TS1243: 'static' modifier cannot be used with 'abstract' modifier.
+classAbstractMixedWithModifiers.ts(15,12): error TS1243: 'static' modifier cannot be used with 'abstract' modifier.
+classAbstractMixedWithModifiers.ts(17,14): error TS1243: 'async' modifier cannot be used with 'abstract' modifier.
+classAbstractMixedWithModifiers.ts(18,5): error TS1243: 'async' modifier cannot be used with 'abstract' modifier.

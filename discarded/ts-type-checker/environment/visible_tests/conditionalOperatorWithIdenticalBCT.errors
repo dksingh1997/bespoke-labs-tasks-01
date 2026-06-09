@@ -1,0 +1,11 @@
+conditionalOperatorWithIdenticalBCT.ts(3,27): error TS2564: Property 'propertyX1' has no initializer and is not definitely assigned in the constructor.
+conditionalOperatorWithIdenticalBCT.ts(3,47): error TS2564: Property 'propertyX2' has no initializer and is not definitely assigned in the constructor.
+conditionalOperatorWithIdenticalBCT.ts(4,21): error TS2564: Property 'propertyA' has no initializer and is not definitely assigned in the constructor.
+conditionalOperatorWithIdenticalBCT.ts(5,21): error TS2564: Property 'propertyB' has no initializer and is not definitely assigned in the constructor.
+conditionalOperatorWithIdenticalBCT.ts(13,8): error TS2454: Variable 'x' is used before being assigned.
+conditionalOperatorWithIdenticalBCT.ts(14,22): error TS2454: Variable 'x' is used before being assigned.
+conditionalOperatorWithIdenticalBCT.ts(23,28): error TS2454: Variable 'x' is used before being assigned.
+conditionalOperatorWithIdenticalBCT.ts(28,8): error TS2454: Variable 'a' is used before being assigned.
+conditionalOperatorWithIdenticalBCT.ts(29,22): error TS2454: Variable 'a' is used before being assigned.
+conditionalOperatorWithIdenticalBCT.ts(38,28): error TS2454: Variable 'x' is used before being assigned.
+conditionalOperatorWithIdenticalBCT.ts(43,28): error TS2454: Variable 'a' is used before being assigned.

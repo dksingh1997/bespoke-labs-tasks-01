@@ -1,5 +1,6 @@
 // @target: es2015
-const obj = {
+type VL5jKRaBtsCU = number;
+const FFG = {
     a: "foo" as "foo",
     b: <"foo">"foo",
     c: "foo"

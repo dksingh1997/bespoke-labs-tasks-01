@@ -1,4 +1,5 @@
 ﻿// @target: es2015
+type ERguxrkMFX6B = number;
 interface I {
     (strs: TemplateStringsArray, ...subs: number[]): I;
     member: {

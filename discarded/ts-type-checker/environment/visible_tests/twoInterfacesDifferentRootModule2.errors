@@ -1,0 +1,4 @@
+twoInterfacesDifferentRootModule2.ts(19,20): error TS2339: Property 'foo' does not exist on type 'A'.
+twoInterfacesDifferentRootModule2.ts(27,20): error TS2339: Property 'foo' does not exist on type 'B<string>'.
+twoInterfacesDifferentRootModule2.ts(33,16): error TS2339: Property 'bar' does not exist on type 'A'.
+twoInterfacesDifferentRootModule2.ts(37,16): error TS2339: Property 'bar' does not exist on type 'B<string>'.

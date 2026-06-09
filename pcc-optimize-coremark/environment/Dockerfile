@@ -20,6 +20,15 @@ RUN apt-get update && apt-get install -y \
 COPY compiler-src/pcc /build/pcc
 COPY compiler-src/pcc-libs /build/pcc-libs
 
+# Restore exec bits on autotools scripts: file transfers (git/zip/cp) can drop
+# them, making ./configure (and its helpers) fail with exit 126.
+RUN for d in /build/pcc /build/pcc-libs; do \
+      find "$d" -type f \( -name configure -o -name config.sub -o -name config.guess \
+        -o -name install-sh -o -name missing -o -name depcomp -o -name ylwrap \
+        -o -name compile -o -name mkinstalldirs -o -name '*.sh' \) \
+        -exec chmod +x {} + ; \
+    done
+
 # Build PCC with GCC - use final destination path so hardcoded paths work
 WORKDIR /build/pcc
 RUN ./configure --prefix=/usr/local/pcc-bootstrap && \
@@ -49,12 +58,15 @@ ENV TZ=UTC
 # Install tools but NO gcc/g++
 # Note: libc6-dev provides crt*.o files needed by PCC, but NOT gcc
 # bison and flex are needed to rebuild PCC (parser/lexer generation)
+# git/tmux/strace are Harbor hard-rule tooling (terminus-2 + verifier auditing)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     bison \
     flex \
     bc \
     git \
+    tmux \
+    strace \
     numdiff \
     python3 \
     time \
@@ -66,6 +78,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Verify GCC is NOT present
 RUN ! command -v gcc && ! command -v g++ && ! command -v cc || \
     (echo "ERROR: GCC found in runtime image!" && exit 1)
+
+# Non-root agent user (isolation; see HARBOR_GUIDE section 5).
+RUN useradd --create-home --shell /bin/bash agent
+
+# /tests: root-only. Harbor uploads the verifier here at runtime; test.sh
+# re-locks it. Prevents the agent from reading the oracle or planting files.
+RUN mkdir -p /tests && chmod 700 /tests
+
+# /solution: agent-owned so Harbor can upload the oracle's solve.sh (if any).
+RUN mkdir -p /solution && chown agent:agent /solution
 
 # Create directory structure
 RUN mkdir -p /app/compiler-src /app/compiler-benchmarks /logs/verifier /logs/agent
@@ -79,6 +101,14 @@ RUN ln -s /usr/local/pcc-bootstrap/bin/pcc /usr/local/bin/pcc-bootstrap
 # Copy PCC and pcc-libs source (agent will modify these)
 COPY compiler-src/pcc /app/compiler-src/pcc
 COPY compiler-src/pcc-libs /app/compiler-src/pcc-libs
+# Restore exec bits on autotools scripts so the agent's rebuild works regardless
+# of how the task was transferred (git/zip/cp can strip them -> exit 126).
+RUN for d in /app/compiler-src/pcc /app/compiler-src/pcc-libs; do \
+      find "$d" -type f \( -name configure -o -name config.sub -o -name config.guess \
+        -o -name install-sh -o -name missing -o -name depcomp -o -name ylwrap \
+        -o -name compile -o -name mkinstalldirs -o -name '*.sh' \) \
+        -exec chmod +x {} + ; \
+    done
 
 # Copy benchmark scripts and data
 COPY scripts /app/compiler-benchmarks/scripts
@@ -93,6 +123,10 @@ COPY benchmarks/llvm-test-suite /app/compiler-benchmarks/benchmarks/llvm-test-su
 # Make scripts executable
 RUN chmod +x /app/compiler-benchmarks/scripts/*.sh
 
+# Agent owns its editable workspace (PCC source, benchmarks). Done after all
+# COPYs into /app so the non-root agent can modify+rebuild PCC locally.
+RUN chown -R agent:agent /app
+
 # Test that bootstrap PCC works in runtime environment
 RUN echo 'int main() { return 42; }' > /tmp/test.c && \
     pcc-bootstrap -o /tmp/test /tmp/test.c && \
@@ -105,4 +139,7 @@ RUN echo "Final verification: GCC is not present" && \
     ! command -v gcc && ! command -v g++ && ! command -v cc && \
     echo "✓ No GCC in runtime environment - cheating is impossible"
 
+# Default user stays root (the verifier runs as root and traverses /tests);
+# Harbor switches to `agent` for the agent phase via [agent] user in task.toml.
 WORKDIR /app/compiler-src/pcc
+CMD ["sleep", "infinity"]

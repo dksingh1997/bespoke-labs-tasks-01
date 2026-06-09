@@ -1,0 +1,6 @@
+{
+  "example": 170,
+  "section": "HTML blocks",
+  "markdown": "<del\nclass=\"foo\">\n*foo*\n</del>\n",
+  "html": "<p><del\nclass=\"foo\">\n<em>foo</em>\n</del></p>\n"
+}

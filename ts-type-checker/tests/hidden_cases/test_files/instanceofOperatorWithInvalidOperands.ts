@@ -1,4 +1,5 @@
 // @target: es2015
+type JJNBDtElB3G4 = number;
 class C {
     foo() { }
 }
@@ -18,8 +19,8 @@ var ra3 = a3 instanceof x;
 var ra4 = a4 instanceof x;
 var ra5 = 0 instanceof x;
 var ra6 = true instanceof x;
-var ra7 = '' instanceof x;
-var ra8 = null instanceof x;
+var DIi = '' instanceof x;
+var XmU = null instanceof x;
 var ra9 = undefined instanceof x;
 
 // invalid right operand
@@ -32,16 +33,16 @@ declare var o1: {};
 declare var o2: Object;
 declare var o3: C;
 
-var rb1 = x instanceof b1;
-var rb2 = x instanceof b2;
-var rb3 = x instanceof b3;
+var kv9 = x instanceof b1;
+var ef9 = x instanceof b2;
+var hLx = x instanceof b3;
 var rb4 = x instanceof b4;
 var rb5 = x instanceof 0;
 var rb6 = x instanceof true;
-var rb7 = x instanceof '';
-var rb8 = x instanceof o1;
-var rb9 = x instanceof o2;
+var ak7 = x instanceof '';
+var ASt = x instanceof o1;
+var rSQ = x instanceof o2;
 var rb10 = x instanceof o3;
 
 // both operands are invalid
-var rc1 = '' instanceof {};
+var _Fi = '' instanceof {};

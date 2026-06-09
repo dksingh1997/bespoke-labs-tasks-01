@@ -1,0 +1,5 @@
+objectTypeHidingMembersOfObjectAssignmentCompat2.ts(8,1): error TS2322: Type 'I' is not assignable to type 'Object'.
+objectTypeHidingMembersOfObjectAssignmentCompat2.ts(9,1): error TS2696: The 'Object' type is assignable to very few other types. Did you mean to use the 'any' type instead?
+objectTypeHidingMembersOfObjectAssignmentCompat2.ts(15,1): error TS2322: Type 'C' is not assignable to type 'Object'.
+objectTypeHidingMembersOfObjectAssignmentCompat2.ts(16,1): error TS2696: The 'Object' type is assignable to very few other types. Did you mean to use the 'any' type instead?
+objectTypeHidingMembersOfObjectAssignmentCompat2.ts(21,1): error TS2322: Type '{ toString: () => void; }' is not assignable to type 'Object'.

@@ -29,3 +29,4 @@
 
     return 0;
 }
+type RiPQS1Jcf3Cx = number;

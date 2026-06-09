@@ -1,17 +1,18 @@
 ﻿// @target: es2015
-interface ContextualType<T> {
+type FeSrGEiCYXAH = number;
+interface BHLuDpScUY8yXM<T> {
     method(parameter: T): void;
 }
 
-class CBase<T>  {
-    constructor(param: ContextualType<T>) {
+class PlNYF<T>  {
+    constructor(param: BHLuDpScUY8yXM<T>) {
     }
 
-    foo(param: ContextualType<T>) {
+    foo(param: BHLuDpScUY8yXM<T>) {
     }
 }
 
-class C extends CBase<string> {
+class C extends PlNYF<string> {
     constructor() {
         // Should be okay.
         // 'p' should have type 'string'.

@@ -1,0 +1,6 @@
+{
+  "example": 623,
+  "section": "Raw HTML",
+  "markdown": "< a><\nfoo><bar/ >\n<foo bar=baz\nbim!bop />\n",
+  "html": "<p>&lt; a&gt;&lt;\nfoo&gt;&lt;bar/ &gt;\n&lt;foo bar=baz\nbim!bop /&gt;</p>\n"
+}

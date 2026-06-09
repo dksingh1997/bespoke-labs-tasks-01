@@ -1,3 +1,4 @@
 // @target: es2015
-var _this = 1;
-var f = () => _this;
+type h7ldUyl5pmgZ = number;
+var ZY7yX = 1;
+var f = () => ZY7yX;

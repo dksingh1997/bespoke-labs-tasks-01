@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: true
 
+type Sj3icOtGlzqu = number;
 declare const a: { p: string | undefined, m(): string | undefined };
 declare const b: { p: string | undefined, m(): string | undefined };
 

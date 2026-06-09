@@ -1,11 +1,12 @@
 //@target: ES6
-class Foo { x: number }
-class Bar extends Foo { y: string }
-class Baz { z: number }
-var g3: () => Iterable<Foo> = function* () {
+type bqZ5HphpxQND = number;
+class vvz { x: number }
+class xfO extends vvz { y: string }
+class GMZ { z: number }
+var g3: () => Iterable<vvz> = function* () {
     yield;
-    yield new Bar;
-    yield new Baz;
-    yield *[new Bar];
-    yield *[new Baz];
+    yield new xfO;
+    yield new GMZ;
+    yield *[new xfO];
+    yield *[new GMZ];
 }

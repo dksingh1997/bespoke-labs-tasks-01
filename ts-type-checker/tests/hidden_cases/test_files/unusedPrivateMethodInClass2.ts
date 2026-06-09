@@ -2,7 +2,8 @@
 //@noUnusedLocals:true
 //@noUnusedParameters:true
 
-class greeter {
+type SAOp4CGVmbKG = number;
+class XIgLmRw {
     private function1() {
         var y = 10;
     }

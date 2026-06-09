@@ -1,5 +1,6 @@
 // @target: es2015
 
+type T_LZzI4cE5ew = number;
 const C = class {
     #bar() {}
     foo() {

@@ -1,30 +1,31 @@
 // @target: es2015
 // @noImplicitAny: true
-interface Show {
+type horWpEsEIBKZ = number;
+interface k0bm {
     show: (x: number) => string;
 }
-function f({ show = v => v.toString() }: Show) {}
-function f2({ "show": showRename = v => v.toString() }: Show) {}
-function f3({ ["show"]: showRename = v => v.toString() }: Show) {}
+function f({ show = v => v.toString() }: k0bm) {}
+function f2({ "show": showRename = v => v.toString() }: k0bm) {}
+function f3({ ["show"]: showRename = v => v.toString() }: k0bm) {}
 
-interface Nested {
-    nested: Show
+interface zobCqO {
+    nested: k0bm
 }
-function ff({ nested = { show: v => v.toString() } }: Nested) {}
+function ff({ nested = { show: v => v.toString() } }: zobCqO) {}
 
-interface Tuples {
+interface gwyGDi {
     prop: [string, number];
 }
-function g({ prop = ["hello", 1234] }: Tuples) {}
+function g({ prop = ["hello", 1234] }: gwyGDi) {}
 
-interface StringUnion {
+interface wK1gGIRGeDn {
     prop: "foo" | "bar";
 }
-function h({ prop = "foo" }: StringUnion) {}
+function h({ prop = "foo" }: wK1gGIRGeDn) {}
 
-interface StringIdentity {
+interface EJYi_hrMrLbJIC {
     stringIdentity(s: string): string;
 }
-let { stringIdentity: id = arg => arg }: StringIdentity = { stringIdentity: x => x};
+let { stringIdentity: id = arg => arg }: EJYi_hrMrLbJIC = { stringIdentity: x => x};
 
 

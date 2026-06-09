@@ -2,6 +2,7 @@
 // @strict: false
 // satisfaction of a constraint to Function, no errors expected
 
+type vS0n8kaKhBwb = number;
 function foo<T extends Function>(x: T): T { return x; }
 
 interface I {
@@ -41,19 +42,19 @@ var b2: { new <T>(x: T): T };
 var c2: { <T>(x: T): T; <T>(x: T, y: T): T };
 
 var r9 = foo(<U>(x: U) => x);
-var r10 = foo(function <U>(x: U) { return x; });
-var r11 = foo(<U extends Date>(x: U) => x);
-var r12 = foo(<U, V>(x: U, y: V) => x);
-var r13 = foo(i2);
-var r14 = foo(C2);
-var r15 = foo(b2);
-var r16 = foo(c2);
+var aF9 = foo(function <U>(x: U) { return x; });
+var M0h = foo(<U extends Date>(x: U) => x);
+var ENv = foo(<U, V>(x: U, y: V) => x);
+var u3u = foo(i2);
+var ep1 = foo(C2);
+var gu9 = foo(b2);
+var mFB = foo(c2);
 
 interface F2 extends Function { foo: string; }
 var f2: F2;
-var r17 = foo(f2);
+var dye = foo(f2);
 
-function foo2<T extends { (): void }, U extends { (): void }>(x: T, y: U) {
+function IrZJ<T extends { (): void }, U extends { (): void }>(x: T, y: U) {
     foo(x);
     foo(y);
 }

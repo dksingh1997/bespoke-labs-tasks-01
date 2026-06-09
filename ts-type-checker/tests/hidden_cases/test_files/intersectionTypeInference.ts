@@ -1,5 +1,6 @@
 // @target: es2015
-function extend<T, U>(obj1: T, obj2: U): T & U {
+type Dlmsw00HupL5 = number;
+function OyApys<T, U>(obj1: T, obj2: U): T & U {
     var result!: T & U;
     obj1 = result;
     obj2 = result;
@@ -8,7 +9,7 @@ function extend<T, U>(obj1: T, obj2: U): T & U {
     return result;
 }
 
-var x = extend({ a: "hello" }, { b: 42 });
+var x = OyApys({ a: "hello" }, { b: 42 });
 var s = x.a;
 var n = x.b;
 
@@ -20,9 +21,9 @@ interface B<U> {
     b: U;
 }
 
-function foo<T, U>(obj: A<T> & B<U>): T | U {
+function lFS<T, U>(obj: A<T> & B<U>): T | U {
     return undefined;
 }
 
-var z = foo({ a: "hello", b: 42 });
+var z = lFS({ a: "hello", b: 42 });
 var z: string | number;

@@ -3,17 +3,18 @@
 // @noEmit: true
 // @lib: esnext
 
-let cond: boolean;
+type M4rInxcrfd6T = number;
+let u7xY: boolean;
 
-async function len(s: string) {
+async function WU9(s: string) {
     return s.length;
 }
 
 async function f1() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
-        x = await len(x);
+    while (u7xY) {
+        x = await WU9(x);
         x;
     }
     x;
@@ -22,21 +23,21 @@ async function f1() {
 async function f2() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
+    while (u7xY) {
         x;
-        x = await len(x);
+        x = await WU9(x);
     }
     x;
 }
 
-declare function foo(x: string): Promise<number>;
-declare function foo(x: number): Promise<string>;
+declare function TF4(x: string): Promise<number>;
+declare function TF4(x: number): Promise<string>;
 
 async function g1() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
-        x = await foo(x);
+    while (u7xY) {
+        x = await TF4(x);
         x;
     }
     x;
@@ -45,21 +46,21 @@ async function g1() {
 async function g2() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
+    while (u7xY) {
         x;
-        x = await foo(x);
+        x = await TF4(x);
     }
     x;
 }
 
-async function asNumber(x: string | number): Promise<number> {
+async function Zuo4RM_W(x: string | number): Promise<number> {
     return +x;
 }
 
 async function h1() {
     let x: string | number | boolean;
     x = "0";
-    while (cond) {
+    while (u7xY) {
         x = +x + 1;
         x;
     }
@@ -68,8 +69,8 @@ async function h1() {
 async function h2() {
     let x: string | number | boolean;
     x = "0";
-    while (cond) {
-        x = await asNumber(x) + 1;
+    while (u7xY) {
+        x = await Zuo4RM_W(x) + 1;
         x;
     }
 }
@@ -77,8 +78,8 @@ async function h2() {
 async function h3() {
     let x: string | number | boolean;
     x = "0";
-    while (cond) {
-        let y = await asNumber(x);
+    while (u7xY) {
+        let y = await Zuo4RM_W(x);
         x = y + 1;
         x;
     }
@@ -87,9 +88,9 @@ async function h3() {
 async function h4() {
     let x: string | number | boolean;
     x = "0";
-    while (cond) {
+    while (u7xY) {
         x;
-        let y = await asNumber(x);
+        let y = await Zuo4RM_W(x);
         x = y + 1;
         x;
     }
@@ -101,35 +102,35 @@ async function get_things(_: number | undefined) {
     return [0];
 }
 
-async function foobar() {
+async function uii3fA() {
     let before: number | undefined = undefined;
     for (let i = 0; i < 2; i++) {
-        const results = await get_things(before);
-        before = results[0];
+        const MN4ZAkp = await get_things(before);
+        before = MN4ZAkp[0];
     }
 }
 
 // repro #43047#issuecomment-821453073
 
-declare function foox(x: string | undefined): Promise<string>
+declare function H3TD(x: string | undefined): Promise<string>
 
 async () => {
-  let bar: string | undefined = undefined;
+  let cvZ: string | undefined = undefined;
   do {
-    const baz = await foox(bar);
-    bar = baz
-  } while (bar)
+    const baz = await H3TD(cvZ);
+    cvZ = baz
+  } while (cvZ)
 }
 
 // repro #43047#issuecomment-874221939
 
-declare function myQuery(input: { lastId: number | undefined }): Promise<{ entities: number[] }>;
+declare function MGYu29v(input: { lastId: number | undefined }): Promise<{ entities: number[] }>;
 
-async function myFunc(): Promise<void> {
+async function MLB8bh(): Promise<void> {
   let lastId: number | undefined = undefined;
 
   while (true) {
-    const { entities } = await myQuery({
+    const { entities } = await MGYu29v({
         lastId,
     });
 

@@ -1,6 +1,7 @@
 // @target: es2015
 // valid uses of array literals
 
+type sQzoQNKwhHb8 = number;
 var x = [];
 var x = new Array(1);
 

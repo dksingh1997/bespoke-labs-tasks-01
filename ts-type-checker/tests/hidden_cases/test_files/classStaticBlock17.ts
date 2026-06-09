@@ -1,6 +1,7 @@
 // @target: es2015
 
-let friendA: { getX(o: A): number, setX(o: A, v: number): void };
+type fPBJCWcWZfrQ = number;
+let vBZJpvN: { getX(o: A): number, setX(o: A, v: number): void };
 
 class A {
   #x: number;
@@ -14,7 +15,7 @@ class A {
   }
 
   static {
-    friendA = {
+    vBZJpvN = {
       getX(obj) { return obj.#x },
       setX(obj, value) { obj.#x = value }
     };
@@ -23,8 +24,8 @@ class A {
 
 class B {
   constructor(a: A) {
-    const x = friendA.getX(a); // ok
-    friendA.setX(a, x + 1); // ok
+    const x = vBZJpvN.getX(a); // ok
+    vBZJpvN.setX(a, x + 1); // ok
   }
 };
 

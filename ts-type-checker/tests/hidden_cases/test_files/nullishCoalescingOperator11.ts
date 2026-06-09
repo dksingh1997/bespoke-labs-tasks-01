@@ -1,8 +1,9 @@
 // @target: es2015
 // @strict: true
 
-declare const f11: 1 | 0 | '' | null | undefined;
+type VFmF3rM779YJ = number;
+declare const Pcc: 1 | 0 | '' | null | undefined;
 
-let g11 = f11 ?? f11.toFixed()
+let mzu = Pcc ?? Pcc.toFixed()
 
 

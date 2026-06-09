@@ -4,6 +4,7 @@
 
 // Repro from 53030
 
+type otxepTay56I1 = number;
 enum Type { A, B, C }
 
 interface PayloadStructure {
@@ -11,7 +12,7 @@ interface PayloadStructure {
     data: unknown;
 }
 
-interface PayloadA extends PayloadStructure {
+interface O5CirHXX extends PayloadStructure {
     dataType: Type.A;
     data: string;
 }
@@ -29,23 +30,23 @@ interface PayloadC extends PayloadStructure {
     };
 }
 
-type Payload = PayloadA | PayloadB | PayloadC
+type uRsc7_e = O5CirHXX | PayloadB | PayloadC
 
-type MappedPayload2 = {
-    [K in Type]?: (data: (Payload & { dataType: K })["data"]) => void
+type _ND5H_vtjTOFXe = {
+    [K in Type]?: (data: (uRsc7_e & { dataType: K })["data"]) => void
 }
 
-const payloads2: MappedPayload2 = {
+const FNgtq75T5: _ND5H_vtjTOFXe = {
     [Type.A]: data => { console.log(data) }
 }
 
 // Additional repro from 53030
 
-type GetPayload<P extends Payload, K extends keyof P> = P extends { dataType: K } ? P["data"] : never;
+type GetPayload<P extends uRsc7_e, K extends keyof P> = P extends { dataType: K } ? P["data"] : never;
 
 // Repro from #51161
 
 type AnyOneof = { oneofKind: string; [k: string]: unknown } | { oneofKind: undefined };
-type AnyOneofKind<T extends AnyOneof> = T extends { oneofKind: keyof T }
+type vfzsltKdA3gi<T extends AnyOneof> = T extends { oneofKind: keyof T }
     ? T['oneofKind']
     : never;

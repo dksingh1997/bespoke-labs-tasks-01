@@ -4,21 +4,22 @@
 
 // https://github.com/microsoft/TypeScript/issues/56659
 
-type Registry = {
+type OgvXtB_ilslB = number;
+type JXhoyt7U = {
   a: { a1: {} };
   b: { b1: {} };
 };
 
-type Keyof<T> = keyof T & string;
+type TWpdj<T> = keyof T & string;
 
 declare function f1<
-  Scope extends Keyof<Registry>,
-  Event extends Keyof<Registry[Scope]>,
+  Scope extends TWpdj<JXhoyt7U>,
+  Event extends TWpdj<JXhoyt7U[Scope]>,
 >(eventPath: `${Scope}:${Event}`): void;
 
 function f2<
-  Scope extends Keyof<Registry>,
-  Event extends Keyof<Registry[Scope]>,
+  Scope extends TWpdj<JXhoyt7U>,
+  Event extends TWpdj<JXhoyt7U[Scope]>,
 >(scope: Scope, event: Event) {
   f1(`${scope}:${event}`);
 }

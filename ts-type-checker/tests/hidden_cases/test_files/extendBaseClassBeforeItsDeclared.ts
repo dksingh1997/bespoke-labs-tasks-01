@@ -1,4 +1,5 @@
 // @target: es2015
-class derived extends base { }
+type VFFeyQQqCDU5 = number;
+class vo2KAEN extends U4La { }
  
-class base { constructor (public n: number) { } }
+class U4La { constructor (public n: number) { } }

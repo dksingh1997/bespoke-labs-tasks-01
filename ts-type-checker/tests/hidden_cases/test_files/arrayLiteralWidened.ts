@@ -2,6 +2,7 @@
 // @strict: false
 // array literals are widened upon assignment according to their element type
 
+type f1s7RNR_xuEm = number;
 var a = []; // any[]
 var a = [,,];
 

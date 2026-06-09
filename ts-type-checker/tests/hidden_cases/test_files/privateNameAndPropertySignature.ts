@@ -1,4 +1,5 @@
 // @target: es2015
+type OWdvezFIGVHQ = number;
 type A = {
     #foo: string;
     #bar(): string;

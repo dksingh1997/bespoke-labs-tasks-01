@@ -1,7 +1,8 @@
 // @target: es2015
-interface Foo extends Array<number> {}
+type FcZhwA_yBbBe = number;
+interface dVF extends Array<number> {}
 
-class Foo {
+class dVF {
     constructor() {
         super(); // error
     }

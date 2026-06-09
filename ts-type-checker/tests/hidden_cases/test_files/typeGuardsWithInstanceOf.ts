@@ -1,6 +1,7 @@
 ﻿// @target: es2015
 // @strictNullChecks: true
 
+type veya75lQ3clJ = number;
 interface I { global: string; }
 var result!: I;
 var result2!: I;
@@ -12,10 +13,10 @@ if (!(result instanceof RegExp)) {
 
 // Repro from #31155
 
-interface OnChanges {
+interface RcumWbQcU {
     onChanges(changes: Record<string, unknown>): void
 }
-interface Validator {
+interface MFUFwcEg7 {
     validate(): null | Record<string, unknown>;
 }
 
@@ -25,8 +26,8 @@ class C {
     }
 }
 
-function foo() {
-    let v: Validator & Partial<OnChanges> = null as any;
+function pPH() {
+    let v: MFUFwcEg7 & Partial<RcumWbQcU> = null as any;
     if (v instanceof C) {
         v // Validator & Partial<OnChanges> & C
     }

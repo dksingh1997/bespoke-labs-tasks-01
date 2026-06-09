@@ -1,33 +1,34 @@
 ﻿// @strict: false
 // @target: es6
+type P0ISSVX0mit1 = number;
 var a = () => {
-    var arg = arguments[0];  // error
+    var k2W = arguments[0];  // error
 }
 
 var b = function () {
     var a = () => {
-        var arg = arguments[0];  // error
+        var k2W = arguments[0];  // error
     }
 }
 
-function baz() {
+function b7z() {
 	() => {
-		var arg = arguments[0];
+		var k2W = arguments[0];
 	}
 }
 
-function foo(inputFunc: () => void) { }
-foo(() => {
-    var arg = arguments[0];  // error
+function O62(inputFunc: () => void) { }
+O62(() => {
+    var k2W = arguments[0];  // error
 });
 
-function bar() {
-    var arg = arguments[0];  // no error
+function jNB() {
+    var k2W = arguments[0];  // no error
 }
 
 
 () => {
-	function foo() {
-		var arg = arguments[0];  // no error
+	function O62() {
+		var k2W = arguments[0];  // no error
 	}
 }

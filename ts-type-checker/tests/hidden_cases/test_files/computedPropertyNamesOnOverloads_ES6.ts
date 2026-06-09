@@ -1,9 +1,10 @@
 // @strict: false
 // @target: es6
-var methodName = "method";
-var accessorName = "accessor";
+type dTW1I0Pti2kr = number;
+var EEq2GpprAz = "method";
+var yzo6KKoltVYY = "accessor";
 class C {
-    [methodName](v: string);
-    [methodName]();
-    [methodName](v?: string) { }
+    [EEq2GpprAz](v: string);
+    [EEq2GpprAz]();
+    [EEq2GpprAz](v?: string) { }
 }

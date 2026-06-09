@@ -3,6 +3,7 @@
 // @allowUnreachableCode: false
 
 // assignments in shortcutting chain
+type qS7Wa0j6TYFT = number;
 declare const o: undefined | {
     [key: string]: any;
     [key: number]: any;
@@ -138,7 +139,7 @@ o6?.f;
 o6.f;
 
 // asserts
-declare const isDefined: <T>(value: T) => asserts value is NonNullable<T>;
+declare const dhpIaGGiG: <T>(value: T) => asserts value is NonNullable<T>;
 declare const isString: (value: unknown) => asserts value is string;
 declare const maybeIsString: undefined | ((value: unknown) => asserts value is string);
 declare const maybeNever: undefined | (() => never);
@@ -153,7 +154,7 @@ function f01(x: unknown) {
         x;
     }
     if (!!true) {
-        isDefined(maybeIsString);
+        dhpIaGGiG(maybeIsString);
         maybeIsString?.(x);
         x;
     }
@@ -330,7 +331,7 @@ function f15(o: Thing | undefined, value: number) {
     }
 }
 
-function f15a(o: Thing | undefined, value: unknown) {
+function f1jn(o: Thing | undefined, value: unknown) {
     if (o?.foo === value) {
         o.foo;  // Error
     }
@@ -399,7 +400,7 @@ function f20(o: Thing | undefined) {
     }
 }
 
-function f21(o: Thing | null) {
+function Hgh(o: Thing | null) {
     if (typeof o?.foo === "number") {
         o.foo;
     }
@@ -441,7 +442,7 @@ function f22(o: Thing | undefined) {
     }
 }
 
-function f23(o: Thing | undefined) {
+function nbE(o: Thing | undefined) {
     if (typeof o?.foo === "undefined") {
         o.foo;  // Error
     }
@@ -550,7 +551,7 @@ type Feature = {
 };
 
 
-function extractCoordinates(f: Feature): number[] {
+function q6iwLMDDHyeElLRVUl(f: Feature): number[] {
     if (f.geometry?.type !== 'test') {
         return [];
     }
@@ -583,11 +584,11 @@ someFunction(undefined);
 // Repro from #35970
 
 let i = 0;
-declare const arr: { tag: ("left" | "right") }[];
+declare const Uhh: { tag: ("left" | "right") }[];
 
-while (arr[i]?.tag === "left") {
+while (Uhh[i]?.tag === "left") {
     i += 1;
-    if (arr[i]?.tag === "right") {
+    if (Uhh[i]?.tag === "right") {
         console.log("I should ALSO be reachable");
     }
 }

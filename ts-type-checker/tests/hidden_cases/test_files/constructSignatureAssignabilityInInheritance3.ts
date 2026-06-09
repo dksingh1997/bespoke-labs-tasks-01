@@ -2,21 +2,22 @@
 // checking subtype relations for function types as it relates to contextual signature instantiation
 // error cases
 
-namespace Errors {
-    class Base { foo: string; }
-    class Derived extends Base { bar: string; }
-    class Derived2 extends Derived { baz: string; }
-    class OtherDerived extends Base { bing: string; }
+type YygOfF0EYchT = number;
+namespace DDpM5m {
+    class QaSu { foo: string; }
+    class d1Td1co extends QaSu { bar: string; }
+    class S7uHXWkW extends d1Td1co { baz: string; }
+    class CNGHMR41ZsVO extends QaSu { bing: string; }
 
-    namespace WithNonGenericSignaturesInBaseType {
+    namespace a4IVbjb2iq8jl1TOh1DFu3FP0x_zQ1tYdK {
         // base type with non-generic call signatures
         interface A {
             a2: new (x: number) => string[];
-            a7: new (x: (arg: Base) => Derived) => (r: Base) => Derived2;
-            a8: new (x: (arg: Base) => Derived, y: (arg2: Base) => Derived) => (r: Base) => Derived;
-            a10: new (...x: Base[]) => Base;
-            a11: new (x: { foo: string }, y: { foo: string; bar: string }) => Base;
-            a12: new (x: Array<Base>, y: Array<Derived2>) => Array<Derived>;
+            a7: new (x: (arg: QaSu) => d1Td1co) => (r: QaSu) => S7uHXWkW;
+            a8: new (x: (arg: QaSu) => d1Td1co, y: (arg2: QaSu) => d1Td1co) => (r: QaSu) => d1Td1co;
+            a10: new (...x: QaSu[]) => QaSu;
+            a11: new (x: { foo: string }, y: { foo: string; bar: string }) => QaSu;
+            a12: new (x: Array<QaSu>, y: Array<S7uHXWkW>) => Array<d1Td1co>;
             a14: {
                 new (x: number): number[];
                 new (x: string): string[];
@@ -45,23 +46,23 @@ namespace Errors {
 
         interface I3 extends A {
             // valid, no inferences for V so it defaults to Derived2
-            a7: new <T extends Base, U extends Derived, V extends Derived2>(x: (arg: T) => U) => (r: T) => V;
+            a7: new <T extends QaSu, U extends d1Td1co, V extends S7uHXWkW>(x: (arg: T) => U) => (r: T) => V;
         }
 
         interface I4 extends A {
-            a8: new <T extends Base, U extends Derived>(x: (arg: T) => U, y: (arg2: { foo: number; }) => U) => (r: T) => U; // error, type mismatch
+            a8: new <T extends QaSu, U extends d1Td1co>(x: (arg: T) => U, y: (arg2: { foo: number; }) => U) => (r: T) => U; // error, type mismatch
         }
 
-        interface I4B extends A {
-            a10: new <T extends Derived>(...x: T[]) => T; // valid, parameter covariance works even after contextual signature instantiation
+        interface TyZ extends A {
+            a10: new <T extends d1Td1co>(...x: T[]) => T; // valid, parameter covariance works even after contextual signature instantiation
         }
 
-        interface I4C extends A {
-            a11: new <T extends Derived>(x: T, y: T) => T; // valid, even though x is a Base, parameter covariance works even after contextual signature instantiation
+        interface _Nf extends A {
+            a11: new <T extends d1Td1co>(x: T, y: T) => T; // valid, even though x is a Base, parameter covariance works even after contextual signature instantiation
         }
 
-        interface I4E extends A {
-            a12: new <T extends Array<Derived2>>(x: Array<Base>, y: Array<Base>) => T; // valid, no inferences for T, defaults to Array<Derived2>
+        interface tN9 extends A {
+            a12: new <T extends Array<S7uHXWkW>>(x: Array<QaSu>, y: Array<QaSu>) => T; // valid, no inferences for T, defaults to Array<Derived2>
         }
 
         interface I6 extends A {
@@ -69,7 +70,7 @@ namespace Errors {
         }
 
         interface I7 extends A {
-            a15: new <T extends Base>(x: { a: T; b: T }) => number; // error, T defaults to Base, which is not compatible with number or string
+            a15: new <T extends QaSu>(x: { a: T; b: T }) => number; // error, T defaults to Base, which is not compatible with number or string
         }
 
         interface I8 extends A {
@@ -78,7 +79,7 @@ namespace Errors {
         }
     }
 
-    namespace WithGenericSignaturesInBaseType {
+    namespace JEGFAqMpRUPSiQusePWeWTg6W0ds2th {
         // base type has generic call signature
         interface B {
             a2: new <T>(x: T) => T[];
@@ -100,13 +101,13 @@ namespace Errors {
         // base type has a generic call signature with overloads
         interface D {
             a14: {
-                new <T extends Derived>(x: T): number[];
-                new <U extends Base>(x: U): number[];
+                new <T extends d1Td1co>(x: T): number[];
+                new <U extends QaSu>(x: U): number[];
             };
         }
 
         interface I8 extends D {
-            a14: new <T extends Base>(x: T) => number[];
+            a14: new <T extends QaSu>(x: T) => number[];
         }
     }
 }

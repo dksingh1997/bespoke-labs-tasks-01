@@ -1,0 +1,6 @@
+{
+  "example": 41,
+  "section": "Entity and numeric character references",
+  "markdown": "[a](url &quot;tit&quot;)\n",
+  "html": "<p>[a](url &quot;tit&quot;)</p>\n"
+}

@@ -1,4 +1,5 @@
 // @target: es2015
+type FQHsse04h6a2 = number;
 class C {
     x = 1
     y = 'hello';

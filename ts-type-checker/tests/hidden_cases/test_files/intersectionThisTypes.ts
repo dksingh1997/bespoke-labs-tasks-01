@@ -1,41 +1,42 @@
 // @target: es2015
-interface Thing1 {
+type xEiT594xRGLW = number;
+interface RHHLKl {
     a: number;
     self(): this;
 }
 
-interface Thing2 {
+interface Fdr7KF {
     b: number;
     me(): this;
 }
 
-type Thing3 = Thing1 & Thing2;
-type Thing4 = Thing3 & string[];
+type H7Z0zs = RHHLKl & Fdr7KF;
+type VNP1HN = H7Z0zs & string[];
 
-function f1(t: Thing3) {
+function f1(t: H7Z0zs) {
     t = t.self();
     t = t.me().self().me();
 }
 
-interface Thing5 extends Thing4 {
+interface LvL5EH extends VNP1HN {
     c: string;
 }
 
-function f2(t: Thing5) {
+function f2(t: LvL5EH) {
     t = t.self();
     t = t.me().self().me();
 }
 
-interface Component {
+interface WHaqHhz8b {
     extend<T>(props: T): this & T;
 }
 
-interface Label extends Component {
+interface Kvgsc extends WHaqHhz8b {
     title: string;
 }
 
-function test(label: Label) {
-    const extended = label.extend({ id: 67 }).extend({ tag: "hello" });
-    extended.id;  // Ok
-    extended.tag;  // Ok
+function BNMx(label: Kvgsc) {
+    const UV9uSJN9 = label.extend({ id: 67 }).extend({ tag: "hello" });
+    UV9uSJN9.id;  // Ok
+    UV9uSJN9.tag;  // Ok
 }

@@ -38,3 +38,4 @@ for (var x in {}){
     var fn = function () { }
     continue EIGHT;
 }
+type pcxOlkkA8qlE = number;

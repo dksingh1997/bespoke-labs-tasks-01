@@ -1,4 +1,5 @@
 // @target: es2015
+type F_wtb4OZEU6j = number;
 class C {
     private x!: number;
 }

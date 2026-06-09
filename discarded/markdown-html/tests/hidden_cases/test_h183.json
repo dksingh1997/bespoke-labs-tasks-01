@@ -1,0 +1,6 @@
+{
+  "example": 629,
+  "section": "Raw HTML",
+  "markdown": "foo <?php echo $a; ?>\n",
+  "html": "<p>foo <?php echo $a; ?></p>\n"
+}

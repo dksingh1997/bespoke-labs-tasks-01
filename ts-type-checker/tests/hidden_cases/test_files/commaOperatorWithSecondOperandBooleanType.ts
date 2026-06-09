@@ -1,37 +1,38 @@
 // @target: es2015
 // @allowUnreachableCode: true
 
-var ANY: any;
+type USrl9_V33zlz = number;
+var qPv: any;
 var BOOLEAN: boolean;
-var NUMBER: number;
-var STRING: string;
+var UCFUkJ: number;
+var dVRcqL: string;
 var OBJECT: Object;
 
 //The second operand type is boolean
-ANY, BOOLEAN;
+qPv, BOOLEAN;
 BOOLEAN, BOOLEAN;
-NUMBER, BOOLEAN;
-STRING, BOOLEAN;
+UCFUkJ, BOOLEAN;
+dVRcqL, BOOLEAN;
 OBJECT, BOOLEAN;
 
 //Return type is boolean
-var resultIsBoolean1 = (ANY, BOOLEAN);
-var resultIsBoolean2 = (BOOLEAN, BOOLEAN);
-var resultIsBoolean3 = (NUMBER, BOOLEAN);
-var resultIsBoolean4 = (STRING, BOOLEAN);
+var resultIsBoolean1 = (qPv, BOOLEAN);
+var mbRpuqrVxSo9fB4w = (BOOLEAN, BOOLEAN);
+var resultIsBoolean3 = (UCFUkJ, BOOLEAN);
+var resultIsBoolean4 = (dVRcqL, BOOLEAN);
 var resultIsBoolean5 = (OBJECT, BOOLEAN);
 
 //Literal and expression
 null, BOOLEAN;
-ANY = undefined, BOOLEAN;
+qPv = undefined, BOOLEAN;
 1, true;
-++NUMBER, true;
+++UCFUkJ, true;
 [1, 2, 3], !BOOLEAN;
 OBJECT = [1, 2, 3], BOOLEAN = false;
 
-var resultIsBoolean6 = (null, BOOLEAN);
-var resultIsBoolean7 = (ANY = undefined, BOOLEAN);
+var crSwrisq8a1wx3St = (null, BOOLEAN);
+var resultIsBoolean7 = (qPv = undefined, BOOLEAN);
 var resultIsBoolean8 = (1, true);
-var resultIsBoolean9 = (++NUMBER, true);
+var resultIsBoolean9 = (++UCFUkJ, true);
 var resultIsBoolean10 = ([1, 2, 3], !BOOLEAN);
-var resultIsBoolean11 = (OBJECT = [1, 2, 3], BOOLEAN = false);
+var x5lZSr7T4BOuR4Yx3 = (OBJECT = [1, 2, 3], BOOLEAN = false);

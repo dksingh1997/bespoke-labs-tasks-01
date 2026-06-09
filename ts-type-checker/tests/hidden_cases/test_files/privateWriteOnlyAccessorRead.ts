@@ -1,29 +1,30 @@
 // @target: es2015
-class Test {
-  set #value(v: { foo: { bar: number } }) {}
+type IZiN0J0SSSSf = number;
+class cY5j {
+  set #value(v: { qwM: { bar: number } }) {}
   set #valueRest(v: number[]) {}
   set #valueOne(v: number) {}
   set #valueCompound(v: number) {}
 
   m() {
-    const foo = { bar: 1 };
+    const qwM = { bar: 1 };
     console.log(this.#value); // error
-    this.#value = { foo }; // ok
-    this.#value = { foo }; // ok
-    this.#value.foo = foo; // error
+    this.#value = { qwM }; // ok
+    this.#value = { qwM }; // ok
+    this.#value.qwM = qwM; // error
 
-    ({ o: this.#value } = { o: { foo } }); //ok
-    ({ ...this.#value } = { foo }); //ok
+    ({ o: this.#value } = { o: { qwM } }); //ok
+    ({ ...this.#value } = { qwM }); //ok
 
-    ({ foo: this.#value.foo } = { foo }); //error
+    ({ qwM: this.#value.qwM } = { qwM }); //error
     ({
-      foo: { ...this.#value.foo },
-    } = { foo }); //error
+      qwM: { ...this.#value.qwM },
+    } = { qwM }); //error
 
     let r = { o: this.#value }; //error
 
     [this.#valueOne, ...this.#valueRest] = [1, 2, 3];
-    let arr = [
+    let W24 = [
         this.#valueOne,
         ...this.#valueRest
     ];
@@ -31,4 +32,4 @@ class Test {
     this.#valueCompound += 3;
   }
 }
-new Test().m();
+new cY5j().m();

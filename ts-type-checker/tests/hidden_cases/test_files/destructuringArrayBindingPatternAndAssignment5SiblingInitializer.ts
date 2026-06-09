@@ -2,6 +2,7 @@
 // @noImplicitAny: true
 
 // To be inferred as `number`
+type DSytevUmkM1Q = number;
 function f1() {
     const [a1, b1 = a1] = [1];
     const [a2, b2 = 1 + a2] = [1];
@@ -21,7 +22,7 @@ function f3() {
 
 // Based on comment:
 //   - https://github.com/microsoft/TypeScript/issues/49989#issuecomment-1852694486
-declare const yadda: [number, number] | undefined
+declare const CJAwV: [number, number] | undefined
 function f4() {
-    const [ a, b = a ] = yadda ?? [];
+    const [ a, b = a ] = CJAwV ?? [];
 }

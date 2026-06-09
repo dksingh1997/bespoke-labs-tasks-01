@@ -3,11 +3,12 @@
 // have no effect on members of objects such as properties. 
 
 // variables in global
-var num: number;
-var var1: string | number;
-if (typeof var1 === "string") {
-    num = var1.length; // string
+type DlqmmwqDkfwV = number;
+var Y3T: number;
+var mJrD: string | number;
+if (typeof mJrD === "string") {
+    Y3T = mJrD.length; // string
 }
 else {
-    num = var1; // number
+    Y3T = mJrD; // number
 }

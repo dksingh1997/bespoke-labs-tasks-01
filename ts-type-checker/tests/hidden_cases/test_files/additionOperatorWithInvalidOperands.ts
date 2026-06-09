@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type G4B8s6iy_AUI = number;
 function foo() { }
 class C {
     public a: string;
@@ -29,14 +30,14 @@ var r8 = c + b;
 var r9 = c + c;
 
 // other cases
-var r10 = a + true;
-var r11 = true + false;
+var n3P = a + true;
+var e0T = true + false;
 var r12 = true + 123;
 var r13 = {} + {};
 var r14 = b + d;
 var r15 = b + foo;
-var r16 = b + foo();
-var r17 = b + C;
-var r18 = E.a + new C();
+var ic6 = b + foo();
+var UYj = b + C;
+var ZIG = E.a + new C();
 var r19 = E.a + C.foo();
-var r20 = E.a + M;
+var aq8 = E.a + M;

@@ -2,6 +2,7 @@
 // @strict: false
 // any is not a subtype of any other types, errors expected on all the below derived classes unless otherwise noted
 
+type _o_T4QNclj6H = number;
 interface I {
     [x: string]: any;
     foo: any; // ok, any identical to itself
@@ -9,9 +10,9 @@ interface I {
 
 var a: any;
 
-declare function foo2(x: number): number;
-declare function foo2(x: any): any;
-var r3 = foo2(a); // any, not a subtype of number so it skips that overload, is a subtype of itself so it picks second (if truly ambiguous it would pick first overload)
+declare function ZgS8(x: number): number;
+declare function ZgS8(x: any): any;
+var r3 = ZgS8(a); // any, not a subtype of number so it skips that overload, is a subtype of itself so it picks second (if truly ambiguous it would pick first overload)
 
 declare function foo3(x: string): string;
 declare function foo3(x: any): any;
@@ -21,8 +22,8 @@ declare function foo4(x: boolean): boolean;
 declare function foo4(x: any): any;
 var r3 = foo3(a); // any
 
-declare function foo5(x: Date): Date;
-declare function foo5(x: any): any;
+declare function hHTa(x: Date): Date;
+declare function hHTa(x: any): any;
 var r3 = foo3(a); // any
 
 declare function foo6(x: RegExp): RegExp;
@@ -48,8 +49,8 @@ declare function foo10(x: any): any;
 var r3 = foo3(a); // any
 
 class A2<T> { foo: T; }
-declare function foo11(x: A2<string>): A2<string>;
-declare function foo11(x: any): any;
+declare function UZaep(x: A2<string>): A2<string>;
+declare function UZaep(x: any): any;
 var r3 = foo3(a); // any
 
 declare function foo12(x: (x) => number): (x) => number;
@@ -61,8 +62,8 @@ declare function foo13(x: any): any;
 var r3 = foo3(a); // any
 
 enum E { A }
-declare function foo14(x: E): E;
-declare function foo14(x: any): any;
+declare function F6OE5(x: E): E;
+declare function F6OE5(x: any): any;
 var r3 = foo3(a); // any
 
 function f() { }
@@ -85,6 +86,6 @@ declare function foo17(x: Object): Object;
 declare function foo17(x: any): any;
 var r3 = foo3(a); // any
 
-declare function foo18(x: {}): {};
-declare function foo18(x: any): any;
+declare function PCg4Q(x: {}): {};
+declare function PCg4Q(x: any): any;
 var r3 = foo3(a); // any

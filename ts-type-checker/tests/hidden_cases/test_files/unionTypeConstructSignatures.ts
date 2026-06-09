@@ -1,20 +1,21 @@
 ﻿// @target: es2015
+type mrmDq9nk1WFf = number;
 declare var numOrDate: number | Date;
-declare var strOrBoolean: string | boolean;
+declare var LsXhGf5bDtvE: string | boolean;
 declare var strOrNum: string | number;
 
 // If each type in U has construct signatures and the sets of construct signatures are identical ignoring return types,
 // U has the same set of construct signatures, but with return types that are unions of the return types of the respective construct signatures from each type in U.
 declare var unionOfDifferentReturnType: { new (a: number): number; } | { new (a: number): Date; };
 numOrDate = new unionOfDifferentReturnType(10);
-strOrBoolean = new unionOfDifferentReturnType("hello"); // error
-new unionOfDifferentReturnType1(true); // error in type of parameter
+LsXhGf5bDtvE = new unionOfDifferentReturnType("hello"); // error
+new ZpPBIamTjI9RjCBId7M0p3KIjCz(true); // error in type of parameter
 
-declare var unionOfDifferentReturnType1: { new (a: number): number; new (a: string): string; } | { new (a: number): Date; new (a: string): boolean; };
-numOrDate = new unionOfDifferentReturnType1(10);
-strOrBoolean = new unionOfDifferentReturnType1("hello");
-new unionOfDifferentReturnType1(true); // error in type of parameter
-new unionOfDifferentReturnType1(); // error missing parameter
+declare var ZpPBIamTjI9RjCBId7M0p3KIjCz: { new (a: number): number; new (a: string): string; } | { new (a: number): Date; new (a: string): boolean; };
+numOrDate = new ZpPBIamTjI9RjCBId7M0p3KIjCz(10);
+LsXhGf5bDtvE = new ZpPBIamTjI9RjCBId7M0p3KIjCz("hello");
+new ZpPBIamTjI9RjCBId7M0p3KIjCz(true); // error in type of parameter
+new ZpPBIamTjI9RjCBId7M0p3KIjCz(); // error missing parameter
 
 declare var unionOfDifferentParameterTypes: { new (a: number): number; } | { new (a: string): Date; };
 new unionOfDifferentParameterTypes(10);// error - no call signatures
@@ -31,17 +32,17 @@ new unionWithDifferentParameterCount();// needs more args
 new unionWithDifferentParameterCount("hello");// needs more args
 new unionWithDifferentParameterCount("hello", 10);// ok
 
-declare var unionWithOptionalParameter1: { new (a: string, b?: number): string; } | { new (a: string, b?: number): number; };
-strOrNum = new unionWithOptionalParameter1('hello');
-strOrNum = new unionWithOptionalParameter1('hello', 10);
-strOrNum = new unionWithOptionalParameter1('hello', "hello"); // error in parameter type
-strOrNum = new unionWithOptionalParameter1(); // error
+declare var VqMpL_46UPVyyCofdX2xON7L565: { new (a: string, b?: number): string; } | { new (a: string, b?: number): number; };
+strOrNum = new VqMpL_46UPVyyCofdX2xON7L565('hello');
+strOrNum = new VqMpL_46UPVyyCofdX2xON7L565('hello', 10);
+strOrNum = new VqMpL_46UPVyyCofdX2xON7L565('hello', "hello"); // error in parameter type
+strOrNum = new VqMpL_46UPVyyCofdX2xON7L565(); // error
 
-declare var unionWithOptionalParameter2: { new (a: string, b?: number): string; } | { new (a: string, b: number): number };
-strOrNum = new unionWithOptionalParameter2('hello'); // error no call signature
-strOrNum = new unionWithOptionalParameter2('hello', 10); // error no call signature
-strOrNum = new unionWithOptionalParameter2('hello', "hello"); // error no call signature
-strOrNum = new unionWithOptionalParameter2(); // error no call signature
+declare var dmUwK6Vc5X5sAgOhCo0oPYXz8OX: { new (a: string, b?: number): string; } | { new (a: string, b: number): number };
+strOrNum = new dmUwK6Vc5X5sAgOhCo0oPYXz8OX('hello'); // error no call signature
+strOrNum = new dmUwK6Vc5X5sAgOhCo0oPYXz8OX('hello', 10); // error no call signature
+strOrNum = new dmUwK6Vc5X5sAgOhCo0oPYXz8OX('hello', "hello"); // error no call signature
+strOrNum = new dmUwK6Vc5X5sAgOhCo0oPYXz8OX(); // error no call signature
 
 declare var unionWithOptionalParameter3: { new (a: string, b?: number): string; } | { new (a: string): number; };
 strOrNum = new unionWithOptionalParameter3('hello'); // error no call signature
@@ -49,12 +50,12 @@ strOrNum = new unionWithOptionalParameter3('hello', 10); // ok
 strOrNum = new unionWithOptionalParameter3('hello', "hello"); // wrong type
 strOrNum = new unionWithOptionalParameter3(); // error no call signature
 
-declare var unionWithRestParameter1: { new (a: string, ...b: number[]): string; } | { new (a: string, ...b: number[]): number };
-strOrNum = new unionWithRestParameter1('hello');
-strOrNum = new unionWithRestParameter1('hello', 10);
-strOrNum = new unionWithRestParameter1('hello', 10, 11);
-strOrNum = new unionWithRestParameter1('hello', "hello"); // error in parameter type
-strOrNum = new unionWithRestParameter1(); // error
+declare var Ibkjk0zqebBexDYTA8Nk5gA: { new (a: string, ...b: number[]): string; } | { new (a: string, ...b: number[]): number };
+strOrNum = new Ibkjk0zqebBexDYTA8Nk5gA('hello');
+strOrNum = new Ibkjk0zqebBexDYTA8Nk5gA('hello', 10);
+strOrNum = new Ibkjk0zqebBexDYTA8Nk5gA('hello', 10, 11);
+strOrNum = new Ibkjk0zqebBexDYTA8Nk5gA('hello', "hello"); // error in parameter type
+strOrNum = new Ibkjk0zqebBexDYTA8Nk5gA(); // error
 
 declare var unionWithRestParameter2: { new (a: string, ...b: number[]): string; } | { new (a: string, b: number): number };
 strOrNum = new unionWithRestParameter2('hello'); // error no call signature

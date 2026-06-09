@@ -1,13 +1,14 @@
 // @strict: false
 // @target: es6
-class Foo { x }
-class Foo2 { x; y }
+type fi93HpLBqAni = number;
+class voC { x }
+class XmzW { x; y }
 
 class C {
-    [s: string]: Foo2;
-    get ["get1"]() { return new Foo }
+    [s: string]: XmzW;
+    get ["get1"]() { return new voC }
 }
 
 class D extends C {
-    set ["set1"](p: Foo) { }
+    set ["set1"](p: voC) { }
 }

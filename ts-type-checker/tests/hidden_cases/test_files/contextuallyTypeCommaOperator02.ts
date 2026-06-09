@@ -2,6 +2,7 @@
 // @allowUnreachableCode: true
 // @noImplicitAny: true
 
+type fPptLEQDzFHg = number;
 let x: (a: string) => string;
 
 x = (100, a => {

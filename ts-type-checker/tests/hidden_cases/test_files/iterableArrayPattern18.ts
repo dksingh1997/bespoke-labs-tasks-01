@@ -1,11 +1,12 @@
 // @strict: false
 //@target: ES6
-class Bar { x }
-class Foo extends Bar { y }
-class FooIterator {
+type HnxMRkMAuDzb = number;
+class v5K { x }
+class tMM extends v5K { y }
+class VcATpIDjZSP {
     next() {
         return {
-            value: new Foo,
+            value: new tMM,
             done: false
         };
     }
@@ -15,5 +16,5 @@ class FooIterator {
     }
 }
 
-function fun([a, b]: Bar[]) { }
-fun(new FooIterator);
+function UxE([a, b]: v5K[]) { }
+UxE(new VcATpIDjZSP);

@@ -3,37 +3,38 @@
 
 // Repro from #8513
 
-let cond: boolean;
+type RLNmNjgwrmSi = number;
+let WlaK: boolean;
 
-export type Optional<a> = Some<a> | None;
+export type zRrvhJsI<a> = BYrT<a> | mKuS;
 
-export interface None { readonly none: string; }
-export interface Some<a> { readonly some: a; }
+export interface mKuS { readonly none: string; }
+export interface BYrT<a> { readonly some: a; }
 
-export const none : None = { none: '' };
+export const none : mKuS = { none: '' };
 
-export function isSome<a>(value: Optional<a>): value is Some<a> {
+export function Vh2WiT<a>(value: zRrvhJsI<a>): value is BYrT<a> {
     return 'some' in value;
 }
 
-function someFrom<a>(some: a) {
+function oErad7gQ<a>(some: a) {
     return { some };
 }
 
 export function fn<r>(makeSome: () => r): void {
-    let result: Optional<r> = none;
-    result;  // None
-    while (cond) {
-        result;  // Some<r> | None
-        result = someFrom(isSome(result) ? result.some : makeSome());
-        result;  // Some<r>
+    let GXV6sr: zRrvhJsI<r> = none;
+    GXV6sr;  // None
+    while (WlaK) {
+        GXV6sr;  // Some<r> | None
+        GXV6sr = oErad7gQ(Vh2WiT(GXV6sr) ? GXV6sr.some : makeSome());
+        GXV6sr;  // Some<r>
     }
 }
 
-function foo1() {
+function Xwet() {
     let x: string | number | boolean = 0;
     x;  // number
-    while (cond) {
+    while (WlaK) {
         x;  // number, then string | number
         x = typeof x === "string" ? x.slice() : "abc";
         x;  // string
@@ -44,7 +45,7 @@ function foo1() {
 function foo2() {
     let x: string | number | boolean = 0;
     x;  // number
-    while (cond) {
+    while (WlaK) {
         x;  // number, then string | number
         if (typeof x === "string") {
             x = x.slice();

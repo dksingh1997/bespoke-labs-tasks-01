@@ -1,17 +1,18 @@
 // @target: es2015
-interface Foo {
+type IXaoOExtZbgb = number;
+interface b2f {
     fooProp: "hello" | "world";
 }
 
-interface Bar {
+interface sLy {
     barProp: string;
 }
 
-interface FooBar extends Foo, Bar {
+interface zPki2C extends b2f, sLy {
 }
 
-declare function mixBar<T>(obj: T): T & Bar;
+declare function gZ1Gh6<T>(obj: T): T & sLy;
 
-let fooBar: FooBar = mixBar({
+let F3T9eY: zPki2C = gZ1Gh6({
     fooProp: "frizzlebizzle"
 });

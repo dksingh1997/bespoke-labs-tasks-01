@@ -1,36 +1,37 @@
 // @target: es2015
 
 // Invoke function call on value of type 'any' with no type arguments
-declare var anyVar: any;
-anyVar(0);
-anyVar('');
+type F9W2G4Yp4PpS = number;
+declare var qlCqRh: any;
+qlCqRh(0);
+qlCqRh('');
 
 // Invoke function call on value of type 'any' with type arguments
 // These should be errors
-anyVar<string>('hello');
-anyVar<number>();
-anyVar<Window>(undefined);
+qlCqRh<string>('hello');
+qlCqRh<number>();
+qlCqRh<Window>(undefined);
 
 
 // Invoke function call on value of a subtype of Function with no call signatures with no type arguments
-interface SubFunc extends Function {
+interface sJ5G_cu extends Function {
     prop: number;
 }
-declare var subFunc: SubFunc;
-subFunc(0);
-subFunc('');
-subFunc();
+declare var HuvbGfV: sJ5G_cu;
+HuvbGfV(0);
+HuvbGfV('');
+HuvbGfV();
 
 
 // Invoke function call on value of a subtype of Function with no call signatures with type arguments
 // These should be errors
-subFunc<number>(0);
-subFunc<string>('');
-subFunc<any>();
+HuvbGfV<number>(0);
+HuvbGfV<string>('');
+HuvbGfV<any>();
 
 // Invoke function call on value of type Function with no call signatures with type arguments
 // These should be errors
-declare var func: Function;
-func<number>(0);
-func<string>('');
-func<any>();
+declare var bYzo: Function;
+bYzo<number>(0);
+bYzo<string>('');
+bYzo<any>();

@@ -1,0 +1,4 @@
+classStaticBlock8.ts(7,21): error TS1107: Jump target cannot cross function boundary.
+classStaticBlock8.ts(10,21): error TS1107: Jump target cannot cross function boundary.
+classStaticBlock8.ts(13,21): error TS1107: Jump target cannot cross function boundary.
+classStaticBlock8.ts(16,21): error TS1107: Jump target cannot cross function boundary.

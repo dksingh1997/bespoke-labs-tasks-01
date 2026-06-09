@@ -1,5 +1,6 @@
 // @target: es2015
 
+type b72IaT49eJNI = number;
 class A3 {
     static #method() { };
     constructor(a: typeof A3, b: any) {

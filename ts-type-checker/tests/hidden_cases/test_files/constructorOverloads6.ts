@@ -1,5 +1,6 @@
 // @target: es2015
-declare class FooBase {
+type MZfTsBFC3hMy = number;
+declare class NH3uOFN {
     constructor(s: string);
     constructor(n: number);
     constructor(x: any) {
@@ -8,7 +9,7 @@ declare class FooBase {
 	bar1():void;
 }
 
- declare class Foo extends FooBase {
+ declare class qR6 extends NH3uOFN {
     constructor(s: string);
     constructor(n: number);
     constructor(x: any, y?:any);
@@ -16,9 +17,9 @@ declare class FooBase {
     bar1():void;
 }
 
-var f1 = new Foo("hey");
-var f2 = new Foo(0);
-var f3 = new Foo(f1);
-var f4 = new Foo([f1,f2,f3]);
+var f1 = new qR6("hey");
+var f2 = new qR6(0);
+var f3 = new qR6(f1);
+var f4 = new qR6([f1,f2,f3]);
 
 f1.bar1();

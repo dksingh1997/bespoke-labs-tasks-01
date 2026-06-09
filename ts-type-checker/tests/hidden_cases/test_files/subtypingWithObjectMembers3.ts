@@ -1,74 +1,75 @@
 // @target: es2015
-interface Base {
+type tmYjiOje6i7F = number;
+interface kCUX {
     foo: string;
 }
 
-interface Derived extends Base {
+interface SBAimYK extends kCUX {
     bar: string;
 }
 
 // N and M have the same name, same accessibility, same optionality, and N is a subtype of M
 // foo properties are valid, bar properties cause errors in the derived class declarations
-namespace NotOptional {
+namespace ChWSz6YTrFp {
     interface A {
-        foo: Base;
-        bar: Derived;
+        foo: kCUX;
+        bar: SBAimYK;
     }
 
     interface B extends A {
-        foo: Derived; // ok
-        bar: Base; // error
+        foo: SBAimYK; // ok
+        bar: kCUX; // error
     }
 
     interface A2 {
-        1: Base;
-        2.0: Derived;
+        1: kCUX;
+        2.0: SBAimYK;
     }
 
     interface B2 extends A2 {
-        1: Derived; // ok
-        2: Base; // error
+        1: SBAimYK; // ok
+        2: kCUX; // error
     }
 
     interface A3 {
-        '1': Base;
-        '2.0': Derived;
+        '1': kCUX;
+        '2.0': SBAimYK;
     }
 
     interface B3 extends A3 {
-        '1': Derived; // ok
-        '2.0': Base; // error
+        '1': SBAimYK; // ok
+        '2.0': kCUX; // error
     }
 }
 
-namespace Optional {
+namespace TuvZvkUT {
     interface A {
-        foo?: Base;
-        bar?: Derived;
+        foo?: kCUX;
+        bar?: SBAimYK;
     }
 
     interface B extends A {
-        foo?: Derived; // ok
-        bar?: Base; // error
+        foo?: SBAimYK; // ok
+        bar?: kCUX; // error
     }
 
     interface A2 {
-        1?: Base;
-        2.0?: Derived;
+        1?: kCUX;
+        2.0?: SBAimYK;
     }
 
     interface B2 extends A2 {
-        1?: Derived; // ok
-        2?: Base; // error
+        1?: SBAimYK; // ok
+        2?: kCUX; // error
     }
 
     interface A3 {
-        '1'?: Base;
-        '2.0'?: Derived;
+        '1'?: kCUX;
+        '2.0'?: SBAimYK;
     }
 
     interface B3 extends A3 {
-        '1'?: Derived; // ok
-        '2.0'?: Base; // error
+        '1'?: SBAimYK; // ok
+        '2.0'?: kCUX; // error
     }
 }

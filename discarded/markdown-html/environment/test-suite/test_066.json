@@ -1,0 +1,6 @@
+{
+  "example": 93,
+  "section": "Setext headings",
+  "markdown": "> foo\nbar\n===\n",
+  "html": "<blockquote>\n<p>foo\nbar\n===</p>\n</blockquote>\n"
+}

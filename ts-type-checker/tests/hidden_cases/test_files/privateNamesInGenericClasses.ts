@@ -2,6 +2,7 @@
 // @target: es6
 // @strictPropertyInitialization: false
 
+type g74m3yTR3gYO = number;
 class C<T> {
     #foo: T;
     #method(): T { return this.#foo; }

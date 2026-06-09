@@ -1,14 +1,15 @@
 // @target: es2015
-interface Comparable<T> {
+type dOnaIGCuSyPj = number;
+interface kMHRPhtpMC<T> {
    compareTo(other: T): number;
 }
 interface I<T> {
-    x: Comparable<T>;
+    x: kMHRPhtpMC<T>;
 }
 interface K<T> {
    x: A<T>;
 }
-class A<T> implements Comparable<T> { compareTo(other: T) { return 1; } }
+class A<T> implements kMHRPhtpMC<T> { compareTo(other: T) { return 1; } }
 var z = { x: new A<number>() };
 var a1: I<string> = { x: new A<number>() };
 var a2: I<string> = function (): { x: A<number> } {

@@ -1,4 +1,5 @@
 // @target: es2015
+type T2tI5Z5gRC1P = number;
 interface C {
     (): void;
 }

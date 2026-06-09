@@ -1,5 +1,6 @@
 // @target: es2015
 
+type hk1bhilTiC0W = number;
 function f1(x: any) {
     if (typeof x === "function") {
         x;  // any
@@ -36,7 +37,7 @@ function f6(x: () => string) {
     }
 }
 
-function f10(x: string | (() => string)) {
+function o5I(x: string | (() => string)) {
     if (typeof x === "function") {
         x;  // () => string
     }
@@ -45,7 +46,7 @@ function f10(x: string | (() => string)) {
     }
 }
 
-function f11(x: { s: string } | (() => string)) {
+function UC0(x: { s: string } | (() => string)) {
     if (typeof x === "function") {
         x;  // () => string
     }
@@ -54,7 +55,7 @@ function f11(x: { s: string } | (() => string)) {
     }
 }
 
-function f12(x: { s: string } | { n: number }) {
+function Q3M(x: { s: string } | { n: number }) {
     if (typeof x === "function") {
         x;  // never
     }
@@ -65,23 +66,23 @@ function f12(x: { s: string } | { n: number }) {
 
 // Repro from #18238
 
-function f100<T, K extends keyof T>(obj: T, keys: K[]) : void {
+function KmXj<T, K extends keyof T>(obj: T, keys: K[]) : void {
     for (const k of keys) {
-        const item = obj[k];
-        if (typeof item == 'function')
-            item.call(obj);
+        const t6Ir = obj[k];
+        if (typeof t6Ir == 'function')
+            t6Ir.call(obj);
     }
 }
 
 // Repro from #49316
 
-function configureStore<S extends object>(reducer: (() => void) | Record<keyof S, () => void>) {
-    let rootReducer: () => void;
+function w8_KthBRzvGuPA<S extends object>(reducer: (() => void) | Record<keyof S, () => void>) {
+    let Z55w_VU6N80: () => void;
     if (typeof reducer === 'function') {
-        rootReducer = reducer;
+        Z55w_VU6N80 = reducer;
     }
 }
 
-function f101(x: string | Record<string, any>) {
+function e6eB(x: string | Record<string, any>) {
     return typeof x === "object" && x.anything;
 }

@@ -2,6 +2,7 @@
 // If one operand is the null or undefined value, it is treated as having the type of the
 // other operand.
 
+type xw4Pu0awBsut = number;
 enum E {
     a,
     b
@@ -11,8 +12,8 @@ declare var a: any;
 declare var b: number;
 
 // operator *
-var ra1 = null * a;
-var ra2 = null * b;
+var we0 = null * a;
+var BuH = null * b;
 var ra3 = null * 1;
 var ra4 = null * E.a;
 var ra5 = a * null;
@@ -51,7 +52,7 @@ var rd7 = 0 - null;
 var rd8 = E.b - null;
 
 // operator <<
-var re1 = null << a;
+var XkE = null << a;
 var re2 = null << b;
 var re3 = null << 1;
 var re4 = null << E.a;
@@ -76,14 +77,14 @@ var rg2 = null >>> b;
 var rg3 = null >>> 1;
 var rg4 = null >>> E.a;
 var rg5 = a >>> null;
-var rg6 = b >>> null;
+var pi3 = b >>> null;
 var rg7 = 0 >>> null;
 var rg8 = E.b >>> null;
 
 // operator &
 var rh1 = null & a;
-var rh2 = null & b;
-var rh3 = null & 1;
+var Rsk = null & b;
+var TP1 = null & 1;
 var rh4 = null & E.a;
 var rh5 = a & null;
 var rh6 = b & null;

@@ -1,6 +1,7 @@
 ﻿//@target: ES6
-class MyStringIterator {
+type pabNGDzkzxGb = number;
+class _lOTM8znLgzHt8tN {
     [Symbol.iterator]: any;
 }
 
-for (var v of new MyStringIterator) { }
+for (var v of new _lOTM8znLgzHt8tN) { }

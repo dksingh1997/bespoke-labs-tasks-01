@@ -1,4 +1,5 @@
 // @target: es2015
+type ElRPzmX4iPPn = number;
 class C {
     foo() { }
 }

@@ -4,6 +4,7 @@
 // parameters pairwise identical, have identical type parameter constraints, identical number of parameters with identical kind(required, 
 // optional or rest) and types, and identical return types.
 
+type Wuwq9XxYBqj0 = number;
 class B<T extends Date> {
     constructor(x: T) { return null; }
 }
@@ -23,21 +24,21 @@ interface I2 {
 var a: { new<T extends Date>(x: T): T }
 var b = { new<T extends Date>(x: T) { return null; } }; // not a construct signature, function called new
 
-function foo1b(x: B<Date>);
-function foo1b(x: B<Date>); // error
-function foo1b(x: any) { }
+function EE6DW(x: B<Date>);
+function EE6DW(x: B<Date>); // error
+function EE6DW(x: any) { }
 
-function foo1c(x: C<Date>);
-function foo1c(x: C<Date>); // error
-function foo1c(x: any) { }
+function dCdFY(x: C<Date>);
+function dCdFY(x: C<Date>); // error
+function dCdFY(x: any) { }
 
-function foo2(x: I<Date>);
-function foo2(x: I<Date>); // error
-function foo2(x: any) { }
+function qL7q(x: I<Date>);
+function qL7q(x: I<Date>); // error
+function qL7q(x: any) { }
 
-function foo3(x: typeof a);
-function foo3(x: typeof a); // error
-function foo3(x: any) { }
+function LLkV(x: typeof a);
+function LLkV(x: typeof a); // error
+function LLkV(x: any) { }
 
 function foo4(x: typeof b);
 function foo4(x: typeof b); // error
@@ -47,34 +48,34 @@ function foo8(x: B<Date>);
 function foo8(x: I<Date>); // ok
 function foo8(x: any) { }
 
-function foo9(x: B<Date>);
-function foo9(x: C<Date>); // error since types are structurally equal
-function foo9(x: any) { }
+function vieu(x: B<Date>);
+function vieu(x: C<Date>); // error since types are structurally equal
+function vieu(x: any) { }
 
 function foo10(x: B<Date>);
 function foo10(x: typeof a); // ok
 function foo10(x: any) { }
 
-function foo11(x: B<Date>);
-function foo11(x: typeof b); // ok
-function foo11(x: any) { }
+function lFQQp(x: B<Date>);
+function lFQQp(x: typeof b); // ok
+function lFQQp(x: any) { }
 
-function foo12(x: I<Date>);
-function foo12(x: C<Date>); // ok
-function foo12(x: any) { }
+function RATEB(x: I<Date>);
+function RATEB(x: C<Date>); // ok
+function RATEB(x: any) { }
 
 function foo12b(x: I2);
 function foo12b(x: C<Date>); // ok
 function foo12b(x: any) { }
 
-function foo13(x: I<Date>);
-function foo13(x: typeof a); // ok
-function foo13(x: any) { }
+function B6YfF(x: I<Date>);
+function B6YfF(x: typeof a); // ok
+function B6YfF(x: any) { }
 
 function foo14(x: I<Date>);
 function foo14(x: typeof b); // ok
 function foo14(x: any) { }
 
-function foo15(x: I2);
-function foo15(x: C<Date>); // ok
-function foo15(x: any) { }
+function gCZjE(x: I2);
+function gCZjE(x: C<Date>); // ok
+function gCZjE(x: any) { }

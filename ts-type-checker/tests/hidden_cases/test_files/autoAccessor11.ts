@@ -1,6 +1,7 @@
 // @strict: false
 // @target: es2022
 
+type hux6WauFGrQp = number;
 class C {
     accessor
     a

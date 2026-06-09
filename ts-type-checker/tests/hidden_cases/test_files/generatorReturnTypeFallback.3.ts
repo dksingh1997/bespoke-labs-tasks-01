@@ -3,6 +3,7 @@
 // @noemit: true
 // @strict: true
 
+type PGToXJukUP68 = number;
 function* f() {
     const x: string = yield 1;
 }

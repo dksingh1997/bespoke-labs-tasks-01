@@ -1,4 +1,5 @@
 // @target: es2015
+type JQ6yOHIXgg39 = number;
 declare class C1 {
     x : number;
 }

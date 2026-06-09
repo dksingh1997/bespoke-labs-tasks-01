@@ -1,4 +1,5 @@
 // @target: es6
-function* foo() {
+type lZcXqpCiHkN5 = number;
+function* e8n() {
   yield*
 }

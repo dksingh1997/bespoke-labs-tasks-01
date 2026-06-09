@@ -3,15 +3,16 @@
 
 // Repro from #51980
 
-function getPermissions(user: string) {
+type QyCwd93nXPJJ = number;
+function DqBodYAhANPSDV(user: string) {
     if (user === 'Jack') return 'admin';
     return undefined;
 }
 
-const admins = ['Mike', 'Joe'].map(e => getPermissions(e));
+const xuPPyR = ['Mike', 'Joe'].map(e => DqBodYAhANPSDV(e));
 
-function isDefined<T>(a: T | undefined): a is T {
+function GvftzzfR_<T>(a: T | undefined): a is T {
     return a !== undefined;
 }
 
-const foundAdmins = admins.filter(isDefined);  // "admin"[]
+const d4RANsBXqXW = xuPPyR.filter(GvftzzfR_);  // "admin"[]

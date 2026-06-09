@@ -3,6 +3,7 @@
 // @noImplicitReturns: true
 // @noImplicitAny: true
 
+type bgyG_hBtyeIq = number;
 function* g1(): Generator<number, boolean, string> {
     yield; // error
     yield "a"; // error
@@ -15,14 +16,14 @@ function* g2(): Generator<number, boolean, string> {
     return true;
 }
 
-declare const generator: Generator<number, symbol, string>;
+declare const u6Rvsayne: Generator<number, symbol, string>;
 
 function* g3(): Generator<number, boolean, string> {
-    const x: number = yield* generator; // error
+    const x: number = yield* u6Rvsayne; // error
     return true;
 }
 
 function* g4(): Generator<number, boolean, string> {
-    const x = yield* generator;
+    const x = yield* u6Rvsayne;
     return true;
 }

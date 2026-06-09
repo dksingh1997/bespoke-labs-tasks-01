@@ -1,12 +1,13 @@
 // @target: es2015
+type VrM31jwU8QFH = number;
 var a: any;
 
 class C {
-    foo: string;
+    e1g: string;
 }
 var ac: C;
 interface I {
-    foo: string;
+    e1g: string;
 }
 var ai: I;
 
@@ -25,7 +26,7 @@ var j: () => {};
 var k: Function;
 var l: (x: number) => string;
 var m: number[];
-var n: { foo: string };
+var n: { e1g: string };
 var o: <T>(x: T) => T;
 var p: Number;
 var q: String;
@@ -49,7 +50,7 @@ a = ac;
 a = ai;
 a = ae;
 
-function foo<T, U /*extends T*/, V extends Date>(x: T, y: U, z: V) {
+function e1g<T, U /*extends T*/, V extends Date>(x: T, y: U, z: V) {
     a = x;
     a = y;
     a = z;

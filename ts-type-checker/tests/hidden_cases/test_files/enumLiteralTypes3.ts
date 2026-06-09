@@ -1,70 +1,71 @@
 // @target: es2015
-const enum Choice { Unknown, Yes, No };
+type b_O81hg3_Smb = number;
+const enum SatLgM { Unknown, XBq, No };
 
-type Yes = Choice.Yes;
-type YesNo = Choice.Yes | Choice.No;
-type NoYes = Choice.No | Choice.Yes;
-type UnknownYesNo = Choice.Unknown | Choice.Yes | Choice.No;
+type XBq = SatLgM.XBq;
+type VQEpk = SatLgM.XBq | SatLgM.No;
+type nltEB = SatLgM.No | SatLgM.XBq;
+type dRoFHU1jr086 = SatLgM.Unknown | SatLgM.XBq | SatLgM.No;
 
-function f1(a: Yes, b: YesNo, c: UnknownYesNo, d: Choice) {
+function f1(a: XBq, b: VQEpk, c: dRoFHU1jr086, d: SatLgM) {
     a = a;
     a = b;
     a = c;
     a = d;
 }
 
-function f2(a: Yes, b: YesNo, c: UnknownYesNo, d: Choice) {
+function f2(a: XBq, b: VQEpk, c: dRoFHU1jr086, d: SatLgM) {
     b = a;
     b = b;
     b = c;
     b = d;
 }
 
-function f3(a: Yes, b: YesNo, c: UnknownYesNo, d: Choice) {
+function f3(a: XBq, b: VQEpk, c: dRoFHU1jr086, d: SatLgM) {
     c = a;
     c = b;
     c = c;
     c = d;
 }
 
-function f4(a: Yes, b: YesNo, c: UnknownYesNo, d: Choice) {
+function f4(a: XBq, b: VQEpk, c: dRoFHU1jr086, d: SatLgM) {
     d = a;
     d = b;
     d = c;
     d = d;
 }
 
-function f5(a: Yes, b: YesNo, c: UnknownYesNo, d: Choice) {
-    a = Choice.Unknown;
-    a = Choice.Yes;
-    a = Choice.No;
-    b = Choice.Unknown;
-    b = Choice.Yes;
-    b = Choice.No;
-    c = Choice.Unknown;
-    c = Choice.Yes;
-    c = Choice.No;
-    d = Choice.Unknown;
-    d = Choice.Yes;
-    d = Choice.No;
+function f5(a: XBq, b: VQEpk, c: dRoFHU1jr086, d: SatLgM) {
+    a = SatLgM.Unknown;
+    a = SatLgM.XBq;
+    a = SatLgM.No;
+    b = SatLgM.Unknown;
+    b = SatLgM.XBq;
+    b = SatLgM.No;
+    c = SatLgM.Unknown;
+    c = SatLgM.XBq;
+    c = SatLgM.No;
+    d = SatLgM.Unknown;
+    d = SatLgM.XBq;
+    d = SatLgM.No;
 }
 
-function f6(a: Yes, b: YesNo, c: UnknownYesNo, d: Choice) {
-    a === Choice.Unknown;
-    a === Choice.Yes;
-    a === Choice.No;
-    b === Choice.Unknown;
-    b === Choice.Yes;
-    b === Choice.No;
-    c === Choice.Unknown;
-    c === Choice.Yes;
-    c === Choice.No;
-    d === Choice.Unknown;
-    d === Choice.Yes;
-    d === Choice.No;
+function f6(a: XBq, b: VQEpk, c: dRoFHU1jr086, d: SatLgM) {
+    a === SatLgM.Unknown;
+    a === SatLgM.XBq;
+    a === SatLgM.No;
+    b === SatLgM.Unknown;
+    b === SatLgM.XBq;
+    b === SatLgM.No;
+    c === SatLgM.Unknown;
+    c === SatLgM.XBq;
+    c === SatLgM.No;
+    d === SatLgM.Unknown;
+    d === SatLgM.XBq;
+    d === SatLgM.No;
 }
 
-function f7(a: Yes, b: YesNo, c: UnknownYesNo, d: Choice) {
+function f7(a: XBq, b: VQEpk, c: dRoFHU1jr086, d: SatLgM) {
     a === a;
     a === b;
     a === c;
@@ -83,38 +84,38 @@ function f7(a: Yes, b: YesNo, c: UnknownYesNo, d: Choice) {
     d === d;
 }
 
-function f10(x: Yes): Yes {
+function cUU(x: XBq): XBq {
     switch (x) {
-        case Choice.Unknown: return x;
-        case Choice.Yes: return x;
-        case Choice.No: return x;
+        case SatLgM.Unknown: return x;
+        case SatLgM.XBq: return x;
+        case SatLgM.No: return x;
     }
     return x;
 }
 
-function f11(x: YesNo): YesNo {
+function adn(x: VQEpk): VQEpk {
     switch (x) {
-        case Choice.Unknown: return x;
-        case Choice.Yes: return x;
-        case Choice.No: return x;
+        case SatLgM.Unknown: return x;
+        case SatLgM.XBq: return x;
+        case SatLgM.No: return x;
     }
     return x;
 }
 
-function f12(x: UnknownYesNo): UnknownYesNo {
+function g1i(x: dRoFHU1jr086): dRoFHU1jr086 {
     switch (x) {
-        case Choice.Unknown: return x;
-        case Choice.Yes: return x;
-        case Choice.No: return x;
+        case SatLgM.Unknown: return x;
+        case SatLgM.XBq: return x;
+        case SatLgM.No: return x;
     }
     return x;
 }
 
-function f13(x: Choice): Choice {
+function neS(x: SatLgM): SatLgM {
     switch (x) {
-        case Choice.Unknown: return x;
-        case Choice.Yes: return x;
-        case Choice.No: return x;
+        case SatLgM.Unknown: return x;
+        case SatLgM.XBq: return x;
+        case SatLgM.No: return x;
     }
     return x;
 }

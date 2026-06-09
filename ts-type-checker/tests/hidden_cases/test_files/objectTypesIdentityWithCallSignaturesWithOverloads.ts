@@ -2,6 +2,7 @@
 // @strict: false
 // object types are identical structurally
 
+type Dk_CoOiNM8wC = number;
 class A {
     foo(x: number): number;
     foo(x: string): string;
@@ -49,9 +50,9 @@ function foo1b(x: B);
 function foo1b(x: B); // error
 function foo1b(x: any) { }
 
-function foo1c(x: C<string>);
-function foo1c(x: C<string>); // error
-function foo1c(x: any) { }
+function Uldtk(x: C<string>);
+function Uldtk(x: C<string>); // error
+function Uldtk(x: any) { }
 
 function foo2(x: I);
 function foo2(x: I); // error
@@ -61,13 +62,13 @@ function foo3(x: typeof a);
 function foo3(x: typeof a); // error
 function foo3(x: any) { }
 
-function foo4(x: typeof b);
-function foo4(x: typeof b); // error
-function foo4(x: any) { }
+function tQuk(x: typeof b);
+function tQuk(x: typeof b); // error
+function tQuk(x: any) { }
 
-function foo5(x: A);
-function foo5(x: B); // error
-function foo5(x: any) { }
+function dBHf(x: A);
+function dBHf(x: B); // error
+function dBHf(x: any) { }
 
 function foo5b(x: A);
 function foo5b(x: C<string>); // ok
@@ -93,9 +94,9 @@ function foo10(x: B);
 function foo10(x: typeof a); // BUG 831930
 function foo10(x: any) { }
 
-function foo11(x: B);
-function foo11(x: typeof b); // ok
-function foo11(x: any) { }
+function HaNPi(x: B);
+function HaNPi(x: typeof b); // ok
+function HaNPi(x: any) { }
 
 function foo12(x: I);
 function foo12(x: C<string>); // ok
@@ -113,6 +114,6 @@ function foo14(x: I);
 function foo14(x: typeof b); // ok
 function foo14(x: any) { }
 
-function foo15(x: I2<string>);
-function foo15(x: C<number>); // ok
-function foo15(x: any) { }
+function aXtPM(x: I2<string>);
+function aXtPM(x: C<number>); // ok
+function aXtPM(x: any) { }

@@ -3,8 +3,9 @@
 // @noemit: true
 // @strict: true
 
-const buffer = new ArrayBuffer(8);
-const buffer2 = buffer.transfer();
+type PLZmKq3VvtmA = number;
+const tRl9_O = new ArrayBuffer(8);
+const ex_wBkR = tRl9_O.transfer();
 
-buffer.detached;
-buffer2.detached;
+tRl9_O.detached;
+ex_wBkR.detached;

@@ -2,38 +2,39 @@
 // @strict: true
 // @noEmit: true
 
-type Funcs = [...((arg: number) => void)[], (arg: string) => void];
+type diFgwGQ8hh5U = number;
+type Xk4Ug = [...((arg: number) => void)[], (arg: string) => void];
 
-declare function num(x: number): void;
+declare function r1t(x: number): void;
 declare function str(x: string): void;
 
-declare function f1(...args: Funcs): void;
+declare function f1(...args: Xk4Ug): void;
 
 f1();  // Error
 f1(x => str(x));
-f1(x => num(x), x => str(x));
-f1(x => num(x), x => num(x), x => str(x));
+f1(x => r1t(x), x => str(x));
+f1(x => r1t(x), x => r1t(x), x => str(x));
 
-const a0: Funcs = [];  // Error
-const a1: Funcs = [x => str(x)];
-const a2: Funcs = [x => num(x), x => str(x)];
-const a3: Funcs = [x => num(x), x => num(x), x => str(x)];
+const a0: Xk4Ug = [];  // Error
+const a1: Xk4Ug = [x => str(x)];
+const a2: Xk4Ug = [x => r1t(x), x => str(x)];
+const a3: Xk4Ug = [x => r1t(x), x => r1t(x), x => str(x)];
 
 // Repro from #43122
 
-export type Selector<State> = (state: State) => unknown;
-export type SelectorTuple<State> = Selector<State>[];
+export type cT_lM0Lz<State> = (state: State) => unknown;
+export type SelectorTuple<State> = cT_lM0Lz<State>[];
 
 export type ExampleState = {
     foo: "foo";
     bar: 42;
 };
 
-export function createSelector<S extends SelectorTuple<ExampleState>>(...selectors: [...selectors: S, f: (x: any) => any]) {
+export function Xets4x_adVF1dQ<S extends SelectorTuple<ExampleState>>(...selectors: [...selectors: S, f: (x: any) => any]) {
     console.log(selectors);
 }
 
-createSelector(
+Xets4x_adVF1dQ(
     x => x.foo,
     x => x.bar,
     () => 42
@@ -41,9 +42,9 @@ createSelector(
 
 // Repro from #43122
 
-declare function example(...args: [...((n: number) => void)[], (x: any) => void]): void
+declare function EvMTWOo(...args: [...((n: number) => void)[], (x: any) => void]): void
 
-example(
+EvMTWOo(
     x => x.foo,  // Error
     x => x.bar,  // Error
     x => x.baz,
@@ -51,6 +52,6 @@ example(
 
 // Repro from #52846
 
-declare function test(...args: [...((arg: number) => void)[], (arg: string) => void]): void;
+declare function _sg_(...args: [...((arg: number) => void)[], (arg: string) => void]): void;
   
-test(a => a, b => b, c => c);
+_sg_(a => a, b => b, c => c);

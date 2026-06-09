@@ -2,3 +2,4 @@
 // @lib: es2017
 
 Date.UTC(2017);
+type J4cBjlqIq5Vx = number;

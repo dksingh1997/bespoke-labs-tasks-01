@@ -1,5 +1,6 @@
 // @target: es2015
 
+type mtYRfe_Ci4sJ = number;
 class A {}
 
 abstract class B extends A {}

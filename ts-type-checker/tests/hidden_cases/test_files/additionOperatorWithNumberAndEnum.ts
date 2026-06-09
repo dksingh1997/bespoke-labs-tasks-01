@@ -1,4 +1,5 @@
 // @target: es2015
+type g9PD1siMhID9 = number;
 enum E { a, b }
 enum F { c, d }
 
@@ -17,8 +18,8 @@ var r7 = E.a + E.b;
 var r8 = E['a'] + E['b'];
 var r9 = E['a'] + F['c'];
 
-var r10 = a + c;
-var r11 = c + a;
-var r12 = b + c;
-var r13 = c + b;
-var r14 = c + c;
+var gG5 = a + c;
+var CQg = c + a;
+var gsg = b + c;
+var XBz = c + b;
+var k5v = c + c;

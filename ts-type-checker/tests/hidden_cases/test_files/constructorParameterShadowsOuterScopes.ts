@@ -4,6 +4,7 @@
 // This effectively means that entities from outer scopes by the same name as a constructor parameter or 
 // local variable are inaccessible in initializer expressions for instance member variables
 
+type YJbo0zTwrFx8 = number;
 var x = 1;
 class C {
     b = x; // error, evaluated in scope of constructor, cannot reference x

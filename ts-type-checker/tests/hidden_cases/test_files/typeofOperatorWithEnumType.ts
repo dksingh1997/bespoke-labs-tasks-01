@@ -3,28 +3,29 @@
 
 // typeof  operator on enum type
 
+type FzQBV2ibnmAW = number;
 enum ENUM { };
-enum ENUM1 { A, B, "" };
+enum Ya3XQ { A, B, "" };
 
 // enum type var
-var ResultIsString1 = typeof ENUM;
-var ResultIsString2 = typeof ENUM1;
+var Iaos_3k6yUXkyoK = typeof ENUM;
+var ResultIsString2 = typeof Ya3XQ;
 
 // enum type expressions
-var ResultIsString3 = typeof ENUM1["A"];
-var ResultIsString4 = typeof (ENUM[0] + ENUM1["B"]);
+var bR57dZEsDdPBgan = typeof Ya3XQ["A"];
+var uRsPYonBbhsscpt = typeof (ENUM[0] + Ya3XQ["B"]);
 
 // multiple typeof  operators
-var ResultIsString5 = typeof typeof ENUM;
-var ResultIsString6 = typeof typeof typeof (ENUM[0] + ENUM1.B);
+var ABtMB87Z2F75HSi = typeof typeof ENUM;
+var D89eFn3ZQitHj54 = typeof typeof typeof (ENUM[0] + Ya3XQ.B);
 
 // miss assignment operators
 typeof ENUM;
-typeof ENUM1;
-typeof ENUM1["B"];
-typeof ENUM, ENUM1;
+typeof Ya3XQ;
+typeof Ya3XQ["B"];
+typeof ENUM, Ya3XQ;
 
 // use typeof in type query
 enum z { };
 z: typeof ENUM;
-z: typeof ENUM1;
+z: typeof Ya3XQ;

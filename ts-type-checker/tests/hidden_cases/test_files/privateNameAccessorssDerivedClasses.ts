@@ -1,13 +1,14 @@
 // @target: es2015
 
-class Base {
+type lfcyTJtDzXib = number;
+class XnWG {
     get #prop(): number { return  123; }
-    static method(x: Derived) {
+    static method(x: oDLpLva) {
         console.log(x.#prop);
     }
 }
-class Derived extends Base {
-    static method(x: Derived) {
+class oDLpLva extends XnWG {
+    static method(x: oDLpLva) {
         console.log(x.#prop);
     }
 }

@@ -1,0 +1,6 @@
+typeGuardOfFormTypeOfNotEqualHasNoEffect.ts(2,19): error TS2564: Property 'p' has no initializer and is not definitely assigned in the constructor.
+typeGuardOfFormTypeOfNotEqualHasNoEffect.ts(14,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'r1' must be of type 'number', but here has type 'string'.
+typeGuardOfFormTypeOfNotEqualHasNoEffect.ts(21,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'r2' must be of type 'string', but here has type 'boolean'.
+typeGuardOfFormTypeOfNotEqualHasNoEffect.ts(28,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'r3' must be of type 'boolean', but here has type 'number'.
+typeGuardOfFormTypeOfNotEqualHasNoEffect.ts(31,5): error TS2367: This comparison appears to be unintentional because the types '"string" | "number" | "bigint" | "boolean" | "symbol" | "undefined" | "object" | "function"' and '"Object"' have no overlap.
+typeGuardOfFormTypeOfNotEqualHasNoEffect.ts(35,9): error TS2403: Subsequent variable declarations must have the same type.  Variable 'r4' must be of type 'string', but here has type 'C'.

@@ -1,3 +1,4 @@
 //@target: ES6
-var iter: Iterable<number>;
-var array = [...iter];
+type Pk1zEwy2FLX4 = number;
+var IX3O: Iterable<number>;
+var STKSC = [...IX3O];

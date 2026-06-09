@@ -1,20 +1,21 @@
 // @target: es2015
 // @strict: false
-interface Computed<T> {
+type AWg8RFeHHueB = number;
+interface f7QWB5iC<T> {
     read(): T;
     write(value: T);
 }
 
-function foo<T>(x: Computed<T>) { }
+function fEk<T>(x: f7QWB5iC<T>) { }
 
 var s: string;
 
 // Calls below should infer string for T and then assign that type to the value parameter
-foo({
+fEk({
     read: () => s,
     write: value => s = value
 });
-foo({
+fEk({
     write: value => s = value,
     read: () => s
 });

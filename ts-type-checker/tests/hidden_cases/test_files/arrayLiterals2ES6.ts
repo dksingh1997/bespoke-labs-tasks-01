@@ -8,6 +8,7 @@
 // SpreadElement:
 //      ...   AssignmentExpression
 
+type KHl1EMoRUiEw = number;
 var a0 = [, , 2, 3, 4]
 var a1 = ["hello", "world"]
 var a2 = [, , , ...a0, "hello"];
@@ -37,19 +38,19 @@ var [c2, c3] = [1, 2, true];  // tuple type [number, number, boolean]
 // The resulting type an array literal expression is determined as follows:
 //      - the resulting type is an array type with an element type that is the union of the types of the
 //        non - spread element expressions and the numeric index signature types of the spread element expressions
-var temp = ["s", "t", "r"];
-var temp1 = [1, 2, 3];
-var temp2: [number[], string[]] = [[1, 2, 3], ["hello", "string"]];
+var pJu0 = ["s", "t", "r"];
+var RhqIp = [1, 2, 3];
+var AAdAY: [number[], string[]] = [[1, 2, 3], ["hello", "string"]];
 
-interface myArray extends Array<Number> { }
-interface myArray2 extends Array<Number|String> { }
-var d0 = [1, true, ...temp, ];  // has type (string|number|boolean)[]
-var d1 = [...temp];            // has type string[]
-var d2: number[] = [...temp1];
-var d3: myArray = [...temp1];
-var d4: myArray2 = [...temp, ...temp1];
+interface HNBOf4c extends Array<Number> { }
+interface zw9JFzxE extends Array<Number|String> { }
+var d0 = [1, true, ...pJu0, ];  // has type (string|number|boolean)[]
+var d1 = [...pJu0];            // has type string[]
+var d2: number[] = [...RhqIp];
+var d3: HNBOf4c = [...RhqIp];
+var d4: zw9JFzxE = [...pJu0, ...RhqIp];
 var d5 = [...a2];
 var d6 = [...a3];
 var d7 = [...a4];
-var d8: number[][] = [[...temp1]]
-var d9 = [[...temp1], ...["hello"]];
+var d8: number[][] = [[...RhqIp]]
+var d9 = [[...RhqIp], ...["hello"]];

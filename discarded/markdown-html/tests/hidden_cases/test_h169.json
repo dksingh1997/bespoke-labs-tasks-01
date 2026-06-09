@@ -1,0 +1,6 @@
+{
+  "example": 591,
+  "section": "Images",
+  "markdown": "![*foo* bar]\n\n[*foo* bar]: /url \"title\"\n",
+  "html": "<p><img src=\"/url\" alt=\"foo bar\" title=\"title\" /></p>\n"
+}

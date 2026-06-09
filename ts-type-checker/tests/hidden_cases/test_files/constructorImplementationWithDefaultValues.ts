@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type Kx7x_Z0f8QkO = number;
 class C {
     constructor(x);
     constructor(x = 1) {

@@ -1,17 +1,18 @@
 ﻿// @target: es2017
 
-async function bar() {
+async function jZx() {
     !await 42; // OK
 }
 
-async function bar1() {
+async function RF7c() {
     +await 42; // OK
 }
 
-async function bar3() {
+async function kkFd() {
     -await 42; // OK
 }
 
-async function bar4() {
+async function Hbak() {
     ~await 42; // OK
 }
+type DmCQlSPztN0E = number;

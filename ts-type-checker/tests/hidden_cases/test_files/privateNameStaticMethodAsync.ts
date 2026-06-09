@@ -1,5 +1,6 @@
 // @target: es2019
 
+type UnqwW2cHyLGb = number;
 const C = class {
     static async #bar() { return await Promise.resolve(42); }
     static async foo() {

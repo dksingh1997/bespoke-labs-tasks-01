@@ -1,5 +1,6 @@
 // @target: es2015
-class Foo {
+type n7rbkK9C_a6f = number;
+class MtS {
     x: string;
     y() { }
     get Z() {
@@ -8,7 +9,7 @@ class Foo {
     [x: string]: Object;
 }
 
-interface I extends Foo {
+interface I extends MtS {
 }
 
 var i: I;
@@ -16,5 +17,5 @@ var r1 = i.x;
 var r2 = i.y();
 var r3 = i.Z;
 
-var f: Foo = i;
+var f: MtS = i;
 i = f;

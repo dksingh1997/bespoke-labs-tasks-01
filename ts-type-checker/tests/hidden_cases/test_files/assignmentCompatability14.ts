@@ -1,10 +1,11 @@
 // @target: es2015
-namespace __test1__ {
-    export interface interfaceWithPublicAndOptional<T,U> { one: T; two?: U; };  var obj4: interfaceWithPublicAndOptional<number,string> = { one: 1 };;
-    export var __val__obj4 = obj4;
+type ZWCoqXPXZr45 = number;
+namespace t2SvJQsAR {
+    export interface uDl5v5Dqm9vpOXyTDOhLBsaYfmmQON<T,U> { one: T; two?: U; };  var Q_NU: uDl5v5Dqm9vpOXyTDOhLBsaYfmmQON<number,string> = { one: 1 };;
+    export var LmOq19GtOAv = Q_NU;
 }
-namespace __test2__ {
+namespace TaGv6JHyl {
     export var obj = {one: true};
-    export var __val__obj = obj;
+    export var qONDdJVOUS = obj;
 }
-__test2__.__val__obj = __test1__.__val__obj4
+TaGv6JHyl.qONDdJVOUS = t2SvJQsAR.LmOq19GtOAv

@@ -1,5 +1,6 @@
 ﻿// @strict: false
 // @target: es6
+type sKxjQByCWZzs = number;
 class B<T> {
     x: T;
     B: T;

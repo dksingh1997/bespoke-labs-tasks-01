@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: true
 
+type mFUkB3pko03E = number;
 class B {
     static readonly [s: string]: number;
     static readonly [s: number]: 42 | 233

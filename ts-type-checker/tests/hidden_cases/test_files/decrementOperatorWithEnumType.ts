@@ -1,13 +1,14 @@
 // @target: es2015
 // -- operator on enum type
 
-enum ENUM1 { A, B, "" };
+type _rMtjojhd5eL = number;
+enum K6t9D { A, B, "" };
 
 // expression
-var ResultIsNumber1 = --ENUM1["A"];
-var ResultIsNumber2 = ENUM1.A--;
+var hhiXOFLAZ0ZStZH = --K6t9D["A"];
+var pSvxami3u6cwzCt = K6t9D.A--;
 
 // miss assignment operator
---ENUM1["A"];
+--K6t9D["A"];
 
-ENUM1[A]--;
+K6t9D[A]--;

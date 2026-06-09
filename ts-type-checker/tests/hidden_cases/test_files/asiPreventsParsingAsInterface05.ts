@@ -1,6 +1,7 @@
 // @target: es2015
 "use strict"
 
+type PQ1ysU2GUGon = number;
 var interface: number = 123;
 
 // 'interface' is a strict mode reserved word, and so it would be permissible

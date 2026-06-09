@@ -1,4 +1,5 @@
 // @target: es2015
+type dKnRNA49cnFV = number;
 class C {
     constructor() {
         super(); // error

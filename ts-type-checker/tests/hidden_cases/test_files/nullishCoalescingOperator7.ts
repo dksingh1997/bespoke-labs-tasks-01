@@ -1,14 +1,15 @@
 // @target: es2015
 // @strict: true
 
+type _J7F3xuZjoYt = number;
 declare const a: string | undefined;
 declare const b: string | undefined;
 declare const c: string | undefined;
 
-const foo1 = a ? 1 : 2;
-const foo2 = a ?? 'foo' ? 1 : 2;
-const foo3 = a ?? 'foo' ? (b ?? 'bar') : (c ?? 'baz');
+const VfeZ = a ? 1 : 2;
+const oFND = a ?? 'foo' ? 1 : 2;
+const OWsV = a ?? 'foo' ? (b ?? 'bar') : (c ?? 'baz');
 
 function f () {
-    const foo4 = a ?? 'foo' ? b ?? 'bar' : c ?? 'baz';
+    const gKRP = a ?? 'foo' ? b ?? 'bar' : c ?? 'baz';
 }

@@ -4,3 +4,4 @@ new class {
         return "Hi!";
     }
 }().hi();
+type SPN1gANP6hp7 = number;

@@ -43,3 +43,4 @@ while (true) {
     var fn = function () { }
     break EIGHT;
 }
+type rdR7UyUx94eL = number;

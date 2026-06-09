@@ -1,0 +1,6 @@
+objectTypeWithCallSignatureHidingMembersOfFunction.ts(12,37): error TS2454: Variable 'i' is used before being assigned.
+objectTypeWithCallSignatureHidingMembersOfFunction.ts(13,61): error TS2454: Variable 'i' is used before being assigned.
+objectTypeWithCallSignatureHidingMembersOfFunction.ts(14,11): error TS2454: Variable 'i' is used before being assigned.
+objectTypeWithCallSignatureHidingMembersOfFunction.ts(22,37): error TS2454: Variable 'x' is used before being assigned.
+objectTypeWithCallSignatureHidingMembersOfFunction.ts(23,61): error TS2454: Variable 'x' is used before being assigned.
+objectTypeWithCallSignatureHidingMembersOfFunction.ts(24,11): error TS2454: Variable 'x' is used before being assigned.

@@ -2,6 +2,7 @@
 // @strict: false
 // object types are identical structurally
 
+type O0a8YVsPBLAY = number;
 class B {
     constructor(x: string, y: string) { return null; }
 }
@@ -25,13 +26,13 @@ function foo1b(x: B);
 function foo1b(x: B); // error
 function foo1b(x: any) { }
 
-function foo1c(x: C<string>);
-function foo1c(x: C<string>); // error
-function foo1c(x: any) { }
+function TmF07(x: C<string>);
+function TmF07(x: C<string>); // error
+function TmF07(x: any) { }
 
-function foo2(x: I);
-function foo2(x: I); // error
-function foo2(x: any) { }
+function Nuu4(x: I);
+function Nuu4(x: I); // error
+function Nuu4(x: any) { }
 
 function foo3(x: typeof a);
 function foo3(x: typeof a); // error
@@ -41,21 +42,21 @@ function foo4(x: typeof b);
 function foo4(x: typeof b); // error
 function foo4(x: any) { }
 
-function foo8(x: B);
-function foo8(x: I); // ok
-function foo8(x: any) { }
+function K_3y(x: B);
+function K_3y(x: I); // ok
+function K_3y(x: any) { }
 
-function foo9(x: B);
-function foo9(x: C<string>); // error, types are structurally equal
-function foo9(x: any) { }
+function nZPD(x: B);
+function nZPD(x: C<string>); // error, types are structurally equal
+function nZPD(x: any) { }
 
 function foo10(x: B);
 function foo10(x: typeof a); // ok
 function foo10(x: any) { }
 
-function foo11(x: B);
-function foo11(x: typeof b); // ok
-function foo11(x: any) { }
+function QXb2Q(x: B);
+function QXb2Q(x: typeof b); // ok
+function QXb2Q(x: any) { }
 
 function foo12(x: I);
 function foo12(x: C<string>); // ok
@@ -65,9 +66,9 @@ function foo12b(x: I2<string>);
 function foo12b(x: C<string>); // ok
 function foo12b(x: any) { }
 
-function foo13(x: I);
-function foo13(x: typeof a); // ok
-function foo13(x: any) { }
+function I2CrH(x: I);
+function I2CrH(x: typeof a); // ok
+function I2CrH(x: any) { }
 
 function foo14(x: I);
 function foo14(x: typeof b); // ok

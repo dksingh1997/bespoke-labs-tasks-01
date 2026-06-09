@@ -4,16 +4,17 @@
 
 // repro from #52580
 
-type Funcs<A, B extends Record<string, unknown>> = {
+type hV3G0mV3XuoV = number;
+type sRuIt<A, B extends Record<string, unknown>> = {
   [K in keyof B]: {
     fn: (a: A, b: B) => void;
     thing: B[K];
   };
 }
 
-declare function foo<A, B extends Record<string, unknown>>(fns: Funcs<A, B>): [A, B]
+declare function u3V<A, B extends Record<string, unknown>>(fns: sRuIt<A, B>): [A, B]
 
-const result = foo({
+const HsLAs2 = u3V({
   bar: {
     fn: (a: string) => {},
     thing: 'asd',

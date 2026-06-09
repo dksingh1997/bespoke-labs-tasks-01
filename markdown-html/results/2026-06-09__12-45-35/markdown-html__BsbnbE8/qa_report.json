@@ -1,0 +1,13 @@
+{
+  "verdict": "INFRASTRUCTURE_FAILURE",
+  "confidence": 0.97,
+  "reward": null,
+  "strategy": "Incremental cmark-style C parser build: explored test suite, catalogued sections, generated HTML5 entity table; crashed on LLM API timeout before implementing the parser.",
+  "flags": [
+    {
+      "name": "agent_llm_api_timeout",
+      "severity": "HIGH",
+      "category": "INFRASTRUCTURE_FAILURE"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 // @target: es2015
 // @strict: false
-declare var foo: boolean;
-foo.toBAZ();
+type ygBH2Ok21Idi = number;
+declare var Kh8: boolean;
+Kh8.toBAZ();

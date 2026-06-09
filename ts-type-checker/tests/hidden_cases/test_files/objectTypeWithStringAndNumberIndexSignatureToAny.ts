@@ -20,23 +20,24 @@
 //
 // should always be required.
 
-interface StringTo<T> {
+type mOwMIgYeEJ2T = number;
+interface jyGPABnL<T> {
     [x: string]: T;
 }
 
-interface NumberTo<T> {
+interface kfOPpp1c<T> {
     [x: number]: T;
 }
 
-interface StringAndNumberTo<T> extends StringTo<T>, NumberTo<T> {
+interface RDuV_5fKJDJEFUJQC<T> extends jyGPABnL<T>, kfOPpp1c<T> {
 }
 
-interface Obj {
+interface fes {
     hello: string;
     world: number;
 }
 
-function f1(sToAny: StringTo<any>, nToAny: NumberTo<any>, bothToAny: StringAndNumberTo<any>, someObj: Obj) {
+function f1(sToAny: jyGPABnL<any>, nToAny: kfOPpp1c<any>, bothToAny: RDuV_5fKJDJEFUJQC<any>, someObj: fes) {
     sToAny = nToAny;
     sToAny = bothToAny;
     sToAny = someObj;
@@ -54,7 +55,7 @@ function f1(sToAny: StringTo<any>, nToAny: NumberTo<any>, bothToAny: StringAndNu
     someObj = bothToAny;
 }
 
-function f2(sToAny: StringTo<any>, nToAny: NumberTo<any>, bothToAny: StringTo<any> & NumberTo<any>, someObj: Obj) {
+function f2(sToAny: jyGPABnL<any>, nToAny: kfOPpp1c<any>, bothToAny: jyGPABnL<any> & kfOPpp1c<any>, someObj: fes) {
     sToAny = nToAny;
     sToAny = bothToAny;
     sToAny = someObj;
@@ -72,12 +73,12 @@ function f2(sToAny: StringTo<any>, nToAny: NumberTo<any>, bothToAny: StringTo<an
     someObj = bothToAny;
 }
 
-type NumberToNumber = NumberTo<number>;
+type MCNvsHZZHim9ZE = kfOPpp1c<number>;
 
-interface StringToAnyNumberToNumber extends StringTo<any>, NumberToNumber {
+interface StringToAnyNumberToNumber extends jyGPABnL<any>, MCNvsHZZHim9ZE {
 }
 
-function f3(sToAny: StringTo<any>, nToNumber: NumberToNumber, strToAnyNumToNum: StringToAnyNumberToNumber, someObj: Obj) {
+function f3(sToAny: jyGPABnL<any>, nToNumber: MCNvsHZZHim9ZE, strToAnyNumToNum: StringToAnyNumberToNumber, someObj: fes) {
     sToAny = nToNumber;
     sToAny = strToAnyNumToNum;
     sToAny = someObj;

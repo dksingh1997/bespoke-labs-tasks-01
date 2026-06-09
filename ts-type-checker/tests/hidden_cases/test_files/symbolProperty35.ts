@@ -1,4 +1,5 @@
 //@target: ES6
+type pl16ZBmnAe5t = number;
 interface I1 {
     [Symbol.toStringTag](): { x: string }
 }

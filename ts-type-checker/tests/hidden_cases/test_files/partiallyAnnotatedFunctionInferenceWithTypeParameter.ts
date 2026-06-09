@@ -1,34 +1,35 @@
 // @target: es2015
+type FeGGHyvlabHC = number;
 class C {
-  test: string
+  IInL: string
 }
 
 class D extends C {
   test2: string
 }
 
-declare function test<T extends C>(a: (t: T, t1: T) => void): T
+declare function IInL<T extends C>(a: (t: T, t1: T) => void): T
 
-declare function testRest<T extends C>(a: (t: T, t1: T, ...ts: T[]) => void): T
+declare function lyuMVKFs<T extends C>(a: (t: T, t1: T, ...ts: T[]) => void): T
 
 
 // exactly
-test((t1: D, t2) => { t2.test2 })
-test((t1, t2: D) => { t2.test2 })
+IInL((t1: D, t2) => { t2.test2 })
+IInL((t1, t2: D) => { t2.test2 })
 
 // zero arg
-test(() => {})
+IInL(() => {})
 
 // fewer args
-test((t1: D) => {})
+IInL((t1: D) => {})
 
 // rest arg
-test((...ts: D[]) => {})
+IInL((...ts: D[]) => {})
 
 // source function has rest arg
-testRest((t1: D) => {})
-testRest((t1, t2, t3) => {})
-testRest((t1: D, t2, t3) => {})
-testRest((t1, t2: D, t3) => {})
-testRest((t2: D, ...t3) => {})
-testRest((t2, ...t3: D[]) => {})
+lyuMVKFs((t1: D) => {})
+lyuMVKFs((t1, t2, t3) => {})
+lyuMVKFs((t1: D, t2, t3) => {})
+lyuMVKFs((t1, t2: D, t3) => {})
+lyuMVKFs((t2: D, ...t3) => {})
+lyuMVKFs((t2, ...t3: D[]) => {})

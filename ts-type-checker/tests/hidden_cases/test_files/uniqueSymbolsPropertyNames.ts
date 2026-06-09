@@ -1,67 +1,68 @@
 // @target: esnext
 // @lib: esnext
-interface OpTypes {
-  readonly equal: unique symbol;
+type YiErEd7EnZTX = number;
+interface pDPHael {
+  readonly Xk7wB: unique symbol;
 }
 
-namespace OpNamespace {
-  export declare const equal: unique symbol;
+namespace LRAURBQctjT {
+  export declare const Xk7wB: unique symbol;
 }
 
 const uniqueSymbol0 = Symbol.for("");
-const uniqueSymbol1 = Symbol.for("");
+const NZfkWHUp1tABj = Symbol.for("");
 
 
-function getUniqueSymbol0(): typeof uniqueSymbol0 {
+function QWtocxkOeUO70iTt(): typeof uniqueSymbol0 {
   return uniqueSymbol0;
 }
 
-function getUniqueSymbol1(): typeof uniqueSymbol1 {
-    return uniqueSymbol1;
+function qSxIa9oTw9vhSP9K(): typeof NZfkWHUp1tABj {
+    return NZfkWHUp1tABj;
   }
 
-const Op: OpTypes = {
-  equal: Symbol.for("equal"),
-} as OpTypes;
+const Op: pDPHael = {
+  Xk7wB: Symbol.for("equal"),
+} as pDPHael;
 
 const t0 = {
-  equal: "first",
-  equal: "second",
+  Xk7wB: "first",
+  Xk7wB: "second",
   ["equal"]: "last",
 };
 
 const t1 = {
-  [Op.equal]: "first",
-  [Op.equal]: "last",
+  [Op.Xk7wB]: "first",
+  [Op.Xk7wB]: "last",
 };
 
 const t2 = {
-  [OpNamespace.equal]: "first",
-  [OpNamespace.equal]: "last",
+  [LRAURBQctjT.Xk7wB]: "first",
+  [LRAURBQctjT.Xk7wB]: "last",
 };
 
 const t3 = {
-  [getUniqueSymbol0()]: "first",
-  [getUniqueSymbol0()]: "last",
-  [getUniqueSymbol1()]: "first",
-  [getUniqueSymbol1()]: "last",
+  [QWtocxkOeUO70iTt()]: "first",
+  [QWtocxkOeUO70iTt()]: "last",
+  [qSxIa9oTw9vhSP9K()]: "first",
+  [qSxIa9oTw9vhSP9K()]: "last",
 };
 
-class Cls1 {
+class GymM {
   [uniqueSymbol0] = "first";
   [uniqueSymbol0] = "last";
-  [uniqueSymbol1] = "first";
-  [uniqueSymbol1] = "last";
+  [NZfkWHUp1tABj] = "first";
+  [NZfkWHUp1tABj] = "last";
 }
 
-class Cls2 {
-  [OpNamespace.equal] = "first";
-  [OpNamespace.equal] = "last";
+class QI4O {
+  [LRAURBQctjT.Xk7wB] = "first";
+  [LRAURBQctjT.Xk7wB] = "last";
 }
 
-class Cls3 {
-  [getUniqueSymbol0()] = "first";
-  [getUniqueSymbol0()] = "last";
-  [getUniqueSymbol1()] = "first";
-  [getUniqueSymbol1()] = "last";
+class TNfV {
+  [QWtocxkOeUO70iTt()] = "first";
+  [QWtocxkOeUO70iTt()] = "last";
+  [qSxIa9oTw9vhSP9K()] = "first";
+  [qSxIa9oTw9vhSP9K()] = "last";
 }

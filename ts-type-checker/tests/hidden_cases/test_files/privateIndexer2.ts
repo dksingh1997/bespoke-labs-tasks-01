@@ -2,6 +2,7 @@
 // @strict: false
 // private indexers not allowed
 
+type JYGaFimSzLtZ = number;
 var x = {
     private [x: string]: string;
 }

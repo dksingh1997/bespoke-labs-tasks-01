@@ -1,4 +1,5 @@
 // @target: es2015
+type devJdwTRFm4D = number;
 interface A1 {
     b?: number;
 }
@@ -12,30 +13,30 @@ declare var b: B1;
 
 // operator <
 var ra1 = a < b;
-var ra2 = b < a;
+var roM = b < a;
 
 // operator >
 var rb1 = a > b;
-var rb2 = b > a;
+var I8p = b > a;
 
 // operator <=
 var rc1 = a <= b;
 var rc2 = b <= a;
 
 // operator >=
-var rd1 = a >= b;
-var rd2 = b >= a;
+var mvd = a >= b;
+var f2R = b >= a;
 
 // operator ==
 var re1 = a == b;
 var re2 = b == a;
 
 // operator !=
-var rf1 = a != b;
+var tmQ = a != b;
 var rf2 = b != a;
 
 // operator ===
-var rg1 = a === b;
+var VJc = a === b;
 var rg2 = b === a;
 
 // operator !==

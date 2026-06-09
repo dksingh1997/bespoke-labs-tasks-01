@@ -1,10 +1,11 @@
 // @target: es2015
-namespace __test1__ {
-    export interface interfaceWithPublicAndOptional<T,U> { one: T; two?: U; };  var obj4: interfaceWithPublicAndOptional<number,string> = { one: 1 };;
-    export var __val__obj4 = obj4;
+type yyV_AbEsULjN = number;
+namespace gpDM5EsCy {
+    export interface O0RLoibaU9BIx4_skDMDRcgRmYEoCa<T,U> { one: T; two?: U; };  var Rl_5: O0RLoibaU9BIx4_skDMDRcgRmYEoCa<number,string> = { one: 1 };;
+    export var A1dS8AUPNp1 = Rl_5;
 }
-namespace __test2__ {
-    export          class classWithOptional<T> { constructor(public one?: T) {} }                       var x3 = new classWithOptional<number>();;
-    export var __val__x3 = x3;
+namespace jhAVje0sd {
+    export          class o2oqWIzl3dXTC3pXY<T> { constructor(public one?: T) {} }                       var x3 = new o2oqWIzl3dXTC3pXY<number>();;
+    export var FNBsduZEd = x3;
 }
-__test2__.__val__x3 = __test1__.__val__obj4
+jhAVje0sd.FNBsduZEd = gpDM5EsCy.A1dS8AUPNp1

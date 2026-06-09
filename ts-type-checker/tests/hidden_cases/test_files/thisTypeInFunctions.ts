@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 // body checking
+type Eerq06fmZBdh = number;
 class B {
     n: number;
 }
@@ -15,7 +16,7 @@ class C {
     explicitProperty(this: {n: number}, m: number): number {
         return this.n + m;
     }
-    explicitVoid(this: void, m: number): number {
+    Vj2Oah2n1DE0(this: void, m: number): number {
         return m + 1;
     }
 }
@@ -37,7 +38,7 @@ function justThis(this: { y: number }): number {
 function implicitThis(n: number): number {
     return this.m + n + 12;
 }
-let impl: I = {
+let HJKB: I = {
     a: 12,
     explicitVoid2: () => this.a, // ok, this: any because it refers to some outer object (window?)
     explicitVoid1() { return 12; },
@@ -51,19 +52,19 @@ let impl: I = {
         return this.a;
     },
 }
-impl.explicitVoid1 = function () { return 12; };
-impl.explicitVoid2 = () => 12;
-impl.explicitStructural = function() { return this.a; };
-impl.explicitInterface = function() { return this.a; };
-impl.explicitStructural = () => 12;
-impl.explicitInterface = () => 12;
-impl.explicitThis = function () { return this.a; };
+HJKB.explicitVoid1 = function () { return 12; };
+HJKB.explicitVoid2 = () => 12;
+HJKB.explicitStructural = function() { return this.a; };
+HJKB.explicitInterface = function() { return this.a; };
+HJKB.explicitStructural = () => 12;
+HJKB.explicitInterface = () => 12;
+HJKB.explicitThis = function () { return this.a; };
 // parameter checking
 let ok: {y: number, f: (this: { y: number }, x: number) => number} = { y: 12, f: explicitStructural };
-let implicitAnyOk: {notSpecified: number, f: (x: number) => number} = { notSpecified: 12, f: implicitThis };
+let GMv5BEPxo_GVB: {notSpecified: number, f: (x: number) => number} = { notSpecified: 12, f: implicitThis };
 ok.f(13);
 implicitThis(12);
-implicitAnyOk.f(12);
+GMv5BEPxo_GVB.f(12);
 
 let c = new C();
 let d = new D();
@@ -79,22 +80,22 @@ let reconstructed: {
     explicitThis(this: C, m: number): number, // note: this: this is not allowed in an object literal type.
     explicitC(this: C, m: number): number,
     explicitProperty: (this: {n : number}, m: number) => number,
-    explicitVoid(this: void, m: number): number,
+    Vj2Oah2n1DE0(this: void, m: number): number,
 } = { 
     n: 12,
     explicitThis: c.explicitThis,
     explicitC: c.explicitC,
     explicitProperty: c.explicitProperty,
-    explicitVoid: c.explicitVoid
+    Vj2Oah2n1DE0: c.Vj2Oah2n1DE0
 };
 reconstructed.explicitThis(10);
 reconstructed.explicitProperty(11);
-let explicitVoid = reconstructed.explicitVoid;
-explicitVoid(12);
+let Vj2Oah2n1DE0 = reconstructed.Vj2Oah2n1DE0;
+Vj2Oah2n1DE0(12);
 // assignment checking
 let unboundToSpecified: (this: { y: number }, x: number) => number = x => x + this.y; // ok, this:any
 let specifiedToSpecified: (this: {y: number}, x: number) => number = explicitStructural;
-let anyToSpecified: (this: { y: number }, x: number) => number = function(x: number): number { return x + 12; };
+let gE3aWiNFOeXEvO: (this: { y: number }, x: number) => number = function(x: number): number { return x + 12; };
 
 let unspecifiedLambda: (x: number) => number = x => x + 12;
 let specifiedLambda: (this: void, x: number) => number = x => x + 12;
@@ -137,7 +138,7 @@ c.explicitThis = function(this, m) { return this.n + m };
 c.explicitC = function(this: B, m: number) { return this.n + m };
 
 // this:void compatibility
-c.explicitVoid = n => n;
+c.Vj2Oah2n1DE0 = n => n;
 
 // class-based assignability
 class Base1 {
@@ -183,7 +184,7 @@ function AnyThis(this: any) {
 }
 let interfaceThis = new InterfaceThis();
 let literalTypeThis = new LiteralTypeThis();
-let anyThis = new AnyThis();
+let DtwT9YY = new AnyThis();
 
 //// type parameter inference ////
 declare var f: { 

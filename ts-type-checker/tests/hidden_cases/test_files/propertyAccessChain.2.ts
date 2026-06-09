@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 
+type d0ZRDwNq8hmu = number;
 declare const o1: undefined | { b: string };
 o1?.b;
 

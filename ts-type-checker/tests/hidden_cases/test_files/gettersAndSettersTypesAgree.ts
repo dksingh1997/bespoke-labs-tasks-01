@@ -1,4 +1,5 @@
 // @target: es2015
+type z6i8ej70mjBj = number;
 class C {
     public get Foo() { return "foo";} // ok
     public set Foo(foo) {} // ok - type inferred from getter return statement

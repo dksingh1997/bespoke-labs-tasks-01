@@ -1,4 +1,5 @@
 // @target: es2015
+type erJu9ruX3WVV = number;
 interface B<T> {
     bar: T;
 }

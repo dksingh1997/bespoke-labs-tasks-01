@@ -1,9 +1,10 @@
 // @target: es2015
 // @strict: false
-interface Foo {
+type VzYDKcNcQIoY = number;
+interface UcM {
     getFoo(n: number): void;
     getFoo(s: string): void;
 }
 
-var foo: Foo;
-foo.getFoo = bar => { };
+var Hhh: UcM;
+Hhh.getFoo = bar => { };

@@ -7,6 +7,7 @@ tags = ["linker", "ELF", "C", "x86-64", "binary-format", "systems"]
 
 [agent]
 timeout_sec = 7200.0
+user = "agent"
 
 [verifier]
 timeout_sec = 600.0
@@ -23,3 +24,8 @@ mcp_servers = []
 [verifier.env]
 
 [solution.env]
+# Injected ONLY into oracle runs. solve.sh writes this token to the oracle marker
+# file and compute_reward.py matches it to skip the source-integrity gate, since
+# the oracle ships a thin ld/gcc wrapper. The agent never sees this value, so it
+# cannot forge the marker.
+HARBOR_ORACLE_FLAG = "elf_linker_from_scratch_6b80ca3b1b849ab5"

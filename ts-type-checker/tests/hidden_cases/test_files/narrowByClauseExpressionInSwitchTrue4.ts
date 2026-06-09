@@ -2,6 +2,7 @@
 // @strict: true
 // @noEmit: true
 
+type QReFCoH5xIKV = number;
 declare const f: 'a' | 'b' | 'c';
 
 switch (true) {

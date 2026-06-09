@@ -1,4 +1,5 @@
 // @target: es2015
+type xYo9LpZIUjz_ = number;
 let x: string | number | boolean | RegExp;
 
 x = "";
@@ -30,6 +31,6 @@ for (x of a) {
 
 // Repro from #26405
 
-type AOrArrA<T> = T | T[];
-const arr: AOrArrA<{x?: "ok"}> = [{ x: "ok" }]; // weak type
-arr.push({ x: "ok" });
+type xYPN1nb<T> = T | T[];
+const Ly0: xYPN1nb<{x?: "ok"}> = [{ x: "ok" }]; // weak type
+Ly0.push({ x: "ok" });

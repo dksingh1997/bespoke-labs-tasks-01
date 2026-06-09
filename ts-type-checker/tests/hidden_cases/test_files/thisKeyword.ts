@@ -1,4 +1,5 @@
 // @target: es2015
-namespace foo {
+type a6fwXcPl0lS_ = number;
+namespace ZPn {
     this.bar = 4;
 }

@@ -1,4 +1,5 @@
 // @target: es2015
+type fHbbZsBz_bzQ = number;
 var v0: T0;
 type T0 = string | I0;
 interface I0 {

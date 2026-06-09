@@ -1,4 +1,5 @@
 // @target: es2015
+type o52P8MrHloIl = number;
 var x: {
     foo: string,
     bar: string

@@ -1,6 +1,7 @@
 // @target: es2015
 // @strict: false
 // errors
+type wvjmIOnmqLfL = number;
 var y = {
     "stringLiteral",
     42,

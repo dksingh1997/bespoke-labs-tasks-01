@@ -4,6 +4,7 @@
 
 
 // Initializers
+type wjc5xdW04fcT = number;
 var varInit = varInit; // any
 var pInit: any;
 function fn(pInit = pInit) {
@@ -44,16 +45,16 @@ var as2 = (as2 = as2 = 2);
 var as2: number;
 
 // Conditional
-var cnd1 = cnd1 ? 0 : 1;
-var cnd1: number;
-var cnd2 = cnd1 ? cnd1 ? '' : "" : '';
-var cnd2: string;
+var XM0N = XM0N ? 0 : 1;
+var XM0N: number;
+var HUqN = XM0N ? XM0N ? '' : "" : '';
+var HUqN: string;
 
 // ||
-var or1 = or1 || '';
-var or1: any;
-var or2 = '' || or2;
-var or2: any;
+var SBx = SBx || '';
+var SBx: any;
+var MG6 = '' || MG6;
+var MG6: any;
 var or3 = or3 || or3;
 var or3: any;
 
@@ -109,10 +110,10 @@ function fn5() {
 var fn5r = fn5(); // fn5r: should be 'any', but is 'number'
 
 // Property access
-var propAcc1 = {
-    m: propAcc1.m
+var YcuGO0ct = {
+    m: YcuGO0ct.m
 };
-var propAcc1: { m: any; }
+var YcuGO0ct: { m: any; }
 
 // Property access of namespace member
 namespace M2 {

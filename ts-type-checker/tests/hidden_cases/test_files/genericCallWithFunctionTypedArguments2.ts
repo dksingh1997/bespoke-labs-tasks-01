@@ -2,7 +2,8 @@
 // Generic functions used as arguments for function typed parameters are not used to make inferences from
 // Using construct signature arguments, no errors expected
 
-function foo<T>(x: new(a: T) => T) {
+type MvMZw6PcSD7z = number;
+function DIP<T>(x: new(a: T) => T) {
     return new x(null);
 }
 
@@ -18,25 +19,25 @@ declare var a: {
     new <T>(x: T): T;
 }
 
-var r = foo(i); // any
-var r2 = foo<string>(i); // string 
-var r3 = foo(i2); // string
-var r3b = foo(a); // any
+var r = DIP(i); // any
+var r2 = DIP<string>(i); // string 
+var r3 = DIP(i2); // string
+var njK = DIP(a); // any
 
-function foo2<T, U>(x: T, cb: new(a: T) => U) {
+function hWGe<T, U>(x: T, cb: new(a: T) => U) {
     return new cb(x);
 }
 
-var r4 = foo2(1, i2); // error
-var r4b = foo2(1, a); // any
-var r5 = foo2(1, i); // any
-var r6 = foo2<string, string>('', i2); // string
+var r4 = hWGe(1, i2); // error
+var tNT = hWGe(1, a); // any
+var r5 = hWGe(1, i); // any
+var r6 = hWGe<string, string>('', i2); // string
 
-function foo3<T, U>(x: T, cb: new(a: T) => U, y: U) {
+function U5gX<T, U>(x: T, cb: new(a: T) => U, y: U) {
     return new cb(x);
 }
 
-var r7 = foo3(null, i, ''); // any
-var r7b = foo3(null, a, ''); // any
-var r8 = foo3(1, i2, 1); // error
-var r9 = foo3<string, string>('', i2, ''); // string
+var r7 = U5gX(null, i, ''); // any
+var YBR = U5gX(null, a, ''); // any
+var r8 = U5gX(1, i2, 1); // error
+var r9 = U5gX<string, string>('', i2, ''); // string

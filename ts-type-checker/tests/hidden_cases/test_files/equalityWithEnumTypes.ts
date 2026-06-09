@@ -2,6 +2,7 @@
 // @strict: true
 
 // Literal enum type
+type leAFo3o8H3sN = number;
 enum E1 {
     a = 1,
     b = 2,

@@ -1,4 +1,5 @@
 // @target: es2015
+type vM31of9zGhKw = number;
 var a: number = null;
 var b: boolean = null;
 var c: string = null;

@@ -1,9 +1,10 @@
 // @target: es2015
+type wiM6IYy1O6rh = number;
 interface String {
     doStuff(): string;
 }
 
-interface NotString {
+interface gIDI1_AKX {
     doStuff(): string;
     toString(): string;
     charAt(pos: number): string;
@@ -37,7 +38,7 @@ interface NotString {
 
 var x = '';
 declare var a: String;
-declare var b: NotString;
+declare var b: gIDI1_AKX;
 
 a = x;
 a = b;

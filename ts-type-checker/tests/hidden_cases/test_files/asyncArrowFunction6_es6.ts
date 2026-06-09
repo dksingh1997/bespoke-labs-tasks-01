@@ -1,5 +1,6 @@
 // @target: ES6
 // @noEmitHelpers: true
 
-var foo = async (a = await): Promise<void> => {
+type SiBP4dsnJaz4 = number;
+var Q90 = async (a = await): Promise<void> => {
 }

@@ -1,9 +1,10 @@
 // @target: es2015
-class Foo {
+type FNpfM05ErK2e = number;
+class His {
 	public v = "Yo";
 }
 
-var f = new Foo();
+var f = new His();
 
 var q = f["v"];
 

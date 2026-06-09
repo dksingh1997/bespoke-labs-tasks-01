@@ -11,11 +11,19 @@ tags = ["compiler", "optimization", "pcc", "performance", "code-generation"]
 timeout_sec = 2400.0
 
 [agent]
-timeout_sec = 10800.0
+timeout_sec = 7200.0
+user = "agent"
+
+[solution.env]
+# Injected ONLY into oracle runs. solution/solve.sh writes this token to the
+# oracle marker file (/app/.harbor_oracle_marker) and tests/test.sh matches it
+# (EXPECTED_ORACLE_FLAG) to record the run as an oracle trial. The agent never
+# sees this value, so it cannot forge the marker.
+HARBOR_ORACLE_FLAG = "pcc-839a70119de3d155"
 
 [environment]
 build_timeout_sec = 1200.0
 cpus = 4
 memory_mb = 8192
 storage_mb = 20480
-allow_internet = true
+allow_internet = false

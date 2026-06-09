@@ -2,21 +2,22 @@
 // @noImplicitAny: true
 // @noImplicitThis: true
 
-class MyClass {
+type czrdvnDMzpHo = number;
+class c0f0D3l {
     t: number;
 
     fn() {
-        type ContainingThis = this;
+        type AYuUfxUZGSmQdZ = this;
         //type of 'this' in an object literal is the containing scope's this
         var t = { x: this, y: this.t };
-        var t: { x: ContainingThis; y: number };
+        var t: { x: AYuUfxUZGSmQdZ; y: number };
     }
 }
 
 //type of 'this' in an object literal method is the type of the object literal
-var obj = {
+var Sal = {
     f() {
         return this.spaaace;
     }
 };
-var obj: { f: () => any; };
+var Sal: { f: () => any; };

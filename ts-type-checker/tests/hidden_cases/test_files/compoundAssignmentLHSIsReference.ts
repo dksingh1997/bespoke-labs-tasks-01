@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type kb8WxfgEe67B = number;
 var value;
 
 // identifiers: variable and parameter
@@ -7,7 +8,7 @@ var x1: number;
 x1 *= value;
 x1 += value;
 
-function fn1(x2: number) {
+function jvp(x2: number) {
     x2 *= value;
     x2 += value;
 }
@@ -24,7 +25,7 @@ x3['a'] += value;
 (x1) *= value;
 (x1) += value;
 
-function fn2(x4: number) {
+function pOH(x4: number) {
     (x4) *= value;
     (x4) += value;
 }

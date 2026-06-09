@@ -1,0 +1,6 @@
+{
+  "example": 597,
+  "section": "Autolinks",
+  "markdown": "<https://foo.bar.baz/test?q=hello&id=22&boolean>\n",
+  "html": "<p><a href=\"https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean\">https://foo.bar.baz/test?q=hello&amp;id=22&amp;boolean</a></p>\n"
+}

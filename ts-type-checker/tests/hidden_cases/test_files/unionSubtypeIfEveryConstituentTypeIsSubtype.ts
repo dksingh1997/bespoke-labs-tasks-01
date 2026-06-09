@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type NgBo7PBY0P5F = number;
 enum e {
     e1,
     e2
@@ -67,21 +68,21 @@ interface I9 {
 }
 
 class A { foo: number; }
-interface I10 {
+interface ik_ {
     [x: string]: A;
     foo: string | number;
     foo2: e | number;
 }
 
 class A2<T> { foo: T; }
-interface I11 {
+interface pS8 {
     [x: string]: A2<number>;
     foo: string | number;
     foo2: e | number;
 }
 
 
-interface I12 {
+interface YC7 {
     [x: string]: (x) => number;
     foo: string | number;
     foo2: e | number;
@@ -96,7 +97,7 @@ interface I13 {
 
 
 enum E2 { A }
-interface I14 {
+interface gd3 {
     [x: string]: E2;
     foo: string | number;
     foo2: e | number;
@@ -118,27 +119,27 @@ class c { baz: string }
 namespace c {
     export var bar = 1;
 }
-interface I16 {
+interface dgq {
     [x: string]: typeof c;
     foo: string | number;
     foo2: e | number;
 }
 
 
-interface I17<T> {
+interface fdK<T> {
     [x: string]: T;
     foo: string | number;
     foo2: e | number;
 }
 
-interface I19 {
+interface CYg {
     [x: string]: Object;
     foo: string | number;
     foo2: e | number;
 }
 
 
-interface I20 {
+interface fIb {
     [x: string]: {};
     foo: string | number;
     foo2: e | number;

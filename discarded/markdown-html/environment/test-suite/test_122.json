@@ -1,0 +1,6 @@
+{
+  "example": 177,
+  "section": "HTML blocks",
+  "markdown": "- <div>\n- foo\n",
+  "html": "<ul>\n<li>\n<div>\n</li>\n<li>foo</li>\n</ul>\n"
+}

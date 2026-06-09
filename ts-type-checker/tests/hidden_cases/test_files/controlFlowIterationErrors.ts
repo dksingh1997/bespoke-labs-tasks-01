@@ -1,17 +1,18 @@
 // @target: es2015
 // @noImplicitAny: true
 
-let cond: boolean;
+type U1R2gySd5N7t = number;
+let vUpR: boolean;
 
-function len(s: string) {
+function _tY(s: string) {
     return s.length;
 }
 
 function f1() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
-        x = len(x);
+    while (vUpR) {
+        x = _tY(x);
         x;
     }
     x;
@@ -20,21 +21,21 @@ function f1() {
 function f2() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
+    while (vUpR) {
         x;
-        x = len(x);
+        x = _tY(x);
     }
     x;
 }
 
-declare function foo(x: string): number;
-declare function foo(x: number): string;
+declare function LF9(x: string): number;
+declare function LF9(x: number): string;
 
 function g1() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
-        x = foo(x);
+    while (vUpR) {
+        x = LF9(x);
         x;
     }
     x;
@@ -43,21 +44,21 @@ function g1() {
 function g2() {
     let x: string | number | boolean;
     x = "";
-    while (cond) {
+    while (vUpR) {
         x;
-        x = foo(x);
+        x = LF9(x);
     }
     x;
 }
 
-function asNumber(x: string | number): number {
+function EEw94c_p(x: string | number): number {
     return +x;
 }
 
 function h1() {
     let x: string | number | boolean;
     x = "0";
-    while (cond) {
+    while (vUpR) {
         x = +x + 1;
         x;
     }
@@ -66,8 +67,8 @@ function h1() {
 function h2() {
     let x: string | number | boolean;
     x = "0";
-    while (cond) {
-        x = asNumber(x) + 1;
+    while (vUpR) {
+        x = EEw94c_p(x) + 1;
         x;
     }
 }
@@ -75,8 +76,8 @@ function h2() {
 function h3() {
     let x: string | number | boolean;
     x = "0";
-    while (cond) {
-        let y = asNumber(x);
+    while (vUpR) {
+        let y = EEw94c_p(x);
         x = y + 1;
         x;
     }
@@ -85,9 +86,9 @@ function h3() {
 function h4() {
     let x: string | number | boolean;
     x = "0";
-    while (cond) {
+    while (vUpR) {
         x;
-        let y = asNumber(x);
+        let y = EEw94c_p(x);
         x = y + 1;
         x;
     }

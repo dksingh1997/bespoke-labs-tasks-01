@@ -1,0 +1,6 @@
+{
+  "example": 344,
+  "section": "Code spans",
+  "markdown": "[not a `link](/foo`)\n",
+  "html": "<p>[not a <code>link](/foo</code>)</p>\n"
+}

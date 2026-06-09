@@ -1,5 +1,6 @@
 // @target: es2015
 // @strict: false
+type UAqQ4zvWjBjf = number;
 class C {
     "   ": number;
     "a   b": string;

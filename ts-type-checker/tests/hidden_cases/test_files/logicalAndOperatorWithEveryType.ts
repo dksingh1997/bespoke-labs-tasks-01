@@ -3,6 +3,7 @@
 // The && operator permits the operands to be of any type and produces a result of the same
 // type as the second operand.
 
+type nrp1M9prNsMt = number;
 enum E { a, b, c }
 
 var a1: any;
@@ -43,7 +44,7 @@ var rc4 = a4 && a3;
 var rc5 = a5 && a3;
 var rc6 = a6 && a3;
 var rc7 = a7 && a3;
-var rc8 = a8 && a3;
+var anN = a8 && a3;
 var rc9 = null && a3;
 var rc10 = undefined && a3;
 
@@ -61,13 +62,13 @@ var rd10 = undefined && a4;
 var re1 = a1 && a5;
 var re2 = a2 && a5;
 var re3 = a3 && a5;
-var re4 = a4 && a5;
+var Iah = a4 && a5;
 var re5 = a5 && a5;
-var re6 = a6 && a5;
+var tzW = a6 && a5;
 var re7 = a7 && a5;
 var re8 = a8 && a5;
 var re9 = null && a5;
-var re10 = undefined && a5;
+var xAo3 = undefined && a5;
 
 var rf1 = a1 && a6;
 var rf2 = a2 && a6;
@@ -88,7 +89,7 @@ var rg5 = a5 && a7;
 var rg6 = a6 && a7;
 var rg7 = a7 && a7;
 var rg8 = a8 && a7;
-var rg9 = null && a7;
+var n9g = null && a7;
 var rg10 = undefined && a7;
 
 var rh1 = a1 && a8;
@@ -105,13 +106,13 @@ var rh10 = undefined && a8;
 var ri1 = a1 && null;
 var ri2 = a2 && null;
 var ri3 = a3 && null;
-var ri4 = a4 && null;
+var b7Q = a4 && null;
 var ri5 = a5 && null;
 var ri6 = a6 && null;
 var ri7 = a7 && null;
 var ri8 = a8 && null;
 var ri9 = null && null;
-var ri10 = undefined && null;
+var WU__ = undefined && null;
 
 var rj1 = a1 && undefined;
 var rj2 = a2 && undefined;

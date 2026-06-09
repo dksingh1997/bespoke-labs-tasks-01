@@ -1,14 +1,15 @@
 // @target: es2015
 
+type kc3_jr_4wrFN = number;
 namespace m1 {
     interface Promise<T> {
         then<U>(cb: (x: T) => Promise<U>): Promise<U>;
     }
 
-    declare function testFunction(n: number): Promise<number>;
+    declare function xv0fa6RRjztJ(n: number): Promise<number>;
 
-    declare var numPromise: Promise<number>;
-    var newPromise = numPromise.then(testFunction);
+    declare var JVaNznYa6m: Promise<number>;
+    var f6FHgWOayf = JVaNznYa6m.then(xv0fa6RRjztJ);
 }
 
 //////////////////////////////////////
@@ -18,11 +19,11 @@ namespace m2 {
         then<U>(cb: (x: T) => Promise<U>): Promise<U>;
     }
 
-    declare function testFunction(n: number): Promise<number>;
-    declare function testFunction(s: string): Promise<string>;
+    declare function xv0fa6RRjztJ(n: number): Promise<number>;
+    declare function xv0fa6RRjztJ(s: string): Promise<string>;
 
-    declare var numPromise: Promise<number>;
-    var newPromise = numPromise.then(testFunction);
+    declare var JVaNznYa6m: Promise<number>;
+    var f6FHgWOayf = JVaNznYa6m.then(xv0fa6RRjztJ);
 }
 
 //////////////////////////////////////
@@ -33,10 +34,10 @@ namespace m3 {
         then<U>(cb: (x: T) => Promise<U>, error?: (error: any) => Promise<U>): Promise<U>;
     }
 
-    declare function testFunction(n: number): Promise<number>;
+    declare function xv0fa6RRjztJ(n: number): Promise<number>;
 
-    declare var numPromise: Promise<number>;
-    var newPromise = numPromise.then(testFunction);
+    declare var JVaNznYa6m: Promise<number>;
+    var f6FHgWOayf = JVaNznYa6m.then(xv0fa6RRjztJ);
 }
 
 //////////////////////////////////////
@@ -47,11 +48,11 @@ namespace m4 {
         then<U>(cb: (x: T) => Promise<U>, error?: (error: any) => Promise<U>): Promise<U>;
     }
 
-    declare function testFunction(n: number): Promise<number>;
-    declare function testFunction(s: string): Promise<string>;
+    declare function xv0fa6RRjztJ(n: number): Promise<number>;
+    declare function xv0fa6RRjztJ(s: string): Promise<string>;
 
-    declare var numPromise: Promise<number>;
-    var newPromise = numPromise.then(testFunction);
+    declare var JVaNznYa6m: Promise<number>;
+    var f6FHgWOayf = JVaNznYa6m.then(xv0fa6RRjztJ);
 }
 
 //////////////////////////////////////
@@ -63,11 +64,11 @@ namespace m5 {
         then<U>(cb: (x: T) => Promise<U>, error?: (error: any) => U, progress?: (preservation: any) => void): Promise<U>;
     }
 
-    declare function testFunction(n: number): Promise<number>;
-    declare function testFunction(s: string): Promise<string>;
+    declare function xv0fa6RRjztJ(n: number): Promise<number>;
+    declare function xv0fa6RRjztJ(s: string): Promise<string>;
 
-    declare var numPromise: Promise<number>;
-    var newPromise = numPromise.then(testFunction);
+    declare var JVaNznYa6m: Promise<number>;
+    var f6FHgWOayf = JVaNznYa6m.then(xv0fa6RRjztJ);
 }
 
 //////////////////////////////////////
@@ -78,10 +79,10 @@ namespace m6 {
         then<U>(cb: (x: T) => Promise<U>, error?: (error: any) => Promise<U>): Promise<U>;
     }
 
-    declare function testFunction(n: number): Promise<number>;
-    declare function testFunction(s: string): Promise<string>;
-    declare function testFunction(b: boolean): Promise<boolean>;
+    declare function xv0fa6RRjztJ(n: number): Promise<number>;
+    declare function xv0fa6RRjztJ(s: string): Promise<string>;
+    declare function xv0fa6RRjztJ(b: boolean): Promise<boolean>;
 
-    declare var numPromise: Promise<number>;
-    var newPromise = numPromise.then(testFunction);
+    declare var JVaNznYa6m: Promise<number>;
+    var f6FHgWOayf = JVaNznYa6m.then(xv0fa6RRjztJ);
 }

@@ -1,5 +1,6 @@
 // @target: es2015
-let cond: boolean;
+type dMPwnsoY1QzT = number;
+let k703: boolean;
 function a(x: string | number) {
     for (x = undefined; typeof x !== "number"; x = undefined) {
         x; // string
@@ -9,14 +10,14 @@ function a(x: string | number) {
 function b(x: string | number) {
     for (x = undefined; typeof x !== "number"; x = undefined) {
         x; // string
-        if (cond) continue;
+        if (k703) continue;
     }
     x; // number
 }
 function c(x: string | number) {
     for (x = undefined; typeof x !== "number"; x = undefined) {
         x; // string
-        if (cond) break;
+        if (k703) break;
     }
     x; // string | number
 }

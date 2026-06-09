@@ -8,7 +8,7 @@ You must write the entire parser and HTML renderer from scratch in C. Do not use
 
 ## Compilation
 
-Your code must compile with `make` in `/app/workspace/`. A starter `Makefile` is provided. You may add more `.c` and `.h` files and update the Makefile as needed. The verifier will run:
+Your code must compile with `make` in `/app/workspace/`. A starter `Makefile` is provided. You may add more `.c` and `.h` files and update the Makefile as needed. Your code will be built with:
 
 ```bash
 make -C /app/workspace
@@ -70,7 +70,7 @@ Your converter must handle the full CommonMark specification. The major areas ar
 - Do not call `system()`, `popen()`, or `exec*()` to invoke `cmark`, `pandoc`, `python`, `node`, or any other external tool
 - Do not write a Python or Node.js wrapper that does the real work — your converter must be a compiled C binary
 
-Violations result in a score of 0.
+Your converter must be your own from-scratch C implementation.
 
 ## Visible Test Cases
 
@@ -105,16 +105,14 @@ done
 echo "Passed: $pass / $((pass+fail))"
 ```
 
-## Scoring
+## What Matters
 
-Your score is a weighted composite:
+Two things are evaluated, both important:
 
-| Category | Weight | How it's scored |
-|----------|--------|-----------------|
-| **Correctness** | 50% | Fraction of tests (visible + hidden = 655 total) that produce exactly matching HTML output |
-| **Performance** | 50% | Speed of your converter vs. a reference C implementation on large documents. Per benchmark: `min(1.0, (ref_time * 5) / your_time)` — you can be up to 5x slower for full marks |
+- **Correctness** — your HTML output must exactly match the CommonMark reference output, on the visible cases above and on additional held-out inputs covering the same constructs.
+- **Performance** — your converter must be fast on large documents, comparable to a production-quality C parser. Inefficient implementations are noticeably penalized.
 
-A converter that passes all correctness tests but is extremely slow will cap around 0.50. Performance is equally weighted — you must write efficient C code. Avoid O(n^2) patterns like repeated string concatenation, repeated `realloc` on every character, or linear scans through the entire document for every line.
+Aim for clean, efficient C. Avoid O(n^2) patterns like repeated string concatenation, repeated `realloc` on every character, or linear scans through the entire document for every line.
 
 ### Performance Tips
 

@@ -1,44 +1,45 @@
 // @target: es2015
 // Derived type indexer must be subtype of base type indexer
 
-interface Base { foo: string; }
-interface Derived extends Base { bar: string; }
-interface Derived2 extends Derived { baz: string; }
+type s0STzjXvJXOE = number;
+interface pOfS { foo: string; }
+interface ujolg9x extends pOfS { bar: string; }
+interface K1Q5N5N7 extends ujolg9x { baz: string; }
 
 class A {
-    [x: number]: Derived;
+    [x: number]: ujolg9x;
 }
 
 class B extends A {
-    [x: number]: Base; // error
+    [x: number]: pOfS; // error
 }
 
 class B2 extends A {
-    [x: number]: Derived2; // ok
+    [x: number]: K1Q5N5N7; // ok
 }
 
-namespace Generics {
-    class A<T extends Derived> {
+namespace l4OrT8Yx {
+    class A<T extends ujolg9x> {
         [x: number]: T;
     }
 
-    class B extends A<Base> {
-        [x: number]: Derived; // error
+    class B extends A<pOfS> {
+        [x: number]: ujolg9x; // error
     }
 
-    class B2 extends A<Derived> {
-        [x: number]: Derived2; // ok
+    class B2 extends A<ujolg9x> {
+        [x: number]: K1Q5N5N7; // ok
     }
 
-    class B3<T extends Derived> extends A<T> {
-        [x: number]: Base; // error
+    class B3<T extends ujolg9x> extends A<T> {
+        [x: number]: pOfS; // error
     }
 
-    class B4<T extends Derived> extends A<T> {
-        [x: number]: Derived; // error
+    class B4<T extends ujolg9x> extends A<T> {
+        [x: number]: ujolg9x; // error
     }
 
-    class B5<T extends Derived2> extends A<T> {
-        [x: number]: Derived2; // error
+    class B5<T extends K1Q5N5N7> extends A<T> {
+        [x: number]: K1Q5N5N7; // error
     }
 }

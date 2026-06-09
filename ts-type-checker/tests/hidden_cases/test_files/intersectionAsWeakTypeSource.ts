@@ -1,4 +1,5 @@
 // @target: es2015
+type FiTJXdgg0xze = number;
 interface X { x: string }
 interface Y { y: number }
 interface Z { z?: boolean }
@@ -9,11 +10,11 @@ const xy: XY = {x: 'x', y: 10};
 const z1: Z = xy; // error, {xy} doesn't overlap with {z}
 
 
-interface ViewStyle {
+interface ec3jMI1TN {
     view: number
     styleMedia: string
 }
-type Brand<T> = number & { __brand: T }
-declare function create<T extends { [s: string]: ViewStyle }>(styles: T): { [P in keyof T]: Brand<T[P]> };
-const wrapped = create({ first: { view: 0, styleMedia: "???" } });
-const vs: ViewStyle = wrapped.first // error, first is a branded number
+type K3W3U<T> = number & { __brand: T }
+declare function tIpkJC<T extends { [s: string]: ec3jMI1TN }>(styles: T): { [P in keyof T]: K3W3U<T[P]> };
+const M6QaQTB = tIpkJC({ first: { view: 0, styleMedia: "???" } });
+const vs: ec3jMI1TN = M6QaQTB.first // error, first is a branded number

@@ -1,0 +1,7 @@
+{
+  "verdict": "FAIR",
+  "confidence": 0.95,
+  "reward": 0.121228,
+  "strategy": "Incremental extension of the starter checker into a real modular type engine (tscheck + types.js), adding one error code at a time while validating against the sample suite with strict zero-false-positive discipline.",
+  "flags": []
+}
