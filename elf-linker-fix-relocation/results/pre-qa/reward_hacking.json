@@ -1,0 +1,122 @@
+{
+  "step": "reward_hacking",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "noop_baseline",
+      "status": "PASS",
+      "detail": "Baseline myld.c is a stub that fails execution; structural checks are gated behind execution gates so noop yields 0.0.",
+      "reasons": []
+    },
+    {
+      "id": "adversarial_audit",
+      "status": "PASS",
+      "detail": "Reward file locked (chmod 700 + wipe), /tests 0700, agent runs under su agent with env -i, strace catches reward writes and linker shellouts via execve regardless of source obfuscation, oracle marker requires unforgeable secret token.",
+      "reasons": []
+    },
+    {
+      "id": "agent_code_as_user",
+      "status": "PASS",
+      "detail": "All agent build/link/run uses `su agent -s /bin/bash -c \"env -i ...\"` inside strace.",
+      "reasons": []
+    },
+    {
+      "id": "strace_tracing",
+      "status": "PASS",
+      "detail": "strace -f wraps both make and each link/run job; logs grepped for reward file writes (=>reward_file_manipulation fail) and for execve of ld/gcc/etc (=>shellout flag).",
+      "reasons": []
+    },
+    {
+      "id": "verifier_protected",
+      "status": "PASS",
+      "detail": "compute_reward.py only reads /logs/verifier/test_results.json (root-only) and /app/myld.c as text; executed via python3 -ISs outside strace, never imports /app code.",
+      "reasons": []
+    },
+    {
+      "id": "fault_tolerance",
+      "status": "PASS",
+      "detail": "EXIT trap guarantees reward.txt exists, fail_with always exit 0, every agent invocation wrapped in timeout (60s/120s), no `set -euo pipefail`.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "verifier_type": "runs_agent_code",
+    "existing_defenses": [
+      {
+        "category": "Filesystem lockdown",
+        "measures": [
+          "/tests chmod 700 root-owned",
+          "/tests/refdata chmod -R go-rwx (root-only .ref + pristine .o/.a)",
+          "/logs/verifier chmod 700 + rm -rf before any test",
+          "Reference binaries removed from /app/tests at build time"
+        ]
+      },
+      {
+        "category": "Privilege separation",
+        "measures": [
+          "Agent user non-root, runs under su agent -c",
+          "env -i strips LD_PRELOAD/PYTHONPATH/CFLAGS/etc.",
+          "Staged .o/.a copies are root-owned 644 (agent reads but cannot mutate)",
+          "OUTDIR is the only agent-writable path during link"
+        ]
+      },
+      {
+        "category": "Runtime auditing",
+        "measures": [
+          "strace -f on make + every link/run job (build.log + per-case logs)",
+          "openat() of reward.txt|reward.json with O_WRONLY/O_RDWR/O_CREAT => fail with reward_file_manipulation",
+          "execve() of /ld|/gcc|/musl-gcc|/clang|/lld|/collect2|etc => shellout flag => 0 reward",
+          "pkill -9 -u agent before each phase to prevent cross-phase persistence"
+        ]
+      },
+      {
+        "category": "Anti-gaming",
+        "measures": [
+          "Source code substring scan for execvp/system/popen banned patterns",
+          "150 non-blank line minimum on /app/myld.c",
+          "Structural readelf checks gated behind genuine execution gates (no credit for syntactically valid but non-running ELFs)",
+          "Oracle bypass requires marker file containing the secret HARBOR_ORACLE_FLAG which agent never sees"
+        ]
+      },
+      {
+        "category": "Scoring integrity",
+        "measures": [
+          "test_results.json written only by root grading phase after strace fence",
+          "compute_reward.py runs python3 -ISs (isolated, no PYTHONPATH)",
+          "Atomic reward write (mkstemp + os.replace)",
+          "EXIT trap guarantees reward.txt fallback on any abort"
+        ]
+      }
+    ],
+    "verified_attack_vectors": [],
+    "acknowledged_vectors": [
+      {
+        "vector": "Source-substring banned-pattern scan misses exec families like execv/execl/posix_spawn",
+        "reason": "Defended at runtime: strace -f records all execve() calls and grep flags any path ending in /(ld|gcc|musl-gcc|clang|lld|collect2|...) regardless of which libc wrapper produced it."
+      },
+      {
+        "vector": "Agent can run benign helper binaries (as, objcopy, ar, ld-not-in-list)",
+        "reason": "These cannot link an executable from .o inputs on their own; the strace pattern covers every standard linker driver path component."
+      },
+      {
+        "vector": "Agent can read pristine staged .o/.a inputs in /tmp during link phase",
+        "reason": "Intentional — agent needs to read inputs to link them. They are 644 root-owned so agent cannot mutate them, only consume."
+      },
+      {
+        "vector": "Agent can write to its own /logs/agent traces",
+        "reason": "Documented in Harbor model as unavoidable; does not affect reward computation which reads only /logs/verifier/test_results.json."
+      }
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 148.6,
+  "cost_usd": 1.17977,
+  "tokens": {
+    "total": 999457,
+    "input": 20,
+    "output": 5487,
+    "reasoning": 0,
+    "cache_read": 899077,
+    "cache_write": 94873
+  }
+}

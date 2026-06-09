@@ -1,0 +1,73 @@
+{
+  "step": "format_check",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present.",
+      "reasons": []
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": []
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user=agent.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "git and tmux installed via apt-get.",
+      "reasons": []
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains compute_reward.py in addition to test.sh; should live in environment/tests/.",
+      "reasons": [
+        "tests/compute_reward.py should be moved to environment/tests/ and bundled into the Docker image via COPY"
+      ]
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "WARN",
+      "detail": "Stray job-local.yaml at task root is not a standard Harbor file.",
+      "reasons": [
+        "job-local.yaml is non-standard; either remove it or document why it is needed alongside job.yaml"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "elf-linker-fix-layout",
+    "difficulty": "hard",
+    "category": "systems-programming",
+    "agent_timeout_sec": 7200,
+    "verifier_timeout_sec": 600,
+    "build_timeout_sec": 600,
+    "allow_internet": false,
+    "cpus": 2,
+    "memory_mb": 4096,
+    "agent_user": "agent"
+  },
+  "notes": [
+    "Move tests/compute_reward.py to environment/tests/compute_reward.py and add a COPY directive in the Dockerfile so it is bundled into /tests at image build time.",
+    "Remove or rename job-local.yaml, or add a .gitignore entry if it is a local-only override."
+  ],
+  "elapsed_sec": 66.4,
+  "cost_usd": 0.722217,
+  "tokens": {
+    "total": 590934,
+    "input": 16,
+    "output": 2905,
+    "reasoning": 0,
+    "cache_read": 526186,
+    "cache_write": 61827
+  }
+}

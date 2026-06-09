@@ -1,0 +1,131 @@
+{
+  "step": "reward_design",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Each test diffs agent ELF stdout+exit against a root-owned reference; structural checks gated behind actual execution pass so a non-running ELF scores ~0.",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Tests score the produced ELF's runtime behavior (stdout/exit) vs a reference, not how relocations were implemented; any correct linker passes.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "PASS",
+      "detail": "Weighted sum across tiers is fine because higher tiers strictly subsume lower-tier capabilities, so the agent cannot game an easy dimension while ignoring hard ones to claim full credit.",
+      "reasons": []
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Banned-pattern + strace exec scan blocks shelling out to ld/gcc, structural-gate-on-execution blocks valid-but-broken ELFs, and exact diff against reference output blocks degenerate outputs.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py reads test_results.json and myld.c text only; no agent code is imported or executed and it can be re-run independently.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both success and --fail paths emit reward.json with score, subscores list (one per tier, empty allowed semantics preserved), and additional_data, plus reward.txt.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "score = clamp01( sum_over_tiers( weight_t * (passed_t / total_t) ) ) * anti_gaming_pass; weights: T1=0.08, T2=0.12, T3=0.16, T4=0.24, T5=0.40; structural sub-tests gated by their execution-pass counterpart",
+      "formula_explanation": "Tiered weighted sum rewards incremental linker capability (basic ELF -> cross-file -> bss/archive -> musl structural -> full musl programs) while a multiplicative anti-gaming gate zeroes the score on shellout or banned patterns.",
+      "components": [
+        {
+          "name": "T1 basic ELF",
+          "metric": "diff vs reference stdout+exit on single-.o inline syscall + structural readelf gated by run",
+          "gate": "structural sub-test only counted if execution sub-test passed",
+          "weight": "0.08"
+        },
+        {
+          "name": "T2 cross-file",
+          "metric": "diff vs reference for hello/data multi-object programs + structural gated",
+          "gate": "structural sub-test only counted if execution sub-test passed",
+          "weight": "0.12"
+        },
+        {
+          "name": "T3 bss + archive",
+          "metric": "diff vs reference for .bss and .a-pulling programs",
+          "gate": "none beyond execution match",
+          "weight": "0.16"
+        },
+        {
+          "name": "T4 structural + musl hello",
+          "metric": "readelf entry/.text/no-dynsym checks + musl hello run-diff",
+          "gate": "structural checks gated by t4_hello_libc execution pass",
+          "weight": "0.24"
+        },
+        {
+          "name": "T5 complex musl",
+          "metric": "diff vs reference for printf, multi-file musl, common symbols",
+          "gate": "none beyond execution match",
+          "weight": "0.40"
+        },
+        {
+          "name": "anti-gaming gate",
+          "metric": "strace shellout detection (ld/gcc/clang/lld/cc1/collect2/musl-gcc), banned source patterns (system/popen/execvp ld/gcc), min 150 non-blank lines, oracle marker bypass",
+          "gate": "multiplicative: failing zeroes the whole reward",
+          "weight": "multiplier"
+        }
+      ],
+      "aggregation_method": "weighted_sum",
+      "dimension_analysis": [
+        {
+          "name": "T1 basic ELF",
+          "trivially_maxable": false,
+          "difficulty": "easy",
+          "notes": "Already mostly works in baseline per instruction; small weight."
+        },
+        {
+          "name": "T2 cross-file relocations",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "Core of the bug to fix (PC-rel relocation formula)."
+        },
+        {
+          "name": "T3 bss + archive",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "Requires archive member pull plus .bss/relocation correctness."
+        },
+        {
+          "name": "T4 musl structural+hello",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "Structural checks alone are easy but gated by hello_libc execution."
+        },
+        {
+          "name": "T5 complex musl programs",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "Highest weight; requires correct relocations across crt1+libc.a."
+        }
+      ]
+    }
+  },
+  "notes": [],
+  "elapsed_sec": 116.9,
+  "cost_usd": 0.52227,
+  "tokens": {
+    "total": 557789,
+    "input": 15,
+    "output": 3605,
+    "reasoning": 0,
+    "cache_read": 527215,
+    "cache_write": 26954
+  }
+}

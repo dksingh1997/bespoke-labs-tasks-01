@@ -1,0 +1,932 @@
+{
+  "task_name": "elf-linker-fix-layout",
+  "task_dir": "/Users/dheeraj/Downloads/refactor/bespoke-labs-tasks-01/elf-linker-fix-layout",
+  "timestamp": "2026-06-09T21:45:42.269088+00:00",
+  "model": "anthropic/claude-opus-4-7",
+  "elapsed_sec": 200.3,
+  "cost": {
+    "total_usd": 5.735361,
+    "tokens": {
+      "total": 5147230,
+      "input": 130,
+      "output": 29475,
+      "reasoning": 0,
+      "cache_read": 4693447,
+      "cache_write": 424178
+    }
+  },
+  "overall_status": "WARN",
+  "fail_count": 0,
+  "warn_count": 5,
+  "pass_count": 34,
+  "error_count": 0,
+  "blocking_failures": [],
+  "steps": {
+    "format_check": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "required_files",
+          "status": "PASS",
+          "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present.",
+          "reasons": []
+        },
+        {
+          "id": "recommended_files",
+          "status": "PASS",
+          "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+          "reasons": []
+        },
+        {
+          "id": "task_toml_schema",
+          "status": "PASS",
+          "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user=agent.",
+          "reasons": []
+        },
+        {
+          "id": "dockerfile_required_tools",
+          "status": "PASS",
+          "detail": "git and tmux installed via apt-get.",
+          "reasons": []
+        },
+        {
+          "id": "tests_folder_lean",
+          "status": "WARN",
+          "detail": "tests/ contains compute_reward.py in addition to test.sh; should live in environment/tests/.",
+          "reasons": [
+            "tests/compute_reward.py should be moved to environment/tests/ and bundled into the Docker image via COPY"
+          ]
+        },
+        {
+          "id": "directory_cleanliness",
+          "status": "WARN",
+          "detail": "Stray job-local.yaml at task root is not a standard Harbor file.",
+          "reasons": [
+            "job-local.yaml is non-standard; either remove it or document why it is needed alongside job.yaml"
+          ]
+        }
+      ],
+      "elapsed_sec": 66.4,
+      "cost_usd": 0.722217,
+      "notes": [
+        "Move tests/compute_reward.py to environment/tests/compute_reward.py and add a COPY directive in the Dockerfile so it is bundled into /tests at image build time.",
+        "Remove or rename job-local.yaml, or add a .gitignore entry if it is a local-only override."
+      ]
+    },
+    "isolation": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "agent_user",
+          "status": "PASS",
+          "detail": "task.toml declares [agent] user = \"agent\" for non-root agent execution.",
+          "reasons": [
+            "present: [agent] user = \"agent\" at task.toml:10"
+          ]
+        },
+        {
+          "id": "dockerfile_isolation",
+          "status": "PASS",
+          "detail": "All required isolation directives are present in the Dockerfile.",
+          "reasons": [
+            "present: useradd agent (line 11)",
+            "present: chown -R agent:agent /app (line 27)",
+            "present: chown agent:agent /solution (line 18)",
+            "present: mkdir /tests && chmod 700 /tests (line 15), re-locked after refdata staging (line 85)",
+            "present: strace installed (line 7) — required since verifier runs agent code",
+            "present: extra hardening — /tests/refdata staged root-only with chmod -R go-rwx (line 86); .ref answer keys removed from agent-readable /app/tests (line 84)",
+            "note: uid 1000 not explicitly pinned; useradd defaults yield uid 1000 on debian slim, acceptable"
+          ]
+        },
+        {
+          "id": "testsh_isolation",
+          "status": "PASS",
+          "detail": "test.sh locks /logs/verifier first then wipes, runs agent code as su agent under strace with timeout, and computes reward outside strace.",
+          "reasons": [
+            "present: chmod 700 /logs/verifier BEFORE rm -rf (lines 39-40)",
+            "present: trap on EXIT guarantees fallback reward 0.0 (line 45)",
+            "present: exit 0 always (line 310; fail_with also exits 0 at line 61)",
+            "present: chmod 700 /tests re-lock after Harbor upload (line 48)",
+            "present: env sanitisation — unset LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/BASH_ENV/etc (line 52)",
+            "present: pkill -u agent before and after agent phase (lines 65, 119, 145, 188)",
+            "present: agent code wrapped in strace -f + timeout + su agent -s /bin/bash -c 'env -i ...' (lines 120-125, 146-151)",
+            "present: strace logs scanned for reward.{txt,json} openat with O_WRONLY/O_RDWR/O_CREAT (lines 126, 152)",
+            "present: compute_reward.py invoked OUTSIDE strace as root (line 308), invoked with python3 -ISs (no agent imports)",
+            "present: no chown root:root on /logs",
+            "present: no set -euo pipefail (avoids early abort without reward)"
+          ]
+        },
+        {
+          "id": "verifier_type",
+          "status": "PASS",
+          "detail": "runs_agent_code — verifier builds agent's myld and executes agent-produced ELFs.",
+          "reasons": [
+            "agent's myld is built via `make -C /app` under strace (line 150)",
+            "agent's myld is invoked to link tier objects (RUNNER, line 97)",
+            "agent-produced ELFs are executed via timeout 10 (line 102)",
+            "strace + su agent are mandatory and present",
+            "scoring (compute_reward.py) reads only static files (test_results.json, strace logs) — does not import /app"
+          ]
+        }
+      ],
+      "elapsed_sec": 47.1,
+      "cost_usd": 0.506835
+    },
+    "reproducibility": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "lockfile",
+          "status": "N/A",
+          "detail": "Task is C/systems-programming with no Python or external package dependencies requiring a lockfile.",
+          "reasons": []
+        },
+        {
+          "id": "package_manager",
+          "status": "N/A",
+          "detail": "No Python package manager used; toolchain is apt-installed (gcc, musl-tools, binutils).",
+          "reasons": []
+        },
+        {
+          "id": "docker_image_cached",
+          "status": "WARN",
+          "detail": "task.toml has no docker_image set; acceptable during development but required before final delivery.",
+          "reasons": [
+            "docker_image not set in [environment]"
+          ]
+        }
+      ],
+      "elapsed_sec": 43.9,
+      "cost_usd": 0.514111,
+      "notes": [
+        "Set [environment].docker_image to a prebuilt registry image before final delivery."
+      ]
+    },
+    "instruction_quality": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "clarity",
+          "status": "PASS",
+          "detail": "Clear deliverable: fix myld.c so linked programs run and produce correct output, with invocation contract and section behaviors spelled out.",
+          "reasons": []
+        },
+        {
+          "id": "time_awareness",
+          "status": "WARN",
+          "detail": "No explicit sandbox time bound or iterative-best-output hint is provided to the agent.",
+          "reasons": [
+            "instruction.md does not mention timeout or suggest keeping best result updated as agent iterates"
+          ]
+        },
+        {
+          "id": "tone",
+          "status": "PASS",
+          "detail": "Reads as a conversational colleague handoff with debugging tips rather than a formal spec.",
+          "reasons": []
+        },
+        {
+          "id": "length",
+          "status": "PASS",
+          "detail": "53 lines, well under the 100-line limit.",
+          "reasons": []
+        },
+        {
+          "id": "scoring_leakage",
+          "status": "PASS",
+          "detail": "No mention of scorer, verifier, reward, evaluation, or test.sh in instruction.md.",
+          "reasons": []
+        },
+        {
+          "id": "tools_documented",
+          "status": "PASS",
+          "detail": "Mentions make, readelf, objdump, musl-gcc, gcc, and points at <elf.h> and musl paths.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 48.3,
+      "cost_usd": 0.505674,
+      "notes": [
+        "Consider adding a one-line hint about the sandbox time budget (e.g., 'you have up to 2 hours') or suggesting the agent keep myld.c in a runnable state across iterations."
+      ]
+    },
+    "reward_hacking": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "noop_baseline",
+          "status": "PASS",
+          "detail": "Baseline myld.c compiles but produces non-running ELFs; structural checks are gated by execution gates in STRUCTURAL_GATES so unrun tiers contribute 0.",
+          "reasons": []
+        },
+        {
+          "id": "adversarial_audit",
+          "status": "PASS",
+          "detail": "Reward file, /tests, refdata, and stage inputs are all root-only by container-start; agent runs under su+strace and is killed before grading.",
+          "reasons": []
+        },
+        {
+          "id": "agent_code_as_user",
+          "status": "PASS",
+          "detail": "All agent code paths (make build, link, run) execute under `su agent -s /bin/bash -c 'env -i ...'`.",
+          "reasons": []
+        },
+        {
+          "id": "strace_tracing",
+          "status": "PASS",
+          "detail": "strace -f wraps every agent invocation (build + each link/run) and logs are scanned for reward openat and toolchain execve before scoring.",
+          "reasons": []
+        },
+        {
+          "id": "verifier_protected",
+          "status": "PASS",
+          "detail": "compute_reward.py runs with `python3 -ISs` from /tests, reads only the root-written test_results.json and /app/myld.c as text; no imports from /app.",
+          "reasons": []
+        },
+        {
+          "id": "fault_tolerance",
+          "status": "PASS",
+          "detail": "No `set -e`, EXIT trap guarantees reward.txt=0 on any early exit, every fail_with exits 0, and all subprocesses are bounded by `timeout`.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 200.2,
+      "cost_usd": 1.122388
+    },
+    "reward_design": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "correctness_gating",
+          "status": "PASS",
+          "detail": "Structural-only T4 checks (entry/sections/nostdlib) and T1/T2 ELF checks are gated behind genuine execution passes, so a baseline emitting valid-but-non-running ELFs scores 0.",
+          "reasons": []
+        },
+        {
+          "id": "implementation_agnostic",
+          "status": "PASS",
+          "detail": "Grading runs the produced ELF and diffs stdout+exit against root-owned reference outputs, measuring the deliverable's behavior independent of linker algorithm.",
+          "reasons": []
+        },
+        {
+          "id": "dimension_balance",
+          "status": "PASS",
+          "detail": "Five tiers weighted by difficulty (0.08/0.12/0.16/0.24/0.40); the easy tiers cap at ~0.36 total so the agent cannot game a high score without solving the hard musl tier.",
+          "reasons": []
+        },
+        {
+          "id": "shortcut_resistant",
+          "status": "PASS",
+          "detail": "Trivial outputs fail link/diff and score 0; banned-pattern source scan, MIN_CODE_LINES=150, and strace-based shellout detection block the obvious shell-out-to-ld shortcut.",
+          "reasons": []
+        },
+        {
+          "id": "modular_scoring",
+          "status": "PASS",
+          "detail": "compute_reward.py reads /logs/verifier/test_results.json (written by root grading phase) and never imports agent code, so it can re-run independently.",
+          "reasons": []
+        },
+        {
+          "id": "reward_json_schema",
+          "status": "PASS",
+          "detail": "Both --fail and success paths in compute_reward.py emit reward.json with score, subscores list, and additional_data via write_reward (failure path uses subscores=[{subtask:t,score:0.0} for t in TIERS]).",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 119.4,
+      "cost_usd": 0.70582
+    },
+    "fairness": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "instruction_verifier_sync",
+          "status": "PASS",
+          "detail": "Tiered tests (exit, hello, data, bss, archive, musl printf/multi/common) map directly to instruction requirements; structural T4 checks are gated behind execution.",
+          "reasons": []
+        },
+        {
+          "id": "definitions_documented",
+          "status": "PASS",
+          "detail": "ELF, relocations, archive scanning, and anti-shellout constraints are all explicit in instruction.md or standard systems knowledge.",
+          "reasons": []
+        },
+        {
+          "id": "tools_accessible",
+          "status": "PASS",
+          "detail": "Dockerfile installs build-essential, musl-tools, strace, etc.; Makefile + myld.c starter present; musl path matches instruction.",
+          "reasons": []
+        },
+        {
+          "id": "oracle_exists",
+          "status": "PASS",
+          "detail": "solution/solve.sh is 152 lines and writes a working ld/gcc wrapper plus the oracle marker.",
+          "reasons": []
+        },
+        {
+          "id": "hidden_test_fairness",
+          "status": "PASS",
+          "detail": "All graded cases are structural variants of the documented requirement (valid running ELF executables linking the provided test inputs).",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 125.8,
+      "cost_usd": 0.682587
+    },
+    "cleanliness": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "dockerfile_quality",
+          "status": "PASS",
+          "detail": "Slim base, cache cleaned, every installed package (build-essential, musl-tools/dev, git, tmux, strace, procps) is genuinely used by build or verifier.",
+          "reasons": []
+        },
+        {
+          "id": "solution_clean",
+          "status": "PASS",
+          "detail": "Only solve.sh present; embeds the C source inline and writes the oracle marker correctly.",
+          "reasons": []
+        },
+        {
+          "id": "testsh_quality",
+          "status": "WARN",
+          "detail": "All major sections are justified by the threat model, but two lines are defensive duplicates of Dockerfile state.",
+          "reasons": [
+            "useful: chmod 700 + rm -rf /logs/verifier (mandatory lockdown)",
+            "useful: chmod 700 /tests (Harbor resets to 755 after upload)",
+            "useful: env -i + LD_PRELOAD/PYTHONPATH unset (single-container side channels)",
+            "useful: pkill -u agent + recheck (kills cross-phase background writers)",
+            "useful: root-owned $STAGE with .o/.a copies (agent cannot swap link inputs)",
+            "useful: strace -f around build + every link/run (mandatory: agent code executes)",
+            "useful: shellout detection via execve grep (catches exec families the source-substring scan can't see)",
+            "useful: trap to guarantee reward.txt exists on early exit",
+            "redundant: chmod -R go-rwx $REFDATA at line 49 duplicates Dockerfile line 86",
+            "redundant: find /tests -name '*.sh' -exec chmod +x — no .sh files live in /tests at runtime besides test.sh itself"
+          ]
+        },
+        {
+          "id": "git_hygiene",
+          "status": "PASS",
+          "detail": "No individual files exceed 30MB; repo is text-only sources plus small assembly/C test inputs.",
+          "reasons": []
+        },
+        {
+          "id": "workspace_clean",
+          "status": "PASS",
+          "detail": "Workspace contains only Makefile, myld.c, start.S, syscalls.S, and test inputs — no dead code or stale configs.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 167.2,
+      "cost_usd": 0.975729,
+      "notes": [
+        "test.sh is dense but every section maps to a real attack vector given the single-container model — keep as-is or trim only the two defensive duplicates noted.",
+        "Consider moving the extra 'reward' top-level key in reward.json into additional_data to match the documented schema strictly."
+      ]
+    }
+  },
+  "all_checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user=agent.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "git and tmux installed via apt-get.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains compute_reward.py in addition to test.sh; should live in environment/tests/.",
+      "reasons": [
+        "tests/compute_reward.py should be moved to environment/tests/ and bundled into the Docker image via COPY"
+      ],
+      "step": "format_check"
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "WARN",
+      "detail": "Stray job-local.yaml at task root is not a standard Harbor file.",
+      "reasons": [
+        "job-local.yaml is non-standard; either remove it or document why it is needed alongside job.yaml"
+      ],
+      "step": "format_check"
+    },
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml declares [agent] user = \"agent\" for non-root agent execution.",
+      "reasons": [
+        "present: [agent] user = \"agent\" at task.toml:10"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "All required isolation directives are present in the Dockerfile.",
+      "reasons": [
+        "present: useradd agent (line 11)",
+        "present: chown -R agent:agent /app (line 27)",
+        "present: chown agent:agent /solution (line 18)",
+        "present: mkdir /tests && chmod 700 /tests (line 15), re-locked after refdata staging (line 85)",
+        "present: strace installed (line 7) — required since verifier runs agent code",
+        "present: extra hardening — /tests/refdata staged root-only with chmod -R go-rwx (line 86); .ref answer keys removed from agent-readable /app/tests (line 84)",
+        "note: uid 1000 not explicitly pinned; useradd defaults yield uid 1000 on debian slim, acceptable"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh locks /logs/verifier first then wipes, runs agent code as su agent under strace with timeout, and computes reward outside strace.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier BEFORE rm -rf (lines 39-40)",
+        "present: trap on EXIT guarantees fallback reward 0.0 (line 45)",
+        "present: exit 0 always (line 310; fail_with also exits 0 at line 61)",
+        "present: chmod 700 /tests re-lock after Harbor upload (line 48)",
+        "present: env sanitisation — unset LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/BASH_ENV/etc (line 52)",
+        "present: pkill -u agent before and after agent phase (lines 65, 119, 145, 188)",
+        "present: agent code wrapped in strace -f + timeout + su agent -s /bin/bash -c 'env -i ...' (lines 120-125, 146-151)",
+        "present: strace logs scanned for reward.{txt,json} openat with O_WRONLY/O_RDWR/O_CREAT (lines 126, 152)",
+        "present: compute_reward.py invoked OUTSIDE strace as root (line 308), invoked with python3 -ISs (no agent imports)",
+        "present: no chown root:root on /logs",
+        "present: no set -euo pipefail (avoids early abort without reward)"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code — verifier builds agent's myld and executes agent-produced ELFs.",
+      "reasons": [
+        "agent's myld is built via `make -C /app` under strace (line 150)",
+        "agent's myld is invoked to link tier objects (RUNNER, line 97)",
+        "agent-produced ELFs are executed via timeout 10 (line 102)",
+        "strace + su agent are mandatory and present",
+        "scoring (compute_reward.py) reads only static files (test_results.json, strace logs) — does not import /app"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "Task is C/systems-programming with no Python or external package dependencies requiring a lockfile.",
+      "reasons": [],
+      "step": "reproducibility"
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "No Python package manager used; toolchain is apt-installed (gcc, musl-tools, binutils).",
+      "reasons": [],
+      "step": "reproducibility"
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml has no docker_image set; acceptable during development but required before final delivery.",
+      "reasons": [
+        "docker_image not set in [environment]"
+      ],
+      "step": "reproducibility"
+    },
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Clear deliverable: fix myld.c so linked programs run and produce correct output, with invocation contract and section behaviors spelled out.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "time_awareness",
+      "status": "WARN",
+      "detail": "No explicit sandbox time bound or iterative-best-output hint is provided to the agent.",
+      "reasons": [
+        "instruction.md does not mention timeout or suggest keeping best result updated as agent iterates"
+      ],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "tone",
+      "status": "PASS",
+      "detail": "Reads as a conversational colleague handoff with debugging tips rather than a formal spec.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "length",
+      "status": "PASS",
+      "detail": "53 lines, well under the 100-line limit.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "PASS",
+      "detail": "No mention of scorer, verifier, reward, evaluation, or test.sh in instruction.md.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "Mentions make, readelf, objdump, musl-gcc, gcc, and points at <elf.h> and musl paths.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "noop_baseline",
+      "status": "PASS",
+      "detail": "Baseline myld.c compiles but produces non-running ELFs; structural checks are gated by execution gates in STRUCTURAL_GATES so unrun tiers contribute 0.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "adversarial_audit",
+      "status": "PASS",
+      "detail": "Reward file, /tests, refdata, and stage inputs are all root-only by container-start; agent runs under su+strace and is killed before grading.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "agent_code_as_user",
+      "status": "PASS",
+      "detail": "All agent code paths (make build, link, run) execute under `su agent -s /bin/bash -c 'env -i ...'`.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "strace_tracing",
+      "status": "PASS",
+      "detail": "strace -f wraps every agent invocation (build + each link/run) and logs are scanned for reward openat and toolchain execve before scoring.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "verifier_protected",
+      "status": "PASS",
+      "detail": "compute_reward.py runs with `python3 -ISs` from /tests, reads only the root-written test_results.json and /app/myld.c as text; no imports from /app.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "fault_tolerance",
+      "status": "PASS",
+      "detail": "No `set -e`, EXIT trap guarantees reward.txt=0 on any early exit, every fail_with exits 0, and all subprocesses are bounded by `timeout`.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Structural-only T4 checks (entry/sections/nostdlib) and T1/T2 ELF checks are gated behind genuine execution passes, so a baseline emitting valid-but-non-running ELFs scores 0.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Grading runs the produced ELF and diffs stdout+exit against root-owned reference outputs, measuring the deliverable's behavior independent of linker algorithm.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "dimension_balance",
+      "status": "PASS",
+      "detail": "Five tiers weighted by difficulty (0.08/0.12/0.16/0.24/0.40); the easy tiers cap at ~0.36 total so the agent cannot game a high score without solving the hard musl tier.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Trivial outputs fail link/diff and score 0; banned-pattern source scan, MIN_CODE_LINES=150, and strace-based shellout detection block the obvious shell-out-to-ld shortcut.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py reads /logs/verifier/test_results.json (written by root grading phase) and never imports agent code, so it can re-run independently.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both --fail and success paths in compute_reward.py emit reward.json with score, subscores list, and additional_data via write_reward (failure path uses subscores=[{subtask:t,score:0.0} for t in TIERS]).",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Tiered tests (exit, hello, data, bss, archive, musl printf/multi/common) map directly to instruction requirements; structural T4 checks are gated behind execution.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "ELF, relocations, archive scanning, and anti-shellout constraints are all explicit in instruction.md or standard systems knowledge.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Dockerfile installs build-essential, musl-tools, strace, etc.; Makefile + myld.c starter present; musl path matches instruction.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh is 152 lines and writes a working ld/gcc wrapper plus the oracle marker.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "All graded cases are structural variants of the documented requirement (valid running ELF executables linking the provided test inputs).",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "dockerfile_quality",
+      "status": "PASS",
+      "detail": "Slim base, cache cleaned, every installed package (build-essential, musl-tools/dev, git, tmux, strace, procps) is genuinely used by build or verifier.",
+      "reasons": [],
+      "step": "cleanliness"
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "Only solve.sh present; embeds the C source inline and writes the oracle marker correctly.",
+      "reasons": [],
+      "step": "cleanliness"
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "All major sections are justified by the threat model, but two lines are defensive duplicates of Dockerfile state.",
+      "reasons": [
+        "useful: chmod 700 + rm -rf /logs/verifier (mandatory lockdown)",
+        "useful: chmod 700 /tests (Harbor resets to 755 after upload)",
+        "useful: env -i + LD_PRELOAD/PYTHONPATH unset (single-container side channels)",
+        "useful: pkill -u agent + recheck (kills cross-phase background writers)",
+        "useful: root-owned $STAGE with .o/.a copies (agent cannot swap link inputs)",
+        "useful: strace -f around build + every link/run (mandatory: agent code executes)",
+        "useful: shellout detection via execve grep (catches exec families the source-substring scan can't see)",
+        "useful: trap to guarantee reward.txt exists on early exit",
+        "redundant: chmod -R go-rwx $REFDATA at line 49 duplicates Dockerfile line 86",
+        "redundant: find /tests -name '*.sh' -exec chmod +x — no .sh files live in /tests at runtime besides test.sh itself"
+      ],
+      "step": "cleanliness"
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No individual files exceed 30MB; repo is text-only sources plus small assembly/C test inputs.",
+      "reasons": [],
+      "step": "cleanliness"
+    },
+    {
+      "id": "workspace_clean",
+      "status": "PASS",
+      "detail": "Workspace contains only Makefile, myld.c, start.S, syscalls.S, and test inputs — no dead code or stale configs.",
+      "reasons": [],
+      "step": "cleanliness"
+    }
+  ],
+  "info": {
+    "format_check": {
+      "task_name": "elf-linker-fix-layout",
+      "difficulty": "hard",
+      "category": "systems-programming",
+      "agent_timeout_sec": 7200,
+      "verifier_timeout_sec": 600,
+      "build_timeout_sec": 600,
+      "allow_internet": false,
+      "cpus": 2,
+      "memory_mb": 4096,
+      "agent_user": "agent"
+    },
+    "isolation": {
+      "agent_user": "agent",
+      "verifier_type": "runs_agent_code",
+      "strace_needed": true
+    },
+    "reproducibility": {
+      "base_image": "python:3.13-slim",
+      "package_manager": "apt (system); no Python deps",
+      "lockfiles_found": [],
+      "docker_image_cached": false
+    },
+    "instruction_quality": {
+      "task_name": "Fix x86-64 ELF static linker",
+      "task_summary": "Agent is given a partially working single-file static linker (myld.c) for x86-64 Linux that compiles and emits structurally valid ELF but produces non-functional executables. They must debug and fix symbol resolution, section merging, relocations, and archive handling so linked test programs (including musl-libc programs) run correctly.",
+      "task_domain": "systems-programming/linker",
+      "deliverable": "working myld binary built from a fixed myld.c",
+      "tools_needed": [
+        "gcc",
+        "make",
+        "binutils (readelf, objdump)",
+        "musl-gcc",
+        "musl libc.a/crt objects"
+      ],
+      "instruction_lines": 53
+    },
+    "reward_hacking": {
+      "verifier_type": "runs_agent_code",
+      "existing_defenses": [
+        {
+          "category": "Filesystem lockdown",
+          "measures": [
+            "/logs/verifier chmod 700 + rm -rf as first action",
+            "/tests chmod 700 re-locked at verifier start",
+            "/tests/refdata chmod -R go-rwx so .ref answers and pristine .o/.a are unreadable by agent",
+            "STAGE chown -R root:root + chmod 644 inputs; only OUTDIR is agent-writable",
+            ".ref reference binaries removed from /app/tests at build time"
+          ]
+        },
+        {
+          "category": "Privilege separation",
+          "measures": [
+            "task.toml [agent] user=agent",
+            "Verifier drops to agent uid via `su agent -s /bin/bash -c \"env -i PATH=... bash ...\"` for build + every link/run",
+            "pkill -9 -u agent before, between, and after agent phases"
+          ]
+        },
+        {
+          "category": "Runtime tracing",
+          "measures": [
+            "strace -f -e trace=clone,clone3,fork,vfork,execve,openat wraps build and every link/run",
+            "Per-job strace log scanned for openat of reward.{txt,json} with O_WRONLY/O_RDWR/O_CREAT",
+            "Per-job strace log scanned for execve of ld/ld.gold/ld.lld/ld.bfd/gold/gcc/g++/cc1/cc1plus/collect2/musl-gcc/clang/lld and flags shellout"
+          ]
+        },
+        {
+          "category": "Scoring isolation",
+          "measures": [
+            "test_results.json is written only by the root grading phase after agent processes are killed",
+            "compute_reward.py runs with `python3 -ISs` outside strace and never imports /app",
+            "Source gate inspects /app/myld.c text for banned execvp/system/popen patterns and a MIN_CODE_LINES=150 floor",
+            "Structural readelf checks gated behind matching execution test via STRUCTURAL_GATES"
+          ]
+        },
+        {
+          "category": "Oracle bypass integrity",
+          "measures": [
+            "Oracle marker requires both file existence and secret token contents matching HARBOR_ORACLE_FLAG injected only into solution.env, so the agent cannot forge it"
+          ]
+        },
+        {
+          "category": "Environment sanitisation",
+          "measures": [
+            "unset LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/PYTHONHOME/BASH_ENV/ENV/CFLAGS/CC/CXX/MAKEFLAGS",
+            "env -i used when su'ing into agent shells",
+            "EXIT trap guarantees reward.txt=0 on any early abort"
+          ]
+        }
+      ],
+      "verified_attack_vectors": [],
+      "acknowledged_vectors": [
+        {
+          "vector": "Agent's myld shells out to a real linker via a renamed/copied binary path (e.g., `cp /usr/bin/ld /tmp/x && execve('/tmp/x', ...)`), bypassing the strace shellout regex that matches only literal toolchain basenames.",
+          "reason": "Source gate still catches the common execvp(\"ld\"/\"gcc\") spellings; producing the renamed binary requires deliberate intent and the linked ELFs would still need to actually run correctly to score, so this is a soft anti-gaming heuristic the task author accepts."
+        },
+        {
+          "vector": "Agent hand-crafts an ELF in myld.c that prints the expected stdout/exit for each test case without performing real relocation work.",
+          "reason": "Reference outputs live root-only in /tests/refdata and are never staged to the agent; reproducing the outputs amounts to solving the task by another means rather than reward manipulation."
+        },
+        {
+          "vector": "Agent tampers with its own /logs/agent traces before verification.",
+          "reason": "Documented as inherent to the single-container model in HARBOR_GUIDE; only /logs/verifier matters for scoring and is locked to root before any grading."
+        }
+      ]
+    },
+    "reward_design": {
+      "reward_design": {
+        "formula": "score = clamp(sum_over_tiers(weight_t * passed_t / total_t), 0, 1); zeroed if anti-gaming triggers (banned source pattern, source too short, strace-observed shellout to ld/gcc/clang/etc., and not oracle)",
+        "formula_explanation": "Difficulty-weighted sum across five tiers of real link+execute tests, with structural-only checks gated behind genuine execution to prevent credit for non-running ELFs.",
+        "components": [
+          {
+            "name": "T1 basic ELF",
+            "metric": "pass fraction of {t1_t1_exit run, t1_t1_exit_elf structural-gated}",
+            "gate": "t1_t1_exit_elf only counts if t1_t1_exit passed",
+            "weight": "0.08"
+          },
+          {
+            "name": "T2 cross-file",
+            "metric": "pass fraction of {t2_t2_hello, t2_t2_data, t2_t2_hello_elf structural-gated}",
+            "gate": "t2_t2_hello_elf only counts if t2_t2_hello passed",
+            "weight": "0.12"
+          },
+          {
+            "name": "T3 bss + archive",
+            "metric": "pass fraction of {t3_t3_bss, t3_t3_archive}",
+            "gate": "none beyond execution diff",
+            "weight": "0.16"
+          },
+          {
+            "name": "T4 musl hello + structural",
+            "metric": "pass fraction of {t4_entry, t4_sections, t4_nostdlib, t4_hello_libc}",
+            "gate": "t4_entry/sections/nostdlib only count if t4_hello_libc passed",
+            "weight": "0.24"
+          },
+          {
+            "name": "T5 complex musl",
+            "metric": "pass fraction of {t5_printf, t5_multi, t5_common}",
+            "gate": "diff actual vs reference output",
+            "weight": "0.40"
+          }
+        ],
+        "aggregation_method": "weighted_sum",
+        "dimension_analysis": [
+          {
+            "name": "T1",
+            "trivially_maxable": false,
+            "difficulty": "easy",
+            "notes": "Single .o inline syscall; bounded weight (0.08) limits gaming value."
+          },
+          {
+            "name": "T2",
+            "trivially_maxable": false,
+            "difficulty": "easy",
+            "notes": "Cross-file function call + data section; baseline myld already partially structurally valid but fails to execute."
+          },
+          {
+            "name": "T3",
+            "trivially_maxable": false,
+            "difficulty": "medium",
+            "notes": "Requires .bss + .a archive parsing."
+          },
+          {
+            "name": "T4",
+            "trivially_maxable": false,
+            "difficulty": "hard",
+            "notes": "Structural sub-checks gated by t4_hello_libc execution, so the tier can't be partial-credited without real musl linking work."
+          },
+          {
+            "name": "T5",
+            "trivially_maxable": false,
+            "difficulty": "hard",
+            "notes": "printf/multi-file/common symbols against musl libc.a; weight 0.40 dominates total, so a real score requires solving the hardest tier."
+          }
+        ]
+      }
+    },
+    "fairness": {
+      "tools_required": [
+        "gcc",
+        "make",
+        "musl-gcc",
+        "binutils (readelf, objdump, ar)",
+        "strace"
+      ]
+    },
+    "cleanliness": {
+      "redundant_items": [
+        {
+          "file": "tests/test.sh",
+          "item": "line 49: chmod -R go-rwx \"$REFDATA\"",
+          "why": "Dockerfile already applies chmod -R go-rwx /tests/refdata at build time; /tests is root-only so the agent cannot alter it between phases."
+        },
+        {
+          "file": "tests/test.sh",
+          "item": "line 55: find /tests -name '*.sh' -exec chmod +x",
+          "why": "The only .sh in /tests is test.sh (already executable to be invoked); the runtime RUNNER script is created in $STAGE, not /tests."
+        },
+        {
+          "file": "tests/compute_reward.py",
+          "item": "line 152: duplicate 'reward' key alongside 'score' in reward.json payload",
+          "why": "reward.json schema specifies only 'score'; the extra top-level 'reward' field is a stray key not in the documented schema."
+        }
+      ]
+    }
+  }
+}

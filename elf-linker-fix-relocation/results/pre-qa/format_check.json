@@ -1,0 +1,70 @@
+{
+  "step": "format_check",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "All required files present.",
+      "reasons": []
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": []
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "All required fields present and within limits.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "git and tmux installed via apt-get.",
+      "reasons": []
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains compute_reward.py in addition to test.sh; should live in environment/tests/.",
+      "reasons": [
+        "compute_reward.py present in tests/ root"
+      ]
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "PASS",
+      "detail": "No stray non-ignored files at root.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "elf-linker-fix-relocation",
+    "difficulty": "hard",
+    "category": "systems-programming",
+    "agent_timeout_sec": 7200,
+    "verifier_timeout_sec": 600,
+    "build_timeout_sec": 600,
+    "allow_internet": false,
+    "cpus": 2,
+    "memory_mb": 4096,
+    "agent_user": "agent"
+  },
+  "notes": [
+    "Move tests/compute_reward.py to environment/tests/compute_reward.py and update the Dockerfile to COPY it into /tests/, so the tests/ folder at task root contains only test.sh."
+  ],
+  "elapsed_sec": 61.8,
+  "cost_usd": 0.659769,
+  "tokens": {
+    "total": 561338,
+    "input": 16,
+    "output": 2576,
+    "reasoning": 0,
+    "cache_read": 503804,
+    "cache_write": 54942
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "step": "fairness",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Verifier runs the produced ELFs and diffs stdout/exit against reference binaries plus minimal readelf structural gates, matching the instruction's explicit goal that 'the executable must run correctly... actually produce the right output when executed'.",
+      "reasons": []
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "All required concepts (relocation types, PC-relative vs absolute, ELF object/archive handling, musl link order) are standard ELF/linker terminology and the musl crt1/crti/libc.a/crtn link order is shown verbatim in instruction.md.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Dockerfile installs build-essential, musl-tools, musl-dev, strace, tmux, git; workspace has myld.c (841 lines), Makefile, start.S, syscalls.S, and all referenced tests/ source files matching the verifier's tier set.",
+      "reasons": []
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists (152 lines), writes the HARBOR_ORACLE_FLAG marker and a wrapper myld.c that delegates to ld/gcc, then runs make.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "Verifier links agent's myld against root-owned pristine copies of the exact .o/.a files visible to the agent in /app/tests; no new test inputs or undocumented requirements are introduced.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "gcc",
+      "make",
+      "musl-gcc",
+      "binutils (readelf, objdump, ar)",
+      "strace"
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 140.6,
+  "cost_usd": 0.905846,
+  "tokens": {
+    "total": 839330,
+    "input": 19,
+    "output": 3340,
+    "reasoning": 0,
+    "cache_read": 765664,
+    "cache_write": 70307
+  }
+}

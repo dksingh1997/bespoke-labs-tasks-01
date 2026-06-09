@@ -1,0 +1,46 @@
+{
+  "step": "reproducibility",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "Task has no external Python/Node/Rust dependencies; only apt packages pinned by base image and musl-tools.",
+      "reasons": []
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "No Python package manager used; task is C systems-programming with apt-installed toolchain only.",
+      "reasons": []
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml has no docker_image set; expected during development but must be set before final delivery.",
+      "reasons": [
+        "docker_image not set in [environment]"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "base_image": "python:3.13-slim",
+    "package_manager": "none (apt only)",
+    "lockfiles_found": [],
+    "docker_image_cached": false
+  },
+  "notes": [
+    "Set [environment].docker_image to a prebuilt registry image before final delivery."
+  ],
+  "elapsed_sec": 44.2,
+  "cost_usd": 0.514388,
+  "tokens": {
+    "total": 382476,
+    "input": 13,
+    "output": 1525,
+    "reasoning": 0,
+    "cache_read": 331246,
+    "cache_write": 49692
+  }
+}

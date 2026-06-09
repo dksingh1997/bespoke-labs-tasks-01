@@ -1,0 +1,193 @@
+# Fix x86-64 ELF static linker relocations
+
+> An existing single-file C static linker (myld.c) produces structurally valid ELF executables but mishandles relocations, so cross-file calls and symbol references crash or yield wrong results. The agent must diagnose and fix the relocation logic so test programs (including musl libc ones) link and run correctly.
+
+---
+
+## Task Configuration
+
+| Property | Value |
+|----------|-------|
+| Difficulty | hard |
+| Category | systems-programming |
+| Agent Timeout | 7200s |
+| Verifier Timeout | 600s |
+| Internet Access | Disabled |
+| CPUs / Memory | 2 / 4096 MB |
+
+---
+
+## Pre-Rollout QA
+
+> 32 PASS, 7 WARN, 0 FAIL — **WARN** | 170.4s | $5.56
+### Format Check
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Required Files | PASS | instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present. |
+| Recommended Files | PASS | solution/solve.sh, oracle.yaml, and job.yaml all present. |
+| Task Toml Schema | PASS | allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user='agent'. |
+| Dockerfile Required Tools | PASS | git and tmux are installed in the Dockerfile. |
+| Tests Folder Lean | WARN | tests/ contains compute_reward.py in addition to test.sh; non-test.sh assets should live in environment/tests/. |
+| Directory Cleanliness | PASS | No stray files at root after ignoring README.md, results/, and qa-logs/. |
+
+### Isolation
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Agent User | PASS | task.toml [agent] sets user = "agent". |
+| Dockerfile Isolation | PASS | All required isolation primitives present in Dockerfile. |
+| Testsh Isolation | PASS | Locks /logs/verifier first then wipes, runs agent code via su+strace+timeout, grades outside strace as root, always exits 0. |
+| Verifier Type | PASS | runs_agent_code: builds /app/myld and executes agent-produced ELFs during verification. |
+
+### Reproducibility
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Lockfile | N/A | No external package dependencies — Dockerfile only installs apt packages and builds C sources. |
+| Package Manager | N/A | No Python or pip usage in the image; only apt-get for system tooling. |
+| Docker Image Cached | WARN | task.toml does not set [environment].docker_image — expected during development. |
+
+### Instruction Quality
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Clarity | PASS | Clear deliverable: fix relocation handling in single myld.c so cross-file/symbol-reference programs run correctly. |
+| Time Awareness | WARN | No mention of sandbox time bounds or iteration guidance. |
+| Tone | PASS | Conversational colleague-handoff tone with practical guidance. |
+| Length | PASS | 57 lines, well under 100. |
+| Scoring Leakage | PASS | No mention of scorer, verifier, reward, or evaluation terms. |
+| Tools Documented | PASS | Mentions make, readelf, objdump, musl-gcc, and points to /usr/lib/x86_64-linux-musl/ assets. |
+
+### Reward Hacking
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Noop Baseline | PASS | Baseline myld has buggy relocations so all tier tests fail; reward sums to 0.0. |
+| Adversarial Audit | WARN | Anti-gaming source-text gate is trivially bypassable; agent can shell out to ld/gcc via execve or indirected execvp without matching any banned literal. |
+| Agent Code As User | PASS | All make/link/run steps run via 'su agent -s /bin/bash -c env -i …' inside strace. |
+| Strace Tracing | PASS | strace -f wraps build and every link/run job; log is grepped for openat write/create on reward.{txt,json} before scoring and triggers fail_with. |
+| Verifier Protected | PASS | compute_reward.py runs outside strace as root, only reads /logs/verifier/test_results.json and /app/myld.c as text — never imports from /app. |
+| Fault Tolerance | PASS | EXIT trap guarantees reward.txt exists, fail_with always exits 0, strace and per-link runs use timeout wrappers, atomic reward write via os.replace. |
+
+**Undefended Attack Vectors**
+- **HIGH**: Bypass the 'no shelling out to ld/gcc' anti-gaming gate by using execve(), posix_spawn(), or execvp with a variable-typed program-name argument — none match the literal BANNED_PATTERNS substrings — to wrap the real system linker and pass every tier. — *Fix: Replace text-pattern scanning with an actual behavioral check (e.g., run myld under strace and fail if it execve()s anything other than itself), or at minimum extend BANNED_PATTERNS to cover execve, posix_spawn, fexecve, and ban any reference to /usr/bin/ld, /usr/bin/gcc, musl-gcc as string literals.*
+**Acknowledged / Acceptable Gaps**
+- Agent can modify its own strace/agent logs in /logs/agent before verification. — Documented Harbor limitation — agent trace tampering is not preventable in the single-container model and is irrelevant to scoring, which uses /logs/verifier only.
+- Test source .c/.S files remain readable in /app/tests so the agent can in principle precompute expected outputs. — The .ref binaries are removed from /app and live root-only in /tests/refdata; even with predicted outputs, the agent must still produce a working ELF and avoid the shell-out gate, so this alone does not inflate score.
+
+**Existing Defenses**
+- **Filesystem lockdown**: /tests chmod 700 root-only; /tests/refdata chmod go-rwx so .o/.a/.ref are unreadable to agent; /logs/verifier chmod 700 + rm -rf as first step of test.sh
+- **Privilege separation**: agent user owns only /app and OUTDIR; build + link + run all dropped to agent via su -s /bin/bash -c env -i; verifier and scoring run as root outside agent reach
+- **Runtime auditing**: strace -f traces clone/fork/execve/openat for every agent invocation; openat() with O_WRONLY|O_RDWR|O_CREAT on reward.{txt,json} flips REWARD_TAMPER and forces fail_with
+- **Input integrity**: Pristine .o/.a staged from root-only /tests/refdata into a fresh mktemp dir per run; STAGE chowned root:root 755 + files 644 so agent can read but not swap inputs; OUTDIR is the only agent-writable surface during the agent phase
+- **Process isolation**: pkill -9 -u agent before agent phase, between phases, and before grading; strace -f blocks until all descendants exit so no daemon survives into root grading
+
+### Reward Design
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Correctness Gating | WARN | Baseline myld.c is described as already linking the simplest cases, so T1 likely scores 0.08 unmodified, above the <0.01 ideal. |
+| Implementation Agnostic | PASS | Scoring is purely behavioural: link with the agent's myld, run the ELF, diff stdout/exit against a root-owned reference binary — any working linker passes. |
+| Dimension Balance | PASS | Tiers are weighted by difficulty (T1 0.08 → T5 0.40) and gated by behavioural correctness, so the agent cannot game easy tiers to dominate — T5 alone is 40% and requires real relocation correctness. |
+| Shortcut Resistant | PASS | Trivial myld (empty ELF, copy input, constant output) fails the diff against per-test reference outputs and the readelf structural gates, scoring near 0; a MIN_CODE_LINES=150 and banned-pattern gate also blocks shelling out to ld/gcc. |
+| Modular Scoring | PASS | compute_reward.py reads only /logs/verifier/test_results.json and /app/myld.c as text and can be re-run independently of agent execution. |
+| Reward Json Schema | PASS | Both the success path and --fail path write reward.json with score (float), subscores (list, populated on failure with zeros), and additional_data, plus reward.txt. |
+
+**Reward Formula**: `score = 0 if anti_gaming_fail else sum(weight_t * pass_fraction_t for t in [T1=0.08, T2=0.12, T3=0.16, T4=0.24, T5=0.40])`
+Tiered weighted sum over 5 difficulty tiers of relocation/linker correctness, zeroed by an anti-gaming source gate.
+
+| Component | Metric | Gate / Weight |
+|-----------|--------|---------------|
+| T1 basic ELF | pass fraction over [t1_t1_exit run diff, t1_t1_exit_elf readelf gate] | diff vs ref + structural readelf / 0.08 |
+| T2 cross-file linking | pass fraction over [t2_t2_hello, t2_t2_data, t2_t2_hello_elf] | diff vs ref + structural readelf / 0.12 |
+| T3 bss + archive | pass fraction over [t3_t3_bss, t3_t3_archive] | diff vs ref / 0.16 |
+| T4 structural + musl hello | pass fraction over [t4_entry, t4_sections, t4_nostdlib, t4_hello_libc] | readelf structural + diff vs ref / 0.24 |
+| T5 complex musl | pass fraction over [t5_printf, t5_multi, t5_common] | diff vs ref / 0.40 |
+| anti-gaming gate | no banned exec patterns + min 150 non-blank lines in myld.c (oracle-bypassed via secret marker) | multiplicative — zeroes total on violation / gate (×0 on fail) |
+
+### Fairness
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Instruction Verifier Sync | PASS | Verifier tiers T1-T5 (single .o, cross-file calls, .bss/archives, musl libc) match the tier progression and tasks explicitly described in instruction.md. |
+| Definitions Documented | PASS | All terms (ELF relocations, .o/.a, PC-relative vs absolute, musl CRT order) are either documented in instruction.md or standard x86-64/ELF domain knowledge. |
+| Tools Accessible | PASS | Dockerfile installs gcc, musl-tools, build-essential, strace, readelf/objdump (binutils); Makefile and myld.c scaffold are present in /app workspace. |
+| Oracle Exists | PASS | solution/solve.sh exists (152 lines) and uses the HARBOR_ORACLE_FLAG marker to bypass the anti-gaming source gate. |
+| Hidden Test Fairness | PASS | Hidden structural checks (entry nonzero, .text present, no .dynsym/.dynstr) are standard correctness properties of a static ELF executable, not new requirements. |
+
+### Cleanliness
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Dockerfile Quality | PASS | Slim base, --no-install-recommends, apt lists cleaned; every installed package (build-essential, musl-tools/musl-dev, git, tmux, strace, procps) maps to a real use. |
+| Solution Clean | PASS | Only solve.sh in /solution, embeds the oracle myld.c via heredoc and writes the oracle marker. |
+| Testsh Quality | WARN | Mostly justified for a single-container linker verifier, but a few defensive layers duplicate work already done by the Dockerfile or by strace. |
+| Git Hygiene | PASS | No individual file exceeds 30MB (largest is myld.c at 29KB). |
+| Workspace Clean | WARN | No .gitignore present, so jobs/, qa-logs/, and results/ are not declared ignored (the workspace itself has no dead code or stale configs). |
+
+**Cleanup Suggestions**
+- `tests/test.sh`: chmod -R go-rwx /tests/refdata (line 49) — Dockerfile already chmods refdata 700-only at build time; Harbor's tests/ upload merges into /tests but does not touch /tests/refdata, so permissions persist.
+- `tests/test.sh`: pkill -9 -u agent inside agent_link_run before each strace invocation (line 119) — strace -f blocks until every descendant exits, and there is already a pre-grade pkill after the loop; this per-job kill cannot race because the prior strace already returned.
+- `tests/test.sh`: Duplicate REWARD_TAMPER==1 check at line 180-183 — Same condition is checked at line 147-150 right after the build; the link/run loop's tamper detection could be folded into a single check before grading.
+- `tests/test.sh`: unset LD_PRELOAD LD_LIBRARY_PATH PYTHONPATH PYTHONHOME BASH_ENV ENV CFLAGS CC CXX MAKEFLAGS (line 52) — Each su agent call already uses env -i with an explicit PATH/HOME/TMPDIR allowlist, which fully overrides the parent environment — the unset is dead weight.
+
+
+### Notes
+
+- **Format Check**: Move tests/compute_reward.py to environment/tests/compute_reward.py and have the Dockerfile COPY it into /tests/ at build time; update tests/test.sh to invoke it from /tests/compute_reward.py.
+- **Reproducibility**: Set [environment].docker_image to a prebuilt registry image before final delivery.
+- **Instruction Quality**: Add a brief time-bound hint (e.g., sandbox timeout) or guidance to keep myld.c in its best working state as the agent iterates.
+- **Reward Hacking**: Strengthen anti-gaming: BANNED_PATTERNS misses execve, posix_spawn, fexecve, and any execvp call whose first arg is a variable; consider an strace-based behavioral gate on myld.
+- **Reward Design**: Either restate the 'baseline = 0.0' rule as 'baseline of the fix-task starts where the broken implementation lands' (document explicitly), or break T1 in the seed myld.c so unmodified baseline also fails T1 and scores 0.0.
+- **Cleanliness**: Convention nit: compute_reward.py lives in tests/ rather than environment/tests/. It is uploaded via Harbor's tests/ copy at runtime instead of being baked into the image. Not wrong, but moving it to environment/tests/ and COPYing it to /tests during build keeps tests/ to just test.sh per the guide.
+- **Cleanliness**: Add a .gitignore covering jobs/, qa-logs/, results/, .DS_Store.
+
+---
+
+<!-- BEGIN:ROLLOUT_RESULTS -->
+## Rollout Results
+
+### Overview
+
+| Metric | Value |
+|--------|-------|
+| Trials | 2 |
+| Models tested | 1 |
+| Overall success rate | 0/2 (0%) |
+| Mean reward | 0.0000 |
+| Reward range | 0.0000 – 0.0000 |
+| Total cost | $4.58 |
+| Oracle reward | 1.0000 (job: 2026-06-09__12-43-40) |
+
+### Performance by Model
+
+| Model | Trials | Success Rate | Mean Reward | Mean Time | Mean Cost |
+|-------|--------|--------------|-------------|-----------|-----------|
+| claude-opus-4-8 | 2 | 0/2 (0%) | 0.0000 | 2.00h | $2.29 |
+| **Overall** | **2** | **0/2 (0%)** | **0.0000** | **2.00h** | **$2.29** |
+
+### Trial Details
+
+#### claude-opus-4-8
+
+| Trial | Reward | Time | Cost | Outcome | Strategy |
+|-------|--------|------|------|---------|----------|
+| DKvXQXn | 0.0000 | 2.00h | $2.37 | Timed out; stub never replaced (8 LOC, gate failed) | Reverse-engineered ELF/relocation/musl details for 15 episodes; never wrote linker |
+| LMhaJvu | 0.0000 | 2.00h | $2.21 | Timed out; stub never replaced (8 LOC, gate failed) | Pure ELF/musl research across 23 episodes; never wrote any linker code |
+
+### Post-Rollout QA
+
+> Each trial independently audited for fairness, reward hacking, and infrastructure issues.
+
+| Check | Result |
+|-------|--------|
+| Trial verdicts | 2/2 FAIR |
+| Infrastructure failures | None — 2h timeout is a legitimate agent outcome |
+| Task fairness issues | None — task is hard, not broken |
+| False negatives | None — both left the original stub, no real linker written |
+| False positives | None |
+| Reward hacking attempts | None |
+| Verifier quality issues | None |
+| Verifier timeout buffer | OK — oracle verifier ran ~12s vs 600s limit (>50x) |
+<!-- END:ROLLOUT_RESULTS -->

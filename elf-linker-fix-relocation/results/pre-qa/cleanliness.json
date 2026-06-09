@@ -1,0 +1,69 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "PASS",
+      "detail": "Slim base, cache cleaned, every installed package (build-essential, musl-tools, git, tmux, strace, procps) is used by the build or verifier.",
+      "reasons": []
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "solution/ contains only solve.sh.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Core defenses (lock+wipe /logs/verifier, /tests re-lock, strace+su agent, pkill, shellout detector) are all justified; minor env-unset overlap with env -i.",
+      "reasons": [
+        "useful: chmod 700 + rm -rf /logs/verifier as first step",
+        "useful: pkill -u agent + survival probe before grading",
+        "useful: strace openat+execve scan with shellout sentinel feeding compute_reward",
+        "useful: env -i inside su agent strips inherited env for agent phase",
+        "redundant: top-level unset LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/... is largely shadowed by env -i in every su agent invocation"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No files >30MB anywhere in the task.",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "PASS",
+      "detail": "workspace/ holds only the starter linker (myld.c, Makefile, start.S, syscalls.S) and test sources the instructions point to; no stale configs or dead files.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "test.sh",
+        "item": "unset LD_PRELOAD LD_LIBRARY_PATH PYTHONPATH PYTHONHOME BASH_ENV ENV CFLAGS CC CXX MAKEFLAGS (line 52)",
+        "why": "All agent execution paths already use `su agent -s /bin/bash -c \"env -i PATH=... bash ...\"`, which discards the parent environment; the top-level unset only affects root's own strace invocation where these vars are not consulted."
+      },
+      {
+        "file": "tests/compute_reward.py",
+        "item": "compute_reward.py lives in tests/ at the task root",
+        "why": "Convention is that tests/ at the task root contains only test.sh; other test assets belong in environment/tests/ and get baked into the image. Functionally fine here (Harbor uploads it next to test.sh) but inconsistent with the documented layout."
+      }
+    ]
+  },
+  "notes": [
+    "Consider dropping the redundant top-level `unset` line in test.sh or moving compute_reward.py under environment/tests/ to match the documented tests-dir convention."
+  ],
+  "elapsed_sec": 172.5,
+  "cost_usd": 1.11476,
+  "tokens": {
+    "total": 1127574,
+    "input": 23,
+    "output": 5272,
+    "reasoning": 0,
+    "cache_read": 1048939,
+    "cache_write": 73340
+  }
+}

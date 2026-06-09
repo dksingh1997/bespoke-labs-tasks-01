@@ -1,0 +1,75 @@
+{
+  "step": "instruction_quality",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Clearly states the bug is in relocation handling, the constraint to keep a single myld.c, the invocation interface, and that the executable must actually run correctly.",
+      "reasons": []
+    },
+    {
+      "id": "time_awareness",
+      "status": "WARN",
+      "detail": "No explicit time bound or hint to keep best result updated during iteration.",
+      "reasons": [
+        "No mention of sandbox timeout or iterative best-effort guidance."
+      ]
+    },
+    {
+      "id": "tone",
+      "status": "PASS",
+      "detail": "Reads as a colleague handoff with debugging tips, not a formal spec.",
+      "reasons": []
+    },
+    {
+      "id": "length",
+      "status": "PASS",
+      "detail": "57 lines, well under the 100-line cap.",
+      "reasons": []
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "PASS",
+      "detail": "No references to scoring, verifier, reward, tests in a grading sense, or evaluation pipeline.",
+      "reasons": []
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "Mentions make, readelf, objdump, musl-gcc, gcc, and points to musl install path and <elf.h>.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "Fix x86-64 ELF static linker relocations",
+    "task_summary": "An existing C implementation of a minimal x86-64 Linux static linker (myld.c) compiles and emits valid ELF but mis-handles relocations, causing cross-file calls and symbol references to misbehave. The agent must diagnose and fix the relocation logic so linked programs run and produce correct output, without shelling out to ld or gcc.",
+    "task_domain": "systems-programming/linkers",
+    "deliverable": "myld.c (fixed) producing a working ELF executable via `make`",
+    "tools_needed": [
+      "gcc",
+      "make",
+      "readelf",
+      "objdump",
+      "musl-gcc",
+      "libc6-dev (elf.h)",
+      "musl libc static"
+    ],
+    "instruction_lines": 57
+  },
+  "notes": [
+    "Consider adding a one-line time hint (e.g., 'sandbox runs for ~2 hours; keep myld.c in a working state as you iterate').",
+    "Instruction says tests/ has 'pre-compiled .o files' but the visible workspace tests/ only contains source files; either pre-build them in the image or reword to 'source files you can compile' to avoid agent confusion."
+  ],
+  "elapsed_sec": 60.1,
+  "cost_usd": 0.591527,
+  "tokens": {
+    "total": 483318,
+    "input": 15,
+    "output": 2445,
+    "reasoning": 0,
+    "cache_read": 430441,
+    "cache_write": 50417
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "step": "reward_design",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Structural-only T4 checks (entry/sections/nostdlib) and T1/T2 ELF checks are gated behind genuine execution passes, so a baseline emitting valid-but-non-running ELFs scores 0.",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Grading runs the produced ELF and diffs stdout+exit against root-owned reference outputs, measuring the deliverable's behavior independent of linker algorithm.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "PASS",
+      "detail": "Five tiers weighted by difficulty (0.08/0.12/0.16/0.24/0.40); the easy tiers cap at ~0.36 total so the agent cannot game a high score without solving the hard musl tier.",
+      "reasons": []
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Trivial outputs fail link/diff and score 0; banned-pattern source scan, MIN_CODE_LINES=150, and strace-based shellout detection block the obvious shell-out-to-ld shortcut.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py reads /logs/verifier/test_results.json (written by root grading phase) and never imports agent code, so it can re-run independently.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both --fail and success paths in compute_reward.py emit reward.json with score, subscores list, and additional_data via write_reward (failure path uses subscores=[{subtask:t,score:0.0} for t in TIERS]).",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "score = clamp(sum_over_tiers(weight_t * passed_t / total_t), 0, 1); zeroed if anti-gaming triggers (banned source pattern, source too short, strace-observed shellout to ld/gcc/clang/etc., and not oracle)",
+      "formula_explanation": "Difficulty-weighted sum across five tiers of real link+execute tests, with structural-only checks gated behind genuine execution to prevent credit for non-running ELFs.",
+      "components": [
+        {
+          "name": "T1 basic ELF",
+          "metric": "pass fraction of {t1_t1_exit run, t1_t1_exit_elf structural-gated}",
+          "gate": "t1_t1_exit_elf only counts if t1_t1_exit passed",
+          "weight": "0.08"
+        },
+        {
+          "name": "T2 cross-file",
+          "metric": "pass fraction of {t2_t2_hello, t2_t2_data, t2_t2_hello_elf structural-gated}",
+          "gate": "t2_t2_hello_elf only counts if t2_t2_hello passed",
+          "weight": "0.12"
+        },
+        {
+          "name": "T3 bss + archive",
+          "metric": "pass fraction of {t3_t3_bss, t3_t3_archive}",
+          "gate": "none beyond execution diff",
+          "weight": "0.16"
+        },
+        {
+          "name": "T4 musl hello + structural",
+          "metric": "pass fraction of {t4_entry, t4_sections, t4_nostdlib, t4_hello_libc}",
+          "gate": "t4_entry/sections/nostdlib only count if t4_hello_libc passed",
+          "weight": "0.24"
+        },
+        {
+          "name": "T5 complex musl",
+          "metric": "pass fraction of {t5_printf, t5_multi, t5_common}",
+          "gate": "diff actual vs reference output",
+          "weight": "0.40"
+        }
+      ],
+      "aggregation_method": "weighted_sum",
+      "dimension_analysis": [
+        {
+          "name": "T1",
+          "trivially_maxable": false,
+          "difficulty": "easy",
+          "notes": "Single .o inline syscall; bounded weight (0.08) limits gaming value."
+        },
+        {
+          "name": "T2",
+          "trivially_maxable": false,
+          "difficulty": "easy",
+          "notes": "Cross-file function call + data section; baseline myld already partially structurally valid but fails to execute."
+        },
+        {
+          "name": "T3",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "Requires .bss + .a archive parsing."
+        },
+        {
+          "name": "T4",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "Structural sub-checks gated by t4_hello_libc execution, so the tier can't be partial-credited without real musl linking work."
+        },
+        {
+          "name": "T5",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "printf/multi-file/common symbols against musl libc.a; weight 0.40 dominates total, so a real score requires solving the hardest tier."
+        }
+      ]
+    }
+  },
+  "notes": [],
+  "elapsed_sec": 119.4,
+  "cost_usd": 0.70582,
+  "tokens": {
+    "total": 488276,
+    "input": 14,
+    "output": 4008,
+    "reasoning": 0,
+    "cache_read": 421050,
+    "cache_write": 63204
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "step": "instruction_quality",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Clear deliverable: fix myld.c so linked programs run and produce correct output, with invocation contract and section behaviors spelled out.",
+      "reasons": []
+    },
+    {
+      "id": "time_awareness",
+      "status": "WARN",
+      "detail": "No explicit sandbox time bound or iterative-best-output hint is provided to the agent.",
+      "reasons": [
+        "instruction.md does not mention timeout or suggest keeping best result updated as agent iterates"
+      ]
+    },
+    {
+      "id": "tone",
+      "status": "PASS",
+      "detail": "Reads as a conversational colleague handoff with debugging tips rather than a formal spec.",
+      "reasons": []
+    },
+    {
+      "id": "length",
+      "status": "PASS",
+      "detail": "53 lines, well under the 100-line limit.",
+      "reasons": []
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "PASS",
+      "detail": "No mention of scorer, verifier, reward, evaluation, or test.sh in instruction.md.",
+      "reasons": []
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "Mentions make, readelf, objdump, musl-gcc, gcc, and points at <elf.h> and musl paths.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "Fix x86-64 ELF static linker",
+    "task_summary": "Agent is given a partially working single-file static linker (myld.c) for x86-64 Linux that compiles and emits structurally valid ELF but produces non-functional executables. They must debug and fix symbol resolution, section merging, relocations, and archive handling so linked test programs (including musl-libc programs) run correctly.",
+    "task_domain": "systems-programming/linker",
+    "deliverable": "working myld binary built from a fixed myld.c",
+    "tools_needed": [
+      "gcc",
+      "make",
+      "binutils (readelf, objdump)",
+      "musl-gcc",
+      "musl libc.a/crt objects"
+    ],
+    "instruction_lines": 53
+  },
+  "notes": [
+    "Consider adding a one-line hint about the sandbox time budget (e.g., 'you have up to 2 hours') or suggesting the agent keep myld.c in a runnable state across iterations."
+  ],
+  "elapsed_sec": 48.3,
+  "cost_usd": 0.505674,
+  "tokens": {
+    "total": 336253,
+    "input": 12,
+    "output": 2145,
+    "reasoning": 0,
+    "cache_read": 284541,
+    "cache_write": 49555
+  }
+}

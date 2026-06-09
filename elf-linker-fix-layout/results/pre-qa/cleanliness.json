@@ -1,0 +1,80 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "PASS",
+      "detail": "Slim base, cache cleaned, every installed package (build-essential, musl-tools/dev, git, tmux, strace, procps) is genuinely used by build or verifier.",
+      "reasons": []
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "Only solve.sh present; embeds the C source inline and writes the oracle marker correctly.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "All major sections are justified by the threat model, but two lines are defensive duplicates of Dockerfile state.",
+      "reasons": [
+        "useful: chmod 700 + rm -rf /logs/verifier (mandatory lockdown)",
+        "useful: chmod 700 /tests (Harbor resets to 755 after upload)",
+        "useful: env -i + LD_PRELOAD/PYTHONPATH unset (single-container side channels)",
+        "useful: pkill -u agent + recheck (kills cross-phase background writers)",
+        "useful: root-owned $STAGE with .o/.a copies (agent cannot swap link inputs)",
+        "useful: strace -f around build + every link/run (mandatory: agent code executes)",
+        "useful: shellout detection via execve grep (catches exec families the source-substring scan can't see)",
+        "useful: trap to guarantee reward.txt exists on early exit",
+        "redundant: chmod -R go-rwx $REFDATA at line 49 duplicates Dockerfile line 86",
+        "redundant: find /tests -name '*.sh' -exec chmod +x — no .sh files live in /tests at runtime besides test.sh itself"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No individual files exceed 30MB; repo is text-only sources plus small assembly/C test inputs.",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "PASS",
+      "detail": "Workspace contains only Makefile, myld.c, start.S, syscalls.S, and test inputs — no dead code or stale configs.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "tests/test.sh",
+        "item": "line 49: chmod -R go-rwx \"$REFDATA\"",
+        "why": "Dockerfile already applies chmod -R go-rwx /tests/refdata at build time; /tests is root-only so the agent cannot alter it between phases."
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "line 55: find /tests -name '*.sh' -exec chmod +x",
+        "why": "The only .sh in /tests is test.sh (already executable to be invoked); the runtime RUNNER script is created in $STAGE, not /tests."
+      },
+      {
+        "file": "tests/compute_reward.py",
+        "item": "line 152: duplicate 'reward' key alongside 'score' in reward.json payload",
+        "why": "reward.json schema specifies only 'score'; the extra top-level 'reward' field is a stray key not in the documented schema."
+      }
+    ]
+  },
+  "notes": [
+    "test.sh is dense but every section maps to a real attack vector given the single-container model — keep as-is or trim only the two defensive duplicates noted.",
+    "Consider moving the extra 'reward' top-level key in reward.json into additional_data to match the documented schema strictly."
+  ],
+  "elapsed_sec": 167.2,
+  "cost_usd": 0.975729,
+  "tokens": {
+    "total": 904913,
+    "input": 20,
+    "output": 4624,
+    "reasoning": 0,
+    "cache_read": 828983,
+    "cache_write": 71286
+  }
+}

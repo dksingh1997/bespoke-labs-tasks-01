@@ -1,0 +1,57 @@
+{
+  "step": "fairness",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Tiered tests (exit, hello, data, bss, archive, musl printf/multi/common) map directly to instruction requirements; structural T4 checks are gated behind execution.",
+      "reasons": []
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "ELF, relocations, archive scanning, and anti-shellout constraints are all explicit in instruction.md or standard systems knowledge.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Dockerfile installs build-essential, musl-tools, strace, etc.; Makefile + myld.c starter present; musl path matches instruction.",
+      "reasons": []
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh is 152 lines and writes a working ld/gcc wrapper plus the oracle marker.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "All graded cases are structural variants of the documented requirement (valid running ELF executables linking the provided test inputs).",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "gcc",
+      "make",
+      "musl-gcc",
+      "binutils (readelf, objdump, ar)",
+      "strace"
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 125.8,
+  "cost_usd": 0.682587,
+  "tokens": {
+    "total": 818225,
+    "input": 19,
+    "output": 3530,
+    "reasoning": 0,
+    "cache_read": 782171,
+    "cache_write": 32505
+  }
+}
