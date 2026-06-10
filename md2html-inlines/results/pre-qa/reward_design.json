@@ -1,0 +1,95 @@
+{
+  "step": "reward_design",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Baseline emits empty string and matches only 1/385 expected outputs (~0.0026 correctness, ~0.0013 gated perf, composite ~0.002 << 0.01).",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Correctness is byte-equal vs CommonMark reference HTML and perf is wall-time vs cmark with 5x slack, so any valid C inline implementation scores equally.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "WARN",
+      "detail": "Performance is gated by correctness (good), but correctness is NOT gated by performance under arithmetic-mean aggregation, so a correct-but-slow solution still scores 0.5 with zero perf.",
+      "reasons": [
+        "weighted_sum allows a fully-correct but arbitrarily slow converter to harvest the entire 0.5 correctness weight while contributing 0 to perf",
+        "consider multiplicative aggregation or power-mean(p<0) so weak perf also drags the total down, symmetric with the existing correctness->perf gate"
+      ]
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Empty/constant/copy-input outputs fail byte-equal grading on ~all 385 cases, and static + execve tripwires block external Markdown libraries and shell-outs to cmark/pandoc/python.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py runs outside strace as root, takes only CLI counters, and never imports/reads /app, so it is independently re-runnable from the staged manifests and counters.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both fail_with and the success path write reward.json with score (float), subscores (list of {subtask,score}), and additional_data (dict); failure path includes subscores with zeros.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "composite = 0.5 * correctness_rate + 0.5 * (perf_raw_rate * correctness_rate); correctness_rate = passed / (visible_total + hidden_total); perf_raw_rate = mean over perf files of min(1.0, cmark_median * 5 / agent_median)",
+      "formula_explanation": "Equal-weighted correctness and performance, with performance multiplicatively gated by correctness so a fast-but-wrong binary collapses to ~0 instead of harvesting the perf half.",
+      "components": [
+        {
+          "name": "correctness",
+          "metric": "byte-equal match against CommonMark reference HTML across 268 visible + 117 hidden inline cases",
+          "gate": "none (raw pass rate)",
+          "weight": "0.50"
+        },
+        {
+          "name": "performance",
+          "metric": "per-file min(1, cmark_median*5/agent_median) averaged over perf files (currently 1 file)",
+          "gate": "multiplied by correctness_rate",
+          "weight": "0.50"
+        }
+      ],
+      "aggregation_method": "weighted_sum",
+      "dimension_analysis": [
+        {
+          "name": "correctness",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "385 strict byte-equal CommonMark inline cases including emphasis precedence, multiple-of-3 rule, link destinations, entity refs, code span normalization."
+        },
+        {
+          "name": "performance",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "5x slack vs cmark on perf_links.md is achievable for any reasonable C implementation; gated by correctness so cannot be gamed by a fast no-op."
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Consider multiplicative aggregation (composite = correctness * (a + b*perf_raw)) or power-mean(p<0) so a correct-but-very-slow solution does not still earn the full 0.5 correctness weight; current gate is one-directional.",
+    "Only 1 perf file (perf_links.md) — add a few more covering emphasis-heavy, escape-heavy, and large-paragraph inputs to make the perf signal less brittle to a single workload shape."
+  ],
+  "elapsed_sec": 155.8,
+  "cost_usd": 0.91477,
+  "tokens": {
+    "total": 786944,
+    "input": 18,
+    "output": 4701,
+    "reasoning": 0,
+    "cache_read": 711609,
+    "cache_write": 70616
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "step": "isolation",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml sets [agent] user = \"agent\" (line 13).",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "All required isolation primitives are present in the Dockerfile.",
+      "reasons": [
+        "present: useradd agent (line 40)",
+        "present: chown -R agent:agent /app (line 55)",
+        "present: chown agent:agent /solution (line 47)",
+        "present: mkdir /tests && chmod 700 /tests (line 44)",
+        "present: strace installed (line 13), plus procps/file/gcc/make for verifier",
+        "present: reference cmark installed root-only under /opt/verifier_tools (chmod -R go-rwx)",
+        "uid 1000 implicit via first useradd (consistent with test.sh comment 'agent (uid 1000)')"
+      ]
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh locks /logs/verifier first then wipes, sandboxes every agent-code execution under su agent + strace, and always exits 0.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier (line 54) BEFORE rm -rf (line 55)",
+        "present: /tests re-locked to 0700 + go-rx stripped on visible/hidden/perf dirs (lines 61-62)",
+        "present: env sanitisation (unset LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/... line 67) and clean PATH",
+        "present: build phase wrapped in strace -f + timeout 300 + su agent (lines 215-219, 225-229)",
+        "present: correctness phase wrapped in strace -f + timeout 480 + su agent (lines 287-290)",
+        "present: perf traced run wrapped in strace -f + timeout 60 + su agent (lines 368-372)",
+        "present: reward_tamper_in (openat O_WRONLY/O_RDWR/O_CREAT on reward.{txt,json}) checked on every strace log",
+        "present: external_converter_execve tripwire on correctness + perf strace logs",
+        "present: scoring via compute_reward.py runs as root OUTSIDE strace (lines 301-303 grade, 400-407 reward)",
+        "present: no chown root:root on /logs",
+        "present: exit 0 on every path (fail_with line 111, success line 428)",
+        "present: fallback reward 0.0 via fail_with -> compute_reward.py --fail",
+        "present: no set -euo pipefail (intentional, documented at lines 13-14)",
+        "present: pre-verification pkill -9 -u agent + survival check (lines 146-153)"
+      ]
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code: verifier compiles and executes the agent's md2html C binary, so strace + su agent are required and properly applied.",
+      "reasons": [
+        "verifier builds agent sources via make/gcc and runs the resulting md2html on staged inputs",
+        "every agent-code invocation (build, correctness, perf-traced) runs as su agent inside strace -f with a timeout",
+        "scoring layer (harness.py grade, compute_reward.py) only reads files; never imports /app code"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "agent_user": "agent",
+    "verifier_type": "runs_agent_code",
+    "strace_needed": true
+  },
+  "notes": [],
+  "elapsed_sec": 50.7,
+  "cost_usd": 0.519421,
+  "tokens": {
+    "total": 223268,
+    "input": 9,
+    "output": 2635,
+    "reasoning": 0,
+    "cache_read": 160939,
+    "cache_write": 59685
+  }
+}

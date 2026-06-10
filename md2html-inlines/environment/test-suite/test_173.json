@@ -1,0 +1,6 @@
+{
+  "example": 504,
+  "section": "Links",
+  "markdown": "[link](foo\\bar)\n",
+  "html": "<p><a href=\"foo%5Cbar\">link</a></p>\n"
+}

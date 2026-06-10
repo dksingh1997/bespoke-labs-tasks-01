@@ -1,0 +1,75 @@
+{
+  "step": "format_check",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present.",
+      "reasons": []
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": []
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user=agent.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "git and tmux are installed in the Dockerfile.",
+      "reasons": []
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains extra assets (compute_reward.py, harness.py, hidden_cases/, perf_data/, visible_cases/) that should live in environment/tests/.",
+      "reasons": [
+        "compute_reward.py in tests/",
+        "harness.py in tests/",
+        "hidden_cases/ directory in tests/",
+        "perf_data/ directory in tests/",
+        "visible_cases/ directory in tests/"
+      ]
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "PASS",
+      "detail": "No stray files at root; qa-logs/ and results/ are ignored per rules, jobs/ and .env are gitignored.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "md2html-inlines",
+    "difficulty": "hard",
+    "category": "programming",
+    "agent_timeout_sec": 7200,
+    "verifier_timeout_sec": 600,
+    "build_timeout_sec": 600,
+    "allow_internet": false,
+    "cpus": 2,
+    "memory_mb": 4096,
+    "agent_user": "agent"
+  },
+  "notes": [
+    "Move compute_reward.py, harness.py, hidden_cases/, perf_data/, and visible_cases/ from tests/ to environment/tests/ and COPY them into /tests in the Dockerfile so the tests/ task-root directory only contains test.sh.",
+    "Note: environment/ already contains test-suite/ which appears to duplicate visible_cases/ — verify the Dockerfile bundles the correct hidden assets at build time once tests/ is slimmed."
+  ],
+  "elapsed_sec": 54.3,
+  "cost_usd": 0.542555,
+  "tokens": {
+    "total": 388641,
+    "input": 13,
+    "output": 2271,
+    "reasoning": 0,
+    "cache_read": 335481,
+    "cache_write": 50876
+  }
+}

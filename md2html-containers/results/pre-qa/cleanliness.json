@@ -1,0 +1,105 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "PASS",
+      "detail": "Slim Python base, apt cache cleaned, cmake purged after cmark build; every remaining package has a load-bearing use in test.sh or as a Harbor hard rule.",
+      "reasons": []
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "solution/ contains only solve.sh, which writes the oracle marker and installs a cmark-wrapper reference.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Core orchestration is sound, but several blocks are redundant given the single-container, fresh-per-trial isolation model.",
+      "reasons": [
+        "useful: chmod 700 + rm -rf on /logs/verifier (mandatory)",
+        "useful: re-locking /tests after Harbor's verify-phase upload resets it to 0755",
+        "useful: strace-wrapped build and run as agent user (double defense)",
+        "useful: untraced timed perf runs + separate traced run for tripwires (avoids ptrace skewing timing)",
+        "useful: env -i + sanitised PATH for the agent shell",
+        "redundant: pkill/pgrep block at lines 146-153 (each trial is a fresh container; no cross-trial agent process can exist)",
+        "redundant: workspace_snapshot at lines 158-164 is written but never read by any downstream step",
+        "redundant: find /tests -type f -name '*.sh' -exec chmod +x at line 72 (no .sh files exist under /tests besides test.sh itself, which is already executing)",
+        "redundant: separate make.log and gcc.log files when both are short build logs (could fold into one log)"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": ".gitignore covers .env and jobs/; no individual file exceeds 30MB (largest is perf_nested_lists.md at 1.7MB).",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "WARN",
+      "detail": "tests/ at the task root holds 2.1MB of assets (visible_cases, hidden_cases, perf_data, harness.py, compute_reward.py) that per Harbor spec belong in environment/tests/ and should be baked into the image — tests/ should contain only test.sh.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "tests/visible_cases/",
+        "item": "73 JSON case files duplicated byte-for-byte under environment/test-suite/",
+        "why": "visible_cases/ exists only because test.sh reads it from /tests/visible_cases at runtime; if these assets lived in environment/tests/ they would be COPYed into the image once and never re-uploaded per trial, eliminating the duplication"
+      },
+      {
+        "file": "tests/hidden_cases/",
+        "item": "26 hidden case JSONs sitting in the task root",
+        "why": "per Harbor spec, tests/ at the task root should contain only test.sh; hidden_cases belongs in environment/tests/ so it ships inside the Docker image (faster uploads, leaner repo, cleaner upload-merge surface)"
+      },
+      {
+        "file": "tests/perf_data/perf_nested_lists.md",
+        "item": "1.7MB benchmark fixture re-uploaded every trial",
+        "why": "static benchmark data should be baked into the image via COPY environment/tests/ /tests/ rather than re-shipped through docker compose cp on every verifier upload"
+      },
+      {
+        "file": "tests/harness.py and tests/compute_reward.py",
+        "item": "Python verifier modules sitting in the task root",
+        "why": "code that the verifier executes should be COPYed into the image at build time (environment/tests/ -> /tests/); only test.sh needs to live at the task root for Harbor's upload step"
+      },
+      {
+        "file": "test.sh",
+        "item": "pkill/pgrep cross-phase isolation block (lines 146-153) including the fail_with branch",
+        "why": "each trial runs in a fresh container with PID 1 = sleep infinity; no agent process can pre-exist before test.sh runs, and the /logs/verifier chmod 700 already cuts off any agent background process from writing the reward file"
+      },
+      {
+        "file": "test.sh",
+        "item": "workspace_snapshot block (lines 158-164)",
+        "why": "the snapshot is copied to /logs/verifier/workspace_snapshot but never consumed by any later step; if forensic preservation is the goal, Harbor's artifact collection already grabs /app/workspace per job.yaml"
+      },
+      {
+        "file": "test.sh",
+        "item": "find /tests -type f -name '*.sh' -exec chmod +x at line 72",
+        "why": "no .sh file exists under /tests besides test.sh itself, which is already executing; the comment even concedes this is a Modal/Daytona safety net but the task is configured for local Docker"
+      },
+      {
+        "file": "environment/",
+        "item": "missing .dockerignore",
+        "why": "no exclusions means anything added to environment/ later (build artifacts, editor files) will land in the build context — a one-line .dockerignore is cheap insurance"
+      }
+    ]
+  },
+  "notes": [
+    "Move tests/{visible_cases,hidden_cases,perf_data,harness.py,compute_reward.py} into environment/tests/ and add COPY environment/tests/ /tests/ in the Dockerfile (followed by chmod -R 700 /tests). Leave only test.sh at the task root.",
+    "Drop the pkill, workspace_snapshot, and stray chmod +x blocks from test.sh; they add log noise without closing any vector that user separation + the /logs/verifier lockdown does not already close.",
+    "Add a minimal environment/.dockerignore (at least: jobs/, results/, qa-logs/, .git, *.bak)."
+  ],
+  "elapsed_sec": 203.8,
+  "cost_usd": 1.169879,
+  "tokens": {
+    "total": 1143347,
+    "input": 23,
+    "output": 6700,
+    "reasoning": 0,
+    "cache_read": 1061154,
+    "cache_write": 75470
+  }
+}

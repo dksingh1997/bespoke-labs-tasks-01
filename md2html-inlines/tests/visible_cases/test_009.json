@@ -1,0 +1,6 @@
+{
+  "example": 22,
+  "section": "Backslash escapes",
+  "markdown": "[foo](/bar\\* \"ti\\*tle\")\n",
+  "html": "<p><a href=\"/bar*\" title=\"ti*tle\">foo</a></p>\n"
+}

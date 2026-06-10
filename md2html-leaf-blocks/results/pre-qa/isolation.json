@@ -1,0 +1,51 @@
+{
+  "step": "isolation",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml sets [agent] user = \"agent\".",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "All required isolation primitives are present in the Dockerfile.",
+      "reasons": [
+        "present: useradd agent, chown -R agent:agent /app, chown agent:agent /solution, mkdir -p /tests && chmod 700 /tests, strace installed (with git/tmux), gcc/make for verifier compilation, cmark reference installed root-only under /opt/verifier_tools (chmod -R go-rwx)"
+      ]
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh locks /logs/verifier first, wipes, sanitises env, runs agent code as agent under strace+timeout, scores outside strace, always exits 0.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier BEFORE rm -rf, env sanitisation (unsets LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/etc, fixed PATH), /tests re-locked to 0700, pkill -u agent before snapshot, build+correctness+perf runs use `su agent` inside `strace -f -e trace=... -o <log> timeout N`, reward_tamper_in scans each strace log, converter_execve_in tripwire, compute_reward.py and harness.py grade invoked OUTSIDE strace as root, fail_with always exits 0, final exit 0, no `set -euo pipefail`, fallback reward 0.0 via compute_reward.py --fail"
+      ]
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code: verifier compiles and executes the agent's C md2html binary, so su-agent + strace wrapping is required and present.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "agent_user": "agent",
+    "verifier_type": "runs_agent_code",
+    "strace_needed": true
+  },
+  "notes": [],
+  "elapsed_sec": 39.9,
+  "cost_usd": 0.50159,
+  "tokens": {
+    "total": 222212,
+    "input": 9,
+    "output": 2063,
+    "reasoning": 0,
+    "cache_read": 161027,
+    "cache_write": 59113
+  }
+}

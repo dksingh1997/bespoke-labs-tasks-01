@@ -1,0 +1,103 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "WARN",
+      "detail": "Slim base and cache cleaned, but build-essential already provides gcc and make so listing them again is redundant.",
+      "reasons": [
+        "redundant: 'gcc' and 'make' apt packages are subsumed by 'build-essential'"
+      ]
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "/solution contains only solve.sh with a clear token-gated cmark wrapper.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Core anti-cheat layout is sound, but several env-sanitisation and chmod steps duplicate protections already provided by `env -i` and the 0700 /tests directory.",
+      "reasons": [
+        "useful: chmod 700 /logs/verifier + wipe (mandatory)",
+        "useful: re-locking /tests after Harbor upload resets it to 0755",
+        "useful: strace tripwires (reward openat + external-converter execve)",
+        "useful: static anti-cheat source scan and ELF check",
+        "useful: oracle-marker token gate",
+        "useful: pkill -u agent before verification (cross-phase isolation)",
+        "useful: workspace snapshot for forensics",
+        "useful: relax_reward_perms for local-Docker bind-mount reader",
+        "redundant: chmod -R go-rx of /tests/{visible_cases,hidden_cases,perf_data} once /tests itself is 0700 (agent cannot traverse parent)",
+        "redundant: unsetting CFLAGS/CC/CXX/MAKEFLAGS when every build step already runs under `env -i`",
+        "redundant: `find /tests -name '*.sh' -exec chmod +x` since test.sh is the only .sh file in /tests"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No files exceed 30MB; largest assets are tests/perf_data (1.5MB) and the test-suite JSON corpora (~1MB each).",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "WARN",
+      "detail": "tests/visible_cases/ is a byte-identical duplicate of environment/test-suite/, and tests/{hidden_cases,perf_data}/ should live in environment/tests/ per the Harbor layout rule.",
+      "reasons": [
+        "redundant: tests/visible_cases/ (268 files, 1MB) duplicates environment/test-suite/ exactly — harness.py could read /app/test-suite at verification time instead",
+        "layout: tests/hidden_cases/ and tests/perf_data/ should be baked into the image via environment/tests/ rather than uploaded at verify time",
+        "layout: tests/harness.py and tests/compute_reward.py should live in environment/tests/ so they ship in the image (chmod 700) rather than being uploaded fresh each trial"
+      ]
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "environment/Dockerfile",
+        "item": "explicit 'gcc' and 'make' apt packages",
+        "why": "build-essential already pulls in gcc and make"
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "chmod -R go-rx /tests/visible_cases /tests/hidden_cases /tests/perf_data",
+        "why": "parent /tests is already mode 0700, so non-root cannot descend regardless of child modes"
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "unset CFLAGS CC CXX MAKEFLAGS",
+        "why": "every build/run step uses `env -i` which wipes the entire environment"
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "find /tests -type f -name '*.sh' -exec chmod +x",
+        "why": "test.sh is the only .sh file and Harbor itself makes it executable to invoke it"
+      },
+      {
+        "file": "tests/visible_cases/",
+        "item": "268 JSON files duplicating environment/test-suite/",
+        "why": "identical content; harness.py can point --visible-dir at /app/test-suite instead"
+      },
+      {
+        "file": "tests/",
+        "item": "harness.py, compute_reward.py, hidden_cases/, perf_data/",
+        "why": "Harbor convention is for tests/ to contain only test.sh; everything else should be bundled into the image via environment/tests/"
+      }
+    ]
+  },
+  "notes": [
+    "Drop redundant apt packages (gcc, make) from the Dockerfile.",
+    "Move tests/{harness.py, compute_reward.py, hidden_cases, perf_data} into environment/tests/ and delete tests/visible_cases (read from /app/test-suite instead) so tests/ contains only test.sh per the Harbor layout rule.",
+    "Trim three redundant prologue steps from test.sh (recursive chmod, compiler env unsets, *.sh chmod find) — none add defence beyond the 0700 /tests dir and `env -i`."
+  ],
+  "elapsed_sec": 153.6,
+  "cost_usd": 1.403342,
+  "tokens": {
+    "total": 1539800,
+    "input": 29,
+    "output": 8047,
+    "reasoning": 0,
+    "cache_read": 1455870,
+    "cache_write": 75854
+  }
+}

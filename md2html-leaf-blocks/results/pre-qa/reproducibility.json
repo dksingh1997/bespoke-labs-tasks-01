@@ -1,0 +1,47 @@
+{
+  "step": "reproducibility",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "Pure C task with no Python/Node package-manager dependencies, so no lockfile is applicable.",
+      "reasons": []
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "No Python or Node package manager is used; Dockerfile only invokes apt-get and builds cmark from source.",
+      "reasons": []
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml does not set `docker_image`, which is expected during development but must be set before final delivery.",
+      "reasons": [
+        "task.toml has no [environment].docker_image field"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "base_image": "python:3.11-slim",
+    "package_manager": "none (apt + source build)",
+    "lockfiles_found": [],
+    "docker_image_cached": false
+  },
+  "notes": [
+    "Before final delivery, build and push the image to a registry and set [environment].docker_image in task.toml.",
+    "Consider pinning the cmark git clone to a specific commit SHA instead of --depth 1 on the default branch for stronger reproducibility."
+  ],
+  "elapsed_sec": 50.7,
+  "cost_usd": 0.544489,
+  "tokens": {
+    "total": 353251,
+    "input": 12,
+    "output": 2234,
+    "reasoning": 0,
+    "cache_read": 296557,
+    "cache_write": 54448
+  }
+}

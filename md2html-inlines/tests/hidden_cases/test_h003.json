@@ -1,0 +1,6 @@
+{
+  "example": 26,
+  "section": "Entity and numeric character references",
+  "markdown": "&#35; &#1234; &#992; &#0;\n",
+  "html": "<p># \u04d2 \u03e0 \ufffd</p>\n"
+}

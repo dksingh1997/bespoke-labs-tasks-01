@@ -1,0 +1,57 @@
+{
+  "step": "fairness",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Instruction asks for correctness vs CommonMark reference and speed comparable to production C parser; verifier scores exactly those two (50% correctness vs expected HTML + 50% median-of-3 perf vs cmark).",
+      "reasons": []
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "CommonMark 0.31.2 spec is linked, all in-scope inline sections are enumerated, and stdin/stdout interface + build path are explicit; internal 5x cmark perf threshold is hidden but agent only needs to optimize, not target a number.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Dockerfile installs gcc/make/build-essential; workspace ships Makefile + md2html.c starter matching the documented build command; cmark is correctly root-only and only unlocked on the oracle path.",
+      "reasons": []
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists (63 lines), writes the oracle marker and installs a cmark-execve wrapper that the verifier permits via token-gated bypass.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "117 hidden cases cover the same CommonMark sections as the 268 visible cases (only additional section is 'Soft line breaks', which is explicitly listed as required in instruction.md) — structural variants, no new requirements.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "gcc",
+      "make",
+      "cmark (verifier-only)",
+      "python3",
+      "strace"
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 176.4,
+  "cost_usd": 0.933215,
+  "tokens": {
+    "total": 1198617,
+    "input": 24,
+    "output": 4818,
+    "reasoning": 0,
+    "cache_read": 1156252,
+    "cache_write": 37523
+  }
+}

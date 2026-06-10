@@ -1,0 +1,82 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "PASS",
+      "detail": "Slim base, apt lists cleaned, cmake purged after building cmark; every remaining package (build-essential/gcc/make for agent C build, git/tmux/strace as Harbor hard-rule tools, procps for pkill in test.sh, file for the ELF check, ca-certificates for the cmark git clone) is load-bearing.",
+      "reasons": []
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "Only solve.sh present in /solution.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Most sections are load-bearing but a few overlap with isolation already in place.",
+      "reasons": [
+        "useful: chmod 700 + wipe of /logs/verifier (mandatory)",
+        "useful: strace -f around as-agent build and md2html runs (catches forks, reward writes, external converter execve)",
+        "useful: env sanitization (LD_PRELOAD/PYTHONPATH/CC) for the root verifier process",
+        "useful: static cheat scan as a fast-fail before expensive strace runs",
+        "useful: ELF check via `file` to reject script wrappers",
+        "useful: FD-pinned grading in harness.py (O_NOFOLLOW, nlink>1, regular-file checks)",
+        "redundant: `chmod -R go-rx /tests/visible_cases /tests/hidden_cases /tests/perf_data` is dominated by `chmod 700 /tests` (no-traverse means inner perms unreachable)",
+        "redundant: `pkill -u agent` before strace phase is largely subsumed by strace -f waiting for all descendants (kept as belt-and-suspenders)"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No individual file exceeds 30MB; largest assets are small JSON test cases and ~4.5MB perf corpus.",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "WARN",
+      "detail": "Heavy test assets live under `tests/` at task root instead of `environment/tests/`, so ~5MB (harness.py + compute_reward.py + hidden_cases/ + perf_data/ + visible_cases/) is uploaded per trial via docker compose cp rather than baked into the image.",
+      "reasons": [
+        "tests/ contains harness.py, compute_reward.py, hidden_cases/, perf_data/, visible_cases/ — Harbor convention is that only test.sh sits at the task root; everything else should be in environment/tests/ and COPYed to /tests at build time",
+        "environment/test-suite/ duplicates tests/visible_cases/ (same 117 JSONs) — this duplication is intentional (agent-visible copy in /app/test-suite vs verifier copy in locked /tests), so not waste, but worth knowing",
+        "no .dockerignore in environment/ — minor"
+      ]
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "test.sh",
+        "item": "chmod -R go-rx on /tests/visible_cases, /tests/hidden_cases, /tests/perf_data (lines 62)",
+        "why": "/tests is already chmod 700 root, so the agent cannot traverse into these subdirs regardless of their inner mode bits"
+      },
+      {
+        "file": "tests/ layout",
+        "item": "harness.py, compute_reward.py, hidden_cases/, perf_data/, visible_cases/ live at task root tests/",
+        "why": "Harbor uploads tests/ per trial via docker compose cp; bundling these into the image (move to environment/tests/ and COPY to /tests with chmod 700) eliminates ~5MB of per-trial upload and keeps the convention that tests/ at root only holds test.sh"
+      },
+      {
+        "file": "environment/",
+        "item": "no .dockerignore",
+        "why": "Minor — there are no large/unwanted files in the build context today, but a .dockerignore documents intent and protects against future drift"
+      }
+    ]
+  },
+  "notes": [
+    "Move harness.py, compute_reward.py, hidden_cases/, perf_data/, visible_cases/ from tests/ into environment/tests/ and COPY them into /tests (chmod 700) in the Dockerfile; leave only test.sh in tests/.",
+    "Drop the redundant chmod -R go-rx on /tests subdirs in test.sh (dominated by /tests 0700)."
+  ],
+  "elapsed_sec": 176.2,
+  "cost_usd": 0.91004,
+  "tokens": {
+    "total": 610677,
+    "input": 15,
+    "output": 6757,
+    "reasoning": 0,
+    "cache_read": 527542,
+    "cache_write": 76363
+  }
+}

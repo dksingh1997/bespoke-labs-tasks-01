@@ -1,0 +1,6 @@
+{
+  "example": 32,
+  "section": "Entity and numeric character references",
+  "markdown": "[foo](/f&ouml;&ouml; \"f&ouml;&ouml;\")\n",
+  "html": "<p><a href=\"/f%C3%B6%C3%B6\" title=\"f\u00f6\u00f6\">foo</a></p>\n"
+}

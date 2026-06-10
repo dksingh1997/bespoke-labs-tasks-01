@@ -1,0 +1,74 @@
+{
+  "step": "format_check",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present.",
+      "reasons": []
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml are all present.",
+      "reasons": []
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user=agent.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "Dockerfile installs both git and tmux via apt-get.",
+      "reasons": []
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains extra assets (compute_reward.py, harness.py, hidden_cases/, perf_data/, visible_cases/) that should live in environment/tests/.",
+      "reasons": [
+        "compute_reward.py is at tests/ root instead of being bundled via Dockerfile COPY",
+        "harness.py is at tests/ root",
+        "hidden_cases/ directory is at tests/ root",
+        "perf_data/ directory is at tests/ root",
+        "visible_cases/ directory is at tests/ root"
+      ]
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "PASS",
+      "detail": "No stray files at task root after ignoring gitignored and standard-ignored entries.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "md2html-leaf-blocks",
+    "difficulty": "hard",
+    "category": "programming",
+    "agent_timeout_sec": 7200,
+    "verifier_timeout_sec": 600,
+    "build_timeout_sec": 600,
+    "allow_internet": false,
+    "cpus": 2,
+    "memory_mb": 4096,
+    "agent_user": "agent"
+  },
+  "notes": [
+    "Move tests/compute_reward.py, tests/harness.py, tests/hidden_cases/, tests/perf_data/, and tests/visible_cases/ to environment/tests/ and COPY them into /tests via the Dockerfile so tests/ contains only test.sh."
+  ],
+  "elapsed_sec": 63.9,
+  "cost_usd": 0.625769,
+  "tokens": {
+    "total": 497596,
+    "input": 15,
+    "output": 2750,
+    "reasoning": 0,
+    "cache_read": 441000,
+    "cache_write": 53831
+  }
+}

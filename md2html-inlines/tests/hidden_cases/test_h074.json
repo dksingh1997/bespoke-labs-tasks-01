@@ -1,0 +1,6 @@
+{
+  "example": 542,
+  "section": "Links",
+  "markdown": "[\u1e9e]\n\n[SS]: /url\n",
+  "html": "<p><a href=\"/url\">\u1e9e</a></p>\n"
+}

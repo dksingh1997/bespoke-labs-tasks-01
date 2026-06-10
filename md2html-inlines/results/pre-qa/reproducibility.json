@@ -1,0 +1,56 @@
+{
+  "step": "reproducibility",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "Task is C-based with no Python/JS/Rust application dependencies requiring a lockfile.",
+      "reasons": []
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "No Python/pip usage; only apt-installed system packages and a cmark build from source.",
+      "reasons": []
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml has no docker_image field set — expected during development, must be set before final delivery.",
+      "reasons": [
+        "docker_image not present in [environment]"
+      ]
+    }
+  ],
+  "additional_checks": [
+    {
+      "id": "cmark_pin",
+      "status": "WARN",
+      "detail": "cmark is fetched via 'git clone --depth 1' with no commit SHA, so the reference implementation version can drift across rebuilds.",
+      "reasons": [
+        "Dockerfile line 25 pulls HEAD of commonmark/cmark"
+      ]
+    }
+  ],
+  "info": {
+    "base_image": "python:3.11-slim",
+    "package_manager": "none (C task; apt + source build of cmark)",
+    "lockfiles_found": [],
+    "docker_image_cached": false
+  },
+  "notes": [
+    "Pin cmark to a specific commit SHA in the Dockerfile to guarantee reproducible verifier behavior.",
+    "Set [environment].docker_image to a prebuilt registry image before final delivery."
+  ],
+  "elapsed_sec": 58.2,
+  "cost_usd": 0.552335,
+  "tokens": {
+    "total": 429706,
+    "input": 14,
+    "output": 2141,
+    "reasoning": 0,
+    "cache_read": 377992,
+    "cache_write": 49559
+  }
+}

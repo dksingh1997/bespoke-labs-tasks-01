@@ -1,0 +1,6 @@
+{
+  "example": 612,
+  "section": "Autolinks",
+  "markdown": "<foo.bar.baz>\n",
+  "html": "<p>&lt;foo.bar.baz&gt;</p>\n"
+}

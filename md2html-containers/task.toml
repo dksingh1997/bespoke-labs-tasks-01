@@ -1,0 +1,33 @@
+version = "1.0"
+
+[metadata]
+difficulty = "hard"
+category = "programming"
+tags = ["c", "parsing", "markdown", "html", "commonmark", "systems-programming"]
+
+[verifier]
+timeout_sec = 600.0
+
+[agent]
+timeout_sec = 7200.0
+user = "agent"
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+allow_internet = false
+mcp_servers = []
+
+[verifier.env]
+
+[solution.env]
+# Random per-task token. solve.sh writes it to /app/.harbor_oracle_marker;
+# tests/test.sh hardcodes the same string in EXPECTED_ORACLE_FLAG and uses it to
+# detect oracle trials, unlock the root-only cmark reference, and skip the
+# anti-cheat + execve tripwires. Harbor injects [solution.env] ONLY into the
+# OracleAgent's environment (never the verifier's or a normal agent's), so the
+# agent cannot read this token to forge the marker.
+HARBOR_ORACLE_FLAG = "md2html-containers-oracle-66963ca68379d4af"

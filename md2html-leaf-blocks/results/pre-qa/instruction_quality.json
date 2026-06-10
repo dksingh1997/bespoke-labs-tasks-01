@@ -1,0 +1,71 @@
+{
+  "step": "instruction_quality",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Deliverable (/app/workspace/md2html), interface (stdin/stdout), scope, and build commands are explicit and unambiguous.",
+      "reasons": []
+    },
+    {
+      "id": "time_awareness",
+      "status": "PASS",
+      "detail": "Final section states 'You have 2 hours. Build, test, and iterate.'",
+      "reasons": []
+    },
+    {
+      "id": "tone",
+      "status": "WARN",
+      "detail": "Reads more like a formal spec with many headings than a conversational colleague handoff.",
+      "reasons": [
+        "Heavy use of section headers (Overview, Compilation, Interface, Goals, Workspace, Time Limit)",
+        "Bulleted spec-style enumerations dominate over prose"
+      ]
+    },
+    {
+      "id": "length",
+      "status": "PASS",
+      "detail": "116 lines — slightly over 100 but acceptable for a parser task that needs scope enumeration.",
+      "reasons": []
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "PASS",
+      "detail": "No mention of scorer, verifier, reward, or evaluation; 'tests' refers only to the visible dev test corpus.",
+      "reasons": []
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "make, gcc, python3, and timeout are shown in example commands; starter Makefile and md2html.c are provided in the workspace.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "CommonMark leaf blocks converter in C",
+    "task_summary": "Implement a Markdown-to-HTML converter in C from scratch covering CommonMark leaf blocks (headings, code blocks, HTML blocks, thematic breaks, paragraphs). Reads stdin, writes HTML to stdout, must match the CommonMark reference output.",
+    "task_domain": "systems-programming/parsing",
+    "deliverable": "/app/workspace/md2html",
+    "tools_needed": [
+      "gcc",
+      "make",
+      "python3"
+    ],
+    "instruction_lines": 116
+  },
+  "notes": [
+    "Consider trimming section headers and converting to a more conversational handoff tone to better match colleague-handoff style."
+  ],
+  "elapsed_sec": 54.8,
+  "cost_usd": 0.476096,
+  "tokens": {
+    "total": 248055,
+    "input": 10,
+    "output": 2348,
+    "reasoning": 0,
+    "cache_read": 194480,
+    "cache_write": 51217
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "example": 650,
+  "section": "Hard line breaks",
+  "markdown": "### foo  \n",
+  "html": "<h3>foo</h3>\n"
+}

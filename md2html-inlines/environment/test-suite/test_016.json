@@ -1,0 +1,6 @@
+{
+  "example": 34,
+  "section": "Entity and numeric character references",
+  "markdown": "``` f&ouml;&ouml;\nfoo\n```\n",
+  "html": "<pre><code class=\"language-f\u00f6\u00f6\">foo\n</code></pre>\n"
+}

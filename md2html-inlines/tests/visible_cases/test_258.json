@@ -1,0 +1,6 @@
+{
+  "example": 631,
+  "section": "Raw HTML",
+  "markdown": "foo <![CDATA[>&<]]>\n",
+  "html": "<p>foo <![CDATA[>&<]]></p>\n"
+}

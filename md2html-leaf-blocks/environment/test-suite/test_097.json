@@ -1,0 +1,6 @@
+{
+  "example": 173,
+  "section": "HTML blocks",
+  "markdown": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>\n",
+  "html": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>\n"
+}

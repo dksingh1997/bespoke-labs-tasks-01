@@ -1,0 +1,6 @@
+{
+  "example": 356,
+  "section": "Emphasis and strong emphasis",
+  "markdown": "*$*alpha.\n\n*\u00a3*bravo.\n\n*\u20ac*charlie.\n\n*\ud838\udeff*delta.\n",
+  "html": "<p>*$*alpha.</p>\n<p>*\u00a3*bravo.</p>\n<p>*\u20ac*charlie.</p>\n<p>*\ud838\udeff*delta.</p>\n"
+}

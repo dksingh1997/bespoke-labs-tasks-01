@@ -1,0 +1,6 @@
+{
+  "example": 21,
+  "section": "Backslash escapes",
+  "markdown": "<a href=\"/bar\\/)\">\n",
+  "html": "<a href=\"/bar\\/)\">\n"
+}

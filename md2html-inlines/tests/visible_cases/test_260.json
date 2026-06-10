@@ -1,0 +1,6 @@
+{
+  "example": 633,
+  "section": "Raw HTML",
+  "markdown": "foo <a href=\"\\*\">\n",
+  "html": "<p>foo <a href=\"\\*\"></p>\n"
+}

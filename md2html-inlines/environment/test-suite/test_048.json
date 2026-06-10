@@ -1,0 +1,6 @@
+{
+  "example": 335,
+  "section": "Code spans",
+  "markdown": "`\u00a0b\u00a0`\n",
+  "html": "<p><code>\u00a0b\u00a0</code></p>\n"
+}

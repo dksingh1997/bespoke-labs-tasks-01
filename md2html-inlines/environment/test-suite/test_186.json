@@ -1,0 +1,6 @@
+{
+  "example": 528,
+  "section": "Links",
+  "markdown": "[foo<https://example.com/?search=](uri)>\n",
+  "html": "<p>[foo<a href=\"https://example.com/?search=%5D(uri)\">https://example.com/?search=](uri)</a></p>\n"
+}

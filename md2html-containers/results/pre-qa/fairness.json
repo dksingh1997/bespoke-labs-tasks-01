@@ -1,0 +1,59 @@
+{
+  "step": "fairness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "WARN",
+      "detail": "Instruction mentions correctness and speed but does not disclose that performance is 50% of the score or that the speed gate compares against cmark with a 5x factor.",
+      "reasons": [
+        "Performance weight (50%) and cmark-relative 5x speed ratio are not inferable from instruction.md"
+      ]
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "CommonMark spec is linked and tricky terms (loose/tight, lazy continuation, list-item indentation) are defined in instruction.md.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Dockerfile installs gcc/make/build-essential and workspace ships Makefile + md2html.c stub matching the documented build commands.",
+      "reasons": []
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists (2359 bytes) and installs a token-gated cmark wrapper as the reference oracle.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "Hidden cases cover the same three CommonMark sections (Lists, List items, Block quotes) declared in instruction.md, as structural variants.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "gcc",
+      "make",
+      "build-essential"
+    ]
+  },
+  "notes": [
+    "Consider disclosing in instruction.md that scoring weighs correctness and performance equally, and that performance is measured relative to a reference C CommonMark implementation — this helps the agent prioritize iteration time appropriately."
+  ],
+  "elapsed_sec": 169.6,
+  "cost_usd": 0.905158,
+  "tokens": {
+    "total": 1203205,
+    "input": 25,
+    "output": 3809,
+    "reasoning": 0,
+    "cache_read": 1162828,
+    "cache_write": 36543
+  }
+}

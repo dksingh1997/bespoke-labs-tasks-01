@@ -1,0 +1,6 @@
+{
+  "example": 601,
+  "section": "Autolinks",
+  "markdown": "<made-up-scheme://foo,bar>\n",
+  "html": "<p><a href=\"made-up-scheme://foo,bar\">made-up-scheme://foo,bar</a></p>\n"
+}

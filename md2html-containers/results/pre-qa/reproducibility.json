@@ -1,0 +1,47 @@
+{
+  "step": "reproducibility",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "No Python/Node/Rust dependency manifests; only apt packages and an unpinned cmark git clone.",
+      "reasons": []
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "Task is pure C with only stdlib Python in tests; no pip/uv usage.",
+      "reasons": []
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml has no docker_image field (acceptable during development; required before final delivery).",
+      "reasons": [
+        "docker_image not set in [environment]"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "base_image": "python:3.11-slim",
+    "package_manager": "none",
+    "lockfiles_found": [],
+    "docker_image_cached": false
+  },
+  "notes": [
+    "cmark is cloned with --depth 1 from main without a pinned tag/commit; pin a specific release before final delivery for reproducibility.",
+    "Set docker_image in task.toml before final delivery."
+  ],
+  "elapsed_sec": 62.7,
+  "cost_usd": 0.639095,
+  "tokens": {
+    "total": 579201,
+    "input": 17,
+    "output": 2424,
+    "reasoning": 0,
+    "cache_read": 526320,
+    "cache_write": 50440
+  }
+}

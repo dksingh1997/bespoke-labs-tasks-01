@@ -1,0 +1,144 @@
+# CommonMark Leaf Block Converter in C
+
+> Implement a Markdown-to-HTML converter in C handling CommonMark leaf blocks (headings, code blocks, HTML blocks, thematic breaks, paragraphs, tabs). The converter reads from stdin and writes HTML to stdout, must compile via make, and must not use any external Markdown library.
+
+---
+
+## Task Configuration
+
+| Property | Value |
+|----------|-------|
+| Difficulty | hard |
+| Category | programming |
+| Agent Timeout | 7200s |
+| Verifier Timeout | 600s |
+| Internet Access | Disabled |
+| CPUs / Memory | 2 / 4096 MB |
+
+---
+
+## Pre-Rollout QA
+
+> 37 PASS, 4 WARN, 0 FAIL — **WARN** | 194.1s | $6.42
+### Format Check
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Required Files | PASS | instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present. |
+| Recommended Files | PASS | solution/solve.sh, oracle.yaml, and job.yaml all present. |
+| Task Toml Schema | PASS | allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user=agent. |
+| Dockerfile Required Tools | PASS | git and tmux both installed in Dockerfile. |
+| Tests Folder Lean | WARN | tests/ contains extra assets (compute_reward.py, harness.py, hidden_cases/, perf_data/) that should live under environment/tests/. |
+| Directory Cleanliness | PASS | No stray files at root after ignoring gitignored and standard-ignored paths. |
+
+### Isolation
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Agent User | PASS | task.toml sets [agent] user = "agent". |
+| Dockerfile Isolation | PASS | All required isolation primitives present in Dockerfile. |
+| Testsh Isolation | PASS | Lockdown, strace-wrapped agent execution, and outside-strace scoring all correct. |
+| Verifier Type | PASS | runs_agent_code — verifier compiles and executes the agent's md2html binary. |
+
+### Reproducibility
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Lockfile | PASS | No Python/Node/Rust dependency manifests present; task is C-based with only apt packages and a cmark git clone. |
+| Package Manager | PASS | No pip/uv usage in Dockerfile; dependencies are apt-installed system packages. |
+| Docker Image Cached | WARN | task.toml does not set [environment].docker_image; expected during development, must be set before final delivery. |
+
+### Instruction Quality
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Clarity | PASS | Clear deliverable (C binary at /app/workspace/md2html), explicit stdin/stdout interface, and scoped CommonMark sections listed. |
+| Time Awareness | PASS | Explicit 'You have 2 hours' time limit section at the end. |
+| Tone | PASS | Conversational and direct with crisp section headings. |
+| Length | PASS | 116 lines, just over the 100-line guideline but justified by spec-style content. |
+| Scoring Leakage | PASS | No mention of scorer, verifier, reward, or evaluation; only refers to visible tests and correctness goals. |
+| Tools Documented | PASS | Mentions make, gcc, C compiler, and python3 for the test runner snippet; starter Makefile and md2html.c noted. |
+
+### Reward Hacking
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Noop Baseline | PASS | Starter md2html.c emits nothing so correctness=0; performance is correctness-gated to 0, yielding composite 0.0. |
+| Adversarial Audit | PASS | Agent is non-root, /tests re-locked to 0700, /logs/verifier wiped+locked before any agent work, env sanitized, reward/converter strace tripwires active, scoring runs outside strace from root-owned counters. |
+| Agent Code As User | PASS | All agent build and run phases use `su agent -s /bin/bash -c` with `env -i`, never root. |
+| Strace Tracing | PASS | Build, correctness, and each perf invocation wrap agent execution in `strace -f -e trace=clone,clone3,fork,vfork,execve,openat`; logs grep'd for reward openat writes and external-converter execve before scoring. |
+| Verifier Protected | PASS | compute_reward.py runs via `python3 -ISs`, takes only CLI counters and a root-only failed-cases file, never imports or reads /app. |
+| Fault Tolerance | PASS | fail_with writes reward 0.0 via compute_reward.py and exits 0; build/correctness/perf wrapped in `timeout`; test.sh has no `set -e` and always exits 0. |
+
+**Acknowledged / Acceptable Gaps**
+- Agent can still tamper with its own /logs/agent traces during the agent phase — Inherent to the single-container model; not relevant to reward computation, which depends solely on counters produced by root-side harness/compute_reward.
+- Build phase may legitimately execve python (e.g. for Makefile codegen), so build.strace.log is checked only for reward-file writes, not external-converter execve — Documented in test.sh comments; per-run perf strace still catches an md2html that exec()s cmark/python at runtime.
+
+**Existing Defenses**
+- **Filesystem lockdown**: chmod 700 /logs/verifier + rm -rf before any agent activity; Re-lock /tests to 0700 and strip go-rx from hidden_cases/perf_data inside test.sh; cmark installed under /opt/verifier_tools with chmod -rwx for non-root; Per-case output files pre-created 0666 inside a root-owned 0755 staging dir so agent can write but not symlink-swap or create siblings
+- **User separation**: Agent runs as uid 1000 (`agent`) for both build and converter runs via `su agent -s /bin/bash -c`; `env -i PATH=... HOME=... TMPDIR=/tmp LC_ALL=C` strips inherited env from agent invocations
+- **Runtime tracing**: strace -f wraps build, correctness batch, and each perf invocation; logs scanned for openat writes to reward.{txt,json} and execve of cmark/pandoc/python/node/perl/ruby/markdown; Pre-existing agent processes killed with pkill -9 -u agent before verification, with a sanity recheck
+- **Scoring isolation**: compute_reward.py invoked as `python3 -ISs` (isolated, no site-packages, no env), accepts only CLI counters; harness.py grade uses FD-pinned O_NOFOLLOW reads that reject symlinks, non-regular files, and nlink>1 hardlinks; Reward files written atomically via os.replace
+- **Anti-cheat**: Static source scan for known markdown lib includes, exec/system/popen of external converters, -l<lib> link flags, and wrapper scripts in non-C languages; `file` check rejects shell/python/perl scripts masquerading as the ELF md2html; Performance ratio gated by correctness rate so a fast-but-wrong binary collapses to ~0
+
+### Reward Design
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Correctness Gating | PASS | Baseline emits empty string which matches zero of the 171 non-empty expected outputs, yielding correctness=0 and thus performance=0 via the multiplicative gate. |
+| Implementation Agnostic | PASS | Correctness is exact byte-match against CommonMark reference HTML and performance is wall-clock vs cmark — both measure output quality, not algorithm choice. |
+| Dimension Balance | PASS | Performance is multiplicatively gated by correctness rate (perf_gated = perf_raw * correctness_rate), so a fast-but-wrong solution cannot game the perf dimension. |
+| Shortcut Resistant | PASS | Trivial outputs (empty, constant, copy-input) cannot match the byte-exact expected HTML for any case, and perf collapses to 0 via the correctness gate. |
+| Modular Scoring | PASS | compute_reward.py takes pre-computed counters as CLI args, reads only the root-owned failed-cases file, and never imports or executes agent code. |
+| Reward Json Schema | PASS | Both the failure path and the normal path write reward.json with score, subscores list (always two entries), and additional_data dict via atomic os.replace. |
+
+**Reward Formula**: `composite = w_c * (passed/total) + w_p * (perf_score_sum/perf_total) * (passed/total), where w_c=w_p=0.5 (redistributed if a category is empty), and per-perf-case score = min(1.0, 5*cmark_median/agent_median)`
+Equal-weighted correctness + performance with a multiplicative correctness gate on performance so fast-but-wrong implementations collapse to 0 while a correct-but-slow implementation still earns the 0.5 correctness half.
+
+| Component | Metric | Gate / Weight |
+|-----------|--------|---------------|
+| correctness | byte-exact HTML match vs CommonMark reference over visible+hidden cases | none / 0.50 |
+| performance | median-of-3 wall-clock ratio vs cmark, clamped to 5x cmark = 1.0 | multiplied by correctness rate / 0.50 |
+
+### Fairness
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Instruction Verifier Sync | PASS | Verifier scores correctness against CommonMark spec output and performance vs cmark on large docs, both signaled by instruction (exact match to spec + 'fast, comparable to a production-quality C parser'); internal weights/threshold are reasonable hidden details. |
+| Definitions Documented | PASS | All scoped sections (ATX/setext headings, thematic breaks, indented/fenced code, HTML blocks, paragraphs, tabs, blank lines) are listed in instruction.md with a link to the CommonMark 0.31.2 spec. |
+| Tools Accessible | PASS | Dockerfile installs gcc/make/build-essential and workspace ships a starter Makefile + md2html.c matching the build commands documented in instruction.md. |
+| Oracle Exists | PASS | solution/solve.sh exists (63 lines) and installs a token-gated cmark wrapper that the verifier accepts on the oracle path. |
+| Hidden Test Fairness | PASS | Hidden cases cover exactly the same CommonMark leaf-block sections enumerated in instruction.md (Tabs, Thematic breaks, ATX/Setext headings, Indented/Fenced code, HTML blocks, Paragraphs, Blank lines). |
+
+### Cleanliness
+
+| Check | Status | Detail |
+|-------|--------|--------|
+| Dockerfile Quality | PASS | Slim base, cache cleaned, cmake purged after cmark build; every retained package (build-essential, strace, procps, file, ca-certificates, git, tmux) is used by the verifier or required by Harbor. |
+| Solution Clean | PASS | solution/ contains only solve.sh with the token-gated cmark wrapper. |
+| Testsh Quality | WARN | Necessary defense layers are present, but a couple of steps are redundant given that the agent runs as a non-root user and /tests is already 0700. |
+| Git Hygiene | PASS | Largest individual file is perf_code_blocks.md at 3.1MB, well under the 30MB LFS threshold. |
+| Workspace Clean | WARN | Task-root tests/ contains hidden_cases/, perf_data/, harness.py, and compute_reward.py instead of living under environment/tests/ to be baked into the image. |
+
+**Cleanup Suggestions**
+- `tests/test.sh`: chmod -R go-rx /tests/hidden_cases /tests/perf_data — Parent /tests is already chmod 700 root-only; child mode changes do not add isolation.
+- `tests/test.sh`: find /tests -type f -name '*.sh' -exec chmod +x — Only matches test.sh itself, which Harbor invokes directly; no other shell scripts exist under /tests.
+- `tests/test.sh`: pkill -9 -u agent prologue (~10 lines) — Agent phase is fully torn down before verification; strace -f also blocks on every descendant, so leftover agent procs cannot reach the scoring step.
+- `tests/`: hidden_cases/, perf_data/, harness.py, compute_reward.py at task root — These should be in environment/tests/ so they are baked into the image at build time instead of uploaded over the wire each trial.
+
+
+### Notes
+
+- **Format Check**: Move compute_reward.py, harness.py, hidden_cases/, and perf_data/ from tests/ into environment/tests/ and update the Dockerfile to COPY them into /tests at build time so tests/ contains only test.sh.
+- **Reproducibility**: cmark is cloned via `git clone --depth 1` with no pinned commit SHA or tag — consider pinning to a specific release for full reproducibility before shipping.
+- **Instruction Quality**: Slightly over the 100-line length guideline; could trim the 'Tricky areas' subsection if shorter is desired, but content is task-relevant.
+- **Cleanliness**: Move tests/hidden_cases, tests/perf_data, tests/harness.py, and tests/compute_reward.py under environment/tests/ and adjust paths in test.sh; this keeps the task-root tests/ to a single test.sh as Harbor convention requires.
+- **Cleanliness**: Trim the redundant lockdown lines in test.sh prologue to keep the verifier readable.
+
+---
+
+<!-- BEGIN:ROLLOUT_RESULTS -->
+## Rollout Results
+
+*Not yet generated. Run `harbor-qa-post --task-dir /Users/dheeraj/Downloads/refactor/bespoke-labs-tasks-01/md2html-leaf-blocks` to populate.*
+<!-- END:ROLLOUT_RESULTS -->

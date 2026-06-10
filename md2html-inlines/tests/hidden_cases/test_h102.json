@@ -1,0 +1,6 @@
+{
+  "example": 628,
+  "section": "Raw HTML",
+  "markdown": "foo <!--> foo -->\n\nfoo <!---> foo -->\n",
+  "html": "<p>foo <!--> foo --&gt;</p>\n<p>foo <!---> foo --&gt;</p>\n"
+}

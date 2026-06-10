@@ -1,0 +1,73 @@
+{
+  "step": "instruction_quality",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Deliverable, interface, compilation command, and CommonMark scope are unambiguous.",
+      "reasons": []
+    },
+    {
+      "id": "time_awareness",
+      "status": "PASS",
+      "detail": "Explicit '2 hours' time limit at the end.",
+      "reasons": []
+    },
+    {
+      "id": "tone",
+      "status": "WARN",
+      "detail": "Mostly clear but reads more like a spec than a colleague handoff, with formal section headers and rule lists.",
+      "reasons": [
+        "Sections like 'Implementation Rules' and 'Goals' lean spec-like rather than conversational."
+      ]
+    },
+    {
+      "id": "length",
+      "status": "WARN",
+      "detail": "107 lines, slightly over the 100-line target.",
+      "reasons": [
+        "Consider moving the visible-test bash snippet or the 'Tricky areas' bullets into a workspace README."
+      ]
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "PASS",
+      "detail": "No mention of scorer, verifier, reward, or evaluation; 'tests' refers only to the visible CommonMark corpus.",
+      "reasons": []
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "make, gcc, python3, and the starter Makefile/md2html.c are all mentioned.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "CommonMark container blocks converter in C",
+    "task_summary": "Implement a from-scratch C program that converts CommonMark Markdown (lists and block quotes) to HTML via stdin/stdout. The binary builds with make at /app/workspace/md2html and must match reference HTML on 73 visible plus held-out cases while staying fast.",
+    "task_domain": "systems-programming / markdown-parsing",
+    "deliverable": "/app/workspace/md2html (C binary)",
+    "tools_needed": [
+      "gcc",
+      "make",
+      "python3"
+    ],
+    "instruction_lines": 107
+  },
+  "notes": [
+    "Trim to <=100 lines by shortening 'Tricky areas' or relocating the visible-test loop into a workspace README.",
+    "Soften tone: replace 'What You Must Implement' / 'Implementation Rules' headings with a brief colleague-handoff paragraph."
+  ],
+  "elapsed_sec": 56.9,
+  "cost_usd": 0.56457,
+  "tokens": {
+    "total": 438117,
+    "input": 14,
+    "output": 2208,
+    "reasoning": 0,
+    "cache_read": 385225,
+    "cache_write": 50670
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "example": 150,
+  "section": "HTML blocks",
+  "markdown": " <div>\n  *hello*\n         <foo><a>\n",
+  "html": " <div>\n  *hello*\n         <foo><a>\n"
+}

@@ -1,0 +1,89 @@
+{
+  "step": "reward_design",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Byte-exact HTML match per case; starter/empty/regressing outputs yield 0 correctness, and performance is multiplied by correctness so a fast-but-wrong binary collapses to 0.",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Scoring compares output to CommonMark spec HTML byte-for-byte, so any correct from-scratch C parser scores fully regardless of internal algorithm.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "PASS",
+      "detail": "Two dims (correctness, performance) are aggregated as weighted_sum but performance is multiplicatively gated by correctness_rate, so neither dim is trivially maxable without the other.",
+      "reasons": []
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Empty output, identity echo, or random text all fail byte-exact comparison against expected HTML, yielding ~0 correctness and therefore ~0 composite.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py only consumes CLI counters and an optional failed-cases list; harness.py does grading independently and neither imports agent code, so scoring is re-runnable from staged outputs.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both success and failure paths emit score (float), subscores (list of {subtask, score}), and additional_data; reward.txt mirrors the float.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "composite = 0.5 * correctness_rate + 0.5 * (perf_rate_raw * correctness_rate), where correctness_rate = passed/(visible+hidden) and perf_rate_raw = mean over perf files of min(1, (cmark_median*5)/agent_median)",
+      "formula_explanation": "Equal weighting of correctness and speed, with performance multiplicatively gated by correctness so a fast-but-incorrect binary cannot harvest the perf half.",
+      "components": [
+        {
+          "name": "correctness",
+          "metric": "fraction of 171 visible+hidden cases whose md2html output byte-matches the CommonMark reference HTML",
+          "gate": "none (drives the perf gate)",
+          "weight": "0.5"
+        },
+        {
+          "name": "performance",
+          "metric": "mean over 2 perf inputs of min(1, 5*cmark_median_time / agent_median_time), median-of-3",
+          "gate": "multiplied by correctness_rate",
+          "weight": "0.5"
+        }
+      ],
+      "aggregation_method": "weighted_sum",
+      "dimension_analysis": [
+        {
+          "name": "correctness",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "Byte-exact match across 171 CommonMark leaf-block cases including tricky tab/HTML-block/setext edges."
+        },
+        {
+          "name": "performance",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "5x cmark slack makes the perf ceiling reachable for a competent C parser; gated by correctness so cannot be gamed in isolation."
+        }
+      ]
+    }
+  },
+  "notes": [],
+  "elapsed_sec": 132.9,
+  "cost_usd": 0.845192,
+  "tokens": {
+    "total": 702537,
+    "input": 17,
+    "output": 4034,
+    "reasoning": 0,
+    "cache_read": 629788,
+    "cache_write": 68698
+  }
+}

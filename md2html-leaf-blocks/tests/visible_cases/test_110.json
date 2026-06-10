@@ -1,0 +1,6 @@
+{
+  "example": 189,
+  "section": "HTML blocks",
+  "markdown": "Foo\n<a href=\"bar\">\nbaz\n",
+  "html": "<p>Foo\n<a href=\"bar\">\nbaz</p>\n"
+}

@@ -1,0 +1,6 @@
+{
+  "example": 345,
+  "section": "Code spans",
+  "markdown": "`<a href=\"`\">`\n",
+  "html": "<p><code>&lt;a href=&quot;</code>&quot;&gt;`</p>\n"
+}

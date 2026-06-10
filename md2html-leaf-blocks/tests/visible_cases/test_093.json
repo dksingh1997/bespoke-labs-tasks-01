@@ -1,0 +1,6 @@
+{
+  "example": 169,
+  "section": "HTML blocks",
+  "markdown": "<del>*foo*</del>\n",
+  "html": "<p><del><em>foo</em></del></p>\n"
+}

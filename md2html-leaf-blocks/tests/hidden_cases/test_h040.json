@@ -1,0 +1,6 @@
+{
+  "example": 160,
+  "section": "HTML blocks",
+  "markdown": "<table><tr><td>\nfoo\n</td></tr></table>\n",
+  "html": "<table><tr><td>\nfoo\n</td></tr></table>\n"
+}

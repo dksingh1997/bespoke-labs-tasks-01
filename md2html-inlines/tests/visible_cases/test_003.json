@@ -1,0 +1,6 @@
+{
+  "example": 15,
+  "section": "Backslash escapes",
+  "markdown": "\\\\*emphasis*\n",
+  "html": "<p>\\<em>emphasis</em></p>\n"
+}

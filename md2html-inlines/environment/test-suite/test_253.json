@@ -1,0 +1,6 @@
+{
+  "example": 619,
+  "section": "Raw HTML",
+  "markdown": "Foo <responsive-image src=\"foo.jpg\" />\n",
+  "html": "<p>Foo <responsive-image src=\"foo.jpg\" /></p>\n"
+}

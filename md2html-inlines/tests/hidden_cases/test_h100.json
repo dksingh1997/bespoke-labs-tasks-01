@@ -1,0 +1,6 @@
+{
+  "example": 625,
+  "section": "Raw HTML",
+  "markdown": "</a></foo >\n",
+  "html": "<p></a></foo ></p>\n"
+}

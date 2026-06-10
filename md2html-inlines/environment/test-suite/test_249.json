@@ -1,0 +1,6 @@
+{
+  "example": 614,
+  "section": "Autolinks",
+  "markdown": "foo@bar.example.com\n",
+  "html": "<p>foo@bar.example.com</p>\n"
+}

@@ -1,0 +1,116 @@
+{
+  "step": "reward_hacking",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "noop_baseline",
+      "status": "PASS",
+      "detail": "Starter md2html.c emits empty string so correctness=0 and perf is gated to 0, yielding composite 0.0.",
+      "reasons": []
+    },
+    {
+      "id": "adversarial_audit",
+      "status": "PASS",
+      "detail": "All identified vectors are closed by /tests 0700, agent-uid execution, strace tripwires, and root-only cmark; remaining gaps are well-mitigated.",
+      "reasons": []
+    },
+    {
+      "id": "agent_code_as_user",
+      "status": "PASS",
+      "detail": "Every build and every md2html invocation is wrapped in `su agent -s /bin/bash -c 'env -i ...'`.",
+      "reasons": []
+    },
+    {
+      "id": "strace_tracing",
+      "status": "PASS",
+      "detail": "strace -f traces build, correctness, and one perf run per file; logs are scanned for reward openat and external-converter execve before scoring.",
+      "reasons": []
+    },
+    {
+      "id": "verifier_protected",
+      "status": "PASS",
+      "detail": "compute_reward.py runs `python3 -ISs` from /tests, takes only CLI counters, never reads /app or imports agent code.",
+      "reasons": []
+    },
+    {
+      "id": "fault_tolerance",
+      "status": "PASS",
+      "detail": "fail_with always writes reward 0.0 via compute_reward.py and exits 0; build/strace/perf steps are bounded by `timeout`.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "verifier_type": "runs_agent_code",
+    "existing_defenses": [
+      {
+        "category": "Filesystem lockdown",
+        "measures": [
+          "/tests chmod 700 root-only at runtime (re-locked in test.sh prologue)",
+          "/logs/verifier chmod 700 then rm -rf as first action",
+          "cmark reference installed in /opt/verifier_tools with chmod go-rwx (agent EACCES)",
+          "Output files pre-created 0666 in root-owned 0755 staging dir (agent can write but not unlink/symlink-swap)"
+        ]
+      },
+      {
+        "category": "User separation",
+        "measures": [
+          "[agent] user = \"agent\" in task.toml",
+          "su agent -s /bin/bash -c 'env -i ...' wraps every build and md2html invocation",
+          "pkill -9 -u agent + verification of no surviving agent procs before verification"
+        ]
+      },
+      {
+        "category": "Runtime tracing",
+        "measures": [
+          "strace -f traces clone/fork/execve/openat over build, correctness, and one perf run per file",
+          "reward_tamper_in greps for openat of reward.{txt,json} with O_WRONLY|O_RDWR|O_CREAT",
+          "converter_execve_in greps for execve of cmark/pandoc/python/node/perl/ruby/markdown"
+        ]
+      },
+      {
+        "category": "Scoring integrity",
+        "measures": [
+          "compute_reward.py runs python3 -ISs from /tests with no /app reads, only CLI counters",
+          "harness.py grade uses O_NOFOLLOW + S_ISREG + st_nlink<=1 FD-pinned reads of agent outputs",
+          "reward.json/reward.txt written atomically via os.replace()",
+          "Performance score multiplied by correctness rate (smooth gate)"
+        ]
+      },
+      {
+        "category": "Environment hygiene",
+        "measures": [
+          "Env stripped (LD_PRELOAD, PYTHONPATH, BASH_ENV, CFLAGS, CC, etc.) and PATH pinned",
+          "Static anti-cheat scan for #include of md libs, exec/system/popen of converters, wrapper scripts",
+          "ELF sanity check via `file` rejects script masquerading as md2html",
+          "Oracle marker token (per-task random hex) gates the cheat-skip path; token never exposed to agent or verifier env"
+        ]
+      }
+    ],
+    "verified_attack_vectors": [],
+    "acknowledged_vectors": [
+      {
+        "vector": "Performance is measured on UNTRACED runs while only one perf run per file is traced; a converter could detect ptrace via /proc/self/status TracerPid and exec a fast external tool only when untraced.",
+        "reason": "cmark is locked behind chmod go-rwx (EACCES for agent); pandoc/node/perl/ruby are not installed; only python3 is available and a stdlib-only Markdown impl is slower than a real C parser, so the speedup vector has no fast target in this image."
+      },
+      {
+        "vector": "tests/ root contains visible_cases/, hidden_cases/, perf_data/, harness.py, compute_reward.py in addition to test.sh, violating the HARBOR_GUIDE 'only test.sh in tests/' convention.",
+        "reason": "/tests is chmod 700 root at container start and re-locked by test.sh, so the agent cannot read these even though they ship via docker cp instead of being baked into the image; purely a layout/style concern, not exploitable."
+      },
+      {
+        "vector": "/logs/agent is writable by the agent throughout the trial; agent traces could be tampered before verification.",
+        "reason": "Inherent to the single-container model and explicitly acknowledged by HARBOR_GUIDE; does not affect reward computation, which never reads /logs/agent."
+      }
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 192.9,
+  "cost_usd": 1.049863,
+  "tokens": {
+    "total": 910781,
+    "input": 20,
+    "output": 7160,
+    "reasoning": 0,
+    "cache_read": 830738,
+    "cache_write": 72863
+  }
+}

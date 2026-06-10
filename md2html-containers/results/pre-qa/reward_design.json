@@ -1,0 +1,91 @@
+{
+  "step": "reward_design",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Perf is multiplied by correctness_rate, so any incorrect/regressing solution collapses both subscores toward 0.",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Correctness compares HTML output to CommonMark reference and perf is wall-clock vs cmark, both measure the deliverable not a specific algorithm.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "PASS",
+      "detail": "Two dimensions (correctness, performance) with performance gated multiplicatively on correctness so neither can be maxed in isolation while ignoring the other.",
+      "reasons": []
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Empty/constant/copy-input outputs fail nearly all 99 cases, dropping correctness to ~0 and dragging the gated perf term to ~0 as well.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py runs outside strace as root, reads only CLI counters and a root-written failed-cases file, never imports or executes agent code.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both success and --fail paths write reward.json with score, subscores list, and additional_data, and reward.txt with a single float.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "composite = 0.5 * correctness_rate + 0.5 * (perf_raw * correctness_rate); per-file perf = min(1.0, (cmark_median * 5.0) / agent_median); correctness_rate = (visible_pass + hidden_pass) / total",
+      "formula_explanation": "Weighted sum of correctness and performance with performance multiplicatively gated by correctness so fast-but-wrong converters cannot harvest half the score.",
+      "components": [
+        {
+          "name": "correctness",
+          "metric": "fraction of visible+hidden CommonMark cases whose HTML output exactly matches the reference",
+          "gate": "none (drives the perf gate)",
+          "weight": "0.50"
+        },
+        {
+          "name": "performance",
+          "metric": "mean of per-file min(1, 5 * cmark_median / agent_median) across perf corpus",
+          "gate": "multiplied by correctness_rate",
+          "weight": "0.50"
+        }
+      ],
+      "aggregation_method": "weighted_sum",
+      "dimension_analysis": [
+        {
+          "name": "correctness",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "99 cases (73 visible + 26 hidden) covering lists, block quotes, loose/tight, lazy continuation, nesting; spec-exact match required."
+        },
+        {
+          "name": "performance",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "Only one perf file (perf_nested_lists.md) so perf signal is noisier than ideal, but 5x cmark threshold is generous and gating by correctness prevents standalone gaming."
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Consider adding 1-2 more perf inputs (e.g. flat long list, deep block-quote nesting) so a single pathological file does not dominate the perf subscore."
+  ],
+  "elapsed_sec": 137.8,
+  "cost_usd": 0.699148,
+  "tokens": {
+    "total": 493469,
+    "input": 14,
+    "output": 3334,
+    "reasoning": 0,
+    "cache_read": 425657,
+    "cache_write": 64464
+  }
+}

@@ -1,0 +1,948 @@
+{
+  "task_name": "md2html-inlines",
+  "task_dir": "/Users/dheeraj/Downloads/refactor/bespoke-labs-tasks-01/md2html-inlines",
+  "timestamp": "2026-06-10T06:24:53.180435+00:00",
+  "model": "anthropic/claude-opus-4-7",
+  "elapsed_sec": 1419.1,
+  "cost": {
+    "total_usd": 6.500809,
+    "tokens": {
+      "total": 5925062,
+      "input": 141,
+      "output": 34202,
+      "reasoning": 0,
+      "cache_read": 5421207,
+      "cache_write": 469512
+    }
+  },
+  "overall_status": "WARN",
+  "fail_count": 0,
+  "warn_count": 8,
+  "pass_count": 32,
+  "error_count": 0,
+  "blocking_failures": [],
+  "steps": {
+    "format_check": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "required_files",
+          "status": "PASS",
+          "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present.",
+          "reasons": []
+        },
+        {
+          "id": "recommended_files",
+          "status": "PASS",
+          "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+          "reasons": []
+        },
+        {
+          "id": "task_toml_schema",
+          "status": "PASS",
+          "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user=agent.",
+          "reasons": []
+        },
+        {
+          "id": "dockerfile_required_tools",
+          "status": "PASS",
+          "detail": "git and tmux are installed in the Dockerfile.",
+          "reasons": []
+        },
+        {
+          "id": "tests_folder_lean",
+          "status": "WARN",
+          "detail": "tests/ contains extra assets (compute_reward.py, harness.py, hidden_cases/, perf_data/, visible_cases/) that should live in environment/tests/.",
+          "reasons": [
+            "compute_reward.py in tests/",
+            "harness.py in tests/",
+            "hidden_cases/ directory in tests/",
+            "perf_data/ directory in tests/",
+            "visible_cases/ directory in tests/"
+          ]
+        },
+        {
+          "id": "directory_cleanliness",
+          "status": "PASS",
+          "detail": "No stray files at root; qa-logs/ and results/ are ignored per rules, jobs/ and .env are gitignored.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 54.3,
+      "cost_usd": 0.542555,
+      "notes": [
+        "Move compute_reward.py, harness.py, hidden_cases/, perf_data/, and visible_cases/ from tests/ to environment/tests/ and COPY them into /tests in the Dockerfile so the tests/ task-root directory only contains test.sh.",
+        "Note: environment/ already contains test-suite/ which appears to duplicate visible_cases/ — verify the Dockerfile bundles the correct hidden assets at build time once tests/ is slimmed."
+      ]
+    },
+    "isolation": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "agent_user",
+          "status": "PASS",
+          "detail": "task.toml sets [agent] user = \"agent\" (line 13).",
+          "reasons": []
+        },
+        {
+          "id": "dockerfile_isolation",
+          "status": "PASS",
+          "detail": "All required isolation primitives are present in the Dockerfile.",
+          "reasons": [
+            "present: useradd agent (line 40)",
+            "present: chown -R agent:agent /app (line 55)",
+            "present: chown agent:agent /solution (line 47)",
+            "present: mkdir /tests && chmod 700 /tests (line 44)",
+            "present: strace installed (line 13), plus procps/file/gcc/make for verifier",
+            "present: reference cmark installed root-only under /opt/verifier_tools (chmod -R go-rwx)",
+            "uid 1000 implicit via first useradd (consistent with test.sh comment 'agent (uid 1000)')"
+          ]
+        },
+        {
+          "id": "testsh_isolation",
+          "status": "PASS",
+          "detail": "test.sh locks /logs/verifier first then wipes, sandboxes every agent-code execution under su agent + strace, and always exits 0.",
+          "reasons": [
+            "present: chmod 700 /logs/verifier (line 54) BEFORE rm -rf (line 55)",
+            "present: /tests re-locked to 0700 + go-rx stripped on visible/hidden/perf dirs (lines 61-62)",
+            "present: env sanitisation (unset LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/... line 67) and clean PATH",
+            "present: build phase wrapped in strace -f + timeout 300 + su agent (lines 215-219, 225-229)",
+            "present: correctness phase wrapped in strace -f + timeout 480 + su agent (lines 287-290)",
+            "present: perf traced run wrapped in strace -f + timeout 60 + su agent (lines 368-372)",
+            "present: reward_tamper_in (openat O_WRONLY/O_RDWR/O_CREAT on reward.{txt,json}) checked on every strace log",
+            "present: external_converter_execve tripwire on correctness + perf strace logs",
+            "present: scoring via compute_reward.py runs as root OUTSIDE strace (lines 301-303 grade, 400-407 reward)",
+            "present: no chown root:root on /logs",
+            "present: exit 0 on every path (fail_with line 111, success line 428)",
+            "present: fallback reward 0.0 via fail_with -> compute_reward.py --fail",
+            "present: no set -euo pipefail (intentional, documented at lines 13-14)",
+            "present: pre-verification pkill -9 -u agent + survival check (lines 146-153)"
+          ]
+        },
+        {
+          "id": "verifier_type",
+          "status": "PASS",
+          "detail": "runs_agent_code: verifier compiles and executes the agent's md2html C binary, so strace + su agent are required and properly applied.",
+          "reasons": [
+            "verifier builds agent sources via make/gcc and runs the resulting md2html on staged inputs",
+            "every agent-code invocation (build, correctness, perf-traced) runs as su agent inside strace -f with a timeout",
+            "scoring layer (harness.py grade, compute_reward.py) only reads files; never imports /app code"
+          ]
+        }
+      ],
+      "elapsed_sec": 50.7,
+      "cost_usd": 0.519421
+    },
+    "reproducibility": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "lockfile",
+          "status": "N/A",
+          "detail": "Task is C-based with no Python/JS/Rust application dependencies requiring a lockfile.",
+          "reasons": []
+        },
+        {
+          "id": "package_manager",
+          "status": "N/A",
+          "detail": "No Python/pip usage; only apt-installed system packages and a cmark build from source.",
+          "reasons": []
+        },
+        {
+          "id": "docker_image_cached",
+          "status": "WARN",
+          "detail": "task.toml has no docker_image field set — expected during development, must be set before final delivery.",
+          "reasons": [
+            "docker_image not present in [environment]"
+          ]
+        },
+        {
+          "id": "cmark_pin",
+          "status": "WARN",
+          "detail": "cmark is fetched via 'git clone --depth 1' with no commit SHA, so the reference implementation version can drift across rebuilds.",
+          "reasons": [
+            "Dockerfile line 25 pulls HEAD of commonmark/cmark"
+          ]
+        }
+      ],
+      "elapsed_sec": 58.2,
+      "cost_usd": 0.552335,
+      "notes": [
+        "Pin cmark to a specific commit SHA in the Dockerfile to guarantee reproducible verifier behavior.",
+        "Set [environment].docker_image to a prebuilt registry image before final delivery."
+      ]
+    },
+    "instruction_quality": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "clarity",
+          "status": "PASS",
+          "detail": "Deliverable (md2html binary at /app/workspace/md2html), stdin/stdout interface, build commands, and scope are all explicit.",
+          "reasons": []
+        },
+        {
+          "id": "time_awareness",
+          "status": "PASS",
+          "detail": "Explicit 'You have 2 hours. Build, test, and iterate.' at the end.",
+          "reasons": []
+        },
+        {
+          "id": "tone",
+          "status": "PASS",
+          "detail": "Direct and pragmatic with helpful 'tricky areas' hints, reads like a colleague handoff rather than a formal spec.",
+          "reasons": []
+        },
+        {
+          "id": "length",
+          "status": "WARN",
+          "detail": "124 lines, slightly over the 100-line guideline; the CommonMark section list and test-runner bash snippet could be trimmed or linked.",
+          "reasons": [
+            "instruction_lines=124 exceeds 100"
+          ]
+        },
+        {
+          "id": "scoring_leakage",
+          "status": "PASS",
+          "detail": "No mention of scorer, verifier, reward, or test.sh; 'held-out inputs' is acceptable framing for hidden test corpus.",
+          "reasons": []
+        },
+        {
+          "id": "tools_documented",
+          "status": "PASS",
+          "detail": "make, gcc, and python3 (for JSON-driven test loop) are all referenced with example commands.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 65.4,
+      "cost_usd": 0.585308,
+      "notes": [
+        "Consider trimming the bullet duplication between 'What You Must Implement' (lines 35-50) and 'Inline-level structures' (lines 52-60) to bring length under 100 lines."
+      ]
+    },
+    "reward_hacking": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "noop_baseline",
+          "status": "PASS",
+          "detail": "Starter md2html.c emits empty string so correctness=0 and perf is gated to 0, yielding composite 0.0.",
+          "reasons": []
+        },
+        {
+          "id": "adversarial_audit",
+          "status": "PASS",
+          "detail": "All identified vectors are closed by /tests 0700, agent-uid execution, strace tripwires, and root-only cmark; remaining gaps are well-mitigated.",
+          "reasons": []
+        },
+        {
+          "id": "agent_code_as_user",
+          "status": "PASS",
+          "detail": "Every build and every md2html invocation is wrapped in `su agent -s /bin/bash -c 'env -i ...'`.",
+          "reasons": []
+        },
+        {
+          "id": "strace_tracing",
+          "status": "PASS",
+          "detail": "strace -f traces build, correctness, and one perf run per file; logs are scanned for reward openat and external-converter execve before scoring.",
+          "reasons": []
+        },
+        {
+          "id": "verifier_protected",
+          "status": "PASS",
+          "detail": "compute_reward.py runs `python3 -ISs` from /tests, takes only CLI counters, never reads /app or imports agent code.",
+          "reasons": []
+        },
+        {
+          "id": "fault_tolerance",
+          "status": "PASS",
+          "detail": "fail_with always writes reward 0.0 via compute_reward.py and exits 0; build/strace/perf steps are bounded by `timeout`.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 192.9,
+      "cost_usd": 1.049863
+    },
+    "reward_design": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "correctness_gating",
+          "status": "PASS",
+          "detail": "Baseline emits empty string and matches only 1/385 expected outputs (~0.0026 correctness, ~0.0013 gated perf, composite ~0.002 << 0.01).",
+          "reasons": []
+        },
+        {
+          "id": "implementation_agnostic",
+          "status": "PASS",
+          "detail": "Correctness is byte-equal vs CommonMark reference HTML and perf is wall-time vs cmark with 5x slack, so any valid C inline implementation scores equally.",
+          "reasons": []
+        },
+        {
+          "id": "dimension_balance",
+          "status": "WARN",
+          "detail": "Performance is gated by correctness (good), but correctness is NOT gated by performance under arithmetic-mean aggregation, so a correct-but-slow solution still scores 0.5 with zero perf.",
+          "reasons": [
+            "weighted_sum allows a fully-correct but arbitrarily slow converter to harvest the entire 0.5 correctness weight while contributing 0 to perf",
+            "consider multiplicative aggregation or power-mean(p<0) so weak perf also drags the total down, symmetric with the existing correctness->perf gate"
+          ]
+        },
+        {
+          "id": "shortcut_resistant",
+          "status": "PASS",
+          "detail": "Empty/constant/copy-input outputs fail byte-equal grading on ~all 385 cases, and static + execve tripwires block external Markdown libraries and shell-outs to cmark/pandoc/python.",
+          "reasons": []
+        },
+        {
+          "id": "modular_scoring",
+          "status": "PASS",
+          "detail": "compute_reward.py runs outside strace as root, takes only CLI counters, and never imports/reads /app, so it is independently re-runnable from the staged manifests and counters.",
+          "reasons": []
+        },
+        {
+          "id": "reward_json_schema",
+          "status": "PASS",
+          "detail": "Both fail_with and the success path write reward.json with score (float), subscores (list of {subtask,score}), and additional_data (dict); failure path includes subscores with zeros.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 155.8,
+      "cost_usd": 0.91477,
+      "notes": [
+        "Consider multiplicative aggregation (composite = correctness * (a + b*perf_raw)) or power-mean(p<0) so a correct-but-very-slow solution does not still earn the full 0.5 correctness weight; current gate is one-directional.",
+        "Only 1 perf file (perf_links.md) — add a few more covering emphasis-heavy, escape-heavy, and large-paragraph inputs to make the perf signal less brittle to a single workload shape."
+      ]
+    },
+    "fairness": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "instruction_verifier_sync",
+          "status": "PASS",
+          "detail": "Instruction asks for correctness vs CommonMark reference and speed comparable to production C parser; verifier scores exactly those two (50% correctness vs expected HTML + 50% median-of-3 perf vs cmark).",
+          "reasons": []
+        },
+        {
+          "id": "definitions_documented",
+          "status": "PASS",
+          "detail": "CommonMark 0.31.2 spec is linked, all in-scope inline sections are enumerated, and stdin/stdout interface + build path are explicit; internal 5x cmark perf threshold is hidden but agent only needs to optimize, not target a number.",
+          "reasons": []
+        },
+        {
+          "id": "tools_accessible",
+          "status": "PASS",
+          "detail": "Dockerfile installs gcc/make/build-essential; workspace ships Makefile + md2html.c starter matching the documented build command; cmark is correctly root-only and only unlocked on the oracle path.",
+          "reasons": []
+        },
+        {
+          "id": "oracle_exists",
+          "status": "PASS",
+          "detail": "solution/solve.sh exists (63 lines), writes the oracle marker and installs a cmark-execve wrapper that the verifier permits via token-gated bypass.",
+          "reasons": []
+        },
+        {
+          "id": "hidden_test_fairness",
+          "status": "PASS",
+          "detail": "117 hidden cases cover the same CommonMark sections as the 268 visible cases (only additional section is 'Soft line breaks', which is explicitly listed as required in instruction.md) — structural variants, no new requirements.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 176.4,
+      "cost_usd": 0.933215
+    },
+    "cleanliness": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "dockerfile_quality",
+          "status": "WARN",
+          "detail": "Slim base and cache cleaned, but build-essential already provides gcc and make so listing them again is redundant.",
+          "reasons": [
+            "redundant: 'gcc' and 'make' apt packages are subsumed by 'build-essential'"
+          ]
+        },
+        {
+          "id": "solution_clean",
+          "status": "PASS",
+          "detail": "/solution contains only solve.sh with a clear token-gated cmark wrapper.",
+          "reasons": []
+        },
+        {
+          "id": "testsh_quality",
+          "status": "WARN",
+          "detail": "Core anti-cheat layout is sound, but several env-sanitisation and chmod steps duplicate protections already provided by `env -i` and the 0700 /tests directory.",
+          "reasons": [
+            "useful: chmod 700 /logs/verifier + wipe (mandatory)",
+            "useful: re-locking /tests after Harbor upload resets it to 0755",
+            "useful: strace tripwires (reward openat + external-converter execve)",
+            "useful: static anti-cheat source scan and ELF check",
+            "useful: oracle-marker token gate",
+            "useful: pkill -u agent before verification (cross-phase isolation)",
+            "useful: workspace snapshot for forensics",
+            "useful: relax_reward_perms for local-Docker bind-mount reader",
+            "redundant: chmod -R go-rx of /tests/{visible_cases,hidden_cases,perf_data} once /tests itself is 0700 (agent cannot traverse parent)",
+            "redundant: unsetting CFLAGS/CC/CXX/MAKEFLAGS when every build step already runs under `env -i`",
+            "redundant: `find /tests -name '*.sh' -exec chmod +x` since test.sh is the only .sh file in /tests"
+          ]
+        },
+        {
+          "id": "git_hygiene",
+          "status": "PASS",
+          "detail": "No files exceed 30MB; largest assets are tests/perf_data (1.5MB) and the test-suite JSON corpora (~1MB each).",
+          "reasons": []
+        },
+        {
+          "id": "workspace_clean",
+          "status": "WARN",
+          "detail": "tests/visible_cases/ is a byte-identical duplicate of environment/test-suite/, and tests/{hidden_cases,perf_data}/ should live in environment/tests/ per the Harbor layout rule.",
+          "reasons": [
+            "redundant: tests/visible_cases/ (268 files, 1MB) duplicates environment/test-suite/ exactly — harness.py could read /app/test-suite at verification time instead",
+            "layout: tests/hidden_cases/ and tests/perf_data/ should be baked into the image via environment/tests/ rather than uploaded at verify time",
+            "layout: tests/harness.py and tests/compute_reward.py should live in environment/tests/ so they ship in the image (chmod 700) rather than being uploaded fresh each trial"
+          ]
+        }
+      ],
+      "elapsed_sec": 153.6,
+      "cost_usd": 1.403342,
+      "notes": [
+        "Drop redundant apt packages (gcc, make) from the Dockerfile.",
+        "Move tests/{harness.py, compute_reward.py, hidden_cases, perf_data} into environment/tests/ and delete tests/visible_cases (read from /app/test-suite instead) so tests/ contains only test.sh per the Harbor layout rule.",
+        "Trim three redundant prologue steps from test.sh (recursive chmod, compiler env unsets, *.sh chmod find) — none add defence beyond the 0700 /tests dir and `env -i`."
+      ]
+    }
+  },
+  "all_checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=600, build_timeout_sec=600, agent.user=agent.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "git and tmux are installed in the Dockerfile.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains extra assets (compute_reward.py, harness.py, hidden_cases/, perf_data/, visible_cases/) that should live in environment/tests/.",
+      "reasons": [
+        "compute_reward.py in tests/",
+        "harness.py in tests/",
+        "hidden_cases/ directory in tests/",
+        "perf_data/ directory in tests/",
+        "visible_cases/ directory in tests/"
+      ],
+      "step": "format_check"
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "PASS",
+      "detail": "No stray files at root; qa-logs/ and results/ are ignored per rules, jobs/ and .env are gitignored.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml sets [agent] user = \"agent\" (line 13).",
+      "reasons": [],
+      "step": "isolation"
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "All required isolation primitives are present in the Dockerfile.",
+      "reasons": [
+        "present: useradd agent (line 40)",
+        "present: chown -R agent:agent /app (line 55)",
+        "present: chown agent:agent /solution (line 47)",
+        "present: mkdir /tests && chmod 700 /tests (line 44)",
+        "present: strace installed (line 13), plus procps/file/gcc/make for verifier",
+        "present: reference cmark installed root-only under /opt/verifier_tools (chmod -R go-rwx)",
+        "uid 1000 implicit via first useradd (consistent with test.sh comment 'agent (uid 1000)')"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh locks /logs/verifier first then wipes, sandboxes every agent-code execution under su agent + strace, and always exits 0.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier (line 54) BEFORE rm -rf (line 55)",
+        "present: /tests re-locked to 0700 + go-rx stripped on visible/hidden/perf dirs (lines 61-62)",
+        "present: env sanitisation (unset LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/... line 67) and clean PATH",
+        "present: build phase wrapped in strace -f + timeout 300 + su agent (lines 215-219, 225-229)",
+        "present: correctness phase wrapped in strace -f + timeout 480 + su agent (lines 287-290)",
+        "present: perf traced run wrapped in strace -f + timeout 60 + su agent (lines 368-372)",
+        "present: reward_tamper_in (openat O_WRONLY/O_RDWR/O_CREAT on reward.{txt,json}) checked on every strace log",
+        "present: external_converter_execve tripwire on correctness + perf strace logs",
+        "present: scoring via compute_reward.py runs as root OUTSIDE strace (lines 301-303 grade, 400-407 reward)",
+        "present: no chown root:root on /logs",
+        "present: exit 0 on every path (fail_with line 111, success line 428)",
+        "present: fallback reward 0.0 via fail_with -> compute_reward.py --fail",
+        "present: no set -euo pipefail (intentional, documented at lines 13-14)",
+        "present: pre-verification pkill -9 -u agent + survival check (lines 146-153)"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code: verifier compiles and executes the agent's md2html C binary, so strace + su agent are required and properly applied.",
+      "reasons": [
+        "verifier builds agent sources via make/gcc and runs the resulting md2html on staged inputs",
+        "every agent-code invocation (build, correctness, perf-traced) runs as su agent inside strace -f with a timeout",
+        "scoring layer (harness.py grade, compute_reward.py) only reads files; never imports /app code"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "Task is C-based with no Python/JS/Rust application dependencies requiring a lockfile.",
+      "reasons": [],
+      "step": "reproducibility"
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "No Python/pip usage; only apt-installed system packages and a cmark build from source.",
+      "reasons": [],
+      "step": "reproducibility"
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml has no docker_image field set — expected during development, must be set before final delivery.",
+      "reasons": [
+        "docker_image not present in [environment]"
+      ],
+      "step": "reproducibility"
+    },
+    {
+      "id": "cmark_pin",
+      "status": "WARN",
+      "detail": "cmark is fetched via 'git clone --depth 1' with no commit SHA, so the reference implementation version can drift across rebuilds.",
+      "reasons": [
+        "Dockerfile line 25 pulls HEAD of commonmark/cmark"
+      ],
+      "step": "reproducibility"
+    },
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Deliverable (md2html binary at /app/workspace/md2html), stdin/stdout interface, build commands, and scope are all explicit.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "time_awareness",
+      "status": "PASS",
+      "detail": "Explicit 'You have 2 hours. Build, test, and iterate.' at the end.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "tone",
+      "status": "PASS",
+      "detail": "Direct and pragmatic with helpful 'tricky areas' hints, reads like a colleague handoff rather than a formal spec.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "length",
+      "status": "WARN",
+      "detail": "124 lines, slightly over the 100-line guideline; the CommonMark section list and test-runner bash snippet could be trimmed or linked.",
+      "reasons": [
+        "instruction_lines=124 exceeds 100"
+      ],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "PASS",
+      "detail": "No mention of scorer, verifier, reward, or test.sh; 'held-out inputs' is acceptable framing for hidden test corpus.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "make, gcc, and python3 (for JSON-driven test loop) are all referenced with example commands.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "noop_baseline",
+      "status": "PASS",
+      "detail": "Starter md2html.c emits empty string so correctness=0 and perf is gated to 0, yielding composite 0.0.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "adversarial_audit",
+      "status": "PASS",
+      "detail": "All identified vectors are closed by /tests 0700, agent-uid execution, strace tripwires, and root-only cmark; remaining gaps are well-mitigated.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "agent_code_as_user",
+      "status": "PASS",
+      "detail": "Every build and every md2html invocation is wrapped in `su agent -s /bin/bash -c 'env -i ...'`.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "strace_tracing",
+      "status": "PASS",
+      "detail": "strace -f traces build, correctness, and one perf run per file; logs are scanned for reward openat and external-converter execve before scoring.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "verifier_protected",
+      "status": "PASS",
+      "detail": "compute_reward.py runs `python3 -ISs` from /tests, takes only CLI counters, never reads /app or imports agent code.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "fault_tolerance",
+      "status": "PASS",
+      "detail": "fail_with always writes reward 0.0 via compute_reward.py and exits 0; build/strace/perf steps are bounded by `timeout`.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Baseline emits empty string and matches only 1/385 expected outputs (~0.0026 correctness, ~0.0013 gated perf, composite ~0.002 << 0.01).",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Correctness is byte-equal vs CommonMark reference HTML and perf is wall-time vs cmark with 5x slack, so any valid C inline implementation scores equally.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "dimension_balance",
+      "status": "WARN",
+      "detail": "Performance is gated by correctness (good), but correctness is NOT gated by performance under arithmetic-mean aggregation, so a correct-but-slow solution still scores 0.5 with zero perf.",
+      "reasons": [
+        "weighted_sum allows a fully-correct but arbitrarily slow converter to harvest the entire 0.5 correctness weight while contributing 0 to perf",
+        "consider multiplicative aggregation or power-mean(p<0) so weak perf also drags the total down, symmetric with the existing correctness->perf gate"
+      ],
+      "step": "reward_design"
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Empty/constant/copy-input outputs fail byte-equal grading on ~all 385 cases, and static + execve tripwires block external Markdown libraries and shell-outs to cmark/pandoc/python.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py runs outside strace as root, takes only CLI counters, and never imports/reads /app, so it is independently re-runnable from the staged manifests and counters.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both fail_with and the success path write reward.json with score (float), subscores (list of {subtask,score}), and additional_data (dict); failure path includes subscores with zeros.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Instruction asks for correctness vs CommonMark reference and speed comparable to production C parser; verifier scores exactly those two (50% correctness vs expected HTML + 50% median-of-3 perf vs cmark).",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "CommonMark 0.31.2 spec is linked, all in-scope inline sections are enumerated, and stdin/stdout interface + build path are explicit; internal 5x cmark perf threshold is hidden but agent only needs to optimize, not target a number.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Dockerfile installs gcc/make/build-essential; workspace ships Makefile + md2html.c starter matching the documented build command; cmark is correctly root-only and only unlocked on the oracle path.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists (63 lines), writes the oracle marker and installs a cmark-execve wrapper that the verifier permits via token-gated bypass.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "117 hidden cases cover the same CommonMark sections as the 268 visible cases (only additional section is 'Soft line breaks', which is explicitly listed as required in instruction.md) — structural variants, no new requirements.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "dockerfile_quality",
+      "status": "WARN",
+      "detail": "Slim base and cache cleaned, but build-essential already provides gcc and make so listing them again is redundant.",
+      "reasons": [
+        "redundant: 'gcc' and 'make' apt packages are subsumed by 'build-essential'"
+      ],
+      "step": "cleanliness"
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "/solution contains only solve.sh with a clear token-gated cmark wrapper.",
+      "reasons": [],
+      "step": "cleanliness"
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Core anti-cheat layout is sound, but several env-sanitisation and chmod steps duplicate protections already provided by `env -i` and the 0700 /tests directory.",
+      "reasons": [
+        "useful: chmod 700 /logs/verifier + wipe (mandatory)",
+        "useful: re-locking /tests after Harbor upload resets it to 0755",
+        "useful: strace tripwires (reward openat + external-converter execve)",
+        "useful: static anti-cheat source scan and ELF check",
+        "useful: oracle-marker token gate",
+        "useful: pkill -u agent before verification (cross-phase isolation)",
+        "useful: workspace snapshot for forensics",
+        "useful: relax_reward_perms for local-Docker bind-mount reader",
+        "redundant: chmod -R go-rx of /tests/{visible_cases,hidden_cases,perf_data} once /tests itself is 0700 (agent cannot traverse parent)",
+        "redundant: unsetting CFLAGS/CC/CXX/MAKEFLAGS when every build step already runs under `env -i`",
+        "redundant: `find /tests -name '*.sh' -exec chmod +x` since test.sh is the only .sh file in /tests"
+      ],
+      "step": "cleanliness"
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No files exceed 30MB; largest assets are tests/perf_data (1.5MB) and the test-suite JSON corpora (~1MB each).",
+      "reasons": [],
+      "step": "cleanliness"
+    },
+    {
+      "id": "workspace_clean",
+      "status": "WARN",
+      "detail": "tests/visible_cases/ is a byte-identical duplicate of environment/test-suite/, and tests/{hidden_cases,perf_data}/ should live in environment/tests/ per the Harbor layout rule.",
+      "reasons": [
+        "redundant: tests/visible_cases/ (268 files, 1MB) duplicates environment/test-suite/ exactly — harness.py could read /app/test-suite at verification time instead",
+        "layout: tests/hidden_cases/ and tests/perf_data/ should be baked into the image via environment/tests/ rather than uploaded at verify time",
+        "layout: tests/harness.py and tests/compute_reward.py should live in environment/tests/ so they ship in the image (chmod 700) rather than being uploaded fresh each trial"
+      ],
+      "step": "cleanliness"
+    }
+  ],
+  "info": {
+    "format_check": {
+      "task_name": "md2html-inlines",
+      "difficulty": "hard",
+      "category": "programming",
+      "agent_timeout_sec": 7200,
+      "verifier_timeout_sec": 600,
+      "build_timeout_sec": 600,
+      "allow_internet": false,
+      "cpus": 2,
+      "memory_mb": 4096,
+      "agent_user": "agent"
+    },
+    "isolation": {
+      "agent_user": "agent",
+      "verifier_type": "runs_agent_code",
+      "strace_needed": true
+    },
+    "reproducibility": {
+      "base_image": "python:3.11-slim",
+      "package_manager": "none (C task; apt + source build of cmark)",
+      "lockfiles_found": [],
+      "docker_image_cached": false
+    },
+    "instruction_quality": {
+      "task_name": "CommonMark inline-level Markdown to HTML in C",
+      "task_summary": "Implement a from-scratch C program that converts CommonMark Markdown (inline-level constructs: emphasis, code spans, links, images, autolinks, raw HTML, entities, escapes, line breaks) from stdin to HTML on stdout. The binary must build with the provided Makefile and is validated against a 268-case visible test suite plus held-out cases.",
+      "task_domain": "systems-programming / parsing",
+      "deliverable": "/app/workspace/md2html (compiled C binary)",
+      "tools_needed": [
+        "gcc",
+        "make",
+        "python3"
+      ],
+      "instruction_lines": 124
+    },
+    "reward_hacking": {
+      "verifier_type": "runs_agent_code",
+      "existing_defenses": [
+        {
+          "category": "Filesystem lockdown",
+          "measures": [
+            "/tests chmod 700 root-only at runtime (re-locked in test.sh prologue)",
+            "/logs/verifier chmod 700 then rm -rf as first action",
+            "cmark reference installed in /opt/verifier_tools with chmod go-rwx (agent EACCES)",
+            "Output files pre-created 0666 in root-owned 0755 staging dir (agent can write but not unlink/symlink-swap)"
+          ]
+        },
+        {
+          "category": "User separation",
+          "measures": [
+            "[agent] user = \"agent\" in task.toml",
+            "su agent -s /bin/bash -c 'env -i ...' wraps every build and md2html invocation",
+            "pkill -9 -u agent + verification of no surviving agent procs before verification"
+          ]
+        },
+        {
+          "category": "Runtime tracing",
+          "measures": [
+            "strace -f traces clone/fork/execve/openat over build, correctness, and one perf run per file",
+            "reward_tamper_in greps for openat of reward.{txt,json} with O_WRONLY|O_RDWR|O_CREAT",
+            "converter_execve_in greps for execve of cmark/pandoc/python/node/perl/ruby/markdown"
+          ]
+        },
+        {
+          "category": "Scoring integrity",
+          "measures": [
+            "compute_reward.py runs python3 -ISs from /tests with no /app reads, only CLI counters",
+            "harness.py grade uses O_NOFOLLOW + S_ISREG + st_nlink<=1 FD-pinned reads of agent outputs",
+            "reward.json/reward.txt written atomically via os.replace()",
+            "Performance score multiplied by correctness rate (smooth gate)"
+          ]
+        },
+        {
+          "category": "Environment hygiene",
+          "measures": [
+            "Env stripped (LD_PRELOAD, PYTHONPATH, BASH_ENV, CFLAGS, CC, etc.) and PATH pinned",
+            "Static anti-cheat scan for #include of md libs, exec/system/popen of converters, wrapper scripts",
+            "ELF sanity check via `file` rejects script masquerading as md2html",
+            "Oracle marker token (per-task random hex) gates the cheat-skip path; token never exposed to agent or verifier env"
+          ]
+        }
+      ],
+      "verified_attack_vectors": [],
+      "acknowledged_vectors": [
+        {
+          "vector": "Performance is measured on UNTRACED runs while only one perf run per file is traced; a converter could detect ptrace via /proc/self/status TracerPid and exec a fast external tool only when untraced.",
+          "reason": "cmark is locked behind chmod go-rwx (EACCES for agent); pandoc/node/perl/ruby are not installed; only python3 is available and a stdlib-only Markdown impl is slower than a real C parser, so the speedup vector has no fast target in this image."
+        },
+        {
+          "vector": "tests/ root contains visible_cases/, hidden_cases/, perf_data/, harness.py, compute_reward.py in addition to test.sh, violating the HARBOR_GUIDE 'only test.sh in tests/' convention.",
+          "reason": "/tests is chmod 700 root at container start and re-locked by test.sh, so the agent cannot read these even though they ship via docker cp instead of being baked into the image; purely a layout/style concern, not exploitable."
+        },
+        {
+          "vector": "/logs/agent is writable by the agent throughout the trial; agent traces could be tampered before verification.",
+          "reason": "Inherent to the single-container model and explicitly acknowledged by HARBOR_GUIDE; does not affect reward computation, which never reads /logs/agent."
+        }
+      ]
+    },
+    "reward_design": {
+      "reward_design": {
+        "formula": "composite = 0.5 * correctness_rate + 0.5 * (perf_raw_rate * correctness_rate); correctness_rate = passed / (visible_total + hidden_total); perf_raw_rate = mean over perf files of min(1.0, cmark_median * 5 / agent_median)",
+        "formula_explanation": "Equal-weighted correctness and performance, with performance multiplicatively gated by correctness so a fast-but-wrong binary collapses to ~0 instead of harvesting the perf half.",
+        "components": [
+          {
+            "name": "correctness",
+            "metric": "byte-equal match against CommonMark reference HTML across 268 visible + 117 hidden inline cases",
+            "gate": "none (raw pass rate)",
+            "weight": "0.50"
+          },
+          {
+            "name": "performance",
+            "metric": "per-file min(1, cmark_median*5/agent_median) averaged over perf files (currently 1 file)",
+            "gate": "multiplied by correctness_rate",
+            "weight": "0.50"
+          }
+        ],
+        "aggregation_method": "weighted_sum",
+        "dimension_analysis": [
+          {
+            "name": "correctness",
+            "trivially_maxable": false,
+            "difficulty": "hard",
+            "notes": "385 strict byte-equal CommonMark inline cases including emphasis precedence, multiple-of-3 rule, link destinations, entity refs, code span normalization."
+          },
+          {
+            "name": "performance",
+            "trivially_maxable": false,
+            "difficulty": "medium",
+            "notes": "5x slack vs cmark on perf_links.md is achievable for any reasonable C implementation; gated by correctness so cannot be gamed by a fast no-op."
+          }
+        ]
+      }
+    },
+    "fairness": {
+      "tools_required": [
+        "gcc",
+        "make",
+        "cmark (verifier-only)",
+        "python3",
+        "strace"
+      ]
+    },
+    "cleanliness": {
+      "redundant_items": [
+        {
+          "file": "environment/Dockerfile",
+          "item": "explicit 'gcc' and 'make' apt packages",
+          "why": "build-essential already pulls in gcc and make"
+        },
+        {
+          "file": "tests/test.sh",
+          "item": "chmod -R go-rx /tests/visible_cases /tests/hidden_cases /tests/perf_data",
+          "why": "parent /tests is already mode 0700, so non-root cannot descend regardless of child modes"
+        },
+        {
+          "file": "tests/test.sh",
+          "item": "unset CFLAGS CC CXX MAKEFLAGS",
+          "why": "every build/run step uses `env -i` which wipes the entire environment"
+        },
+        {
+          "file": "tests/test.sh",
+          "item": "find /tests -type f -name '*.sh' -exec chmod +x",
+          "why": "test.sh is the only .sh file and Harbor itself makes it executable to invoke it"
+        },
+        {
+          "file": "tests/visible_cases/",
+          "item": "268 JSON files duplicating environment/test-suite/",
+          "why": "identical content; harness.py can point --visible-dir at /app/test-suite instead"
+        },
+        {
+          "file": "tests/",
+          "item": "harness.py, compute_reward.py, hidden_cases/, perf_data/",
+          "why": "Harbor convention is for tests/ to contain only test.sh; everything else should be bundled into the image via environment/tests/"
+        }
+      ]
+    }
+  }
+}

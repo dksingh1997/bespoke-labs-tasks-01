@@ -1,0 +1,6 @@
+{
+  "example": 646,
+  "section": "Hard line breaks",
+  "markdown": "<a href=\"foo\\\nbar\">\n",
+  "html": "<p><a href=\"foo\\\nbar\"></p>\n"
+}

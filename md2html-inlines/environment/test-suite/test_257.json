@@ -1,0 +1,6 @@
+{
+  "example": 630,
+  "section": "Raw HTML",
+  "markdown": "foo <!ELEMENT br EMPTY>\n",
+  "html": "<p>foo <!ELEMENT br EMPTY></p>\n"
+}

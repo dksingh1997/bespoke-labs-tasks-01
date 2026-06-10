@@ -1,0 +1,70 @@
+{
+  "step": "instruction_quality",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Deliverable (md2html binary at /app/workspace/md2html), stdin/stdout interface, build commands, and scope are all explicit.",
+      "reasons": []
+    },
+    {
+      "id": "time_awareness",
+      "status": "PASS",
+      "detail": "Explicit 'You have 2 hours. Build, test, and iterate.' at the end.",
+      "reasons": []
+    },
+    {
+      "id": "tone",
+      "status": "PASS",
+      "detail": "Direct and pragmatic with helpful 'tricky areas' hints, reads like a colleague handoff rather than a formal spec.",
+      "reasons": []
+    },
+    {
+      "id": "length",
+      "status": "WARN",
+      "detail": "124 lines, slightly over the 100-line guideline; the CommonMark section list and test-runner bash snippet could be trimmed or linked.",
+      "reasons": [
+        "instruction_lines=124 exceeds 100"
+      ]
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "PASS",
+      "detail": "No mention of scorer, verifier, reward, or test.sh; 'held-out inputs' is acceptable framing for hidden test corpus.",
+      "reasons": []
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "make, gcc, and python3 (for JSON-driven test loop) are all referenced with example commands.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "CommonMark inline-level Markdown to HTML in C",
+    "task_summary": "Implement a from-scratch C program that converts CommonMark Markdown (inline-level constructs: emphasis, code spans, links, images, autolinks, raw HTML, entities, escapes, line breaks) from stdin to HTML on stdout. The binary must build with the provided Makefile and is validated against a 268-case visible test suite plus held-out cases.",
+    "task_domain": "systems-programming / parsing",
+    "deliverable": "/app/workspace/md2html (compiled C binary)",
+    "tools_needed": [
+      "gcc",
+      "make",
+      "python3"
+    ],
+    "instruction_lines": 124
+  },
+  "notes": [
+    "Consider trimming the bullet duplication between 'What You Must Implement' (lines 35-50) and 'Inline-level structures' (lines 52-60) to bring length under 100 lines."
+  ],
+  "elapsed_sec": 65.4,
+  "cost_usd": 0.585308,
+  "tokens": {
+    "total": 447305,
+    "input": 14,
+    "output": 2429,
+    "reasoning": 0,
+    "cache_read": 392326,
+    "cache_write": 52536
+  }
+}

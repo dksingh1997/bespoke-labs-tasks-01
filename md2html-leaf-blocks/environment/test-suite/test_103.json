@@ -1,0 +1,6 @@
+{
+  "example": 180,
+  "section": "HTML blocks",
+  "markdown": "<script>\nfoo\n</script>1. *bar*\n",
+  "html": "<script>\nfoo\n</script>1. *bar*\n"
+}

@@ -1,0 +1,56 @@
+{
+  "step": "fairness",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Verifier scores correctness (visible+hidden CommonMark cases) and performance vs cmark, both aligned with instruction's stated goals of correct + fast.",
+      "reasons": []
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "Instruction links CommonMark 0.31.2 spec and enumerates the 9 leaf-block sections; internal scoring thresholds (5x cmark, correctness gate) need not be disclosed.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "gcc/make installed via Dockerfile, starter Makefile and md2html.c present in /app/workspace; solve.sh uses the stock Makefile path which the verifier builds.",
+      "reasons": []
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists (63 lines) and installs a token-gated cmark-wrapper md2html.c.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "All 54 hidden cases cover the same 9 CommonMark sections enumerated in instruction.md (Tabs, Thematic breaks, ATX/Setext headings, Indented/Fenced code, HTML blocks, Paragraphs, Blank lines).",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "gcc",
+      "make",
+      "strace",
+      "cmark (verifier-only)"
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 158.1,
+  "cost_usd": 1.147763,
+  "tokens": {
+    "total": 1202075,
+    "input": 24,
+    "output": 4799,
+    "reasoning": 0,
+    "cache_read": 1122636,
+    "cache_write": 74616
+  }
+}

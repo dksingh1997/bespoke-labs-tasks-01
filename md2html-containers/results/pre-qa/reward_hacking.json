@@ -1,0 +1,116 @@
+{
+  "step": "reward_hacking",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "noop_baseline",
+      "status": "PASS",
+      "detail": "Starter md2html outputs empty string, fails all cases; correctness=0 gates performance to 0, composite=0.0.",
+      "reasons": []
+    },
+    {
+      "id": "adversarial_audit",
+      "status": "PASS",
+      "detail": "Reward dir locked 700 first thing, /tests re-locked 700, all agent code runs as agent user under strace with timeouts, output files pre-created in root-owned 0755 dirs preventing unlink/symlink swaps.",
+      "reasons": []
+    },
+    {
+      "id": "agent_code_as_user",
+      "status": "PASS",
+      "detail": "Build, correctness runner, and performance runs all execute via `su agent -s /bin/bash -c ...` with env -i; no agent code runs as root.",
+      "reasons": []
+    },
+    {
+      "id": "strace_tracing",
+      "status": "PASS",
+      "detail": "Build, correctness, and one perf run per file are wrapped in `strace -f` and logs are checked for reward-file openat writes and external-converter execve before scoring.",
+      "reasons": []
+    },
+    {
+      "id": "verifier_protected",
+      "status": "PASS",
+      "detail": "compute_reward.py runs as `python3 -ISs` outside strace, reads only CLI counters and a root-written failed-cases file in /logs/verifier; never imports from /app.",
+      "reasons": []
+    },
+    {
+      "id": "fault_tolerance",
+      "status": "PASS",
+      "detail": "fail_with() always writes reward 0.0 and exits 0; strace/timed subprocesses are wrapped in `timeout`; no `set -e` so errors don't abort early.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "verifier_type": "runs_agent_code",
+    "existing_defenses": [
+      {
+        "category": "Filesystem lockdown",
+        "measures": [
+          "/logs/verifier chmod 700 + wiped before anything else",
+          "/tests re-locked to 700 after Harbor's upload-phase reset",
+          "Output staging dirs root-owned 0755 with pre-created 0666 files (no unlink/symlink swap)",
+          "FD-pinned O_NOFOLLOW reads of agent output, reject non-regular/hardlinked files"
+        ]
+      },
+      {
+        "category": "User separation",
+        "measures": [
+          "Agent runs as `agent` (uid 1000); verifier runs as root",
+          "Every build/run of agent code uses `su agent -s /bin/bash -c` with `env -i` to strip inherited state",
+          "cmark reference installed in /opt/verifier_tools with chmod -R go-rwx"
+        ]
+      },
+      {
+        "category": "Process auditing",
+        "measures": [
+          "strace -f wraps build, correctness, and per-perf-file runs",
+          "Reward-file openat-write tripwire on every strace log",
+          "External-converter execve tripwire on correctness + perf strace logs (skipped only on verified oracle marker)",
+          "pkill -u agent before verification to clear leftover background processes"
+        ]
+      },
+      {
+        "category": "Anti-cheat",
+        "measures": [
+          "Static source scan for Markdown library #includes, exec-family of external converters, and wrapper scripts",
+          "ELF file-type check rejects shell/python wrappers",
+          "Random 16-hex oracle marker token gates anti-cheat bypass; token never exposed to agent (lives in root-only /tests/test.sh and [solution.env])"
+        ]
+      },
+      {
+        "category": "Verifier hygiene",
+        "measures": [
+          "compute_reward.py and harness.py invoked with `python3 -ISs` (no site, no env)",
+          "Reward written atomically via os.replace()",
+          "Environment sanitised (LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/CFLAGS/CC/CXX unset; PATH pinned)",
+          "Performance gated by correctness (perf_rate *= correctness_rate) so fast-empty binaries get 0"
+        ]
+      }
+    ],
+    "verified_attack_vectors": [],
+    "acknowledged_vectors": [
+      {
+        "vector": "Timed perf runs are untraced (strace overhead would skew timing); a converter could in principle behave differently when not traced.",
+        "reason": "Reward file is chmod 700 root-owned during these runs, /tests is locked, and the agent uid has no system-write surface; the one traced perf run per file would catch external-converter execve and an attacker has no way to alter scoring from an untraced agent-uid run."
+      },
+      {
+        "vector": "/app/workspace is agent-writable; agent could plant conftest-style or .pth files.",
+        "reason": "Verifier never imports from /app; harness.py and compute_reward.py run with `python3 -ISs` and read only /tests + root-written counters."
+      },
+      {
+        "vector": "/logs/agent is 777 throughout — agent can tamper with its own traces.",
+        "reason": "Documented Harbor limitation; agent self-trace tampering does not affect reward computation."
+      }
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 222.1,
+  "cost_usd": 1.166685,
+  "tokens": {
+    "total": 1057022,
+    "input": 22,
+    "output": 8531,
+    "reasoning": 0,
+    "cache_read": 973849,
+    "cache_write": 74620
+  }
+}
