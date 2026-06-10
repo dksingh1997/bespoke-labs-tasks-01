@@ -1,1 +1,0 @@
-unusedVariablesinNamespaces2.ts(7,11): error TS6133: 'numberRegexp' is declared but its value is never read.

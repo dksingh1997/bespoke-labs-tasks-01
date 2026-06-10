@@ -1,1 +1,0 @@
-comparisonOperatorWithNumberOperand.ts(7,1): error TS2365: Operator '>=' cannot be applied to types 'number | Promise<number>' and 'number'.

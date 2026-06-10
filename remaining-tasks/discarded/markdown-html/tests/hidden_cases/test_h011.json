@@ -1,6 +1,0 @@
-{
-  "example": 36,
-  "section": "Entity and numeric character references",
-  "markdown": "    f&ouml;f&ouml;\n",
-  "html": "<pre><code>f&amp;ouml;f&amp;ouml;\n</code></pre>\n"
-}

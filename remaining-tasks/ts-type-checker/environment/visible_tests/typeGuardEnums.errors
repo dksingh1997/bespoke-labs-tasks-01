@@ -1,4 +1,0 @@
-typeGuardEnums.ts(7,12): error TS2454: Variable 'x' is used before being assigned.
-typeGuardEnums.ts(11,5): error TS2454: Variable 'x' is used before being assigned.
-typeGuardEnums.ts(14,12): error TS2454: Variable 'x' is used before being assigned.
-typeGuardEnums.ts(15,5): error TS2454: Variable 'x' is used before being assigned.

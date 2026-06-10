@@ -1,3 +1,0 @@
-spreadTypeVariable.ts(3,12): error TS2698: Spread types may only be created from object types.
-spreadTypeVariable.ts(11,12): error TS2698: Spread types may only be created from object types.
-spreadTypeVariable.ts(15,12): error TS2698: Spread types may only be created from object types.

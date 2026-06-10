@@ -1,6 +1,0 @@
-{
-  "example": 615,
-  "section": "Raw HTML",
-  "markdown": "<a><bab><c2c>\n",
-  "html": "<p><a><bab><c2c></p>\n"
-}

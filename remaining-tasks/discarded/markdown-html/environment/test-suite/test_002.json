@@ -1,6 +1,0 @@
-{
-  "example": 3,
-  "section": "Tabs",
-  "markdown": "    a\ta\n    ὐ\ta\n",
-  "html": "<pre><code>a\ta\nὐ\ta\n</code></pre>\n"
-}

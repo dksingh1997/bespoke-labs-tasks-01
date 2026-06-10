@@ -1,6 +1,0 @@
-{
-  "example": 196,
-  "section": "Link reference definitions",
-  "markdown": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]\n",
-  "html": "<p><a href=\"my_(url)\" title=\"title (with parens)\">Foo*bar]</a></p>\n"
-}

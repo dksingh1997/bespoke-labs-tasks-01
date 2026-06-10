@@ -1,6 +1,0 @@
-{
-  "example": 424,
-  "section": "Emphasis and strong emphasis",
-  "markdown": "**foo [bar](/url)**\n",
-  "html": "<p><strong>foo <a href=\"/url\">bar</a></strong></p>\n"
-}

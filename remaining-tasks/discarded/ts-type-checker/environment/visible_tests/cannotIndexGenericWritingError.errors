@@ -1,2 +1,0 @@
-cannotIndexGenericWritingError.ts(8,5): error TS2862: Type 'T' is generic and can only be indexed for reading.
-cannotIndexGenericWritingError.ts(12,5): error TS2862: Type 'T' is generic and can only be indexed for reading.

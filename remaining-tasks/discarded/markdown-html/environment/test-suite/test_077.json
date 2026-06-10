@@ -1,6 +1,0 @@
-{
-  "example": 112,
-  "section": "Indented code blocks",
-  "markdown": "    chunk1\n      \n      chunk2\n",
-  "html": "<pre><code>chunk1\n  \n  chunk2\n</code></pre>\n"
-}

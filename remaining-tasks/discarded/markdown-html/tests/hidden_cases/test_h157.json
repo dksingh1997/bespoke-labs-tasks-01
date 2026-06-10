@@ -1,6 +1,0 @@
-{
-  "example": 550,
-  "section": "Links",
-  "markdown": "[[[foo]]]\n\n[[[foo]]]: /url\n",
-  "html": "<p>[[[foo]]]</p>\n<p>[[[foo]]]: /url</p>\n"
-}

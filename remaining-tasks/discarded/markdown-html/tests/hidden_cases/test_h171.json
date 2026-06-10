@@ -1,6 +1,0 @@
-{
-  "example": 594,
-  "section": "Images",
-  "markdown": "!\\[foo]\n\n[foo]: /url \"title\"\n",
-  "html": "<p>![foo]</p>\n"
-}

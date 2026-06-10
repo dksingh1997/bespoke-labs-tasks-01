@@ -1,7 +1,0 @@
-invalidForContinueStatements.ts(8,1): error TS1104: A 'continue' statement can only be used within an enclosing iteration statement.
-invalidForContinueStatements.ts(12,9): error TS1115: A 'continue' statement can only jump to a label of an enclosing iteration statement.
-invalidForContinueStatements.ts(18,9): error TS1107: Jump target cannot cross function boundary.
-invalidForContinueStatements.ts(25,9): error TS1107: Jump target cannot cross function boundary.
-invalidForContinueStatements.ts(31,5): error TS1115: A 'continue' statement can only jump to a label of an enclosing iteration statement.
-invalidForContinueStatements.ts(36,1): error TS1344: 'A label is not allowed here.
-invalidForContinueStatements.ts(40,5): error TS1115: A 'continue' statement can only jump to a label of an enclosing iteration statement.

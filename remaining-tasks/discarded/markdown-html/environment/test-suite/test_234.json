@@ -1,6 +1,0 @@
-{
-  "example": 329,
-  "section": "Inlines",
-  "markdown": "`hi`lo`\n",
-  "html": "<p><code>hi</code>lo`</p>\n"
-}

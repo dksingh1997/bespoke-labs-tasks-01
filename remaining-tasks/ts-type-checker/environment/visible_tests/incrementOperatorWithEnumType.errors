@@ -1,4 +1,0 @@
-incrementOperatorWithEnumType.ts(7,31): error TS2540: Cannot assign to 'B' because it is a read-only property.
-incrementOperatorWithEnumType.ts(8,29): error TS2540: Cannot assign to 'B' because it is a read-only property.
-incrementOperatorWithEnumType.ts(11,9): error TS2540: Cannot assign to 'B' because it is a read-only property.
-incrementOperatorWithEnumType.ts(13,7): error TS2540: Cannot assign to 'B' because it is a read-only property.

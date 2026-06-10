@@ -1,2 +1,0 @@
-arrayAssignmentTest4.ts(26,1): error TS2322: Type '() => any' is not assignable to type 'any[]'.
-arrayAssignmentTest4.ts(27,1): error TS2740: Type 'C3' is missing the following properties from type 'any[]': length, pop, push, concat, and 25 more.

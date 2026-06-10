@@ -1,2 +1,0 @@
-privateNamesUseBeforeDef.ts(5,17): error TS2729: Property '#bar' is used before its initialization.
-privateNamesUseBeforeDef.ts(20,17): error TS2729: Property '#bar' is used before its initialization.

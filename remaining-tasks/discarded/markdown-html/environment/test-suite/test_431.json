@@ -1,6 +1,0 @@
-{
-  "example": 602,
-  "section": "Autolinks",
-  "markdown": "<https://../>\n",
-  "html": "<p><a href=\"https://../\">https://../</a></p>\n"
-}

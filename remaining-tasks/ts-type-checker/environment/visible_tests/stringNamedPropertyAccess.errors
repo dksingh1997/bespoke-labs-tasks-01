@@ -1,3 +1,0 @@
-stringNamedPropertyAccess.ts(7,10): error TS2454: Variable 'c' is used before being assigned.
-stringNamedPropertyAccess.ts(14,10): error TS2454: Variable 'i' is used before being assigned.
-stringNamedPropertyAccess.ts(19,10): error TS2454: Variable 'a' is used before being assigned.

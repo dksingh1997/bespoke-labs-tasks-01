@@ -1,6 +1,0 @@
-{
-  "example": 129,
-  "section": "Fenced code blocks",
-  "markdown": "```\n\n  \n```\n",
-  "html": "<pre><code>\n  \n</code></pre>\n"
-}

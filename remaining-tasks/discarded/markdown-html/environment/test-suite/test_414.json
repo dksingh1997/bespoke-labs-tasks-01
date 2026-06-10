@@ -1,6 +1,0 @@
-{
-  "example": 581,
-  "section": "Images",
-  "markdown": "My ![foo bar](/path/to/train.jpg  \"title\"   )\n",
-  "html": "<p>My <img src=\"/path/to/train.jpg\" alt=\"foo bar\" title=\"title\" /></p>\n"
-}

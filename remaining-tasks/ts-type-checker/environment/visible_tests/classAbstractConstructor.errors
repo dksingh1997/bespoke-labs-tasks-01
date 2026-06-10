@@ -1,1 +1,0 @@
-classAbstractConstructor.ts(3,5): error TS1242: 'abstract' modifier can only appear on a class, method, or property declaration.

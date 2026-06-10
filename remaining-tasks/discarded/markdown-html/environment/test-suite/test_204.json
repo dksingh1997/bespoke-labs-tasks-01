@@ -1,6 +1,0 @@
-{
-  "example": 293,
-  "section": "List items",
-  "markdown": "  1.  A paragraph\n    with two lines.\n",
-  "html": "<ol>\n<li>A paragraph\nwith two lines.</li>\n</ol>\n"
-}

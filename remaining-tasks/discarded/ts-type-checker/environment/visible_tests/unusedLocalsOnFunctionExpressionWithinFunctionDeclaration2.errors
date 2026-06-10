@@ -1,7 +1,0 @@
-unusedLocalsOnFunctionExpressionWithinFunctionDeclaration2.ts(5,18): error TS6133: 'person' is declared but its value is never read.
-unusedLocalsOnFunctionExpressionWithinFunctionDeclaration2.ts(6,9): error TS6133: 'unused' is declared but its value is never read.
-unusedLocalsOnFunctionExpressionWithinFunctionDeclaration2.ts(7,9): error TS6133: 'maker' is declared but its value is never read.
-unusedLocalsOnFunctionExpressionWithinFunctionDeclaration2.ts(7,26): error TS6133: 'child' is declared but its value is never read.
-unusedLocalsOnFunctionExpressionWithinFunctionDeclaration2.ts(8,13): error TS6133: 'unused2' is declared but its value is never read.
-unusedLocalsOnFunctionExpressionWithinFunctionDeclaration2.ts(10,27): error TS6133: 'child2' is declared but its value is never read.
-unusedLocalsOnFunctionExpressionWithinFunctionDeclaration2.ts(11,13): error TS6133: 'unused3' is declared but its value is never read.

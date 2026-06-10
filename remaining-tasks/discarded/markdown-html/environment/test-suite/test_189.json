@@ -1,6 +1,0 @@
-{
-  "example": 268,
-  "section": "List items",
-  "markdown": "1234567890. not ok\n",
-  "html": "<p>1234567890. not ok</p>\n"
-}

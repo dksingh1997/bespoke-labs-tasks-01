@@ -1,6 +1,0 @@
-{
-  "example": 413,
-  "section": "Emphasis and strong emphasis",
-  "markdown": "*foo**bar**baz*\n",
-  "html": "<p><em>foo<strong>bar</strong>baz</em></p>\n"
-}

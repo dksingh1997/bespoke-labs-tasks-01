@@ -1,6 +1,0 @@
-{
-  "example": 229,
-  "section": "Blank lines",
-  "markdown": "  \n\naaa\n  \n\n# aaa\n\n  \n",
-  "html": "<p>aaa</p>\n<h1>aaa</h1>\n"
-}

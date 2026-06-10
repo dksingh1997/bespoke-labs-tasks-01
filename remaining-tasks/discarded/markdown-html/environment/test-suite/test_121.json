@@ -1,6 +1,0 @@
-{
-  "example": 175,
-  "section": "HTML blocks",
-  "markdown": "<style\n  type=\"text/css\">\n\nfoo\n",
-  "html": "<style\n  type=\"text/css\">\n\nfoo\n"
-}

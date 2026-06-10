@@ -1,1 +1,0 @@
-functionVariableInReturnTypeAnnotation.ts(2,24): error TS2304: Cannot find name 'b'.

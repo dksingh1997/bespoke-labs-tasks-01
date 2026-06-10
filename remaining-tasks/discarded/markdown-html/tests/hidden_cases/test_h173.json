@@ -1,6 +1,0 @@
-{
-  "example": 604,
-  "section": "Autolinks",
-  "markdown": "<https://foo.bar/baz bim>\n",
-  "html": "<p>&lt;https://foo.bar/baz bim&gt;</p>\n"
-}

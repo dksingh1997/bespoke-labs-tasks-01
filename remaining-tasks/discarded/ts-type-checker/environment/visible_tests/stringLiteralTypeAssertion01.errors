@@ -1,6 +1,0 @@
-stringLiteralTypeAssertion01.ts(12,8): error TS2454: Variable 't' is used before being assigned.
-stringLiteralTypeAssertion01.ts(13,5): error TS2454: Variable 't' is used before being assigned.
-stringLiteralTypeAssertion01.ts(15,8): error TS2454: Variable 'str' is used before being assigned.
-stringLiteralTypeAssertion01.ts(16,5): error TS2454: Variable 'str' is used before being assigned.
-stringLiteralTypeAssertion01.ts(23,8): error TS2454: Variable 'str' is used before being assigned.
-stringLiteralTypeAssertion01.ts(24,5): error TS2454: Variable 'str' is used before being assigned.

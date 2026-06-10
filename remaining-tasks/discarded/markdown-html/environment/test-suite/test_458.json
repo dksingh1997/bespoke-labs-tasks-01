@@ -1,6 +1,0 @@
-{
-  "example": 653,
-  "section": "Textual content",
-  "markdown": "hello $.;'there\n",
-  "html": "<p>hello $.;'there</p>\n"
-}

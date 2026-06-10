@@ -1,2 +1,0 @@
-typeGuardTautologicalConsistiency.ts(4,12): error TS2454: Variable 'stringOrNumber' is used before being assigned.
-typeGuardTautologicalConsistiency.ts(10,12): error TS2454: Variable 'stringOrNumber' is used before being assigned.

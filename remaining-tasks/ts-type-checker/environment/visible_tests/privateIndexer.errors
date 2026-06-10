@@ -1,3 +1,0 @@
-privateIndexer.ts(5,5): error TS1071: 'private' modifier cannot appear on an index signature.
-privateIndexer.ts(9,5): error TS1071: 'private' modifier cannot appear on an index signature.
-privateIndexer.ts(13,5): error TS1071: 'private' modifier cannot appear on an index signature.

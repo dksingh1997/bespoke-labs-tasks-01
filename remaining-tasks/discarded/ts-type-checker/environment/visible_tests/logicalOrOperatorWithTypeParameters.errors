@@ -1,2 +1,0 @@
-logicalOrOperatorWithTypeParameters.ts(6,9): error TS2322: Type 'U | NonNullable<T>' is not assignable to type '{}'.
-logicalOrOperatorWithTypeParameters.ts(15,9): error TS2322: Type 'V | NonNullable<U>' is not assignable to type '{}'.

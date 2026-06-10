@@ -1,3 +1,0 @@
-typeofClassWithPrivates.ts(3,13): error TS2564: Property 'a' has no initializer and is not definitely assigned in the constructor.
-typeofClassWithPrivates.ts(5,5): error TS2564: Property 'x' has no initializer and is not definitely assigned in the constructor.
-typeofClassWithPrivates.ts(6,15): error TS2302: Static members cannot reference class type parameters.

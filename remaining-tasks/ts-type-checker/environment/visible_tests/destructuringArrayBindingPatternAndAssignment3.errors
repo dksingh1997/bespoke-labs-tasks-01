@@ -1,4 +1,0 @@
-destructuringArrayBindingPatternAndAssignment3.ts(4,22): error TS2448: Block-scoped variable 'e' used before its declaration.
-destructuringArrayBindingPatternAndAssignment3.ts(5,22): error TS2448: Block-scoped variable 'i' used before its declaration.
-destructuringArrayBindingPatternAndAssignment3.ts(9,27): error TS2372: Parameter 'e' cannot reference itself.
-destructuringArrayBindingPatternAndAssignment3.ts(11,27): error TS2373: Parameter 'h' cannot reference identifier 'i' declared after it.

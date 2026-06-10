@@ -1,6 +1,0 @@
-{
-  "example": 496,
-  "section": "Links",
-  "markdown": "[a](<b)c\n[a](<b)c>\n[a](<b>c)\n",
-  "html": "<p>[a](&lt;b)c\n[a](&lt;b)c&gt;\n[a](<b>c)</p>\n"
-}

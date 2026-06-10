@@ -1,1 +1,0 @@
-iteratorSpreadInArray5.ts(15,30): error TS2322: Type 'symbol' is not assignable to type 'number'.

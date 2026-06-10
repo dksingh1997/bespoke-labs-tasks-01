@@ -1,6 +1,0 @@
-{
-  "example": 109,
-  "section": "Indented code blocks",
-  "markdown": "1.  foo\n\n    - bar\n",
-  "html": "<ol>\n<li>\n<p>foo</p>\n<ul>\n<li>bar</li>\n</ul>\n</li>\n</ol>\n"
-}

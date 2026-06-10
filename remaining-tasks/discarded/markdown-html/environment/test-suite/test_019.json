@@ -1,6 +1,0 @@
-{
-  "example": 24,
-  "section": "Backslash escapes",
-  "markdown": "``` foo\\+bar\nfoo\n```\n",
-  "html": "<pre><code class=\"language-foo+bar\">foo\n</code></pre>\n"
-}

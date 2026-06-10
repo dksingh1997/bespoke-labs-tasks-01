@@ -1,6 +1,0 @@
-{
-  "example": 477,
-  "section": "Emphasis and strong emphasis",
-  "markdown": "*<img src=\"foo\" title=\"*\"/>\n",
-  "html": "<p>*<img src=\"foo\" title=\"*\"/></p>\n"
-}

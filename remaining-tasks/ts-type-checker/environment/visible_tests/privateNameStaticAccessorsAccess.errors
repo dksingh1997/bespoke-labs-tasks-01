@@ -1,3 +1,0 @@
-privateNameStaticAccessorsAccess.ts(17,4): error TS18013: Property '#prop' is not accessible outside class 'A2' because it has a private identifier.
-privateNameStaticAccessorsAccess.ts(20,8): error TS18013: Property '#prop' is not accessible outside class 'A2' because it has a private identifier.
-privateNameStaticAccessorsAccess.ts(25,12): error TS18013: Property '#prop' is not accessible outside class 'A2' because it has a private identifier.

@@ -1,6 +1,0 @@
-{
-  "example": 55,
-  "section": "Thematic breaks",
-  "markdown": "_ _ _ _ a\n\na------\n\n---a---\n",
-  "html": "<p>_ _ _ _ a</p>\n<p>a------</p>\n<p>---a---</p>\n"
-}

@@ -1,6 +1,0 @@
-{
-  "example": 27,
-  "section": "Entity and numeric character references",
-  "markdown": "&#X22; &#XD06; &#xcab;\n",
-  "html": "<p>&quot; ആ ಫ</p>\n"
-}

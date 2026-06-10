@@ -1,6 +1,0 @@
-{
-  "example": 204,
-  "section": "Link reference definitions",
-  "markdown": "[foo]: /url\\bar\\*baz \"foo\\\"bar\\baz\"\n\n[foo]\n",
-  "html": "<p><a href=\"/url%5Cbar*baz\" title=\"foo&quot;bar\\baz\">foo</a></p>\n"
-}

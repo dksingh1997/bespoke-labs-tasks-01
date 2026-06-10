@@ -1,6 +1,0 @@
-compoundExponentiationAssignmentLHSIsReference.ts(6,1): error TS2454: Variable 'x1' is used before being assigned.
-compoundExponentiationAssignmentLHSIsReference.ts(14,1): error TS2454: Variable 'x3' is used before being assigned.
-compoundExponentiationAssignmentLHSIsReference.ts(16,1): error TS2454: Variable 'x3' is used before being assigned.
-compoundExponentiationAssignmentLHSIsReference.ts(19,2): error TS2454: Variable 'x1' is used before being assigned.
-compoundExponentiationAssignmentLHSIsReference.ts(25,2): error TS2454: Variable 'x3' is used before being assigned.
-compoundExponentiationAssignmentLHSIsReference.ts(27,2): error TS2454: Variable 'x3' is used before being assigned.

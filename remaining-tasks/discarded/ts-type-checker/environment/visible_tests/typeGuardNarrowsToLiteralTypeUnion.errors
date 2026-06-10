@@ -1,2 +1,0 @@
-typeGuardNarrowsToLiteralTypeUnion.ts(6,11): error TS2454: Variable 'value' is used before being assigned.
-typeGuardNarrowsToLiteralTypeUnion.ts(9,12): error TS2454: Variable 'value' is used before being assigned.

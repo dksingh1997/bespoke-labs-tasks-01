@@ -1,6 +1,0 @@
-{
-  "example": 640,
-  "section": "Hard line breaks",
-  "markdown": "foo\\\n     bar\n",
-  "html": "<p>foo<br />\nbar</p>\n"
-}

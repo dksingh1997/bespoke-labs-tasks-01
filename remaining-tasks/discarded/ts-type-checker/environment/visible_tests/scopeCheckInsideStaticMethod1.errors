@@ -1,2 +1,0 @@
-scopeCheckInsideStaticMethod1.ts(8,7): error TS2304: Cannot find name 'v'.
-scopeCheckInsideStaticMethod1.ts(10,12): error TS2339: Property 'p' does not exist on type 'typeof C'.

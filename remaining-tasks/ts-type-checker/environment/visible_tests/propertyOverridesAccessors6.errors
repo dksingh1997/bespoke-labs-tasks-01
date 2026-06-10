@@ -1,1 +1,0 @@
-propertyOverridesAccessors6.ts(13,3): error TS2610: 'x' is defined as an accessor in class 'B', but is overridden here in 'C' as an instance property.

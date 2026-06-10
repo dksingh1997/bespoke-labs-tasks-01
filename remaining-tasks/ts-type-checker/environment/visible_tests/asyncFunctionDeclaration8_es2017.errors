@@ -1,2 +1,0 @@
-asyncFunctionDeclaration8_es2017.ts(3,12): error TS2304: Cannot find name 'await'.
-asyncFunctionDeclaration8_es2017.ts(3,20): error TS2304: Cannot find name 'foo'.

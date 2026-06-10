@@ -1,7 +1,0 @@
-derivedInterfaceIncompatibleWithBaseIndexer.ts(8,5): error TS2411: Property '1' of type '{ y: number; }' is not assignable to 'number' index type '{ x: number; y: number; }'.
-derivedInterfaceIncompatibleWithBaseIndexer.ts(8,5): error TS2411: Property '1' of type '{ y: number; }' is not assignable to 'string' index type '{ x: number; }'.
-derivedInterfaceIncompatibleWithBaseIndexer.ts(12,5): error TS2411: Property ''1'' of type '{ y: number; }' is not assignable to 'number' index type '{ x: number; y: number; }'.
-derivedInterfaceIncompatibleWithBaseIndexer.ts(12,5): error TS2411: Property ''1'' of type '{ y: number; }' is not assignable to 'string' index type '{ x: number; }'.
-derivedInterfaceIncompatibleWithBaseIndexer.ts(16,5): error TS2411: Property 'foo' of type '{ y: number; }' is not assignable to 'string' index type '{ x: number; }'.
-derivedInterfaceIncompatibleWithBaseIndexer.ts(20,5): error TS2411: Property 'foo' of type '() => { x: number; }' is not assignable to 'string' index type '{ x: number; }'.
-derivedInterfaceIncompatibleWithBaseIndexer.ts(25,5): error TS2411: Property '1' of type '{ x: number; }' is not assignable to 'number' index type '{ x: number; y: number; }'.

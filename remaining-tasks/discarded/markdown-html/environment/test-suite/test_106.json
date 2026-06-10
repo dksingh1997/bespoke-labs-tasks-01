@@ -1,6 +1,0 @@
-{
-  "example": 152,
-  "section": "HTML blocks",
-  "markdown": "<DIV CLASS=\"foo\">\n\n*Markdown*\n\n</DIV>\n",
-  "html": "<DIV CLASS=\"foo\">\n<p><em>Markdown</em></p>\n</DIV>\n"
-}

@@ -1,5 +1,0 @@
-templateStringInPropertyNameES6_1.ts(2,9): error TS2349: This expression is not callable.
-templateStringInPropertyNameES6_1.ts(3,5): error TS1136: Property assignment expected.
-templateStringInPropertyNameES6_1.ts(3,8): error TS1005: ',' expected.
-templateStringInPropertyNameES6_1.ts(3,10): error TS1134: Variable declaration expected.
-templateStringInPropertyNameES6_1.ts(4,1): error TS1128: Declaration or statement expected.

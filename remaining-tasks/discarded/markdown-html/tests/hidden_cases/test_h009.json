@@ -1,6 +1,0 @@
-{
-  "example": 31,
-  "section": "Entity and numeric character references",
-  "markdown": "<a href=\"&ouml;&ouml;.html\">\n",
-  "html": "<a href=\"&ouml;&ouml;.html\">\n"
-}

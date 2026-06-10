@@ -1,6 +1,0 @@
-{
-  "example": 347,
-  "section": "Code spans",
-  "markdown": "`<https://foo.bar.`baz>`\n",
-  "html": "<p><code>&lt;https://foo.bar.</code>baz&gt;`</p>\n"
-}

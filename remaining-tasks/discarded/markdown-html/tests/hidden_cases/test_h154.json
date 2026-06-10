@@ -1,6 +1,0 @@
-{
-  "example": 542,
-  "section": "Links",
-  "markdown": "[ẞ]\n\n[SS]: /url\n",
-  "html": "<p><a href=\"/url\">ẞ</a></p>\n"
-}

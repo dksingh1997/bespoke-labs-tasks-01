@@ -1,6 +1,0 @@
-numericIndexerConstrainsPropertyDeclarations.ts(20,5): error TS2411: Property '2.0' of type 'number' is not assignable to 'number' index type 'string'.
-numericIndexerConstrainsPropertyDeclarations.ts(23,5): error TS2411: Property '3.0' of type 'MyNumber' is not assignable to 'number' index type 'string'.
-numericIndexerConstrainsPropertyDeclarations.ts(52,5): error TS2411: Property '2.0' of type 'number' is not assignable to 'number' index type 'string'.
-numericIndexerConstrainsPropertyDeclarations.ts(70,5): error TS2411: Property '2.0' of type 'number' is not assignable to 'number' index type 'string'.
-numericIndexerConstrainsPropertyDeclarations.ts(87,5): error TS2322: Type 'number' is not assignable to type 'string'.
-numericIndexerConstrainsPropertyDeclarations.ts(90,9): error TS2304: Cannot find name 'Myn'.

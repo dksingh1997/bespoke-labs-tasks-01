@@ -1,6 +1,0 @@
-{
-  "example": 42,
-  "section": "Precedence",
-  "markdown": "- `one\n- two`\n",
-  "html": "<ul>\n<li>`one</li>\n<li>two`</li>\n</ul>\n"
-}

@@ -1,2 +1,0 @@
-comparisonOperatorWithIntersectionType.ts(3,1): error TS2365: Operator '>' cannot be applied to types '{ a: 1; }' and 'number'.
-comparisonOperatorWithIntersectionType.ts(6,1): error TS2365: Operator '>' cannot be applied to types '{ a: 1; } & { b: number; }' and 'number'.

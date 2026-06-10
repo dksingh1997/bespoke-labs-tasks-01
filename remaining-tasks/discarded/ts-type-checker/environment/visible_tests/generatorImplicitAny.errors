@@ -1,2 +1,0 @@
-generatorImplicitAny.ts(13,19): error TS7057: 'yield' expression implicitly results in an 'any' type because its containing generator lacks a return-type annotation.
-generatorImplicitAny.ts(31,7): error TS7057: 'yield' expression implicitly results in an 'any' type because its containing generator lacks a return-type annotation.

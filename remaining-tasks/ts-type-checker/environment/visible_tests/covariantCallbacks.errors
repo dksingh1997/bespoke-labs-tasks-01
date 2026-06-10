@@ -1,8 +1,0 @@
-covariantCallbacks.ts(15,5): error TS2322: Type 'P<A>' is not assignable to type 'P<B>'.
-covariantCallbacks.ts(20,5): error TS2322: Type 'Promise<A>' is not assignable to type 'Promise<B>'.
-covariantCallbacks.ts(33,5): error TS2322: Type 'AList1' is not assignable to type 'BList1'.
-covariantCallbacks.ts(46,5): error TS2322: Type 'AList2' is not assignable to type 'BList2'.
-covariantCallbacks.ts(59,5): error TS2322: Type 'AList3' is not assignable to type 'BList3'.
-covariantCallbacks.ts(72,5): error TS2322: Type 'AList4' is not assignable to type 'BList4'.
-covariantCallbacks.ts(101,1): error TS2322: Type 'SetLike1<(x: string) => void>' is not assignable to type 'SetLike1<(x: unknown) => void>'.
-covariantCallbacks.ts(109,1): error TS2322: Type 'SetLike2<(x: string) => void>' is not assignable to type 'SetLike1<(x: unknown) => void>'.

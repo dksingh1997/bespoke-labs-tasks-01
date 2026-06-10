@@ -1,6 +1,0 @@
-subtypingWithConstructSignaturesWithOptionalParameters.ts(20,11): error TS2430: Interface 'I3' incorrectly extends interface 'Base'.
-subtypingWithConstructSignaturesWithOptionalParameters.ts(33,11): error TS2430: Interface 'I6' incorrectly extends interface 'Base'.
-subtypingWithConstructSignaturesWithOptionalParameters.ts(50,11): error TS2430: Interface 'I10' incorrectly extends interface 'Base'.
-subtypingWithConstructSignaturesWithOptionalParameters.ts(67,11): error TS2430: Interface 'I14' incorrectly extends interface 'Base'.
-subtypingWithConstructSignaturesWithOptionalParameters.ts(80,11): error TS2430: Interface 'I17' incorrectly extends interface 'Base'.
-subtypingWithConstructSignaturesWithOptionalParameters.ts(84,11): error TS2430: Interface 'I18' incorrectly extends interface 'Base'.

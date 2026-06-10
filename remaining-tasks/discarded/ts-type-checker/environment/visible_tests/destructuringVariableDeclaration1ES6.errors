@@ -1,2 +1,0 @@
-destructuringVariableDeclaration1ES6.ts(40,16): error TS2322: Type 'undefined' is not assignable to type 'number'.
-destructuringVariableDeclaration1ES6.ts(40,27): error TS2322: Type 'null' is not assignable to type 'number'.

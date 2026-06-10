@@ -1,7 +1,0 @@
-subtypingWithObjectMembersAccessibility.ts(5,5): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.
-subtypingWithObjectMembersAccessibility.ts(9,5): error TS2564: Property 'bar' has no initializer and is not definitely assigned in the constructor.
-subtypingWithObjectMembersAccessibility.ts(13,12): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.
-subtypingWithObjectMembersAccessibility.ts(16,7): error TS2415: Class 'B' incorrectly extends base class 'A'.
-subtypingWithObjectMembersAccessibility.ts(17,13): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.
-subtypingWithObjectMembersAccessibility.ts(24,7): error TS2415: Class 'B2' incorrectly extends base class 'A2'.
-subtypingWithObjectMembersAccessibility.ts(32,7): error TS2415: Class 'B3' incorrectly extends base class 'A3'.

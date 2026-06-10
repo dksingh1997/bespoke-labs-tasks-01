@@ -1,6 +1,0 @@
-{
-  "example": 635,
-  "section": "Raw HTML",
-  "markdown": "<a\n> quoted text\n",
-  "html": "<p>&lt;a</p>\n<blockquote>\n<p>quoted text</p>\n</blockquote>\n"
-}

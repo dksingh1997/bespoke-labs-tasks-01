@@ -1,7 +1,0 @@
-{
-  "verdict": "FAIR",
-  "confidence": 0.93,
-  "reward": 0.492806,
-  "strategy": "Incremental extension of starter checker with iterative FP/FN analysis — data-driven tuning over 273 episodes, achieving 685/1390 hidden tests before timeout",
-  "flags": []
-}

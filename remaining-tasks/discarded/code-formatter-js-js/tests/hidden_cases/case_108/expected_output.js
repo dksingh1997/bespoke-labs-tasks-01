@@ -1,9 +1,0 @@
-// Variant test file
-`
-   
-   
-` +
-  `
-    
-    
-`;

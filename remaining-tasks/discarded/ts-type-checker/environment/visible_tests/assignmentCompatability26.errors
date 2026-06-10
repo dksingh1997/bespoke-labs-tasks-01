@@ -1,1 +1,0 @@
-assignmentCompatability26.ts(10,1): error TS2322: Type 'interfaceWithPublicAndOptional<number, string>' is not assignable to type '{ one: string; }'.

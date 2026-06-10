@@ -1,2 +1,0 @@
-accessorsOverrideProperty.ts(7,9): error TS2611: 'p' is defined as a property in class 'A', but is overridden here in 'B' as an accessor.
-accessorsOverrideProperty.ts(14,9): error TS2611: 'p' is defined as a property in class 'C', but is overridden here in 'D' as an accessor.

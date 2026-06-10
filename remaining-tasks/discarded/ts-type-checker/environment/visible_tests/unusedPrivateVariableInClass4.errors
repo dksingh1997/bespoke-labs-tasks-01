@@ -1,4 +1,0 @@
-unusedPrivateVariableInClass4.ts(6,13): error TS2564: Property 'x' has no initializer and is not definitely assigned in the constructor.
-unusedPrivateVariableInClass4.ts(7,13): error TS2564: Property 'y' has no initializer and is not definitely assigned in the constructor.
-unusedPrivateVariableInClass4.ts(7,13): error TS6133: 'y' is declared but its value is never read.
-unusedPrivateVariableInClass4.ts(8,13): error TS2564: Property 'z' has no initializer and is not definitely assigned in the constructor.

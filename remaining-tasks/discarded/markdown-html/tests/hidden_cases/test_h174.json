@@ -1,6 +1,0 @@
-{
-  "example": 605,
-  "section": "Autolinks",
-  "markdown": "<https://example.com/\\[\\>\n",
-  "html": "<p><a href=\"https://example.com/%5C%5B%5C\">https://example.com/\\[\\</a></p>\n"
-}

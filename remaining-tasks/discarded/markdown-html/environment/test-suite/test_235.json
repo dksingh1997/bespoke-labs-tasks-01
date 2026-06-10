@@ -1,6 +1,0 @@
-{
-  "example": 330,
-  "section": "Code spans",
-  "markdown": "`foo`\n",
-  "html": "<p><code>foo</code></p>\n"
-}

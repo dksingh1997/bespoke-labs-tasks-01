@@ -1,2 +1,0 @@
-objectTypeWithCallSignatureHidingMembersOfFunctionAssignmentCompat.ts(9,1): error TS2322: Type 'Object' is not assignable to type 'I'.
-objectTypeWithCallSignatureHidingMembersOfFunctionAssignmentCompat.ts(15,1): error TS2322: Type 'Object' is not assignable to type '() => void'.

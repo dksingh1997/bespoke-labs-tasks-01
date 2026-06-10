@@ -1,6 +1,0 @@
-{
-  "example": 498,
-  "section": "Links",
-  "markdown": "[link](foo(and(bar)))\n",
-  "html": "<p><a href=\"foo(and(bar))\">link</a></p>\n"
-}

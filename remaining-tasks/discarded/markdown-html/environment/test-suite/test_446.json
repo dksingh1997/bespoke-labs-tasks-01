@@ -1,6 +1,0 @@
-{
-  "example": 627,
-  "section": "Raw HTML",
-  "markdown": "foo <!-- this is a --\ncomment - with hyphens -->\n",
-  "html": "<p>foo <!-- this is a --\ncomment - with hyphens --></p>\n"
-}

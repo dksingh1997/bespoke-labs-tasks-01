@@ -1,1 +1,0 @@
-computedPropertyNamesContextualType8_ES6.ts(7,5): error TS2322: Type '{ [x: string]: string | number; }' is not assignable to type 'I'.

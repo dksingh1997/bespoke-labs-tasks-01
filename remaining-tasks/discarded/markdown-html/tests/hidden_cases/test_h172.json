@@ -1,6 +1,0 @@
-{
-  "example": 603,
-  "section": "Autolinks",
-  "markdown": "<localhost:5001/foo>\n",
-  "html": "<p><a href=\"localhost:5001/foo\">localhost:5001/foo</a></p>\n"
-}

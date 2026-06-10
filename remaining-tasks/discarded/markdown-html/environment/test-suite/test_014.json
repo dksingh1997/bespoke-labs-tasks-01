@@ -1,6 +1,0 @@
-{
-  "example": 18,
-  "section": "Backslash escapes",
-  "markdown": "    \\[\\]\n",
-  "html": "<pre><code>\\[\\]\n</code></pre>\n"
-}

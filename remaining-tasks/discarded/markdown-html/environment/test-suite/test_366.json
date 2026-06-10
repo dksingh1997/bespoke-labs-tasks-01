@@ -1,6 +1,0 @@
-{
-  "example": 510,
-  "section": "Links",
-  "markdown": "[link](/url \"title \"and\" title\")\n",
-  "html": "<p>[link](/url &quot;title &quot;and&quot; title&quot;)</p>\n"
-}

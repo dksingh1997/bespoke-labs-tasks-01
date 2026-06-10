@@ -1,6 +1,0 @@
-{
-  "example": 39,
-  "section": "Entity and numeric character references",
-  "markdown": "foo&#10;&#10;bar\n",
-  "html": "<p>foo\n\nbar</p>\n"
-}

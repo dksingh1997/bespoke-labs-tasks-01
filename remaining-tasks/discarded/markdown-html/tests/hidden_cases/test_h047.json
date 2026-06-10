@@ -1,6 +1,0 @@
-{
-  "example": 157,
-  "section": "HTML blocks",
-  "markdown": "<div class\nfoo\n",
-  "html": "<div class\nfoo\n"
-}

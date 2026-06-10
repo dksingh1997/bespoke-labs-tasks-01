@@ -1,1 +1,0 @@
-inheritanceGrandParentPublicMemberCollisionWithPrivateMember.ts(9,7): error TS2415: Class 'C' incorrectly extends base class 'B'.

@@ -1,6 +1,0 @@
-{
-  "example": 206,
-  "section": "Link reference definitions",
-  "markdown": "[foo]\n\n[foo]: first\n[foo]: second\n",
-  "html": "<p><a href=\"first\">foo</a></p>\n"
-}

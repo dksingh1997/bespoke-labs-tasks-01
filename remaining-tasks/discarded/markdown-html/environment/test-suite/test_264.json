@@ -1,6 +1,0 @@
-{
-  "example": 370,
-  "section": "Emphasis and strong emphasis",
-  "markdown": "*(*foo)\n",
-  "html": "<p>*(*foo)</p>\n"
-}

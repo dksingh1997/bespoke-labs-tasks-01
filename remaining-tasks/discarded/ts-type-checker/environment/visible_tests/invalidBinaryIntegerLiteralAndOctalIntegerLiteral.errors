@@ -1,4 +1,0 @@
-invalidBinaryIntegerLiteralAndOctalIntegerLiteral.ts(3,16): error TS1177: Binary digit expected.
-invalidBinaryIntegerLiteralAndOctalIntegerLiteral.ts(4,17): error TS1177: Binary digit expected.
-invalidBinaryIntegerLiteralAndOctalIntegerLiteral.ts(5,15): error TS1178: Octal digit expected.
-invalidBinaryIntegerLiteralAndOctalIntegerLiteral.ts(6,15): error TS1178: Octal digit expected.

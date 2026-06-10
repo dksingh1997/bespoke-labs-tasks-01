@@ -1,1 +1,0 @@
-classConstructorAccessibility5.ts(10,21): error TS2674: Constructor of class 'Base' is protected and only accessible within the class declaration.

@@ -1,3 +1,0 @@
-inferTypesWithExtends2.ts(6,26): error TS2838: All declarations of 'U' must have identical constraints.
-inferTypesWithExtends2.ts(6,53): error TS2838: All declarations of 'U' must have identical constraints.
-inferTypesWithExtends2.ts(11,48): error TS2304: Cannot find name 'U'.

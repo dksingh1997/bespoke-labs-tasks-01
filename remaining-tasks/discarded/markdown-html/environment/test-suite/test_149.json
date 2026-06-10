@@ -1,6 +1,0 @@
-{
-  "example": 210,
-  "section": "Link reference definitions",
-  "markdown": "[\nfoo\n]: /url\nbar\n",
-  "html": "<p>bar</p>\n"
-}

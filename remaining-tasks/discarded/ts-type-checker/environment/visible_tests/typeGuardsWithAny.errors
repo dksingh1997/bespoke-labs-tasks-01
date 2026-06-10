@@ -1,3 +1,0 @@
-typeGuardsWithAny.ts(12,7): error TS2339: Property 'p' does not exist on type 'string'.
-typeGuardsWithAny.ts(19,7): error TS2339: Property 'p' does not exist on type 'number'.
-typeGuardsWithAny.ts(26,7): error TS2339: Property 'p' does not exist on type 'boolean'.

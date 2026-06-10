@@ -1,9 +1,0 @@
-bitwiseNotOperatorWithStringType.ts(11,12): error TS2564: Property 'a' has no initializer and is not definitely assigned in the constructor.
-bitwiseNotOperatorWithStringType.ts(21,24): error TS2454: Variable 'STRING' is used before being assigned.
-bitwiseNotOperatorWithStringType.ts(35,26): error TS2454: Variable 'STRING' is used before being assigned.
-bitwiseNotOperatorWithStringType.ts(35,35): error TS2454: Variable 'STRING' is used before being assigned.
-bitwiseNotOperatorWithStringType.ts(36,25): error TS2454: Variable 'STRING' is used before being assigned.
-bitwiseNotOperatorWithStringType.ts(39,26): error TS2454: Variable 'STRING' is used before being assigned.
-bitwiseNotOperatorWithStringType.ts(40,28): error TS2454: Variable 'STRING' is used before being assigned.
-bitwiseNotOperatorWithStringType.ts(40,37): error TS2454: Variable 'STRING' is used before being assigned.
-bitwiseNotOperatorWithStringType.ts(43,2): error TS2454: Variable 'STRING' is used before being assigned.

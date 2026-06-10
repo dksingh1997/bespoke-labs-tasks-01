@@ -1,2 +1,0 @@
-assignFromNumberInterface2.ts(25,1): error TS2322: Type 'Number' is not assignable to type 'number'.
-assignFromNumberInterface2.ts(26,1): error TS2322: Type 'NotNumber' is not assignable to type 'number'.

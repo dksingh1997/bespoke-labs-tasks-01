@@ -1,7 +1,0 @@
-with (a);
-if (8); else if (9); else;
-for (;;);
-while (8);
-for (var i in o);
-for (var i of o);
-do; while(8);

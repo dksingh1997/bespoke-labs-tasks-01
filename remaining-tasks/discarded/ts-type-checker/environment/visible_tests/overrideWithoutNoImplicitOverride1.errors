@@ -1,5 +1,0 @@
-overrideWithoutNoImplicitOverride1.ts(5,14): error TS4112: This member cannot have an 'override' modifier because its containing class 'AmbientClass' does not extend another class.
-overrideWithoutNoImplicitOverride1.ts(9,14): error TS4112: This member cannot have an 'override' modifier because its containing class 'NonAmbientClass' does not extend another class.
-overrideWithoutNoImplicitOverride1.ts(21,14): error TS4113: This member cannot have an 'override' modifier because it is not declared in the base class 'AmbientBase'.
-overrideWithoutNoImplicitOverride1.ts(34,18): error TS4113: This member cannot have an 'override' modifier because it is not declared in the base class 'AmbientBase'.
-overrideWithoutNoImplicitOverride1.ts(47,14): error TS4113: This member cannot have an 'override' modifier because it is not declared in the base class 'NonAmbientBase'.

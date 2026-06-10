@@ -1,4 +1,0 @@
-constructSignaturesWithIdenticalOverloads.ts(26,14): error TS2454: Variable 'i' is used before being assigned.
-constructSignaturesWithIdenticalOverloads.ts(36,14): error TS2454: Variable 'i2' is used before being assigned.
-constructSignaturesWithIdenticalOverloads.ts(43,14): error TS2454: Variable 'a' is used before being assigned.
-constructSignaturesWithIdenticalOverloads.ts(50,14): error TS2454: Variable 'b' is used before being assigned.

@@ -1,1 +1,0 @@
-controlFlowNullishCoalesce.ts(7,1): error TS2454: Variable 'a' is used before being assigned.

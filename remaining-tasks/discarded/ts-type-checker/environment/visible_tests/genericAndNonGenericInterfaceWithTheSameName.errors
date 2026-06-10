@@ -1,6 +1,0 @@
-genericAndNonGenericInterfaceWithTheSameName.ts(4,11): error TS2428: All declarations of 'A' must have identical type parameters.
-genericAndNonGenericInterfaceWithTheSameName.ts(8,11): error TS2428: All declarations of 'A' must have identical type parameters.
-genericAndNonGenericInterfaceWithTheSameName.ts(13,15): error TS2428: All declarations of 'A' must have identical type parameters.
-genericAndNonGenericInterfaceWithTheSameName.ts(17,15): error TS2428: All declarations of 'A' must have identical type parameters.
-genericAndNonGenericInterfaceWithTheSameName.ts(35,22): error TS2428: All declarations of 'A' must have identical type parameters.
-genericAndNonGenericInterfaceWithTheSameName.ts(41,22): error TS2428: All declarations of 'A' must have identical type parameters.

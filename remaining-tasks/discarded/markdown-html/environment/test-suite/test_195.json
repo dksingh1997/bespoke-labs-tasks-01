@@ -1,6 +1,0 @@
-{
-  "example": 281,
-  "section": "List items",
-  "markdown": "-   \n  foo\n",
-  "html": "<ul>\n<li>foo</li>\n</ul>\n"
-}

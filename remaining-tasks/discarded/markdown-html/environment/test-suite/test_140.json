@@ -1,6 +1,0 @@
-{
-  "example": 199,
-  "section": "Link reference definitions",
-  "markdown": "[foo]: /url 'title\n\nwith blank line'\n\n[foo]\n",
-  "html": "<p>[foo]: /url 'title</p>\n<p>with blank line'</p>\n<p>[foo]</p>\n"
-}

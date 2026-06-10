@@ -1,2 +1,0 @@
-globalThisGlobalExportAsGlobal.ts(3,9): error TS2669: Augmentations for the global scope can only be directly nested in external modules or ambient module declarations.
-globalThisGlobalExportAsGlobal.ts(4,14): error TS2661: Cannot export 'globalThis'. Only local declarations can be exported from a module.

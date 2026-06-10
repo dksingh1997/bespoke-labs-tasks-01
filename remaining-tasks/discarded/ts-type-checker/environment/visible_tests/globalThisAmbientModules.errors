@@ -1,2 +1,0 @@
-globalThisAmbientModules.ts(9,39): error TS2339: Property '"ambientModule"' does not exist on type 'typeof globalThis'.
-globalThisAmbientModules.ts(12,33): error TS2339: Property '"ambientModule"' does not exist on type 'typeof globalThis'.

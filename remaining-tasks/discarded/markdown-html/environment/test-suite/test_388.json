@@ -1,6 +1,0 @@
-{
-  "example": 541,
-  "section": "Links",
-  "markdown": "[foo][BaR]\n\n[bar]: /url \"title\"\n",
-  "html": "<p><a href=\"/url\" title=\"title\">foo</a></p>\n"
-}

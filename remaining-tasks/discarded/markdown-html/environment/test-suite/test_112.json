@@ -1,6 +1,0 @@
-{
-  "example": 161,
-  "section": "HTML blocks",
-  "markdown": "<div></div>\n``` c\nint x = 33;\n```\n",
-  "html": "<div></div>\n``` c\nint x = 33;\n```\n"
-}

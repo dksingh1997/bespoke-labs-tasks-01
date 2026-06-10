@@ -1,1 +1,0 @@
-for-of3.ts(3,6): error TS2487: The left-hand side of a 'for...of' statement must be a variable or a property access.

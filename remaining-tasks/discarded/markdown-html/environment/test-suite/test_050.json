@@ -1,6 +1,0 @@
-{
-  "example": 71,
-  "section": "ATX headings",
-  "markdown": "## foo ##\n  ###   bar    ###\n",
-  "html": "<h2>foo</h2>\n<h3>bar</h3>\n"
-}

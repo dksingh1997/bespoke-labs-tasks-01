@@ -1,6 +1,0 @@
-awaitLiteralValues.ts(3,5): error TS1308: 'await' expressions are only allowed within async functions and at the top levels of modules.
-awaitLiteralValues.ts(7,5): error TS1308: 'await' expressions are only allowed within async functions and at the top levels of modules.
-awaitLiteralValues.ts(11,5): error TS1308: 'await' expressions are only allowed within async functions and at the top levels of modules.
-awaitLiteralValues.ts(15,5): error TS1308: 'await' expressions are only allowed within async functions and at the top levels of modules.
-awaitLiteralValues.ts(19,5): error TS1308: 'await' expressions are only allowed within async functions and at the top levels of modules.
-awaitLiteralValues.ts(23,5): error TS1308: 'await' expressions are only allowed within async functions and at the top levels of modules.

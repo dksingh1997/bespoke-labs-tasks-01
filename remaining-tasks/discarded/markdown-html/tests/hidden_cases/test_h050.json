@@ -1,6 +1,0 @@
-{
-  "example": 162,
-  "section": "HTML blocks",
-  "markdown": "<div\n> not quoted text\n",
-  "html": "<div\n> not quoted text\n"
-}

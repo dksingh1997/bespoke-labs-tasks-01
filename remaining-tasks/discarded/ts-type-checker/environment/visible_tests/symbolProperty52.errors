@@ -1,2 +1,0 @@
-symbolProperty52.ts(3,13): error TS2339: Property 'nonsense' does not exist on type 'SymbolConstructor'.
-symbolProperty52.ts(8,12): error TS2339: Property 'nonsense' does not exist on type 'SymbolConstructor'.

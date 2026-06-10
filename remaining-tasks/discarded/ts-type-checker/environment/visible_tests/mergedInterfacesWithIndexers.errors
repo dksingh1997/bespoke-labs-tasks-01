@@ -1,3 +1,0 @@
-mergedInterfacesWithIndexers.ts(14,9): error TS2454: Variable 'a' is used before being assigned.
-mergedInterfacesWithIndexers.ts(15,10): error TS2454: Variable 'a' is used before being assigned.
-mergedInterfacesWithIndexers.ts(16,10): error TS2454: Variable 'a' is used before being assigned.

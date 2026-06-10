@@ -1,6 +1,0 @@
-{
-  "example": 110,
-  "section": "Indented code blocks",
-  "markdown": "    <a/>\n    *hi*\n\n    - one\n",
-  "html": "<pre><code>&lt;a/&gt;\n*hi*\n\n- one\n</code></pre>\n"
-}

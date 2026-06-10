@@ -1,5 +1,0 @@
-propertyAccessOnTypeParameterWithConstraints5.ts(17,32): error TS2339: Property 'notHere' does not exist on type 'U'.
-propertyAccessOnTypeParameterWithConstraints5.ts(27,16): error TS2339: Property 'notHere' does not exist on type 'B'.
-propertyAccessOnTypeParameterWithConstraints5.ts(34,22): error TS2339: Property 'notHere' does not exist on type 'A'.
-propertyAccessOnTypeParameterWithConstraints5.ts(40,9): error TS2322: Type 'string' is not assignable to type 'U'.
-propertyAccessOnTypeParameterWithConstraints5.ts(40,22): error TS2339: Property 'notHere' does not exist on type 'U'.

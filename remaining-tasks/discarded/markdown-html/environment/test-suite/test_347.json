@@ -1,6 +1,0 @@
-{
-  "example": 486,
-  "section": "Links",
-  "markdown": "[](./target.md)\n",
-  "html": "<p><a href=\"./target.md\"></a></p>\n"
-}

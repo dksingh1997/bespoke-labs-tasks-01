@@ -1,6 +1,0 @@
-{
-  "example": 522,
-  "section": "Links",
-  "markdown": "![[[foo](uri1)](uri2)](uri3)\n",
-  "html": "<p><img src=\"uri3\" alt=\"[foo](uri2)\" /></p>\n"
-}

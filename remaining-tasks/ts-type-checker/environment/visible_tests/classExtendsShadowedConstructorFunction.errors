@@ -1,3 +1,0 @@
-classExtendsShadowedConstructorFunction.ts(2,11): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.
-classExtendsShadowedConstructorFunction.ts(6,21): error TS2507: Type 'number' is not a constructor function type.
-classExtendsShadowedConstructorFunction.ts(7,9): error TS2564: Property 'bar' has no initializer and is not definitely assigned in the constructor.

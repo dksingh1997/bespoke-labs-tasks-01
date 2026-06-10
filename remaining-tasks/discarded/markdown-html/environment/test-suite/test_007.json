@@ -1,6 +1,0 @@
-{
-  "example": 10,
-  "section": "Tabs",
-  "markdown": "#\tFoo\n",
-  "html": "<h1>Foo</h1>\n"
-}

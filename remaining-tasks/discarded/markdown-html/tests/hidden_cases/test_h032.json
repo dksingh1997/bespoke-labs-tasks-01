@@ -1,6 +1,0 @@
-{
-  "example": 103,
-  "section": "Setext headings",
-  "markdown": "Foo\n\nbar\n---\nbaz\n",
-  "html": "<p>Foo</p>\n<h2>bar</h2>\n<p>baz</p>\n"
-}

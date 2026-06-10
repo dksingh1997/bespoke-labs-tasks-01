@@ -1,6 +1,0 @@
-{
-  "example": 499,
-  "section": "Links",
-  "markdown": "[link](foo(and(bar))\n",
-  "html": "<p>[link](foo(and(bar))</p>\n"
-}

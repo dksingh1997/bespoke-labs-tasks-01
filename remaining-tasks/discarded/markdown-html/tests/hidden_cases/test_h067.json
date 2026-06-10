@@ -1,6 +1,0 @@
-{
-  "example": 225,
-  "section": "Paragraphs",
-  "markdown": "aaa\n             bbb\n                                       ccc\n",
-  "html": "<p>aaa\nbbb\nccc</p>\n"
-}

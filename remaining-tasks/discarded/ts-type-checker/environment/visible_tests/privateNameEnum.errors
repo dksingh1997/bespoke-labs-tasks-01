@@ -1,1 +1,0 @@
-privateNameEnum.ts(4,5): error TS18024: An enum member cannot be named with a private identifier.

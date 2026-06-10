@@ -1,7 +1,0 @@
-arrayOfFunctionTypes3.ts(8,5): error TS2564: Property 'foo' has no initializer and is not definitely assigned in the constructor.
-arrayOfFunctionTypes3.ts(16,10): error TS2454: Variable 'a' is used before being assigned.
-arrayOfFunctionTypes3.ts(16,13): error TS2454: Variable 'b' is used before being assigned.
-arrayOfFunctionTypes3.ts(16,16): error TS2454: Variable 'c' is used before being assigned.
-arrayOfFunctionTypes3.ts(25,11): error TS2454: Variable 'a2' is used before being assigned.
-arrayOfFunctionTypes3.ts(25,15): error TS2454: Variable 'b2' is used before being assigned.
-arrayOfFunctionTypes3.ts(25,19): error TS2454: Variable 'c2' is used before being assigned.

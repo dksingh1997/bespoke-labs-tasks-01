@@ -1,4 +1,0 @@
-privateIdentifierChain.1.ts(12,15): error TS18030: An optional chain cannot contain private identifiers.
-privateIdentifierChain.1.ts(13,9): error TS2532: Object is possibly 'undefined'.
-privateIdentifierChain.1.ts(13,17): error TS18030: An optional chain cannot contain private identifiers.
-privateIdentifierChain.1.ts(14,22): error TS18030: An optional chain cannot contain private identifiers.

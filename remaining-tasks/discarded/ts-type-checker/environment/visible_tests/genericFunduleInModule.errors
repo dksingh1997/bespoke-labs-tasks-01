@@ -1,1 +1,0 @@
-genericFunduleInModule.ts(9,8): error TS2749: 'A.B' refers to a value, but is being used as a type here. Did you mean 'typeof A.B'?

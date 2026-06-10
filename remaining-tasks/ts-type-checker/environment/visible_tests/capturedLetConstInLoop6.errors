@@ -1,4 +1,0 @@
-capturedLetConstInLoop6.ts(149,9): error TS2367: This comparison appears to be unintentional because the types '0' and '1' have no overlap.
-capturedLetConstInLoop6.ts(152,9): error TS2367: This comparison appears to be unintentional because the types '0' and '2' have no overlap.
-capturedLetConstInLoop6.ts(196,9): error TS2367: This comparison appears to be unintentional because the types '0' and '1' have no overlap.
-capturedLetConstInLoop6.ts(199,9): error TS2367: This comparison appears to be unintentional because the types '0' and '2' have no overlap.

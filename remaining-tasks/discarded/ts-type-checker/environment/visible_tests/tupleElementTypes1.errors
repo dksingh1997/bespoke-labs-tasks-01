@@ -1,1 +1,0 @@
-tupleElementTypes1.ts(2,30): error TS2322: Type 'undefined' is not assignable to type 'number'.

@@ -1,2 +1,0 @@
-interfaceExtendingClassWithProtecteds.ts(6,11): error TS2430: Interface 'I' incorrectly extends interface 'Foo'.
-interfaceExtendingClassWithProtecteds.ts(16,12): error TS2445: Property 'x' is protected and only accessible within class 'Foo' and its subclasses.

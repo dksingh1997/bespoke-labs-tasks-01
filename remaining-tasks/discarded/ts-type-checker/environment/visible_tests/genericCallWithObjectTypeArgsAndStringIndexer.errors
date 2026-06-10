@@ -1,4 +1,0 @@
-genericCallWithObjectTypeArgsAndStringIndexer.ts(9,13): error TS2454: Variable 'a' is used before being assigned.
-genericCallWithObjectTypeArgsAndStringIndexer.ts(13,18): error TS2454: Variable 'b' is used before being assigned.
-genericCallWithObjectTypeArgsAndStringIndexer.ts(18,18): error TS2454: Variable 'b' is used before being assigned.
-genericCallWithObjectTypeArgsAndStringIndexer.ts(24,18): error TS2454: Variable 'b' is used before being assigned.

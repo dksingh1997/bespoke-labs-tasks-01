@@ -1,6 +1,0 @@
-{
-  "example": 185,
-  "section": "HTML blocks",
-  "markdown": "  <!-- foo -->\n\n    <!-- foo -->\n",
-  "html": "  <!-- foo -->\n<pre><code>&lt;!-- foo --&gt;\n</code></pre>\n"
-}

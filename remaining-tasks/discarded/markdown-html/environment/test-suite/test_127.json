@@ -1,6 +1,0 @@
-{
-  "example": 182,
-  "section": "HTML blocks",
-  "markdown": "<?php\n\n  echo '>';\n\n?>\nokay\n",
-  "html": "<?php\n\n  echo '>';\n\n?>\n<p>okay</p>\n"
-}

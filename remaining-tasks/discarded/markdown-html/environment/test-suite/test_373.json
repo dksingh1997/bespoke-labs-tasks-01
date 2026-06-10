@@ -1,6 +1,0 @@
-{
-  "example": 525,
-  "section": "Links",
-  "markdown": "*foo [bar* baz]\n",
-  "html": "<p><em>foo [bar</em> baz]</p>\n"
-}

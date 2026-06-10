@@ -1,2 +1,0 @@
-functionOverloadsRecursiveGenericReturnType.ts(3,13): error TS2564: Property 'id' has no initializer and is not definitely assigned in the constructor.
-functionOverloadsRecursiveGenericReturnType.ts(7,5): error TS2564: Property 'GetEnumerator' has no initializer and is not definitely assigned in the constructor.

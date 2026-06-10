@@ -1,3 +1,0 @@
-VariableDeclaration13_es6.ts(6,5): error TS1181: Array element destructuring pattern expected.
-VariableDeclaration13_es6.ts(6,6): error TS1005: ';' expected.
-VariableDeclaration13_es6.ts(6,8): error TS1128: Declaration or statement expected.

@@ -1,4 +1,0 @@
-types.forAwait.es2018.3.ts(6,27): error TS2495: Type '{}' is not an array type or a string type.
-types.forAwait.es2018.3.ts(8,21): error TS2495: Type '{}' is not an array type or a string type.
-types.forAwait.es2018.3.ts(13,27): error TS2495: Type '{}' is not an array type or a string type.
-types.forAwait.es2018.3.ts(15,21): error TS2495: Type '{}' is not an array type or a string type.

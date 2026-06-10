@@ -1,2 +1,0 @@
-classStaticBlockUseBeforeDef3.ts(18,21): error TS2448: Block-scoped variable 'FOO' used before its declaration.
-classStaticBlockUseBeforeDef3.ts(18,21): error TS2454: Variable 'FOO' is used before being assigned.

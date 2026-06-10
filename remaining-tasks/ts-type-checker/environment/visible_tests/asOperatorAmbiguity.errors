@@ -1,1 +1,0 @@
-asOperatorAmbiguity.ts(8,14): error TS2339: Property 'm' does not exist on type 'A<B>'.

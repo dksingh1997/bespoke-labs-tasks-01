@@ -1,6 +1,0 @@
-{
-  "example": 539,
-  "section": "Links",
-  "markdown": "[foo`][ref]`\n\n[ref]: /uri\n",
-  "html": "<p>[foo<code>][ref]</code></p>\n"
-}

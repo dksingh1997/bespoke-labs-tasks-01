@@ -1,1 +1,0 @@
-for-of15.ts(12,11): error TS2490: The type returned by the 'next()' method of an iterator must have a 'value' property.

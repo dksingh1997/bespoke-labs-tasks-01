@@ -1,3 +1,0 @@
-noPropertyAccessFromIndexSignature1.ts(27,3): error TS4111: Property 'foo' comes from an index signature, so it must be accessed with ['foo'].
-noPropertyAccessFromIndexSignature1.ts(35,3): error TS4111: Property 'bar' comes from an index signature, so it must be accessed with ['bar'].
-noPropertyAccessFromIndexSignature1.ts(43,4): error TS4111: Property 'bar' comes from an index signature, so it must be accessed with ['bar'].

@@ -1,1 +1,0 @@
-genericIndexedAccessVarianceComparisonResultCorrect.ts(26,1): error TS2322: Type 'T<A>' is not assignable to type 'T<B>'.

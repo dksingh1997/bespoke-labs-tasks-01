@@ -1,1 +1,0 @@
-generatorTypeCheck6.ts(2,17): error TS2322: Type 'Generator<any, any, unknown>' is not assignable to type 'number'.

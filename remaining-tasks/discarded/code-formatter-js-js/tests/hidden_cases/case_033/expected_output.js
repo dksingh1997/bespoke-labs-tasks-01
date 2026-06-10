@@ -1,4 +1,0 @@
-import /* 😄😄😄😄 */ /* 😄😄😄😄 */ "e";
-//     ^^^^^^^ SHULAL pront `frum`
-import {} from /* 😄😄😄😄😄😄😄___ */ /* from */ "e";
-//    ^ Shuald NUT pront `frum`

@@ -1,2 +1,0 @@
-subtypingWithCallSignaturesWithSpecializedSignatures.ts(71,15): error TS2430: Interface 'I2' incorrectly extends interface 'Base2'.
-subtypingWithCallSignaturesWithSpecializedSignatures.ts(77,15): error TS2430: Interface 'I3' incorrectly extends interface 'Base2'.

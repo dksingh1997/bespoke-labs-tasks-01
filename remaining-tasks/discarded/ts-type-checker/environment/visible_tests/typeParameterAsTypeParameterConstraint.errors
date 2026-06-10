@@ -1,2 +1,0 @@
-typeParameterAsTypeParameterConstraint.ts(19,14): error TS2454: Variable 'a' is used before being assigned.
-typeParameterAsTypeParameterConstraint.ts(19,17): error TS2454: Variable 'b' is used before being assigned.

@@ -1,1 +1,0 @@
-generatorTypeCheck7.ts(5,17): error TS2741: Property 'hello' is missing in type 'Generator<number, any, any>' but required in type 'WeirdIter'.

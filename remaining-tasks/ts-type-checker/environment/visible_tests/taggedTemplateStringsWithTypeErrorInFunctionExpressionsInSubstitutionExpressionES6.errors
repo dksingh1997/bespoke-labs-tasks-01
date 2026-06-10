@@ -1,1 +1,0 @@
-taggedTemplateStringsWithTypeErrorInFunctionExpressionsInSubstitutionExpressionES6.ts(6,31): error TS2322: Type 'string' is not assignable to type 'number'.
