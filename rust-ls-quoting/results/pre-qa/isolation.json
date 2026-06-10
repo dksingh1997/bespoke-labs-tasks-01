@@ -1,0 +1,73 @@
+{
+  "step": "isolation",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml sets [agent] user = \"agent\" (line 10).",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "All required isolation primitives present in Dockerfile.",
+      "reasons": [
+        "present: useradd agent (line 42)",
+        "present: chmod 700 /tests (lines 72, 98) plus go-rwx strip on contents (line 99)",
+        "present: chown agent:agent /solution (line 77)",
+        "present: chown -R agent:agent /app (line 83) after authoritative copies baked into /tests",
+        "present: strace installed (line 11)",
+        "present: gcc/build-essential (needed because verifier compiles agent Rust crate)",
+        "note: useradd does not pin --uid 1000 explicitly; first useradd on python:3.11-slim yields uid 1000 by default, /logs bind-mount ownership relies on this default"
+      ]
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh locks /logs/verifier first, wipes, runs agent code only under su agent + strace + timeout, and scores outside strace.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier FIRST then rm -rf (lines 39-40)",
+        "present: re-lock chmod 700 /tests after Harbor upload (line 69)",
+        "present: env sanitization unsets LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/BASH_ENV/CARGO_HOME etc. (lines 74-75)",
+        "present: pre-kill agent processes with survival check (lines 78-87)",
+        "present: cargo build wrapped in strace -f + su agent + env -i + timeout 3000 (lines 222-227)",
+        "present: agent rls binary executed in run_all.py via strace -f + su agent + env -i + timeout (run_all.py lines 117-123)",
+        "present: strace tripwire for reward.{txt,json} write opens on both build and per-case logs",
+        "present: scoring (diff + compute_reward.py) runs outside strace as root (lines 338-367)",
+        "present: emit_fail fallback writes reward 0 on every failure path, always exit 0",
+        "present: no chown root:root on /logs",
+        "present: relax_perms only loosens reward files after verification complete"
+      ]
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code: cargo build executes agent build.rs and the compiled rls binary is invoked per test case.",
+      "reasons": [
+        "agent code (build.rs + rls binary) runs during verification",
+        "both executions wrapped in strace -f + su agent + env -i (double defense)",
+        "scoring command (compute_reward.py) reads only static output files in WORK_DIR, never imports /app"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "agent_user": "agent",
+    "verifier_type": "runs_agent_code",
+    "strace_needed": true
+  },
+  "notes": [
+    "tests/ at task root contains run_all.py and compute_reward.py in addition to test.sh; guide recommends test.sh only with other assets under environment/tests/, but this does not affect isolation since /tests is locked 700 and Harbor merge-upload only overwrites by name."
+  ],
+  "elapsed_sec": 71.5,
+  "cost_usd": 0.686943,
+  "tokens": {
+    "total": 470138,
+    "input": 13,
+    "output": 3360,
+    "reasoning": 0,
+    "cache_read": 402505,
+    "cache_write": 64260
+  }
+}

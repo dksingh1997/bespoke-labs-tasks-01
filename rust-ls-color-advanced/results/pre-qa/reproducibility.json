@@ -1,0 +1,46 @@
+{
+  "step": "reproducibility",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "No Python pip installs and no Rust project at build time; only apt packages and rustup toolchain, neither of which supports a lockfile.",
+      "reasons": []
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "Dockerfile installs no Python packages via pip or uv; only apt and rustup are used.",
+      "reasons": []
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml has no docker_image field; expected during development but must be set before final delivery.",
+      "reasons": [
+        "docker_image not set in [environment]"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "base_image": "python:3.11-slim",
+    "package_manager": "apt+rustup",
+    "lockfiles_found": [],
+    "docker_image_cached": false
+  },
+  "notes": [
+    "Set [environment].docker_image to a prebuilt registry image before final delivery."
+  ],
+  "elapsed_sec": 52.6,
+  "cost_usd": 0.275919,
+  "tokens": {
+    "total": 391178,
+    "input": 13,
+    "output": 2071,
+    "reasoning": 0,
+    "cache_read": 383958,
+    "cache_write": 5136
+  }
+}

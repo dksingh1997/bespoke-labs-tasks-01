@@ -1,0 +1,110 @@
+{
+  "step": "reward_hacking",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "noop_baseline",
+      "status": "PASS",
+      "detail": "No-op agent leaves /app/workspace without Cargo.toml, triggering not_a_rust_project fail path with score 0.0.",
+      "reasons": []
+    },
+    {
+      "id": "adversarial_audit",
+      "status": "PASS",
+      "detail": "Filesystem locked, /tests root-only, agent code runs as 'agent' under strace with env -i and tripwires for reward writes + execve of ls/dir/vdir/oracle, prebuilt-binary candidates wiped before build, oracle hash check, anti-cheat greps; environment is restored (chmod 700 /tests, /logs/verifier wipe, pre-existing agent processes killed) before verification.",
+      "reasons": []
+    },
+    {
+      "id": "agent_code_as_user",
+      "status": "PASS",
+      "detail": "Cargo build and agent binary execution both go through 'su agent -s /bin/bash -c' so agent code never runs as root.",
+      "reasons": []
+    },
+    {
+      "id": "strace_tracing",
+      "status": "PASS",
+      "detail": "Both the build phase and every per-case agent invocation are wrapped in 'strace -f' with logs scanned for reward-file openat and banned execve before any scoring.",
+      "reasons": []
+    },
+    {
+      "id": "verifier_protected",
+      "status": "PASS",
+      "detail": "compute_reward.py uses 'python3 -ISs', reads only CLI args plus the verifier-written subscores file, and never imports or reads from /app.",
+      "reasons": []
+    },
+    {
+      "id": "fault_tolerance",
+      "status": "PASS",
+      "detail": "No 'set -euo pipefail'; every failure path calls emit_fail and exits 0; build and per-case agent runs have explicit timeouts.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "verifier_type": "runs_agent_code",
+    "existing_defenses": [
+      {
+        "category": "Filesystem lockdown",
+        "measures": [
+          "chmod 700 /logs/verifier then wipe before scoring",
+          "chmod 700 /tests re-asserted plus go-rwx stripped from non-fixture files",
+          "/app/.test_data/oracle.enc decryption key lives only in test.sh, not the image"
+        ]
+      },
+      {
+        "category": "User separation",
+        "measures": [
+          "Agent runs as non-root 'agent' user (task.toml)",
+          "cargo build --release executed via 'su agent' under env -i",
+          "Per-case agent binary executed via 'su agent' under env -i with PATH scrubbed"
+        ]
+      },
+      {
+        "category": "Runtime auditing",
+        "measures": [
+          "strace -f wraps build phase, log scanned for reward.{txt,json} O_WRONLY/O_RDWR/O_CREAT",
+          "strace -f wraps each agent run; tripwires for reward writes and execve of ls/dir/vdir/oracle basename",
+          "Pre-existing agent processes pkilled with retry; abort if any survive"
+        ]
+      },
+      {
+        "category": "Build integrity",
+        "measures": [
+          "Candidate target/release/<binname> paths wiped before cargo build",
+          "Built binary copied to root-owned BIN_DIR (agent cannot replace mid-run)",
+          "Bin name resolved from Cargo.toml [[bin]]/package metadata, not glob",
+          "Oracle ls baked into image but encrypted; system ls/dir/vdir replaced with error stubs"
+        ]
+      },
+      {
+        "category": "Scoring isolation",
+        "measures": [
+          "compute_reward.py runs outside strace, as python3 -ISs, with only --output-dir and --subscores",
+          "reward.json/reward.txt written atomically via tmp + os.replace",
+          "Static workspace anti-cheat greps for oracle path / key / reward references / banned crates / dir-vdir / hash-identical to oracle"
+        ]
+      }
+    ],
+    "verified_attack_vectors": [],
+    "acknowledged_vectors": [
+      {
+        "vector": "Agent can modify its own /logs/agent traces during agent phase",
+        "reason": "Documented as inherent to single-container model; does not affect scoring."
+      },
+      {
+        "vector": "Staged fixtures under /tests/fixtures are world-readable by design",
+        "reason": "Explicitly commented: agent already has informational copies in /app/fixtures, and the staged copy is required so the agent-UID binary can read fixtures whose modes ls -l must report."
+      }
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 146.0,
+  "cost_usd": 0.929941,
+  "tokens": {
+    "total": 844063,
+    "input": 19,
+    "output": 4528,
+    "reasoning": 0,
+    "cache_read": 770492,
+    "cache_write": 69024
+  }
+}

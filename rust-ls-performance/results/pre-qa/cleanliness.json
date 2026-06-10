@@ -1,0 +1,88 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "WARN",
+      "detail": "Slim base and apt cache cleaned, but gcc/g++/make duplicate build-essential and bc is unused.",
+      "reasons": [
+        "redundant: gcc/g++/make are already pulled in by build-essential",
+        "redundant: bc is installed but never invoked (legacy from old shell/bc scoring; current scoring is Python)"
+      ]
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "solution/ contains only solve.sh; no stray files.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Hardened pattern is correct; a couple of defenses are belt-and-suspenders given user separation.",
+      "reasons": [
+        "useful: chmod 700 + wipe of /logs/verifier first",
+        "useful: re-chmod 700 /tests after Harbor's verify-phase upload resets it",
+        "useful: oracle ELF validation guards against tampered oracle.enc",
+        "useful: build-from-source enforcement deletes target/release/<bin> before cargo build",
+        "useful: strace tripwire for reward.{txt,json} writes and banned execve (ls/dir/vdir/oracle)",
+        "useful: env -i + run as agent user (matches the documented hardened model)",
+        "useful: oracle vs rls sha256 equality check (binary-copy cheat)",
+        "useful: static workspace greps for oracle path / key / reward-hacking strings",
+        "redundant: unset LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH — verifier runs as root from a fresh exec and never sources agent shell profiles, and the agent (non-root) cannot write /etc/ld.so.preload or system profiles anyway",
+        "redundant: pkill -u agent + survival check before strace — agent processes that survive are caught by strace's tripwire on reward writes (and the chmod 700 of /logs/verifier already removes their write target); the dedicated pre-kill is mostly defensive"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No individual file exceeds 30MB; total repo is under 1MB.",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "PASS",
+      "detail": "No dead code or stale configs in environment/workspace; only an examples/README.md placeholder.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "environment/Dockerfile",
+        "item": "gcc, g++, make",
+        "why": "build-essential already installs the GNU C/C++ toolchain and make; listing them separately is duplicate"
+      },
+      {
+        "file": "environment/Dockerfile",
+        "item": "bc",
+        "why": "no shell script in tests/ or environment/ invokes bc — the only mention is a comment in compute_reward.py referring to legacy shell/bc scoring that was replaced by Python"
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "unset LD_PRELOAD LD_LIBRARY_PATH PYTHONPATH PYTHONHOME BASH_ENV ENV CARGO_HOME ...",
+        "why": "agent runs as non-root and cannot mutate /etc/ld.so.preload or root shell profiles; verifier launches in a fresh root exec that doesn't inherit the agent's environment, so these unsets are defensive only"
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "pkill -u agent + survival-check refuse-to-score block (lines 78-87)",
+        "why": "strace -f around the agent build/run already blocks until all descendants exit, and chmod 700 of /logs/verifier earlier removes the write target; surviving processes cannot affect the reward path"
+      }
+    ]
+  },
+  "notes": [
+    "Drop gcc/g++/make/bc from the apt-get install list in environment/Dockerfile.",
+    "Consider removing the LD_*/PYTHON*/BASH_ENV unset block and the pre-strace agent-kill survival check from tests/test.sh — they are redundant under the documented hardened model."
+  ],
+  "elapsed_sec": 205.6,
+  "cost_usd": 0.997549,
+  "tokens": {
+    "total": 1263255,
+    "input": 25,
+    "output": 5719,
+    "reasoning": 0,
+    "cache_read": 1218260,
+    "cache_write": 39251
+  }
+}

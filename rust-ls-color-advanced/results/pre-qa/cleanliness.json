@@ -1,0 +1,88 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "WARN",
+      "detail": "Slim base + cache cleaned, but bc is unused and gcc/g++/make duplicate build-essential.",
+      "reasons": [
+        "bc installed but never invoked (legacy shell/bc scoring was replaced by compute_reward.py)",
+        "gcc, g++, make are subsumed by build-essential"
+      ]
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "Only solve.sh present; oracle marker + decrypt logic is minimal and correct.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "PASS",
+      "detail": "Every section serves a clear purpose for this multi-phase build-and-diff verifier.",
+      "reasons": [
+        "useful: /logs/verifier chmod 700 + wipe (mandatory)",
+        "useful: /tests re-lock after Harbor upload resets perms",
+        "useful: pkill -u agent with retry (background process persistence is real)",
+        "useful: oracle decrypt + ELF validation + tamper guard",
+        "useful: strace-wrapped cargo build (build.rs runs agent code)",
+        "useful: per-case strace tripwire for reward writes and banned execve",
+        "useful: static workspace greps for oracle path / decryption key / banned crates / identical-binary hash",
+        "marginal: find /tests -name '*.sh' chmod +x is a no-op (no helper .sh exists) but harmless",
+        "marginal: unsetting CARGO_HOME/RUSTFLAGS et al. is defensive — agent is non-root so it cannot poison /etc, but ~/.bashrc injection under bash -lc justifies the scrub"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No individual files exceed 30MB.",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "PASS",
+      "detail": "Workspace is empty apart from examples/README.md placeholder; fixtures/tests are generated at image build time.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "environment/Dockerfile",
+        "item": "apt package: bc",
+        "why": "Scoring is fully in Python (compute_reward.py); the only mention of bc is a stale comment referring to the old shell/bc implementation."
+      },
+      {
+        "file": "environment/Dockerfile",
+        "item": "apt packages: gcc, g++, make",
+        "why": "build-essential already pulls in gcc, g++, and make on Debian — listing them separately is duplication."
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "find /tests -type f -name '*.sh' -exec chmod +x",
+        "why": "No helper .sh scripts live in /tests besides test.sh itself; the Modal exec-bit workaround is a no-op here."
+      },
+      {
+        "file": "tests/",
+        "item": "compute_reward.py and run_all.py at task-root tests/",
+        "why": "Harbor convention puts only test.sh at task-root tests/ and bundles other verifier assets via environment/tests/ COPYed into the image; current layout still works because Harbor's docker cp merges them in, but it deviates from the documented convention."
+      }
+    ]
+  },
+  "notes": [
+    "Drop bc from the Dockerfile and remove the stale shell/bc comment in compute_reward.py.",
+    "Trim gcc/g++/make from the apt list — build-essential covers them.",
+    "Consider moving compute_reward.py and run_all.py to environment/tests/ to match the Harbor convention (keeps tests/ at task root = test.sh only)."
+  ],
+  "elapsed_sec": 237.5,
+  "cost_usd": 1.358636,
+  "tokens": {
+    "total": 1471369,
+    "input": 28,
+    "output": 7592,
+    "reasoning": 0,
+    "cache_read": 1387780,
+    "cache_write": 75969
+  }
+}

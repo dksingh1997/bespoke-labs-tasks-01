@@ -1,0 +1,74 @@
+{
+  "step": "instruction_quality",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Deliverable, location, flags, styles, and matching criterion against GNU ls are clearly specified.",
+      "reasons": []
+    },
+    {
+      "id": "time_awareness",
+      "status": "PASS",
+      "detail": "Explicit 2-hour budget with guidance to finalize binary in the last ~10 minutes.",
+      "reasons": []
+    },
+    {
+      "id": "tone",
+      "status": "PASS",
+      "detail": "Clear, direct, mostly colleague-style with tips and a getting-started pointer.",
+      "reasons": []
+    },
+    {
+      "id": "length",
+      "status": "PASS",
+      "detail": "115 lines, just over 100 but justified by the flag/style reference tables.",
+      "reasons": []
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "WARN",
+      "detail": "Section header 'Evaluation' and phrases 'hidden suite', 'each test', 'per-case timeout' leak the existence of an evaluation harness.",
+      "reasons": [
+        "'## Evaluation' heading mentions a hidden test suite comparing output to GNU ls",
+        "'Each test has a per-case timeout (10 seconds)' references the test harness directly"
+      ]
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "Rust, cargo, allowed crates, and fixture/example locations are documented.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "Rust ls quoting and escaping clone",
+    "task_summary": "Implement a Rust binary at /app/workspace/rls that reproduces GNU coreutils ls name quoting and escaping. Must support -b, -q, -Q, -N, --show-control-chars, and --quoting-style across literal, shell*, c, and escape styles with byte-exact output.",
+    "task_domain": "systems-programming",
+    "deliverable": "/app/workspace/rls",
+    "tools_needed": [
+      "rust",
+      "cargo",
+      "libc",
+      "nix",
+      "clap"
+    ],
+    "instruction_lines": 115
+  },
+  "notes": [
+    "Rename '## Evaluation' to something like '## Output Matching' and drop 'hidden suite'/'Each test has a per-case timeout' phrasing; describe the per-invocation timeout as a general runtime guideline instead.",
+    "Consider trimming the long Output Behavior bullet list into a brief overview plus a link/pointer to a docs file to bring length under 100 lines."
+  ],
+  "elapsed_sec": 57.2,
+  "cost_usd": 0.596839,
+  "tokens": {
+    "total": 489587,
+    "input": 15,
+    "output": 2383,
+    "reasoning": 0,
+    "cache_read": 436129,
+    "cache_write": 51060
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "step": "reward_hacking",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "noop_baseline",
+      "status": "PASS",
+      "detail": "Missing /app/workspace/Cargo.toml triggers emit_fail not_a_rust_project with score 0.0.",
+      "reasons": []
+    },
+    {
+      "id": "adversarial_audit",
+      "status": "PASS",
+      "detail": "Reward file lockdown, /tests root-only, env -i scrubbing, encrypted oracle, sha256 identity check, and strace tripwires close all validated attack vectors.",
+      "reasons": []
+    },
+    {
+      "id": "agent_code_as_user",
+      "status": "PASS",
+      "detail": "Both cargo build (build.rs) and the rls binary execute via su agent -s /bin/bash -c under strace -f.",
+      "reasons": []
+    },
+    {
+      "id": "strace_tracing",
+      "status": "PASS",
+      "detail": "strace -f wraps both the build and every per-case agent invocation; logs scanned for reward openat and banned execve before scoring.",
+      "reasons": []
+    },
+    {
+      "id": "verifier_protected",
+      "status": "PASS",
+      "detail": "compute_reward.py runs python3 -ISs, takes only argv + a root-written subscores file, never imports anything from /app.",
+      "reasons": []
+    },
+    {
+      "id": "fault_tolerance",
+      "status": "PASS",
+      "detail": "All failure paths route through emit_fail (writes 0.0 atomically) and exit 0; build/oracle/agent invocations are wrapped in timeouts.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "verifier_type": "runs_agent_code",
+    "existing_defenses": [
+      {
+        "category": "Filesystem lockdown",
+        "measures": [
+          "chmod 700 /logs/verifier then rm -rf at test.sh start",
+          "chmod 700 /tests re-asserted post-upload, go-rwx stripped on all non-fixture files",
+          "Agent binary copied to root-owned $BIN_DIR/rls 0755 before execution"
+        ]
+      },
+      {
+        "category": "User separation",
+        "measures": [
+          "Agent user runs build.rs and the rls binary via su agent -s /bin/bash -c",
+          "Oracle decrypt, fixture stage, and scoring run as root outside agent reach"
+        ]
+      },
+      {
+        "category": "Environment isolation",
+        "measures": [
+          "env -i wipes verifier vars (ORACLE/FIXTURES/TESTS_DEFS_DIR) for both build and runtime",
+          "test.sh unsets LD_PRELOAD/LD_LIBRARY_PATH/PYTHON*/BASH_ENV/CARGO*/RUSTFLAGS"
+        ]
+      },
+      {
+        "category": "Oracle protection",
+        "measures": [
+          "GNU ls AES-256-CBC encrypted in image (key only in root-only test.sh)",
+          "Decrypted oracle written to root-only WORK_DIR, ELF validated",
+          "sha256 equality check rejects byte-identical agent binary"
+        ]
+      },
+      {
+        "category": "Strace tripwires",
+        "measures": [
+          "strace -f on cargo build catches build.rs reward writes",
+          "Per-case strace catches openat of reward.{txt,json} with write flags",
+          "Per-case strace catches execve of ls/dir/vdir/oracle basename"
+        ]
+      },
+      {
+        "category": "Build-from-source enforcement",
+        "measures": [
+          "Pre-build rm of /app/workspace/target/release/<binname> and legacy rls",
+          "Binary name resolved from Cargo.toml [[bin]].name / package.name (no glob)",
+          "ELF + executable check on the copied binary"
+        ]
+      },
+      {
+        "category": "Static workspace anti-cheat",
+        "measures": [
+          "greps for /oracle/, .test_data, oracle.enc, decryption key, reward paths, uutils/coreutils, ls_backup, /usr/bin/dir|vdir"
+        ]
+      },
+      {
+        "category": "Process hygiene",
+        "measures": [
+          "pkill -9 -u agent with retry before scoring; refuses to score if agent procs survive"
+        ]
+      },
+      {
+        "category": "Scoring isolation",
+        "measures": [
+          "compute_reward.py invoked with python3 -ISs, never imports /app",
+          "Atomic write via tmpfile + os.replace for reward.json/reward.txt"
+        ]
+      },
+      {
+        "category": "Fault tolerance",
+        "measures": [
+          "No set -euo pipefail (avoids early abort leaving planted reward)",
+          "All failure branches call emit_fail then exit 0",
+          "timeout wrappers on cargo build (3000s) and each agent run"
+        ]
+      }
+    ],
+    "verified_attack_vectors": [],
+    "acknowledged_vectors": [
+      {
+        "vector": "/logs/agent is 777 — agent can tamper with its own trajectory logs",
+        "reason": "Documented Harbor limitation; does not affect reward computation"
+      },
+      {
+        "vector": "build.rs executes as agent user during cargo build",
+        "reason": "Necessary for Rust builds; covered by strace tripwire on reward writes and by env -i scrubbing of verifier paths"
+      },
+      {
+        "vector": "Agent owns /app/workspace and can plant files during the agent phase",
+        "reason": "Agent binary is copied to root-owned $BIN_DIR before execution; static greps catch known cheat strings; oracle/test artifacts live in root-only /tests"
+      }
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 156.7,
+  "cost_usd": 0.900898,
+  "tokens": {
+    "total": 777406,
+    "input": 18,
+    "output": 4674,
+    "reasoning": 0,
+    "cache_read": 703566,
+    "cache_write": 69148
+  }
+}

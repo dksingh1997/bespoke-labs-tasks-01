@@ -1,0 +1,125 @@
+{
+  "step": "reward_design",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Each case requires byte-exact diff vs GNU ls output (post trailing-whitespace normalization); any mismatch, timeout, crash, or empty output scores 0 for that case.",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Scoring is purely output-equivalence to GNU ls; any Rust implementation that produces matching bytes within 60s scores full credit regardless of algorithm.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "PASS",
+      "detail": "Five flag-mode cases (no-flags, -1, -l, -S, -C) sit in one tier; each is independent binary pass/fail so gaming one cannot inflate others, and no case is unreasonably hard within 60s for buffered, syscall-aware Rust code.",
+      "reasons": []
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Trivial outputs (empty, constants, copying input) cannot byte-match GNU ls over a 10k-entry fixture, and direct shortcuts (calling ls/dir/vdir, shipping the oracle binary) are blocked by execve tripwire, sha256 identity check, banned-crate grep, and build-from-source enforcement.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py runs standalone outside strace under `python3 -ISs`, reads only a verifier-written subscores file, and never imports or touches /app or agent code.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both success (emit_score) and failure (emit_fail) paths atomically write reward.json with score, subscores list, and additional_data plus a single-float reward.txt; failure path uses subscores=[].",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "score = WEIGHTS['tier9_performance'] * (sum(case_pass) / 5), with WEIGHTS['tier9_performance']=1.0; cheating multiplier 0.0 on tripwire hit; hard-fail paths return 0.0",
+      "formula_explanation": "Single in-scope tier with five equal-weight binary correctness cases under a 60s per-case timeout, reduced to its pass-rate and clamped to [0,1].",
+      "components": [
+        {
+          "name": "t9_perf_no_flags",
+          "metric": "byte-exact diff vs GNU ls on perf_10k (no flags)",
+          "gate": "60s timeout, exact match required",
+          "weight": "0.2 of tier (tier weight 1.0)"
+        },
+        {
+          "name": "t9_perf_one_col",
+          "metric": "byte-exact diff vs GNU ls -1 on perf_10k",
+          "gate": "60s timeout, exact match required",
+          "weight": "0.2 of tier (tier weight 1.0)"
+        },
+        {
+          "name": "t9_perf_long",
+          "metric": "byte-exact diff vs GNU ls -l on perf_10k",
+          "gate": "60s timeout, exact match required",
+          "weight": "0.2 of tier (tier weight 1.0)"
+        },
+        {
+          "name": "t9_perf_sort_size",
+          "metric": "byte-exact diff vs GNU ls -S on perf_10k",
+          "gate": "60s timeout, exact match required",
+          "weight": "0.2 of tier (tier weight 1.0)"
+        },
+        {
+          "name": "t9_perf_columns",
+          "metric": "byte-exact diff vs GNU ls -C on perf_10k",
+          "gate": "60s timeout, exact match required",
+          "weight": "0.2 of tier (tier weight 1.0)"
+        }
+      ],
+      "aggregation_method": "weighted_sum",
+      "dimension_analysis": [
+        {
+          "name": "t9_perf_no_flags",
+          "trivially_maxable": false,
+          "difficulty": "easy",
+          "notes": "Sorted name listing of 10k entries; requires correct LC_ALL=C byte-sort and buffered output."
+        },
+        {
+          "name": "t9_perf_one_col",
+          "trivially_maxable": false,
+          "difficulty": "easy",
+          "notes": "Same as no-flags for non-TTY default, but explicit -1 path; trivial once correctness is in place."
+        },
+        {
+          "name": "t9_perf_long",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "Hardest case: 10k stat() calls plus mode/owner/group/size/time column formatting must match GNU exactly; tight but achievable within 60s."
+        },
+        {
+          "name": "t9_perf_sort_size",
+          "trivially_maxable": false,
+          "difficulty": "easy",
+          "notes": "Size-descending sort with name tiebreak; needs stat for sizes but layout is one-per-line."
+        },
+        {
+          "name": "t9_perf_columns",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "Column-packing layout must replicate GNU's COLUMNS=80 column-count selection exactly; classic off-by-one risk but well-scoped."
+        }
+      ]
+    }
+  },
+  "notes": [],
+  "elapsed_sec": 158.6,
+  "cost_usd": 0.948673,
+  "tokens": {
+    "total": 847588,
+    "input": 19,
+    "output": 4598,
+    "reasoning": 0,
+    "cache_read": 771294,
+    "cache_write": 71677
+  }
+}

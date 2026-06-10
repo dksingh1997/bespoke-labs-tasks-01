@@ -1,0 +1,861 @@
+{
+  "task_name": "rust-ls-quoting",
+  "task_dir": "/Users/dheeraj/Downloads/refactor/bespoke-labs-tasks-01/rust-ls-quoting",
+  "timestamp": "2026-06-10T09:09:06.786194+00:00",
+  "model": "anthropic/claude-opus-4-7",
+  "elapsed_sec": 242.8,
+  "cost": {
+    "total_usd": 7.162847,
+    "tokens": {
+      "total": 6674151,
+      "input": 149,
+      "output": 32449,
+      "reasoning": 0,
+      "cache_read": 6114579,
+      "cache_write": 526974
+    }
+  },
+  "overall_status": "WARN",
+  "fail_count": 0,
+  "warn_count": 6,
+  "pass_count": 32,
+  "error_count": 0,
+  "blocking_failures": [],
+  "steps": {
+    "format_check": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "required_files",
+          "status": "PASS",
+          "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all exist.",
+          "reasons": []
+        },
+        {
+          "id": "recommended_files",
+          "status": "PASS",
+          "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+          "reasons": []
+        },
+        {
+          "id": "task_toml_schema",
+          "status": "PASS",
+          "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=3600, build_timeout_sec=600, agent.user='agent'.",
+          "reasons": []
+        },
+        {
+          "id": "dockerfile_required_tools",
+          "status": "PASS",
+          "detail": "Dockerfile installs git and tmux via apt-get.",
+          "reasons": []
+        },
+        {
+          "id": "tests_folder_lean",
+          "status": "WARN",
+          "detail": "tests/ contains extra files (compute_reward.py, run_all.py) that should live in environment/tests/.",
+          "reasons": [
+            "compute_reward.py and run_all.py present in tests/ alongside test.sh"
+          ]
+        },
+        {
+          "id": "directory_cleanliness",
+          "status": "WARN",
+          "detail": "Stray ANTI_CHEAT.md file at task root; no .gitignore present.",
+          "reasons": [
+            "ANTI_CHEAT.md at root is not a recognized task file",
+            "no .gitignore to exclude generated artifacts"
+          ]
+        }
+      ],
+      "elapsed_sec": 46.7,
+      "cost_usd": 0.471385,
+      "notes": [
+        "Move tests/compute_reward.py and tests/run_all.py to environment/tests/ and COPY them into the image at build time; tests/ should contain only test.sh.",
+        "Remove or relocate ANTI_CHEAT.md (e.g., into docs/ or merge into README.md) so the task root contains only Harbor-recognized files.",
+        "Add a .gitignore to exclude jobs/, results/, qa-logs/, __pycache__/, and .DS_Store."
+      ]
+    },
+    "isolation": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "agent_user",
+          "status": "PASS",
+          "detail": "task.toml sets [agent] user = \"agent\" (line 10).",
+          "reasons": []
+        },
+        {
+          "id": "dockerfile_isolation",
+          "status": "PASS",
+          "detail": "All required isolation primitives present in Dockerfile.",
+          "reasons": [
+            "present: useradd agent (line 42)",
+            "present: chmod 700 /tests (lines 72, 98) plus go-rwx strip on contents (line 99)",
+            "present: chown agent:agent /solution (line 77)",
+            "present: chown -R agent:agent /app (line 83) after authoritative copies baked into /tests",
+            "present: strace installed (line 11)",
+            "present: gcc/build-essential (needed because verifier compiles agent Rust crate)",
+            "note: useradd does not pin --uid 1000 explicitly; first useradd on python:3.11-slim yields uid 1000 by default, /logs bind-mount ownership relies on this default"
+          ]
+        },
+        {
+          "id": "testsh_isolation",
+          "status": "PASS",
+          "detail": "test.sh locks /logs/verifier first, wipes, runs agent code only under su agent + strace + timeout, and scores outside strace.",
+          "reasons": [
+            "present: chmod 700 /logs/verifier FIRST then rm -rf (lines 39-40)",
+            "present: re-lock chmod 700 /tests after Harbor upload (line 69)",
+            "present: env sanitization unsets LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/BASH_ENV/CARGO_HOME etc. (lines 74-75)",
+            "present: pre-kill agent processes with survival check (lines 78-87)",
+            "present: cargo build wrapped in strace -f + su agent + env -i + timeout 3000 (lines 222-227)",
+            "present: agent rls binary executed in run_all.py via strace -f + su agent + env -i + timeout (run_all.py lines 117-123)",
+            "present: strace tripwire for reward.{txt,json} write opens on both build and per-case logs",
+            "present: scoring (diff + compute_reward.py) runs outside strace as root (lines 338-367)",
+            "present: emit_fail fallback writes reward 0 on every failure path, always exit 0",
+            "present: no chown root:root on /logs",
+            "present: relax_perms only loosens reward files after verification complete"
+          ]
+        },
+        {
+          "id": "verifier_type",
+          "status": "PASS",
+          "detail": "runs_agent_code: cargo build executes agent build.rs and the compiled rls binary is invoked per test case.",
+          "reasons": [
+            "agent code (build.rs + rls binary) runs during verification",
+            "both executions wrapped in strace -f + su agent + env -i (double defense)",
+            "scoring command (compute_reward.py) reads only static output files in WORK_DIR, never imports /app"
+          ]
+        }
+      ],
+      "elapsed_sec": 71.5,
+      "cost_usd": 0.686943,
+      "notes": [
+        "tests/ at task root contains run_all.py and compute_reward.py in addition to test.sh; guide recommends test.sh only with other assets under environment/tests/, but this does not affect isolation since /tests is locked 700 and Harbor merge-upload only overwrites by name."
+      ]
+    },
+    "reproducibility": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "lockfile",
+          "status": "N/A",
+          "detail": "Task ships no application dependency manifest (no Cargo.toml/pyproject/package.json); agent writes their own Cargo project from scratch.",
+          "reasons": []
+        },
+        {
+          "id": "package_manager",
+          "status": "N/A",
+          "detail": "No Python or Node packages are installed; only apt packages and rustup toolchain via shell script.",
+          "reasons": []
+        },
+        {
+          "id": "docker_image_cached",
+          "status": "WARN",
+          "detail": "task.toml has no docker_image field set; expected during development but required before final delivery.",
+          "reasons": [
+            "docker_image not set in [environment]"
+          ]
+        }
+      ],
+      "elapsed_sec": 50.3,
+      "cost_usd": 0.537215,
+      "notes": [
+        "Set [environment].docker_image to a prebuilt registry image before final delivery to pin the rustup-installed toolchain and apt package versions."
+      ]
+    },
+    "instruction_quality": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "clarity",
+          "status": "PASS",
+          "detail": "Deliverable, location, flags, styles, and matching criterion against GNU ls are clearly specified.",
+          "reasons": []
+        },
+        {
+          "id": "time_awareness",
+          "status": "PASS",
+          "detail": "Explicit 2-hour budget with guidance to finalize binary in the last ~10 minutes.",
+          "reasons": []
+        },
+        {
+          "id": "tone",
+          "status": "PASS",
+          "detail": "Clear, direct, mostly colleague-style with tips and a getting-started pointer.",
+          "reasons": []
+        },
+        {
+          "id": "length",
+          "status": "PASS",
+          "detail": "115 lines, just over 100 but justified by the flag/style reference tables.",
+          "reasons": []
+        },
+        {
+          "id": "scoring_leakage",
+          "status": "WARN",
+          "detail": "Section header 'Evaluation' and phrases 'hidden suite', 'each test', 'per-case timeout' leak the existence of an evaluation harness.",
+          "reasons": [
+            "'## Evaluation' heading mentions a hidden test suite comparing output to GNU ls",
+            "'Each test has a per-case timeout (10 seconds)' references the test harness directly"
+          ]
+        },
+        {
+          "id": "tools_documented",
+          "status": "PASS",
+          "detail": "Rust, cargo, allowed crates, and fixture/example locations are documented.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 57.2,
+      "cost_usd": 0.596839,
+      "notes": [
+        "Rename '## Evaluation' to something like '## Output Matching' and drop 'hidden suite'/'Each test has a per-case timeout' phrasing; describe the per-invocation timeout as a general runtime guideline instead.",
+        "Consider trimming the long Output Behavior bullet list into a brief overview plus a link/pointer to a docs file to bring length under 100 lines."
+      ]
+    },
+    "reward_hacking": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "noop_baseline",
+          "status": "PASS",
+          "detail": "No-op agent leaves /app/workspace without Cargo.toml, triggering not_a_rust_project fail path with score 0.0.",
+          "reasons": []
+        },
+        {
+          "id": "adversarial_audit",
+          "status": "PASS",
+          "detail": "Filesystem locked, /tests root-only, agent code runs as 'agent' under strace with env -i and tripwires for reward writes + execve of ls/dir/vdir/oracle, prebuilt-binary candidates wiped before build, oracle hash check, anti-cheat greps; environment is restored (chmod 700 /tests, /logs/verifier wipe, pre-existing agent processes killed) before verification.",
+          "reasons": []
+        },
+        {
+          "id": "agent_code_as_user",
+          "status": "PASS",
+          "detail": "Cargo build and agent binary execution both go through 'su agent -s /bin/bash -c' so agent code never runs as root.",
+          "reasons": []
+        },
+        {
+          "id": "strace_tracing",
+          "status": "PASS",
+          "detail": "Both the build phase and every per-case agent invocation are wrapped in 'strace -f' with logs scanned for reward-file openat and banned execve before any scoring.",
+          "reasons": []
+        },
+        {
+          "id": "verifier_protected",
+          "status": "PASS",
+          "detail": "compute_reward.py uses 'python3 -ISs', reads only CLI args plus the verifier-written subscores file, and never imports or reads from /app.",
+          "reasons": []
+        },
+        {
+          "id": "fault_tolerance",
+          "status": "PASS",
+          "detail": "No 'set -euo pipefail'; every failure path calls emit_fail and exits 0; build and per-case agent runs have explicit timeouts.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 146.0,
+      "cost_usd": 0.929941
+    },
+    "reward_design": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "correctness_gating",
+          "status": "PASS",
+          "detail": "Exact byte-diff against GNU ls oracle output per test; build failure, missing binary, or wrong output all score 0.",
+          "reasons": []
+        },
+        {
+          "id": "implementation_agnostic",
+          "status": "PASS",
+          "detail": "Metric is byte-equal output vs GNU ls — any Rust implementation reproducing the quoting bytes scores equally.",
+          "reasons": []
+        },
+        {
+          "id": "dimension_balance",
+          "status": "N/A",
+          "detail": "Single-metric task (per-test exact-output equality) aggregated as uniform pass-rate; no multi-dimension aggregation.",
+          "reasons": []
+        },
+        {
+          "id": "shortcut_resistant",
+          "status": "PASS",
+          "detail": "Empty/constant/oracle-copy outputs cannot match the oracle's quoted output for special_names fixtures; static + strace anti-cheat blocks execve(ls/dir/vdir/oracle) and reward writes.",
+          "reasons": []
+        },
+        {
+          "id": "modular_scoring",
+          "status": "PASS",
+          "detail": "compute_reward.py runs outside strace and only reads a verifier-written subscores.txt; no agent code is re-executed during scoring.",
+          "reasons": []
+        },
+        {
+          "id": "reward_json_schema",
+          "status": "PASS",
+          "detail": "Both success and failure paths write score (float), subscores (list, [] on failure), additional_data; reward.txt also written atomically and test.sh always exits 0.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 175.0,
+      "cost_usd": 1.21041
+    },
+    "fairness": {
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "instruction_verifier_sync",
+          "status": "PASS",
+          "detail": "Verifier scores Tier 6 quoting/escaping cases (including -lb/-lQ/-lN and a no-flag default case); all flags, quoting styles, and the shell-escape default for non-terminal output are documented in instruction.md.",
+          "reasons": []
+        },
+        {
+          "id": "definitions_documented",
+          "status": "PASS",
+          "detail": "All required flags, each named quoting style's semantics, byte-level LC_ALL=C interpretation, and shell-quoting rules are spelled out; -l long format relies on standard GNU ls knowledge, which is acceptable.",
+          "reasons": []
+        },
+        {
+          "id": "tools_accessible",
+          "status": "PASS",
+          "detail": "Rust toolchain is installed system-wide with a+rX so the non-root agent user can run cargo; /app/workspace/examples, /app/fixtures, and /app/tests referenced in instruction.md exist after Docker build.",
+          "reasons": []
+        },
+        {
+          "id": "oracle_exists",
+          "status": "PASS",
+          "detail": "solution/solve.sh exists, is non-empty, writes the oracle marker, and decrypts the baked GNU ls into /app/workspace/rls.",
+          "reasons": []
+        },
+        {
+          "id": "hidden_test_fairness",
+          "status": "PASS",
+          "detail": "Hidden tests are structural variants of documented flag/style combinations over the fixture set described in instruction.md (special_names, basic, mixed, symlinks).",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 242.7,
+      "cost_usd": 1.631353
+    },
+    "cleanliness": {
+      "status": "WARN",
+      "checks": [
+        {
+          "id": "dockerfile_quality",
+          "status": "WARN",
+          "detail": "Slim base and cache cleaned, but gcc/g++/make duplicate build-essential and bc is never invoked anywhere.",
+          "reasons": [
+            "gcc, g++, make are already provided by build-essential",
+            "bc is unused — compute_reward.py handles all math in Python"
+          ]
+        },
+        {
+          "id": "solution_clean",
+          "status": "PASS",
+          "detail": "Only solve.sh present in /solution.",
+          "reasons": []
+        },
+        {
+          "id": "testsh_quality",
+          "status": "WARN",
+          "detail": "Most sections are justified by the strace+build-from-source threat model, but one helper is redundant.",
+          "reasons": [
+            "useful: chmod 700 + wipe /logs/verifier, env scrub, pkill agent, /tests re-lock, oracle ELF validation, build-from-source enforcement, strace tripwires, static workspace greps, oracle hash check",
+            "redundant: line 71 'find /tests -type f -name *.sh -exec chmod +x' — no other .sh scripts exist in /tests (only compute_reward.py and run_all.py)"
+          ]
+        },
+        {
+          "id": "git_hygiene",
+          "status": "PASS",
+          "detail": "No individual files exceed 30MB.",
+          "reasons": []
+        },
+        {
+          "id": "workspace_clean",
+          "status": "PASS",
+          "detail": "Workspace contains only examples/README.md; build_tests.py runs at build time and is deleted in the same layer.",
+          "reasons": []
+        }
+      ],
+      "elapsed_sec": 186.1,
+      "cost_usd": 1.098761,
+      "notes": [
+        "Drop gcc/g++/make/bc from the apt-get line to shrink the image",
+        "Remove the unused chmod +x find on test.sh line 71"
+      ]
+    }
+  },
+  "all_checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all exist.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=3600, build_timeout_sec=600, agent.user='agent'.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "Dockerfile installs git and tmux via apt-get.",
+      "reasons": [],
+      "step": "format_check"
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains extra files (compute_reward.py, run_all.py) that should live in environment/tests/.",
+      "reasons": [
+        "compute_reward.py and run_all.py present in tests/ alongside test.sh"
+      ],
+      "step": "format_check"
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "WARN",
+      "detail": "Stray ANTI_CHEAT.md file at task root; no .gitignore present.",
+      "reasons": [
+        "ANTI_CHEAT.md at root is not a recognized task file",
+        "no .gitignore to exclude generated artifacts"
+      ],
+      "step": "format_check"
+    },
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml sets [agent] user = \"agent\" (line 10).",
+      "reasons": [],
+      "step": "isolation"
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "All required isolation primitives present in Dockerfile.",
+      "reasons": [
+        "present: useradd agent (line 42)",
+        "present: chmod 700 /tests (lines 72, 98) plus go-rwx strip on contents (line 99)",
+        "present: chown agent:agent /solution (line 77)",
+        "present: chown -R agent:agent /app (line 83) after authoritative copies baked into /tests",
+        "present: strace installed (line 11)",
+        "present: gcc/build-essential (needed because verifier compiles agent Rust crate)",
+        "note: useradd does not pin --uid 1000 explicitly; first useradd on python:3.11-slim yields uid 1000 by default, /logs bind-mount ownership relies on this default"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh locks /logs/verifier first, wipes, runs agent code only under su agent + strace + timeout, and scores outside strace.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier FIRST then rm -rf (lines 39-40)",
+        "present: re-lock chmod 700 /tests after Harbor upload (line 69)",
+        "present: env sanitization unsets LD_PRELOAD/LD_LIBRARY_PATH/PYTHONPATH/BASH_ENV/CARGO_HOME etc. (lines 74-75)",
+        "present: pre-kill agent processes with survival check (lines 78-87)",
+        "present: cargo build wrapped in strace -f + su agent + env -i + timeout 3000 (lines 222-227)",
+        "present: agent rls binary executed in run_all.py via strace -f + su agent + env -i + timeout (run_all.py lines 117-123)",
+        "present: strace tripwire for reward.{txt,json} write opens on both build and per-case logs",
+        "present: scoring (diff + compute_reward.py) runs outside strace as root (lines 338-367)",
+        "present: emit_fail fallback writes reward 0 on every failure path, always exit 0",
+        "present: no chown root:root on /logs",
+        "present: relax_perms only loosens reward files after verification complete"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code: cargo build executes agent build.rs and the compiled rls binary is invoked per test case.",
+      "reasons": [
+        "agent code (build.rs + rls binary) runs during verification",
+        "both executions wrapped in strace -f + su agent + env -i (double defense)",
+        "scoring command (compute_reward.py) reads only static output files in WORK_DIR, never imports /app"
+      ],
+      "step": "isolation"
+    },
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "Task ships no application dependency manifest (no Cargo.toml/pyproject/package.json); agent writes their own Cargo project from scratch.",
+      "reasons": [],
+      "step": "reproducibility"
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "No Python or Node packages are installed; only apt packages and rustup toolchain via shell script.",
+      "reasons": [],
+      "step": "reproducibility"
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml has no docker_image field set; expected during development but required before final delivery.",
+      "reasons": [
+        "docker_image not set in [environment]"
+      ],
+      "step": "reproducibility"
+    },
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Deliverable, location, flags, styles, and matching criterion against GNU ls are clearly specified.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "time_awareness",
+      "status": "PASS",
+      "detail": "Explicit 2-hour budget with guidance to finalize binary in the last ~10 minutes.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "tone",
+      "status": "PASS",
+      "detail": "Clear, direct, mostly colleague-style with tips and a getting-started pointer.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "length",
+      "status": "PASS",
+      "detail": "115 lines, just over 100 but justified by the flag/style reference tables.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "WARN",
+      "detail": "Section header 'Evaluation' and phrases 'hidden suite', 'each test', 'per-case timeout' leak the existence of an evaluation harness.",
+      "reasons": [
+        "'## Evaluation' heading mentions a hidden test suite comparing output to GNU ls",
+        "'Each test has a per-case timeout (10 seconds)' references the test harness directly"
+      ],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "Rust, cargo, allowed crates, and fixture/example locations are documented.",
+      "reasons": [],
+      "step": "instruction_quality"
+    },
+    {
+      "id": "noop_baseline",
+      "status": "PASS",
+      "detail": "No-op agent leaves /app/workspace without Cargo.toml, triggering not_a_rust_project fail path with score 0.0.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "adversarial_audit",
+      "status": "PASS",
+      "detail": "Filesystem locked, /tests root-only, agent code runs as 'agent' under strace with env -i and tripwires for reward writes + execve of ls/dir/vdir/oracle, prebuilt-binary candidates wiped before build, oracle hash check, anti-cheat greps; environment is restored (chmod 700 /tests, /logs/verifier wipe, pre-existing agent processes killed) before verification.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "agent_code_as_user",
+      "status": "PASS",
+      "detail": "Cargo build and agent binary execution both go through 'su agent -s /bin/bash -c' so agent code never runs as root.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "strace_tracing",
+      "status": "PASS",
+      "detail": "Both the build phase and every per-case agent invocation are wrapped in 'strace -f' with logs scanned for reward-file openat and banned execve before any scoring.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "verifier_protected",
+      "status": "PASS",
+      "detail": "compute_reward.py uses 'python3 -ISs', reads only CLI args plus the verifier-written subscores file, and never imports or reads from /app.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "fault_tolerance",
+      "status": "PASS",
+      "detail": "No 'set -euo pipefail'; every failure path calls emit_fail and exits 0; build and per-case agent runs have explicit timeouts.",
+      "reasons": [],
+      "step": "reward_hacking"
+    },
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Exact byte-diff against GNU ls oracle output per test; build failure, missing binary, or wrong output all score 0.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Metric is byte-equal output vs GNU ls — any Rust implementation reproducing the quoting bytes scores equally.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "dimension_balance",
+      "status": "N/A",
+      "detail": "Single-metric task (per-test exact-output equality) aggregated as uniform pass-rate; no multi-dimension aggregation.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Empty/constant/oracle-copy outputs cannot match the oracle's quoted output for special_names fixtures; static + strace anti-cheat blocks execve(ls/dir/vdir/oracle) and reward writes.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py runs outside strace and only reads a verifier-written subscores.txt; no agent code is re-executed during scoring.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both success and failure paths write score (float), subscores (list, [] on failure), additional_data; reward.txt also written atomically and test.sh always exits 0.",
+      "reasons": [],
+      "step": "reward_design"
+    },
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Verifier scores Tier 6 quoting/escaping cases (including -lb/-lQ/-lN and a no-flag default case); all flags, quoting styles, and the shell-escape default for non-terminal output are documented in instruction.md.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "All required flags, each named quoting style's semantics, byte-level LC_ALL=C interpretation, and shell-quoting rules are spelled out; -l long format relies on standard GNU ls knowledge, which is acceptable.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Rust toolchain is installed system-wide with a+rX so the non-root agent user can run cargo; /app/workspace/examples, /app/fixtures, and /app/tests referenced in instruction.md exist after Docker build.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists, is non-empty, writes the oracle marker, and decrypts the baked GNU ls into /app/workspace/rls.",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "Hidden tests are structural variants of documented flag/style combinations over the fixture set described in instruction.md (special_names, basic, mixed, symlinks).",
+      "reasons": [],
+      "step": "fairness"
+    },
+    {
+      "id": "dockerfile_quality",
+      "status": "WARN",
+      "detail": "Slim base and cache cleaned, but gcc/g++/make duplicate build-essential and bc is never invoked anywhere.",
+      "reasons": [
+        "gcc, g++, make are already provided by build-essential",
+        "bc is unused — compute_reward.py handles all math in Python"
+      ],
+      "step": "cleanliness"
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "Only solve.sh present in /solution.",
+      "reasons": [],
+      "step": "cleanliness"
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Most sections are justified by the strace+build-from-source threat model, but one helper is redundant.",
+      "reasons": [
+        "useful: chmod 700 + wipe /logs/verifier, env scrub, pkill agent, /tests re-lock, oracle ELF validation, build-from-source enforcement, strace tripwires, static workspace greps, oracle hash check",
+        "redundant: line 71 'find /tests -type f -name *.sh -exec chmod +x' — no other .sh scripts exist in /tests (only compute_reward.py and run_all.py)"
+      ],
+      "step": "cleanliness"
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No individual files exceed 30MB.",
+      "reasons": [],
+      "step": "cleanliness"
+    },
+    {
+      "id": "workspace_clean",
+      "status": "PASS",
+      "detail": "Workspace contains only examples/README.md; build_tests.py runs at build time and is deleted in the same layer.",
+      "reasons": [],
+      "step": "cleanliness"
+    }
+  ],
+  "info": {
+    "format_check": {
+      "task_name": "rust-ls-quoting",
+      "difficulty": "hard",
+      "category": "programming",
+      "agent_timeout_sec": 7200,
+      "verifier_timeout_sec": 3600,
+      "build_timeout_sec": 600,
+      "allow_internet": false,
+      "cpus": 2,
+      "memory_mb": 8192,
+      "agent_user": "agent"
+    },
+    "isolation": {
+      "agent_user": "agent",
+      "verifier_type": "runs_agent_code",
+      "strace_needed": true
+    },
+    "reproducibility": {
+      "base_image": "python:3.11-slim",
+      "package_manager": "apt + rustup",
+      "lockfiles_found": [],
+      "docker_image_cached": false
+    },
+    "instruction_quality": {
+      "task_name": "Rust ls quoting and escaping clone",
+      "task_summary": "Implement a Rust binary at /app/workspace/rls that reproduces GNU coreutils ls name quoting and escaping. Must support -b, -q, -Q, -N, --show-control-chars, and --quoting-style across literal, shell*, c, and escape styles with byte-exact output.",
+      "task_domain": "systems-programming",
+      "deliverable": "/app/workspace/rls",
+      "tools_needed": [
+        "rust",
+        "cargo",
+        "libc",
+        "nix",
+        "clap"
+      ],
+      "instruction_lines": 115
+    },
+    "reward_hacking": {
+      "verifier_type": "runs_agent_code",
+      "existing_defenses": [
+        {
+          "category": "Filesystem lockdown",
+          "measures": [
+            "chmod 700 /logs/verifier then wipe before scoring",
+            "chmod 700 /tests re-asserted plus go-rwx stripped from non-fixture files",
+            "/app/.test_data/oracle.enc decryption key lives only in test.sh, not the image"
+          ]
+        },
+        {
+          "category": "User separation",
+          "measures": [
+            "Agent runs as non-root 'agent' user (task.toml)",
+            "cargo build --release executed via 'su agent' under env -i",
+            "Per-case agent binary executed via 'su agent' under env -i with PATH scrubbed"
+          ]
+        },
+        {
+          "category": "Runtime auditing",
+          "measures": [
+            "strace -f wraps build phase, log scanned for reward.{txt,json} O_WRONLY/O_RDWR/O_CREAT",
+            "strace -f wraps each agent run; tripwires for reward writes and execve of ls/dir/vdir/oracle basename",
+            "Pre-existing agent processes pkilled with retry; abort if any survive"
+          ]
+        },
+        {
+          "category": "Build integrity",
+          "measures": [
+            "Candidate target/release/<binname> paths wiped before cargo build",
+            "Built binary copied to root-owned BIN_DIR (agent cannot replace mid-run)",
+            "Bin name resolved from Cargo.toml [[bin]]/package metadata, not glob",
+            "Oracle ls baked into image but encrypted; system ls/dir/vdir replaced with error stubs"
+          ]
+        },
+        {
+          "category": "Scoring isolation",
+          "measures": [
+            "compute_reward.py runs outside strace, as python3 -ISs, with only --output-dir and --subscores",
+            "reward.json/reward.txt written atomically via tmp + os.replace",
+            "Static workspace anti-cheat greps for oracle path / key / reward references / banned crates / dir-vdir / hash-identical to oracle"
+          ]
+        }
+      ],
+      "verified_attack_vectors": [],
+      "acknowledged_vectors": [
+        {
+          "vector": "Agent can modify its own /logs/agent traces during agent phase",
+          "reason": "Documented as inherent to single-container model; does not affect scoring."
+        },
+        {
+          "vector": "Staged fixtures under /tests/fixtures are world-readable by design",
+          "reason": "Explicitly commented: agent already has informational copies in /app/fixtures, and the staged copy is required so the agent-UID binary can read fixtures whose modes ls -l must report."
+        }
+      ]
+    },
+    "reward_design": {
+      "reward_design": {
+        "formula": "score = sum_tier( (passed_tier / total_tier) * weight_tier )  where only tier6_quoting_escaping is in-scope with weight=1.0; gated to 0.0 on build-fail / oracle-decrypt-fail / anti-cheat / strace tripwire (cheating_penalty_multiplier=0)",
+        "formula_explanation": "Pass-rate over ~33 hidden quoting/escaping test cases scored as byte-equal-output vs GNU ls (the trusted oracle), with hard zero gates for non-Rust builds, missing binary, and reward/oracle tampering.",
+        "components": [
+          {
+            "name": "tier6_quoting_escaping",
+            "metric": "fraction of cases where normalized agent stdout == normalized GNU ls stdout (trailing-whitespace stripped)",
+            "gate": "build-from-source must succeed; no execve of ls/dir/vdir/oracle; no write-open of reward.{txt,json}; binary != oracle hash; static workspace anti-cheat clean",
+            "weight": "1.0 (sole in-scope tier, re-normalized from parent-task weights)"
+          }
+        ],
+        "aggregation_method": "single_metric",
+        "dimension_analysis": [
+          {
+            "name": "tier6_quoting_escaping",
+            "trivially_maxable": false,
+            "difficulty": "hard",
+            "notes": "~33 cases spanning literal, c, escape, shell, shell-always, shell-escape, shell-escape-always quoting styles plus -b/-q/-Q/-N/--show-control-chars and -l combos across special_names + basic/mixed/symlinks fixtures; uniform per-case weight, so partial implementations earn proportional partial credit (not a gaming risk — that is intended pass-rate behavior)."
+          }
+        ]
+      }
+    },
+    "fairness": {
+      "tools_required": [
+        "rustc",
+        "cargo",
+        "openssl"
+      ]
+    },
+    "cleanliness": {
+      "redundant_items": [
+        {
+          "file": "environment/Dockerfile",
+          "item": "gcc, g++, make packages",
+          "why": "build-essential already pulls these in as dependencies"
+        },
+        {
+          "file": "environment/Dockerfile",
+          "item": "bc package",
+          "why": "no shell/python code in tests/ or solution/ calls bc; reward math is in compute_reward.py"
+        },
+        {
+          "file": "tests/test.sh",
+          "item": "line 71: find /tests -name '*.sh' -exec chmod +x",
+          "why": "test.sh is the only .sh under /tests; compute_reward.py and run_all.py are .py and invoked via python3"
+        }
+      ]
+    }
+  }
+}

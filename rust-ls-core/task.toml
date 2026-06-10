@@ -1,0 +1,31 @@
+version = "1.0"
+
+[metadata]
+difficulty = "medium"
+category = "programming"
+tags = ["rust", "ls", "coreutils", "systems", "cli", "file-listing", "posix", "core", "milestone"]
+
+[agent]
+timeout_sec = 7200.0
+user = "agent"
+
+[verifier]
+timeout_sec = 3600.0
+
+[environment]
+build_timeout_sec = 600.0
+cpus = 2
+memory_mb = 8192
+storage_mb = 10240
+gpus = 0
+allow_internet = false
+mcp_servers = []
+
+[verifier.env]
+
+[solution.env]
+# Injected ONLY into oracle runs. solve.sh writes this token to an oracle marker
+# file and test.sh matches it to skip anti-cheat, because the oracle decrypts the
+# baked oracle `ls` as its solution. The agent never sees this value, so it cannot
+# forge the marker (replaces the old forgeable bare-existence .oracle_solution).
+HARBOR_ORACLE_FLAG = "rustls_core_24b837b47b882795"

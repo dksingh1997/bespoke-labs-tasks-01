@@ -1,0 +1,75 @@
+{
+  "step": "format_check",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all exist.",
+      "reasons": []
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": []
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=3600, build_timeout_sec=600, agent.user='agent'.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "Dockerfile installs git and tmux via apt-get.",
+      "reasons": []
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains extra files (compute_reward.py, run_all.py) that should live in environment/tests/.",
+      "reasons": [
+        "compute_reward.py and run_all.py present in tests/ alongside test.sh"
+      ]
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "WARN",
+      "detail": "Stray ANTI_CHEAT.md file at task root; no .gitignore present.",
+      "reasons": [
+        "ANTI_CHEAT.md at root is not a recognized task file",
+        "no .gitignore to exclude generated artifacts"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "rust-ls-quoting",
+    "difficulty": "hard",
+    "category": "programming",
+    "agent_timeout_sec": 7200,
+    "verifier_timeout_sec": 3600,
+    "build_timeout_sec": 600,
+    "allow_internet": false,
+    "cpus": 2,
+    "memory_mb": 8192,
+    "agent_user": "agent"
+  },
+  "notes": [
+    "Move tests/compute_reward.py and tests/run_all.py to environment/tests/ and COPY them into the image at build time; tests/ should contain only test.sh.",
+    "Remove or relocate ANTI_CHEAT.md (e.g., into docs/ or merge into README.md) so the task root contains only Harbor-recognized files.",
+    "Add a .gitignore to exclude jobs/, results/, qa-logs/, __pycache__/, and .DS_Store."
+  ],
+  "elapsed_sec": 46.7,
+  "cost_usd": 0.471385,
+  "tokens": {
+    "total": 242856,
+    "input": 10,
+    "output": 2504,
+    "reasoning": 0,
+    "cache_read": 190157,
+    "cache_write": 50185
+  }
+}

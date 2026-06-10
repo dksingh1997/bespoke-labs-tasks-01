@@ -1,0 +1,73 @@
+{
+  "step": "instruction_quality",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Deliverable, invocation, flags, env vars, and output format are unambiguously specified.",
+      "reasons": []
+    },
+    {
+      "id": "time_awareness",
+      "status": "PASS",
+      "detail": "Explicit 2-hour (7200s) limit with guidance to finalize and copy binary near the end.",
+      "reasons": []
+    },
+    {
+      "id": "tone",
+      "status": "PASS",
+      "detail": "Direct technical tone with practical tips section; reads like a colleague handoff.",
+      "reasons": []
+    },
+    {
+      "id": "length",
+      "status": "WARN",
+      "detail": "123 lines, slightly over the 100-line target; tables and tips could move to a workspace doc.",
+      "reasons": [
+        "instruction.md is 123 lines"
+      ]
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "PASS",
+      "detail": "No mention of scorer, verifier, reward, or test.sh; only references a per-case timeout.",
+      "reasons": []
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "Rust toolchain, allowed crates, and fixture/example locations are clearly documented.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "Rust ls clone color filtering",
+    "task_summary": "Implement a Rust clone of GNU coreutils ls focused on colorized output, ignore/hide filtering, SELinux context, and complex flag combinations. The binary at /app/workspace/rls must match GNU ls byte-for-byte for the targeted feature set.",
+    "task_domain": "systems-programming",
+    "deliverable": "/app/workspace/rls",
+    "tools_needed": [
+      "rust",
+      "cargo",
+      "libc",
+      "nix",
+      "clap",
+      "regex"
+    ],
+    "instruction_lines": 123
+  },
+  "notes": [
+    "Consider trimming Tips/Required Flags tables to a workspace REFERENCE.md to bring instruction.md under 100 lines."
+  ],
+  "elapsed_sec": 66.5,
+  "cost_usd": 0.239331,
+  "tokens": {
+    "total": 242273,
+    "input": 10,
+    "output": 1636,
+    "reasoning": 0,
+    "cache_read": 227050,
+    "cache_write": 13577
+  }
+}

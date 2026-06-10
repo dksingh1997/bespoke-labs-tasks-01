@@ -1,0 +1,80 @@
+{
+  "step": "instruction_quality",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "clarity",
+      "status": "PASS",
+      "detail": "Deliverable, invocation, flags, env vars, and output format are clearly specified.",
+      "reasons": []
+    },
+    {
+      "id": "time_awareness",
+      "status": "PASS",
+      "detail": "Explicit 2-hour (7200s) budget with iteration guidance and a final-build reminder.",
+      "reasons": []
+    },
+    {
+      "id": "tone",
+      "status": "WARN",
+      "detail": "Largely spec-like with tables rather than conversational handoff, but readable.",
+      "reasons": [
+        "Heavy use of reference-style tables instead of colleague prose"
+      ]
+    },
+    {
+      "id": "length",
+      "status": "WARN",
+      "detail": "128 lines exceeds the 100-line guideline; flag tables could move to a workspace reference doc.",
+      "reasons": [
+        "128 lines"
+      ]
+    },
+    {
+      "id": "scoring_leakage",
+      "status": "WARN",
+      "detail": "Contains an 'Evaluation' section describing comparison against GNU ls with normalization, which leaks verifier behavior.",
+      "reasons": [
+        "'## Evaluation' header",
+        "'compared against GNU ls ... it must match exactly'",
+        "'trailing-whitespace normalization on each line'",
+        "'Each test has a per-case timeout (10 seconds)' references tests"
+      ]
+    },
+    {
+      "id": "tools_documented",
+      "status": "PASS",
+      "detail": "Names Rust, allowed crates (libc/nix/clap), forbids uutils, and points to /app/workspace/examples and /app/fixtures.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "Rust ls clone core",
+    "task_summary": "Build a Rust binary at /app/workspace/rls that clones GNU coreutils ls. Must support listing/filtering, long-format, and sorting flags with byte-identical output to GNU ls.",
+    "task_domain": "systems-programming",
+    "deliverable": "/app/workspace/rls",
+    "tools_needed": [
+      "rust",
+      "cargo",
+      "libc",
+      "nix",
+      "clap"
+    ],
+    "instruction_lines": 128
+  },
+  "notes": [
+    "Rename/rework the 'Evaluation' section to avoid leaking verifier mechanics (drop 'compared against', 'normalization', 'per-case timeout'); reframe as expected behavior the user cares about.",
+    "Consider moving the flag tables to a reference doc under /app/workspace/ to bring the instruction under 100 lines and adopt a more conversational tone."
+  ],
+  "elapsed_sec": 54.2,
+  "cost_usd": 0.50784,
+  "tokens": {
+    "total": 338397,
+    "input": 12,
+    "output": 2004,
+    "reasoning": 0,
+    "cache_read": 286035,
+    "cache_write": 50346
+  }
+}

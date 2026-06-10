@@ -1,0 +1,74 @@
+{
+  "step": "format_check",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "All required files present (instruction.md, task.toml, environment/Dockerfile, tests/test.sh).",
+      "reasons": []
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": []
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=3600, build_timeout_sec=600, agent.user='agent'.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "Dockerfile installs both git and tmux.",
+      "reasons": []
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains compute_reward.py and run_all.py alongside test.sh; should live in environment/tests/ and be bundled via Dockerfile COPY.",
+      "reasons": [
+        "tests/compute_reward.py should move to environment/tests/",
+        "tests/run_all.py should move to environment/tests/"
+      ]
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "WARN",
+      "detail": "ANTI_CHEAT.md is a stray file at task root (no .gitignore present to ignore it).",
+      "reasons": [
+        "ANTI_CHEAT.md at root is not a Harbor-recognized task file"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "rust-ls-color-advanced",
+    "difficulty": "hard",
+    "category": "programming",
+    "agent_timeout_sec": 7200,
+    "verifier_timeout_sec": 3600,
+    "build_timeout_sec": 600,
+    "allow_internet": false,
+    "cpus": 2,
+    "memory_mb": 8192,
+    "agent_user": "agent"
+  },
+  "notes": [
+    "Move tests/compute_reward.py and tests/run_all.py into environment/tests/ and update the Dockerfile to COPY them into /tests at build time so tests/ contains only test.sh.",
+    "Either remove ANTI_CHEAT.md from the task root or add a .gitignore that excludes it (and other dev-only files) so the directory stays clean."
+  ],
+  "elapsed_sec": 65.9,
+  "cost_usd": 0.606457,
+  "tokens": {
+    "total": 421613,
+    "input": 13,
+    "output": 2839,
+    "reasoning": 0,
+    "cache_read": 362059,
+    "cache_write": 56702
+  }
+}

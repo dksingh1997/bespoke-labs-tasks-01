@@ -1,0 +1,80 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "WARN",
+      "detail": "Slim base and apt cache cleaned, but `bc` is installed and never used anywhere in the verifier or build pipeline.",
+      "reasons": [
+        "unused: bc package (scoring moved to compute_reward.py — no shell arithmetic remains)"
+      ]
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "Only solve.sh present; decrypts the baked oracle and writes the oracle marker — clean and minimal.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Core hardening is necessary and well-justified, but two minor items are stale given the actual /tests contents and image.",
+      "reasons": [
+        "useful: chmod 700 + wipe /logs/verifier (mandatory)",
+        "useful: chmod 700 /tests re-assertion after Harbor's verify-phase upload resets perms",
+        "useful: env scrub + pkill agent + env -i around build (build.rs is agent code)",
+        "useful: strace tripwires on both build and run phases (build.rs and binary are agent-controlled)",
+        "useful: openssl ELF check on decrypted oracle (catches ciphertext tampering)",
+        "useful: binary sha256 == oracle check (blocks the obvious copy-the-oracle cheat)",
+        "redundant: `find /tests -type f -name '*.sh' -exec chmod +x` — only test.sh lives under /tests; no helper .sh scripts to restore",
+        "redundant: `grep -rq ls_backup /app/workspace/` static check — no ls_backup binary is ever created by the Dockerfile (system ls/dir/vdir are replaced in place, not backed up)"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "Repo is ~896K total with no individual file over 30MB; no LFS candidates.",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "PASS",
+      "detail": "environment/workspace/ contains only examples/README.md; fixtures are generated at image build time, no stale configs or dead code.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "environment/Dockerfile",
+        "item": "`bc` package in apt-get install (line 15) and the matching comment 'verifier helpers (openssl/bc/file)' on line 3",
+        "why": "Scoring is fully in Python (compute_reward.py); no shell uses bc — drop the package and update the comment."
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "`find /tests -type f -name '*.sh' -exec chmod +x {} +` (line 71)",
+        "why": "Only test.sh exists under /tests; Harbor already chmods test.sh executable on upload. No other .sh scripts to repair."
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "`grep -rq ls_backup /app/workspace/` static anti-cheat (lines 307-309)",
+        "why": "The Dockerfile replaces /usr/bin/{ls,dir,vdir} in place — no ls_backup binary exists anywhere in the image, so this grep can never match a real cheat."
+      }
+    ]
+  },
+  "notes": [
+    "Remove `bc` from the apt install list and update the inline comment in environment/Dockerfile.",
+    "Drop the stale `find /tests ... chmod +x` line and the `ls_backup` static grep from tests/test.sh."
+  ],
+  "elapsed_sec": 177.4,
+  "cost_usd": 1.112851,
+  "tokens": {
+    "total": 1124069,
+    "input": 23,
+    "output": 5026,
+    "reasoning": 0,
+    "cache_read": 1044659,
+    "cache_write": 74361
+  }
+}

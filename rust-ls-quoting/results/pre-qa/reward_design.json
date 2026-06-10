@@ -1,0 +1,77 @@
+{
+  "step": "reward_design",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Exact byte-diff against GNU ls oracle output per test; build failure, missing binary, or wrong output all score 0.",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Metric is byte-equal output vs GNU ls — any Rust implementation reproducing the quoting bytes scores equally.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "N/A",
+      "detail": "Single-metric task (per-test exact-output equality) aggregated as uniform pass-rate; no multi-dimension aggregation.",
+      "reasons": []
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Empty/constant/oracle-copy outputs cannot match the oracle's quoted output for special_names fixtures; static + strace anti-cheat blocks execve(ls/dir/vdir/oracle) and reward writes.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py runs outside strace and only reads a verifier-written subscores.txt; no agent code is re-executed during scoring.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both success and failure paths write score (float), subscores (list, [] on failure), additional_data; reward.txt also written atomically and test.sh always exits 0.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "score = sum_tier( (passed_tier / total_tier) * weight_tier )  where only tier6_quoting_escaping is in-scope with weight=1.0; gated to 0.0 on build-fail / oracle-decrypt-fail / anti-cheat / strace tripwire (cheating_penalty_multiplier=0)",
+      "formula_explanation": "Pass-rate over ~33 hidden quoting/escaping test cases scored as byte-equal-output vs GNU ls (the trusted oracle), with hard zero gates for non-Rust builds, missing binary, and reward/oracle tampering.",
+      "components": [
+        {
+          "name": "tier6_quoting_escaping",
+          "metric": "fraction of cases where normalized agent stdout == normalized GNU ls stdout (trailing-whitespace stripped)",
+          "gate": "build-from-source must succeed; no execve of ls/dir/vdir/oracle; no write-open of reward.{txt,json}; binary != oracle hash; static workspace anti-cheat clean",
+          "weight": "1.0 (sole in-scope tier, re-normalized from parent-task weights)"
+        }
+      ],
+      "aggregation_method": "single_metric",
+      "dimension_analysis": [
+        {
+          "name": "tier6_quoting_escaping",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "~33 cases spanning literal, c, escape, shell, shell-always, shell-escape, shell-escape-always quoting styles plus -b/-q/-Q/-N/--show-control-chars and -l combos across special_names + basic/mixed/symlinks fixtures; uniform per-case weight, so partial implementations earn proportional partial credit (not a gaming risk — that is intended pass-rate behavior)."
+        }
+      ]
+    }
+  },
+  "notes": [],
+  "elapsed_sec": 175.0,
+  "cost_usd": 1.21041,
+  "tokens": {
+    "total": 1234298,
+    "input": 24,
+    "output": 5520,
+    "reasoning": 0,
+    "cache_read": 1149117,
+    "cache_write": 79637
+  }
+}

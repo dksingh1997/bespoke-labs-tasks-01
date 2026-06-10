@@ -1,0 +1,113 @@
+{
+  "step": "reward_design",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Each test requires byte-exact diff against GNU ls output; broken/missing binary yields empty .actual file and 0 passes.",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Reward measures byte-identical stdout vs GNU ls — any Rust implementation that reproduces the output scores, not tied to a specific algorithm.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "WARN",
+      "detail": "Three equally-weighted tiers aggregated via weighted sum (≈arithmetic mean); tier1_basic is much easier than tier2_long_format, letting an agent harvest ~33% by acing only tier1.",
+      "reasons": [
+        "Weighted sum across tiers permits gaming the easiest dimension",
+        "tier1_basic (no-flag/-1/-a/-A listing) is substantially easier than tier2 (perms, owner, sizes, dates, symlinks columns) and tier3 (version sort, multi-key sort)"
+      ]
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Trivial outputs (empty, constant, copy-of-input) cannot match GNU ls's exact long-format/sorted output, and byte-diff has zero partial credit floor.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py reads only a verifier-written subscores.txt and never imports or touches /app, so it can be re-run independently.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "Both emit_fail and emit_score write reward.json with score (float), subscores (list, [] on failure), and additional_data (dict) atomically, plus reward.txt.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "score = sum_over_tiers( (passed_in_tier / total_in_tier) * weight_tier ), weights = {tier1_basic: 1/3, tier2_long_format: 1/3, tier3_sorting: 1/3}",
+      "formula_explanation": "Per-tier pass-rate weighted sum across the three in-scope tiers, where each test is a binary byte-exact diff of agent stdout against GNU ls.",
+      "components": [
+        {
+          "name": "tier1_basic",
+          "metric": "fraction of basic-listing tests with byte-exact stdout match vs GNU ls",
+          "gate": "per-test exact diff (binary 0/1)",
+          "weight": "0.333333"
+        },
+        {
+          "name": "tier2_long_format",
+          "metric": "fraction of long-format tests with byte-exact stdout match vs GNU ls",
+          "gate": "per-test exact diff (binary 0/1)",
+          "weight": "0.333333"
+        },
+        {
+          "name": "tier3_sorting",
+          "metric": "fraction of sorting tests with byte-exact stdout match vs GNU ls",
+          "gate": "per-test exact diff (binary 0/1)",
+          "weight": "0.333334"
+        },
+        {
+          "name": "anti_cheat_gate",
+          "metric": "static workspace grep + strace tripwire (reward writes, execve of ls/dir/vdir/oracle) + build-from-source enforcement + oracle-hash inequality",
+          "gate": "any hit ⇒ score 0.0 with cheating_penalty_multiplier=0",
+          "weight": "multiplicative kill-switch"
+        }
+      ],
+      "aggregation_method": "weighted_sum",
+      "dimension_analysis": [
+        {
+          "name": "tier1_basic",
+          "trivially_maxable": false,
+          "difficulty": "easy",
+          "notes": "30 tests; only requires correct entry enumeration, -1/-a/-A semantics, ASCII byte-order sort — small surface, easiest tier to clean-sweep."
+        },
+        {
+          "name": "tier2_long_format",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "~46 tests covering -l/-g/-o/-G/-n/-i/-s/--author/-L with exact column alignment, perms+setuid/setgid/sticky, owner/group lookups, date formatting (recent vs old), symlink target rendering — broadest and most failure-prone tier."
+        },
+        {
+          "name": "tier3_sorting",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "~50 tests across -S/-t/-r/-U/-v/-X/-f/--sort=WORD/--group-directories-first plus combos with -l; version sort and stable tie-breaking are the main traps."
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Replace the weighted-sum aggregation across tiers with a power mean (e.g. p=-1 harmonic-style) or multiplicative aggregation so an agent that aces only tier1_basic cannot collect ~33% of the score while ignoring long-format and sorting.",
+    "Alternatively, gate any tier credit on a minimum cross-tier pass threshold (e.g. require >0 passes in every tier before crediting any) to prevent single-dimension harvesting."
+  ],
+  "elapsed_sec": 178.1,
+  "cost_usd": 1.076699,
+  "tokens": {
+    "total": 1006529,
+    "input": 21,
+    "output": 4429,
+    "reasoning": 0,
+    "cache_read": 921239,
+    "cache_write": 80840
+  }
+}

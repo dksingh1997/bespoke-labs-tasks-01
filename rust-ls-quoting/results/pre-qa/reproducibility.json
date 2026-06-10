@@ -1,0 +1,46 @@
+{
+  "step": "reproducibility",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "lockfile",
+      "status": "N/A",
+      "detail": "Task ships no application dependency manifest (no Cargo.toml/pyproject/package.json); agent writes their own Cargo project from scratch.",
+      "reasons": []
+    },
+    {
+      "id": "package_manager",
+      "status": "N/A",
+      "detail": "No Python or Node packages are installed; only apt packages and rustup toolchain via shell script.",
+      "reasons": []
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml has no docker_image field set; expected during development but required before final delivery.",
+      "reasons": [
+        "docker_image not set in [environment]"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "base_image": "python:3.11-slim",
+    "package_manager": "apt + rustup",
+    "lockfiles_found": [],
+    "docker_image_cached": false
+  },
+  "notes": [
+    "Set [environment].docker_image to a prebuilt registry image before final delivery to pin the rustup-installed toolchain and apt package versions."
+  ],
+  "elapsed_sec": 50.3,
+  "cost_usd": 0.537215,
+  "tokens": {
+    "total": 391900,
+    "input": 13,
+    "output": 1979,
+    "reasoning": 0,
+    "cache_read": 339000,
+    "cache_write": 50908
+  }
+}

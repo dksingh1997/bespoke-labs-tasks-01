@@ -1,0 +1,55 @@
+{
+  "step": "fairness",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Verifier scores Tier 6 quoting/escaping cases (including -lb/-lQ/-lN and a no-flag default case); all flags, quoting styles, and the shell-escape default for non-terminal output are documented in instruction.md.",
+      "reasons": []
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "All required flags, each named quoting style's semantics, byte-level LC_ALL=C interpretation, and shell-quoting rules are spelled out; -l long format relies on standard GNU ls knowledge, which is acceptable.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Rust toolchain is installed system-wide with a+rX so the non-root agent user can run cargo; /app/workspace/examples, /app/fixtures, and /app/tests referenced in instruction.md exist after Docker build.",
+      "reasons": []
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists, is non-empty, writes the oracle marker, and decrypts the baked GNU ls into /app/workspace/rls.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "Hidden tests are structural variants of documented flag/style combinations over the fixture set described in instruction.md (special_names, basic, mixed, symlinks).",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "rustc",
+      "cargo",
+      "openssl"
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 242.7,
+  "cost_usd": 1.631353,
+  "tokens": {
+    "total": 1881534,
+    "input": 32,
+    "output": 7471,
+    "reasoning": 0,
+    "cache_read": 1785787,
+    "cache_write": 88244
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "step": "isolation",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml sets [agent] user = \"agent\".",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "All required isolation primitives present in Dockerfile.",
+      "reasons": [
+        "present: useradd agent (L42)",
+        "present: chown -R agent:agent /app (L83)",
+        "present: chown agent:agent /solution (L77)",
+        "present: chmod 700 /tests (L72, re-asserted L98) with go-rwx stripped from contents except fixtures",
+        "present: strace installed (L11)",
+        "present: gcc/build-essential installed (verifier runs agent code via build.rs and binary)",
+        "note: useradd uses default uid (no explicit --uid 1000) — works on Docker but may need verification on Modal"
+      ]
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh hardens /logs/verifier first, runs agent code under strace as agent user, scores outside strace, always exits 0.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier FIRST (L39) then rm -rf (L40)",
+        "present: re-lock chmod 700 /tests (L69)",
+        "present: env sanitization unset LD_PRELOAD/PYTHONPATH/etc (L74-75)",
+        "present: pkill -u agent pre-verification (L78-87)",
+        "present: cargo build run under strace -f + su agent + env -i + timeout (L222-227)",
+        "present: strace tripwire greps openat for reward.{txt,json} with O_WRONLY/O_RDWR/O_CREAT (L230-236)",
+        "present: run_all.py executes agent binary as agent under strace (per comments L11-14, L262-268)",
+        "present: scoring phase 2 runs outside strace, only diffs captured outputs (L334-367)",
+        "present: emit_fail always followed by exit 0; final exit 0 (L370)",
+        "present: fallback reward via compute_reward.py --fail in emit_fail()",
+        "present: no set -euo pipefail (per comment L24)",
+        "no chown root:root on /logs"
+      ]
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code — verifier executes build.rs via cargo build and runs the agent's rls binary; strace + su agent + env -i are all in place.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "agent_user": "agent",
+    "verifier_type": "runs_agent_code",
+    "strace_needed": true
+  },
+  "notes": [],
+  "elapsed_sec": 47.4,
+  "cost_usd": 0.509907,
+  "tokens": {
+    "total": 222714,
+    "input": 9,
+    "output": 2323,
+    "reasoning": 0,
+    "cache_read": 160974,
+    "cache_write": 59408
+  }
+}

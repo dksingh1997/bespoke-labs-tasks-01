@@ -1,0 +1,71 @@
+{
+  "step": "isolation",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml [agent] user = \"agent\" is set.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "All required isolation primitives present in Dockerfile.",
+      "reasons": [
+        "present: useradd agent (default uid 1000)",
+        "present: chown -R agent:agent /app",
+        "present: chown agent:agent /solution",
+        "present: mkdir /tests && chmod 700 /tests (re-asserted with go-rwx strip, fixtures pruned)",
+        "present: strace installed (apt-get) for runtime tripwires",
+        "present: git + tmux installed (Harbor hard-rule tooling)",
+        "present: gcc/build-essential available for verifier-side checks"
+      ]
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh locks /logs/verifier first, runs agent build under su+strace+timeout, scores outside strace, and always exits 0.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier BEFORE rm -rf wipe",
+        "present: re-asserts chmod 700 /tests post-upload",
+        "present: pkill -u agent + survival check before scoring",
+        "present: env sanitization (LD_PRELOAD, PYTHONPATH, CARGO_*, RUSTFLAGS)",
+        "present: cargo build runs via `su agent` under `strace -f` with `timeout 3000` and `env -i`",
+        "present: strace tripwire greps for openat write on reward.{txt,json}",
+        "present: agent binary execution delegated to run_all.py (Phase 1) with cheat.txt tripwire",
+        "present: Phase 2 scoring is pure file diff + compute_reward.py — no agent code imported",
+        "present: emit_fail fallback writes reward via compute_reward.py on every error path",
+        "present: exit 0 on every termination path; no `set -euo pipefail`",
+        "present: no chown root:root on /logs directories"
+      ]
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code — verifier compiles and executes the agent's Rust binary.",
+      "reasons": [
+        "agent crate is built with `cargo build --release` (build.rs executes)",
+        "compiled $RLS binary is executed in Phase 1 (run_all.py) to capture outputs",
+        "strace + su agent + env -i required and present"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "agent_user": "agent",
+    "verifier_type": "runs_agent_code",
+    "strace_needed": true
+  },
+  "notes": [],
+  "elapsed_sec": 53.3,
+  "cost_usd": 0.520761,
+  "tokens": {
+    "total": 223655,
+    "input": 9,
+    "output": 2656,
+    "reasoning": 0,
+    "cache_read": 161195,
+    "cache_write": 59795
+  }
+}

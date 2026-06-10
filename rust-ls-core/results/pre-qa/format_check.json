@@ -1,0 +1,73 @@
+{
+  "step": "format_check",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "All required files present.",
+      "reasons": []
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": []
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "All required fields present and within limits.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "git and tmux are installed via apt-get.",
+      "reasons": []
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains extra files beyond test.sh.",
+      "reasons": [
+        "compute_reward.py and run_all.py should live in environment/tests/ and be COPYed into the Docker image"
+      ]
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "WARN",
+      "detail": "Stray ANTI_CHEAT.md at task root.",
+      "reasons": [
+        "ANTI_CHEAT.md is not part of the Harbor task spec and no .gitignore exists to exclude it"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "rust-ls-core",
+    "difficulty": "medium",
+    "category": "programming",
+    "agent_timeout_sec": 7200,
+    "verifier_timeout_sec": 3600,
+    "build_timeout_sec": 600,
+    "allow_internet": false,
+    "cpus": 2,
+    "memory_mb": 8192,
+    "agent_user": "agent"
+  },
+  "notes": [
+    "Move tests/compute_reward.py and tests/run_all.py into environment/tests/ and COPY them into /tests/ in the Dockerfile, leaving only test.sh at tests/.",
+    "Remove or relocate ANTI_CHEAT.md from the task root, or add a .gitignore to exclude developer notes."
+  ],
+  "elapsed_sec": 56.5,
+  "cost_usd": 0.551864,
+  "tokens": {
+    "total": 393789,
+    "input": 13,
+    "output": 2245,
+    "reasoning": 0,
+    "cache_read": 339373,
+    "cache_write": 52158
+  }
+}

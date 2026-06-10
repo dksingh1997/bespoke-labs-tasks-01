@@ -1,0 +1,95 @@
+{
+  "step": "reward_design",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "correctness_gating",
+      "status": "PASS",
+      "detail": "Each test requires byte-exact diff against GNU ls output; mismatches and build failures score 0.",
+      "reasons": []
+    },
+    {
+      "id": "implementation_agnostic",
+      "status": "PASS",
+      "detail": "Reward is solely output equivalence to GNU ls, so any Rust implementation that matches bytes scores equally regardless of internal algorithm.",
+      "reasons": []
+    },
+    {
+      "id": "dimension_balance",
+      "status": "PASS",
+      "detail": "Sub-dimensions (color, ignore/hide, -Z context, flag combos) are all flattened into one tier as equally weighted binary test cases, so no single dimension is trivially maxable nor unreasonably hard relative to the others.",
+      "reasons": []
+    },
+    {
+      "id": "shortcut_resistant",
+      "status": "PASS",
+      "detail": "Empty/constant/copy-input outputs fail byte-exact diff against GNU ls; build-from-source enforcement plus oracle-binary hash check block trivial cheats.",
+      "reasons": []
+    },
+    {
+      "id": "modular_scoring",
+      "status": "PASS",
+      "detail": "compute_reward.py runs outside strace, reads only a subscores file, and never imports agent code so it can be re-run independently.",
+      "reasons": []
+    },
+    {
+      "id": "reward_json_schema",
+      "status": "PASS",
+      "detail": "All paths (success, --fail, --fail --cheat) write score (float), subscores (list, [] on failure), and additional_data via atomic tmpfile+os.replace.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "reward_design": {
+      "formula": "score = sum_over_tiers( (tier_pass / tier_total) * WEIGHTS[tier] ), clamped to [0,1]; only tier8_color_advanced is in scope with weight 1.0, so score = tier8_pass / tier8_total",
+      "formula_explanation": "Pass-rate within the single in-scope tier, where each test is a binary byte-exact diff against GNU ls reference output.",
+      "components": [
+        {
+          "name": "tier8_color_advanced",
+          "metric": "fraction of tier8 test cases whose normalized stdout matches GNU ls byte-for-byte",
+          "gate": "build-from-source required, banned-crate/anti-cheat static greps, strace tripwire on reward writes or execve of ls/dir/vdir/oracle, sha256 not equal to oracle",
+          "weight": "1.0"
+        }
+      ],
+      "aggregation_method": "weighted_sum",
+      "dimension_analysis": [
+        {
+          "name": "color_output",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "Requires byte-exact LS_COLORS escape sequences (di/ln/ex/or/su/sg/tw/ow/st, extension fallbacks)."
+        },
+        {
+          "name": "ignore_hide_filtering",
+          "trivially_maxable": false,
+          "difficulty": "medium",
+          "notes": "-B, -I glob, --hide with -a/-A override semantics."
+        },
+        {
+          "name": "selinux_context_Z",
+          "trivially_maxable": false,
+          "difficulty": "easy",
+          "notes": "Print '?' column in the right position; easy in isolation but combined with -l."
+        },
+        {
+          "name": "multi_flag_combos_overrides",
+          "trivially_maxable": false,
+          "difficulty": "hard",
+          "notes": "-laSr, -latr, -lhS, -RlF, -lisg plus last-one-wins override semantics (-fl, -l -1, -C -l)."
+        }
+      ]
+    }
+  },
+  "notes": [],
+  "elapsed_sec": 152.8,
+  "cost_usd": 0.948064,
+  "tokens": {
+    "total": 848703,
+    "input": 19,
+    "output": 3989,
+    "reasoning": 0,
+    "cache_read": 770626,
+    "cache_write": 74069
+  }
+}

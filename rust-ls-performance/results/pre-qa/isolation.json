@@ -1,0 +1,71 @@
+{
+  "step": "isolation",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "agent_user",
+      "status": "PASS",
+      "detail": "task.toml sets [agent] user = \"agent\".",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_isolation",
+      "status": "PASS",
+      "detail": "Dockerfile creates agent user, locks /tests 700, owns /app and /solution to agent, installs strace.",
+      "reasons": [
+        "present: useradd agent (line 42)",
+        "present: chown -R agent:agent /app (line 83)",
+        "present: chown agent:agent /solution (line 77)",
+        "present: mkdir /tests + chmod 700 /tests (lines 72, 98)",
+        "present: strace installed (line 11)",
+        "present: git + tmux installed (lines 10, 14)",
+        "present: /tests hardened with go-rwx recursively except fixtures subtree (line 99)"
+      ]
+    },
+    {
+      "id": "testsh_isolation",
+      "status": "PASS",
+      "detail": "test.sh locks /logs/verifier 700 then wipes, runs agent binary as agent under strace with env -i, scores outside strace, always exits 0.",
+      "reasons": [
+        "present: chmod 700 /logs/verifier BEFORE rm -rf (lines 39-40)",
+        "present: re-locks /tests chmod 700 after Harbor upload (line 69)",
+        "present: pkill agent processes before scoring (lines 78-87)",
+        "present: env sanitization (unset LD_PRELOAD, PYTHONPATH, etc., lines 74-75)",
+        "present: agent binary + build.rs run via su agent under strace -f with env -i (run_all.py lines 117-123; test.sh lines 222-227)",
+        "present: timeout wrappers on strace blocks (lines 224, run_all.py 121)",
+        "present: strace tripwires for reward file writes + banned execve (run_all.py lines 61-64, 136-153; test.sh lines 230-236)",
+        "present: scoring (compute_reward.py) runs OUTSIDE strace and never imports /app code (test.sh lines 366-367)",
+        "present: no set -euo pipefail, always exit 0 (lines 84, 121, 150, 165, 235, 274, 325, 370)",
+        "present: fallback reward 0.0 via emit_fail -> compute_reward.py --fail on every error path",
+        "present: no chown root:root on /logs"
+      ]
+    },
+    {
+      "id": "verifier_type",
+      "status": "PASS",
+      "detail": "runs_agent_code — verifier builds the agent's Rust crate and executes the produced binary on fixtures.",
+      "reasons": [
+        "build.rs and cargo build --release execute as agent under strace (test.sh lines 222-227)",
+        "agent binary executed per test case as agent under strace (run_all.py lines 117-123)",
+        "scoring phase only diffs captured .oracle/.actual text files — does not import /app"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "agent_user": "agent",
+    "verifier_type": "runs_agent_code",
+    "strace_needed": true
+  },
+  "notes": [],
+  "elapsed_sec": 62.8,
+  "cost_usd": 0.625368,
+  "tokens": {
+    "total": 397271,
+    "input": 12,
+    "output": 2511,
+    "reasoning": 0,
+    "cache_read": 331242,
+    "cache_write": 63506
+  }
+}

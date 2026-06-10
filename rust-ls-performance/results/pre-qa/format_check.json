@@ -1,0 +1,73 @@
+{
+  "step": "format_check",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "required_files",
+      "status": "PASS",
+      "detail": "instruction.md, task.toml, environment/Dockerfile, and tests/test.sh all present.",
+      "reasons": []
+    },
+    {
+      "id": "recommended_files",
+      "status": "PASS",
+      "detail": "solution/solve.sh, oracle.yaml, and job.yaml all present.",
+      "reasons": []
+    },
+    {
+      "id": "task_toml_schema",
+      "status": "PASS",
+      "detail": "allow_internet=false, agent.timeout_sec=7200, verifier.timeout_sec=3600, build_timeout_sec=600, agent.user='agent' all defined.",
+      "reasons": []
+    },
+    {
+      "id": "dockerfile_required_tools",
+      "status": "PASS",
+      "detail": "git and tmux are installed via apt-get in the Dockerfile.",
+      "reasons": []
+    },
+    {
+      "id": "tests_folder_lean",
+      "status": "WARN",
+      "detail": "tests/ contains extra files beyond test.sh: compute_reward.py and run_all.py.",
+      "reasons": [
+        "compute_reward.py and run_all.py should live in environment/tests/ and be COPYed into the image instead of sitting in the task-root tests/ folder"
+      ]
+    },
+    {
+      "id": "directory_cleanliness",
+      "status": "WARN",
+      "detail": "Stray ANTI_CHEAT.md at task root (no .gitignore present).",
+      "reasons": [
+        "ANTI_CHEAT.md is not in the always-ignore list and no .gitignore exists to exclude it"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "task_name": "rust-ls-performance",
+    "difficulty": "medium",
+    "category": "programming",
+    "agent_timeout_sec": 7200,
+    "verifier_timeout_sec": 3600,
+    "build_timeout_sec": 600,
+    "allow_internet": false,
+    "cpus": 2,
+    "memory_mb": 8192,
+    "agent_user": "agent"
+  },
+  "notes": [
+    "Move tests/compute_reward.py and tests/run_all.py into environment/tests/ and COPY them into the Docker image so tests/ contains only test.sh.",
+    "Remove ANTI_CHEAT.md from the task root or add a .gitignore that excludes it."
+  ],
+  "elapsed_sec": 48.6,
+  "cost_usd": 0.499121,
+  "tokens": {
+    "total": 294529,
+    "input": 11,
+    "output": 2196,
+    "reasoning": 0,
+    "cache_read": 240495,
+    "cache_write": 51827
+  }
+}

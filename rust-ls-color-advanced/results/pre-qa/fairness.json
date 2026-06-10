@@ -1,0 +1,55 @@
+{
+  "step": "fairness",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Verifier scores tier8 (color, ignore/hide, -Z context, and flag combos), all explicitly described in instruction.md.",
+      "reasons": []
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "LS_COLORS value, environment variables, override semantics, and -f side effects are all documented in instruction.md.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "PASS",
+      "detail": "Rust toolchain installed system-wide; example fixtures and expected outputs populated under /app/workspace/examples by build_tests.py.",
+      "reasons": []
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists, is non-empty, writes oracle marker, and decrypts the baked GNU ls binary into /app/workspace/rls.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "Tests are structural variants of GNU ls behavior on documented flags; specific combos like -laSr, -latr, -RlF are enumerated in instruction.md.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "rustc",
+      "cargo",
+      "openssl"
+    ]
+  },
+  "notes": [],
+  "elapsed_sec": 163.5,
+  "cost_usd": 1.136875,
+  "tokens": {
+    "total": 1080017,
+    "input": 22,
+    "output": 3571,
+    "reasoning": 0,
+    "cache_read": 987854,
+    "cache_write": 88570
+  }
+}

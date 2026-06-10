@@ -1,0 +1,75 @@
+{
+  "step": "cleanliness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "dockerfile_quality",
+      "status": "WARN",
+      "detail": "Slim base and cache cleaned, but gcc/g++/make duplicate build-essential and bc is never invoked anywhere.",
+      "reasons": [
+        "gcc, g++, make are already provided by build-essential",
+        "bc is unused — compute_reward.py handles all math in Python"
+      ]
+    },
+    {
+      "id": "solution_clean",
+      "status": "PASS",
+      "detail": "Only solve.sh present in /solution.",
+      "reasons": []
+    },
+    {
+      "id": "testsh_quality",
+      "status": "WARN",
+      "detail": "Most sections are justified by the strace+build-from-source threat model, but one helper is redundant.",
+      "reasons": [
+        "useful: chmod 700 + wipe /logs/verifier, env scrub, pkill agent, /tests re-lock, oracle ELF validation, build-from-source enforcement, strace tripwires, static workspace greps, oracle hash check",
+        "redundant: line 71 'find /tests -type f -name *.sh -exec chmod +x' — no other .sh scripts exist in /tests (only compute_reward.py and run_all.py)"
+      ]
+    },
+    {
+      "id": "git_hygiene",
+      "status": "PASS",
+      "detail": "No individual files exceed 30MB.",
+      "reasons": []
+    },
+    {
+      "id": "workspace_clean",
+      "status": "PASS",
+      "detail": "Workspace contains only examples/README.md; build_tests.py runs at build time and is deleted in the same layer.",
+      "reasons": []
+    }
+  ],
+  "info": {
+    "redundant_items": [
+      {
+        "file": "environment/Dockerfile",
+        "item": "gcc, g++, make packages",
+        "why": "build-essential already pulls these in as dependencies"
+      },
+      {
+        "file": "environment/Dockerfile",
+        "item": "bc package",
+        "why": "no shell/python code in tests/ or solution/ calls bc; reward math is in compute_reward.py"
+      },
+      {
+        "file": "tests/test.sh",
+        "item": "line 71: find /tests -name '*.sh' -exec chmod +x",
+        "why": "test.sh is the only .sh under /tests; compute_reward.py and run_all.py are .py and invoked via python3"
+      }
+    ]
+  },
+  "notes": [
+    "Drop gcc/g++/make/bc from the apt-get line to shrink the image",
+    "Remove the unused chmod +x find on test.sh line 71"
+  ],
+  "elapsed_sec": 186.1,
+  "cost_usd": 1.098761,
+  "tokens": {
+    "total": 1119775,
+    "input": 23,
+    "output": 4704,
+    "reasoning": 0,
+    "cache_read": 1041392,
+    "cache_write": 73656
+  }
+}

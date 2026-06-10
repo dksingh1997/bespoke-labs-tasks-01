@@ -1,0 +1,59 @@
+{
+  "step": "fairness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "PASS",
+      "detail": "Scored tiers (1 basic, 2 long, 3 sorting), flag set, env vars (LC_ALL/TZ/COLUMNS/TERM), and trailing-whitespace-per-line normalization all match between instruction.md and run_all.py/compute_reward.py.",
+      "reasons": []
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "All required flags map to standard GNU ls semantics; version sort, recent-vs-old date switch, and LC_ALL=C byte-order sorting are explicitly defined in instruction.md.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "WARN",
+      "detail": "Rust toolchain is installed system-wide and the agent user can build, but instruction.md names /app/workspace/examples/expected/t2_basic_long.txt while build_tests.py copies only the first 6 alphabetically sorted t*_basic_*.expected files — which are all tier1 (t1_basic_*), so the named t2 file never lands in the workspace.",
+      "reasons": [
+        "instruction.md line 115 references examples/expected/t2_basic_long.txt; create_examples() in build_tests.py copies only the first 6 sorted matches, which excludes any t2_/t3_ basic outputs"
+      ]
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists, writes the HARBOR_ORACLE_FLAG marker, and decrypts the baked oracle ls into /app/workspace/rls.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "All test cases are structural permutations of the documented flags on documented fixture trees; no scoring dimension beyond byte-equality with GNU ls.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "rustc",
+      "cargo",
+      "rust standard library"
+    ]
+  },
+  "notes": [
+    "Fix the example diff command in instruction.md: either widen the create_examples() glob in environment/build_tests.py to also cover t2_basic_long.expected (e.g. explicitly include one per tier) or change the instruction example to a filename that is actually copied (e.g. t1_basic_no_flags.txt)."
+  ],
+  "elapsed_sec": 216.8,
+  "cost_usd": 1.500431,
+  "tokens": {
+    "total": 1669958,
+    "input": 29,
+    "output": 6582,
+    "reasoning": 0,
+    "cache_read": 1575684,
+    "cache_write": 87663
+  }
+}

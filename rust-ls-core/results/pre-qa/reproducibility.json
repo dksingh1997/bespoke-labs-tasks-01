@@ -1,0 +1,46 @@
+{
+  "step": "reproducibility",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "lockfile",
+      "status": "PASS",
+      "detail": "No external Python or Cargo dependencies are declared in the task; Rust toolchain is installed via rustup and no Cargo.toml/requirements files exist.",
+      "reasons": []
+    },
+    {
+      "id": "package_manager",
+      "status": "PASS",
+      "detail": "No Python packages are installed via pip in the Dockerfile; only apt packages and rustup toolchain are used.",
+      "reasons": []
+    },
+    {
+      "id": "docker_image_cached",
+      "status": "WARN",
+      "detail": "task.toml does not set docker_image; expected during development but must be set before final delivery.",
+      "reasons": [
+        "docker_image not set in [environment]"
+      ]
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "base_image": "python:3.11-slim",
+    "package_manager": "none (apt + rustup only)",
+    "lockfiles_found": [],
+    "docker_image_cached": false
+  },
+  "notes": [
+    "Set docker_image in task.toml [environment] before final delivery to pin the prebuilt image."
+  ],
+  "elapsed_sec": 58.5,
+  "cost_usd": 0.592197,
+  "tokens": {
+    "total": 489744,
+    "input": 15,
+    "output": 2107,
+    "reasoning": 0,
+    "cache_read": 436207,
+    "cache_write": 51415
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "step": "fairness",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "instruction_verifier_sync",
+      "status": "WARN",
+      "detail": "Verifier requires a Cargo project (Cargo.toml + cargo build --release) and picks the binary from target/release/<bin-name>, but instruction.md only says 'implement in Rust' and 'final binary at /app/workspace/rls' without explicitly stating a Cargo crate is required.",
+      "reasons": [
+        "test.sh fails with 'not_a_rust_project' if /app/workspace/Cargo.toml is missing, but instruction.md never names Cargo.toml as a deliverable",
+        "Verifier ignores the agent's /app/workspace/rls binary and instead rebuilds from source and selects target/release/<binname>; the agent is told the binary path is the deliverable",
+        "Both points are inferable from standard Rust practice (cargo is the canonical Rust build tool), so the gap is recoverable but not explicit"
+      ]
+    },
+    {
+      "id": "definitions_documented",
+      "status": "PASS",
+      "detail": "GNU ls behavior, the five flag cases, output normalization (trailing whitespace), env vars (LC_ALL/COLUMNS/TZ/TERM), and the 60s per-case budget are all documented in instruction.md.",
+      "reasons": []
+    },
+    {
+      "id": "tools_accessible",
+      "status": "WARN",
+      "detail": "Rust toolchain is installed system-wide and on PATH for the agent user, and /app/fixtures/perf_10k plus /app/tests/ exist as promised; however the scoped build never produces examples/basic/ or examples/expected/*.txt, so the workspace examples/README.md points to files that do not exist in this variant.",
+      "reasons": [
+        "environment/build_tests.py:create_examples() returns early when the 'basic' fixture is out of scope, leaving only examples/README.md whose instructions reference missing basic/ and expected/*.txt paths",
+        "solve.sh does not validate tool access (it only decrypts the baked oracle ls), which is acceptable for this oracle pattern"
+      ]
+    },
+    {
+      "id": "oracle_exists",
+      "status": "PASS",
+      "detail": "solution/solve.sh exists, is non-empty (19 lines), writes the HARBOR_ORACLE_FLAG marker, and decrypts the baked oracle ls to /app/workspace/rls.",
+      "reasons": []
+    },
+    {
+      "id": "hidden_test_fairness",
+      "status": "PASS",
+      "detail": "The five hidden tier9_performance cases (no flags, -1, -l, -S, -C on perf_10k) are exactly the five cases instruction.md enumerates, so the hidden suite is a structural variant of disclosed requirements.",
+      "reasons": []
+    }
+  ],
+  "additional_checks": [],
+  "info": {
+    "tools_required": [
+      "rustc",
+      "cargo"
+    ]
+  },
+  "notes": [
+    "Add one sentence to instruction.md stating the deliverable is a Cargo crate rooted at /app/workspace/ (with Cargo.toml) that produces target/release/<binname>, so the build-from-source requirement is not implicit.",
+    "Either fix examples/README.md to describe what the perf-scoped workspace actually contains (perf_10k fixture under /app/fixtures, tier9 JSON specs under /app/tests), or have create_examples() also seed a small example from perf_10k so the README's diff command works out of the box."
+  ],
+  "elapsed_sec": 231.7,
+  "cost_usd": 1.082326,
+  "tokens": {
+    "total": 1373802,
+    "input": 26,
+    "output": 5996,
+    "reasoning": 0,
+    "cache_read": 1324579,
+    "cache_write": 43201
+  }
+}
